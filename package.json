@@ -1,0 +1,16 @@
+{
+    "name": "derelict-gl3",
+    "description": "A dynamic binding to the GLFW 3 library.",
+    "homepage": "https://github.com/DerelictOrg/DerelictGL3",
+    "license": "Boost",
+    "authors": [
+        "Mike Parker"
+    ],
+
+    "targetName": "DerelictGL3",
+    "targetPath": "lib",
+
+    "dependencies": {
+        "derelict-util": "~master"
+    }
+}

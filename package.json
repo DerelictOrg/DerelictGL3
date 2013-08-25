@@ -1,6 +1,6 @@
 {
     "name": "derelict-gl3",
-    "description": "A dynamic binding to the OpenGL version 3+ library.",
+    "description": "A dynamic binding to the OpenGL library.",
     "homepage": "https://github.com/DerelictOrg/DerelictGL3",
     "license": "Boost",
     "authors": [

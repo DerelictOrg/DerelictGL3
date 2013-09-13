@@ -1601,7 +1601,7 @@ extern( System ) nothrow {
     alias da_glUniform1d = void function( GLint, GLdouble );
     alias da_glUniform2d = void function( GLint, GLdouble, GLdouble );
     alias da_glUniform3d = void function( GLint, GLdouble, GLdouble, GLdouble );
-    alias da_glUniform4d = void function( GLint, GLdouble, GLdouble, GLdouble );
+    alias da_glUniform4d = void function( GLint, GLdouble, GLdouble, GLdouble, GLdouble );
     alias da_glUniform1dv = void function( GLint, GLsizei, const( GLdouble )* );
     alias da_glUniform2dv = void function( GLint, GLsizei, const( GLdouble )* );
     alias da_glUniform3dv = void function( GLint, GLsizei, const( GLdouble )* );

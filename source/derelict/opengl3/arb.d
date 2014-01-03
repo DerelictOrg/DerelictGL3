@@ -28,6 +28,7 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl3.arb;
 
 private {
+    import derelict.util.system;
     import derelict.opengl3.types;
     import derelict.opengl3.constants;
     import derelict.opengl3.internal;
@@ -1527,36 +1528,38 @@ private __gshared bool _ARB_vertex_type_2_10_10_10_rev;
 bool ARB_vertex_type_2_10_10_10_rev() @property { return _ARB_vertex_type_2_10_10_10_rev; }
 package void load_ARB_vertex_type_2_10_10_10_rev( bool doThrow = false ) {
     try {
-        bindGLFunc( cast( void** )&glVertexP2ui, "glVertexP2ui" );
-        bindGLFunc( cast( void** )&glVertexP2uiv, "glVertexP2uiv" );
-        bindGLFunc( cast( void** )&glVertexP3ui, "glVertexP3ui" );
-        bindGLFunc( cast( void** )&glVertexP3uiv, "glVertexP3uiv" );
-        bindGLFunc( cast( void** )&glVertexP4ui, "glVertexP4ui" );
-        bindGLFunc( cast( void** )&glVertexP4uiv, "glVertexP4uiv" );
-        bindGLFunc( cast( void** )&glTexCoordP1ui, "glTexCoordP1ui" );
-        bindGLFunc( cast( void** )&glTexCoordP1uiv, "glTexCoordP1uiv" );
-        bindGLFunc( cast( void** )&glTexCoordP2ui, "glTexCoordP2ui" );
-        bindGLFunc( cast( void** )&glTexCoordP2uiv, "glTexCoordP2uiv" );
-        bindGLFunc( cast( void** )&glTexCoordP3ui, "glTexCoordP3ui" );
-        bindGLFunc( cast( void** )&glTexCoordP3uiv, "glTexCoordP3uiv" );
-        bindGLFunc( cast( void** )&glTexCoordP4ui, "glTexCoordP4ui" );
-        bindGLFunc( cast( void** )&glTexCoordP4uiv, "glTexCoordP4uiv" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP1ui, "glMultiTexCoordP1ui" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP2ui, "glMultiTexCoordP2ui" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP3ui, "glMultiTexCoordP3ui" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP4ui, "glMultiTexCoordP4ui" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv" );
-        bindGLFunc( cast( void** )&glNormalP3ui, "glNormalP3ui" );
-        bindGLFunc( cast( void** )&glNormalP3uiv, "glNormalP3uiv" );
-        bindGLFunc( cast( void** )&glColorP3ui, "glColorP3ui" );
-        bindGLFunc( cast( void** )&glColorP3uiv, "glColorP3uiv" );
-        bindGLFunc( cast( void** )&glColorP4ui, "glColorP4ui" );
-        bindGLFunc( cast( void** )&glColorP4uiv, "glColorP4uiv" );
-        bindGLFunc( cast( void** )&glSecondaryColorP3ui, "glSecondaryColorP3ui" );
-        bindGLFunc( cast( void** )&glSecondaryColorP3uiv, "glSecondaryColorP3uiv" );
+        static if( !Derelict_OS_Mac ) {
+            bindGLFunc( cast( void** )&glVertexP2ui, "glVertexP2ui" );
+            bindGLFunc( cast( void** )&glVertexP2uiv, "glVertexP2uiv" );
+            bindGLFunc( cast( void** )&glVertexP3ui, "glVertexP3ui" );
+            bindGLFunc( cast( void** )&glVertexP3uiv, "glVertexP3uiv" );
+            bindGLFunc( cast( void** )&glVertexP4ui, "glVertexP4ui" );
+            bindGLFunc( cast( void** )&glVertexP4uiv, "glVertexP4uiv" );
+            bindGLFunc( cast( void** )&glTexCoordP1ui, "glTexCoordP1ui" );
+            bindGLFunc( cast( void** )&glTexCoordP1uiv, "glTexCoordP1uiv" );
+            bindGLFunc( cast( void** )&glTexCoordP2ui, "glTexCoordP2ui" );
+            bindGLFunc( cast( void** )&glTexCoordP2uiv, "glTexCoordP2uiv" );
+            bindGLFunc( cast( void** )&glTexCoordP3ui, "glTexCoordP3ui" );
+            bindGLFunc( cast( void** )&glTexCoordP3uiv, "glTexCoordP3uiv" );
+            bindGLFunc( cast( void** )&glTexCoordP4ui, "glTexCoordP4ui" );
+            bindGLFunc( cast( void** )&glTexCoordP4uiv, "glTexCoordP4uiv" );
+            bindGLFunc( cast( void** )&glMultiTexCoordP1ui, "glMultiTexCoordP1ui" );
+            bindGLFunc( cast( void** )&glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv" );
+            bindGLFunc( cast( void** )&glMultiTexCoordP2ui, "glMultiTexCoordP2ui" );
+            bindGLFunc( cast( void** )&glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv" );
+            bindGLFunc( cast( void** )&glMultiTexCoordP3ui, "glMultiTexCoordP3ui" );
+            bindGLFunc( cast( void** )&glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv" );
+            bindGLFunc( cast( void** )&glMultiTexCoordP4ui, "glMultiTexCoordP4ui" );
+            bindGLFunc( cast( void** )&glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv" );
+            bindGLFunc( cast( void** )&glNormalP3ui, "glNormalP3ui" );
+            bindGLFunc( cast( void** )&glNormalP3uiv, "glNormalP3uiv" );
+            bindGLFunc( cast( void** )&glColorP3ui, "glColorP3ui" );
+            bindGLFunc( cast( void** )&glColorP3uiv, "glColorP3uiv" );
+            bindGLFunc( cast( void** )&glColorP4ui, "glColorP4ui" );
+            bindGLFunc( cast( void** )&glColorP4uiv, "glColorP4uiv" );
+            bindGLFunc( cast( void** )&glSecondaryColorP3ui, "glSecondaryColorP3ui" );
+            bindGLFunc( cast( void** )&glSecondaryColorP3uiv, "glSecondaryColorP3uiv" );
+        }
         bindGLFunc( cast( void** )&glVertexAttribP1ui, "glVertexAttribP1ui" );
         bindGLFunc( cast( void** )&glVertexAttribP1uiv, "glVertexAttribP1uiv" );
         bindGLFunc( cast( void** )&glVertexAttribP2ui, "glVertexAttribP2ui" );

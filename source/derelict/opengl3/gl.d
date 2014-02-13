@@ -45,7 +45,7 @@ final class DerelictGLLoader : DerelictGL3Loader {
         override GLVersion reload() {
             GLVersion maxVer = super.reload();
 
-            if( maxVer >= GLVersion.GL12 && isExtSupported( GLVersion.GL12, "GL_ARB_imaging" ) ) {
+            if( maxVer >= GLVersion.GL12 && isExtSupported( maxVer, "GL_ARB_imaging" ) ) {
                 bindGLFunc( cast( void** )&glColorTable, "glColorTable" );
                 bindGLFunc( cast( void** )&glColorSubTable, "glColorSubTable" );
                 bindGLFunc( cast( void** )&glColorTableParameteriv, "glColorTableParameteriv" );

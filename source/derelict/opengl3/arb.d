@@ -2406,9 +2406,13 @@ package void load_ARB_texture_storage( bool doThrow = false ) {
         bindGLFunc( cast( void** )&glTexStorage1D, "glTexStorage1D" );
         bindGLFunc( cast( void** )&glTexStorage2D, "glTexStorage2D" );
         bindGLFunc( cast( void** )&glTexStorage3D, "glTexStorage3D" );
-        bindGLFunc( cast( void** )&glTextureStorage1DEXT, "glTextureStorage1DEXT" );
-        bindGLFunc( cast( void** )&glTextureStorage2DEXT, "glTextureStorage2DEXT" );
-        bindGLFunc( cast( void** )&glTextureStorage3DEXT, "glTextureStorage3DEXT" );
+
+        // The next three depend on the presence of EXT_direct_state_access.
+        if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
+            bindGLFunc( cast( void** )&glTextureStorage1DEXT, "glTextureStorage1DEXT" );
+            bindGLFunc( cast( void** )&glTextureStorage2DEXT, "glTextureStorage2DEXT" );
+            bindGLFunc( cast( void** )&glTextureStorage3DEXT, "glTextureStorage3DEXT" );
+        }
         _ARB_texture_storage = true;
     } catch( Exception e ) {
         _ARB_texture_storage = false;

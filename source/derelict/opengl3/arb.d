@@ -2401,22 +2401,22 @@ __gshared {
 
 private __gshared bool _ARB_texture_storage;
 bool ARB_texture_storage() @property { return _ARB_texture_storage; }
-package void load_ARB_texture_storage( bool doThrow = false ) {
+package void load_ARB_texture_storage( GLVersion glversion, bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glTexStorage1D, "glTexStorage1D" );
         bindGLFunc( cast( void** )&glTexStorage2D, "glTexStorage2D" );
         bindGLFunc( cast( void** )&glTexStorage3D, "glTexStorage3D" );
 
-        // The next three depend on the presence of EXT_direct_state_access.
-        if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
-            bindGLFunc( cast( void** )&glTextureStorage1DEXT, "glTextureStorage1DEXT" );
-            bindGLFunc( cast( void** )&glTextureStorage2DEXT, "glTextureStorage2DEXT" );
-            bindGLFunc( cast( void** )&glTextureStorage3DEXT, "glTextureStorage3DEXT" );
-        }
         _ARB_texture_storage = true;
     } catch( Exception e ) {
         _ARB_texture_storage = false;
         if( doThrow ) throw e;
+    }
+    // The next three depend on the presence of EXT_direct_state_access.
+    if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
+        bindGLFunc( cast( void** )&glTextureStorage1DEXT, "glTextureStorage1DEXT" );
+        bindGLFunc( cast( void** )&glTextureStorage2DEXT, "glTextureStorage2DEXT" );
+        bindGLFunc( cast( void** )&glTextureStorage3DEXT, "glTextureStorage3DEXT" );
     }
 }
 
@@ -2895,7 +2895,7 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_shader_atomic_counters" ) ) load_ARB_shader_atomic_counters();
         if( isExtSupported( glversion, "GL_ARB_shader_image_load_store" ) ) load_ARB_shader_image_load_store();
         _ARB_shading_language_packing = isExtSupported( glversion, "GL_ARB_shading_language_packing" );
-        if( isExtSupported( glversion, "GL_ARB_texture_storage" ) ) load_ARB_texture_storage();
+        if( isExtSupported( glversion, "GL_ARB_texture_storage" ) ) load_ARB_texture_storage( glversion );
     }
 
     if( glversion< GLVersion.GL43 ) {

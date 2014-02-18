@@ -378,7 +378,7 @@ class DerelictGL3Loader : SharedLibLoader
                 load_ARB_internalformat_query( true );
                 load_ARB_shader_atomic_counters( true );
                 load_ARB_shader_image_load_store( true );
-                load_ARB_texture_storage( true );
+                load_ARB_texture_storage( GLVersion.GL42, true );
 
                 glVer = GLVersion.GL42;
             }

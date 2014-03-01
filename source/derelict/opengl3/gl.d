@@ -38,124 +38,6 @@ private {
     import derelict.opengl3.internal;
 }
 
-private void loadContextDependentSymbols(alias container)(DerelictGLLoader loader, GLVersion maxVer) {
-    if( maxVer >= GLVersion.GL12 && isExtSupported!container( maxVer, "GL_ARB_imaging" ) ) {
-        bindGLFunc( cast( void** )&glColorTable, "glColorTable" );
-        bindGLFunc( cast( void** )&glColorSubTable, "glColorSubTable" );
-        bindGLFunc( cast( void** )&glColorTableParameteriv, "glColorTableParameteriv" );
-        bindGLFunc( cast( void** )&glColorTableParameterfv, "glColorTableParameterfv" );
-        bindGLFunc( cast( void** )&glCopyColorSubTable, "glCopyColorSubTable" );
-        bindGLFunc( cast( void** )&glCopyColorTable, "glCopyColorTable" );
-        bindGLFunc( cast( void** )&glGetColorTable, "glGetColorTable" );
-        bindGLFunc( cast( void** )&glGetColorTableParameterfv, "glGetColorTableParameterfv" );
-        bindGLFunc( cast( void** )&glGetColorTableParameteriv, "glGetColorTableParameteriv" );
-        bindGLFunc( cast( void** )&glHistogram, "glHistogram" );
-        bindGLFunc( cast( void** )&glResetHistogram, "glResetHistogram" );
-        bindGLFunc( cast( void** )&glGetHistogram, "glGetHistogram" );
-        bindGLFunc( cast( void** )&glGetHistogramParameterfv, "glGetHistogramParameterfv" );
-        bindGLFunc( cast( void** )&glGetHistogramParameteriv, "glGetHistogramParameteriv" );
-        bindGLFunc( cast( void** )&glMinmax, "glMinmax" );
-        bindGLFunc( cast( void** )&glResetMinmax, "glResetMinmax" );
-        bindGLFunc( cast( void** )&glGetMinmax, "glGetMinmax" );
-        bindGLFunc( cast( void** )&glGetMinmaxParameterfv, "glGetMinmaxParameterfv" );
-        bindGLFunc( cast( void** )&glGetMinmaxParameteriv, "glGetMinmaxParameteriv" );
-        bindGLFunc( cast( void** )&glConvolutionFilter1D, "glConvolutionFilter1D" );
-        bindGLFunc( cast( void** )&glConvolutionFilter2D, "glConvolutionFilter2D" );
-        bindGLFunc( cast( void** )&glConvolutionParameterf, "glConvolutionParameterf" );
-        bindGLFunc( cast( void** )&glConvolutionParameterfv, "glConvolutionParameterfv" );
-        bindGLFunc( cast( void** )&glConvolutionParameteri, "glConvolutionParameteri" );
-        bindGLFunc( cast( void** )&glConvolutionParameteriv, "glConvolutionParameteriv" );
-        bindGLFunc( cast( void** )&glCopyConvolutionFilter1D, "glCopyConvolutionFilter1D" );
-        bindGLFunc( cast( void** )&glCopyConvolutionFilter2D, "glCopyConvolutionFilter2D" );
-        bindGLFunc( cast( void** )&glGetConvolutionFilter, "glGetConvolutionFilter" );
-        bindGLFunc( cast( void** )&glGetConvolutionParameterfv, "glGetConvolutionParameterfv" );
-        bindGLFunc( cast( void** )&glGetConvolutionParameteriv, "glGetConvolutionParameteriv" );
-        bindGLFunc( cast( void** )&glSeparableFilter2D, "glSeparableFilter2D" );
-        bindGLFunc( cast( void** )&glGetSeparableFilter, "glGetSeparableFilter" );
-    }
-
-    if( maxVer >= GLVersion.GL13 ) {
-        bindGLFunc( cast( void** )&glClientActiveTexture, "glClientActiveTexture" );
-        bindGLFunc( cast( void** )&glMultiTexCoord1d, "glMultiTexCoord1d" );
-        bindGLFunc( cast( void** )&glMultiTexCoord1dv, "glMultiTexCoord1dv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord1f, "glMultiTexCoord1f" );
-        bindGLFunc( cast( void** )&glMultiTexCoord1fv, "glMultiTexCoord1fv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord1i, "glMultiTexCoord1i" );
-        bindGLFunc( cast( void** )&glMultiTexCoord1iv, "glMultiTexCoord1iv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord1s, "glMultiTexCoord1s" );
-        bindGLFunc( cast( void** )&glMultiTexCoord1sv, "glMultiTexCoord1sv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord2d, "glMultiTexCoord2d" );
-        bindGLFunc( cast( void** )&glMultiTexCoord2dv, "glMultiTexCoord2dv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord2f, "glMultiTexCoord2f" );
-        bindGLFunc( cast( void** )&glMultiTexCoord2fv, "glMultiTexCoord2fv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord2i, "glMultiTexCoord2i" );
-        bindGLFunc( cast( void** )&glMultiTexCoord2iv, "glMultiTexCoord2iv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord2s, "glMultiTexCoord2s" );
-        bindGLFunc( cast( void** )&glMultiTexCoord2sv, "glMultiTexCoord2sv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord3d, "glMultiTexCoord3d" );
-        bindGLFunc( cast( void** )&glMultiTexCoord3dv, "glMultiTexCoord3dv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord3f, "glMultiTexCoord3f" );
-        bindGLFunc( cast( void** )&glMultiTexCoord3fv, "glMultiTexCoord3fv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord3i, "glMultiTexCoord3i" );
-        bindGLFunc( cast( void** )&glMultiTexCoord3iv, "glMultiTexCoord3iv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord3s, "glMultiTexCoord3s" );
-        bindGLFunc( cast( void** )&glMultiTexCoord3sv, "glMultiTexCoord3sv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord4d, "glMultiTexCoord4d" );
-        bindGLFunc( cast( void** )&glMultiTexCoord4dv, "glMultiTexCoord4dv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord4f, "glMultiTexCoord4f" );
-        bindGLFunc( cast( void** )&glMultiTexCoord4fv, "glMultiTexCoord4fv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord4i, "glMultiTexCoord4i" );
-        bindGLFunc( cast( void** )&glMultiTexCoord4iv, "glMultiTexCoord4iv" );
-        bindGLFunc( cast( void** )&glMultiTexCoord4s, "glMultiTexCoord4s" );
-        bindGLFunc( cast( void** )&glMultiTexCoord4sv, "glMultiTexCoord4sv" );
-        bindGLFunc( cast( void** )&glLoadTransposeMatrixd, "glLoadTransposeMatrixd" );
-        bindGLFunc( cast( void** )&glLoadTransposeMatrixf, "glLoadTransposeMatrixf" );
-        bindGLFunc( cast( void** )&glMultTransposeMatrixd, "glMultTransposeMatrixd" );
-        bindGLFunc( cast( void** )&glMultTransposeMatrixf, "glMultTransposeMatrixf" );
-    }
-
-    if( maxVer >= GLVersion.GL14 ) {
-        bindGLFunc( cast( void** )&glFogCoordf, "glFogCoordf" );
-        bindGLFunc( cast( void** )&glFogCoordfv, "glFogCoordfv" );
-        bindGLFunc( cast( void** )&glFogCoordd, "glFogCoordd" );
-        bindGLFunc( cast( void** )&glFogCoorddv, "glFogCoorddv" );
-        bindGLFunc( cast( void** )&glFogCoordPointer, "glFogCoordPointer" );
-        bindGLFunc( cast( void** )&glSecondaryColor3b, "glSecondaryColor3b" );
-        bindGLFunc( cast( void** )&glSecondaryColor3bv, "glSecondaryColor3bv" );
-        bindGLFunc( cast( void** )&glSecondaryColor3d, "glSecondaryColor3d" );
-        bindGLFunc( cast( void** )&glSecondaryColor3dv, "glSecondaryColor3dv" );
-        bindGLFunc( cast( void** )&glSecondaryColor3f, "glSecondaryColor3f" );
-        bindGLFunc( cast( void** )&glSecondaryColor3fv, "glSecondaryColor3fv" );
-        bindGLFunc( cast( void** )&glSecondaryColor3i, "glSecondaryColor3i" );
-        bindGLFunc( cast( void** )&glSecondaryColor3iv, "glSecondaryColor3iv" );
-        bindGLFunc( cast( void** )&glSecondaryColor3s, "glSecondaryColor3s" );
-        bindGLFunc( cast( void** )&glSecondaryColor3sv, "glSecondaryColor3sv" );
-        bindGLFunc( cast( void** )&glSecondaryColor3ub, "glSecondaryColor3ub" );
-        bindGLFunc( cast( void** )&glSecondaryColor3ubv, "glSecondaryColor3ubv" );
-        bindGLFunc( cast( void** )&glSecondaryColor3ui, "glSecondaryColor3ui" );
-        bindGLFunc( cast( void** )&glSecondaryColor3uiv, "glSecondaryColor3uiv" );
-        bindGLFunc( cast( void** )&glSecondaryColor3us, "glSecondaryColor3us" );
-        bindGLFunc( cast( void** )&glSecondaryColor3usv, "glSecondaryColor3usv" );
-        bindGLFunc( cast( void** )&glSecondaryColorPointer, "glSecondaryColorPointer" );
-        bindGLFunc( cast( void** )&glWindowPos2d, "glWindowPos2d" );
-        bindGLFunc( cast( void** )&glWindowPos2dv, "glWindowPos2dv" );
-        bindGLFunc( cast( void** )&glWindowPos2f, "glWindowPos2f" );
-        bindGLFunc( cast( void** )&glWindowPos2fv, "glWindowPos2fv" );
-        bindGLFunc( cast( void** )&glWindowPos2i, "glWindowPos2i" );
-        bindGLFunc( cast( void** )&glWindowPos2iv, "glWindowPos2iv" );
-        bindGLFunc( cast( void** )&glWindowPos2s, "glWindowPos2s" );
-        bindGLFunc( cast( void** )&glWindowPos2sv, "glWindowPos2sv" );
-        bindGLFunc( cast( void** )&glWindowPos3d, "glWindowPos3d" );
-        bindGLFunc( cast( void** )&glWindowPos3dv, "glWindowPos3dv" );
-        bindGLFunc( cast( void** )&glWindowPos3f, "glWindowPos3f" );
-        bindGLFunc( cast( void** )&glWindowPos3fv, "glWindowPos3fv" );
-        bindGLFunc( cast( void** )&glWindowPos3i, "glWindowPos3i" );
-        bindGLFunc( cast( void** )&glWindowPos3iv, "glWindowPos3iv" );
-        bindGLFunc( cast( void** )&glWindowPos3s, "glWindowPos3s" );
-        bindGLFunc( cast( void** )&glWindowPos3sv, "glWindowPos3sv" );
-    }
-}
-
 final class DerelictGLLoader : DerelictGL3Loader {
     public {
         this() {}
@@ -168,13 +50,12 @@ final class DerelictGLLoader : DerelictGL3Loader {
             return maxVer;
         }
         
-        override OpenGlFunctions reloadOnce(out GLVersion glVersion) {
-            GLVersion maxVer;
-            OpenGlFunctions result = super.reloadOnce(maxVer);
+        override GLVersion reloadOnce(out ContextDependentFunctions functions) {
+            GLVersion maxVer = super.reloadOnce(functions);
             
-            this.loadContextDependentSymbols!(result)(maxVer);
+            this.loadContextDependentSymbols!(functions)(maxVer);
             
-            return result;
+            return maxVer;
         }
     }
 
@@ -456,6 +337,124 @@ final class DerelictGLLoader : DerelictGL3Loader {
         bindFunc( cast( void** )&glAreTexturesResident, "glAreTexturesResident" );
         bindFunc( cast( void** )&glPushClientAttrib, "glPushClientAttrib" );
         bindFunc( cast( void** )&glPopClientAttrib, "glPopClientAttrib" );
+    }
+}
+
+private void loadContextDependentSymbols(alias container)(DerelictGLLoader loader, GLVersion maxVer) {
+    if( maxVer >= GLVersion.GL12 && isExtSupported!container( maxVer, "GL_ARB_imaging" ) ) {
+        bindGLFunc( cast( void** )&container.glColorTable, "glColorTable" );
+        bindGLFunc( cast( void** )&container.glColorSubTable, "glColorSubTable" );
+        bindGLFunc( cast( void** )&container.glColorTableParameteriv, "glColorTableParameteriv" );
+        bindGLFunc( cast( void** )&container.glColorTableParameterfv, "glColorTableParameterfv" );
+        bindGLFunc( cast( void** )&container.glCopyColorSubTable, "glCopyColorSubTable" );
+        bindGLFunc( cast( void** )&container.glCopyColorTable, "glCopyColorTable" );
+        bindGLFunc( cast( void** )&container.glGetColorTable, "glGetColorTable" );
+        bindGLFunc( cast( void** )&container.glGetColorTableParameterfv, "glGetColorTableParameterfv" );
+        bindGLFunc( cast( void** )&container.glGetColorTableParameteriv, "glGetColorTableParameteriv" );
+        bindGLFunc( cast( void** )&container.glHistogram, "glHistogram" );
+        bindGLFunc( cast( void** )&container.glResetHistogram, "glResetHistogram" );
+        bindGLFunc( cast( void** )&container.glGetHistogram, "glGetHistogram" );
+        bindGLFunc( cast( void** )&container.glGetHistogramParameterfv, "glGetHistogramParameterfv" );
+        bindGLFunc( cast( void** )&container.glGetHistogramParameteriv, "glGetHistogramParameteriv" );
+        bindGLFunc( cast( void** )&container.glMinmax, "glMinmax" );
+        bindGLFunc( cast( void** )&container.glResetMinmax, "glResetMinmax" );
+        bindGLFunc( cast( void** )&container.glGetMinmax, "glGetMinmax" );
+        bindGLFunc( cast( void** )&container.glGetMinmaxParameterfv, "glGetMinmaxParameterfv" );
+        bindGLFunc( cast( void** )&container.glGetMinmaxParameteriv, "glGetMinmaxParameteriv" );
+        bindGLFunc( cast( void** )&container.glConvolutionFilter1D, "glConvolutionFilter1D" );
+        bindGLFunc( cast( void** )&container.glConvolutionFilter2D, "glConvolutionFilter2D" );
+        bindGLFunc( cast( void** )&container.glConvolutionParameterf, "glConvolutionParameterf" );
+        bindGLFunc( cast( void** )&container.glConvolutionParameterfv, "glConvolutionParameterfv" );
+        bindGLFunc( cast( void** )&container.glConvolutionParameteri, "glConvolutionParameteri" );
+        bindGLFunc( cast( void** )&container.glConvolutionParameteriv, "glConvolutionParameteriv" );
+        bindGLFunc( cast( void** )&container.glCopyConvolutionFilter1D, "glCopyConvolutionFilter1D" );
+        bindGLFunc( cast( void** )&container.glCopyConvolutionFilter2D, "glCopyConvolutionFilter2D" );
+        bindGLFunc( cast( void** )&container.glGetConvolutionFilter, "glGetConvolutionFilter" );
+        bindGLFunc( cast( void** )&container.glGetConvolutionParameterfv, "glGetConvolutionParameterfv" );
+        bindGLFunc( cast( void** )&container.glGetConvolutionParameteriv, "glGetConvolutionParameteriv" );
+        bindGLFunc( cast( void** )&container.glSeparableFilter2D, "glSeparableFilter2D" );
+        bindGLFunc( cast( void** )&container.glGetSeparableFilter, "glGetSeparableFilter" );
+    }
+
+    if( maxVer >= GLVersion.GL13 ) {
+        bindGLFunc( cast( void** )&container.glClientActiveTexture, "glClientActiveTexture" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord1d, "glMultiTexCoord1d" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord1dv, "glMultiTexCoord1dv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord1f, "glMultiTexCoord1f" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord1fv, "glMultiTexCoord1fv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord1i, "glMultiTexCoord1i" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord1iv, "glMultiTexCoord1iv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord1s, "glMultiTexCoord1s" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord1sv, "glMultiTexCoord1sv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord2d, "glMultiTexCoord2d" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord2dv, "glMultiTexCoord2dv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord2f, "glMultiTexCoord2f" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord2fv, "glMultiTexCoord2fv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord2i, "glMultiTexCoord2i" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord2iv, "glMultiTexCoord2iv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord2s, "glMultiTexCoord2s" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord2sv, "glMultiTexCoord2sv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord3d, "glMultiTexCoord3d" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord3dv, "glMultiTexCoord3dv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord3f, "glMultiTexCoord3f" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord3fv, "glMultiTexCoord3fv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord3i, "glMultiTexCoord3i" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord3iv, "glMultiTexCoord3iv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord3s, "glMultiTexCoord3s" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord3sv, "glMultiTexCoord3sv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord4d, "glMultiTexCoord4d" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord4dv, "glMultiTexCoord4dv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord4f, "glMultiTexCoord4f" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord4fv, "glMultiTexCoord4fv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord4i, "glMultiTexCoord4i" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord4iv, "glMultiTexCoord4iv" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord4s, "glMultiTexCoord4s" );
+        bindGLFunc( cast( void** )&container.glMultiTexCoord4sv, "glMultiTexCoord4sv" );
+        bindGLFunc( cast( void** )&container.glLoadTransposeMatrixd, "glLoadTransposeMatrixd" );
+        bindGLFunc( cast( void** )&container.glLoadTransposeMatrixf, "glLoadTransposeMatrixf" );
+        bindGLFunc( cast( void** )&container.glMultTransposeMatrixd, "glMultTransposeMatrixd" );
+        bindGLFunc( cast( void** )&container.glMultTransposeMatrixf, "glMultTransposeMatrixf" );
+    }
+
+    if( maxVer >= GLVersion.GL14 ) {
+        bindGLFunc( cast( void** )&container.glFogCoordf, "glFogCoordf" );
+        bindGLFunc( cast( void** )&container.glFogCoordfv, "glFogCoordfv" );
+        bindGLFunc( cast( void** )&container.glFogCoordd, "glFogCoordd" );
+        bindGLFunc( cast( void** )&container.glFogCoorddv, "glFogCoorddv" );
+        bindGLFunc( cast( void** )&container.glFogCoordPointer, "glFogCoordPointer" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3b, "glSecondaryColor3b" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3bv, "glSecondaryColor3bv" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3d, "glSecondaryColor3d" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3dv, "glSecondaryColor3dv" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3f, "glSecondaryColor3f" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3fv, "glSecondaryColor3fv" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3i, "glSecondaryColor3i" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3iv, "glSecondaryColor3iv" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3s, "glSecondaryColor3s" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3sv, "glSecondaryColor3sv" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3ub, "glSecondaryColor3ub" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3ubv, "glSecondaryColor3ubv" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3ui, "glSecondaryColor3ui" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3uiv, "glSecondaryColor3uiv" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3us, "glSecondaryColor3us" );
+        bindGLFunc( cast( void** )&container.glSecondaryColor3usv, "glSecondaryColor3usv" );
+        bindGLFunc( cast( void** )&container.glSecondaryColorPointer, "glSecondaryColorPointer" );
+        bindGLFunc( cast( void** )&container.glWindowPos2d, "glWindowPos2d" );
+        bindGLFunc( cast( void** )&container.glWindowPos2dv, "glWindowPos2dv" );
+        bindGLFunc( cast( void** )&container.glWindowPos2f, "glWindowPos2f" );
+        bindGLFunc( cast( void** )&container.glWindowPos2fv, "glWindowPos2fv" );
+        bindGLFunc( cast( void** )&container.glWindowPos2i, "glWindowPos2i" );
+        bindGLFunc( cast( void** )&container.glWindowPos2iv, "glWindowPos2iv" );
+        bindGLFunc( cast( void** )&container.glWindowPos2s, "glWindowPos2s" );
+        bindGLFunc( cast( void** )&container.glWindowPos2sv, "glWindowPos2sv" );
+        bindGLFunc( cast( void** )&container.glWindowPos3d, "glWindowPos3d" );
+        bindGLFunc( cast( void** )&container.glWindowPos3dv, "glWindowPos3dv" );
+        bindGLFunc( cast( void** )&container.glWindowPos3f, "glWindowPos3f" );
+        bindGLFunc( cast( void** )&container.glWindowPos3fv, "glWindowPos3fv" );
+        bindGLFunc( cast( void** )&container.glWindowPos3i, "glWindowPos3i" );
+        bindGLFunc( cast( void** )&container.glWindowPos3iv, "glWindowPos3iv" );
+        bindGLFunc( cast( void** )&container.glWindowPos3s, "glWindowPos3s" );
+        bindGLFunc( cast( void** )&container.glWindowPos3sv, "glWindowPos3sv" );
     }
 }
 

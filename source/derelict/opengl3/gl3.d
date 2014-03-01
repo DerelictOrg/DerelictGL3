@@ -78,12 +78,10 @@ class DerelictGL3Loader : SharedLibLoader
             return this.loadContextDependentSymbols!(derelict.opengl3.gl3)();
         }
         
-        OpenGlFunctions reloadOnce(out GLVersion glVersion) {
-            auto result = new OpenGlFunctions;
+        GLVersion reloadOnce(out ContextDependentFunctions functions) {
+            functions = new ContextDependentFunctions;
             
-            glVersion = this.loadContextDependentSymbols!(result)();
-            
-            return result;
+            return this.loadContextDependentSymbols!(functions)();
         }
     }
     

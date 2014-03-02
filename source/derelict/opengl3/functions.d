@@ -29,6 +29,22 @@ module derelict.opengl3.functions;
 
 private {
     import derelict.opengl3.types;
+    import derelict.opengl3.deprecatedFunctions;
+}
+
+class ContextDependentFunctions {
+    public{
+        mixin(contextDependentFunctions);
+        mixin(deprecatedContextDependentFunctions);
+    }
+}
+
+__gshared
+{
+    mixin(contextIndependentFunctions);
+    mixin(deprecatedContextIndependentFunctions);
+    mixin(contextDependentFunctions);
+    mixin(deprecatedContextDependentFunctions);
 }
 
 extern( System ) nothrow {
@@ -332,8 +348,7 @@ extern( System ) nothrow {
     alias void function( GLuint, GLenum, GLenum, GLenum, GLenum ) da_glBlendFuncSeparatei;
 }
 
-__gshared
-{
+enum contextIndependentFunctions = q{
     da_glCullFace glCullFace;
     da_glFrontFace glFrontFace;
     da_glHint glHint;
@@ -396,6 +411,9 @@ __gshared
     da_glDeleteTextures glDeleteTextures;
     da_glGenTextures glGenTextures;
     da_glIsTexture glIsTexture;
+};
+
+enum contextDependentFunctions = q{
     da_glBlendColor glBlendColor;
     da_glBlendEquation glBlendEquation;
     da_glDrawRangeElements glDrawRangeElements;
@@ -607,4 +625,4 @@ __gshared
     da_glBlendEquationSeparatei glBlendEquationSeparatei;
     da_glBlendFunci glBlendFunci;
     da_glBlendFuncSeparatei glBlendFuncSeparatei;
-}
+};

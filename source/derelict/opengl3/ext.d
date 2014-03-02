@@ -164,8 +164,8 @@ private void load_EXT_framebuffer_object() {
     }
 }
 
-package void loadEXT( GLVersion glversion ) {
-    _EXT_texture_filter_anisotropic = isExtSupported( glversion, "GL_EXT_texture_filter_anisotropic" );
-    _EXT_framebuffer_object = isExtSupported( glversion, "GL_EXT_framebuffer_object" );
+package void loadEXT(alias container)( GLVersion glversion ) {
+    _EXT_texture_filter_anisotropic = isExtSupported!container( glversion, "GL_EXT_texture_filter_anisotropic" );
+    _EXT_framebuffer_object = isExtSupported!container( glversion, "GL_EXT_framebuffer_object" );
     if( _EXT_framebuffer_object ) load_EXT_framebuffer_object();
 }

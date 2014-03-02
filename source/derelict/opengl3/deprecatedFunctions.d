@@ -417,7 +417,7 @@ extern( System ) nothrow {
     alias da_glWindowPos3sv = void function( const( GLshort )* );
 }
 
-__gshared {
+package enum deprecatedContextIndependentFunctions = q{ 
     da_glIsList glIsList;
     da_glDeleteLists glDeleteLists;
     da_glGenLists glGenLists;
@@ -689,7 +689,9 @@ __gshared {
     da_glAreTexturesResident glAreTexturesResident;
     da_glPushClientAttrib glPushClientAttrib;
     da_glPopClientAttrib glPopClientAttrib;
+};
 
+package enum deprecatedContextDependentFunctions = q{
     da_glColorTable glColorTable;
     da_glColorSubTable glColorSubTable;
     da_glColorTableParameteriv glColorTableParameteriv;
@@ -798,5 +800,5 @@ __gshared {
     da_glWindowPos3i glWindowPos3i;
     da_glWindowPos3iv glWindowPos3iv;
     da_glWindowPos3s glWindowPos3s;
-    da_glWindowPos3sv glWindowPos3sv;
-}
+    da_glWindowPos3sv glWindowPos3sv;  
+};

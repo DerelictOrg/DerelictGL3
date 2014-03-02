@@ -51,7 +51,7 @@ private {
     } else static if( Derelict_OS_Mac ) {
         import derelict.opengl3.cgl;
         enum libNames = "../Frameworks/OpenGL.framework/OpenGL, /Library/Frameworks/OpenGL.framework/OpenGL, /System/Library/Frameworks/OpenGL.framework/OpenGL";
-        void loadPlatformEXT( GLVersion ) {}
+        void loadPlatformEXT( alias container )( GLVersion ) {}
     } else static if( Derelict_OS_Posix ) {
         import derelict.opengl3.glx;
         import derelict.opengl3.glxext;

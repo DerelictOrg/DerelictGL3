@@ -280,21 +280,6 @@ final class DerelictGLLoader : DerelictGL3Loader {
             }
 
             return maxVer;
-<<<<<<< HEAD
-=======
-        }
-        
-        override OpenGlFunctions reloadOnce(out GLVersion glVersion) {
-            GLVersion maxVer;
-            OpenGlFunctions result = super.reloadOnce(maxVer);
-            
-            this.loadContextDependentSymbols!(result)(maxVer);
-            
-            return result;
-<<<<<<< HEAD
->>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
-=======
->>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
         }
     }
 

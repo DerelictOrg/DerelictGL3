@@ -280,16 +280,16 @@ version( Windows ) {
 
     bool WGL_EXT_swap_control() @property { return _WGL_EXT_swap_control; }
 
-    private bool isWGLExtSupported( string name ) {
+    private bool isWGLExtSupported( alias container )( string name ) {
         return findEXT( wglGetExtensionsStringARB(wglGetCurrentDC()), name );
     }
 
-    package void loadPlatformEXT( GLVersion glversion ) {
+    package void loadPlatformEXT( alias container )( GLVersion glversion ) {
         // This needs to be loaded first. If it fails to load, just abort.
         wglGetExtensionsStringARB = cast( da_wglGetExtensionsStringARB ) loadGLFunc( "wglGetExtensionsStringARB" );
         if( !wglGetExtensionsStringARB ) return;
 
-        if( isWGLExtSupported( "WGL_ARB_buffer_region" )) {
+        if( isWGLExtSupported!container( "WGL_ARB_buffer_region" )) {
             try {
                 bindGLFunc( cast(void**)&wglCreateBufferRegionARB, "wglCreateBufferRegionARB" );
                 bindGLFunc( cast(void**)&wglDeleteBufferRegionARB, "wglDeleteBufferRegionARB" );
@@ -298,18 +298,18 @@ version( Windows ) {
                 _WGL_ARB_buffer_region = true;
             } catch( Exception e ) { _WGL_ARB_buffer_region = false; }
         }
-        if( isWGLExtSupported( "WGL_ARB_create_context" )) {
+        if( isWGLExtSupported!container( "WGL_ARB_create_context" )) {
             try {
                 bindGLFunc( cast(void**)&wglCreateContextAttribsARB, "wglCreateContextAttribsARB" );
                 _WGL_ARB_create_context = true;
             } catch( Exception e ) { _WGL_ARB_create_context = false; }
         }
 
-        _WGL_ARB_create_context_profile = isWGLExtSupported( "WGL_ARB_create_context_profile" );
-        _WGL_ARB_create_context_robustness = isWGLExtSupported( "WGL_ARB_create_context_robustness" );
-        _WGL_ARB_framebuffer_sRGB = isWGLExtSupported( "WGL_ARB_framebuffer_sRGB" );
+        _WGL_ARB_create_context_profile = isWGLExtSupported!container( "WGL_ARB_create_context_profile" );
+        _WGL_ARB_create_context_robustness = isWGLExtSupported!container( "WGL_ARB_create_context_robustness" );
+        _WGL_ARB_framebuffer_sRGB = isWGLExtSupported!container( "WGL_ARB_framebuffer_sRGB" );
 
-        if( isWGLExtSupported( "WGL_ARB_make_current_read" )) {
+        if( isWGLExtSupported!container( "WGL_ARB_make_current_read" )) {
             try {
                 bindGLFunc( cast(void**)&wglMakeContextCurrentARB, "wglMakeContextCurrentARB" );
                 bindGLFunc( cast(void**)&wglGetCurrentReadDCARB, "wglGetCurrentReadDCARB" );
@@ -317,9 +317,9 @@ version( Windows ) {
             } catch( Exception e ) { _WGL_ARB_make_current_read = false; }
         }
 
-        _WGL_ARB_multisample = isWGLExtSupported( "WGL_ARB_multisample" );
+        _WGL_ARB_multisample = isWGLExtSupported!container( "WGL_ARB_multisample" );
 
-        if( isWGLExtSupported( "WGL_ARB_pbuffer" )) {
+        if( isWGLExtSupported!container( "WGL_ARB_pbuffer" )) {
             try {
                 bindGLFunc( cast(void**)&wglCreatePbufferARB, "wglCreatePbufferARB" );
                 bindGLFunc( cast(void**)&wglGetPbufferDCARB, "wglGetPbufferDCARB" );
@@ -329,7 +329,7 @@ version( Windows ) {
                 _WGL_ARB_pbuffer = true;
             } catch( Exception e ) { _WGL_ARB_pbuffer = false; }
         }
-        if( isWGLExtSupported( "WGL_ARB_pixel_format" )) {
+        if( isWGLExtSupported!container( "WGL_ARB_pixel_format" )) {
             try {
                 bindGLFunc( cast(void**)&wglGetPixelFormatAttribivARB, "wglGetPixelFormatAttribivARB" );
                 bindGLFunc( cast(void**)&wglGetPixelFormatAttribfvARB, "wglGetPixelFormatAttribfvARB" );
@@ -338,9 +338,9 @@ version( Windows ) {
             } catch( Exception e ) { _WGL_ARB_pixel_format = false; }
         }
 
-        _WGL_ARB_pixel_format_float = isWGLExtSupported( "WGL_ARB_pixel_format_float" );
+        _WGL_ARB_pixel_format_float = isWGLExtSupported!container( "WGL_ARB_pixel_format_float" );
 
-        if( isWGLExtSupported( "WGL_ARB_render_texture" )) {
+        if( isWGLExtSupported!container( "WGL_ARB_render_texture" )) {
             try {
                 bindGLFunc( cast(void**)&wglBindTexImageARB, "wglBindTexImageARB" );
                 bindGLFunc( cast(void**)&wglReleaseTexImageARB, "wglReleaseTexImageARB" );
@@ -349,10 +349,10 @@ version( Windows ) {
             } catch( Exception e ) { _WGL_ARB_render_texture = false; }
         }
 
-        _WGL_ARB_robustness_application_isolation = isWGLExtSupported( "WGL_ARB_robustness_application_isolation" );
-        _WGL_ARB_robustness_share_group_isolation = isWGLExtSupported( "WGL_ARB_robustness_share_group_isolation" );
+        _WGL_ARB_robustness_application_isolation = isWGLExtSupported!container( "WGL_ARB_robustness_application_isolation" );
+        _WGL_ARB_robustness_share_group_isolation = isWGLExtSupported!container( "WGL_ARB_robustness_share_group_isolation" );
 
-        if( isWGLExtSupported( "WGL_EXT_swap_control" )) {
+        if( isWGLExtSupported!container( "WGL_EXT_swap_control" )) {
             try {
                 bindGLFunc( cast(void**)&wglSwapIntervalEXT, "wglSwapIntervalEXT" );
                 bindGLFunc( cast(void**)&wglGetSwapIntervalEXT, "wglGetSwapIntervalEXT" );

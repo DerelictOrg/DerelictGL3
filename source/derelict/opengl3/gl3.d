@@ -417,6 +417,9 @@ class DerelictGL3Loader : SharedLibLoader
             glVersion = this.loadContextDependentSymbols!(result)();
             
             return result;
+<<<<<<< HEAD
+>>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
+=======
 >>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
         }
     }

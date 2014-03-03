@@ -333,9 +333,12 @@ extern( System ) nothrow {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __gshared
 {
 =======
+=======
+>>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
 class OpenGlFunctions {
     public{
         mixin(contextDependentFunctions);

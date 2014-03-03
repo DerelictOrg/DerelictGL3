@@ -291,6 +291,9 @@ final class DerelictGLLoader : DerelictGL3Loader {
             this.loadContextDependentSymbols!(result)(maxVer);
             
             return result;
+<<<<<<< HEAD
+>>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
+=======
 >>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
         }
     }

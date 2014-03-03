@@ -553,9 +553,9 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
     bool GLX_SUN_get_transparent_index() @property { return _GLX_SUN_get_transparent_index; }
 
 
-    package void loadPlatformEXT(alias container)( GLVersion glversion ) {
+    package void loadPlatformEXT( GLVersion glversion ) {
         // GLX_ARB_create_context
-        _GLX_ARB_create_context = isExtSupported!container( glversion, "GLX_ARB_create_context" );
+        _GLX_ARB_create_context = isExtSupported( glversion, "GLX_ARB_create_context" );
         if ( _GLX_ARB_create_context ) {
             try {
                 bindGLFunc( cast( void** )&glXCreateContextAttribsARB, "glXCreateContextAttribsARB" );
@@ -566,7 +566,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_ARB_get_proc_address
-        _GLX_ARB_get_proc_address = isExtSupported!container( glversion, "GLX_ARB_get_proc_address" );
+        _GLX_ARB_get_proc_address = isExtSupported( glversion, "GLX_ARB_get_proc_address" );
         if ( _GLX_ARB_get_proc_address )
         {
             try {
@@ -578,7 +578,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_EXT_import_context
-        _GLX_EXT_import_context = isExtSupported!container( glversion, "GLX_EXT_import_context" );
+        _GLX_EXT_import_context = isExtSupported( glversion, "GLX_EXT_import_context" );
         if ( _GLX_EXT_import_context ) {
             try {
                 bindGLFunc( cast( void** )&glXGetCurrentDisplayEXT, "glXGetCurrentDisplayEXT" );
@@ -593,7 +593,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_EXT_swap_control
-        _GLX_EXT_swap_control = isExtSupported!container( glversion, "GLX_EXT_swap_control" );
+        _GLX_EXT_swap_control = isExtSupported( glversion, "GLX_EXT_swap_control" );
         if ( _GLX_EXT_swap_control ) {
             try {
                 bindGLFunc( cast( void** )&glXSwapIntervalEXT, "glXSwapIntervalEXT" );
@@ -604,7 +604,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_EXT_texture_from_pixmap
-        _GLX_EXT_texture_from_pixmap = isExtSupported!container( glversion, "GLX_EXT_texture_from_pixmap" );
+        _GLX_EXT_texture_from_pixmap = isExtSupported( glversion, "GLX_EXT_texture_from_pixmap" );
         if ( _GLX_EXT_texture_from_pixmap ) {
             try {
                 bindGLFunc( cast( void** )&glXBindTexImageEXT, "glXBindTexImageEXT" );
@@ -616,7 +616,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_MESA_agp_offset
-        _GLX_MESA_agp_offset = isExtSupported!container( glversion, "GLX_MESA_agp_offset" );
+        _GLX_MESA_agp_offset = isExtSupported( glversion, "GLX_MESA_agp_offset" );
         if ( _GLX_MESA_agp_offset ) {
             try {
                 bindGLFunc( cast( void** )&glXGetAGPOffsetMESA, "glXGetAGPOffsetMESA" );
@@ -627,7 +627,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_MESA_pixmap_colormap
-        _GLX_MESA_pixmap_colormap = isExtSupported!container( glversion, "GLX_MESA_pixmap_colormap" );
+        _GLX_MESA_pixmap_colormap = isExtSupported( glversion, "GLX_MESA_pixmap_colormap" );
         if ( _GLX_MESA_pixmap_colormap ) {
             try {
                 bindGLFunc( cast( void** )&glXCreateGLXPixmapMESA, "glXCreateGLXPixmapMESA" );
@@ -638,7 +638,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_MESA_release_buffers
-        _GLX_MESA_release_buffers = isExtSupported!container( glversion, "GLX_MESA_release_buffers" );
+        _GLX_MESA_release_buffers = isExtSupported( glversion, "GLX_MESA_release_buffers" );
         if ( _GLX_MESA_release_buffers ) {
             try {
                 bindGLFunc( cast( void** )&glXReleaseBuffersMESA, "glXReleaseBuffersMESA" );
@@ -649,7 +649,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_MESA_set_3dfx_mode
-        _GLX_MESA_set_3dfx_mode = isExtSupported!container( glversion, "GLX_MESA_set_3dfx_mode" );
+        _GLX_MESA_set_3dfx_mode = isExtSupported( glversion, "GLX_MESA_set_3dfx_mode" );
         if ( _GLX_MESA_set_3dfx_mode ) {
             try {
                 bindGLFunc( cast( void** )&glXSet3DfxModeMESA, "glXSet3DfxModeMESA" );
@@ -659,7 +659,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
             }
         }
         // GLX_NV_copy_image
-        _GLX_NV_copy_image = isExtSupported!container( glversion, "GLX_NV_copy_image" );
+        _GLX_NV_copy_image = isExtSupported( glversion, "GLX_NV_copy_image" );
         if ( _GLX_NV_copy_image ) {
             try {
                 bindGLFunc( cast( void** )&glXCopyImageSubDataNV, "glXCopyImageSubDataNV" );
@@ -670,7 +670,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_NV_present_video
-        _GLX_NV_present_video = isExtSupported!container( glversion, "GLX_NV_present_video" );
+        _GLX_NV_present_video = isExtSupported( glversion, "GLX_NV_present_video" );
         if ( _GLX_NV_present_video ) {
             try {
                 bindGLFunc( cast( void** )&glXEnumerateVideoDevicesNV, "glXEnumerateVideoDevicesNV" );
@@ -682,7 +682,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_NV_swap_group
-        _GLX_NV_swap_group = isExtSupported!container( glversion, "GLX_NV_swap_group" );
+        _GLX_NV_swap_group = isExtSupported( glversion, "GLX_NV_swap_group" );
         if ( _GLX_NV_swap_group ) {
             try {
                 bindGLFunc( cast( void** )&glXJoinSwapGroupNV, "glXJoinSwapGroupNV" );
@@ -698,7 +698,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_NV_video_capture
-        _GLX_NV_video_capture = isExtSupported!container( glversion, "GLX_NV_video_capture" );
+        _GLX_NV_video_capture = isExtSupported( glversion, "GLX_NV_video_capture" );
         if ( _GLX_NV_video_capture ) {
             try {
                 bindGLFunc( cast( void** )&glXBindVideoCaptureDeviceNV, "glXBindVideoCaptureDeviceNV" );
@@ -713,7 +713,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_NV_video_output
-        _GLX_NV_video_output = isExtSupported!container( glversion, "GLX_NV_video_output" );
+        _GLX_NV_video_output = isExtSupported( glversion, "GLX_NV_video_output" );
         if ( _GLX_NV_video_output ) {
             try {
                 bindGLFunc( cast( void** )&glXGetVideoDeviceNV, "glXGetVideoDeviceNV" );
@@ -729,7 +729,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_OML_sync_control
-        _GLX_OML_sync_control = isExtSupported!container( glversion, "GLX_OML_sync_control" );
+        _GLX_OML_sync_control = isExtSupported( glversion, "GLX_OML_sync_control" );
         if ( _GLX_OML_sync_control ) {
             try {
                 bindGLFunc( cast( void** )&glXGetSyncValuesOML, "glXGetSyncValuesOML" );
@@ -744,7 +744,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SGIX_fbconfig
-        _GLX_SGIX_fbconfig = isExtSupported!container( glversion, "GLX_SGIX_fbconfig" );
+        _GLX_SGIX_fbconfig = isExtSupported( glversion, "GLX_SGIX_fbconfig" );
         if ( _GLX_SGIX_fbconfig ) {
             try {
                 bindGLFunc( cast( void** )&glXGetFBConfigAttribSGIX, "glXGetFBConfigAttribSGIX" );
@@ -760,7 +760,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SGIX_hyperpipe
-        _GLX_SGIX_hyperpipe = isExtSupported!container( glversion, "GLX_SGIX_hyperpipe" );
+        _GLX_SGIX_hyperpipe = isExtSupported( glversion, "GLX_SGIX_hyperpipe" );
         if ( _GLX_SGIX_hyperpipe ) {
             try {
                 bindGLFunc( cast( void** )&glXQueryHyperpipeNetworkS, "glXQueryHyperpipeNetworkS" );
@@ -778,7 +778,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SGIX_pbuffer
-        _GLX_SGIX_pbuffer = isExtSupported!container( glversion, "GLX_SGIX_pbuffer" );
+        _GLX_SGIX_pbuffer = isExtSupported( glversion, "GLX_SGIX_pbuffer" );
         if ( _GLX_SGIX_pbuffer ) {
             try {
                 bindGLFunc( cast( void** )&glXCreateGLXPbufferSGIX, "glXCreateGLXPbufferSGIX" );
@@ -793,7 +793,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SGIX_swap_barrier
-        _GLX_SGIX_swap_barrier = isExtSupported!container( glversion, "GLX_SGIX_swap_barrier" );
+        _GLX_SGIX_swap_barrier = isExtSupported( glversion, "GLX_SGIX_swap_barrier" );
         if ( _GLX_SGIX_swap_barrier ) {
             try {
                 bindGLFunc( cast( void** )&glXBindSwapBarrierSGIX, "glXBindSwapBarrierSGIX" );
@@ -805,7 +805,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SGIX_swap_group
-        _GLX_SGIX_swap_group = isExtSupported!container( glversion, "GLX_SGIX_swap_group" );
+        _GLX_SGIX_swap_group = isExtSupported( glversion, "GLX_SGIX_swap_group" );
         if ( _GLX_SGIX_swap_group ) {
             try {
                 bindGLFunc( cast( void** )&glXJoinSwapGroupSGIX, "glXJoinSwapGroupSGIX" );
@@ -815,7 +815,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
             }
         }
         // GLX_SGIX_video_source
-        _GLX_SGIX_video_source = isExtSupported!container( glversion, "GLX_SGIX_video_source" );
+        _GLX_SGIX_video_source = isExtSupported( glversion, "GLX_SGIX_video_source" );
         if ( _GLX_SGIX_video_source ) {
             try {
                 bindGLFunc( cast( void** )&glXBindChannelToWindowSGIX, "glXBindChannelToWindowSGIX" );
@@ -830,7 +830,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SGI_cushion
-        _GLX_SGI_cushion = isExtSupported!container( glversion, "GLX_SGI_cushion" );
+        _GLX_SGI_cushion = isExtSupported( glversion, "GLX_SGI_cushion" );
         if ( _GLX_SGI_cushion ) {
             try {
                 bindGLFunc( cast( void** )&glXCushionSGI, "glXCushionSGI" );
@@ -841,7 +841,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SGI_swap_control
-        _GLX_SGI_swap_control = isExtSupported!container( glversion, "GLX_SGI_swap_control" );
+        _GLX_SGI_swap_control = isExtSupported( glversion, "GLX_SGI_swap_control" );
         if ( _GLX_SGI_swap_control ) {
             try {
                 bindGLFunc( cast( void** )&glXSwapIntervalSGI, "glXSwapIntervalSGI" );
@@ -852,7 +852,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SGI_video_sync
-        _GLX_SGI_video_sync = isExtSupported!container( glversion, "GLX_SGI_video_sync" );
+        _GLX_SGI_video_sync = isExtSupported( glversion, "GLX_SGI_video_sync" );
         if ( _GLX_SGI_video_sync ) {
             try {
                 bindGLFunc( cast( void** )&glXGetVideoSyncSGI, "glXGetVideoSyncSGI" );
@@ -864,7 +864,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         }
 
         // GLX_SUN_get_transparent_index
-        _GLX_SUN_get_transparent_index = isExtSupported!container( glversion, "GLX_SUN_get_transparent_index" );
+        _GLX_SUN_get_transparent_index = isExtSupported( glversion, "GLX_SUN_get_transparent_index" );
         if ( _GLX_SUN_get_transparent_index ) {
             try {
                 bindGLFunc( cast( void** )&glXGetTransparentIndexSUN, "glXGetTransparentIndexSUN" );

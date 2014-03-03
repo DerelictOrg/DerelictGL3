@@ -50,14 +50,14 @@ package {
             *ptr = sym;
         }
 
-        bool isExtSupported(alias container)( GLVersion glversion, string name ) {
+        bool isExtSupported( GLVersion glversion, string name ) {
             // If OpenGL 3+ is loaded, use glGetStringi.
             if( glversion >= GLVersion.GL30 ) {
                 auto cstr = name.toStringz(  );
                 int count;
                 glGetIntegerv( GL_NUM_EXTENSIONS, &count );
                 for( int i=0; i<count; ++i ) {
-                    if( strcmp( container.glGetStringi( GL_EXTENSIONS, i ), cstr ) == 0 )
+                    if( strcmp( glGetStringi( GL_EXTENSIONS, i ), cstr ) == 0 )
                         return true;
                 }
                 return false;

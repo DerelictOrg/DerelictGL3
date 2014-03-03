@@ -75,6 +75,7 @@ class DerelictGL3Loader : SharedLibLoader
         }
 
         GLVersion reload() {
+<<<<<<< HEAD
             // Make sure a context is active, otherwise this could be meaningless.
             if( !hasValidContext() )
                 throw new DerelictException( "DerelictGL3.reload failure: An OpenGL context is not currently active." );
@@ -406,6 +407,17 @@ class DerelictGL3Loader : SharedLibLoader
             loadPlatformEXT(  glVer  );
 
             return glVer;
+=======
+            return this.loadContextDependentSymbols!(derelict.opengl3.gl3)();
+        }
+        
+        OpenGlFunctions reloadOnce(out GLVersion glVersion) {
+            auto result = new OpenGlFunctions;
+            
+            glVersion = this.loadContextDependentSymbols!(result)();
+            
+            return result;
+>>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
         }
     }
 

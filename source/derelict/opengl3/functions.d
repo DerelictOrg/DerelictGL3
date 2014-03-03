@@ -332,8 +332,24 @@ extern( System ) nothrow {
     alias void function( GLuint, GLenum, GLenum, GLenum, GLenum ) da_glBlendFuncSeparatei;
 }
 
+<<<<<<< HEAD
 __gshared
 {
+=======
+class OpenGlFunctions {
+    public{
+        mixin(contextDependentFunctions);
+    }
+}
+
+__gshared
+{
+    mixin(contextIndependentFunctions);
+    mixin(contextDependentFunctions);
+}
+
+enum contextIndependentFunctions = q{
+>>>>>>> parent of 3aff5fd... Changed deprecated functions to comply to the previous commit
     da_glCullFace glCullFace;
     da_glFrontFace glFrontFace;
     da_glHint glHint;

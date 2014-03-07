@@ -1,11 +1,14 @@
-module derelict.opengl3.internal.funcmix;
+module derelict.opengl3.internal.globalctx;
 
 private {
     import derelict.opengl3.internal.functions;
     import derelict.opengl3.internal.arb;
 }
 
+
 __gshared {
+    mixin( ARBProps );
+
     mixin( GL11Funcs );
     mixin( GL12Funcs );
     mixin( GL13Funcs );

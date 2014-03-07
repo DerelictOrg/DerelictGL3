@@ -892,6 +892,378 @@ extern( System ) nothrow {
     alias da_glBlitFramebuffer = void function( GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum );
     alias da_glRenderbufferStorageMultisample = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei );
     alias da_glFramebufferTextureLayer = void function( GLenum, GLenum, GLuint, GLint, GLint );
+    // ARB_map_buffer_range
+    alias da_glMapBufferRange = GLvoid* function( GLenum, GLintptr, GLsizeiptr, GLbitfield );
+    alias da_glFlushMappedBufferRange = void function( GLenum, GLintptr, GLsizeiptr );
+    // ARB_vertex_array_object
+    alias da_glBindVertexArray = void function( GLuint );
+    alias da_glDeleteVertexArrays = void function( GLsizei, const( GLuint )* );
+    alias da_glGenVertexArrays = void function( GLsizei, GLuint* );
+    alias da_glIsVertexArray = GLboolean function( GLuint );
+    // ARB_copy_buffer
+    alias da_glCopyBufferSubData = void function( GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr );
+    // ARB_uniform_buffer_object
+    alias da_glGetUniformIndices = void function( GLuint, GLsizei, const( GLchar* )*, GLuint* );
+    alias da_glGetActiveUniformsiv = void function( GLuint, GLsizei, const( GLuint )*, GLenum, GLint* );
+    alias da_glGetActiveUniformName = void function( GLuint, GLuint, GLsizei, GLsizei*, GLchar* );
+    alias da_glGetUniformBlockIndex = GLuint function( GLuint, const( GLchar )* );
+    alias da_glGetActiveUniformBlockiv = void function( GLuint, GLuint, GLenum, GLint* );
+    alias da_glGetActiveUniformBlockName = void function( GLuint, GLuint, GLsizei, GLsizei*, GLchar* );
+    alias da_glUniformBlockBinding = void function( GLuint, GLuint, GLuint );
+    // ARB_draw_elements_base_vertex
+    alias da_glDrawElementsBaseVertex = void function( GLenum, GLsizei, GLenum, const( GLvoid )*, GLint );
+    alias da_glDrawRangeElementsBaseVertex = void function( GLenum, GLuint, GLuint, GLsizei, GLenum, const( GLvoid )*, GLint );
+    alias da_glDrawElementsInstancedBaseVertex = void function( GLenum, GLsizei, GLenum, const( GLvoid )*, GLsizei, GLint );
+    alias da_glMultiDrawElementsBaseVertex = void function( GLenum, const( GLsizei )*, GLenum, const( GLvoid* )*, GLsizei, const( GLint )* );
+    // ARB_provoking_vertex
+    alias da_glProvokingVertex = void function( GLenum );
+    // ARB_sync
+    alias da_glFenceSync = GLsync function( GLenum, GLbitfield );
+    alias da_glIsSync = GLboolean function( GLsync );
+    alias da_glDeleteSync = void function( GLsync );
+    alias da_glClientWaitSync = GLenum function( GLsync, GLbitfield, GLuint64 );
+    alias da_glWaitSync = void function( GLsync, GLbitfield, GLuint64 );
+    alias da_glGetInteger64v = void function( GLsync, GLint64* );
+    alias da_glGetSynciv = void function( GLsync, GLenum, GLsizei, GLsizei*, GLint* );
+    // ARB_texture_multisample
+    alias da_glTexImage2DMultisample = void function( GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean );
+    alias da_glTexImage3DMultisample = void function( GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean );
+    alias da_glGetMultisamplefv = void function( GLenum, GLuint, GLfloat* );
+    alias da_glSampleMaski = void function( GLuint, GLbitfield );
+    // ARB_blend_func_extended
+    alias da_glBindFragDataLocationIndexed = void function( GLuint, GLuint, GLuint, const( GLchar )* );
+    alias da_glGetFragDataIndex = GLint function( GLuint, const( GLchar )* );
+    // ARB_sampler_objects
+    alias da_glGenSamplers = void function( GLsizei, GLuint* );
+    alias da_glDeleteSamplers = void function( GLsizei, const( GLuint )* );
+    alias da_glIsSampler = GLboolean function( GLuint );
+    alias da_glBindSampler = void function( GLuint, GLuint );
+    alias da_glSamplerParameteri = void function( GLuint, GLenum, GLint );
+    alias da_glSamplerParameteriv = void function( GLuint, GLenum, const( GLint )* );
+    alias da_glSamplerParameterf = void function( GLuint, GLenum, GLfloat );
+    alias da_glSamplerParameterfv = void function( GLuint, GLenum, const( GLfloat )* );
+    alias da_glSamplerParameterIiv = void function( GLuint, GLenum, const( GLint )* );
+    alias da_glSamplerParameterIuiv = void function( GLuint, GLenum, const( GLuint )* );
+    alias da_glGetSamplerParameteriv = void function( GLuint, GLenum, GLint* );
+    alias da_glGetSamplerParameterIiv = void function( GLuint, GLenum, GLint* );
+    alias da_glGetSamplerParameterfv = void function( GLuint, GLenum, GLfloat* );
+    alias da_glGetSamplerParameterIuiv = void function( GLuint, GLenum, GLuint* );
+    // ARB_timer_query
+    alias da_glQueryCounter = void function( GLuint, GLenum );
+    alias da_glGetQueryObjecti64v = void function( GLuint, GLenum, GLint64* );
+    alias da_glGetQueryObjectui64v = void function( GLuint, GLenum, GLuint64* );
+    // ARB_vertex_type_2_10_10_10_rev
+    alias da_glVertexP2ui = void function( GLenum, GLuint );
+    alias da_glVertexP2uiv = void function( GLenum, const( GLuint )* );
+    alias da_glVertexP3ui = void function( GLenum, GLuint );
+    alias da_glVertexP3uiv = void function( GLenum, const( GLuint )* );
+    alias da_glVertexP4ui = void function( GLenum, GLuint );
+    alias da_glVertexP4uiv = void function( GLenum, const( GLuint )* );
+    alias da_glTexCoordP1ui = void function( GLenum, GLuint );
+    alias da_glTexCoordP1uiv = void function( GLenum, const( GLuint )* );
+    alias da_glTexCoordP2ui = void function( GLenum, GLuint );
+    alias da_glTexCoordP2uiv = void function( GLenum, const( GLuint )* );
+    alias da_glTexCoordP3ui = void function( GLenum, GLuint );
+    alias da_glTexCoordP3uiv = void function( GLenum, const( GLuint )* );
+    alias da_glTexCoordP4ui = void function( GLenum, GLuint );
+    alias da_glTexCoordP4uiv = void function( GLenum, const( GLuint )* );
+    alias da_glMultiTexCoordP1ui = void function( GLenum, GLenum, GLuint );
+    alias da_glMultiTexCoordP1uiv = void function( GLenum, GLenum, const( GLuint )* );
+    alias da_glMultiTexCoordP2ui = void function( GLenum, GLenum, GLuint );
+    alias da_glMultiTexCoordP2uiv = void function( GLenum, GLenum, const( GLuint )* );
+    alias da_glMultiTexCoordP3ui = void function( GLenum, GLenum, GLuint );
+    alias da_glMultiTexCoordP3uiv = void function( GLenum, GLenum, const( GLuint )* );
+    alias da_glMultiTexCoordP4ui = void function( GLenum, GLenum, GLuint );
+    alias da_glMultiTexCoordP4uiv = void function( GLenum, GLenum, const( GLuint )* );
+    alias da_glNormalP3ui = void function( GLenum, GLuint );
+    alias da_glNormalP3uiv = void function( GLenum, const( GLuint )* );
+    alias da_glColorP3ui = void function( GLenum, GLuint );
+    alias da_glColorP3uiv = void function( GLenum, const( GLuint )* );
+    alias da_glColorP4ui = void function( GLenum, GLuint );
+    alias da_glColorP4uiv = void function( GLenum, const( GLuint )* );
+    alias da_glSecondaryColorP3ui = void function( GLenum, GLuint );
+    alias da_glSecondaryColorP3uiv = void function( GLenum, const( GLuint )* );
+    alias da_glVertexAttribP1ui = void function( GLuint, GLenum, GLboolean, GLuint );
+    alias da_glVertexAttribP1uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
+    alias da_glVertexAttribP2ui = void function( GLuint, GLenum, GLboolean, GLuint );
+    alias da_glVertexAttribP2uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
+    alias da_glVertexAttribP3ui = void function( GLuint, GLenum, GLboolean, GLuint );
+    alias da_glVertexAttribP3uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
+    alias da_glVertexAttribP4ui = void function( GLuint, GLenum, GLboolean, GLuint );
+    alias da_glVertexAttribP4uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
+    // ARB_draw_indirect
+    alias da_glDrawArraysIndirect = void function( GLenum, const( GLvoid )* );
+    alias da_glDrawElementsIndirect = void function( GLenum, GLenum, const( GLvoid )* );
+    // ARB_gpu_shader_fp64
+    alias da_glUniform1d = void function( GLint, GLdouble );
+    alias da_glUniform2d = void function( GLint, GLdouble, GLdouble );
+    alias da_glUniform3d = void function( GLint, GLdouble, GLdouble, GLdouble );
+    alias da_glUniform4d = void function( GLint, GLdouble, GLdouble, GLdouble, GLdouble );
+    alias da_glUniform1dv = void function( GLint, GLsizei, const( GLdouble )* );
+    alias da_glUniform2dv = void function( GLint, GLsizei, const( GLdouble )* );
+    alias da_glUniform3dv = void function( GLint, GLsizei, const( GLdouble )* );
+    alias da_glUniform4dv = void function( GLint, GLsizei, const( GLdouble )* );
+    alias da_glUniformMatrix2dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glUniformMatrix3dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glUniformMatrix4dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glUniformMatrix2x3dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glUniformMatrix2x4dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glUniformMatrix3x2dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glUniformMatrix3x4dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glUniformMatrix4x2dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glUniformMatrix4x3dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glGetUniformdv = void function( GLuint, GLint, GLdouble* );
+    // ARB_shader_subroutine
+    alias da_glGetSubroutineUniformLocation = GLint function( GLuint, GLenum, const( GLchar )* );
+    alias da_glGetSubroutineIndex = GLuint function( GLuint, GLenum, const( GLchar )* );
+    alias da_glGetActiveSubroutineUniformiv = void function( GLuint, GLenum, GLuint, GLenum, GLint* );
+    alias da_glGetActiveSubroutineUniformName = void function( GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar* );
+    alias da_glGetActiveSubroutineName = void function( GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar* );
+    alias da_glUniformSubroutinesuiv = void function( GLenum, GLsizei, const( GLuint )* );
+    alias da_glGetUniformSubroutineuiv = void function( GLenum, GLint, GLuint* );
+    alias da_glGetProgramStageiv = void function( GLuint, GLenum, GLenum, GLint* );
+    // ARB_tessellation_shader
+    alias da_glPatchParameteri = void function( GLenum, GLint );
+    alias da_glPatchParameterfv = void function( GLenum, const( GLfloat )* );
+    // ARB_transform_feedback2
+    alias da_glBindTransformFeedback = void function( GLenum, GLuint );
+    alias da_glDeleteTransformFeedbacks = void function( GLsizei, const( GLuint )* );
+    alias da_glGenTransformFeedbacks = void function( GLsizei, GLuint* );
+    alias da_glIsTransformFeedback = GLboolean function( GLuint );
+    alias da_glPauseTransformFeedback = void function();
+    alias da_glResumeTransformFeedback = void function();
+    alias da_glDrawTransformFeedback = void function( GLenum, GLuint );
+    // ARB_transform_feedback3
+    alias da_glDrawTransformFeedbackStream = void function( GLenum, GLuint, GLuint );
+    alias da_glBeginQueryIndexed = void function( GLenum, GLuint, GLuint );
+    alias da_glEndQueryIndexed = void function( GLenum, GLuint );
+    alias da_glGetQueryIndexediv = void function( GLenum, GLuint, GLenum, GLint* );
+    // ARB_ES2_compatibility
+    alias da_glReleaseShaderCompiler = void function();
+    alias da_glShaderBinary = void function( GLsizei, const( GLuint )*, GLenum, const( GLvoid )*, GLsizei );
+    alias da_glGetShaderPrecisionFormat = void function( GLenum, GLenum, GLint*, GLint* );
+    alias da_glDepthRangef = void function( GLclampf, GLclampf );
+    alias da_glClearDepthf = void function( GLclampf );
+    // ARB_get_program_binary
+    alias da_glGetProgramBinary = void function( GLuint, GLsizei, GLsizei*, GLenum*, GLvoid* );
+    alias da_glProgramBinary = void function( GLuint, GLenum, const( GLvoid )*, GLsizei );
+    alias da_glProgramParameteri = void function( GLuint, GLenum, GLint );
+    // ARB_separate_shader_objects
+    alias da_glUseProgramStages = void function( GLuint, GLbitfield, GLuint );
+    alias da_glActiveShaderProgram = void function( GLuint, GLuint );
+    alias da_glCreateShaderProgramv = GLuint function( GLenum, GLsizei, const( GLchar* )* );
+    alias da_glBindProgramPipeline = void function( GLuint );
+    alias da_glDeleteProgramPipelines = void function( GLsizei, const( GLuint )* );
+    alias da_glGenProgramPipelines = void function( GLsizei, GLuint* );
+    alias da_glIsProgramPipeline = GLboolean function( GLuint );
+    alias da_glGetProgramPipelineiv = void function( GLuint, GLenum, GLint* );
+    alias da_glProgramUniform1i = void function( GLuint, GLint, GLint );
+    alias da_glProgramUniform1iv = void function( GLuint, GLint, GLsizei, const( GLint )* );
+    alias da_glProgramUniform1f = void function( GLuint, GLint, GLfloat );
+    alias da_glProgramUniform1fv = void function( GLuint, GLint, GLsizei, const( GLfloat )* );
+    alias da_glProgramUniform1d = void function( GLuint, GLint, GLdouble );
+    alias da_glProgramUniform1dv = void function( GLuint, GLint, GLsizei, const( GLdouble )* );
+    alias da_glProgramUniform1ui = void function( GLuint, GLint, GLuint );
+    alias da_glProgramUniform1uiv = void function( GLuint, GLint, GLsizei, const( GLuint )* );
+    alias da_glProgramUniform2i = void function( GLuint, GLint, GLint, GLint );
+    alias da_glProgramUniform2iv = void function( GLuint, GLint, GLsizei, const( GLint )* );
+    alias da_glProgramUniform2f = void function( GLuint, GLint, GLfloat, GLfloat );
+    alias da_glProgramUniform2fv = void function( GLuint, GLint, GLsizei, const( GLfloat )* );
+    alias da_glProgramUniform2d = void function( GLuint, GLint, GLdouble, GLdouble );
+    alias da_glProgramUniform2dv = void function( GLuint, GLint, GLsizei, const( GLdouble )* );
+    alias da_glProgramUniform2ui = void function( GLuint, GLint, GLuint, GLuint );
+    alias da_glProgramUniform2uiv = void function( GLuint, GLint, GLsizei, const( GLuint )* );
+    alias da_glProgramUniform3i = void function( GLuint, GLint, GLint, GLint, GLint );
+    alias da_glProgramUniform3iv = void function( GLuint, GLint, GLsizei, const( GLint )* );
+    alias da_glProgramUniform3f = void function( GLuint, GLint, GLfloat, GLfloat, GLfloat );
+    alias da_glProgramUniform3fv = void function( GLuint, GLint, GLsizei, const( GLfloat )* );
+    alias da_glProgramUniform3d = void function( GLuint, GLint, GLdouble, GLdouble, GLdouble );
+    alias da_glProgramUniform3dv = void function( GLuint, GLint, GLsizei, const( GLdouble )* );
+    alias da_glProgramUniform3ui = void function( GLuint, GLint, GLuint, GLuint, GLuint );
+    alias da_glProgramUniform3uiv = void function( GLuint, GLint, GLsizei, const( GLuint )* );
+    alias da_glProgramUniform4i = void function( GLuint, GLint, GLint, GLint, GLint, GLint );
+    alias da_glProgramUniform4iv = void function( GLuint, GLint, GLsizei, const( GLint )* );
+    alias da_glProgramUniform4f = void function( GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat );
+    alias da_glProgramUniform4fv = void function( GLuint, GLint, GLsizei, const( GLfloat )* );
+    alias da_glProgramUniform4d = void function( GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble );
+    alias da_glProgramUniform4dv = void function( GLuint, GLint, GLsizei, const( GLdouble )* );
+    alias da_glProgramUniform4ui = void function( GLuint, GLint, GLuint, GLuint, GLuint, GLuint );
+    alias da_glProgramUniform4uiv = void function( GLuint, GLint, GLsizei, const( GLuint )* );
+    alias da_glProgramUniformMatrix2fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix3fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix4fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix2dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glProgramUniformMatrix3dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glProgramUniformMatrix4dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glProgramUniformMatrix2x3fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix3x2fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix2x4fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix4x2fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix3x4fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix4x3fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
+    alias da_glProgramUniformMatrix2x3dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glProgramUniformMatrix3x2dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glProgramUniformMatrix2x4dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glProgramUniformMatrix4x2dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glProgramUniformMatrix3x4dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glProgramUniformMatrix4x3dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
+    alias da_glValidateProgramPipeline = void function( GLuint );
+    alias da_glGetProgramPipelineInfoLog = void function( GLuint, GLsizei, GLsizei*, GLchar* );
+    // ARB_vertex_attrib_64bit
+    alias da_glVertexAttribL1d = void function( GLuint, GLdouble );
+    alias da_glVertexAttribL2d = void function( GLuint, GLdouble, GLdouble );
+    alias da_glVertexAttribL3d = void function( GLuint, GLdouble, GLdouble, GLdouble );
+    alias da_glVertexAttribL4d = void function( GLuint, GLdouble, GLdouble, GLdouble, GLdouble );
+    alias da_glVertexAttribL1dv = void function( GLuint, const( GLdouble )* );
+    alias da_glVertexAttribL2dv = void function( GLuint, const( GLdouble )* );
+    alias da_glVertexAttribL3dv = void function( GLuint, const( GLdouble )* );
+    alias da_glVertexAttribL4dv = void function( GLuint, const( GLdouble )* );
+    alias da_glVertexAttribLPointer = void function( GLuint, GLint, GLenum, GLsizei, const( GLvoid )* );
+    alias da_glGetVertexAttribLdv = void function( GLuint, GLenum, GLdouble* );
+    // ARB_viewport_array
+    alias da_glViewportArrayv = void function( GLuint, GLsizei, const( GLfloat )* );
+    alias da_glViewportIndexedf = void function( GLuint, GLfloat, GLfloat, GLfloat, GLfloat );
+    alias da_glViewportIndexedfv = void function( GLuint, const( GLfloat )* );
+    alias da_glScissorArrayv = void function( GLuint, GLsizei, const( GLint )* );
+    alias da_glScissorIndexed = void function( GLuint, GLint, GLint, GLsizei, GLsizei );
+    alias da_glScissorIndexedv = void function( GLuint, const( GLint )* );
+    alias da_glDepthRangeArrayv = void function( GLuint, GLsizei, const( GLclampd )* );
+    alias da_glDepthRangeIndexed = void function( GLuint, GLclampd, GLclampd );
+    alias da_glGetFloati_v = void function( GLenum, GLuint, GLfloat* );
+    alias da_glGetDoublei_v = void function( GLenum, GLuint, GLdouble* );
+    // ARB_base_instance
+    alias da_glDrawArraysInstancedBaseInstance = void function( GLenum, GLint, GLsizei, GLsizei, GLuint );
+    alias da_glDrawElementsInstancedBaseInstance = void function( GLenum, GLsizei, GLenum, const( void )*, GLsizei, GLuint );
+    alias da_glDrawElementsInstancedBaseVertexBaseInstance = void function( GLenum, GLsizei, GLenum, const( void )*, GLsizei, GLint, GLuint );
+    // ARB_transform_feedback_instanced
+    alias da_glDrawTransformFeedbackInstanced = void function( GLenum, GLuint, GLsizei );
+    alias da_glDrawTransformFeedbackStreamInstanced = void function( GLenum, GLuint, GLuint, GLsizei );
+    // ARB_internalformat_query
+    alias da_glGetInternalformativ = void function( GLenum, GLenum, GLenum, GLsizei, GLint* );
+    // ARB_shader_atomic_counters
+    alias da_glGetActiveAtomicCounterBufferiv = void function( GLuint, GLuint, GLenum, GLint* );
+    // ARB_shader_image_load_store
+    alias da_glBindImageTexture = void function( GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum );
+    alias da_glMemoryBarrier = void function( GLbitfield );
+    // ARB_texture_storage
+    alias da_glTexStorage1D = void function( GLenum, GLsizei, GLenum, GLsizei );
+    alias da_glTexStorage2D = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei );
+    alias da_glTexStorage3D = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei );
+    alias da_glTextureStorage1DEXT = void function( GLuint, GLenum, GLsizei, GLenum, GLsizei );
+    alias da_glTextureStorage2DEXT = void function( GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei );
+    alias da_glTextureStorage3DEXT = void function( GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei );
+    // ARB_clear_buffer_object
+    alias da_glClearBufferData = void function( GLenum,GLenum,GLenum,GLenum,const( void )* );
+    alias da_glClearBufferSubData = void function( GLenum,GLenum,GLintptr,GLsizeiptr,GLenum,GLenum,const( void )* );
+    alias da_glClearNamedBufferDataEXT = void function( GLuint,GLenum,GLenum,GLenum,const( void )* );
+    alias da_glClearNamedBufferSubDataEXT = void function( GLuint,GLenum,GLenum,GLenum,GLsizeiptr,GLsizeiptr,const( void )* );
+    // ARB_compute_shader
+    alias da_glDispatchCompute = void function( GLuint,GLuint,GLuint );
+    alias da_glDispatchComputeIndirect = void function( GLintptr );
+    // KHR_debug
+    // GLDEBUGPROC is a callback type -- don't try to load it!
+    alias GLDEBUGPROC = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )*,GLvoid* );
+    alias da_glDebugMessageControl = void function( GLenum,GLenum,GLenum,GLsizei,const( GLuint* ),GLboolean );
+    alias da_glDebugMessageInsert = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )* );
+    alias da_glDebugMessageCallback = void function( GLDEBUGPROC,const( void )* );
+    alias da_glGetDebugMessageLog = GLuint function( GLuint,GLsizei,GLenum*,GLenum*,GLuint*,GLenum*,GLsizei*,GLchar* );
+    alias da_glPushDebugGroup = void function( GLenum,GLuint,GLsizei,const( GLchar )* );
+    alias da_glPopDebugGroup = void function();
+    alias da_glObjectLabel = void function( GLenum,GLuint,GLsizei,GLsizei,const( GLchar )* );
+    alias da_glGetObjectLabel = void function( GLenum,GLuint,GLsizei,GLsizei*,GLchar* );
+    alias da_glObjectPtrLabel = void function( const( void )*,GLsizei,const( GLchar )* );
+    alias da_glGetObjectPtrLabel = void function( const( void )*,GLsizei,GLsizei*,GLchar* );
+    // ARB_framebuffer_no_attachments
+    alias da_glFramebufferParameteri = void function( GLenum,GLenum,GLint );
+    alias da_glGetFramebufferParameteriv = void function( GLenum,GLenum,GLint* );
+    alias da_glNamedFramebufferParameteriEXT = void function( GLuint,GLenum,GLint );
+    alias da_glGetNamedFramebufferParameterivEXT = void function( GLuint,GLenum,GLint* );
+    // ARB_internalformat_query2
+    alias da_glGetInternalformati64v = void function( GLenum,GLenum,GLenum,GLsizei,GLint64* );
+    // ARB_invalidate_subdata
+    alias da_glInvalidateTexSubImage = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei );
+    alias da_glInvalidateTexImage = void function( GLuint,GLint );
+    alias da_glInvalidateBufferSubData = void function( GLuint,GLintptr,GLsizeiptr );
+    alias da_glInvalidateBufferData = void function( GLuint );
+    alias da_glInvalidateFramebuffer = void function( GLenum,GLsizei,const( GLenum )* );
+    alias da_glInvalidateSubFramebuffer = void function( GLenum,GLsizei,const( GLenum )*,GLint,GLint,GLsizei,GLsizei );
+    // ARB_multi_draw_indirect
+    alias da_glMultiDrawArraysIndirect = void function( GLenum,const( void )*,GLsizei,GLsizei );
+    alias da_glMultiDrawElementsIndirect = void function( GLenum,GLenum,const( void )*,GLsizei,GLsizei );
+    // ARB_program_interface_query
+    alias da_glGetProgramInterfaceiv = void function( GLuint,GLenum,GLenum,GLint* );
+    alias da_glGetProgramResourceIndex = GLuint function( GLuint,GLenum,const( GLchar )* );
+    alias da_glGetProgramResourceName = void function( GLuint,GLenum,GLuint,GLsizei,GLsizei*,GLchar* );
+    alias da_glGetProgramResourceiv = void function( GLuint,GLenum,GLuint,GLsizei,const( GLenum )*,GLsizei,GLsizei*,GLint* );
+    alias da_glGetProgramResourceLocation = GLint function( GLuint,GLenum,const( GLchar )* );
+    alias da_glGetProgramResourceLocationIndex = GLint function( GLuint,GLenum,const( GLchar )* );
+    // ARB_shader_storage_buffer_object
+    alias da_glShaderStorageBlockBinding = void function( GLuint,GLuint,GLuint );
+    // ARB_texture_buffer_range
+    alias da_glTexBufferRange = void function( GLenum,GLenum,GLuint,GLintptr,GLsizeiptr );
+    alias da_glTextureBufferRangeEXT = void function( GLuint,GLenum,GLenum,GLuint,GLintptr,GLsizeiptr );
+    // ARB_texture_storage_multisample
+    alias da_glTexStorage2DMultisample = void function( GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean );
+    alias da_glTexStorage3DMultisample = void function( GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean );
+    alias da_glTextureStorage2DMultisampleEXT = void function( GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean );
+    alias da_glTextureStorage3DMultisampleEXT = void function( GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean );
+    // ARB_texture_view
+    alias da_glTextureView = void function( GLuint,GLenum,GLuint,GLenum,GLuint,GLuint,GLuint,GLuint );
+    // ARB_vertex_attrib_binding
+    alias da_glBindVertexBuffer = void function( GLuint,GLuint,GLintptr,GLsizei );
+    alias da_glVertexAttribFormat = void function( GLuint,GLint,GLenum,GLboolean,GLuint );
+    alias da_glVertexAttribIFormat = void function( GLuint,GLint,GLenum,GLuint );
+    alias da_glVertexAttribLFormat = void function( GLuint,GLint,GLenum,GLuint );
+    alias da_glVertexAttribBinding = void function( GLuint,GLuint );
+    alias da_glVertexBindingDivisor = void function( GLuint,GLuint );
+    alias da_glVertexArrayBindVertexBufferEXT = void function( GLuint,GLuint,GLuint,GLintptr,GLsizei );
+    alias da_glVertexArrayVertexAttribFormatEXT = void function( GLuint,GLuint,GLint,GLenum,GLboolean,GLuint );
+    alias da_glVertexArrayVertexAttribIFormatEXT = void function( GLuint,GLuint,GLint,GLenum,GLuint );
+    alias da_glVertexArrayVertexAttribLFormatEXT = void function( GLuint,GLuint,GLint,GLenum,GLuint );
+    alias da_glVertexArrayVertexAttribBindingEXT = void function( GLuint,GLuint,GLuint );
+    alias da_glVertexArrayVertexBindingDivisorEXT = void function( GLuint,GLuint,GLuint );
+    // ARB_draw_buffers_blend
+    alias da_glBlendEquationiARB = void function( GLuint, GLenum );
+    alias da_glBlendEquationSeparateiARB = void function( GLuint, GLenum, GLenum );
+    alias da_glBlendFunciARB = void function( GLuint, GLenum, GLenum );
+    alias da_glBlendFuncSeparateiARB = void function( GLuint, GLenum, GLenum, GLenum, GLenum );
+    // ARB_sample_shading
+    alias da_glMinSampleShadingARB = void function( GLclampf );
+    // ARB_shading_language_include
+    alias da_glNamedStringARB = void function( GLenum, GLint, const( GLchar )*, GLint, const( GLchar )* );
+    alias da_glDeleteNamedStringARB = void function( GLint, const( GLchar )* );
+    alias da_glCompileShaderIncludeARB = void function( GLuint, GLsizei, const( GLchar )*, const( GLint )* );
+    alias da_glIsNamedStringARB = GLboolean function( GLint, const( GLchar )* );
+    alias da_glGetNamedStringARB = void function( GLint, const( GLchar )*, GLsizei, GLint*, GLchar* );
+    alias da_glGetNamedStringivARB = void function( GLint, const( GLchar )*, GLenum, GLint* );
+    // ARB_cl_event
+    alias  da_glCreateSyncFromCLeventARB = GLsync function( _cl_context*, _cl_event*, GLbitfield );
+    // ARB_debug_output
+    alias da_glDebugMessageControlARB = void function( GLenum, GLenum, GLenum, GLsizei, const( GLuint )*, GLboolean );
+    alias da_glDebugMessageInsertARB = void function( GLenum, GLenum, GLuint, GLenum, GLsizei, const( GLchar )* );
+    alias da_glDebugMessageCallbackARB = void function( GLDEBUGPROCARB, const( GLvoid )* );
+    alias da_glGetDebugMessageLogARB = void function( GLuint, GLsizei, GLenum*, GLenum*, GLuint*, GLenum*, GLsizei*, GLchar* );
+    // ARB_robustness
+    alias da_glGetGraphicsResetStatusARB = GLenum function();
+    alias da_glGetnMapdvARB = void function( GLenum, GLenum, GLsizei, GLdouble* );
+    alias da_glGetnMapfvARB = void function( GLenum, GLenum, GLsizei, GLfloat* );
+    alias da_glGetnMapivARB = void function( GLenum, GLenum, GLsizei, GLint* );
+    alias da_glGetnPixelMapfvARB = void function( GLenum, GLsizei, GLfloat* );
+    alias da_glGetnPixelMapuivARB = void function( GLenum, GLsizei, GLuint* );
+    alias da_glGetnPixelMapusvARB = void function( GLenum, GLsizei, GLushort* );
+    alias da_glGetnPolygonStippleARB = void function( GLsizei, GLubyte* );
+    alias da_glGetnColorTableARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid* );
+    alias da_glGetnConvolutionFilterARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid* );
+    alias da_glGetnSeparableFilterARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid*, GLsizei, GLvoid*, GLvoid* );
+    alias da_glGetnHistogramARB = void function( GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid* );
+    alias da_glGetnMinmaxARB = void function( GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid* );
+    alias da_glGetnTexImageARB = void function( GLenum, GLint, GLenum, GLenum, GLsizei, GLvoid* );
+    alias da_glReadnPixelsARB = void function( GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, GLvoid* );
+    alias da_glGetnCompressedTexImageARB = void function( GLenum, GLint, GLsizei, GLvoid* );
+    alias da_glGetnUniformfvARB = void function( GLuint, GLint, GLsizei, GLfloat* );
+    alias da_glGetnUniformivARB = void function( GLuint, GLint, GLsizei, GLint* );
+    alias da_glGetnUniformuivARB = void function( GLuint, GLint, GLsizei, GLuint* );
+    alias da_glGetnUniformdvARB = void function( GLuint, GLint, GLsizei, GLdouble* );
 }
 
 enum ARBFuncs =
@@ -917,4 +1289,463 @@ q{
     da_glBlitFramebuffer glBlitFramebuffer;
     da_glRenderbufferStorageMultisample glRenderbufferStorageMultisample;
     da_glFramebufferTextureLayer glFramebufferTextureLayer;
+    // ARB_map_buffer_range
+    da_glMapBufferRange glMapBufferRange;
+    da_glFlushMappedBufferRange glFlushMappedBufferRange;
+    // ARB_vertex_array_object
+    da_glBindVertexArray glBindVertexArray;
+    da_glDeleteVertexArrays glDeleteVertexArrays;
+    da_glGenVertexArrays glGenVertexArrays;
+    da_glIsVertexArray glIsVertexArray;
+    // ARB_copy_buffer
+    da_glCopyBufferSubData glCopyBufferSubData;
+    // ARB_uniform_buffer_object
+    da_glGetUniformIndices glGetUniformIndices;
+    da_glGetActiveUniformsiv glGetActiveUniformsiv;
+    da_glGetActiveUniformName glGetActiveUniformName;
+    da_glGetUniformBlockIndex glGetUniformBlockIndex;
+    da_glGetActiveUniformBlockiv glGetActiveUniformBlockiv;
+    da_glGetActiveUniformBlockName glGetActiveUniformBlockName;
+    da_glUniformBlockBinding glUniformBlockBinding;
+    // ARB_draw_elements_base_vertex
+    da_glDrawElementsBaseVertex glDrawElementsBaseVertex;
+    da_glDrawRangeElementsBaseVertex glDrawRangeElementsBaseVertex;
+    da_glDrawElementsInstancedBaseVertex glDrawElementsInstancedBaseVertex;
+    da_glMultiDrawElementsBaseVertex glMultiDrawElementsBaseVertex;
+    // ARB_provoking_vertex
+    da_glProvokingVertex glProvokingVertex;
+    // ARB_sync
+    da_glFenceSync glFenceSync;
+    da_glIsSync glIsSync;
+    da_glDeleteSync glDeleteSync;
+    da_glClientWaitSync glClientWaitSync;
+    da_glWaitSync glWaitSync;
+    da_glGetInteger64v glGetInteger64v;
+    da_glGetSynciv glGetSynciv;
+    // ARB_texture_multisample
+    da_glTexImage2DMultisample glTexImage2DMultisample;
+    da_glTexImage3DMultisample glTexImage3DMultisample;
+    da_glGetMultisamplefv glGetMultisamplefv;
+    da_glSampleMaski glSampleMaski;
+    // ARB_blend_func_extended
+    da_glBindFragDataLocationIndexed glBindFragDataLocationIndexed;
+    da_glGetFragDataIndex glGetFragDataIndex;
+    // ARB_sampler_objects
+    da_glGenSamplers glGenSamplers;
+    da_glDeleteSamplers glDeleteSamplers;
+    da_glIsSampler glIsSampler;
+    da_glBindSampler glBindSampler;
+    da_glSamplerParameteri glSamplerParameteri;
+    da_glSamplerParameteriv glSamplerParameteriv;
+    da_glSamplerParameterf glSamplerParameterf;
+    da_glSamplerParameterfv glSamplerParameterfv;
+    da_glSamplerParameterIiv glSamplerParameterIiv;
+    da_glSamplerParameterIuiv glSamplerParameterIuiv;
+    da_glGetSamplerParameteriv glGetSamplerParameteriv;
+    da_glGetSamplerParameterIiv glGetSamplerParameterIiv;
+    da_glGetSamplerParameterfv glGetSamplerParameterfv;
+    da_glGetSamplerParameterIuiv glGetSamplerParameterIuiv;
+    // ARB_timer_query
+    da_glQueryCounter glQueryCounter;
+    da_glGetQueryObjecti64v glGetQueryObjecti64v;
+    da_glGetQueryObjectui64v glGetQueryObjectui64v;
+    // ARB_vertex_type_2_10_10_10_rev
+    da_glVertexP2ui glVertexP2ui;
+    da_glVertexP2uiv glVertexP2uiv;
+    da_glVertexP3ui glVertexP3ui;
+    da_glVertexP3uiv glVertexP3uiv;
+    da_glVertexP4ui glVertexP4ui;
+    da_glVertexP4uiv glVertexP4uiv;
+    da_glTexCoordP1ui glTexCoordP1ui;
+    da_glTexCoordP1uiv glTexCoordP1uiv;
+    da_glTexCoordP2ui glTexCoordP2ui;
+    da_glTexCoordP2uiv glTexCoordP2uiv;
+    da_glTexCoordP3ui glTexCoordP3ui;
+    da_glTexCoordP3uiv glTexCoordP3uiv;
+    da_glTexCoordP4ui glTexCoordP4ui;
+    da_glTexCoordP4uiv glTexCoordP4uiv;
+    da_glMultiTexCoordP1ui glMultiTexCoordP1ui;
+    da_glMultiTexCoordP1uiv glMultiTexCoordP1uiv;
+    da_glMultiTexCoordP2ui glMultiTexCoordP2ui;
+    da_glMultiTexCoordP2uiv glMultiTexCoordP2uiv;
+    da_glMultiTexCoordP3ui glMultiTexCoordP3ui;
+    da_glMultiTexCoordP3uiv glMultiTexCoordP3uiv;
+    da_glMultiTexCoordP4ui glMultiTexCoordP4ui;
+    da_glMultiTexCoordP4uiv glMultiTexCoordP4uiv;
+    da_glNormalP3ui glNormalP3ui;
+    da_glNormalP3uiv glNormalP3uiv;
+    da_glColorP3ui glColorP3ui;
+    da_glColorP3uiv glColorP3uiv;
+    da_glColorP4ui glColorP4ui;
+    da_glColorP4uiv glColorP4uiv;
+    da_glSecondaryColorP3ui glSecondaryColorP3ui;
+    da_glSecondaryColorP3uiv glSecondaryColorP3uiv;
+    da_glVertexAttribP1ui glVertexAttribP1ui;
+    da_glVertexAttribP1uiv glVertexAttribP1uiv;
+    da_glVertexAttribP2ui glVertexAttribP2ui;
+    da_glVertexAttribP2uiv glVertexAttribP2uiv;
+    da_glVertexAttribP3ui glVertexAttribP3ui;
+    da_glVertexAttribP3uiv glVertexAttribP3uiv;
+    da_glVertexAttribP4ui glVertexAttribP4ui;
+    da_glVertexAttribP4uiv glVertexAttribP4uiv;
+    // ARB_draw_indirect
+    da_glDrawArraysIndirect glDrawArraysIndirect;
+    da_glDrawElementsIndirect glDrawElementsIndirect;
+    // ARB_gpu_shader_fp64
+    da_glUniform1d glUniform1d;
+    da_glUniform2d glUniform2d;
+    da_glUniform3d glUniform3d;
+    da_glUniform4d glUniform4d;
+    da_glUniform1dv glUniform1dv;
+    da_glUniform2dv glUniform2dv;
+    da_glUniform3dv glUniform3dv;
+    da_glUniform4dv glUniform4dv;
+    da_glUniformMatrix2dv glUniformMatrix2dv;
+    da_glUniformMatrix3dv glUniformMatrix3dv;
+    da_glUniformMatrix4dv glUniformMatrix4dv;
+    da_glUniformMatrix2x3dv glUniformMatrix2x3dv;
+    da_glUniformMatrix2x4dv glUniformMatrix2x4dv;
+    da_glUniformMatrix3x2dv glUniformMatrix3x2dv;
+    da_glUniformMatrix3x4dv glUniformMatrix3x4dv;
+    da_glUniformMatrix4x2dv glUniformMatrix4x2dv;
+    da_glUniformMatrix4x3dv glUniformMatrix4x3dv;
+    da_glGetUniformdv glGetUniformdv;
+    // ARB_shader_subroutine
+    da_glGetSubroutineUniformLocation glGetSubroutineUniformLocation;
+    da_glGetSubroutineIndex glGetSubroutineIndex;
+    da_glGetActiveSubroutineUniformiv glGetActiveSubroutineUniformiv;
+    da_glGetActiveSubroutineUniformName glGetActiveSubroutineUniformName;
+    da_glGetActiveSubroutineName glGetActiveSubroutineName;
+    da_glUniformSubroutinesuiv glUniformSubroutinesuiv;
+    da_glGetUniformSubroutineuiv glGetUniformSubroutineuiv;
+    da_glGetProgramStageiv glGetProgramStageiv;
+    // ARB_tessellation_shader
+    da_glPatchParameteri glPatchParameteri;
+    da_glPatchParameterfv glPatchParameterfv;
+    // ARB_transform_feedback2
+    da_glBindTransformFeedback glBindTransformFeedback;
+    da_glDeleteTransformFeedbacks glDeleteTransformFeedbacks;
+    da_glGenTransformFeedbacks glGenTransformFeedbacks;
+    da_glIsTransformFeedback glIsTransformFeedback;
+    da_glPauseTransformFeedback glPauseTransformFeedback;
+    da_glResumeTransformFeedback glResumeTransformFeedback;
+    da_glDrawTransformFeedback glDrawTransformFeedback;
+    // ARB_transform_feedback3
+    da_glDrawTransformFeedbackStream glDrawTransformFeedbackStream;
+    da_glBeginQueryIndexed glBeginQueryIndexed;
+    da_glEndQueryIndexed glEndQueryIndexed;
+    da_glGetQueryIndexediv glGetQueryIndexediv;
+    // ARB_ES2_compatibility
+    da_glReleaseShaderCompiler glReleaseShaderCompiler;
+    da_glShaderBinary glShaderBinary;
+    da_glGetShaderPrecisionFormat glGetShaderPrecisionFormat;
+    da_glDepthRangef glDepthRangef;
+    da_glClearDepthf glClearDepthf;
+    // ARB_get_program_binary
+    da_glGetProgramBinary glGetProgramBinary;
+    da_glProgramBinary glProgramBinary;
+    da_glProgramParameteri glProgramParameteri;
+    // ARB_separate_shader_objects
+    da_glUseProgramStages glUseProgramStages;
+    da_glActiveShaderProgram glActiveShaderProgram;
+    da_glCreateShaderProgramv glCreateShaderProgramv;
+    da_glBindProgramPipeline glBindProgramPipeline;
+    da_glDeleteProgramPipelines glDeleteProgramPipelines;
+    da_glGenProgramPipelines glGenProgramPipelines;
+    da_glIsProgramPipeline glIsProgramPipeline;
+    da_glGetProgramPipelineiv glGetProgramPipelineiv;
+    da_glProgramUniform1i glProgramUniform1i;
+    da_glProgramUniform1iv glProgramUniform1iv;
+    da_glProgramUniform1f glProgramUniform1f;
+    da_glProgramUniform1fv glProgramUniform1fv;
+    da_glProgramUniform1d glProgramUniform1d;
+    da_glProgramUniform1dv glProgramUniform1dv;
+    da_glProgramUniform1ui glProgramUniform1ui;
+    da_glProgramUniform1uiv glProgramUniform1uiv;
+    da_glProgramUniform2i glProgramUniform2i;
+    da_glProgramUniform2iv glProgramUniform2iv;
+    da_glProgramUniform2f glProgramUniform2f;
+    da_glProgramUniform2fv glProgramUniform2fv;
+    da_glProgramUniform2d glProgramUniform2d;
+    da_glProgramUniform2dv glProgramUniform2dv;
+    da_glProgramUniform2ui glProgramUniform2ui;
+    da_glProgramUniform2uiv glProgramUniform2uiv;
+    da_glProgramUniform3i glProgramUniform3i;
+    da_glProgramUniform3iv glProgramUniform3iv;
+    da_glProgramUniform3f glProgramUniform3f;
+    da_glProgramUniform3fv glProgramUniform3fv;
+    da_glProgramUniform3d glProgramUniform3d;
+    da_glProgramUniform3dv glProgramUniform3dv;
+    da_glProgramUniform3ui glProgramUniform3ui;
+    da_glProgramUniform3uiv glProgramUniform3uiv;
+    da_glProgramUniform4i glProgramUniform4i;
+    da_glProgramUniform4iv glProgramUniform4iv;
+    da_glProgramUniform4f glProgramUniform4f;
+    da_glProgramUniform4fv glProgramUniform4fv;
+    da_glProgramUniform4d glProgramUniform4d;
+    da_glProgramUniform4dv glProgramUniform4dv;
+    da_glProgramUniform4ui glProgramUniform4ui;
+    da_glProgramUniform4uiv glProgramUniform4uiv;
+    da_glProgramUniformMatrix2fv glProgramUniformMatrix2fv;
+    da_glProgramUniformMatrix3fv glProgramUniformMatrix3fv;
+    da_glProgramUniformMatrix4fv glProgramUniformMatrix4fv;
+    da_glProgramUniformMatrix2dv glProgramUniformMatrix2dv;
+    da_glProgramUniformMatrix3dv glProgramUniformMatrix3dv;
+    da_glProgramUniformMatrix4dv glProgramUniformMatrix4dv;
+    da_glProgramUniformMatrix2x3fv glProgramUniformMatrix2x3fv;
+    da_glProgramUniformMatrix3x2fv glProgramUniformMatrix3x2fv;
+    da_glProgramUniformMatrix2x4fv glProgramUniformMatrix2x4fv;
+    da_glProgramUniformMatrix4x2fv glProgramUniformMatrix4x2fv;
+    da_glProgramUniformMatrix3x4fv glProgramUniformMatrix3x4fv;
+    da_glProgramUniformMatrix4x3fv glProgramUniformMatrix4x3fv;
+    da_glProgramUniformMatrix2x3dv glProgramUniformMatrix2x3dv;
+    da_glProgramUniformMatrix3x2dv glProgramUniformMatrix3x2dv;
+    da_glProgramUniformMatrix2x4dv glProgramUniformMatrix2x4dv;
+    da_glProgramUniformMatrix4x2dv glProgramUniformMatrix4x2dv;
+    da_glProgramUniformMatrix3x4dv glProgramUniformMatrix3x4dv;
+    da_glProgramUniformMatrix4x3dv glProgramUniformMatrix4x3dv;
+    da_glValidateProgramPipeline glValidateProgramPipeline;
+    da_glGetProgramPipelineInfoLog glGetProgramPipelineInfoLog;
+    // ARB_vertex_attrib_64bit
+    da_glVertexAttribL1d glVertexAttribL1d;
+    da_glVertexAttribL2d glVertexAttribL2d;
+    da_glVertexAttribL3d glVertexAttribL3d;
+    da_glVertexAttribL4d glVertexAttribL4d;
+    da_glVertexAttribL1dv glVertexAttribL1dv;
+    da_glVertexAttribL2dv glVertexAttribL2dv;
+    da_glVertexAttribL3dv glVertexAttribL3dv;
+    da_glVertexAttribL4dv glVertexAttribL4dv;
+    da_glVertexAttribLPointer glVertexAttribLPointer;
+    da_glGetVertexAttribLdv glGetVertexAttribLdv;
+    // ARB_viewport_array
+    da_glViewportArrayv glViewportArrayv;
+    da_glViewportIndexedf glViewportIndexedf;
+    da_glViewportIndexedfv glViewportIndexedfv;
+    da_glScissorArrayv glScissorArrayv;
+    da_glScissorIndexed glScissorIndexed;
+    da_glScissorIndexedv glScissorIndexedv;
+    da_glDepthRangeArrayv glDepthRangeArrayv;
+    da_glDepthRangeIndexed glDepthRangeIndexed;
+    da_glGetFloati_v glGetFloati_v;
+    da_glGetDoublei_v glGetDoublei_v;
+    // ARB_base_instance
+    da_glDrawArraysInstancedBaseInstance glDrawArraysInstancedBaseInstance;
+    da_glDrawElementsInstancedBaseInstance glDrawElementsInstancedBaseInstance;
+    da_glDrawElementsInstancedBaseVertexBaseInstance glDrawElementsInstancedBaseVertexBaseInstance;
+    // ARB_transform_feedback_instanced
+    da_glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
+    da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
+    // ARB_internalformat_query
+    da_glGetInternalformativ glGetInternalformativ;
+    // ARB_shader_atomic_counters
+    da_glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;
+    // ARB_shader_image_load_store
+    da_glBindImageTexture glBindImageTexture;
+    da_glMemoryBarrier glMemoryBarrier;
+    // ARB_texture_storage
+    da_glTexStorage1D glTexStorage1D;
+    da_glTexStorage2D glTexStorage2D;
+    da_glTexStorage3D glTexStorage3D;
+    da_glTextureStorage1DEXT glTextureStorage1DEXT;
+    da_glTextureStorage2DEXT glTextureStorage2DEXT;
+    da_glTextureStorage3DEXT glTextureStorage3DEXT;
+    // ARB_clear_buffer_object
+    da_glClearBufferData glClearBufferData;
+    da_glClearBufferSubData glClearBufferSubData;
+    da_glClearNamedBufferDataEXT glClearNamedBufferDataEXT;
+    da_glClearNamedBufferSubDataEXT glClearNamedBufferSubDataEXT;
+    // ARB_compute_shader
+    da_glDispatchCompute glDispatchCompute;
+    da_glDispatchComputeIndirect glDispatchComputeIndirect;
+    // KHR_debug
+    da_glDebugMessageControl glDebugMessageControl;
+    da_glDebugMessageInsert glDebugMessageInsert;
+    da_glDebugMessageCallback glDebugMessageCallback;
+    da_glGetDebugMessageLog glGetDebugMessageLog;
+    da_glPushDebugGroup glPushDebugGroup;
+    da_glPopDebugGroup glPopDebugGroup;
+    da_glObjectLabel glObjectLabel;
+    da_glGetObjectLabel glGetObjectLabel;
+    da_glObjectPtrLabel glObjectPtrLabel;
+    da_glGetObjectPtrLabel glGetObjectPtrLabel;
+    // ARB_framebuffer_no_attachments
+    da_glFramebufferParameteri glFramebufferParameteri;
+    da_glGetFramebufferParameteriv glGetFramebufferParameteriv;
+    da_glNamedFramebufferParameteriEXT glNamedFramebufferParameteriEXT;
+    da_glGetNamedFramebufferParameterivEXT glGetNamedFramebufferParameterivEXT;
+    // ARB_internalformat_query2
+    da_glGetInternalformati64v glGetInternalformati64v;
+    // ARB_invalidate_subdata
+    da_glInvalidateTexSubImage glInvalidateTexSubImage;
+    da_glInvalidateTexImage glInvalidateTexImage;
+    da_glInvalidateBufferSubData glInvalidateBufferSubData;
+    da_glInvalidateBufferData glInvalidateBufferData;
+    da_glInvalidateFramebuffer glInvalidateFramebuffer;
+    da_glInvalidateSubFramebuffer glInvalidateSubFramebuffer;
+    // ARB_multi_draw_indirect
+    da_glMultiDrawArraysIndirect glMultiDrawArraysIndirect;
+    da_glMultiDrawElementsIndirect glMultiDrawElementsIndirect;
+    // ARB_program_interface_query
+    da_glGetProgramInterfaceiv glGetProgramInterfaceiv;
+    da_glGetProgramResourceIndex glGetProgramResourceIndex;
+    da_glGetProgramResourceName glGetProgramResourceName;
+    da_glGetProgramResourceiv glGetProgramResourceiv;
+    da_glGetProgramResourceLocation glGetProgramResourceLocation;
+    da_glGetProgramResourceLocationIndex glGetProgramResourceLocationIndex;
+    // ARB_shader_storage_buffer_object
+    da_glShaderStorageBlockBinding glShaderStorageBlockBinding;
+    // ARB_texture_buffer_range
+    da_glTexBufferRange glTexBufferRange;
+    da_glTextureBufferRangeEXT glTextureBufferRangeEXT;
+    // ARB_texture_storage_multisample
+    da_glTexStorage2DMultisample glTexStorage2DMultisample;
+    da_glTexStorage3DMultisample glTexStorage3DMultisample;
+    da_glTextureStorage2DMultisampleEXT glTextureStorage2DMultisampleEXT;
+    da_glTextureStorage3DMultisampleEXT glTextureStorage3DMultisampleEXT;
+    // ARB_texture_view
+    da_glTextureView glTextureView;
+    // ARB_vertex_attrib_binding
+    da_glBindVertexBuffer glBindVertexBuffer;
+    da_glVertexAttribFormat glVertexAttribFormat;
+    da_glVertexAttribIFormat glVertexAttribIFormat;
+    da_glVertexAttribLFormat glVertexAttribLFormat;
+    da_glVertexAttribBinding glVertexAttribBinding;
+    da_glVertexBindingDivisor glVertexBindingDivisor;
+    da_glVertexArrayBindVertexBufferEXT glVertexArrayBindVertexBufferEXT;
+    da_glVertexArrayVertexAttribFormatEXT glVertexArrayVertexAttribFormatEXT;
+    da_glVertexArrayVertexAttribIFormatEXT glVertexArrayVertexAttribIFormatEXT;
+    da_glVertexArrayVertexAttribLFormatEXT glVertexArrayVertexAttribLFormatEXT;
+    da_glVertexArrayVertexAttribBindingEXT glVertexArrayVertexAttribBindingEXT;
+    da_glVertexArrayVertexBindingDivisorEXT glVertexArrayVertexBindingDivisorEXT;
+    // ARB_draw_buffers_blend
+    da_glBlendEquationiARB glBlendEquationiARB;
+    da_glBlendEquationSeparateiARB glBlendEquationSeparateiARB;
+    da_glBlendFunciARB glBlendFunciARB;
+    da_glBlendFuncSeparateiARB glBlendFuncSeparateiARB;
+    // ARB_sample_shading
+    da_glMinSampleShadingARB glMinSampleShadingARB;
+    // ARB_shading_language_include
+    da_glNamedStringARB glNamedStringARB;
+    da_glDeleteNamedStringARB glDeleteNamedStringARB;
+    da_glCompileShaderIncludeARB glCompileShaderIncludeARB;
+    da_glIsNamedStringARB glIsNamedStringARB;
+    da_glGetNamedStringARB glGetNamedStringARB;
+    da_glGetNamedStringivARB glGetNamedStringivARB;
+    // ARB_cl_event
+    da_glCreateSyncFromCLeventARB glCreateSyncFromCLeventARB;
+    // ARB_debug_output
+    da_glDebugMessageControlARB glDebugMessageControlARB;
+    da_glDebugMessageInsertARB glDebugMessageInsertARB;
+    da_glDebugMessageCallbackARB glDebugMessageCallbackARB;
+    da_glGetDebugMessageLogARB glGetDebugMessageLogARB;
+    // ARB_robustness
+    da_glGetGraphicsResetStatusARB glGetGraphicsResetStatusARB;
+    da_glGetnMapdvARB glGetnMapdvARB;
+    da_glGetnMapfvARB glGetnMapfvARB;
+    da_glGetnMapivARB glGetnMapivARB;
+    da_glGetnPixelMapfvARB glGetnPixelMapfvARB;
+    da_glGetnPixelMapuivARB glGetnPixelMapuivARB;
+    da_glGetnPixelMapusvARB glGetnPixelMapusvARB;
+    da_glGetnPolygonStippleARB glGetnPolygonStippleARB;
+    da_glGetnColorTableARB glGetnColorTableARB;
+    da_glGetnConvolutionFilterARB glGetnConvolutionFilterARB;
+    da_glGetnSeparableFilterARB glGetnSeparableFilterARB;
+    da_glGetnHistogramARB glGetnHistogramARB;
+    da_glGetnMinmaxARB glGetnMinmaxARB;
+    da_glGetnTexImageARB glGetnTexImageARB;
+    da_glReadnPixelsARB glReadnPixelsARB;
+    da_glGetnCompressedTexImageARB glGetnCompressedTexImageARB;
+    da_glGetnUniformfvARB glGetnUniformfvARB;
+    da_glGetnUniformivARB glGetnUniformivARB;
+    da_glGetnUniformuivARB glGetnUniformuivARB;
+    da_glGetnUniformdvARB glGetnUniformdvARB;
+};
+
+enum ARBProps =
+q{
+    bool ARB_framebuffer_object;
+    bool ARB_map_buffer_range;
+    bool ARB_vertex_array_object;
+    bool ARB_copy_buffer;
+    bool ARB_uniform_buffer_object;
+    bool ARB_draw_elements_base_vertex;
+    bool ARB_provoking_vertex;
+    bool ARB_sync;
+    bool ARB_texture_multisample;
+    bool ARB_blend_func_extended;
+    bool ARB_sampler_objects;
+    bool ARB_timer_query;
+    bool ARB_vertex_type_2_10_10_10_rev;
+    bool ARB_explicit_attrib_location;
+    bool ARB_occlusion_query2;
+    bool ARB_shader_bit_encoding;
+    bool ARB_texture_rgb10_a2ui;
+    bool ARB_texture_swizzle;
+    bool ARB_draw_indirect;
+    bool ARB_gpu_shader_fp64;
+    bool ARB_shader_subroutine;
+    bool ARB_tessellation_shader;
+    bool ARB_transform_feedback2;
+    bool ARB_transform_feedback3;
+    bool ARB_texture_query_lod;
+    bool ARB_gpu_shader5;
+    bool ARB_texture_buffer_object_rgb32;
+    bool ARB_texture_cube_map_array;
+    bool ARB_texture_gather;
+    bool ARB_ES2_compatibility;
+    bool ARB_get_program_binary;
+    bool ARB_separate_shader_objects;
+    bool ARB_vertex_attrib_64bit;
+    bool ARB_viewport_array;
+    bool ARB_shader_precision;
+    bool ARB_base_instance;
+    bool ARB_transform_feedback_instanced;
+    bool ARB_internalformat_query;
+    bool ARB_shader_atomic_counters;
+    bool ARB_shader_image_load_store;
+    bool ARB_texture_storage;
+    bool ARB_shading_language_420pack;
+    bool ARB_compressed_texture_pixel_storage;
+    bool ARB_conservative_depth;
+    bool ARB_map_buffer_alignment;
+    bool ARB_shading_language_packing;
+    bool ARB_clear_buffer_object;
+    bool ARB_compute_shader;
+    bool KHR_debug;
+    bool ARB_framebuffer_no_attachments;
+    bool ARB_internalformat_query2;
+    bool ARB_invalidate_subdata;
+    bool ARB_multi_draw_indirect;
+    bool ARB_program_interface_query;
+    bool ARB_shader_storage_buffer_object;
+    bool ARB_texture_buffer_range;
+    bool ARB_texture_storage_multisample;
+    bool ARB_texture_view;
+    bool ARB_vertex_attrib_binding;
+    bool ARB_array_of_arrays;
+    bool ARB_fragment_layer_viewport;
+    bool ARB_shader_image_size;
+    bool ARB_ES3_compatibility;
+    bool ARB_copy_image;
+    bool ARB_explicit_uniform_location;
+    bool ARB_robust_buffer_access_behavior;
+    bool ARB_stencil_texturing;
+    bool ARB_texture_query_levels;
+    bool ARB_draw_buffers_blend;
+    bool ARB_sample_shading;
+    bool ARB_shading_language_include;
+    bool ARB_cl_event;
+    bool ARB_debug_output;
+    bool ARB_robustness;
+    bool ARB_depth_buffer_float;
+    bool ARB_framebuffer_sRGB;
+    bool ARB_half_float_vertex;
+    bool ARB_texture_compression_rgtc;
+    bool ARB_texture_rg;
+    bool ARB_depth_clamp;
+    bool ARB_fragment_coord_conventions;
+    bool ARB_seamless_cube_map;
+    bool ARB_vertex_array_bgra;
+    bool ARB_texture_compression_bptc;
+    bool ARB_shader_stencil_export;
 };

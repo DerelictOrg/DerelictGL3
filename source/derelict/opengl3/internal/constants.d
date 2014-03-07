@@ -25,15 +25,14 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.constants;
+module derelict.opengl3.internal.constants;
 
 enum : ubyte {
     GL_FALSE                          = 0,
     GL_TRUE                           = 1,
 }
 
-enum : uint
-{
+enum : uint {
     // OpenGL 1.1
     GL_DEPTH_BUFFER_BIT               = 0x00000100,
     GL_STENCIL_BUFFER_BIT             = 0x00000400,

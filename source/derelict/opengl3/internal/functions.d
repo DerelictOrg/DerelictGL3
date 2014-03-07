@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl3.internal.functions;
 
 private {
-    import derelict.opengl3.types;
+    import derelict.opengl3.internal.types;
 }
 
 extern( System ) nothrow {

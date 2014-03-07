@@ -28,8 +28,8 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl3.gl3;
 
 public {
-    import derelict.opengl3.types;
-    import derelict.opengl3.constants;
+    import derelict.opengl3.internal.types;
+    import derelict.opengl3.internal.constants;
     import derelict.opengl3.arb;
     import derelict.opengl3.ext;
     import derelict.opengl3.internal.funcmix;
@@ -42,7 +42,7 @@ private {
     import derelict.util.loader;
     import derelict.util.exception;
     import derelict.util.system;
-    import derelict.opengl3.intern;
+    import derelict.opengl3.internal.common;
 
     static if( Derelict_OS_Windows ) {
         import derelict.opengl3.wgl;
@@ -459,7 +459,6 @@ class DerelictGL3Loader : SharedLibLoader
         bindFunc( cast( void** )&glIsEnabled, "glIsEnabled" );
         bindFunc( cast( void** )&glDepthRange, "glDepthRange" );
         bindFunc( cast( void** )&glViewport, "glViewport" );
-
         // OpenGL 1.1
         bindFunc( cast( void** )&glDrawArrays, "glDrawArrays" );
         bindFunc( cast( void** )&glDrawElements, "glDrawElements" );

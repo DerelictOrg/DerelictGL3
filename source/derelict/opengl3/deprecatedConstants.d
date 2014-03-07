@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl3.deprecatedConstants;
 
-private import derelict.opengl3.types;
+private import derelict.opengl3.internal.types;
 
 enum : GLenum {
     // 1.0 & 1.1

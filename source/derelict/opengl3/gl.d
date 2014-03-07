@@ -35,7 +35,7 @@ public {
 
 private {
     import derelict.util.loader;
-    import derelict.opengl3.intern;
+    import derelict.opengl3.internal.common;
 }
 
 final class DerelictGLLoader : DerelictGL3Loader {

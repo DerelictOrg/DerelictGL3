@@ -1,6 +1,9 @@
 module derelict.opengl3.internal.funcmix;
 
-private import derelict.opengl3.internal.functions;
+private {
+    import derelict.opengl3.internal.functions;
+    import derelict.opengl3.internal.arb;
+}
 
 __gshared {
     mixin( GL11Funcs );
@@ -15,4 +18,6 @@ __gshared {
     mixin( GL32Funcs );
     mixin( GL33Funcs );
     mixin( GL40Funcs );
+
+    mixin( ARBFuncs );
 }

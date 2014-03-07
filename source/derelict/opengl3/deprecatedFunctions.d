@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl3.deprecatedFunctions;
 
-private import derelict.opengl3.types;
+private import derelict.opengl3.internal.types;
 
 extern( System ) nothrow {
     // 1.0 & 1.1 Deprecated functions

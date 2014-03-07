@@ -25,7 +25,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.intern;
+module derelict.opengl3.internal.common;
 
 private {
     import core.stdc.string;
@@ -40,7 +40,7 @@ private {
     else static if( Derelict_OS_Posix ) import derelict.opengl3.glx;
 }
 
-package {
+public {
         void bindGLFunc( void** ptr, string symName ) {
             auto sym = loadGLFunc( symName );
             if( !sym )

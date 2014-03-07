@@ -34,9 +34,9 @@ version( Windows ) {
         import std.string;
 
         import derelict.util.wintypes;
-        import derelict.opengl3.types;
+        import derelict.opengl3.internal.types;
         import derelict.opengl3.wgl;
-        import derelict.opengl3.intern;
+        import derelict.opengl3.internal.common;
     }
 
     enum {

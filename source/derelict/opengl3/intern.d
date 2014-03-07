@@ -25,7 +25,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.internal;
+module derelict.opengl3.intern;
 
 private {
     import core.stdc.string;
@@ -34,9 +34,7 @@ private {
 
     import derelict.util.exception;
     import derelict.util.system;
-    import derelict.opengl3.types;
-    import derelict.opengl3.constants;
-    import derelict.opengl3.functions;
+    import derelict.opengl3.gl3;
     static if( Derelict_OS_Windows ) import derelict.opengl3.wgl;
     else static if( Derelict_OS_Mac ) import derelict.opengl3.cgl;
     else static if( Derelict_OS_Posix ) import derelict.opengl3.glx;

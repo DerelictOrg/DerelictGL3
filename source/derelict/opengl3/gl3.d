@@ -30,9 +30,9 @@ module derelict.opengl3.gl3;
 public {
     import derelict.opengl3.types;
     import derelict.opengl3.constants;
-    import derelict.opengl3.functions;
     import derelict.opengl3.arb;
     import derelict.opengl3.ext;
+    import derelict.opengl3.internal.funcmix;
 }
 
 private {
@@ -42,7 +42,7 @@ private {
     import derelict.util.loader;
     import derelict.util.exception;
     import derelict.util.system;
-    import derelict.opengl3.internal;
+    import derelict.opengl3.intern;
 
     static if( Derelict_OS_Windows ) {
         import derelict.opengl3.wgl;

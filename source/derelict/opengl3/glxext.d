@@ -34,7 +34,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
     private {
         import derelict.opengl3.types;
         import derelict.opengl3.constants;
-        import derelict.opengl3.internal;
+        import derelict.opengl3.intern;
         import derelict.opengl3.glx;
         import derelict.util.xtypes;
     }

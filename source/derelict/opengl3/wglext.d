@@ -36,7 +36,7 @@ version( Windows ) {
         import derelict.util.wintypes;
         import derelict.opengl3.types;
         import derelict.opengl3.wgl;
-        import derelict.opengl3.internal;
+        import derelict.opengl3.intern;
     }
 
     enum {

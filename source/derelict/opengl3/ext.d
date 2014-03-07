@@ -30,7 +30,7 @@ module derelict.opengl3.ext;
 private {
     import derelict.opengl3.types;
     import derelict.opengl3.constants;
-    import derelict.opengl3.internal;
+    import derelict.opengl3.intern;
 }
 
 enum : uint {

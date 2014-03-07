@@ -31,7 +31,7 @@ private {
     import derelict.util.system;
     import derelict.opengl3.types;
     import derelict.opengl3.constants;
-    import derelict.opengl3.internal;
+    import derelict.opengl3.intern;
 }
 
 // Part of ARB_sync

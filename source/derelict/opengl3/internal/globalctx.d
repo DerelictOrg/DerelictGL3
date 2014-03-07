@@ -1,13 +1,14 @@
 module derelict.opengl3.internal.globalctx;
 
 private {
+    import derelict.opengl3.internal.arbfunctions;
+    import derelict.opengl3.internal.extfunctions;
     import derelict.opengl3.internal.functions;
-    import derelict.opengl3.internal.arb;
 }
 
+enum EXTEnabled = true;
 
 __gshared {
-    mixin( ARBProps );
 
     mixin( GL11Funcs );
     mixin( GL12Funcs );
@@ -22,5 +23,9 @@ __gshared {
     mixin( GL33Funcs );
     mixin( GL40Funcs );
 
+    mixin( ARBProps );
     mixin( ARBFuncs );
+
+    mixin( EXTProps );
+    mixin( EXTFuncs );
 }

@@ -28,11 +28,11 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl3.gl3;
 
 public {
-    import derelict.opengl3.internal.types;
+    import derelict.opengl3.internal.arbconstants;
     import derelict.opengl3.internal.constants;
-    import derelict.opengl3.ext;
+    import derelict.opengl3.internal.extconstants;
     import derelict.opengl3.internal.globalctx;
-    import derelict.opengl3.internal.loader;
+    import derelict.opengl3.internal.types;
 }
 
 private {
@@ -43,6 +43,7 @@ private {
     import derelict.util.exception;
     import derelict.util.system;
     import derelict.opengl3.internal.common;
+    import derelict.opengl3.internal.loader;
 
     static if( Derelict_OS_Windows ) {
         import derelict.opengl3.wgl;
@@ -83,8 +84,6 @@ class DerelictGL3Loader : SharedLibLoader {
             GLVersion maxVer = findMaxAvailable();
             glVer = loadContext!( derelict.opengl3.internal.globalctx )( maxVer );
 
-
-            loadEXT( glVer );
             loadPlatformEXT(  glVer  );
 
             return glVer;

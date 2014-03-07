@@ -30,6 +30,7 @@ module derelict.opengl3.internal.loader;
 private {
     import derelict.opengl3.internal.arbload;
     import derelict.opengl3.internal.common;
+    import derelict.opengl3.internal.extload;
     import derelict.opengl3.internal.globalctx;
     import derelict.opengl3.internal.types;
 }
@@ -37,6 +38,8 @@ private {
 GLVersion loadContext( alias ctx)( GLVersion glversion ) {
     auto ret = loadCore!ctx( glversion );
     loadARB!ctx( glversion );
+
+    static if( ctx.EXTEnabled ) loadEXT!ctx( glversion );
     return ret;
 }
 
@@ -476,5 +479,11 @@ private {
         ctx.ARB_vertex_array_bgra = isExtSupported( glversion, "GL_ARB_vertex_array_bgra" );
         ctx.ARB_texture_compression_bptc = isExtSupported( glversion, "GL_ARB_texture_compression_bptc" );
         ctx.ARB_shader_stencil_export = isExtSupported( glversion, "GL_ARB_shader_stencil_export" );
+    }
+
+    void loadEXT( alias ctx )( GLVersion glversion ) {
+        if( isExtSupported( glversion, "GL_EXT_framebuffer_object" )) load_EXT_framebuffer_object!ctx();
+
+        ctx.EXT_texture_filter_anisotropic = isExtSupported( glversion, "EXT_texture_filter_anisotropic" );
     }
 }

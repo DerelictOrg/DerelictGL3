@@ -35,6 +35,72 @@ private {
     import derelict.opengl3.internal.types;
 }
 
+void loadBase( alias ctx )( void delegate( void**, string, bool doThrow = true ) bindFunc ) {
+    // OpenGL 1.0
+    bindFunc( cast( void** )&ctx.glCullFace, "glCullFace" );
+    bindFunc( cast( void** )&ctx.glFrontFace, "glFrontFace" );
+    bindFunc( cast( void** )&ctx.glHint, "glHint" );
+    bindFunc( cast( void** )&ctx.glLineWidth, "glLineWidth" );
+    bindFunc( cast( void** )&ctx.glPointSize, "glPointSize" );
+    bindFunc( cast( void** )&ctx.glPolygonMode, "glPolygonMode" );
+    bindFunc( cast( void** )&ctx.glScissor, "glScissor" );
+    bindFunc( cast( void** )&ctx.glTexParameterf, "glTexParameterf" );
+    bindFunc( cast( void** )&ctx.glTexParameterfv, "glTexParameterfv" );
+    bindFunc( cast( void** )&ctx.glTexParameteri, "glTexParameteri" );
+    bindFunc( cast( void** )&ctx.glTexParameteriv, "glTexParameteriv" );
+    bindFunc( cast( void** )&ctx.glTexImage1D, "glTexImage1D" );
+    bindFunc( cast( void** )&ctx.glTexImage2D, "glTexImage2D" );
+    bindFunc( cast( void** )&ctx.glDrawBuffer, "glDrawBuffer" );
+    bindFunc( cast( void** )&ctx.glClear, "glClear" );
+    bindFunc( cast( void** )&ctx.glClearColor, "glClearColor" );
+    bindFunc( cast( void** )&ctx.glClearStencil, "glClearStencil" );
+    bindFunc( cast( void** )&ctx.glClearDepth, "glClearDepth" );
+    bindFunc( cast( void** )&ctx.glStencilMask, "glStencilMask" );
+    bindFunc( cast( void** )&ctx.glColorMask, "glColorMask" );
+    bindFunc( cast( void** )&ctx.glDepthMask, "glDepthMask" );
+    bindFunc( cast( void** )&ctx.glDisable, "glDisable" );
+    bindFunc( cast( void** )&ctx.glEnable, "glEnable" );
+    bindFunc( cast( void** )&ctx.glFinish, "glFinish" );
+    bindFunc( cast( void** )&ctx.glFlush, "glFlush" );
+    bindFunc( cast( void** )&ctx.glBlendFunc, "glBlendFunc" );
+    bindFunc( cast( void** )&ctx.glLogicOp, "glLogicOp" );
+    bindFunc( cast( void** )&ctx.glStencilFunc, "glStencilFunc" );
+    bindFunc( cast( void** )&ctx.glStencilOp, "glStencilOp" );
+    bindFunc( cast( void** )&ctx.glDepthFunc, "glDepthFunc" );
+    bindFunc( cast( void** )&ctx.glPixelStoref, "glPixelStoref" );
+    bindFunc( cast( void** )&ctx.glPixelStorei, "glPixelStorei" );
+    bindFunc( cast( void** )&ctx.glReadBuffer, "glReadBuffer" );
+    bindFunc( cast( void** )&ctx.glReadPixels, "glReadPixels" );
+    bindFunc( cast( void** )&ctx.glGetBooleanv, "glGetBooleanv" );
+    bindFunc( cast( void** )&ctx.glGetDoublev, "glGetDoublev" );
+    bindFunc( cast( void** )&ctx.glGetError, "glGetError" );
+    bindFunc( cast( void** )&ctx.glGetFloatv, "glGetFloatv" );
+    bindFunc( cast( void** )&ctx.glGetIntegerv, "glGetIntegerv" );
+    bindFunc( cast( void** )&ctx.glGetString, "glGetString" );
+    bindFunc( cast( void** )&ctx.glGetTexImage, "glGetTexImage" );
+    bindFunc( cast( void** )&ctx.glGetTexParameterfv, "glGetTexParameterfv" );
+    bindFunc( cast( void** )&ctx.glGetTexParameteriv, "glGetTexParameteriv" );
+    bindFunc( cast( void** )&ctx.glGetTexLevelParameterfv, "glGetTexLevelParameterfv" );
+    bindFunc( cast( void** )&ctx.glGetTexLevelParameteriv, "glGetTexLevelParameteriv" );
+    bindFunc( cast( void** )&ctx.glIsEnabled, "glIsEnabled" );
+    bindFunc( cast( void** )&ctx.glDepthRange, "glDepthRange" );
+    bindFunc( cast( void** )&ctx.glViewport, "glViewport" );
+    // OpenGL 1.1
+    bindFunc( cast( void** )&ctx.glDrawArrays, "glDrawArrays" );
+    bindFunc( cast( void** )&ctx.glDrawElements, "glDrawElements" );
+    bindFunc( cast( void** )&ctx.glPolygonOffset, "glPolygonOffset" );
+    bindFunc( cast( void** )&ctx.glCopyTexImage1D, "glCopyTexImage1D" );
+    bindFunc( cast( void** )&ctx.glCopyTexImage2D, "glCopyTexImage2D" );
+    bindFunc( cast( void** )&ctx.glCopyTexSubImage1D, "glCopyTexSubImage1D" );
+    bindFunc( cast( void** )&ctx.glCopyTexSubImage2D, "glCopyTexSubImage2D" );
+    bindFunc( cast( void** )&ctx.glTexSubImage1D, "glTexSubImage1D" );
+    bindFunc( cast( void** )&ctx.glTexSubImage2D, "glTexSubImage2D" );
+    bindFunc( cast( void** )&ctx.glBindTexture, "glBindTexture" );
+    bindFunc( cast( void** )&ctx.glDeleteTextures, "glDeleteTextures" );
+    bindFunc( cast( void** )&ctx.glGenTextures, "glGenTextures" );
+    bindFunc( cast( void** )&ctx.glIsTexture, "glIsTexture" );
+}
+
 GLVersion loadContext( alias ctx)( GLVersion glversion ) {
     auto ret = loadCore!ctx( glversion );
     loadARB!ctx( glversion );

@@ -2,8 +2,8 @@ module derelict.opengl3.internal.globalctx;
 
 private {
     import derelict.opengl3.internal.arbfunctions;
+    import derelict.opengl3.internal.corefunctions;
     import derelict.opengl3.internal.extfunctions;
-    import derelict.opengl3.internal.functions;
 
     version( Windows ) import derelict.opengl3.internal.wglfunctions;
 }

@@ -28,9 +28,9 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl3.internal.extfunctions;
 
 private {
-    import derelict.opengl3.internal.types;
-    import derelict.opengl3.internal.constants;
     import derelict.opengl3.internal.common;
+    import derelict.opengl3.internal.coreconstants;
+    import derelict.opengl3.internal.types;
 }
 
 

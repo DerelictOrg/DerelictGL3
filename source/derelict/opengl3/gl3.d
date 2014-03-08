@@ -29,7 +29,7 @@ module derelict.opengl3.gl3;
 
 public {
     import derelict.opengl3.internal.arbconstants;
-    import derelict.opengl3.internal.constants;
+    import derelict.opengl3.internal.coreconstants;
     import derelict.opengl3.internal.extconstants;
     import derelict.opengl3.internal.globalctx;
     import derelict.opengl3.internal.platform;

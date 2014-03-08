@@ -87,7 +87,7 @@ class DerelictGL3Loader : SharedLibLoader {
             GLVersion glVer = GLVersion.GL11;
             scope( exit ) _loadedVersion = glVer;
 
-            GLVersion maxVer = findMaxAvailable();
+            GLVersion maxVer = findMaxAvailableVersion!ctx();
             glVer = loadContext!ctx( maxVer );
 
             loadPlatformEXT!ctx(  glVer  );
@@ -101,64 +101,6 @@ class DerelictGL3Loader : SharedLibLoader {
         _loadedVersion = GLVersion.GL11;
 
         loadPlatformGL!ctx( &bindFunc );
-    }
-
-    private {
-        GLVersion findMaxAvailable()
-        {
-            /* glGetString( GL_VERSION ) is guaranteed to return a constant string
-             of the format "[major].[minor].[build] xxxx", where xxxx is vendor-specific
-             information. Here, I'm pulling two characters out of the string, the major
-             and minor version numbers. */
-            const( char )* verstr = glGetString( GL_VERSION );
-            char major = *verstr;
-            char minor = *( verstr + 2 );
-
-            switch( major ) {
-                case '4':
-                    if( minor == '3' ) return GLVersion.GL43;
-                    else if( minor == '2' ) return GLVersion.GL42;
-                    else if( minor == '1' ) return GLVersion.GL41;
-                    else if( minor == '0' ) return GLVersion.GL40;
-
-                    /* No default condition here, since it's possible for new
-                     minor versions of the 4.x series to be released before
-                     support is added to Derelict. That case is handled outside
-                     of the switch. When no more 4.x versions are released, this
-                     should be changed to return GL40 by default. */
-                    break;
-
-                case '3':
-                    if( minor == '3' ) return GLVersion.GL33;
-                    else if( minor == '2' ) return GLVersion.GL32;
-                    else if( minor == '1' ) return GLVersion.GL31;
-                    else return GLVersion.GL30;
-
-                case '2':
-                    if( minor == '1' ) return GLVersion.GL21;
-                    else return GLVersion.GL20;
-
-                case '1':
-                    if( minor == '5' ) return GLVersion.GL15;
-                    else if( minor == '4' ) return GLVersion.GL14;
-                    else if( minor == '3' ) return GLVersion.GL13;
-                    else if( minor == '2' ) return GLVersion.GL12;
-                    else return GLVersion.GL11;
-
-                default:
-                    /* glGetString( GL_VERSION ) is guaranteed to return a result
-                     of a specific format, so if this point is reached it is
-                     going to be because a major version higher than what Derelict
-                     supports was encountered. That case is handled outside the
-                     switch. */
-                    break;
-
-            }
-
-            /* It's highly likely at this point that the version is higher than
-             what Derelict supports, so return the highest supported version. */
-            return GLVersion.HighestSupported;
-        }
     }
 }
 

@@ -42,45 +42,101 @@ private {
 }
 
 public {
-        void bindGLFunc( alias ctx )( void** ptr, string symName ) {
-            auto sym = loadGLFunc!ctx( symName );
-            if( !sym )
-                throw new SymbolLoadException( "Failed to load OpenGL symbol [" ~ symName ~ "]" );
-            *ptr = sym;
-        }
+    void bindGLFunc( alias ctx )( void** ptr, string symName ) {
+        auto sym = loadGLFunc!ctx( symName );
+        if( !sym )
+            throw new SymbolLoadException( "Failed to load OpenGL symbol [" ~ symName ~ "]" );
+        *ptr = sym;
+    }
 
-        bool isExtSupported( alias ctx )( GLVersion glversion, string name ) {
-            // If OpenGL 3+ is loaded, use glGetStringi.
-            if( glversion >= GLVersion.GL30 ) {
-                auto cstr = name.toStringz(  );
-                int count;
-                ctx.glGetIntegerv( GL_NUM_EXTENSIONS, &count );
-                for( int i=0; i<count; ++i ) {
-                    if( strcmp( ctx.glGetStringi( GL_EXTENSIONS, i ), cstr ) == 0 )
-                        return true;
-                }
-                return false;
-            }
-            // Otherwise use the classic approach.
-            else {
-                return findEXT(  ctx.glGetString( GL_EXTENSIONS ), name  );
-            }
-        }
-
-        // Assumes that extname is null-terminated, i.e. a string literal
-        bool findEXT( const char *extstr, string extname  ) {
-            import core.stdc.string;
-            auto res = strstr( extstr, extname.ptr  );
-            while( res  ) {
-                // It's possible that the extension name is actually a
-                // substring of another extension. If not, then the
-                // character following the name in the extension string
-                // should be a space (or possibly the null character ).
-                if( res[ extname.length ] == ' ' || res[ extname.length ] == '\0' )
+    bool isExtSupported( alias ctx )( GLVersion glversion, string name ) {
+        // If OpenGL 3+ is loaded, use glGetStringi.
+        if( glversion >= GLVersion.GL30 ) {
+            auto cstr = name.toStringz(  );
+            int count;
+            ctx.glGetIntegerv( GL_NUM_EXTENSIONS, &count );
+            for( int i=0; i<count; ++i ) {
+                if( strcmp( ctx.glGetStringi( GL_EXTENSIONS, i ), cstr ) == 0 )
                     return true;
-                res = strstr( res + extname.length, extname.ptr  );
             }
-
             return false;
         }
+        // Otherwise use the classic approach.
+        else {
+            return findEXT(  ctx.glGetString( GL_EXTENSIONS ), name  );
+        }
+    }
+
+    // Assumes that extname is null-terminated, i.e. a string literal
+    bool findEXT( const char *extstr, string extname  ) {
+        import core.stdc.string;
+        auto res = strstr( extstr, extname.ptr  );
+        while( res  ) {
+            // It's possible that the extension name is actually a
+            // substring of another extension. If not, then the
+            // character following the name in the extension string
+            // should be a space (or possibly the null character ).
+            if( res[ extname.length ] == ' ' || res[ extname.length ] == '\0' )
+                return true;
+            res = strstr( res + extname.length, extname.ptr  );
+        }
+
+        return false;
+    }
+
+    GLVersion findMaxAvailableVersion( alias ctx )()
+    {
+        /* glGetString( GL_VERSION ) is guaranteed to return a constant string
+         of the format "[major].[minor].[build] xxxx", where xxxx is vendor-specific
+         information. Here, I'm pulling two characters out of the string, the major
+         and minor version numbers. */
+        const( char )* verstr = ctx.glGetString( GL_VERSION );
+        char major = *verstr;
+        char minor = *( verstr + 2 );
+
+        switch( major ) {
+            case '4':
+                if( minor == '3' ) return GLVersion.GL43;
+                else if( minor == '2' ) return GLVersion.GL42;
+                else if( minor == '1' ) return GLVersion.GL41;
+                else if( minor == '0' ) return GLVersion.GL40;
+
+                /* No default condition here, since it's possible for new
+                 minor versions of the 4.x series to be released before
+                 support is added to Derelict. That case is handled outside
+                 of the switch. When no more 4.x versions are released, this
+                 should be changed to return GL40 by default. */
+                break;
+
+            case '3':
+                if( minor == '3' ) return GLVersion.GL33;
+                else if( minor == '2' ) return GLVersion.GL32;
+                else if( minor == '1' ) return GLVersion.GL31;
+                else return GLVersion.GL30;
+
+            case '2':
+                if( minor == '1' ) return GLVersion.GL21;
+                else return GLVersion.GL20;
+
+            case '1':
+                if( minor == '5' ) return GLVersion.GL15;
+                else if( minor == '4' ) return GLVersion.GL14;
+                else if( minor == '3' ) return GLVersion.GL13;
+                else if( minor == '2' ) return GLVersion.GL12;
+                else return GLVersion.GL11;
+
+            default:
+                /* glGetString( GL_VERSION ) is guaranteed to return a result
+                 of a specific format, so if this point is reached it is
+                 going to be because a major version higher than what Derelict
+                 supports was encountered. That case is handled outside the
+                 switch. */
+                break;
+
+        }
+
+        /* It's highly likely at this point that the version is higher than
+         what Derelict supports, so return the highest supported version. */
+        return GLVersion.HighestSupported;
+    }
 }

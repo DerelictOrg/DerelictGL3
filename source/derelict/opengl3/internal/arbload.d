@@ -36,26 +36,26 @@ private {
 package {
     void load_ARB_framebuffer_object( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glIsRenderbuffer, "glIsRenderbuffer" );
-            bindGLFunc( cast( void** )&ctx.glBindRenderbuffer, "glBindRenderbuffer" );
-            bindGLFunc( cast( void** )&ctx.glDeleteRenderbuffers, "glDeleteRenderbuffers" );
-            bindGLFunc( cast( void** )&ctx.glGenRenderbuffers, "glGenRenderbuffers" );
-            bindGLFunc( cast( void** )&ctx.glRenderbufferStorage, "glRenderbufferStorage" );
-            bindGLFunc( cast( void** )&ctx.glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv" );
-            bindGLFunc( cast( void** )&ctx.glIsFramebuffer, "glIsFramebuffer" );
-            bindGLFunc( cast( void** )&ctx.glBindFramebuffer, "glBindFramebuffer" );
-            bindGLFunc( cast( void** )&ctx.glDeleteFramebuffers, "glDeleteFramebuffers" );
-            bindGLFunc( cast( void** )&ctx.glGenFramebuffers, "glGenFramebuffers" );
-            bindGLFunc( cast( void** )&ctx.glCheckFramebufferStatus, "glCheckFramebufferStatus" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferTexture1D, "glFramebufferTexture1D" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferTexture2D, "glFramebufferTexture2D" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferTexture3D, "glFramebufferTexture3D" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferRenderbuffer, "glFramebufferRenderbuffer" );
-            bindGLFunc( cast( void** )&ctx.glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv" );
-            bindGLFunc( cast( void** )&ctx.glGenerateMipmap, "glGenerateMipmap" );
-            bindGLFunc( cast( void** )&ctx.glBlitFramebuffer, "glBlitFramebuffer" );
-            bindGLFunc( cast( void** )&ctx.glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferTextureLayer, "glFramebufferTextureLayer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsRenderbuffer, "glIsRenderbuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindRenderbuffer, "glBindRenderbuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteRenderbuffers, "glDeleteRenderbuffers" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenRenderbuffers, "glGenRenderbuffers" );
+            bindGLFunc!ctx( cast( void** )&ctx.glRenderbufferStorage, "glRenderbufferStorage" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsFramebuffer, "glIsFramebuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindFramebuffer, "glBindFramebuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteFramebuffers, "glDeleteFramebuffers" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenFramebuffers, "glGenFramebuffers" );
+            bindGLFunc!ctx( cast( void** )&ctx.glCheckFramebufferStatus, "glCheckFramebufferStatus" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferTexture1D, "glFramebufferTexture1D" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferTexture2D, "glFramebufferTexture2D" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferTexture3D, "glFramebufferTexture3D" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferRenderbuffer, "glFramebufferRenderbuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenerateMipmap, "glGenerateMipmap" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBlitFramebuffer, "glBlitFramebuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferTextureLayer, "glFramebufferTextureLayer" );
             ctx.ARB_framebuffer_object = true;
         } catch( Exception e ) {
             ctx.ARB_framebuffer_object = false;
@@ -64,8 +64,8 @@ package {
     }
     void load_ARB_map_buffer_range( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glMapBufferRange, "glMapBufferRange" );
-            bindGLFunc( cast( void** )&ctx.glFlushMappedBufferRange, "glFlushMappedBufferRange" );
+            bindGLFunc!ctx( cast( void** )&ctx.glMapBufferRange, "glMapBufferRange" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFlushMappedBufferRange, "glFlushMappedBufferRange" );
             ctx.ARB_map_buffer_range = true;
         } catch( Exception e ) {
             ctx.ARB_map_buffer_range = false;
@@ -74,10 +74,10 @@ package {
     }
     void load_ARB_vertex_array_object( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glBindVertexArray, "glBindVertexArray" );
-            bindGLFunc( cast( void** )&ctx.glDeleteVertexArrays, "glDeleteVertexArrays" );
-            bindGLFunc( cast( void** )&ctx.glGenVertexArrays, "glGenVertexArrays" );
-            bindGLFunc( cast( void** )&ctx.glIsVertexArray, "glIsVertexArray" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindVertexArray, "glBindVertexArray" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteVertexArrays, "glDeleteVertexArrays" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenVertexArrays, "glGenVertexArrays" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsVertexArray, "glIsVertexArray" );
             ctx.ARB_vertex_array_object = true;
         } catch( Exception e ) {
             ctx.ARB_vertex_array_object = false;
@@ -86,7 +86,7 @@ package {
     }
     void load_ARB_copy_buffer( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glCopyBufferSubData, "glCopyBufferSubData" );
+            bindGLFunc!ctx( cast( void** )&ctx.glCopyBufferSubData, "glCopyBufferSubData" );
             ctx.ARB_copy_buffer = true;
         } catch( Exception e ) {
             ctx.ARB_copy_buffer = false;
@@ -95,13 +95,13 @@ package {
     }
     void load_ARB_uniform_buffer_object( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glGetUniformIndices, "glGetUniformIndices" );
-            bindGLFunc( cast( void** )&ctx.glGetActiveUniformsiv, "glGetActiveUniformsiv" );
-            bindGLFunc( cast( void** )&ctx.glGetActiveUniformName, "glGetActiveUniformName" );
-            bindGLFunc( cast( void** )&ctx.glGetUniformBlockIndex, "glGetUniformBlockIndex" );
-            bindGLFunc( cast( void** )&ctx.glGetActiveUniformBlockiv, "glGetActiveUniformBlockiv" );
-            bindGLFunc( cast( void** )&ctx.glGetActiveUniformBlockName, "glGetActiveUniformBlockName" );
-            bindGLFunc( cast( void** )&ctx.glUniformBlockBinding, "glUniformBlockBinding" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetUniformIndices, "glGetUniformIndices" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetActiveUniformsiv, "glGetActiveUniformsiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetActiveUniformName, "glGetActiveUniformName" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetUniformBlockIndex, "glGetUniformBlockIndex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetActiveUniformBlockiv, "glGetActiveUniformBlockiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetActiveUniformBlockName, "glGetActiveUniformBlockName" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformBlockBinding, "glUniformBlockBinding" );
             ctx.ARB_uniform_buffer_object = true;
         } catch( Exception e ) {
             ctx.ARB_uniform_buffer_object = false;
@@ -110,10 +110,10 @@ package {
     }
     void load_ARB_draw_elements_base_vertex( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glDrawElementsBaseVertex, "glDrawElementsBaseVertex" );
-            bindGLFunc( cast( void** )&ctx.glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex" );
-            bindGLFunc( cast( void** )&ctx.glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex" );
-            bindGLFunc( cast( void** )&ctx.glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawElementsBaseVertex, "glDrawElementsBaseVertex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex" );
             ctx.ARB_draw_elements_base_vertex = true;
         } catch( Exception e ) {
             ctx.ARB_draw_elements_base_vertex = false;
@@ -122,7 +122,7 @@ package {
     }
     void load_ARB_provoking_vertex( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glProvokingVertex, "glProvokingVertex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProvokingVertex, "glProvokingVertex" );
             ctx.ARB_provoking_vertex = true;
         } catch( Exception e ) {
             ctx.ARB_provoking_vertex = false;
@@ -131,13 +131,13 @@ package {
     }
     void load_ARB_sync( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glFenceSync, "glFenceSync" );
-            bindGLFunc( cast( void** )&ctx.glIsSync, "glIsSync" );
-            bindGLFunc( cast( void** )&ctx.glDeleteSync, "glDeleteSync" );
-            bindGLFunc( cast( void** )&ctx.glClientWaitSync, "glClientWaitSync" );
-            bindGLFunc( cast( void** )&ctx.glWaitSync, "glWaitSync" );
-            bindGLFunc( cast( void** )&ctx.glGetInteger64v, "glGetInteger64v" );
-            bindGLFunc( cast( void** )&ctx.glGetSynciv, "glGetSynciv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFenceSync, "glFenceSync" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsSync, "glIsSync" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteSync, "glDeleteSync" );
+            bindGLFunc!ctx( cast( void** )&ctx.glClientWaitSync, "glClientWaitSync" );
+            bindGLFunc!ctx( cast( void** )&ctx.glWaitSync, "glWaitSync" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetInteger64v, "glGetInteger64v" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetSynciv, "glGetSynciv" );
             ctx.ARB_sync = true;
         } catch( Exception e ) {
             ctx.ARB_sync = false;
@@ -146,10 +146,10 @@ package {
     }
     void load_ARB_texture_multisample( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glTexImage2DMultisample, "glTexImage2DMultisample" );
-            bindGLFunc( cast( void** )&ctx.glTexImage3DMultisample, "glTexImage3DMultisample" );
-            bindGLFunc( cast( void** )&ctx.glGetMultisamplefv, "glGetMultisamplefv" );
-            bindGLFunc( cast( void** )&ctx.glSampleMaski, "glSampleMaski" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTexImage2DMultisample, "glTexImage2DMultisample" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTexImage3DMultisample, "glTexImage3DMultisample" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetMultisamplefv, "glGetMultisamplefv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glSampleMaski, "glSampleMaski" );
             ctx.ARB_texture_multisample = true;
         } catch( Exception e ) {
             ctx.ARB_texture_multisample = false;
@@ -158,8 +158,8 @@ package {
     }
     void load_ARB_blend_func_extended( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed" );
-            bindGLFunc( cast( void** )&ctx.glGetFragDataIndex, "glGetFragDataIndex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetFragDataIndex, "glGetFragDataIndex" );
             ctx.ARB_blend_func_extended = true;
         } catch( Exception e ) {
             ctx.ARB_blend_func_extended = false;
@@ -168,20 +168,20 @@ package {
     }
     void load_ARB_sampler_objects( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glGenSamplers, "glGenSamplers" );
-            bindGLFunc( cast( void** )&ctx.glDeleteSamplers, "glDeleteSamplers" );
-            bindGLFunc( cast( void** )&ctx.glIsSampler, "glIsSampler" );
-            bindGLFunc( cast( void** )&ctx.glBindSampler, "glBindSampler" );
-            bindGLFunc( cast( void** )&ctx.glSamplerParameteri, "glSamplerParameteri" );
-            bindGLFunc( cast( void** )&ctx.glSamplerParameteriv, "glSamplerParameteriv" );
-            bindGLFunc( cast( void** )&ctx.glSamplerParameterf, "glSamplerParameterf" );
-            bindGLFunc( cast( void** )&ctx.glSamplerParameterfv, "glSamplerParameterfv" );
-            bindGLFunc( cast( void** )&ctx.glSamplerParameterIiv, "glSamplerParameterIiv" );
-            bindGLFunc( cast( void** )&ctx.glSamplerParameterIuiv, "glSamplerParameterIuiv" );
-            bindGLFunc( cast( void** )&ctx.glGetSamplerParameteriv, "glGetSamplerParameteriv" );
-            bindGLFunc( cast( void** )&ctx.glGetSamplerParameterIiv, "glGetSamplerParameterIiv" );
-            bindGLFunc( cast( void** )&ctx.glGetSamplerParameterfv, "glGetSamplerParameterfv" );
-            bindGLFunc( cast( void** )&ctx.glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenSamplers, "glGenSamplers" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteSamplers, "glDeleteSamplers" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsSampler, "glIsSampler" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindSampler, "glBindSampler" );
+            bindGLFunc!ctx( cast( void** )&ctx.glSamplerParameteri, "glSamplerParameteri" );
+            bindGLFunc!ctx( cast( void** )&ctx.glSamplerParameteriv, "glSamplerParameteriv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glSamplerParameterf, "glSamplerParameterf" );
+            bindGLFunc!ctx( cast( void** )&ctx.glSamplerParameterfv, "glSamplerParameterfv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glSamplerParameterIiv, "glSamplerParameterIiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glSamplerParameterIuiv, "glSamplerParameterIuiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetSamplerParameteriv, "glGetSamplerParameteriv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetSamplerParameterIiv, "glGetSamplerParameterIiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetSamplerParameterfv, "glGetSamplerParameterfv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv" );
             ctx.ARB_sampler_objects = true;
         } catch( Exception e ) {
             ctx.ARB_sampler_objects = false;
@@ -190,9 +190,9 @@ package {
     }
     void load_ARB_timer_query( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glQueryCounter, "glQueryCounter" );
-            bindGLFunc( cast( void** )&ctx.glGetQueryObjecti64v, "glGetQueryObjecti64v" );
-            bindGLFunc( cast( void** )&ctx.glGetQueryObjectui64v, "glGetQueryObjectui64v" );
+            bindGLFunc!ctx( cast( void** )&ctx.glQueryCounter, "glQueryCounter" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetQueryObjecti64v, "glGetQueryObjecti64v" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetQueryObjectui64v, "glGetQueryObjectui64v" );
             ctx.ARB_timer_query = true;
         } catch( Exception e ) {
             ctx.ARB_timer_query = false;
@@ -202,45 +202,45 @@ package {
     void load_ARB_vertex_type_2_10_10_10_rev( alias ctx )( bool doThrow = false ) {
         try {
             static if( !Derelict_OS_Mac ) {
-                bindGLFunc( cast( void** )&ctx.glVertexP2ui, "glVertexP2ui" );
-                bindGLFunc( cast( void** )&ctx.glVertexP2uiv, "glVertexP2uiv" );
-                bindGLFunc( cast( void** )&ctx.glVertexP3ui, "glVertexP3ui" );
-                bindGLFunc( cast( void** )&ctx.glVertexP3uiv, "glVertexP3uiv" );
-                bindGLFunc( cast( void** )&ctx.glVertexP4ui, "glVertexP4ui" );
-                bindGLFunc( cast( void** )&ctx.glVertexP4uiv, "glVertexP4uiv" );
-                bindGLFunc( cast( void** )&ctx.glTexCoordP1ui, "glTexCoordP1ui" );
-                bindGLFunc( cast( void** )&ctx.glTexCoordP1uiv, "glTexCoordP1uiv" );
-                bindGLFunc( cast( void** )&ctx.glTexCoordP2ui, "glTexCoordP2ui" );
-                bindGLFunc( cast( void** )&ctx.glTexCoordP2uiv, "glTexCoordP2uiv" );
-                bindGLFunc( cast( void** )&ctx.glTexCoordP3ui, "glTexCoordP3ui" );
-                bindGLFunc( cast( void** )&ctx.glTexCoordP3uiv, "glTexCoordP3uiv" );
-                bindGLFunc( cast( void** )&ctx.glTexCoordP4ui, "glTexCoordP4ui" );
-                bindGLFunc( cast( void** )&ctx.glTexCoordP4uiv, "glTexCoordP4uiv" );
-                bindGLFunc( cast( void** )&ctx.glMultiTexCoordP1ui, "glMultiTexCoordP1ui" );
-                bindGLFunc( cast( void** )&ctx.glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv" );
-                bindGLFunc( cast( void** )&ctx.glMultiTexCoordP2ui, "glMultiTexCoordP2ui" );
-                bindGLFunc( cast( void** )&ctx.glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv" );
-                bindGLFunc( cast( void** )&ctx.glMultiTexCoordP3ui, "glMultiTexCoordP3ui" );
-                bindGLFunc( cast( void** )&ctx.glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv" );
-                bindGLFunc( cast( void** )&ctx.glMultiTexCoordP4ui, "glMultiTexCoordP4ui" );
-                bindGLFunc( cast( void** )&ctx.glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv" );
-                bindGLFunc( cast( void** )&ctx.glNormalP3ui, "glNormalP3ui" );
-                bindGLFunc( cast( void** )&ctx.glNormalP3uiv, "glNormalP3uiv" );
-                bindGLFunc( cast( void** )&ctx.glColorP3ui, "glColorP3ui" );
-                bindGLFunc( cast( void** )&ctx.glColorP3uiv, "glColorP3uiv" );
-                bindGLFunc( cast( void** )&ctx.glColorP4ui, "glColorP4ui" );
-                bindGLFunc( cast( void** )&ctx.glColorP4uiv, "glColorP4uiv" );
-                bindGLFunc( cast( void** )&ctx.glSecondaryColorP3ui, "glSecondaryColorP3ui" );
-                bindGLFunc( cast( void** )&ctx.glSecondaryColorP3uiv, "glSecondaryColorP3uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexP2ui, "glVertexP2ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexP2uiv, "glVertexP2uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexP3ui, "glVertexP3ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexP3uiv, "glVertexP3uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexP4ui, "glVertexP4ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexP4uiv, "glVertexP4uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTexCoordP1ui, "glTexCoordP1ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTexCoordP1uiv, "glTexCoordP1uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTexCoordP2ui, "glTexCoordP2ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTexCoordP2uiv, "glTexCoordP2uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTexCoordP3ui, "glTexCoordP3ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTexCoordP3uiv, "glTexCoordP3uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTexCoordP4ui, "glTexCoordP4ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTexCoordP4uiv, "glTexCoordP4uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glMultiTexCoordP1ui, "glMultiTexCoordP1ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glMultiTexCoordP2ui, "glMultiTexCoordP2ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glMultiTexCoordP3ui, "glMultiTexCoordP3ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glMultiTexCoordP4ui, "glMultiTexCoordP4ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glNormalP3ui, "glNormalP3ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glNormalP3uiv, "glNormalP3uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glColorP3ui, "glColorP3ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glColorP3uiv, "glColorP3uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glColorP4ui, "glColorP4ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glColorP4uiv, "glColorP4uiv" );
+                bindGLFunc!ctx( cast( void** )&ctx.glSecondaryColorP3ui, "glSecondaryColorP3ui" );
+                bindGLFunc!ctx( cast( void** )&ctx.glSecondaryColorP3uiv, "glSecondaryColorP3uiv" );
             }
-            bindGLFunc( cast( void** )&ctx.glVertexAttribP1ui, "glVertexAttribP1ui" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribP1uiv, "glVertexAttribP1uiv" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribP2ui, "glVertexAttribP2ui" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribP2uiv, "glVertexAttribP2uiv" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribP3ui, "glVertexAttribP3ui" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribP3uiv, "glVertexAttribP3uiv" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribP4ui, "glVertexAttribP4ui" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribP4uiv, "glVertexAttribP4uiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribP1ui, "glVertexAttribP1ui" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribP1uiv, "glVertexAttribP1uiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribP2ui, "glVertexAttribP2ui" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribP2uiv, "glVertexAttribP2uiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribP3ui, "glVertexAttribP3ui" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribP3uiv, "glVertexAttribP3uiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribP4ui, "glVertexAttribP4ui" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribP4uiv, "glVertexAttribP4uiv" );
             ctx.ARB_vertex_type_2_10_10_10_rev = true;
         } catch( Exception e ) {
             ctx.ARB_vertex_type_2_10_10_10_rev = false;
@@ -249,8 +249,8 @@ package {
     }
     void load_ARB_draw_indirect( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glDrawArraysIndirect, "glDrawArraysIndirect" );
-            bindGLFunc( cast( void** )&ctx.glDrawElementsIndirect, "glDrawElementsIndirect" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawArraysIndirect, "glDrawArraysIndirect" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawElementsIndirect, "glDrawElementsIndirect" );
             ctx.ARB_draw_indirect = true;
         } catch( Exception e ) {
             ctx.ARB_draw_indirect = false;
@@ -260,23 +260,23 @@ package {
     void load_ARB_gpu_shader_fp64( alias ctx )( bool doThrow = false ) {
         try
         {
-            bindGLFunc( cast( void** )&ctx.glUniform1d, "glUniform1d" );
-            bindGLFunc( cast( void** )&ctx.glUniform2d, "glUniform2d" );
-            bindGLFunc( cast( void** )&ctx.glUniform3d, "glUniform3d" );
-            bindGLFunc( cast( void** )&ctx.glUniform4d, "glUniform4d" );
-            bindGLFunc( cast( void** )&ctx.glUniform1dv, "glUniform1dv" );
-            bindGLFunc( cast( void** )&ctx.glUniform2dv, "glUniform2dv" );
-            bindGLFunc( cast( void** )&ctx.glUniform3dv, "glUniform3dv" );
-            bindGLFunc( cast( void** )&ctx.glUniform4dv, "glUniform4dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix2dv, "glUniformMatrix2dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix3dv, "glUniformMatrix3dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix4dv, "glUniformMatrix4dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix2x3dv, "glUniformMatrix2x3dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix2x4dv, "glUniformMatrix2x4dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix3x2dv, "glUniformMatrix3x2dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix3x4dv, "glUniformMatrix3x4dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix4x2dv, "glUniformMatrix4x2dv" );
-            bindGLFunc( cast( void** )&ctx.glUniformMatrix4x3dv, "glUniformMatrix4x3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniform1d, "glUniform1d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniform2d, "glUniform2d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniform3d, "glUniform3d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniform4d, "glUniform4d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniform1dv, "glUniform1dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniform2dv, "glUniform2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniform3dv, "glUniform3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniform4dv, "glUniform4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix2dv, "glUniformMatrix2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix3dv, "glUniformMatrix3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix4dv, "glUniformMatrix4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix2x3dv, "glUniformMatrix2x3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix2x4dv, "glUniformMatrix2x4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix3x2dv, "glUniformMatrix3x2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix3x4dv, "glUniformMatrix3x4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix4x2dv, "glUniformMatrix4x2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformMatrix4x3dv, "glUniformMatrix4x3dv" );
             ctx.ARB_gpu_shader_fp64 = true;
         } catch( Exception e ) {
             ctx.ARB_gpu_shader_fp64 = false;
@@ -285,14 +285,14 @@ package {
     }
     void load_ARB_shader_subroutine( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glGetSubroutineUniformLocation, "glGetSubroutineUniformLocation" );
-            bindGLFunc( cast( void** )&ctx.glGetSubroutineIndex, "glGetSubroutineIndex" );
-            bindGLFunc( cast( void** )&ctx.glGetActiveSubroutineUniformiv, "glGetActiveSubroutineUniformiv" );
-            bindGLFunc( cast( void** )&ctx.glGetActiveSubroutineUniformName, "glGetActiveSubroutineUniformName" );
-            bindGLFunc( cast( void** )&ctx.glGetActiveSubroutineName, "glGetActiveSubroutineName" );
-            bindGLFunc( cast( void** )&ctx.glUniformSubroutinesuiv, "glUniformSubroutinesuiv" );
-            bindGLFunc( cast( void** )&ctx.glGetUniformSubroutineuiv, "glGetUniformSubroutineuiv" );
-            bindGLFunc( cast( void** )&ctx.glGetProgramStageiv, "glGetProgramStageiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetSubroutineUniformLocation, "glGetSubroutineUniformLocation" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetSubroutineIndex, "glGetSubroutineIndex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetActiveSubroutineUniformiv, "glGetActiveSubroutineUniformiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetActiveSubroutineUniformName, "glGetActiveSubroutineUniformName" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetActiveSubroutineName, "glGetActiveSubroutineName" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUniformSubroutinesuiv, "glUniformSubroutinesuiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetUniformSubroutineuiv, "glGetUniformSubroutineuiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramStageiv, "glGetProgramStageiv" );
             ctx.ARB_shader_subroutine = true;
         } catch( Exception e ) {
             ctx.ARB_shader_subroutine = false;
@@ -301,8 +301,8 @@ package {
     }
     void load_ARB_tessellation_shader( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glPatchParameteri, "glPatchParameteri" );
-            bindGLFunc( cast( void** )&ctx.glPatchParameterfv, "glPatchParameterfv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glPatchParameteri, "glPatchParameteri" );
+            bindGLFunc!ctx( cast( void** )&ctx.glPatchParameterfv, "glPatchParameterfv" );
             ctx.ARB_tessellation_shader = true;
         } catch( Exception e ) {
             ctx.ARB_tessellation_shader = false;
@@ -311,13 +311,13 @@ package {
     }
     void load_ARB_transform_feedback2( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glBindTransformFeedback, "glBindTransformFeedback" );
-            bindGLFunc( cast( void** )&ctx.glDeleteTransformFeedbacks, "glDeleteTransformFeedbacks" );
-            bindGLFunc( cast( void** )&ctx.glGenTransformFeedbacks, "glGenTransformFeedbacks" );
-            bindGLFunc( cast( void** )&ctx.glIsTransformFeedback, "glIsTransformFeedback" );
-            bindGLFunc( cast( void** )&ctx.glPauseTransformFeedback, "glPauseTransformFeedback" );
-            bindGLFunc( cast( void** )&ctx.glResumeTransformFeedback, "glResumeTransformFeedback" );
-            bindGLFunc( cast( void** )&ctx.glDrawTransformFeedback, "glDrawTransformFeedback" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindTransformFeedback, "glBindTransformFeedback" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteTransformFeedbacks, "glDeleteTransformFeedbacks" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenTransformFeedbacks, "glGenTransformFeedbacks" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsTransformFeedback, "glIsTransformFeedback" );
+            bindGLFunc!ctx( cast( void** )&ctx.glPauseTransformFeedback, "glPauseTransformFeedback" );
+            bindGLFunc!ctx( cast( void** )&ctx.glResumeTransformFeedback, "glResumeTransformFeedback" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawTransformFeedback, "glDrawTransformFeedback" );
             ctx.ARB_transform_feedback2 = true;
         } catch( Exception e ) {
             ctx.ARB_transform_feedback2 = false;
@@ -326,10 +326,10 @@ package {
     }
     void load_ARB_transform_feedback3( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glDrawTransformFeedbackStream, "glDrawTransformFeedbackStream" );
-            bindGLFunc( cast( void** )&ctx.glBeginQueryIndexed, "glBeginQueryIndexed" );
-            bindGLFunc( cast( void** )&ctx.glEndQueryIndexed, "glEndQueryIndexed" );
-            bindGLFunc( cast( void** )&ctx.glGetQueryIndexediv, "glGetQueryIndexediv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawTransformFeedbackStream, "glDrawTransformFeedbackStream" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBeginQueryIndexed, "glBeginQueryIndexed" );
+            bindGLFunc!ctx( cast( void** )&ctx.glEndQueryIndexed, "glEndQueryIndexed" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetQueryIndexediv, "glGetQueryIndexediv" );
             ctx.ARB_transform_feedback3 = true;
         } catch( Exception e ) {
             ctx.ARB_transform_feedback3 = false;
@@ -338,11 +338,11 @@ package {
     }
     void load_ARB_ES2_compatibility( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glReleaseShaderCompiler, "glReleaseShaderCompiler" );
-            bindGLFunc( cast( void** )&ctx.glShaderBinary, "glShaderBinary" );
-            bindGLFunc( cast( void** )&ctx.glGetShaderPrecisionFormat, "glGetShaderPrecisionFormat" );
-            bindGLFunc( cast( void** )&ctx.glDepthRangef, "glDepthRangef" );
-            bindGLFunc( cast( void** )&ctx.glClearDepthf, "glClearDepthf" );
+            bindGLFunc!ctx( cast( void** )&ctx.glReleaseShaderCompiler, "glReleaseShaderCompiler" );
+            bindGLFunc!ctx( cast( void** )&ctx.glShaderBinary, "glShaderBinary" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetShaderPrecisionFormat, "glGetShaderPrecisionFormat" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDepthRangef, "glDepthRangef" );
+            bindGLFunc!ctx( cast( void** )&ctx.glClearDepthf, "glClearDepthf" );
             ctx.ARB_ES2_compatibility = true;
         } catch( Exception e ) {
             ctx.ARB_ES2_compatibility = false;
@@ -351,9 +351,9 @@ package {
     }
     void load_ARB_get_program_binary( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glGetProgramBinary, "glGetProgramBinary" );
-            bindGLFunc( cast( void** )&ctx.glProgramBinary, "glProgramBinary" );
-            bindGLFunc( cast( void** )&ctx.glProgramParameteri, "glProgramParameteri" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramBinary, "glGetProgramBinary" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramBinary, "glProgramBinary" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramParameteri, "glProgramParameteri" );
             ctx.ARB_get_program_binary = true;
         } catch( Exception e ) {
             ctx.ARB_get_program_binary = false;
@@ -362,66 +362,66 @@ package {
     }
     void load_ARB_separate_shader_objects( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glUseProgramStages, "glUseProgramStages" );
-            bindGLFunc( cast( void** )&ctx.glActiveShaderProgram, "glActiveShaderProgram" );
-            bindGLFunc( cast( void** )&ctx.glCreateShaderProgramv, "glCreateShaderProgramv" );
-            bindGLFunc( cast( void** )&ctx.glBindProgramPipeline, "glBindProgramPipeline" );
-            bindGLFunc( cast( void** )&ctx.glDeleteProgramPipelines, "glDeleteProgramPipelines" );
-            bindGLFunc( cast( void** )&ctx.glGenProgramPipelines, "glGenProgramPipelines" );
-            bindGLFunc( cast( void** )&ctx.glIsProgramPipeline, "glIsProgramPipeline" );
-            bindGLFunc( cast( void** )&ctx.glGetProgramPipelineiv, "glGetProgramPipelineiv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform1i, "glProgramUniform1i" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform1iv, "glProgramUniform1iv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform1f, "glProgramUniform1f" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform1fv, "glProgramUniform1fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform1d, "glProgramUniform1d" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform1dv, "glProgramUniform1dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform1ui, "glProgramUniform1ui" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform1uiv, "glProgramUniform1uiv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform2i, "glProgramUniform2i" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform2iv, "glProgramUniform2iv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform2f, "glProgramUniform2f" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform2fv, "glProgramUniform2fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform2d, "glProgramUniform2d" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform2dv, "glProgramUniform2dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform2ui, "glProgramUniform2ui" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform2uiv, "glProgramUniform2uiv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform3i, "glProgramUniform3i" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform3iv, "glProgramUniform3iv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform3f, "glProgramUniform3f" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform3fv, "glProgramUniform3fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform3d, "glProgramUniform3d" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform3dv, "glProgramUniform3dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform3ui, "glProgramUniform3ui" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform3uiv, "glProgramUniform3uiv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform4i, "glProgramUniform4i" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform4iv, "glProgramUniform4iv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform4f, "glProgramUniform4f" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform4fv, "glProgramUniform4fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform4d, "glProgramUniform4d" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform4dv, "glProgramUniform4dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform4ui, "glProgramUniform4ui" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniform4uiv, "glProgramUniform4uiv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix2fv, "glProgramUniformMatrix2fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix3fv, "glProgramUniformMatrix3fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix4fv, "glProgramUniformMatrix4fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix2dv, "glProgramUniformMatrix2dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix3dv, "glProgramUniformMatrix3dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix4dv, "glProgramUniformMatrix4dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix2x3fv, "glProgramUniformMatrix2x3fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix3x2fv, "glProgramUniformMatrix3x2fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix2x4fv, "glProgramUniformMatrix2x4fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix4x2fv, "glProgramUniformMatrix4x2fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix3x4fv, "glProgramUniformMatrix3x4fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix4x3fv, "glProgramUniformMatrix4x3fv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix2x3dv, "glProgramUniformMatrix2x3dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix3x2dv, "glProgramUniformMatrix3x2dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix2x4dv, "glProgramUniformMatrix2x4dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix4x2dv, "glProgramUniformMatrix4x2dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix3x4dv, "glProgramUniformMatrix3x4dv" );
-            bindGLFunc( cast( void** )&ctx.glProgramUniformMatrix4x3dv, "glProgramUniformMatrix4x3dv" );
-            bindGLFunc( cast( void** )&ctx.glValidateProgramPipeline, "glValidateProgramPipeline" );
-            bindGLFunc( cast( void** )&ctx.glGetProgramPipelineInfoLog, "glGetProgramPipelineInfoLog" );
+            bindGLFunc!ctx( cast( void** )&ctx.glUseProgramStages, "glUseProgramStages" );
+            bindGLFunc!ctx( cast( void** )&ctx.glActiveShaderProgram, "glActiveShaderProgram" );
+            bindGLFunc!ctx( cast( void** )&ctx.glCreateShaderProgramv, "glCreateShaderProgramv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindProgramPipeline, "glBindProgramPipeline" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteProgramPipelines, "glDeleteProgramPipelines" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenProgramPipelines, "glGenProgramPipelines" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsProgramPipeline, "glIsProgramPipeline" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramPipelineiv, "glGetProgramPipelineiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform1i, "glProgramUniform1i" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform1iv, "glProgramUniform1iv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform1f, "glProgramUniform1f" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform1fv, "glProgramUniform1fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform1d, "glProgramUniform1d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform1dv, "glProgramUniform1dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform1ui, "glProgramUniform1ui" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform1uiv, "glProgramUniform1uiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform2i, "glProgramUniform2i" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform2iv, "glProgramUniform2iv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform2f, "glProgramUniform2f" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform2fv, "glProgramUniform2fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform2d, "glProgramUniform2d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform2dv, "glProgramUniform2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform2ui, "glProgramUniform2ui" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform2uiv, "glProgramUniform2uiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform3i, "glProgramUniform3i" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform3iv, "glProgramUniform3iv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform3f, "glProgramUniform3f" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform3fv, "glProgramUniform3fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform3d, "glProgramUniform3d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform3dv, "glProgramUniform3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform3ui, "glProgramUniform3ui" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform3uiv, "glProgramUniform3uiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform4i, "glProgramUniform4i" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform4iv, "glProgramUniform4iv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform4f, "glProgramUniform4f" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform4fv, "glProgramUniform4fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform4d, "glProgramUniform4d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform4dv, "glProgramUniform4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform4ui, "glProgramUniform4ui" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniform4uiv, "glProgramUniform4uiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix2fv, "glProgramUniformMatrix2fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix3fv, "glProgramUniformMatrix3fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix4fv, "glProgramUniformMatrix4fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix2dv, "glProgramUniformMatrix2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix3dv, "glProgramUniformMatrix3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix4dv, "glProgramUniformMatrix4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix2x3fv, "glProgramUniformMatrix2x3fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix3x2fv, "glProgramUniformMatrix3x2fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix2x4fv, "glProgramUniformMatrix2x4fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix4x2fv, "glProgramUniformMatrix4x2fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix3x4fv, "glProgramUniformMatrix3x4fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix4x3fv, "glProgramUniformMatrix4x3fv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix2x3dv, "glProgramUniformMatrix2x3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix3x2dv, "glProgramUniformMatrix3x2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix2x4dv, "glProgramUniformMatrix2x4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix4x2dv, "glProgramUniformMatrix4x2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix3x4dv, "glProgramUniformMatrix3x4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glProgramUniformMatrix4x3dv, "glProgramUniformMatrix4x3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glValidateProgramPipeline, "glValidateProgramPipeline" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramPipelineInfoLog, "glGetProgramPipelineInfoLog" );
             ctx.ARB_separate_shader_objects = true;
         } catch( Exception e ) {
             ctx.ARB_separate_shader_objects = false;
@@ -430,16 +430,16 @@ package {
     }
     void load_ARB_vertex_attrib_64bit( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glVertexAttribL1d, "glVertexAttribL1d" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribL2d, "glVertexAttribL2d" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribL3d, "glVertexAttribL3d" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribL4d, "glVertexAttribL4d" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribL1dv, "glVertexAttribL1dv" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribL2dv, "glVertexAttribL2dv" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribL3dv, "glVertexAttribL3dv" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribL4dv, "glVertexAttribL4dv" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribLPointer, "glVertexAttribLPointer" );
-            bindGLFunc( cast( void** )&ctx.glGetVertexAttribLdv, "glGetVertexAttribLdv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribL1d, "glVertexAttribL1d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribL2d, "glVertexAttribL2d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribL3d, "glVertexAttribL3d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribL4d, "glVertexAttribL4d" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribL1dv, "glVertexAttribL1dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribL2dv, "glVertexAttribL2dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribL3dv, "glVertexAttribL3dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribL4dv, "glVertexAttribL4dv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribLPointer, "glVertexAttribLPointer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetVertexAttribLdv, "glGetVertexAttribLdv" );
             ctx.ARB_vertex_attrib_64bit = true;
         } catch( Exception e ) {
             ctx.ARB_vertex_attrib_64bit = false;
@@ -448,16 +448,16 @@ package {
     }
     void load_ARB_viewport_array( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glViewportArrayv, "glViewportArrayv" );
-            bindGLFunc( cast( void** )&ctx.glViewportIndexedf, "glViewportIndexedf" );
-            bindGLFunc( cast( void** )&ctx.glViewportIndexedfv, "glViewportIndexedfv" );
-            bindGLFunc( cast( void** )&ctx.glScissorArrayv, "glScissorArrayv" );
-            bindGLFunc( cast( void** )&ctx.glScissorIndexed, "glScissorIndexed" );
-            bindGLFunc( cast( void** )&ctx.glScissorIndexedv, "glScissorIndexedv" );
-            bindGLFunc( cast( void** )&ctx.glDepthRangeArrayv, "glDepthRangeArrayv" );
-            bindGLFunc( cast( void** )&ctx.glDepthRangeIndexed, "glDepthRangeIndexed" );
-            bindGLFunc( cast( void** )&ctx.glGetFloati_v, "glGetFloati_v" );
-            bindGLFunc( cast( void** )&ctx.glGetDoublei_v, "glGetDoublei_v" );
+            bindGLFunc!ctx( cast( void** )&ctx.glViewportArrayv, "glViewportArrayv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glViewportIndexedf, "glViewportIndexedf" );
+            bindGLFunc!ctx( cast( void** )&ctx.glViewportIndexedfv, "glViewportIndexedfv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glScissorArrayv, "glScissorArrayv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glScissorIndexed, "glScissorIndexed" );
+            bindGLFunc!ctx( cast( void** )&ctx.glScissorIndexedv, "glScissorIndexedv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDepthRangeArrayv, "glDepthRangeArrayv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDepthRangeIndexed, "glDepthRangeIndexed" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetFloati_v, "glGetFloati_v" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetDoublei_v, "glGetDoublei_v" );
             ctx.ARB_viewport_array = true;
         } catch( Exception e ) {
             ctx.ARB_viewport_array = false;
@@ -466,9 +466,9 @@ package {
     }
     void load_ARB_base_instance( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance" );
-            bindGLFunc( cast( void** )&ctx.glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance" );
-            bindGLFunc( cast( void** )&ctx.glDrawElementsInstancedBaseVertexBaseInstance, "glDrawElementsInstancedBaseVertexBaseInstance" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawElementsInstancedBaseVertexBaseInstance, "glDrawElementsInstancedBaseVertexBaseInstance" );
             ctx.ARB_base_instance = true;
         } catch( Exception e ) {
             ctx.ARB_base_instance = false;
@@ -477,8 +477,8 @@ package {
     }
     void load_ARB_transform_feedback_instanced( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced" );
-            bindGLFunc( cast( void** )&ctx.glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced" );
             ctx.ARB_transform_feedback_instanced = true;
         } catch( Exception e ) {
             ctx.ARB_transform_feedback_instanced = false;
@@ -487,7 +487,7 @@ package {
     }
     void load_ARB_internalformat_query( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glGetInternalformativ, "glGetInternalformativ" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetInternalformativ, "glGetInternalformativ" );
             ctx.ARB_internalformat_query = true;
         } catch( Exception e ) {
             ctx.ARB_internalformat_query = false;
@@ -496,7 +496,7 @@ package {
     }
     void load_ARB_shader_atomic_counters( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv" );
             ctx.ARB_shader_atomic_counters = true;
         } catch( Exception e ) {
             ctx.ARB_shader_atomic_counters = false;
@@ -505,8 +505,8 @@ package {
     }
     void load_ARB_shader_image_load_store( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glBindImageTexture, "glBindImageTexture" );
-            bindGLFunc( cast( void** )&ctx.glMemoryBarrier, "glMemoryBarrier" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindImageTexture, "glBindImageTexture" );
+            bindGLFunc!ctx( cast( void** )&ctx.glMemoryBarrier, "glMemoryBarrier" );
             ctx.ARB_shader_image_load_store = true;
         } catch( Exception e ) {
             ctx.ARB_shader_image_load_store = false;
@@ -515,9 +515,9 @@ package {
     }
     void load_ARB_texture_storage( alias ctx )( GLVersion glversion, bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glTexStorage1D, "glTexStorage1D" );
-            bindGLFunc( cast( void** )&ctx.glTexStorage2D, "glTexStorage2D" );
-            bindGLFunc( cast( void** )&ctx.glTexStorage3D, "glTexStorage3D" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTexStorage1D, "glTexStorage1D" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTexStorage2D, "glTexStorage2D" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTexStorage3D, "glTexStorage3D" );
 
             ctx.ARB_texture_storage = true;
         } catch( Exception e ) {
@@ -525,20 +525,20 @@ package {
             if( doThrow ) throw e;
         }
         // The next three are extension functions and depend on the presence of EXT_direct_state_access.
-        if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
+        if( isExtSupported!ctx( glversion, "GL_EXT_direct_state_access" )) {
             try {
-                bindGLFunc( cast( void** )&ctx.glTextureStorage1DEXT, "glTextureStorage1DEXT" );
-                bindGLFunc( cast( void** )&ctx.glTextureStorage2DEXT, "glTextureStorage2DEXT" );
-                bindGLFunc( cast( void** )&ctx.glTextureStorage3DEXT, "glTextureStorage3DEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTextureStorage1DEXT, "glTextureStorage1DEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTextureStorage2DEXT, "glTextureStorage2DEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTextureStorage3DEXT, "glTextureStorage3DEXT" );
             } catch( Exception e ) {}
         }
     }
     void load_ARB_clear_buffer_object( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glClearBufferData, "glClearBufferData" );
-            bindGLFunc( cast( void** )&ctx.glClearBufferSubData, "glClearBufferSubData" );
-            bindGLFunc( cast( void** )&ctx.glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT" );
-            bindGLFunc( cast( void** )&ctx.glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glClearBufferData, "glClearBufferData" );
+            bindGLFunc!ctx( cast( void** )&ctx.glClearBufferSubData, "glClearBufferSubData" );
+            bindGLFunc!ctx( cast( void** )&ctx.glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT" );
             ctx.ARB_clear_buffer_object = true;
         } catch( Exception e ) {
             ctx.ARB_clear_buffer_object = false;
@@ -547,8 +547,8 @@ package {
     }
     void load_ARB_compute_shader( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glDispatchCompute, "glDispatchCompute" );
-            bindGLFunc( cast( void** )&ctx.glDispatchComputeIndirect, "glDispatchComputeIndirect" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDispatchCompute, "glDispatchCompute" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDispatchComputeIndirect, "glDispatchComputeIndirect" );
             ctx.ARB_compute_shader = true;
         } catch( Exception e ) {
             ctx.ARB_compute_shader = false;
@@ -557,16 +557,16 @@ package {
     }
     void load_KHR_debug( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glDebugMessageControl, "glDebugMessageControl" );
-            bindGLFunc( cast( void** )&ctx.glDebugMessageInsert, "glDebugMessageInsert" );
-            bindGLFunc( cast( void** )&ctx.glDebugMessageCallback, "glDebugMessageCallback" );
-            bindGLFunc( cast( void** )&ctx.glGetDebugMessageLog, "glGetDebugMessageLog" );
-            bindGLFunc( cast( void** )&ctx.glPushDebugGroup, "glPushDebugGroup" );
-            bindGLFunc( cast( void** )&ctx.glPopDebugGroup, "glPopDebugGroup" );
-            bindGLFunc( cast( void** )&ctx.glObjectLabel, "glObjectLabel" );
-            bindGLFunc( cast( void** )&ctx.glGetObjectLabel, "glGetObjectLabel" );
-            bindGLFunc( cast( void** )&ctx.glObjectPtrLabel, "glObjectPtrLabel" );
-            bindGLFunc( cast( void** )&ctx.glGetObjectPtrLabel, "glGetObjectPtrLabel" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDebugMessageControl, "glDebugMessageControl" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDebugMessageInsert, "glDebugMessageInsert" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDebugMessageCallback, "glDebugMessageCallback" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetDebugMessageLog, "glGetDebugMessageLog" );
+            bindGLFunc!ctx( cast( void** )&ctx.glPushDebugGroup, "glPushDebugGroup" );
+            bindGLFunc!ctx( cast( void** )&ctx.glPopDebugGroup, "glPopDebugGroup" );
+            bindGLFunc!ctx( cast( void** )&ctx.glObjectLabel, "glObjectLabel" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetObjectLabel, "glGetObjectLabel" );
+            bindGLFunc!ctx( cast( void** )&ctx.glObjectPtrLabel, "glObjectPtrLabel" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetObjectPtrLabel, "glGetObjectPtrLabel" );
             ctx.KHR_debug = true;
         } catch( Exception e ) {
             ctx.KHR_debug = false;
@@ -575,24 +575,24 @@ package {
     }
     void load_ARB_framebuffer_no_attachments( alias ctx )( GLVersion glversion, bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glFramebufferParameteri, "glFramebufferParameteri" );
-            bindGLFunc( cast( void** )&ctx.glGetFramebufferParameteriv, "glGetFramebufferParameteriv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferParameteri, "glFramebufferParameteri" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetFramebufferParameteriv, "glGetFramebufferParameteriv" );
             ctx.ARB_framebuffer_no_attachments = true;
         } catch( Exception e ) {
             ctx.ARB_framebuffer_no_attachments = false;
             if( doThrow ) throw e;
         }
         // The next two are extension functions and depend on the presence of EXT_direct_state_access.
-        if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
+        if( isExtSupported!ctx( glversion, "GL_EXT_direct_state_access" )) {
             try {
-                bindGLFunc( cast( void** )&ctx.glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT" );
-                bindGLFunc( cast( void** )&ctx.glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT" );
             } catch( Exception e ) {}
         }
     }
     void load_ARB_internalformat_query2( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glGetInternalformati64v, "glGetInternalformati64v" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetInternalformati64v, "glGetInternalformati64v" );
             ctx.ARB_internalformat_query2 = true;
         } catch( Exception e ) {
             ctx.ARB_internalformat_query2 = false;
@@ -601,12 +601,12 @@ package {
     }
     void load_ARB_invalidate_subdata( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glInvalidateTexSubImage, "glInvalidateTexSubImage" );
-            bindGLFunc( cast( void** )&ctx.glInvalidateTexImage, "glInvalidateTexImage" );
-            bindGLFunc( cast( void** )&ctx.glInvalidateBufferSubData, "glInvalidateBufferSubData" );
-            bindGLFunc( cast( void** )&ctx.glInvalidateBufferData, "glInvalidateBufferData" );
-            bindGLFunc( cast( void** )&ctx.glInvalidateFramebuffer, "glInvalidateFramebuffer" );
-            bindGLFunc( cast( void** )&ctx.glInvalidateSubFramebuffer, "glInvalidateSubFramebuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glInvalidateTexSubImage, "glInvalidateTexSubImage" );
+            bindGLFunc!ctx( cast( void** )&ctx.glInvalidateTexImage, "glInvalidateTexImage" );
+            bindGLFunc!ctx( cast( void** )&ctx.glInvalidateBufferSubData, "glInvalidateBufferSubData" );
+            bindGLFunc!ctx( cast( void** )&ctx.glInvalidateBufferData, "glInvalidateBufferData" );
+            bindGLFunc!ctx( cast( void** )&ctx.glInvalidateFramebuffer, "glInvalidateFramebuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glInvalidateSubFramebuffer, "glInvalidateSubFramebuffer" );
             ctx.ARB_invalidate_subdata = true;
         }
         catch( Exception e ) {
@@ -616,8 +616,8 @@ package {
     }
     void load_ARB_multi_draw_indirect( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect" );
-            bindGLFunc( cast( void** )&ctx.glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect" );
+            bindGLFunc!ctx( cast( void** )&ctx.glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect" );
+            bindGLFunc!ctx( cast( void** )&ctx.glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect" );
             ctx.ARB_multi_draw_indirect = true;
         } catch( Exception e ) {
             ctx.ARB_multi_draw_indirect = false;
@@ -626,12 +626,12 @@ package {
     }
     void load_ARB_program_interface_query( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glGetProgramInterfaceiv, "glGetProgramInterfaceiv" );
-            bindGLFunc( cast( void** )&ctx.glGetProgramResourceIndex, "glGetProgramResourceIndex" );
-            bindGLFunc( cast( void** )&ctx.glGetProgramResourceName, "glGetProgramResourceName" );
-            bindGLFunc( cast( void** )&ctx.glGetProgramResourceiv, "glGetProgramResourceiv" );
-            bindGLFunc( cast( void** )&ctx.glGetProgramResourceLocation, "glGetProgramResourceLocation" );
-            bindGLFunc( cast( void** )&ctx.glGetProgramResourceLocationIndex, "glGetProgramResourceLocationIndex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramInterfaceiv, "glGetProgramInterfaceiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramResourceIndex, "glGetProgramResourceIndex" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramResourceName, "glGetProgramResourceName" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramResourceiv, "glGetProgramResourceiv" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramResourceLocation, "glGetProgramResourceLocation" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetProgramResourceLocationIndex, "glGetProgramResourceLocationIndex" );
             ctx.ARB_program_interface_query = true;
         } catch( Exception e ) {
             ctx.ARB_program_interface_query = false;
@@ -640,7 +640,7 @@ package {
     }
     void load_ARB_shader_storage_buffer_object( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glShaderStorageBlockBinding, "glShaderStorageBlockBinding" );
+            bindGLFunc!ctx( cast( void** )&ctx.glShaderStorageBlockBinding, "glShaderStorageBlockBinding" );
             ctx.ARB_shader_storage_buffer_object = true;
         } catch( Exception e ) {
             ctx.ARB_shader_storage_buffer_object = false;
@@ -649,39 +649,39 @@ package {
     }
     void load_ARB_texture_buffer_range( alias ctx )( GLVersion glversion, bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glTexBufferRange, "glTexBufferRange" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTexBufferRange, "glTexBufferRange" );
             ctx.ARB_texture_buffer_range = true;
         } catch( Exception e ) {
             ctx.ARB_texture_buffer_range = false;
             if( doThrow ) throw e;
         }
         // The next one is an extension function and depends on the presence of EXT_direct_state_access.
-        if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
+        if( isExtSupported!ctx( glversion, "GL_EXT_direct_state_access" )) {
             try {
-                bindGLFunc( cast( void** )&ctx.glTextureBufferRangeEXT, "glTextureBufferRangeEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTextureBufferRangeEXT, "glTextureBufferRangeEXT" );
             } catch( Exception e ) {}
         }
     }
     void load_ARB_texture_storage_multisample( alias ctx )( GLVersion glversion, bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glTexStorage2DMultisample, "glTexStorage2DMultisample" );
-            bindGLFunc( cast( void** )&ctx.glTexStorage3DMultisample, "glTexStorage3DMultisample" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTexStorage2DMultisample, "glTexStorage2DMultisample" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTexStorage3DMultisample, "glTexStorage3DMultisample" );
             ctx.ARB_texture_storage_multisample = true;
         } catch( Exception e ) {
             ctx.ARB_texture_storage_multisample = false;
             if( doThrow ) throw e;
         }
         // The next two are extension functions and depend on the presence of EXT_direct_state_access.
-        if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
+        if( isExtSupported!ctx( glversion, "GL_EXT_direct_state_access" )) {
             try {
-                bindGLFunc( cast( void** )&ctx.glTextureStorage2DMultisampleEXT, "glTextureStorage2DMultisampleEXT" );
-                bindGLFunc( cast( void** )&ctx.glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTextureStorage2DMultisampleEXT, "glTextureStorage2DMultisampleEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT" );
             } catch( Exception e ) {}
         }
     }
     void load_ARB_texture_view( alias ctx )( bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glTextureView, "glTextureView" );
+            bindGLFunc!ctx( cast( void** )&ctx.glTextureView, "glTextureView" );
             ctx.ARB_texture_view = true;
         } catch( Exception e ) {
             ctx.ARB_texture_view = false;
@@ -690,35 +690,35 @@ package {
     }
     void load_ARB_vertex_attrib_binding( alias ctx )( GLVersion glversion, bool doThrow = false ) {
         try {
-            bindGLFunc( cast( void** )&ctx.glBindVertexBuffer, "glBindVertexBuffer" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribFormat, "glVertexAttribFormat" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribIFormat, "glVertexAttribIFormat" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribLFormat, "glVertexAttribLFormat" );
-            bindGLFunc( cast( void** )&ctx.glVertexAttribBinding, "glVertexAttribBinding" );
-            bindGLFunc( cast( void** )&ctx.glVertexBindingDivisor, "glVertexBindingDivisor" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindVertexBuffer, "glBindVertexBuffer" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribFormat, "glVertexAttribFormat" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribIFormat, "glVertexAttribIFormat" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribLFormat, "glVertexAttribLFormat" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexAttribBinding, "glVertexAttribBinding" );
+            bindGLFunc!ctx( cast( void** )&ctx.glVertexBindingDivisor, "glVertexBindingDivisor" );
             ctx.ARB_vertex_attrib_binding = true;
         } catch( Exception e ) {
             ctx.ARB_vertex_attrib_binding = false;
             if( doThrow ) throw e;
         }
         // The next six are extension functions and depend on the presence of EXT_direct_state_access.
-        if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
+        if( isExtSupported!ctx( glversion, "GL_EXT_direct_state_access" )) {
             try {
-                bindGLFunc( cast( void** )&ctx.glVertexArrayBindVertexBufferEXT, "glVertexArrayBindVertexBufferEXT" );
-                bindGLFunc( cast( void** )&ctx.glVertexArrayVertexAttribFormatEXT, "glVertexArrayVertexAttribFormatEXT" );
-                bindGLFunc( cast( void** )&ctx.glVertexArrayVertexAttribIFormatEXT, "glVertexArrayVertexAttribIFormatEXT" );
-                bindGLFunc( cast( void** )&ctx.glVertexArrayVertexAttribLFormatEXT, "glVertexArrayVertexAttribLFormatEXT" );
-                bindGLFunc( cast( void** )&ctx.glVertexArrayVertexAttribBindingEXT, "glVertexArrayVertexAttribBindingEXT" );
-                bindGLFunc( cast( void** )&ctx.glVertexArrayVertexBindingDivisorEXT, "glVertexArrayVertexBindingDivisorEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexArrayBindVertexBufferEXT, "glVertexArrayBindVertexBufferEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexArrayVertexAttribFormatEXT, "glVertexArrayVertexAttribFormatEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexArrayVertexAttribIFormatEXT, "glVertexArrayVertexAttribIFormatEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexArrayVertexAttribLFormatEXT, "glVertexArrayVertexAttribLFormatEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexArrayVertexAttribBindingEXT, "glVertexArrayVertexAttribBindingEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glVertexArrayVertexBindingDivisorEXT, "glVertexArrayVertexBindingDivisorEXT" );
             } catch( Exception e ) {}
         }
     }
     void load_ARB_draw_buffers_blend( alias ctx )() {
         try {
-            bindGLFunc( cast( void** )&ctx.glBlendEquationiARB, "glBlendEquationiARB" );
-            bindGLFunc( cast( void** )&ctx.glBlendEquationSeparateiARB, "glBlendEquationSeparateiARB" );
-            bindGLFunc( cast( void** )&ctx.glBlendFunciARB, "glBlendFunciARB" );
-            bindGLFunc( cast( void** )&ctx.glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBlendEquationiARB, "glBlendEquationiARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBlendEquationSeparateiARB, "glBlendEquationSeparateiARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBlendFunciARB, "glBlendFunciARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB" );
             ctx.ARB_draw_buffers_blend = true;
         } catch( Exception e ) {
             ctx.ARB_draw_buffers_blend = false;
@@ -726,7 +726,7 @@ package {
     }
     void load_ARB_sample_shading( alias ctx )() {
         try {
-            bindGLFunc( cast( void** )&ctx.glMinSampleShadingARB, "glMinSampleShadingARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glMinSampleShadingARB, "glMinSampleShadingARB" );
             ctx.ARB_sample_shading = true;
         } catch( Exception e ) {
             ctx.ARB_sample_shading = false;
@@ -734,12 +734,12 @@ package {
     }
     void load_ARB_shading_language_include( alias ctx )() {
         try {
-            bindGLFunc( cast( void** )&ctx.glNamedStringARB, "glNamedStringARB" );
-            bindGLFunc( cast( void** )&ctx.glDeleteNamedStringARB, "glDeleteNamedStringARB" );
-            bindGLFunc( cast( void** )&ctx.glCompileShaderIncludeARB, "glCompileShaderIncludeARB" );
-            bindGLFunc( cast( void** )&ctx.glIsNamedStringARB, "glIsNamedStringARB" );
-            bindGLFunc( cast( void** )&ctx.glGetNamedStringARB, "glGetNamedStringARB" );
-            bindGLFunc( cast( void** )&ctx.glGetNamedStringivARB, "glGetNamedStringivARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glNamedStringARB, "glNamedStringARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteNamedStringARB, "glDeleteNamedStringARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glCompileShaderIncludeARB, "glCompileShaderIncludeARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsNamedStringARB, "glIsNamedStringARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetNamedStringARB, "glGetNamedStringARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetNamedStringivARB, "glGetNamedStringivARB" );
             ctx.ARB_shading_language_include = true;
         } catch( Exception e ) {
             ctx.ARB_shading_language_include = false;
@@ -747,7 +747,7 @@ package {
     }
     void load_ARB_cl_event( alias ctx )() {
         try {
-            bindGLFunc( cast( void** )&ctx.glCreateSyncFromCLeventARB, "glCreateSyncFromCLeventARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glCreateSyncFromCLeventARB, "glCreateSyncFromCLeventARB" );
             ctx.ARB_cl_event = true;
         } catch( Exception e ) {
             ctx.ARB_cl_event = false;
@@ -755,10 +755,10 @@ package {
     }
     void load_ARB_debug_output( alias ctx )() {
         try {
-            bindGLFunc( cast( void** )&ctx.glDebugMessageControlARB, "glDebugMessageControlARB" );
-            bindGLFunc( cast( void** )&ctx.glDebugMessageInsertARB, "glDebugMessageInsertARB" );
-            bindGLFunc( cast( void** )&ctx.glDebugMessageCallbackARB, "glDebugMessageCallbackARB" );
-            bindGLFunc( cast( void** )&ctx.glGetDebugMessageLogARB, "glGetDebugMessageLogARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDebugMessageControlARB, "glDebugMessageControlARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDebugMessageInsertARB, "glDebugMessageInsertARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDebugMessageCallbackARB, "glDebugMessageCallbackARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetDebugMessageLogARB, "glGetDebugMessageLogARB" );
             ctx.ARB_debug_output = true;
         } catch( Exception e ) {
             ctx.ARB_debug_output = false;
@@ -766,27 +766,27 @@ package {
     }
     void load_ARB_robustness( alias ctx )() {
         try {
-            bindGLFunc( cast( void** )&ctx.glGetGraphicsResetStatusARB, "glGetGraphicsResetStatusARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnMapdvARB, "glGetnMapdvARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnMapfvARB, "glGetnMapfvARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnMapivARB, "glGetnMapivARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnPixelMapfvARB, "glGetnPixelMapfvARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnPixelMapuivARB, "glGetnPixelMapuivARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnPixelMapusvARB, "glGetnPixelMapusvARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnPolygonStippleARB, "glGetnPolygonStippleARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnColorTableARB, "glGetnColorTableARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnConvolutionFilterARB, "glGetnConvolutionFilterARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnSeparableFilterARB, "glGetnSeparableFilterARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnHistogramARB, "glGetnHistogramARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnMinmaxARB, "glGetnMinmaxARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnTexImageARB, "glGetnTexImageARB" );
-            bindGLFunc( cast( void** )&ctx.glReadnPixelsARB, "glReadnPixelsARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnUniformfvARB, "glGetnUniformfvARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnUniformivARB, "glGetnUniformivARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnUniformuivARB, "glGetnUniformuivARB" );
-            bindGLFunc( cast( void** )&ctx.glGetnUniformdvARB, "glGetnUniformdvARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetGraphicsResetStatusARB, "glGetGraphicsResetStatusARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnMapdvARB, "glGetnMapdvARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnMapfvARB, "glGetnMapfvARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnMapivARB, "glGetnMapivARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnPixelMapfvARB, "glGetnPixelMapfvARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnPixelMapuivARB, "glGetnPixelMapuivARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnPixelMapusvARB, "glGetnPixelMapusvARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnPolygonStippleARB, "glGetnPolygonStippleARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnColorTableARB, "glGetnColorTableARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnConvolutionFilterARB, "glGetnConvolutionFilterARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnSeparableFilterARB, "glGetnSeparableFilterARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnHistogramARB, "glGetnHistogramARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnMinmaxARB, "glGetnMinmaxARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnTexImageARB, "glGetnTexImageARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glReadnPixelsARB, "glReadnPixelsARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnUniformfvARB, "glGetnUniformfvARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnUniformivARB, "glGetnUniformivARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnUniformuivARB, "glGetnUniformuivARB" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetnUniformdvARB, "glGetnUniformdvARB" );
             ctx.ARB_robustness = true;
         } catch( Exception e ) {
             ctx.ARB_robustness = false;

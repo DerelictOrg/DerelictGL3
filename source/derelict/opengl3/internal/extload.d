@@ -35,23 +35,23 @@ private {
 package {
     void load_EXT_framebuffer_object( alias ctx )() {
         try {
-            bindGLFunc( cast( void** )&ctx.glIsRenderbufferEXT, "glIsRenderbufferEXT" );
-            bindGLFunc( cast( void** )&ctx.glBindRenderbufferEXT, "glBindRenderbufferEXT" );
-            bindGLFunc( cast( void** )&ctx.glDeleteRenderbuffersEXT, "glDeleteRenderbuffersEXT" );
-            bindGLFunc( cast( void** )&ctx.glGenRenderbuffersEXT, "glGenRenderbuffersEXT" );
-            bindGLFunc( cast( void** )&ctx.glRenderbufferStorageEXT, "glRenderbufferStorageEXT" );
-            bindGLFunc( cast( void** )&ctx.glGetRenderbufferParameterivEXT, "glGetRenderbufferParameterivEXT" );
-            bindGLFunc( cast( void** )&ctx.glIsFramebufferEXT, "glIsFramebufferEXT" );
-            bindGLFunc( cast( void** )&ctx.glBindFramebufferEXT, "glBindFramebufferEXT" );
-            bindGLFunc( cast( void** )&ctx.glDeleteFramebuffersEXT, "glDeleteFramebuffersEXT" );
-            bindGLFunc( cast( void** )&ctx.glGenFramebuffersEXT, "glGenFramebuffersEXT" );
-            bindGLFunc( cast( void** )&ctx.glCheckFramebufferStatusEXT, "glCheckFramebufferStatusEXT" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferTexture1DEXT, "glFramebufferTexture1DEXT" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferTexture2DEXT, "glFramebufferTexture2DEXT" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferTexture3DEXT, "glFramebufferTexture3DEXT" );
-            bindGLFunc( cast( void** )&ctx.glFramebufferRenderbufferEXT, "glFramebufferRenderbufferEXT" );
-            bindGLFunc( cast( void** )&ctx.glGetFramebufferAttachmentParameterivEXT, "glGetFramebufferAttachmentParameterivEXT" );
-            bindGLFunc( cast( void** )&ctx.glGenerateMipmapEXT, "glGenerateMipmapEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsRenderbufferEXT, "glIsRenderbufferEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindRenderbufferEXT, "glBindRenderbufferEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteRenderbuffersEXT, "glDeleteRenderbuffersEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenRenderbuffersEXT, "glGenRenderbuffersEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glRenderbufferStorageEXT, "glRenderbufferStorageEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetRenderbufferParameterivEXT, "glGetRenderbufferParameterivEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glIsFramebufferEXT, "glIsFramebufferEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glBindFramebufferEXT, "glBindFramebufferEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glDeleteFramebuffersEXT, "glDeleteFramebuffersEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenFramebuffersEXT, "glGenFramebuffersEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glCheckFramebufferStatusEXT, "glCheckFramebufferStatusEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferTexture1DEXT, "glFramebufferTexture1DEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferTexture2DEXT, "glFramebufferTexture2DEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferTexture3DEXT, "glFramebufferTexture3DEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glFramebufferRenderbufferEXT, "glFramebufferRenderbufferEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGetFramebufferAttachmentParameterivEXT, "glGetFramebufferAttachmentParameterivEXT" );
+            bindGLFunc!ctx( cast( void** )&ctx.glGenerateMipmapEXT, "glGenerateMipmapEXT" );
             ctx.EXT_framebuffer_object = true;
         } catch( Exception e ) {
             ctx.EXT_framebuffer_object = false;

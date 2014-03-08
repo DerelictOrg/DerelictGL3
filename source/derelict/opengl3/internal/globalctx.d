@@ -4,6 +4,8 @@ private {
     import derelict.opengl3.internal.arbfunctions;
     import derelict.opengl3.internal.extfunctions;
     import derelict.opengl3.internal.functions;
+
+    version( Windows ) import derelict.opengl3.internal.wglfunctions;
 }
 
 enum EXTEnabled = true;
@@ -28,4 +30,10 @@ __gshared {
 
     mixin( EXTProps );
     mixin( EXTFuncs );
+
+    version( Windows ) {
+        mixin( WGLFuncs );
+        mixin( WGLARBFuncs );
+        mixin( WGLARBProps );
+    }
 }

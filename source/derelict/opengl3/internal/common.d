@@ -35,34 +35,33 @@ private {
     import derelict.util.exception;
     import derelict.util.system;
     import derelict.opengl3.gl3;
-    static if( Derelict_OS_Windows ) import derelict.opengl3.wgl;
-    else static if( Derelict_OS_Mac ) import derelict.opengl3.cgl;
-    else static if( Derelict_OS_Posix ) import derelict.opengl3.glx;
+    //static if( Derelict_OS_Mac ) import derelict.opengl3.cgl;
+    //else static if( Derelict_OS_Posix ) import derelict.opengl3.glx;
 }
 
 public {
-        void bindGLFunc( void** ptr, string symName ) {
-            auto sym = loadGLFunc( symName );
+        void bindGLFunc( alias ctx )( void** ptr, string symName ) {
+            auto sym = loadGLFunc!ctx( symName );
             if( !sym )
                 throw new SymbolLoadException( "Failed to load OpenGL symbol [" ~ symName ~ "]" );
             *ptr = sym;
         }
 
-        bool isExtSupported( GLVersion glversion, string name ) {
+        bool isExtSupported( alias ctx )( GLVersion glversion, string name ) {
             // If OpenGL 3+ is loaded, use glGetStringi.
             if( glversion >= GLVersion.GL30 ) {
                 auto cstr = name.toStringz(  );
                 int count;
                 glGetIntegerv( GL_NUM_EXTENSIONS, &count );
                 for( int i=0; i<count; ++i ) {
-                    if( strcmp( glGetStringi( GL_EXTENSIONS, i ), cstr ) == 0 )
+                    if( strcmp( ctx.glGetStringi( GL_EXTENSIONS, i ), cstr ) == 0 )
                         return true;
                 }
                 return false;
             }
             // Otherwise use the classic approach.
             else {
-                return findEXT(  glGetString( GL_EXTENSIONS ), name  );
+                return findEXT(  ctx.glGetString( GL_EXTENSIONS ), name  );
             }
         }
 

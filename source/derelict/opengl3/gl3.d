@@ -32,7 +32,12 @@ public {
     import derelict.opengl3.internal.constants;
     import derelict.opengl3.internal.extconstants;
     import derelict.opengl3.internal.globalctx;
+    import derelict.opengl3.internal.platform;
     import derelict.opengl3.internal.types;
+
+    version( Windows ) {
+        import derelict.opengl3.internal.wglconstants;
+    }
 }
 
 private {
@@ -46,8 +51,6 @@ private {
     import derelict.opengl3.internal.loader;
 
     static if( Derelict_OS_Windows ) {
-        import derelict.opengl3.wgl;
-        import derelict.opengl3.wglext;
         enum libNames = "opengl32.dll";
     } else static if( Derelict_OS_Mac ) {
         import derelict.opengl3.cgl;
@@ -62,6 +65,8 @@ private {
 }
 
 class DerelictGL3Loader : SharedLibLoader {
+    alias ctx = derelict.opengl3.internal.globalctx;
+
     private GLVersion _loadedVersion;
 
     public {
@@ -75,26 +80,26 @@ class DerelictGL3Loader : SharedLibLoader {
 
         GLVersion reload() {
             // Make sure a context is active, otherwise this could be meaningless.
-            if( !hasValidContext() )
+            if( !hasValidContext!ctx() )
                 throw new DerelictException( "DerelictGL3.reload failure: An OpenGL context is not currently active." );
 
             GLVersion glVer = GLVersion.GL11;
             scope( exit ) _loadedVersion = glVer;
 
             GLVersion maxVer = findMaxAvailable();
-            glVer = loadContext!( derelict.opengl3.internal.globalctx )( maxVer );
+            glVer = loadContext!ctx( maxVer );
 
-            loadPlatformEXT(  glVer  );
+            loadPlatformEXT!ctx(  glVer  );
 
             return glVer;
         }
     }
 
     protected override void loadSymbols() {
-        loadBase!( derelict.opengl3.internal.globalctx )( &bindFunc );
+        loadBase!ctx( &bindFunc );
         _loadedVersion = GLVersion.GL11;
 
-        loadPlatformGL( &bindFunc );
+        loadPlatformGL!ctx( &bindFunc );
     }
 
     private {

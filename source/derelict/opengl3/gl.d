@@ -26,7 +26,7 @@ DEALINGS IN THE SOFTWARE.
 
 */
 module derelict.opengl3.gl;
-
+version( None ):
 public {
     import derelict.opengl3.deprecatedConstants;
     import derelict.opengl3.deprecatedFunctions;

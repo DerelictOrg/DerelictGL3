@@ -34,7 +34,9 @@ private {
 
     import derelict.util.exception;
     import derelict.util.system;
-    import derelict.opengl3.gl3;
+    import derelict.opengl3.internal.platform;
+    import derelict.opengl3.internal.types;
+    import derelict.opengl3.internal.coreconstants;
     //static if( Derelict_OS_Mac ) import derelict.opengl3.cgl;
     //else static if( Derelict_OS_Posix ) import derelict.opengl3.glx;
 }
@@ -52,7 +54,7 @@ public {
             if( glversion >= GLVersion.GL30 ) {
                 auto cstr = name.toStringz(  );
                 int count;
-                glGetIntegerv( GL_NUM_EXTENSIONS, &count );
+                ctx.glGetIntegerv( GL_NUM_EXTENSIONS, &count );
                 for( int i=0; i<count; ++i ) {
                     if( strcmp( ctx.glGetStringi( GL_EXTENSIONS, i ), cstr ) == 0 )
                         return true;

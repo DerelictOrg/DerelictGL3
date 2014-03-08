@@ -33,7 +33,6 @@ public {
     import derelict.opengl3.internal.coreconstants;
     import derelict.opengl3.internal.extconstants;
     import derelict.opengl3.internal.globalctx;
-    import derelict.opengl3.internal.platform;
     import derelict.opengl3.internal.types;
 
     version( Windows ) {
@@ -50,6 +49,7 @@ private {
     import derelict.util.system;
     import derelict.opengl3.internal.common;
     import derelict.opengl3.internal.loader;
+    import derelict.opengl3.internal.platform;
 
     static if( Derelict_OS_Windows ) {
         enum libNames = "opengl32.dll";

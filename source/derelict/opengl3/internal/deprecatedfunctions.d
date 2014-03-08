@@ -25,7 +25,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.deprecatedFunctions;
+module derelict.opengl3.internal.deprecatedfunctions;
 
 private import derelict.opengl3.internal.types;
 
@@ -417,7 +417,8 @@ extern( System ) nothrow {
     alias da_glWindowPos3sv = void function( const( GLshort )* );
 }
 
-__gshared {
+enum DeprecatedFuncs =
+q{
     da_glIsList glIsList;
     da_glDeleteLists glDeleteLists;
     da_glGenLists glGenLists;
@@ -799,4 +800,4 @@ __gshared {
     da_glWindowPos3iv glWindowPos3iv;
     da_glWindowPos3s glWindowPos3s;
     da_glWindowPos3sv glWindowPos3sv;
-}
+};

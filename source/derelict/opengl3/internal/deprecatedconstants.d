@@ -25,7 +25,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.deprecatedConstants;
+module derelict.opengl3.internal.deprecatedconstants;
 
 private import derelict.opengl3.internal.types;
 

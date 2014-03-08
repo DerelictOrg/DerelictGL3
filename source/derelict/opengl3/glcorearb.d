@@ -40,7 +40,7 @@ private {
     import derelict.util.exception;
     import derelict.util.system;
     import derelict.opengl3.internal.common;
-    import derelict.opengl3.internal.loader;
+    import derelict.opengl3.internal.coreload;
     import derelict.opengl3.internal.platform;
 
     static if( Derelict_OS_Windows ) {

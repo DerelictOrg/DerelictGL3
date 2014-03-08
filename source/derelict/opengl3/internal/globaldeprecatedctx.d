@@ -25,40 +25,17 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.gl;
-version( None ):
+module derelict.opengl3.internal.globaldeprecatedctx;
+
 public {
-    import derelict.opengl3.gl3;
-    import derelict.opengl3.internal.globaldeprecatedctx;
+    import derelict.opengl3.internal.deprecatedconstants;
+    import derelict.opengl3.internal.globalctx;
 }
 
 private {
-    import derelict.util.loader;
-    import derelict.opengl3.internal.common;
-    import derelict.opengl3.internal.deprecatedload;
+    import derelict.opengl3.internal.deprecatedfunctions;
 }
 
-final class DerelictGLLoader : DerelictGL3Loader {
-    alias ctx = derelict.opengl3.internal.globaldeprecatedctx;
-    public {
-        this() {}
-
-        override GLVersion reload() {
-            GLVersion maxver = super.reload();
-            loadContext!ctx( maxver );
-
-            return maxver;
-        }
-    }
-
-    protected override void loadSymbols() {
-        super.loadSymbols();
-        loadBase!ctx( &bindFunc );
-    }
-}
-
-__gshared DerelictGLLoader DerelictGL;
-
-shared static this() {
-    DerelictGL = new DerelictGLLoader;
+__gshared {
+    mixin( DeprecatedFuncs );
 }

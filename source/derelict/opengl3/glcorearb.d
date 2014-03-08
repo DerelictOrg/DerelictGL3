@@ -29,15 +29,7 @@ module derelict.opengl3.glcorearb;
 
 
 public {
-    import derelict.opengl3.internal.arbconstants;
-    import derelict.opengl3.internal.coreconstants;
-    import derelict.opengl3.internal.extconstants;
     import derelict.opengl3.internal.globalctx;
-    import derelict.opengl3.internal.types;
-
-    version( Windows ) {
-        import derelict.opengl3.internal.wglconstants;
-    }
 }
 
 private {

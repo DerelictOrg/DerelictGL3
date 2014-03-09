@@ -6,9 +6,8 @@ public {
     import derelict.opengl3.internal.extconstants;
     import derelict.opengl3.internal.types;
 
-    version( Windows ) {
-        import derelict.opengl3.internal.wglconstants;
-    }
+
+
 }
 
 private {
@@ -16,7 +15,17 @@ private {
     import derelict.opengl3.internal.corefunctions;
     import derelict.opengl3.internal.extfunctions;
 
-    version( Windows ) import derelict.opengl3.internal.wglfunctions;
+    import derelict.util.system;
+}
+
+static if( Derelict_OS_Windows ) {
+    public import derelict.opengl3.internal.wglconstants;
+    private import derelict.opengl3.internal.wglfunctions;
+} else static if( Derelict_OS_Mac ) {
+
+} else static if( Derelict_OS_Posix ) {
+    public import derelict.opengl3.internal.glxconstants;
+    private import derelict.opengl3.internal.glxfunctions;
 }
 
 enum EXTEnabled = true;
@@ -42,9 +51,15 @@ __gshared {
     mixin( EXTProps );
     mixin( EXTFuncs );
 
-    version( Windows ) {
+    static if( Derelict_OS_Windows ) {
         mixin( WGLFuncs );
-        mixin( WGLARBFuncs );
-        mixin( WGLARBProps );
+        mixin( WGLEXTProps );
+        mixin( WGLEXTFuncs );
+    } else static if( Derelict_OS_Mac ) {
+
+    } else static if( Derelict_OS_Posix ) {
+        mixin( GLXFuncs );
+        mixin( GLXEXTProps );
+        mixin( GLXEXTFuncs );
     }
 }

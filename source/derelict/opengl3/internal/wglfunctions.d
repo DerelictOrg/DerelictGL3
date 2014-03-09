@@ -56,7 +56,7 @@ version( Windows ) {
         alias da_wglUseFontBitmaps = BOOL function( void*,DWORD,DWORD,DWORD );
         alias da_wglUseFontOutlines = BOOL function( void*,DWORD,DWORD,DWORD,FLOAT,FLOAT,int,GLYPHMETRICSFLOAT* );
 
-        // WGL_ARB_extensions_string
+
         alias da_wglGetExtensionsStringARB = const( char* ) function( HDC );
 
         // WGL_ARB_buffer_region
@@ -114,7 +114,7 @@ version( Windows ) {
         da_wglUseFontOutlines wglUseFontOutlines;
     };
 
-    enum WGLARBFuncs =
+    enum WGLEXTFuncs =
     q{
         da_wglGetExtensionsStringARB wglGetExtensionsStringARB;
         da_wglCreateBufferRegionARB wglCreateBufferRegionARB;
@@ -140,22 +140,22 @@ version( Windows ) {
         da_wglGetSwapIntervalEXT wglGetSwapIntervalEXT;
     };
 
-    enum WGLARBProps =
+    enum WGLEXTProps =
     q{
         bool WGL_ARB_extensions_string;
         bool WGL_ARB_buffer_region;
         bool WGL_ARB_create_context;
+        bool WGL_ARB_make_current_read;
+        bool WGL_ARB_pbuffer;
+        bool WGL_ARB_pixel_format;
+        bool WGL_ARB_render_texture;
+        bool WGL_EXT_swap_control;
         bool WGL_ARB_create_context_profile;
         bool WGL_ARB_create_context_robustness;
         bool WGL_ARB_framebuffer_sRGB;
-        bool WGL_ARB_make_current_read;
         bool WGL_ARB_multisample;
-        bool WGL_ARB_pbuffer;
-        bool WGL_ARB_pixel_format;
         bool WGL_ARB_pixel_format_float;
-        bool WGL_ARB_render_texture;
         bool WGL_ARB_robustness_application_isolation;
         bool WGL_ARB_robustness_share_group_isolation;
-        bool WGL_EXT_swap_control;
     };
 }

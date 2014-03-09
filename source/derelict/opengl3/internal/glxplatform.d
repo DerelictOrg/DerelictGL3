@@ -30,7 +30,10 @@ module derelict.opengl3.internal.glxplatform;
 private import derelict.util.system;
 
 static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
+    private import derelict.opengl3.internal.types;
+
     void* loadGLFunc( alias ctx )( string symName ) {
+        import std.string : toStringz;
         return ctx.glXGetProcAddress( symName.toStringz() );
     }
 
@@ -87,248 +90,248 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
     void loadPlatformEXT( alias ctx )( GLVersion glversion ) {
         import derelict.opengl3.internal.common;
 
-        if ( isExtSupported( glversion, "GLX_ARB_create_context" )) {
+        if ( isExtSupported!ctx( glversion, "GLX_ARB_create_context" )) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXCreateContextAttribsARB, "glXCreateContextAttribsARB" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXCreateContextAttribsARB, "glXCreateContextAttribsARB" );
                 ctx.GLX_ARB_create_context = true;
             } catch ( Exception e ) {
                 ctx.GLX_ARB_create_context = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_ARB_get_proc_address" ))
+        if ( isExtSupported!ctx( glversion, "GLX_ARB_get_proc_address" ))
         {
             try {
-                bindGLFunc( cast( void** )&ctx.glXGetProcAddressARB, "glXGetProcAddressARB" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetProcAddressARB, "glXGetProcAddressARB" );
                 ctx.GLX_ARB_get_proc_address = true;
             } catch ( Exception e ) {
                 ctx.GLX_ARB_get_proc_address = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_EXT_import_context" )) {
+        if ( isExtSupported!ctx( glversion, "GLX_EXT_import_context" )) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXGetCurrentDisplayEXT, "glXGetCurrentDisplayEXT" );
-                bindGLFunc( cast( void** )&ctx.glXQueryContextInfoEXT, "glXQueryContextInfoEXT" );
-                bindGLFunc( cast( void** )&ctx.glXGetContextIDEXT, "glXGetContextIDEXT" );
-                bindGLFunc( cast( void** )&ctx.glXImportContextEXT, "glXImportContextEXT" );
-                bindGLFunc( cast( void** )&ctx.glXFreeContextEXT, "glXFreeContextEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetCurrentDisplayEXT, "glXGetCurrentDisplayEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryContextInfoEXT, "glXQueryContextInfoEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetContextIDEXT, "glXGetContextIDEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXImportContextEXT, "glXImportContextEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXFreeContextEXT, "glXFreeContextEXT" );
                 ctx.GLX_EXT_import_context = true;
             } catch ( Exception e ) {
                 ctx.GLX_EXT_import_context = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_EXT_swap_control" )) {
+        if ( isExtSupported!ctx( glversion, "GLX_EXT_swap_control" )) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXSwapIntervalEXT, "glXSwapIntervalEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXSwapIntervalEXT, "glXSwapIntervalEXT" );
                 ctx.GLX_EXT_swap_control = true;
             } catch ( Exception e ) {
                 ctx.GLX_EXT_swap_control = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_EXT_texture_from_pixmap" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_EXT_texture_from_pixmap" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXBindTexImageEXT, "glXBindTexImageEXT" );
-                bindGLFunc( cast( void** )&ctx.glXReleaseTexImageEXT, "glXReleaseTexImageEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXBindTexImageEXT, "glXBindTexImageEXT" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXReleaseTexImageEXT, "glXReleaseTexImageEXT" );
                 ctx.GLX_EXT_texture_from_pixmap = true;
             } catch ( Exception e ) {
                 ctx.GLX_EXT_texture_from_pixmap = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_MESA_agp_offset" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_MESA_agp_offset" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXGetAGPOffsetMESA, "glXGetAGPOffsetMESA" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetAGPOffsetMESA, "glXGetAGPOffsetMESA" );
                 ctx.GLX_MESA_agp_offset = true;
             } catch ( Exception e ) {
                 ctx.GLX_MESA_agp_offset = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_MESA_pixmap_colormap" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_MESA_pixmap_colormap" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXCreateGLXPixmapMESA, "glXCreateGLXPixmapMESA" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXCreateGLXPixmapMESA, "glXCreateGLXPixmapMESA" );
                 ctx.GLX_MESA_pixmap_colormap = true;
             } catch ( Exception e ) {
                 ctx.GLX_MESA_pixmap_colormap = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_MESA_release_buffers" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_MESA_release_buffers" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXReleaseBuffersMESA, "glXReleaseBuffersMESA" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXReleaseBuffersMESA, "glXReleaseBuffersMESA" );
                 ctx.GLX_MESA_release_buffers = true;
             } catch ( Exception e ) {
                 ctx.GLX_MESA_release_buffers = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_MESA_set_3dfx_mode" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_MESA_set_3dfx_mode" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXSet3DfxModeMESA, "glXSet3DfxModeMESA" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXSet3DfxModeMESA, "glXSet3DfxModeMESA" );
                 ctx.GLX_MESA_set_3dfx_mode = true;
             } catch ( Exception e ) {
                 ctx.GLX_MESA_set_3dfx_mode = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_NV_copy_image" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_NV_copy_image" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXCopyImageSubDataNV, "glXCopyImageSubDataNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXCopyImageSubDataNV, "glXCopyImageSubDataNV" );
                 ctx.GLX_NV_copy_image = true;
             } catch ( Exception e ) {
                 ctx.GLX_NV_copy_image = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_NV_present_video" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_NV_present_video" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXEnumerateVideoDevicesNV, "glXEnumerateVideoDevicesNV" );
-                bindGLFunc( cast( void** )&ctx.glXBindVideoDeviceNV, "glXBindVideoDeviceNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXEnumerateVideoDevicesNV, "glXEnumerateVideoDevicesNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXBindVideoDeviceNV, "glXBindVideoDeviceNV" );
                 ctx.GLX_NV_present_video = true;
             } catch ( Exception e ) {
                 ctx.GLX_NV_present_video = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_NV_swap_group" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_NV_swap_group" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXJoinSwapGroupNV, "glXJoinSwapGroupNV" );
-                bindGLFunc( cast( void** )&ctx.glXBindSwapBarrierNV, "glXBindSwapBarrierNV" );
-                bindGLFunc( cast( void** )&ctx.glXQuerySwapGroupNV, "glXQuerySwapGroupNV" );
-                bindGLFunc( cast( void** )&ctx.glXQueryMaxSwapGroupsNV, "glXQueryMaxSwapGroupsNV" );
-                bindGLFunc( cast( void** )&ctx.glXQueryFrameCountNV, "glXQueryFrameCountNV" );
-                bindGLFunc( cast( void** )&ctx.glXResetFrameCountNV, "glXResetFrameCountNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXJoinSwapGroupNV, "glXJoinSwapGroupNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXBindSwapBarrierNV, "glXBindSwapBarrierNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQuerySwapGroupNV, "glXQuerySwapGroupNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryMaxSwapGroupsNV, "glXQueryMaxSwapGroupsNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryFrameCountNV, "glXQueryFrameCountNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXResetFrameCountNV, "glXResetFrameCountNV" );
                 ctx.GLX_NV_swap_group = true;
             } catch ( Exception e ) {
                 ctx.GLX_NV_swap_group = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_NV_video_capture" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_NV_video_capture" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXBindVideoCaptureDeviceNV, "glXBindVideoCaptureDeviceNV" );
-                bindGLFunc( cast( void** )&ctx.glXEnumerateVideoCaptureDevicesNV, "glXEnumerateVideoCaptureDevicesNV" );
-                bindGLFunc( cast( void** )&ctx.glXLockVideoCaptureDeviceNV, "glXLockVideoCaptureDeviceNV" );
-                bindGLFunc( cast( void** )&ctx.glXQueryVideoCaptureDeviceNV, "glXQueryVideoCaptureDeviceNV" );
-                bindGLFunc( cast( void** )&ctx.glXReleaseVideoCaptureDeviceNV, "glXReleaseVideoCaptureDeviceNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXBindVideoCaptureDeviceNV, "glXBindVideoCaptureDeviceNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXEnumerateVideoCaptureDevicesNV, "glXEnumerateVideoCaptureDevicesNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXLockVideoCaptureDeviceNV, "glXLockVideoCaptureDeviceNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryVideoCaptureDeviceNV, "glXQueryVideoCaptureDeviceNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXReleaseVideoCaptureDeviceNV, "glXReleaseVideoCaptureDeviceNV" );
                 ctx.GLX_NV_video_capture= true;
             } catch ( Exception e ) {
                 ctx.GLX_NV_video_capture = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_NV_video_output" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_NV_video_output" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXGetVideoDeviceNV, "glXGetVideoDeviceNV" );
-                bindGLFunc( cast( void** )&ctx.glXReleaseVideoDeviceNV, "glXReleaseVideoDeviceNV" );
-                bindGLFunc( cast( void** )&ctx.glXBindVideoImageNV, "glXBindVideoImageNV" );
-                bindGLFunc( cast( void** )&ctx.glXReleaseVideoImageNV, "glXReleaseVideoImageNV" );
-                bindGLFunc( cast( void** )&ctx.glXSendPbufferToVideoNV, "glXSendPbufferToVideoNV" );
-                bindGLFunc( cast( void** )&ctx.glXGetVideoInfoNV, "glXGetVideoInfoNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetVideoDeviceNV, "glXGetVideoDeviceNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXReleaseVideoDeviceNV, "glXReleaseVideoDeviceNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXBindVideoImageNV, "glXBindVideoImageNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXReleaseVideoImageNV, "glXReleaseVideoImageNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXSendPbufferToVideoNV, "glXSendPbufferToVideoNV" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetVideoInfoNV, "glXGetVideoInfoNV" );
                 ctx.GLX_NV_video_output = true;
             } catch ( Exception e ) {
                 ctx.GLX_NV_video_output = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_OML_sync_control" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_OML_sync_control" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXGetSyncValuesOML, "glXGetSyncValuesOML" );
-                bindGLFunc( cast( void** )&ctx.glXGetMscRateOML, "glXGetMscRateOML" );
-                bindGLFunc( cast( void** )&ctx.glXSwapBuffersMscOML, "glXSwapBuffersMscOML" );
-                bindGLFunc( cast( void** )&ctx.glXWaitForMscOML, "glXWaitForMscOML" );
-                bindGLFunc( cast( void** )&ctx.glXWaitForSbcOML, "glXWaitForSbcOML" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetSyncValuesOML, "glXGetSyncValuesOML" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetMscRateOML, "glXGetMscRateOML" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXSwapBuffersMscOML, "glXSwapBuffersMscOML" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXWaitForMscOML, "glXWaitForMscOML" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXWaitForSbcOML, "glXWaitForSbcOML" );
                 ctx.GLX_OML_sync_control = true;
             } catch ( Exception e ) {
                 ctx.GLX_OML_sync_control = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGIX_fbconfig" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGIX_fbconfig" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXGetFBConfigAttribSGIX, "glXGetFBConfigAttribSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXChooseFBConfigSGIX, "glXChooseFBConfigSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXCreateGLXPixmapWithConfigSGIX, "glXCreateGLXPixmapWithConfigSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXCreateContextWithConfigSGIX, "glXCreateContextWithConfigSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXGetVisualFromFBConfigSGIX, "glXGetVisualFromFBConfigSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXGetFBConfigFromVisualSGIX, "glXGetFBConfigFromVisualSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetFBConfigAttribSGIX, "glXGetFBConfigAttribSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXChooseFBConfigSGIX, "glXChooseFBConfigSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXCreateGLXPixmapWithConfigSGIX, "glXCreateGLXPixmapWithConfigSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXCreateContextWithConfigSGIX, "glXCreateContextWithConfigSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetVisualFromFBConfigSGIX, "glXGetVisualFromFBConfigSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetFBConfigFromVisualSGIX, "glXGetFBConfigFromVisualSGIX" );
                 ctx.GLX_SGIX_fbconfig = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGIX_fbconfig = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGIX_hyperpipe" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGIX_hyperpipe" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXQueryHyperpipeNetworkS, "glXQueryHyperpipeNetworkS" );
-                bindGLFunc( cast( void** )&ctx.glXHyperpipeConfigSGIX, "glXHyperpipeConfigSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXQueryHyperpipeConfigSGIX, "glXQueryHyperpipeConfigSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXDestroyHyperpipeConfigSGIX, "glXDestroyHyperpipeConfigSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXBindHyperpipeSGIX, "glXBindHyperpipeSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXQueryHyperpipeBestAttribSGIX, "glXQueryHyperpipeBestAttribSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXHyperpipeAttribSGIX, "glXHyperpipeAttribSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXQueryHyperpipeAttribSGIX, "glXQueryHyperpipeAttribSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryHyperpipeNetworkS, "glXQueryHyperpipeNetworkS" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXHyperpipeConfigSGIX, "glXHyperpipeConfigSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryHyperpipeConfigSGIX, "glXQueryHyperpipeConfigSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXDestroyHyperpipeConfigSGIX, "glXDestroyHyperpipeConfigSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXBindHyperpipeSGIX, "glXBindHyperpipeSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryHyperpipeBestAttribSGIX, "glXQueryHyperpipeBestAttribSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXHyperpipeAttribSGIX, "glXHyperpipeAttribSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryHyperpipeAttribSGIX, "glXQueryHyperpipeAttribSGIX" );
                 ctx.GLX_SGIX_hyperpipe = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGIX_hyperpipe = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGIX_pbuffer" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGIX_pbuffer" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXCreateGLXPbufferSGIX, "glXCreateGLXPbufferSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXDestroyGLXPbufferSGIX, "glXDestroyGLXPbufferSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXQueryGLXPbufferSGIX, "glXQueryGLXPbufferSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXSelectEventSGIX, "glXSelectEventSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXGetSelectedEventSGIX, "glXGetSelectedEventSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXCreateGLXPbufferSGIX, "glXCreateGLXPbufferSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXDestroyGLXPbufferSGIX, "glXDestroyGLXPbufferSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryGLXPbufferSGIX, "glXQueryGLXPbufferSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXSelectEventSGIX, "glXSelectEventSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetSelectedEventSGIX, "glXGetSelectedEventSGIX" );
                 ctx.GLX_SGIX_pbuffer = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGIX_pbuffer = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGIX_swap_barrier" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGIX_swap_barrier" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXBindSwapBarrierSGIX, "glXBindSwapBarrierSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXQueryMaxSwapBarriersSGIX, "glXQueryMaxSwapBarriersSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXBindSwapBarrierSGIX, "glXBindSwapBarrierSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryMaxSwapBarriersSGIX, "glXQueryMaxSwapBarriersSGIX" );
                 ctx.GLX_SGIX_swap_barrier = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGIX_swap_barrier = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGIX_swap_group" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGIX_swap_group" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXJoinSwapGroupSGIX, "glXJoinSwapGroupSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXJoinSwapGroupSGIX, "glXJoinSwapGroupSGIX" );
                 ctx.GLX_SGIX_swap_group = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGIX_swap_group = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGIX_video_source" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGIX_video_source" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXBindChannelToWindowSGIX, "glXBindChannelToWindowSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXChannelRectSGIX, "glXChannelRectSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXQueryChannelRectSGIX, "glXQueryChannelRectSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXQueryChannelDeltasSGIX, "glXQueryChannelDeltasSGIX" );
-                bindGLFunc( cast( void** )&ctx.glXChannelRectSyncSGIX, "glXChannelRectSyncSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXBindChannelToWindowSGIX, "glXBindChannelToWindowSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXChannelRectSGIX, "glXChannelRectSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryChannelRectSGIX, "glXQueryChannelRectSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXQueryChannelDeltasSGIX, "glXQueryChannelDeltasSGIX" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXChannelRectSyncSGIX, "glXChannelRectSyncSGIX" );
                 ctx.GLX_SGIX_video_source = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGIX_video_source = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGI_cushion" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGI_cushion" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXCushionSGI, "glXCushionSGI" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXCushionSGI, "glXCushionSGI" );
                 ctx.GLX_SGI_cushion = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGI_cushion = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGI_swap_control" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGI_swap_control" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXSwapIntervalSGI, "glXSwapIntervalSGI" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXSwapIntervalSGI, "glXSwapIntervalSGI" );
                 ctx.GLX_SGI_swap_control = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGI_swap_control = false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SGI_video_sync" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SGI_video_sync" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXGetVideoSyncSGI, "glXGetVideoSyncSGI" );
-                bindGLFunc( cast( void** )&ctx.glXWaitVideoSyncSGI, "glXWaitVideoSyncSGI" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetVideoSyncSGI, "glXGetVideoSyncSGI" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXWaitVideoSyncSGI, "glXWaitVideoSyncSGI" );
                 ctx.GLX_SGI_video_sync = true;
             } catch ( Exception e ) {
                 ctx.GLX_SGI_video_sync= false;
             }
         }
-        if ( isExtSupported( glversion, "GLX_SUN_get_transparent_index" ) ) {
+        if ( isExtSupported!ctx( glversion, "GLX_SUN_get_transparent_index" ) ) {
             try {
-                bindGLFunc( cast( void** )&ctx.glXGetTransparentIndexSUN, "glXGetTransparentIndexSUN" );
+                bindGLFunc!ctx( cast( void** )&ctx.glXGetTransparentIndexSUN, "glXGetTransparentIndexSUN" );
                 ctx.GLX_SUN_get_transparent_index = true;
             } catch ( Exception e ) {
                 ctx.GLX_SUN_get_transparent_index = false;

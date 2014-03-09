@@ -50,8 +50,6 @@ private {
         enum libNames = "../Frameworks/OpenGL.framework/OpenGL, /Library/Frameworks/OpenGL.framework/OpenGL, /System/Library/Frameworks/OpenGL.framework/OpenGL";
         void loadPlatformEXT( GLVersion ) {}
     } else static if( Derelict_OS_Posix ) {
-        import derelict.opengl3.glx;
-        import derelict.opengl3.glxext;
         enum libNames = "libGL.so.1,libGL.so";
     } else
         static assert( 0, "Need to implement OpenGL libNames for this operating system." );

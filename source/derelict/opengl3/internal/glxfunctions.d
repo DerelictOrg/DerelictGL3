@@ -29,6 +29,10 @@ module derelict.opengl3.internal.glxfunctions;
 
 private import derelict.util.system;
 static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
+    private import derelict.util.xtypes;
+    private import derelict.opengl3.internal.coreconstants;
+    private import derelict.opengl3.internal.glxconstants;
+    private import derelict.opengl3.internal.types;
 
     extern ( C ) nothrow {
         // GLX

@@ -30,7 +30,7 @@ module derelict.opengl3.internal.glxconstants;
 private import derelict.util.system;
 
 static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
-    import derelict.opengl3.xtypes;
+    import derelict.util.xtypes;
 
     // GLX
     enum {
@@ -154,8 +154,6 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
     alias GLXVideoCaptureDeviceNV = XID;
     alias GLXPbufferSGIX = XID;
     alias GLXVideoDeviceNV = uint;
-
-    struct __GLXFBConfigRec;
     alias GLXFBConfigSGIX = __GLXFBConfigRec*;
 
     // GLXARB

@@ -19,7 +19,8 @@ static if( Derelict_OS_Windows ) {
     public import derelict.opengl3.internal.wglconstants;
     private import derelict.opengl3.internal.wglfunctions;
 } else static if( Derelict_OS_Mac ) {
-
+    public import derelict.opengl3.internal.cglconstants;
+    private import derelict.opengl3.internal.cglfunctions;
 } else static if( Derelict_OS_Posix ) {
     public import derelict.opengl3.internal.glxconstants;
     private import derelict.opengl3.internal.glxfunctions;

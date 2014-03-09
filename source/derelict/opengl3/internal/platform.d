@@ -32,7 +32,7 @@ private import derelict.util.system;
 static if( Derelict_OS_Windows ) {
     public import derelict.opengl3.internal.wglplatform;
 } else static if( Derelict_OS_Mac ) {
-
+    public import derelict.opengl3.internal.cglplatform;
 } else static if( Derelict_OS_Posix ) {
     public import derelict.opengl3.internal.glxplatform;
 } else {

@@ -76,128 +76,103 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         alias da_glXGetSelectedEvent = void function( Display*,GLXDrawable,uint* );
         alias da_glXGetProcAddress = void* function( const( char )* );
 
-        alias void function() __GLXextFuncPtr;
-
+        alias __GLXextFuncPtr = void function();
         // GLX_ARB_create_context
-        alias GLXContext function( Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list ) da_glXCreateContextAttribsARB;
-
+        alias da_glXCreateContextAttribsARB = GLXContext function( Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list );
         // GLX_ARB_get_proc_address
-        alias __GLXextFuncPtr function( const GLubyte *procName ) da_glXGetProcAddressARB;
-
+        alias da_glXGetProcAddressARB = __GLXextFuncPtr function( const GLubyte *procName );
         // GLX_EXT_import_context
-        alias Display* function() da_glXGetCurrentDisplayEXT;
-        alias int function( Display* dpy, GLXContext context, int attribute, int* value ) da_glXQueryContextInfoEXT;
-        alias GLXContextID function( const GLXContext context ) da_glXGetContextIDEXT;
-        alias GLXContext function( Display* dpy, GLXContextID contextID ) da_glXImportContextEXT;
-        alias void function( Display* dpy, GLXContext context ) da_glXFreeContextEXT;
-
+        alias da_glXGetCurrentDisplayEXT = Display* function();
+        alias da_glXQueryContextInfoEXT = int function( Display* dpy, GLXContext context, int attribute, int* value );
+        alias da_glXGetContextIDEXT = GLXContextID function( const GLXContext context );
+        alias da_glXImportContextEXT = GLXContext function( Display* dpy, GLXContextID contextID );
+        alias da_glXFreeContextEXT = void function( Display* dpy, GLXContext context );
         // GLX_EXT_swap_control
-        alias void function( Display* dpy, GLXDrawable drawable, int interval ) da_glXSwapIntervalEXT;
-
+        alias da_glXSwapIntervalEXT = void function( Display* dpy, GLXDrawable drawable, int interval );
         // GLX_EXT_texture_from_pixmap
-        alias void function( Display* dpy, GLXDrawable drawable, int buffer, const int* attrib_list ) da_glXBindTexImageEXT;
-        alias void function( Display* dpy, GLXDrawable drawable, int buffer ) da_glXReleaseTexImageEXT;
-
+        alias da_glXBindTexImageEXT = void function( Display* dpy, GLXDrawable drawable, int buffer, const int* attrib_list );
+        alias da_glXReleaseTexImageEXT = void function( Display* dpy, GLXDrawable drawable, int buffer );
         // GLX_MESA_agp_offset
-        alias uint function( const void* pointer ) da_glXGetAGPOffsetMESA;
-
+        alias da_glXGetAGPOffsetMESA = uint function( const void* pointer );
         // GLX_MESA_pixmap_colormap
-        alias GLXPixmap function( Display* dpy, XVisualInfo* visual, Pixmap pixmap, Colormap cmap ) da_glXCreateGLXPixmapMESA;
-
+        alias da_glXCreateGLXPixmapMESA = GLXPixmap function( Display* dpy, XVisualInfo* visual, Pixmap pixmap, Colormap cmap );
         // GLX_MESA_release_buffers
-        alias Bool function( Display* dpy, GLXDrawable drawable ) da_glXReleaseBuffersMESA;
-
+        alias da_glXReleaseBuffersMESA = Bool function( Display* dpy, GLXDrawable drawable );
         // GLX_MESA_set_3dfx_mode
-        alias Bool function( int mode ) da_glXSet3DfxModeMESA;
-
+        alias da_glXSet3DfxModeMESA = Bool function( int mode );
         // GLX_NV_copy_image
-        alias void function( Display* dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth ) da_glXCopyImageSubDataNV;
-
+        alias da_glXCopyImageSubDataNV = void function( Display* dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth );
         // GLX_NV_present_video
-        alias uint* function( Display* dpy, int screen, int* nelements ) da_glXEnumerateVideoDevicesNV;
-        alias int function( Display* dpy, uint video_slot, uint video_device, const int* attrib_list ) da_glXBindVideoDeviceNV;
-
+        alias da_glXEnumerateVideoDevicesNV = uint* function( Display* dpy, int screen, int* nelements );
+        alias da_glXBindVideoDeviceNV = int function( Display* dpy, uint video_slot, uint video_device, const int* attrib_list );
         // GLX_NV_swap_group
-        alias Bool function( Display* dpy, GLXDrawable drawable, GLuint group ) da_glXJoinSwapGroupNV;
-        alias Bool function( Display* dpy, GLuint group, GLuint barrier ) da_glXBindSwapBarrierNV;
-        alias Bool function( Display* dpy, GLXDrawable drawable, GLuint* group, GLuint* barrier ) da_glXQuerySwapGroupNV;
-        alias Bool function( Display* dpy, int screen, GLuint* maxGroups, GLuint* maxBarriers ) da_glXQueryMaxSwapGroupsNV;
-        alias Bool function( Display* dpy, int screen, GLuint* count ) da_glXQueryFrameCountNV;
-        alias Bool function( Display* dpy, int screen ) da_glXResetFrameCountNV;
-
+        alias da_glXJoinSwapGroupNV = Bool function( Display* dpy, GLXDrawable drawable, GLuint group );
+        alias da_glXBindSwapBarrierNV = Bool function( Display* dpy, GLuint group, GLuint barrier );
+        alias da_glXQuerySwapGroupNV = Bool function( Display* dpy, GLXDrawable drawable, GLuint* group, GLuint* barrier );
+        alias da_glXQueryMaxSwapGroupsNV = Bool function( Display* dpy, int screen, GLuint* maxGroups, GLuint* maxBarriers );
+        alias da_glXQueryFrameCountNV = Bool function( Display* dpy, int screen, GLuint* count );
+        alias da_glXResetFrameCountNV = Bool function( Display* dpy, int screen );
         // GLX_NV_video_capture
-        alias int function( Display* dpy, uint video_capture_slot, GLXVideoCaptureDeviceNV device ) da_glXBindVideoCaptureDeviceNV;
-        alias GLXVideoCaptureDeviceNV* function( Display* dpy, int screen, int* nelements ) da_glXEnumerateVideoCaptureDevicesNV;
-        alias void function( Display* dpy, GLXVideoCaptureDeviceNV device ) da_glXLockVideoCaptureDeviceNV;
-        alias int function( Display* dpy, GLXVideoCaptureDeviceNV device, int attribute, int* value ) da_glXQueryVideoCaptureDeviceNV;
-        alias void function( Display* dpy, GLXVideoCaptureDeviceNV device ) da_glXReleaseVideoCaptureDeviceNV;
-
+        alias da_glXBindVideoCaptureDeviceNV = int function( Display* dpy, uint video_capture_slot, GLXVideoCaptureDeviceNV device );
+        alias da_glXEnumerateVideoCaptureDevicesNV = GLXVideoCaptureDeviceNV* function( Display* dpy, int screen, int* nelements );
+        alias da_glXLockVideoCaptureDeviceNV = void function( Display* dpy, GLXVideoCaptureDeviceNV device );
+        alias da_glXQueryVideoCaptureDeviceNV = int function( Display* dpy, GLXVideoCaptureDeviceNV device, int attribute, int* value );
+        alias da_glXReleaseVideoCaptureDeviceNV = void function( Display* dpy, GLXVideoCaptureDeviceNV device );
         // GLX_NV_video_output
-        alias int function( Display* dpy, int screen, int numVideoDevices, GLXVideoDeviceNV* pVideoDevice ) da_glXGetVideoDeviceNV;
-        alias int function( Display* dpy, int screen, GLXVideoDeviceNV VideoDevice ) da_glXReleaseVideoDeviceNV;
-        alias int function( Display* dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer ) da_glXBindVideoImageNV;
-        alias int function( Display* dpy, GLXPbuffer pbuf ) da_glXReleaseVideoImageNV;
-        alias int function( Display* dpy, GLXPbuffer pbuf, int iBufferType, ulong* pulCounterPbuffer, GLboolean bBlock ) da_glXSendPbufferToVideoNV;
-        alias int function( Display* dpy, int screen, GLXVideoDeviceNV VideoDevice, ulong* pulCounterOutputPbuffer, ulong* pulCounterOutputVideo ) da_glXGetVideoInfoNV;
-
+        alias da_glXGetVideoDeviceNV = int function( Display* dpy, int screen, int numVideoDevices, GLXVideoDeviceNV* pVideoDevice );
+        alias da_glXReleaseVideoDeviceNV = int function( Display* dpy, int screen, GLXVideoDeviceNV VideoDevice );
+        alias da_glXBindVideoImageNV = int function( Display* dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer );
+        alias da_glXReleaseVideoImageNV = int function( Display* dpy, GLXPbuffer pbuf );
+        alias da_glXSendPbufferToVideoNV = int function( Display* dpy, GLXPbuffer pbuf, int iBufferType, ulong* pulCounterPbuffer, GLboolean bBlock );
+        alias da_glXGetVideoInfoNV = int function( Display* dpy, int screen, GLXVideoDeviceNV VideoDevice, ulong* pulCounterOutputPbuffer, ulong* pulCounterOutputVideo );
         // GLX_OML_sync_control
-        alias Bool function( Display* dpy, GLXDrawable drawable, long* ust, long* msc, long* sbc ) da_glXGetSyncValuesOML;
-        alias Bool function( Display* dpy, GLXDrawable drawable, int* numerator, int* denominator ) da_glXGetMscRateOML;
-        alias long function( Display* dpy, GLXDrawable drawable, long target_msc, long divisor, long remainder ) da_glXSwapBuffersMscOML;
-        alias Bool function( Display* dpy, GLXDrawable drawable, long target_msc, long divisor, long remainder, long* ust, long* msc, long* sbc ) da_glXWaitForMscOML;
-        alias Bool function( Display* dpy, GLXDrawable drawable, long target_sbc, long* ust, long* msc, long* sbc ) da_glXWaitForSbcOML;
-
+        alias da_glXGetSyncValuesOML = Bool function( Display* dpy, GLXDrawable drawable, long* ust, long* msc, long* sbc );
+        alias da_glXGetMscRateOML = Bool function( Display* dpy, GLXDrawable drawable, int* numerator, int* denominator );
+        alias da_glXSwapBuffersMscOML = long function( Display* dpy, GLXDrawable drawable, long target_msc, long divisor, long remainder );
+        alias da_glXWaitForMscOML = Bool function( Display* dpy, GLXDrawable drawable, long target_msc, long divisor, long remainder, long* ust, long* msc, long* sbc );
+        alias da_glXWaitForSbcOML = Bool function( Display* dpy, GLXDrawable drawable, long target_sbc, long* ust, long* msc, long* sbc );
         // GLX_SGIX_fbconfig
-        alias int function( Display* dpy, GLXFBConfigSGIX config, int attribute, int* value ) da_glXGetFBConfigAttribSGIX;
-        alias GLXFBConfigSGIX* function( Display* dpy, int screen, int* attrib_list, int* nelements ) da_glXChooseFBConfigSGIX;
-        alias GLXPixmap function( Display* dpy, GLXFBConfigSGIX config, Pixmap pixmap ) da_glXCreateGLXPixmapWithConfigSGIX;
-        alias GLXContext function( Display* dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct ) da_glXCreateContextWithConfigSGIX;
-        alias XVisualInfo* function( Display* dpy, GLXFBConfigSGIX config ) da_glXGetVisualFromFBConfigSGIX;
-        alias GLXFBConfigSGIX function( Display* dpy, XVisualInfo* vis ) da_glXGetFBConfigFromVisualSGIX;
-
+        alias da_glXGetFBConfigAttribSGIX = int function( Display* dpy, GLXFBConfigSGIX config, int attribute, int* value );
+        alias da_glXChooseFBConfigSGIX = GLXFBConfigSGIX* function( Display* dpy, int screen, int* attrib_list, int* nelements );
+        alias da_glXCreateGLXPixmapWithConfigSGIX = GLXPixmap function( Display* dpy, GLXFBConfigSGIX config, Pixmap pixmap );
+        alias da_glXCreateContextWithConfigSGIX = GLXContext function( Display* dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct );
+        alias da_glXGetVisualFromFBConfigSGIX = XVisualInfo* function( Display* dpy, GLXFBConfigSGIX config );
+        alias da_glXGetFBConfigFromVisualSGIX = GLXFBConfigSGIX function( Display* dpy, XVisualInfo* vis );
         // GLX_SGIX_hyperpipe
-        alias GLXHyperpipeNetworkSGIX* function( Display* dpy, int* npipes ) da_glXQueryHyperpipeNetworkS;
-        alias int function( Display* dpy, int networkId, int npipes, GLXHyperpipeConfigSGIX* cfg, int* hpId ) da_glXHyperpipeConfigSGIX;
-        alias GLXHyperpipeConfigSGIX* function( Display* dpy, int hpId, int* npipes ) da_glXQueryHyperpipeConfigSGIX;
-        alias int function( Display* dpy, int hpId ) da_glXDestroyHyperpipeConfigSGIX;
-        alias int function( Display* dpy, int hpId ) da_glXBindHyperpipeSGIX;
-        alias int function( Display* dpy, int timeSlice, int attrib, int size, void* attribList, void* returnAttribList ) da_glXQueryHyperpipeBestAttribSGIX;
-        alias int function( Display* dpy, int timeSlice, int attrib, int size, void* attribList ) da_glXHyperpipeAttribSGIX;
-        alias int function( Display* dpy, int timeSlice, int attrib, int size, void* returnAttribList ) da_glXQueryHyperpipeAttribSGIX;
-
+        alias da_glXQueryHyperpipeNetworkS = GLXHyperpipeNetworkSGIX* function( Display* dpy, int* npipes );
+        alias da_glXHyperpipeConfigSGIX = int function( Display* dpy, int networkId, int npipes, GLXHyperpipeConfigSGIX* cfg, int* hpId );
+        alias da_glXQueryHyperpipeConfigSGIX = GLXHyperpipeConfigSGIX* function( Display* dpy, int hpId, int* npipes );
+        alias da_glXDestroyHyperpipeConfigSGIX = int function( Display* dpy, int hpId );
+        alias da_glXBindHyperpipeSGIX = int function( Display* dpy, int hpId );
+        alias da_glXQueryHyperpipeBestAttribSGIX = int function( Display* dpy, int timeSlice, int attrib, int size, void* attribList, void* returnAttribList );
+        alias da_glXHyperpipeAttribSGIX = int function( Display* dpy, int timeSlice, int attrib, int size, void* attribList );
+        alias da_glXQueryHyperpipeAttribSGIX = int function( Display* dpy, int timeSlice, int attrib, int size, void* returnAttribList );
         // GLX_SGIX_pbuffer
-        alias GLXPbufferSGIX function( Display* dpy, GLXFBConfigSGIX config, uint width, uint height, int* attrib_list ) da_glXCreateGLXPbufferSGIX;
-        alias void function( Display* dpy, GLXPbufferSGIX pbuf ) da_glXDestroyGLXPbufferSGIX;
-        alias int function( Display* dpy, GLXPbufferSGIX pbuf, int attribute, uint* value ) da_glXQueryGLXPbufferSGIX;
-        alias void function( Display* dpy, GLXDrawable drawable, ulong mask ) da_glXSelectEventSGIX;
-        alias void function( Display* dpy, GLXDrawable drawable, ulong* mask ) da_glXGetSelectedEventSGIX;
-
+        alias da_glXCreateGLXPbufferSGIX = GLXPbufferSGIX function( Display* dpy, GLXFBConfigSGIX config, uint width, uint height, int* attrib_list );
+        alias da_glXDestroyGLXPbufferSGIX = void function( Display* dpy, GLXPbufferSGIX pbuf );
+        alias da_glXQueryGLXPbufferSGIX = int function( Display* dpy, GLXPbufferSGIX pbuf, int attribute, uint* value );
+        alias da_glXSelectEventSGIX = void function( Display* dpy, GLXDrawable drawable, ulong mask );
+        alias da_glXGetSelectedEventSGIX = void function( Display* dpy, GLXDrawable drawable, ulong* mask );
         // GLX_SGIX_swap_barrier
-        alias void function( Display* dpy, GLXDrawable drawable, int barrier ) da_glXBindSwapBarrierSGIX;
-        alias Bool function( Display* dpy, int screen, int* max ) da_glXQueryMaxSwapBarriersSGIX;
-
+        alias da_glXBindSwapBarrierSGIX = void function( Display* dpy, GLXDrawable drawable, int barrier );
+        alias da_glXQueryMaxSwapBarriersSGIX = Bool function( Display* dpy, int screen, int* max );
         // GLX_SGIX_swap_group
-        alias void function( Display* dpy, GLXDrawable drawable, GLXDrawable member ) da_glXJoinSwapGroupSGIX;
-
+        alias da_glXJoinSwapGroupSGIX = void function( Display* dpy, GLXDrawable drawable, GLXDrawable member );
         // GLX_SGIX_video_source
-        alias int function( Display* display, int screen, int channel, Window window ) da_glXBindChannelToWindowSGIX;
-        alias int function( Display* display, int screen, int channel, int x, int y, int w, int h ) da_glXChannelRectSGIX;
-        alias int function( Display* display, int screen, int channel, int* dx, int* dy, int* dw, int* dh ) da_glXQueryChannelRectSGIX;
-        alias int function( Display* display, int screen, int channel, int* x, int* y, int* w, int* h ) da_glXQueryChannelDeltasSGIX;
-        alias int function( Display* display, int screen, int channel, GLenum synctype ) da_glXChannelRectSyncSGIX;
-
+        alias da_glXBindChannelToWindowSGIX = int function( Display* display, int screen, int channel, Window window );
+        alias da_glXChannelRectSGIX = int function( Display* display, int screen, int channel, int x, int y, int w, int h );
+        alias da_glXQueryChannelRectSGIX = int function( Display* display, int screen, int channel, int* dx, int* dy, int* dw, int* dh );
+        alias da_glXQueryChannelDeltasSGIX = int function( Display* display, int screen, int channel, int* x, int* y, int* w, int* h );
+        alias da_glXChannelRectSyncSGIX = int function( Display* display, int screen, int channel, GLenum synctype );
         // GLX_SGI_cushion
-        alias void function( Display* dpy, Window window, float cushion ) da_glXCushionSGI;
-
+        alias da_glXCushionSGI = void function( Display* dpy, Window window, float cushion );
         // GLX_SGI_swap_control
-        alias int function( int interval ) da_glXSwapIntervalSGI;
-
+        alias da_glXSwapIntervalSGI = int function( int interval );
         // GLX_SGI_video_sync
-        alias int function( uint* count ) da_glXGetVideoSyncSGI;
-        alias int function( int divisor, int remainder, uint* count ) da_glXWaitVideoSyncSGI;
-
+        alias da_glXGetVideoSyncSGI = int function( uint* count );
+        alias da_glXWaitVideoSyncSGI = int function( int divisor, int remainder, uint* count );
         // GLX_SUN_get_transparent_index
-        alias Status function( Display* dpy, Window overlay, Window underlay, long* pTransparentIndex ) da_glXGetTransparentIndexSUN;
+        alias da_glXGetTransparentIndexSUN = Status function( Display* dpy, Window overlay, Window underlay, long* pTransparentIndex );
     }
 
     enum GLXFuncs =

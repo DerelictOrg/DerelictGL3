@@ -5,9 +5,6 @@ public {
     import derelict.opengl3.internal.coreconstants;
     import derelict.opengl3.internal.extconstants;
     import derelict.opengl3.internal.types;
-
-
-
 }
 
 private {

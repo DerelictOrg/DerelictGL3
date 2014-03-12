@@ -47,7 +47,6 @@ private {
         enum libNames = "opengl32.dll";
     } else static if( Derelict_OS_Mac ) {
         enum libNames = "../Frameworks/OpenGL.framework/OpenGL, /Library/Frameworks/OpenGL.framework/OpenGL, /System/Library/Frameworks/OpenGL.framework/OpenGL";
-        void loadPlatformEXT( GLVersion ) {}
     } else static if( Derelict_OS_Posix ) {
         enum libNames = "libGL.so.1,libGL.so";
     } else

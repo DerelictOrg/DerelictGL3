@@ -54,7 +54,7 @@ __gshared {
         mixin( WGLEXTProps );
         mixin( WGLEXTFuncs );
     } else static if( Derelict_OS_Mac ) {
-
+        mixin( CGLFuncs );
     } else static if( Derelict_OS_Posix ) {
         mixin( GLXFuncs );
         mixin( GLXEXTProps );

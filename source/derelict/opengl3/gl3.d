@@ -44,7 +44,10 @@ private {
     import derelict.util.system;
     import derelict.opengl3.internal;
 
-    static if( Derelict_OS_Windows ) {
+    static if( Derelict_OS_Android || Derelict_OS_iOS) {
+        // Android and iOS do not support OpenGL3; use DerelictOpenGLES.
+        static assert( false, "OpenGL is not supported on Android or iOS; use OpenGLES (DerelictGLES) instead" );
+    } else static if( Derelict_OS_Windows ) {
         import derelict.opengl3.wgl;
         import derelict.opengl3.wglext;
         enum libNames = "opengl32.dll";

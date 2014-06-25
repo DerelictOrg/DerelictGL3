@@ -37,7 +37,7 @@ enum : uint {
     // GL_EXT_texture_filter_anisotropic
     GL_TEXTURE_MAX_ANISOTROPY_EXT       = 0x84FE,
     GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT   = 0x84FF,
-    
+
     // GL_EXT_framebuffer_object
     GL_INVALID_FRAMEBUFFER_OPERATION_EXT = 0x0506,
     GL_MAX_RENDERBUFFER_SIZE_EXT        = 0x84E8,
@@ -90,7 +90,7 @@ enum : uint {
     GL_RENDERBUFFER_ALPHA_SIZE_EXT      = 0x8D53,
     GL_RENDERBUFFER_DEPTH_SIZE_EXT      = 0x8D54,
     GL_RENDERBUFFER_STENCIL_SIZE_EXT    = 0x8D55,
-    
+
     // GL_NV_explicit_multisample
     GL_SAMPLE_POSITION_NV               = 0x8E50,
     GL_SAMPLE_MASK_NV                   = 0x8E51,
@@ -102,12 +102,12 @@ enum : uint {
     GL_SAMPLER_RENDERBUFFER_NV          = 0x8E56,
     GL_INT_SAMPLER_RENDERBUFFER_NV      = 0x8E57,
     GL_UNSIGNED_INT_SAMPLER_RENDERBUFFER_NV = 0x8E58,
-    
+
     // GL_EXT_direct_state_access
     GL_PROGRAM_MATRIX_EXT               = 0x8E2D,
     GL_TRANSPOSE_PROGRAM_MATRIX_EXT     = 0x8E2E,
     GL_PROGRAM_MATRIX_STACK_DEPTH_EXT   = 0x8E2F,
-    
+
     // GL_EXT_geometry_shader4
     GL_GEOMETRY_SHADER_EXT              = 0x8DD9,
     GL_GEOMETRY_VERTICES_OUT_EXT        = 0x8DDA,
@@ -129,13 +129,13 @@ enum : uint {
     GL_FRAMEBUFFER_ATTACHMENT_LAYERED_EXT = 0x8DA7,
     GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT = 0x8CD4,
     GL_PROGRAM_POINT_SIZE_EXT            = 0x8642,
-    
+
     // GL_NV_framebuffer_multisample_coverage
     GL_RENDERBUFFER_COVERAGE_SAMPLES_NV  = 0x8CAB,
     GL_RENDERBUFFER_COLOR_SAMPLES_NV     = 0x8E10,
     GL_MAX_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E11,
     GL_MULTISAMPLE_COVERAGE_MODES_NV     = 0x8E12,
-    
+
     // GL_NV_gpu_program4
     GL_MIN_PROGRAM_TEXEL_OFFSET_EXT      = 0x8904,
     GL_MAX_PROGRAM_TEXEL_OFFSET_EXT      = 0x8905,
@@ -145,7 +145,7 @@ enum : uint {
     GL_MAX_PROGRAM_RESULT_COMPONENTS_NV  = 0x8909,
     GL_MAX_PROGRAM_GENERIC_ATTRIBS_NV    = 0x8DA5,
     GL_MAX_PROGRAM_GENERIC_RESULTS_NV    = 0x8DA6,
-    
+
     // GL_EXT_gpu_shader4
     GL_VERTEX_ATTRIB_ARRAY_INTEGER_EXT   = 0x88FD,
     GL_SAMPLER_1D_ARRAY_EXT              = 0x8DC0,
@@ -222,7 +222,7 @@ enum : uint {
     GL_BGRA_INTEGER_EXT                  = 0x8D9B,
     GL_LUMINANCE_INTEGER_EXT             = 0x8D9C,
     GL_LUMINANCE_ALPHA_INTEGER_EXT       = 0x8D9D,
-    
+
     // GL_EXT_texture_buffer_object
     GL_TEXTURE_BUFFER_EXT                = 0x8C2A,
     GL_MAX_TEXTURE_BUFFER_SIZE_EXT       = 0x8C2B,
@@ -390,7 +390,7 @@ private void load_EXT_geometry_shader4() {
         _EXT_geometry_shader4 = true;
     } catch( Exception e ) {
         _EXT_geometry_shader4 = false;
-    }   
+    }
 }
 
 // GL_NV_framebuffer_multisample_coverage
@@ -480,7 +480,7 @@ private void load_NV_gpu_program4() {
 
 // GL_EXT_gpu_program_parameters
 extern ( System ) nothrow {
-    alias da_glProgramEnvParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params); 
+    alias da_glProgramEnvParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params);
     alias da_glProgramLocalParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params);
 }
 
@@ -677,15 +677,9 @@ private void load_EXT_texture_buffer_object() {
 
 // GL_EXT_direct_state_access
 extern ( System ) nothrow {
-    //    <OpenGL 1.1: New client commands>
-    //
     alias da_glClientAttribDefaultEXT = void function(GLbitfield mask);
     alias da_glPushClientAttribDefaultEXT = void function(GLbitfield mask);
-    
-    //    <OpenGL 1.0: New matrix commands add "Matrix" prefix to name,
-    //    drops "Matrix" suffix from name, and add initial "GLenum matrixMode"
-    //    parameter>
-    
+
     alias da_glMatrixLoadfEXT = void function(GLenum matrixMode, const float *m);
     alias da_glMatrixLoaddEXT = void function(GLenum matrixMode, const double *m);
     alias da_glMatrixMultfEXT = void function(GLenum matrixMode, const float *m);
@@ -701,9 +695,7 @@ extern ( System ) nothrow {
     alias da_glMatrixFrustumEXT = void function(GLenum matrixMode, double l, double r, double b, double t, double n, double f);
     alias da_glMatrixPushEXT = void function(GLenum matrixMode);
     alias da_glMatrixPopEXT = void function(GLenum matrixMode);
-    
-    //    <OpenGL 1.1: New texture object commands and queries replace "Tex"
-    //    in name with "Texture" and add initial "uint texture" parameter>
+
     alias da_glTextureParameteriEXT = void function(uint texture, GLenum target, GLenum pname, int param);
     alias da_glTextureParameterivEXT = void function(uint texture, GLenum target, GLenum pname, const int *param);
     alias da_glTextureParameterfEXT = void function(uint texture, GLenum target, GLenum pname, float param);
@@ -721,17 +713,11 @@ extern ( System ) nothrow {
     alias da_glGetTextureParameterivEXT = void function(uint texture, GLenum target, GLenum pname, int *params);
     alias da_glGetTextureLevelParameterfvEXT = void function(uint texture, GLenum target, int level, GLenum pname, float *params);
     alias da_glGetTextureLevelParameterivEXT = void function(uint texture, GLenum target, int level, GLenum pname, int *params);
-    
-    //    <OpenGL 1.2: New 3D texture object commands replace "Tex" in name with
-    //    "Texture" and adds initial "uint texture" parameter>
+
     alias da_glTextureImage3DEXT = void function(uint texture, GLenum target, int level, int internalformat, GLsizei width, GLsizei height, GLsizei depth, int border, GLenum format, GLenum type, const void *pixels);
     alias da_glTextureSubImage3DEXT = void function(uint texture, GLenum target, int level, int xoffset, int yoffset, int zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void *pixels);
     alias da_glCopyTextureSubImage3DEXT = void function(uint texture, GLenum target, int level, int xoffset, int yoffset, int zoffset, int x, int y, GLsizei width, GLsizei height);
-    
-    //    <OpenGL 1.2.1: New multitexture commands and queries prefix "Multi"
-    //    before "Tex" and add an initial "GLenum texunit" parameter (to identify
-    //    the texture unit).>
-    
+
     alias da_glBindMultiTextureEXT = void function(GLenum texunit, GLenum target, uint texture);
     alias da_glMultiTexCoordPointerEXT = void function(GLenum texunit, int size, GLenum type, GLsizei stride, const void *pointer);
     alias da_glMultiTexEnvfEXT = void function(GLenum texunit, GLenum target, GLenum pname, float param);
@@ -769,45 +755,22 @@ extern ( System ) nothrow {
     alias da_glMultiTexImage3DEXT = void function(GLenum texunit, GLenum target, int level, int internalformat, GLsizei width, GLsizei height, GLsizei depth, int border, GLenum format, GLenum type, const void *pixels);
     alias da_glMultiTexSubImage3DEXT = void function(GLenum texunit, GLenum target, int level, int xoffset, int yoffset, int zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void *pixels);
     alias da_glCopyMultiTexSubImage3DEXT = void function(GLenum texunit, GLenum target, int level, int xoffset, int yoffset, int zoffset, int x, int y, GLsizei width, GLsizei height);
-    
-    //    <OpenGL 1.2.1: New indexed texture commands and queries append
-    //    "Indexed" to name and add "uint index" parameter (to identify the
-    //    texture unit index) after state name parameters (if any) and before
-    //    state value parameters>
-    
+
     alias da_glEnableClientStateIndexedEXT = void function(GLenum array, uint index);
     alias da_glDisableClientStateIndexedEXT = void function(GLenum array, uint index);
-    
-    //    <OpenGL 3.0: New indexed texture commands and queries append "i"
-    //    to name and add "uint index" parameter (to identify the texture
-    //    unit index) after state name parameters (if any) and before state
-    //    value parameters>
-    
+
     alias da_glEnableClientStateiEXT = void function(GLenum array, uint index);
     alias da_glDisableClientStateiEXT = void function(GLenum array, uint index);
-    
-    //    <OpenGL 1.2.1: New indexed generic queries (added for indexed texture
-    //   state) append "Indexed" to name and add "uint index" parameter
-    //    (to identify the texture unit) after state name parameters (if any) and
-    //    before state value parameters>
-    
+
     alias da_glGetFloatIndexedvEXT = void function(GLenum target, uint index, float *params);
     alias da_glGetDoubleIndexedvEXT = void function(GLenum target, uint index, double *params);
     alias da_glGetPointerIndexedvEXT = void function(GLenum target, uint index, void **params);
-    
-    //    <OpenGL 3.0: New indexed generic queries (added for indexed texture
-    //    state) replace "v" for "i_v" to name and add "uint index" parameter
-    //    (to identify the texture unit) after state name parameters (if any)
-    //    and before state value parameters>
-    
+
     alias da_glGetFloati_vEXT = void function(GLenum pname, uint index, float *params);
     alias da_glGetDoublei_vEXT = void function(GLenum pname, uint index, double *params);
     alias da_glGetPointeri_vEXT = void function(GLenum pname, uint index, void **params);
-    
-    //    <ARB_vertex_program: New program commands and queries add "Named"
-    //    prefix to name and adds initial "uint program" parameter>
-    
-    alias da_glNamedProgramStringEXT = void function(uint program, GLenum target, GLenum format, GLsizei len, const void *string); 
+
+    alias da_glNamedProgramStringEXT = void function(uint program, GLenum target, GLenum format, GLsizei len, const void *string);
     alias da_glNamedProgramLocalParameter4dEXT = void function(uint program, GLenum target, uint index, double x, double y, double z, double w);
     alias da_glNamedProgramLocalParameter4dvEXT = void function(uint program, GLenum target, uint index, const double *params);
     alias da_glNamedProgramLocalParameter4fEXT = void function(uint program, GLenum target, uint index, float x, float y, float z, float w);
@@ -816,10 +779,7 @@ extern ( System ) nothrow {
     alias da_glGetNamedProgramLocalParameterfvEXT = void function(uint program, GLenum target, uint index, float *params);
     alias da_glGetNamedProgramivEXT = void function(uint program, GLenum target, GLenum pname, int *params);
     alias da_glGetNamedProgramStringEXT = void function(uint program, GLenum target, GLenum pname, void *string);
-    
-    //    <OpenGL 1.3: New compressed texture object commands replace "Tex"
-    //    in name with "Texture" and add initial "uint texture" parameter>
-    
+
     alias da_glCompressedTextureImage3DEXT = void function(uint texture, GLenum target, int level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, int border, GLsizei imageSize, const void *data);
     alias da_glCompressedTextureImage2DEXT = void function(uint texture, GLenum target, int level, GLenum internalformat, GLsizei width, GLsizei height, int border, GLsizei imageSize, const void *data);
     alias da_glCompressedTextureImage1DEXT = void function(uint texture, GLenum target, int level, GLenum internalformat, GLsizei width, int border, GLsizei imageSize, const void *data);
@@ -827,11 +787,7 @@ extern ( System ) nothrow {
     alias da_glCompressedTextureSubImage2DEXT = void function(uint texture, GLenum target, int level, int xoffset, int yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void *data);
     alias da_glCompressedTextureSubImage1DEXT = void function(uint texture, GLenum target, int level, int xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void *data);
     alias da_glGetCompressedTextureImageEXT = void function(uint texture, GLenum target, int level, void *img);
-    
-    //    <OpenGL 1.3: New multitexture compressed texture commands and queries
-    //    prefix "Multi" before "Tex" and add an initial "GLenum texunit"
-    //    parameter (to identify the texture unit).>
-    
+
     alias da_glCompressedMultiTexImage3DEXT = void function(GLenum texunit, GLenum target, int level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, int border, GLsizei imageSize, const void *data);
     alias da_glCompressedMultiTexImage2DEXT = void function(GLenum texunit, GLenum target, int level, GLenum internalformat, GLsizei width, GLsizei height, int border, GLsizei imageSize, const void *data);
     alias da_glCompressedMultiTexImage1DEXT = void function(GLenum texunit, GLenum target, int level, GLenum internalformat, GLsizei width, int border, GLsizei imageSize, const void *data);
@@ -839,20 +795,12 @@ extern ( System ) nothrow {
     alias da_glCompressedMultiTexSubImage2DEXT = void function(GLenum texunit, GLenum target, int level, int xoffset, int yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void *data);
     alias da_glCompressedMultiTexSubImage1DEXT = void function(GLenum texunit, GLenum target, int level, int xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void *data);
     alias da_glGetCompressedMultiTexImageEXT = void function(GLenum texunit, GLenum target, int level, void *img);
-    
-    //    <OpenGL 1.3: New transpose matrix commands add "Matrix" suffix
-    //    to name, drops "Matrix" suffix from name, and add initial "GLenum
-    //    matrixMode" parameter>
-    
+
     alias da_glMatrixLoadTransposefEXT = void function(GLenum matrixMode, const float *m);
     alias da_glMatrixLoadTransposedEXT = void function(GLenum matrixMode, const double *m);
     alias da_glMatrixMultTransposefEXT = void function(GLenum matrixMode, const float *m);
     alias da_glMatrixMultTransposedEXT = void function(GLenum matrixMode, const double *m);
-    
-    //    <OpenGL 1.5: New buffer commands and queries replace "Buffer" with
-    //    "NamedBuffer" in name and replace "GLenum target" parameter with
-    //    "uint buffer">
-    
+
     alias da_glNamedBufferDataEXT = void function(uint buffer, GLsizeiptr size, const void *data, GLenum usage);
     alias da_glNamedBufferSubDataEXT = void function(uint buffer, GLintptr offset, GLsizeiptr size, const void *data);
     alias da_glMapNamedBufferEXT = void* function(uint buffer, GLenum access);
@@ -860,10 +808,7 @@ extern ( System ) nothrow {
     alias da_glGetNamedBufferParameterivEXT = void function(uint buffer, GLenum pname, int *params);
     alias da_glGetNamedBufferPointervEXT = void function(uint buffer, GLenum pname, void* *params);
     alias da_glGetNamedBufferSubDataEXT = void function(uint buffer, GLintptr offset, GLsizeiptr size, void *data);
-    
-    //    <OpenGL 2.0: New uniform commands add "Program" prefix to name and
-    //    add initial "uint program" parameter>
-    
+
     alias da_glProgramUniform1fEXT = void function(uint program, int location, float v0);
     alias da_glProgramUniform2fEXT = void function(uint program, int location, float v0, float v1);
     alias da_glProgramUniform3fEXT = void function(uint program, int location, float v0, float v1, float v2);
@@ -883,50 +828,28 @@ extern ( System ) nothrow {
     alias da_glProgramUniformMatrix2fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
     alias da_glProgramUniformMatrix3fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
     alias da_glProgramUniformMatrix4fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
-    
-    //    <OpenGL 2.1: New uniform matrix commands add "Program" prefix to
-    //    name and add initial "uint program" parameter>
-    
+
     alias da_glProgramUniformMatrix2x3fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
     alias da_glProgramUniformMatrix3x2fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
     alias da_glProgramUniformMatrix2x4fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
     alias da_glProgramUniformMatrix4x2fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
     alias da_glProgramUniformMatrix3x4fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
     alias da_glProgramUniformMatrix4x3fvEXT = void function(uint program, int location, GLsizei count, GLboolean transpose, const float *value);
-    
-    //    <EXT_texture_buffer_object:  New texture buffer object command
-    //    replaces "Tex" in name with "Texture" and adds initial "uint texture"
-    //    parameter>
-    
+
     alias da_glTextureBufferEXT = void function(uint texture, GLenum target, GLenum internalformat, uint buffer);
-    
-    //    <EXT_texture_buffer_object: New multitexture texture buffer command
-    //    prefixes "Multi" before "Tex" and add an initial "GLenum texunit"
-    //    parameter (to identify the texture unit).>
-    
+
     alias da_glMultiTexBufferEXT = void function(GLenum texunit, GLenum target, GLenum internalformat, uint buffer);
-    
-    //    <EXT_texture_integer: New integer texture object commands and queries
-    //    replace "Tex" in name with "Texture" and add initial "uint texture"
-    //    parameter>
-    
+
     alias da_glTextureParameterIivEXT = void function(uint texture, GLenum target, GLenum pname, const int *params);
     alias da_glTextureParameterIuivEXT = void function(uint texture, GLenum target, GLenum pname, const uint *params);
     alias da_glGetTextureParameterIivEXT = void function(uint texture, GLenum target, GLenum pname, int *params);
     alias da_glGetTextureParameterIuivEXT = void function(uint texture, GLenum target, GLenum pname, uint *params);
-    
-    //    <EXT_texture_integer: New multitexture integer texture commands and
-    //    queries prefix "Multi" before "Tex" and add an initial "GLenum texunit"
-    //    parameter (to identify the texture unit).>
-    
+
     alias da_glMultiTexParameterIivEXT = void function(GLenum texunit, GLenum target, GLenum pname, const int *params);
     alias da_glMultiTexParameterIuivEXT = void function(GLenum texunit, GLenum target, GLenum pname, const uint *params);
     alias da_glGetMultiTexParameterIivEXT = void function(GLenum texunit, GLenum target, GLenum pname, int *params);
     alias da_glGetMultiTexParameterIuivEXT = void function(GLenum texunit, GLenum target, GLenum pname, uint *params);
-    
-    //    <EXT_gpu_shader4: New integer uniform commands add "Program" prefix
-    //    to name and add initial "uint program" parameter>
-    
+
     alias da_glProgramUniform1uiEXT = void function(uint program, int location, uint v0);
     alias da_glProgramUniform2uiEXT = void function(uint program, int location, uint v0, uint v1);
     alias da_glProgramUniform3uiEXT = void function(uint program, int location, uint v0, uint v1, uint v2);
@@ -935,15 +858,9 @@ extern ( System ) nothrow {
     alias da_glProgramUniform2uivEXT = void function(uint program, int location, GLsizei count, const uint *value);
     alias da_glProgramUniform3uivEXT = void function(uint program, int location, GLsizei count, const uint *value);
     alias da_glProgramUniform4uivEXT = void function(uint program, int location, GLsizei count, const uint *value);
-    
-    //    <EXT_gpu_program_parameters: New program command adds "Named" prefix
-    //   to name and adds "uint program" parameter>
-    
-    alias da_glNamedProgramLocalParameters4fvEXT = void function(uint program, GLenum target, uint index, GLsizei count, const float *params); 
-    
-    //    <NV_gpu_program4: New program commands and queries add "Named"
-    //    prefix to name and replace "GLenum target" with "uint program">
-    
+
+    alias da_glNamedProgramLocalParameters4fvEXT = void function(uint program, GLenum target, uint index, GLsizei count, const float *params);
+
     alias da_glNamedProgramLocalParameterI4iEXT = void function(uint program, GLenum target, uint index, int x, int y, int z, int w);
     alias da_glNamedProgramLocalParameterI4ivEXT = void function(uint program, GLenum target, uint index, const int *params);
     alias da_glNamedProgramLocalParametersI4ivEXT = void function(uint program, GLenum target, uint index, GLsizei count, const int *params);
@@ -952,82 +869,41 @@ extern ( System ) nothrow {
     alias da_glNamedProgramLocalParametersI4uivEXT = void function(uint program, GLenum target, uint index, GLsizei count, const uint *params);
     alias da_glGetNamedProgramLocalParameterIivEXT = void function(uint program, GLenum target, uint index, int *params);
     alias da_glGetNamedProgramLocalParameterIuivEXT = void function(uint program, GLenum target, uint index, uint *params);
-    
-    //    <OpenGL 3.0: New renderbuffer commands add "Named" prefix to name
-    //    and replace "GLenum target" with "uint renderbuffer">
-    
+
     alias da_glNamedRenderbufferStorageEXT = void function(uint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
     alias da_glGetNamedRenderbufferParameterivEXT = void function(uint renderbuffer, GLenum pname, int *params);
-    
-    //    <OpenGL 3.0: New renderbuffer commands add "Named"
-    //    prefix to name and replace "GLenum target" with "uint renderbuffer">
-    
+
     alias da_glNamedRenderbufferStorageMultisampleEXT = void function(uint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
-    
-    //    <NV_framebuffer_multisample_coverage: New renderbuffer commands
-    //    add "Named" prefix to name and replace "GLenum target" with "uint
-    //    renderbuffer">
-    
+
     alias da_glNamedRenderbufferStorageMultisampleCoverageEXT = void function(uint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
-    
-    //    <OpenGL 3.0: New framebuffer commands add "Named" prefix to name
-    //    and replace "GLenum target" with "uint framebuffer">
-    
+
     alias da_glCheckNamedFramebufferStatusEXT = GLenum function(uint framebuffer, GLenum target);
     alias da_glNamedFramebufferTexture1DEXT = void function(uint framebuffer, GLenum attachment, GLenum textarget, uint texture, int level);
     alias da_glNamedFramebufferTexture2DEXT = void function(uint framebuffer, GLenum attachment, GLenum textarget, uint texture, int level);
     alias da_glNamedFramebufferTexture3DEXT = void function(uint framebuffer, GLenum attachment, GLenum textarget, uint texture, int level, int zoffset);
     alias da_glNamedFramebufferRenderbufferEXT = void function(uint framebuffer, GLenum attachment, GLenum renderbuffertarget, uint renderbuffer);
     alias da_glGetNamedFramebufferAttachmentParameterivEXT = void function(uint framebuffer, GLenum attachment, GLenum pname, int *params);
-    
-    //    <OpenGL 3.0: New texture commands add "Texture" within name and
-    //    replace "GLenum target" with "uint texture">
-    
+
     alias da_glGenerateTextureMipmapEXT = void function(uint texture, GLenum target);
-    
-    //    <OpenGL 3.0: New texture commands add "MultiTex" within name and
-    //    replace "GLenum target" with "GLenum texunit">
-    
+
     alias da_glGenerateMultiTexMipmapEXT = void function(GLenum texunit, GLenum target);
-    
-    //    <OpenGL 3.0: New framebuffer commands>
-    
+
     alias da_glFramebufferDrawBufferEXT = void function(uint framebuffer, GLenum mode);
     alias da_glFramebufferDrawBuffersEXT = void function(uint framebuffer, GLsizei n, const GLenum *bufs);
     alias da_glFramebufferReadBufferEXT = void function(uint framebuffer, GLenum mode);
-    
-    //    <OpenGL 3.0: New framebuffer query>
-    
+
     alias da_glGetFramebufferParameterivEXT = void function(uint framebuffer, GLenum pname, int *param);
-    
-    //    <OpenGL 3.0: New buffer data copy command>
+
     alias da_glNamedCopyBufferSubDataEXT = void function(uint readBuffer, uint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
-    
-    //    <EXT_geometry_shader4 or NV_gpu_program4: New framebuffer commands
-    //    add "Named" prefix to name and replace "GLenum target" with "uint
-    //    framebuffer">
-    
+
     alias da_glNamedFramebufferTextureEXT = void function(uint framebuffer, GLenum attachment, uint texture, int level);
     alias da_glNamedFramebufferTextureLayerEXT = void function(uint framebuffer, GLenum attachment, uint texture, int level, int layer);
     alias da_glNamedFramebufferTextureFaceEXT = void function(uint framebuffer, GLenum attachment, uint texture, int level, GLenum face);
-    
-    //    <NV_explicit_multisample:  New texture renderbuffer object command
-    //    replaces "Tex" in name with "Texture" and add initial "uint texture"
-    //    parameter> 
-    
+
     alias da_glTextureRenderbufferEXT = void function(uint texture, GLenum target, uint renderbuffer);
-    
-    //    <NV_explicit_multisample: New multitexture texture renderbuffer command
-    //    prefixes "Multi" before "Tex" and add an initial "GLenum texunit"
-    //    parameter (to identify the texture unit)>
-    
+
     alias da_glMultiTexRenderbufferEXT = void function(GLenum texunit, GLenum target, uint renderbuffer);
-    
-    //    <OpenGL 3.0: New vertex array specification commands for vertex
-    //    array objects prefix "VertexArray", add initial "uint vaobj" and
-    //    "uint buffer" parameters, change "Pointer" suffix to "Offset",
-    //    and change the final parameter from "const void *" to "intptr offset">
-    
+
     alias da_glVertexArrayVertexOffsetEXT = void function(uint vaobj, uint buffer, int size, GLenum type, GLsizei stride, GLintptr offset);
     alias da_glVertexArrayColorOffsetEXT = void function(uint vaobj, uint buffer, int size, GLenum type, GLsizei stride, GLintptr offset);
     alias da_glVertexArrayEdgeFlagOffsetEXT = void function(uint vaobj, uint buffer, GLsizei stride, GLintptr offset);
@@ -1039,31 +915,18 @@ extern ( System ) nothrow {
     alias da_glVertexArraySecondaryColorOffsetEXT = void function(uint vaobj, uint buffer, int size, GLenum type, GLsizei stride, GLintptr offset);
     alias da_glVertexArrayVertexAttribOffsetEXT = void function(uint vaobj, uint buffer, uint index, int size, GLenum type, GLboolean normalized, GLsizei stride, GLintptr offset);
     alias da_glVertexArrayVertexAttribIOffsetEXT = void function(uint vaobj, uint buffer, uint index, int size, GLenum type, GLsizei stride, GLintptr offset);
-    
-    //    <OpenGL 3.0: New vertex array enable commands for vertex array
-    //    objects change "ClientState" to "VertexArray" and add an initial
-    //    "uint vaobj" parameter>
-    
+
     alias da_glEnableVertexArrayEXT = void function(uint vaobj, GLenum array);
     alias da_glDisableVertexArrayEXT = void function(uint vaobj, GLenum array);
-    
-    //    <OpenGL 3.0: New vertex attrib array enable commands for vertex
-    //    array objects change "VertexAttribArray" to "VertexArrayAttrib"
-    //    and add an initial "uint vaobj" parameter>
-    
+
     alias da_glEnableVertexArrayAttribEXT = void function(uint vaobj, uint index);
     alias da_glDisableVertexArrayAttribEXT = void function(uint vaobj, uint index);
-    
-    //    <OpenGL 3.0: New queries for vertex array objects>
-    
+
     alias da_glGetVertexArrayIntegervEXT = void function(uint vaobj, GLenum pname, int *param);
     alias da_glGetVertexArrayPointervEXT = void function(uint vaobj, GLenum pname, void **param);
     alias da_glGetVertexArrayIntegeri_vEXT = void function(uint vaobj, uint index, GLenum pname, int *param);
     alias da_glGetVertexArrayPointeri_vEXT = void function(uint vaobj, uint index, GLenum pname, void **param);
-    
-    //    <OpenGL 3.0: New buffer commands replace "Buffer" with "NamedBuffer"
-    //    in name and replace "GLenum target" parameter with "uint buffer">
-    
+
     alias da_glMapNamedBufferRangeEXT = void* function(uint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
     alias da_glFlushMappedNamedBufferRangeEXT = void function(uint buffer, GLintptr offset, GLsizeiptr length);
 }
@@ -1284,23 +1147,13 @@ __gshared {
     da_glFlushMappedNamedBufferRangeEXT glFlushMappedNamedBufferRangeEXT;
 }
 
-// ARB_vertex_program not present in the arb.d for some reason
-private __gshared bool _ARB_vertex_program;
-bool ARB_vertex_program() @property { return _ARB_vertex_program; }
-
 private __gshared bool _EXT_direct_state_access;
 bool EXT_direct_state_access() @property { return _EXT_direct_state_access; }
-private void load_EXT_direct_state_access() {
+private void load_EXT_direct_state_access( GLVersion glversion ) {
     try {
-        //    <OpenGL 1.1: New client commands>
-        //
         bindGLFunc( cast( void** )&glClientAttribDefaultEXT, "glClientAttribDefaultEXT" );
         bindGLFunc( cast( void** )&glPushClientAttribDefaultEXT, "glPushClientAttribDefaultEXT" );
-        
-        //    <OpenGL 1.0: New matrix commands add "Matrix" prefix to name,
-        //    drops "Matrix" suffix from name, and add initial "GLenum matrixMode"
-        //    parameter>
-        
+
         bindGLFunc( cast( void** )&glMatrixLoadfEXT, "glMatrixLoadfEXT" );
         bindGLFunc( cast( void** )&glMatrixLoaddEXT, "glMatrixLoaddEXT" );
         bindGLFunc( cast( void** )&glMatrixMultfEXT, "glMatrixMultfEXT" );
@@ -1316,9 +1169,7 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glMatrixFrustumEXT, "glMatrixFrustumEXT" );
         bindGLFunc( cast( void** )&glMatrixPushEXT, "glMatrixPushEXT" );
         bindGLFunc( cast( void** )&glMatrixPopEXT, "glMatrixPopEXT" );
-        
-        //    <OpenGL 1.1: New texture object commands and queries replace "Tex"
-        //    in name with "Texture" and add initial "uint texture" parameter>
+
         bindGLFunc( cast( void** )&glTextureParameteriEXT, "glTextureParameteriEXT" );
         bindGLFunc( cast( void** )&glTextureParameterivEXT, "glTextureParameterivEXT" );
         bindGLFunc( cast( void** )&glTextureParameterfEXT, "glTextureParameterfEXT" );
@@ -1336,17 +1187,11 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glGetTextureParameterivEXT, "glGetTextureParameterivEXT" );
         bindGLFunc( cast( void** )&glGetTextureLevelParameterfvEXT, "glGetTextureLevelParameterfvEXT" );
         bindGLFunc( cast( void** )&glGetTextureLevelParameterivEXT, "glGetTextureLevelParameterivEXT" );
-        
-        //    <OpenGL 1.2: New 3D texture object commands replace "Tex" in name with
-        //    "Texture" and adds initial "uint texture" parameter>
+
         bindGLFunc( cast( void** )&glTextureImage3DEXT, "glTextureImage3DEXT" );
         bindGLFunc( cast( void** )&glTextureSubImage3DEXT, "glTextureSubImage3DEXT" );
         bindGLFunc( cast( void** )&glCopyTextureSubImage3DEXT, "glCopyTextureSubImage3DEXT" );
-        
-        //    <OpenGL 1.2.1: New multitexture commands and queries prefix "Multi"
-        //    before "Tex" and add an initial "GLenum texunit" parameter (to identify
-        //    the texture unit).>
-        
+
         bindGLFunc( cast( void** )&glBindMultiTextureEXT, "glBindMultiTextureEXT" );
         bindGLFunc( cast( void** )&glMultiTexCoordPointerEXT, "glMultiTexCoordPointerEXT" );
         bindGLFunc( cast( void** )&glMultiTexEnvfEXT, "glMultiTexEnvfEXT" );
@@ -1384,45 +1229,22 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glMultiTexImage3DEXT, "glMultiTexImage3DEXT" );
         bindGLFunc( cast( void** )&glMultiTexSubImage3DEXT, "glMultiTexSubImage3DEXT" );
         bindGLFunc( cast( void** )&glCopyMultiTexSubImage3DEXT, "glCopyMultiTexSubImage3DEXT" );
-        
-        //    <OpenGL 1.2.1: New indexed texture commands and queries append
-        //    "Indexed" to name and add "uint index" parameter (to identify the
-        //    texture unit index) after state name parameters (if any) and before
-        //    state value parameters>
-        
+
         bindGLFunc( cast( void** )&glEnableClientStateIndexedEXT, "glEnableClientStateIndexedEXT" );
         bindGLFunc( cast( void** )&glDisableClientStateIndexedEXT, "glDisableClientStateIndexedEXT" );
-        
-        //    <OpenGL 3.0: New indexed texture commands and queries append "i"
-        //    to name and add "uint index" parameter (to identify the texture
-        //    unit index) after state name parameters (if any) and before state
-        //    value parameters>
-        
+
         bindGLFunc( cast( void** )&glEnableClientStateiEXT, "glEnableClientStateiEXT" );
         bindGLFunc( cast( void** )&glDisableClientStateiEXT, "glDisableClientStateiEXT" );
-        
-        //    <OpenGL 1.2.1: New indexed generic queries (added for indexed texture
-        //   state) append "Indexed" to name and add "uint index" parameter
-        //    (to identify the texture unit) after state name parameters (if any) and
-        //    before state value parameters>
-        
+
         bindGLFunc( cast( void** )&glGetFloatIndexedvEXT, "glGetFloatIndexedvEXT" );
         bindGLFunc( cast( void** )&glGetDoubleIndexedvEXT, "glGetDoubleIndexedvEXT" );
         bindGLFunc( cast( void** )&glGetPointerIndexedvEXT, "glGetPointerIndexedvEXT" );
-        
-        //    <OpenGL 3.0: New indexed generic queries (added for indexed texture
-        //    state) replace "v" for "i_v" to name and add "uint index" parameter
-        //    (to identify the texture unit) after state name parameters (if any)
-        //    and before state value parameters>
-        
+
         bindGLFunc( cast( void** )&glGetFloati_vEXT, "glGetFloati_vEXT" );
         bindGLFunc( cast( void** )&glGetDoublei_vEXT, "glGetDoublei_vEXT" );
         bindGLFunc( cast( void** )&glGetPointeri_vEXT, "glGetPointeri_vEXT" );
-        
-        //    <ARB_vertex_program: New program commands and queries add "Named"
-        //    prefix to name and adds initial "uint program" parameter>
-        
-        if ( ARB_vertex_program ) {
+
+        if ( isExtSupported( glversion, "GL_ARB_vertex_program" )) {
             bindGLFunc( cast( void** )&glNamedProgramStringEXT, "glNamedProgramStringEXT" );
             bindGLFunc( cast( void** )&glNamedProgramLocalParameter4dEXT, "glNamedProgramLocalParameter4dEXT" );
             bindGLFunc( cast( void** )&glNamedProgramLocalParameter4dvEXT, "glNamedProgramLocalParameter4dvEXT" );
@@ -1433,10 +1255,7 @@ private void load_EXT_direct_state_access() {
             bindGLFunc( cast( void** )&glGetNamedProgramivEXT, "glGetNamedProgramivEXT" );
             bindGLFunc( cast( void** )&glGetNamedProgramStringEXT, "glGetNamedProgramStringEXT" );
         }
-        
-        //    <OpenGL 1.3: New compressed texture object commands replace "Tex"
-        //    in name with "Texture" and add initial "uint texture" parameter>
-        
+
         bindGLFunc( cast( void** )&glCompressedTextureImage3DEXT, "glCompressedTextureImage3DEXT" );
         bindGLFunc( cast( void** )&glCompressedTextureImage2DEXT, "glCompressedTextureImage2DEXT" );
         bindGLFunc( cast( void** )&glCompressedTextureImage1DEXT, "glCompressedTextureImage1DEXT" );
@@ -1444,11 +1263,7 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glCompressedTextureSubImage2DEXT, "glCompressedTextureSubImage2DEXT" );
         bindGLFunc( cast( void** )&glCompressedTextureSubImage1DEXT, "glCompressedTextureSubImage1DEXT" );
         bindGLFunc( cast( void** )&glGetCompressedTextureImageEXT, "glGetCompressedTextureImageEXT" );
-        
-        //    <OpenGL 1.3: New multitexture compressed texture commands and queries
-        //    prefix "Multi" before "Tex" and add an initial "GLenum texunit"
-        //    parameter (to identify the texture unit).>
-        
+
         bindGLFunc( cast( void** )&glCompressedMultiTexImage3DEXT, "glCompressedMultiTexImage3DEXT" );
         bindGLFunc( cast( void** )&glCompressedMultiTexImage2DEXT, "glCompressedMultiTexImage2DEXT" );
         bindGLFunc( cast( void** )&glCompressedMultiTexImage1DEXT, "glCompressedMultiTexImage1DEXT" );
@@ -1456,20 +1271,12 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glCompressedMultiTexSubImage2DEXT, "glCompressedMultiTexSubImage2DEXT" );
         bindGLFunc( cast( void** )&glCompressedMultiTexSubImage1DEXT, "glCompressedMultiTexSubImage1DEXT" );
         bindGLFunc( cast( void** )&glGetCompressedMultiTexImageEXT, "glGetCompressedMultiTexImageEXT" );
-        
-        //    <OpenGL 1.3: New transpose matrix commands add "Matrix" suffix
-        //    to name, drops "Matrix" suffix from name, and add initial "GLenum
-        //    matrixMode" parameter>
-        
+
         bindGLFunc( cast( void** )&glMatrixLoadTransposefEXT, "glMatrixLoadTransposefEXT" );
         bindGLFunc( cast( void** )&glMatrixLoadTransposedEXT, "glMatrixLoadTransposedEXT" );
         bindGLFunc( cast( void** )&glMatrixMultTransposefEXT, "glMatrixMultTransposefEXT" );
         bindGLFunc( cast( void** )&glMatrixMultTransposedEXT, "glMatrixMultTransposedEXT" );
-        
-        //    <OpenGL 1.5: New buffer commands and queries replace "Buffer" with
-        //    "NamedBuffer" in name and replace "GLenum target" parameter with
-        //    "uint buffer">
-        
+
         bindGLFunc( cast( void** )&glNamedBufferDataEXT, "glNamedBufferDataEXT" );
         bindGLFunc( cast( void** )&glNamedBufferSubDataEXT, "glNamedBufferSubDataEXT" );
         bindGLFunc( cast( void** )&glMapNamedBufferEXT, "glMapNamedBufferEXT" );
@@ -1477,10 +1284,7 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glGetNamedBufferParameterivEXT, "glGetNamedBufferParameterivEXT" );
         bindGLFunc( cast( void** )&glGetNamedBufferPointervEXT, "glGetNamedBufferPointervEXT" );
         bindGLFunc( cast( void** )&glGetNamedBufferSubDataEXT, "glGetNamedBufferSubDataEXT" );
-        
-        //    <OpenGL 2.0: New uniform commands add "Program" prefix to name and
-        //    add initial "uint program" parameter>
-        
+
         bindGLFunc( cast( void** )&glProgramUniform1fEXT, "glProgramUniform1fEXT" );
         bindGLFunc( cast( void** )&glProgramUniform2fEXT, "glProgramUniform2fEXT" );
         bindGLFunc( cast( void** )&glProgramUniform3fEXT, "glProgramUniform3fEXT" );
@@ -1500,28 +1304,19 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glProgramUniformMatrix2fvEXT, "glProgramUniformMatrix2fvEXT" );
         bindGLFunc( cast( void** )&glProgramUniformMatrix3fvEXT, "glProgramUniformMatrix3fvEXT" );
         bindGLFunc( cast( void** )&glProgramUniformMatrix4fvEXT, "glProgramUniformMatrix4fvEXT" );
-        
-        //    <OpenGL 2.1: New uniform matrix commands add "Program" prefix to
-        //    name and add initial "uint program" parameter>
-        
+
         bindGLFunc( cast( void** )&glProgramUniformMatrix2x3fvEXT, "glProgramUniformMatrix2x3fvEXT" );
         bindGLFunc( cast( void** )&glProgramUniformMatrix3x2fvEXT, "glProgramUniformMatrix3x2fvEXT" );
         bindGLFunc( cast( void** )&glProgramUniformMatrix2x4fvEXT, "glProgramUniformMatrix2x4fvEXT" );
         bindGLFunc( cast( void** )&glProgramUniformMatrix4x2fvEXT, "glProgramUniformMatrix4x2fvEXT" );
         bindGLFunc( cast( void** )&glProgramUniformMatrix3x4fvEXT, "glProgramUniformMatrix3x4fvEXT" );
         bindGLFunc( cast( void** )&glProgramUniformMatrix4x3fvEXT, "glProgramUniformMatrix4x3fvEXT" );
-        
-        //    <EXT_texture_buffer_object:  New texture buffer object command
-        //    replaces "Tex" in name with "Texture" and adds initial "uint texture"
-        //    parameter>
+
         if ( EXT_texture_buffer_object ) {
             bindGLFunc( cast( void** )&glTextureBufferEXT, "glTextureBufferEXT" );
             bindGLFunc( cast( void** )&glMultiTexBufferEXT, "glMultiTexBufferEXT" );
         }
-        
-        //    <EXT_texture_integer: New integer texture object commands and queries
-        //    replace "Tex" in name with "Texture" and add initial "uint texture"
-        //    parameter>
+
         if ( EXT_texture_integer ) {
             bindGLFunc( cast( void** )&glTextureParameterIivEXT, "glTextureParameterIivEXT" );
             bindGLFunc( cast( void** )&glTextureParameterIuivEXT, "glTextureParameterIuivEXT" );
@@ -1532,9 +1327,7 @@ private void load_EXT_direct_state_access() {
             bindGLFunc( cast( void** )&glGetMultiTexParameterIivEXT, "glGetMultiTexParameterIivEXT" );
             bindGLFunc( cast( void** )&glGetMultiTexParameterIuivEXT, "glGetMultiTexParameterIuivEXT" );
         }
-        
-        //    <EXT_gpu_shader4: New integer uniform commands add "Program" prefix
-        //    to name and add initial "uint program" parameter>
+
         if ( EXT_gpu_shader4 ) {
             bindGLFunc( cast( void** )&glProgramUniform1uiEXT, "glProgramUniform1uiEXT" );
             bindGLFunc( cast( void** )&glProgramUniform2uiEXT, "glProgramUniform2uiEXT" );
@@ -1545,15 +1338,11 @@ private void load_EXT_direct_state_access() {
             bindGLFunc( cast( void** )&glProgramUniform3uivEXT, "glProgramUniform3uivEXT" );
             bindGLFunc( cast( void** )&glProgramUniform4uivEXT, "glProgramUniform4uivEXT" );
         }
-        
-        //    <EXT_gpu_program_parameters: New program command adds "Named" prefix
-        //   to name and adds "uint program" parameter>
+
         if ( EXT_gpu_program_parameters ) {
             bindGLFunc( cast( void** )&glNamedProgramLocalParameters4fvEXT, "glNamedProgramLocalParameters4fvEXT" );
         }
-        
-        //    <NV_gpu_program4: New program commands and queries add "Named"
-        //    prefix to name and replace "GLenum target" with "uint program">
+
         if ( NV_gpu_program4 ) {
             bindGLFunc( cast( void** )&glNamedProgramLocalParameterI4iEXT, "glNamedProgramLocalParameterI4iEXT" );
             bindGLFunc( cast( void** )&glNamedProgramLocalParameterI4ivEXT, "glNamedProgramLocalParameterI4ivEXT" );
@@ -1564,83 +1353,46 @@ private void load_EXT_direct_state_access() {
             bindGLFunc( cast( void** )&glGetNamedProgramLocalParameterIivEXT, "glGetNamedProgramLocalParameterIivEXT" );
             bindGLFunc( cast( void** )&glGetNamedProgramLocalParameterIuivEXT, "glGetNamedProgramLocalParameterIuivEXT" );
         }
-        
-        //    <OpenGL 3.0: New renderbuffer commands add "Named" prefix to name
-        //    and replace "GLenum target" with "uint renderbuffer">
-        
+
         bindGLFunc( cast( void** )&glNamedRenderbufferStorageEXT, "glNamedRenderbufferStorageEXT" );
         bindGLFunc( cast( void** )&glGetNamedRenderbufferParameterivEXT, "glGetNamedRenderbufferParameterivEXT" );
-        
-        //    <OpenGL 3.0: New renderbuffer commands add "Named"
-        //    prefix to name and replace "GLenum target" with "uint renderbuffer">
-        
+
         bindGLFunc( cast( void** )&glNamedRenderbufferStorageMultisampleEXT, "glNamedRenderbufferStorageMultisampleEXT" );
-        
-        //    <NV_framebuffer_multisample_coverage: New renderbuffer commands
-        //    add "Named" prefix to name and replace "GLenum target" with "uint
-        //    renderbuffer">
+
         if ( NV_framebuffer_multisample_coverage ) {
             bindGLFunc( cast( void** )&glNamedRenderbufferStorageMultisampleCoverageEXT, "glNamedRenderbufferStorageMultisampleCoverageEXT" );
         }
-        
-        //    <OpenGL 3.0: New framebuffer commands add "Named" prefix to name
-        //    and replace "GLenum target" with "uint framebuffer">
-        
+
         bindGLFunc( cast( void** )&glCheckNamedFramebufferStatusEXT, "glCheckNamedFramebufferStatusEXT" );
         bindGLFunc( cast( void** )&glNamedFramebufferTexture1DEXT, "glNamedFramebufferTexture1DEXT" );
         bindGLFunc( cast( void** )&glNamedFramebufferTexture2DEXT, "glNamedFramebufferTexture2DEXT" );
         bindGLFunc( cast( void** )&glNamedFramebufferTexture3DEXT, "glNamedFramebufferTexture3DEXT" );
         bindGLFunc( cast( void** )&glNamedFramebufferRenderbufferEXT, "glNamedFramebufferRenderbufferEXT" );
         bindGLFunc( cast( void** )&glGetNamedFramebufferAttachmentParameterivEXT, "glGetNamedFramebufferAttachmentParameterivEXT" );
-        
-        //    <OpenGL 3.0: New texture commands add "Texture" within name and
-        //    replace "GLenum target" with "uint texture">
-        
+
         bindGLFunc( cast( void** )&glGenerateTextureMipmapEXT, "glGenerateTextureMipmapEXT" );
-        
-        //    <OpenGL 3.0: New texture commands add "MultiTex" within name and
-        //    replace "GLenum target" with "GLenum texunit">
-        
+
         bindGLFunc( cast( void** )&glGenerateMultiTexMipmapEXT, "glGenerateMultiTexMipmapEXT" );
-        
-        //    <OpenGL 3.0: New framebuffer commands>
-        
+
         bindGLFunc( cast( void** )&glFramebufferDrawBufferEXT, "glFramebufferDrawBufferEXT" );
         bindGLFunc( cast( void** )&glFramebufferDrawBuffersEXT, "glFramebufferDrawBuffersEXT" );
         bindGLFunc( cast( void** )&glFramebufferReadBufferEXT, "glFramebufferReadBufferEXT" );
-        
-        //    <OpenGL 3.0: New framebuffer query>
-        
+
         bindGLFunc( cast( void** )&glGetFramebufferParameterivEXT, "glGetFramebufferParameterivEXT" );
-        
-        //    <OpenGL 3.0: New buffer data copy command>
+
         bindGLFunc( cast( void** )&glNamedCopyBufferSubDataEXT, "glNamedCopyBufferSubDataEXT" );
-        
-        //    <EXT_geometry_shader4 or NV_gpu_program4: New framebuffer commands
-        //    add "Named" prefix to name and replace "GLenum target" with "uint
-        //    framebuffer">
+
         if ( EXT_geometry_shader4 || NV_gpu_program4 ) {
             bindGLFunc( cast( void** )&glNamedFramebufferTextureEXT, "glNamedFramebufferTextureEXT" );
             bindGLFunc( cast( void** )&glNamedFramebufferTextureLayerEXT, "glNamedFramebufferTextureLayerEXT" );
             bindGLFunc( cast( void** )&glNamedFramebufferTextureFaceEXT, "glNamedFramebufferTextureFaceEXT" );
         }
-        
-        //    <NV_explicit_multisample:  New texture renderbuffer object command
-        //    replaces "Tex" in name with "Texture" and add initial "uint texture"
-        //    parameter> 
-        //    <NV_explicit_multisample: New multitexture texture renderbuffer command
-        //    prefixes "Multi" before "Tex" and add an initial "GLenum texunit"
-        //    parameter (to identify the texture unit)>
+
         if ( NV_explicit_multisample ) {
             bindGLFunc( cast( void** )&glTextureRenderbufferEXT, "glTextureRenderbufferEXT" );
             bindGLFunc( cast( void** )&glMultiTexRenderbufferEXT, "glMultiTexRenderbufferEXT" );
         }
-        
-        //    <OpenGL 3.0: New vertex array specification commands for vertex
-        //    array objects prefix "VertexArray", add initial "uint vaobj" and
-        //    "uint buffer" parameters, change "Pointer" suffix to "Offset",
-        //    and change the final parameter from "const void *" to "intptr offset">
-        
+
         bindGLFunc( cast( void** )&glVertexArrayVertexOffsetEXT, "glVertexArrayVertexOffsetEXT" );
         bindGLFunc( cast( void** )&glVertexArrayColorOffsetEXT, "glVertexArrayColorOffsetEXT" );
         bindGLFunc( cast( void** )&glVertexArrayEdgeFlagOffsetEXT, "glVertexArrayEdgeFlagOffsetEXT" );
@@ -1652,31 +1404,18 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glVertexArraySecondaryColorOffsetEXT, "glVertexArraySecondaryColorOffsetEXT" );
         bindGLFunc( cast( void** )&glVertexArrayVertexAttribOffsetEXT, "glVertexArrayVertexAttribOffsetEXT" );
         bindGLFunc( cast( void** )&glVertexArrayVertexAttribIOffsetEXT, "glVertexArrayVertexAttribIOffsetEXT" );
-        
-        //    <OpenGL 3.0: New vertex array enable commands for vertex array
-        //    objects change "ClientState" to "VertexArray" and add an initial
-        //    "uint vaobj" parameter>
-        
+
         bindGLFunc( cast( void** )&glEnableVertexArrayEXT, "glEnableVertexArrayEXT" );
         bindGLFunc( cast( void** )&glDisableVertexArrayEXT, "glDisableVertexArrayEXT" );
-        
-        //    <OpenGL 3.0: New vertex attrib array enable commands for vertex
-        //    array objects change "VertexAttribArray" to "VertexArrayAttrib"
-        //    and add an initial "uint vaobj" parameter>
-        
+
         bindGLFunc( cast( void** )&glEnableVertexArrayAttribEXT, "glEnableVertexArrayAttribEXT" );
         bindGLFunc( cast( void** )&glDisableVertexArrayAttribEXT, "glDisableVertexArrayAttribEXT" );
-        
-        //    <OpenGL 3.0: New queries for vertex array objects>
-        
+
         bindGLFunc( cast( void** )&glGetVertexArrayIntegervEXT, "glGetVertexArrayIntegervEXT" );
         bindGLFunc( cast( void** )&glGetVertexArrayPointervEXT, "glGetVertexArrayPointervEXT" );
         bindGLFunc( cast( void** )&glGetVertexArrayIntegeri_vEXT, "glGetVertexArrayIntegeri_vEXT" );
         bindGLFunc( cast( void** )&glGetVertexArrayPointeri_vEXT, "glGetVertexArrayPointeri_vEXT" );
-        
-        //    <OpenGL 3.0: New buffer commands replace "Buffer" with "NamedBuffer"
-        //    in name and replace "GLenum target" parameter with "uint buffer">
-        
+
         bindGLFunc( cast( void** )&glMapNamedBufferRangeEXT, "glMapNamedBufferRangeEXT" );
         bindGLFunc( cast( void** )&glFlushMappedNamedBufferRangeEXT, "glFlushMappedNamedBufferRangeEXT" );
         _EXT_direct_state_access = true;
@@ -1690,37 +1429,35 @@ package void loadEXT( GLVersion glversion ) {
     _EXT_texture_filter_anisotropic = isExtSupported( glversion, "GL_EXT_texture_filter_anisotropic" );
     _EXT_framebuffer_object = isExtSupported( glversion, "GL_EXT_framebuffer_object" );
     if( _EXT_framebuffer_object ) load_EXT_framebuffer_object();
-    
+
     _EXT_texture_buffer_object           = isExtSupported( glversion, "GL_EXT_texture_buffer_object" );
     if ( _EXT_texture_buffer_object ) load_EXT_texture_buffer_object();
-    
+
     _EXT_texture_integer                 = isExtSupported( glversion, "GL_EXT_texture_integer" );
     if ( _EXT_texture_integer ) load_EXT_texture_integer();
-    
+
     _EXT_gpu_shader4                     = isExtSupported( glversion, "GL_EXT_gpu_shader4" );
     if ( _EXT_gpu_shader4 ) load_EXT_gpu_shader4();
-    
+
     _EXT_gpu_program_parameters          = isExtSupported( glversion, "GL_EXT_gpu_program_parameters" );
     if ( _EXT_gpu_program_parameters ) load_EXT_gpu_program_parameters();
-    
+
     _NV_gpu_program4                     = isExtSupported( glversion, "GL_NV_gpu_program4" );
     if ( _NV_gpu_program4 ) load_NV_gpu_program4();
-    
+
     _NV_framebuffer_multisample_coverage = isExtSupported( glversion, "GL_NV_framebuffer_multisample_coverage" );
     if ( _NV_framebuffer_multisample_coverage ) load_NV_framebuffer_multisample_coverage();
-    
+
     _EXT_geometry_shader4                = isExtSupported( glversion, "GL_EXT_geometry_shader4" );
     if ( _EXT_geometry_shader4 ) load_EXT_geometry_shader4();
-    
+
     _NV_explicit_multisample             = isExtSupported( glversion, "GL_NV_explicit_multisample" );
     if ( _NV_explicit_multisample ) load_NV_explicit_multisample();
-    
-    _ARB_vertex_program                  = isExtSupported( glversion, "GL_ARB_vertex_program" );
-    
+
     _EXT_draw_buffers2                   = isExtSupported( glversion, "GL_EXT_draw_buffers2" );
     if ( _EXT_draw_buffers2 ) load_EXT_draw_buffers2();
-    
+
     // Direct state access extension should be ALWAYS loaded in the last place
     _EXT_direct_state_access = isExtSupported( glversion, "GL_EXT_direct_state_access" );
-    if ( _EXT_direct_state_access ) load_EXT_direct_state_access();
+    if ( _EXT_direct_state_access ) load_EXT_direct_state_access( glversion );
 }

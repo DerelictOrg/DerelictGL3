@@ -90,6 +90,145 @@ enum : uint {
     GL_RENDERBUFFER_ALPHA_SIZE_EXT      = 0x8D53,
     GL_RENDERBUFFER_DEPTH_SIZE_EXT      = 0x8D54,
     GL_RENDERBUFFER_STENCIL_SIZE_EXT    = 0x8D55,
+    
+    // GL_NV_explicit_multisample
+    GL_SAMPLE_POSITION_NV               = 0x8E50,
+    GL_SAMPLE_MASK_NV                   = 0x8E51,
+    GL_SAMPLE_MASK_VALUE_NV             = 0x8E52,
+    GL_TEXTURE_BINDING_RENDERBUFFER_NV  = 0x8E53,
+    GL_TEXTURE_RENDERBUFFER_DATA_STORE_BINDING_NV = 0x8E54,
+    GL_MAX_SAMPLE_MASK_WORDS_NV         = 0x8E59,
+    GL_TEXTURE_RENDERBUFFER_NV          = 0x8E55,
+    GL_SAMPLER_RENDERBUFFER_NV          = 0x8E56,
+    GL_INT_SAMPLER_RENDERBUFFER_NV      = 0x8E57,
+    GL_UNSIGNED_INT_SAMPLER_RENDERBUFFER_NV = 0x8E58,
+    
+    // GL_EXT_direct_state_access
+    GL_PROGRAM_MATRIX_EXT               = 0x8E2D,
+    GL_TRANSPOSE_PROGRAM_MATRIX_EXT     = 0x8E2E,
+    GL_PROGRAM_MATRIX_STACK_DEPTH_EXT   = 0x8E2F,
+    
+    // GL_EXT_geometry_shader4
+    GL_GEOMETRY_SHADER_EXT              = 0x8DD9,
+    GL_GEOMETRY_VERTICES_OUT_EXT        = 0x8DDA,
+    GL_GEOMETRY_INPUT_TYPE_EXT          = 0x8DDB,
+    GL_GEOMETRY_OUTPUT_TYPE_EXT         = 0x8DDC,
+    GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_EXT = 0x8C29,
+    GL_MAX_GEOMETRY_VARYING_COMPONENTS_EXT = 0x8DDD,
+    GL_MAX_VERTEX_VARYING_COMPONENTS_EXT = 0x8DDE,
+    GL_MAX_VARYING_COMPONENTS_EXT        = 0x8B4B,
+    GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_EXT = 0x8DDF,
+    GL_MAX_GEOMETRY_OUTPUT_VERTICES_EXT  = 0x8DE0,
+    GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_EXT = 0x8DE1,
+    GL_LINES_ADJACENCY_EXT               = 0xA,
+    GL_LINE_STRIP_ADJACENCY_EXT          = 0xB,
+    GL_TRIANGLES_ADJACENCY_EXT           = 0xC,
+    GL_TRIANGLE_STRIP_ADJACENCY_EXT      = 0xD,
+    GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_EXT = 0x8DA8,
+    GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_EXT = 0x8DA9,
+    GL_FRAMEBUFFER_ATTACHMENT_LAYERED_EXT = 0x8DA7,
+    GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT = 0x8CD4,
+    GL_PROGRAM_POINT_SIZE_EXT            = 0x8642,
+    
+    // GL_NV_framebuffer_multisample_coverage
+    GL_RENDERBUFFER_COVERAGE_SAMPLES_NV  = 0x8CAB,
+    GL_RENDERBUFFER_COLOR_SAMPLES_NV     = 0x8E10,
+    GL_MAX_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E11,
+    GL_MULTISAMPLE_COVERAGE_MODES_NV     = 0x8E12,
+    
+    // GL_NV_gpu_program4
+    GL_MIN_PROGRAM_TEXEL_OFFSET_EXT      = 0x8904,
+    GL_MAX_PROGRAM_TEXEL_OFFSET_EXT      = 0x8905,
+    GL_PROGRAM_ATTRIB_COMPONENTS_NV      = 0x8906,
+    GL_PROGRAM_RESULT_COMPONENTS_NV      = 0x8907,
+    GL_MAX_PROGRAM_ATTRIB_COMPONENTS_NV  = 0x8908,
+    GL_MAX_PROGRAM_RESULT_COMPONENTS_NV  = 0x8909,
+    GL_MAX_PROGRAM_GENERIC_ATTRIBS_NV    = 0x8DA5,
+    GL_MAX_PROGRAM_GENERIC_RESULTS_NV    = 0x8DA6,
+    
+    // GL_EXT_gpu_shader4
+    GL_VERTEX_ATTRIB_ARRAY_INTEGER_EXT   = 0x88FD,
+    GL_SAMPLER_1D_ARRAY_EXT              = 0x8DC0,
+    GL_SAMPLER_2D_ARRAY_EXT              = 0x8DC1,
+    GL_SAMPLER_BUFFER_EXT                = 0x8DC2,
+    GL_SAMPLER_1D_ARRAY_SHADOW_EXT       = 0x8DC3,
+    GL_SAMPLER_2D_ARRAY_SHADOW_EXT       = 0x8DC4,
+    GL_SAMPLER_CUBE_SHADOW_EXT           = 0x8DC5,
+    GL_UNSIGNED_INT_VEC2_EXT             = 0x8DC6,
+    GL_UNSIGNED_INT_VEC3_EXT             = 0x8DC7,
+    GL_UNSIGNED_INT_VEC4_EXT             = 0x8DC8,
+    GL_INT_SAMPLER_1D_EXT                = 0x8DC9,
+    GL_INT_SAMPLER_2D_EXT                = 0x8DCA,
+    GL_INT_SAMPLER_3D_EXT                = 0x8DCB,
+    GL_INT_SAMPLER_CUBE_EXT              = 0x8DCC,
+    GL_INT_SAMPLER_2D_RECT_EXT           = 0x8DCD,
+    GL_INT_SAMPLER_1D_ARRAY_EXT          = 0x8DCE,
+    GL_INT_SAMPLER_2D_ARRAY_EXT          = 0x8DCF,
+    GL_INT_SAMPLER_BUFFER_EXT            = 0x8DD0,
+    GL_UNSIGNED_INT_SAMPLER_1D_EXT       = 0x8DD1,
+    GL_UNSIGNED_INT_SAMPLER_2D_EXT       = 0x8DD2,
+    GL_UNSIGNED_INT_SAMPLER_3D_EXT       = 0x8DD3,
+    GL_UNSIGNED_INT_SAMPLER_CUBE_EXT     = 0x8DD4,
+    GL_UNSIGNED_INT_SAMPLER_2D_RECT_EXT  = 0x8DD5,
+    GL_UNSIGNED_INT_SAMPLER_1D_ARRAY_EXT = 0x8DD6,
+    GL_UNSIGNED_INT_SAMPLER_2D_ARRAY_EXT = 0x8DD7,
+    GL_UNSIGNED_INT_SAMPLER_BUFFER_EXT   = 0x8DD8,
+
+    // GL_EXT_texture_integer
+    GL_RGBA_INTEGER_MODE_EXT             = 0x8D9E,
+    GL_RGBA32UI_EXT                      = 0x8D70,
+    GL_RGB32UI_EXT                       = 0x8D71,
+    GL_ALPHA32UI_EXT                     = 0x8D72,
+    GL_INTENSITY32UI_EXT                 = 0x8D73,
+    GL_LUMINANCE32UI_EXT                 = 0x8D74,
+    GL_LUMINANCE_ALPHA32UI_EXT           = 0x8D75,
+    GL_RGBA16UI_EXT                      = 0x8D76,
+    GL_RGB16UI_EXT                       = 0x8D77,
+    GL_ALPHA16UI_EXT                     = 0x8D78,
+    GL_INTENSITY16UI_EXT                 = 0x8D79,
+    GL_LUMINANCE16UI_EXT                 = 0x8D7A,
+    GL_LUMINANCE_ALPHA16UI_EXT           = 0x8D7B,
+    GL_RGBA8UI_EXT                       = 0x8D7C,
+    GL_RGB8UI_EXT                        = 0x8D7D,
+    GL_ALPHA8UI_EXT                      = 0x8D7E,
+    GL_INTENSITY8UI_EXT                  = 0x8D7F,
+    GL_LUMINANCE8UI_EXT                  = 0x8D80,
+    GL_LUMINANCE_ALPHA8UI_EXT            = 0x8D81,
+    GL_RGBA32I_EXT                       = 0x8D82,
+    GL_RGB32I_EXT                        = 0x8D83,
+    GL_ALPHA32I_EXT                      = 0x8D84,
+    GL_INTENSITY32I_EXT                  = 0x8D85,
+    GL_LUMINANCE32I_EXT                  = 0x8D86,
+    GL_LUMINANCE_ALPHA32I_EXT            = 0x8D87,
+    GL_RGBA16I_EXT                       = 0x8D88,
+    GL_RGB16I_EXT                        = 0x8D89,
+    GL_ALPHA16I_EXT                      = 0x8D8A,
+    GL_INTENSITY16I_EXT                  = 0x8D8B,
+    GL_LUMINANCE16I_EXT                  = 0x8D8C,
+    GL_LUMINANCE_ALPHA16I_EXT            = 0x8D8D,
+    GL_RGBA8I_EXT                        = 0x8D8E,
+    GL_RGB8I_EXT                         = 0x8D8F,
+    GL_ALPHA8I_EXT                       = 0x8D90,
+    GL_INTENSITY8I_EXT                   = 0x8D91,
+    GL_LUMINANCE8I_EXT                   = 0x8D92,
+    GL_LUMINANCE_ALPHA8I_EXT             = 0x8D93,
+    GL_RED_INTEGER_EXT                   = 0x8D94,
+    GL_GREEN_INTEGER_EXT                 = 0x8D95,
+    GL_BLUE_INTEGER_EXT                  = 0x8D96,
+    GL_ALPHA_INTEGER_EXT                 = 0x8D97,
+    GL_RGB_INTEGER_EXT                   = 0x8D98,
+    GL_RGBA_INTEGER_EXT                  = 0x8D99,
+    GL_BGR_INTEGER_EXT                   = 0x8D9A,
+    GL_BGRA_INTEGER_EXT                  = 0x8D9B,
+    GL_LUMINANCE_INTEGER_EXT             = 0x8D9C,
+    GL_LUMINANCE_ALPHA_INTEGER_EXT       = 0x8D9D,
+    
+    // GL_EXT_texture_buffer_object
+    GL_TEXTURE_BUFFER_EXT                = 0x8C2A,
+    GL_MAX_TEXTURE_BUFFER_SIZE_EXT       = 0x8C2B,
+    GL_TEXTURE_BINDING_BUFFER_EXT        = 0x8C2C,
+    GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT = 0x8C2D,
+    GL_TEXTURE_BUFFER_FORMAT_EXT         = 0x8C2E
 }
 
 // GL_EXT_texture_filter_anisotropic
@@ -161,6 +300,378 @@ private void load_EXT_framebuffer_object() {
         _EXT_framebuffer_object = true;
     } catch( Exception e ) {
         _EXT_framebuffer_object = false;
+    }
+}
+
+// GL_EXT_draw_buffers2
+extern ( System ) nothrow {
+    alias da_glColorMaskIndexedEXT = void function(uint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+    alias da_glGetBooleanIndexedvEXT = void function(GLenum value, uint index, GLboolean *data);
+    alias da_glGetIntegerIndexedvEXT = void function(GLenum value, uint index, int *data);
+    alias da_glEnableIndexedEXT = void function(GLenum target, uint index);
+    alias da_glDisableIndexedEXT = void function(GLenum target, uint index);
+    alias da_glIsEnabledIndexedEXT = GLboolean function(GLenum target, uint index);
+}
+
+__gshared {
+    da_glColorMaskIndexedEXT glColorMaskIndexedEXT;
+    da_glGetBooleanIndexedvEXT glGetBooleanIndexedvEXT;
+    da_glGetIntegerIndexedvEXT glGetIntegerIndexedvEXT;
+    da_glEnableIndexedEXT glEnableIndexedEXT;
+    da_glDisableIndexedEXT glDisableIndexedEXT;
+    da_glIsEnabledIndexedEXT glIsEnabledIndexedEXT;
+}
+
+private __gshared bool _EXT_draw_buffers2;
+bool EXT_draw_buffers2() @property { return _EXT_draw_buffers2; }
+private void load_EXT_draw_buffers2() {
+    try {
+        bindGLFunc( cast( void** )&glColorMaskIndexedEXT, "glColorMaskIndexedEXT" );
+        bindGLFunc( cast( void** )&glGetBooleanIndexedvEXT, "glGetBooleanIndexedvEXT" );
+        bindGLFunc( cast( void** )&glGetIntegerIndexedvEXT, "glGetIntegerIndexedvEXT" );
+        bindGLFunc( cast( void** )&glEnableIndexedEXT, "glEnableIndexedEXT" );
+        bindGLFunc( cast( void** )&glDisableIndexedEXT, "glDisableIndexedEXT" );
+        bindGLFunc( cast( void** )&glIsEnabledIndexedEXT, "glIsEnabledIndexedEXT" );
+        _EXT_draw_buffers2 = true;
+    } catch( Exception e ) {
+        _EXT_draw_buffers2 = false;
+    }
+}
+
+// GL_NV_explicit_multisample
+extern ( System ) nothrow {
+    alias da_glGetMultisamplefvNV = void function(GLenum pname, uint index, float *val);
+    alias da_glSampleMaskIndexedNV = void function(GLuint index, GLbitfield mask);
+    alias da_glTexRenderbufferNV = void function(GLenum target, uint renderbuffer);
+}
+
+__gshared {
+    da_glGetMultisamplefvNV glGetMultisamplefvNV;
+    da_glSampleMaskIndexedNV glSampleMaskIndexedNV;
+    da_glTexRenderbufferNV glTexRenderbufferNV;
+}
+
+private __gshared bool _NV_explicit_multisample;
+bool NV_explicit_multisample() @property { return _NV_explicit_multisample; }
+private void load_NV_explicit_multisample() {
+    try {
+        bindGLFunc( cast( void** )&glGetMultisamplefvNV, "glGetMultisamplefvNV" );
+        bindGLFunc( cast( void** )&glSampleMaskIndexedNV, "glSampleMaskIndexedNV" );
+        bindGLFunc( cast( void** )&glTexRenderbufferNV, "glTexRenderbufferNV" );
+        _NV_explicit_multisample = true;
+    } catch( Exception e ) {
+        _NV_explicit_multisample = false;
+    }
+}
+
+// GL_EXT_geometry_shader4
+extern ( System ) nothrow {
+    alias da_glProgramParameteriEXT = void function(uint program, GLenum pname, int value);
+    alias da_glFramebufferTextureEXT = void function(GLenum target, GLenum attachment, uint texture, int level);
+    alias da_glFramebufferTextureLayerEXT = void function(GLenum target, GLenum attachment, uint texture, int level, int layer);
+    alias da_glFramebufferTextureFaceEXT = void function(GLenum target, GLenum attachment, uint texture, int level, GLenum face);
+}
+
+__gshared {
+    da_glProgramParameteriEXT glProgramParameteriEXT;
+    da_glFramebufferTextureEXT glFramebufferTextureEXT;
+    da_glFramebufferTextureLayerEXT glFramebufferTextureLayerEXT;
+    da_glFramebufferTextureFaceEXT glFramebufferTextureFaceEXT;
+}
+
+private __gshared bool _EXT_geometry_shader4;
+bool EXT_geometry_shader4() @property { return _EXT_geometry_shader4; }
+private void load_EXT_geometry_shader4() {
+    try {
+        bindGLFunc( cast( void** )&glProgramParameteriEXT, "glProgramParameteriEXT" );
+        bindGLFunc( cast( void** )&glFramebufferTextureEXT, "glFramebufferTextureEXT" );
+        bindGLFunc( cast( void** )&glFramebufferTextureLayerEXT, "glFramebufferTextureLayerEXT" );
+        bindGLFunc( cast( void** )&glFramebufferTextureFaceEXT, "glFramebufferTextureFaceEXT" );
+        _EXT_geometry_shader4 = true;
+    } catch( Exception e ) {
+        _EXT_geometry_shader4 = false;
+    }   
+}
+
+// GL_NV_framebuffer_multisample_coverage
+extern ( System ) nothrow {
+    alias da_glRenderbufferStorageMultisampleCoverageNV = void function(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+}
+
+__gshared {
+    da_glRenderbufferStorageMultisampleCoverageNV glRenderbufferStorageMultisampleCoverageNV;
+}
+
+private __gshared bool _NV_framebuffer_multisample_coverage;
+bool NV_framebuffer_multisample_coverage() @property { return _NV_framebuffer_multisample_coverage; }
+private void load_NV_framebuffer_multisample_coverage() {
+    try {
+        bindGLFunc( cast( void** )&glRenderbufferStorageMultisampleCoverageNV, "glRenderbufferStorageMultisampleCoverageNV" );
+        _NV_framebuffer_multisample_coverage = true;
+    } catch  ( Exception e ) {
+        _NV_framebuffer_multisample_coverage = false;
+    }
+}
+
+// GL_NV_gpu_program4
+extern ( System ) {
+    alias da_glProgramLocalParameterI4iNV = void function(GLenum target, uint index, int x, int y, int z, int w);
+    alias da_glProgramLocalParameterI4ivNV = void function(GLenum target, uint index, const int *params);
+    alias da_glProgramLocalParametersI4ivNV = void function(GLenum target, uint index, GLsizei count, const int *params);
+    alias da_glProgramLocalParameterI4uiNV = void function(GLenum target, uint index, uint x, uint y, uint z, uint w);
+    alias da_glProgramLocalParameterI4uivNV = void function(GLenum target, uint index, const uint *params);
+    alias da_glProgramLocalParametersI4uivNV = void function(GLenum target, uint index, GLsizei count, const uint *params);
+    alias da_glProgramEnvParameterI4iNV = void function(GLenum target, uint index, int x, int y, int z, int w);
+    alias da_glProgramEnvParameterI4ivNV = void function(GLenum target, uint index, const int *params);
+    alias da_glProgramEnvParametersI4ivNV = void function(GLenum target, uint index, GLsizei count, const int *params);
+    alias da_glProgramEnvParameterI4uiNV = void function(GLenum target, uint index, uint x, uint y, uint z, uint w);
+    alias da_glProgramEnvParameterI4uivNV = void function(GLenum target, uint index, const uint *params);
+    alias da_glProgramEnvParametersI4uivNV = void function(GLenum target, uint index, GLsizei count, const uint *params);
+    alias da_glGetProgramLocalParameterIivNV = void function(GLenum target, uint index, int *params);
+    alias da_glGetProgramLocalParameterIuivNV = void function(GLenum target, uint index, uint *params);
+    alias da_glGetProgramEnvParameterIivNV = void function(GLenum target, uint index, int *params);
+    alias da_glGetProgramEnvParameterIuivNV = void function(GLenum target, uint index, uint *params);
+}
+
+__gshared {
+    da_glProgramLocalParameterI4iNV glProgramLocalParameterI4iNV;
+    da_glProgramLocalParameterI4ivNV glProgramLocalParameterI4ivNV;
+    da_glProgramLocalParametersI4ivNV glProgramLocalParametersI4ivNV;
+    da_glProgramLocalParameterI4uiNV glProgramLocalParameterI4uiNV;
+    da_glProgramLocalParameterI4uivNV glProgramLocalParameterI4uivNV;
+    da_glProgramLocalParametersI4uivNV glProgramLocalParametersI4uivNV;
+    da_glProgramEnvParameterI4iNV glProgramEnvParameterI4iNV;
+    da_glProgramEnvParameterI4ivNV glProgramEnvParameterI4ivNV;
+    da_glProgramEnvParametersI4ivNV glProgramEnvParametersI4ivNV;
+    da_glProgramEnvParameterI4uiNV glProgramEnvParameterI4uiNV;
+    da_glProgramEnvParameterI4uivNV glProgramEnvParameterI4uivNV;
+    da_glProgramEnvParametersI4uivNV glProgramEnvParametersI4uivNV;
+    da_glGetProgramLocalParameterIivNV glGetProgramLocalParameterIivNV;
+    da_glGetProgramLocalParameterIuivNV glGetProgramLocalParameterIuivNV;
+    da_glGetProgramEnvParameterIivNV glGetProgramEnvParameterIivNV;
+    da_glGetProgramEnvParameterIuivNV glGetProgramEnvParameterIuivNV;
+}
+
+private __gshared bool _NV_gpu_program4;
+bool NV_gpu_program4() @property { return _NV_gpu_program4; }
+private void load_NV_gpu_program4() {
+    try {
+        bindGLFunc( cast( void** )&glProgramLocalParameterI4iNV, "glProgramLocalParameterI4iNV" );
+        bindGLFunc( cast( void** )&glProgramLocalParameterI4ivNV, "glProgramLocalParameterI4ivNV" );
+        bindGLFunc( cast( void** )&glProgramLocalParametersI4ivNV, "glProgramLocalParametersI4ivNV" );
+        bindGLFunc( cast( void** )&glProgramLocalParameterI4uiNV, "glProgramLocalParameterI4uiNV" );
+        bindGLFunc( cast( void** )&glProgramLocalParameterI4uivNV, "glProgramLocalParameterI4uivNV" );
+        bindGLFunc( cast( void** )&glProgramLocalParametersI4uivNV, "glProgramLocalParametersI4uivNV" );
+        bindGLFunc( cast( void** )&glProgramEnvParameterI4iNV, "glProgramEnvParameterI4iNV" );
+        bindGLFunc( cast( void** )&glProgramEnvParameterI4ivNV, "glProgramEnvParameterI4ivNV" );
+        bindGLFunc( cast( void** )&glProgramEnvParametersI4ivNV, "glProgramEnvParametersI4ivNV" );
+        bindGLFunc( cast( void** )&glProgramEnvParameterI4uiNV, "glProgramEnvParameterI4uiNV" );
+        bindGLFunc( cast( void** )&glProgramEnvParameterI4uivNV, "glProgramEnvParameterI4uivNV" );
+        bindGLFunc( cast( void** )&glProgramEnvParametersI4uivNV, "glProgramEnvParametersI4uivNV" );
+        bindGLFunc( cast( void** )&glGetProgramLocalParameterIivNV, "glGetProgramLocalParameterIivNV" );
+        bindGLFunc( cast( void** )&glGetProgramLocalParameterIuivNV, "glGetProgramLocalParameterIuivNV" );
+        bindGLFunc( cast( void** )&glGetProgramEnvParameterIivNV, "glGetProgramEnvParameterIivNV" );
+        bindGLFunc( cast( void** )&glGetProgramEnvParameterIuivNV, "glGetProgramEnvParameterIuivNV" );
+        _NV_gpu_program4 = true;
+    }  catch ( Exception e ) {
+        _NV_gpu_program4 = false;
+    }
+}
+
+// GL_EXT_gpu_program_parameters
+extern ( System ) nothrow {
+    alias da_glProgramEnvParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params); 
+    alias da_glProgramLocalParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params);
+}
+
+__gshared {
+    da_glProgramEnvParameters4fvEXT glProgramEnvParameters4fvEXT;
+    da_glProgramLocalParameters4fvEXT glProgramLocalParameters4fvEXT;
+}
+
+private __gshared bool _EXT_gpu_program_parameters;
+bool EXT_gpu_program_parameters() @property { return _EXT_gpu_program_parameters; }
+private void load_EXT_gpu_program_parameters() {
+    try {
+        bindGLFunc( cast( void** )&glProgramEnvParameters4fvEXT, "glProgramEnvParameters4fvEXT" );
+        bindGLFunc( cast( void** )&glProgramLocalParameters4fvEXT, "glProgramLocalParameters4fvEXT" );
+        _EXT_gpu_program_parameters = true;
+    } catch ( Exception e ) {
+        _EXT_gpu_program_parameters = false;
+    }
+}
+
+// GL_EXT_gpu_shader4
+extern ( System ) {
+    alias da_glVertexAttribI1iEXT = void function(uint index, int x);
+    alias da_glVertexAttribI2iEXT = void function(uint index, int x, int y);
+    alias da_glVertexAttribI3iEXT = void function(uint index, int x, int y, int z);
+    alias da_glVertexAttribI4iEXT = void function(uint index, int x, int y, int z, int w);
+    alias da_glVertexAttribI1uiEXT = void function(uint index, uint x);
+    alias da_glVertexAttribI2uiEXT = void function(uint index, uint x, uint y);
+    alias da_glVertexAttribI3uiEXT = void function(uint index, uint x, uint y, uint z);
+    alias da_glVertexAttribI4uiEXT = void function(uint index, uint x, uint y, uint z, uint w);
+    alias da_glVertexAttribI1ivEXT = void function(uint index, const int *v);
+    alias da_glVertexAttribI2ivEXT = void function(uint index, const int *v);
+    alias da_glVertexAttribI3ivEXT = void function(uint index, const int *v);
+    alias da_glVertexAttribI4ivEXT = void function(uint index, const int *v);
+    alias da_glVertexAttribI1uivEXT = void function(uint index, const uint *v);
+    alias da_glVertexAttribI2uivEXT = void function(uint index, const uint *v);
+    alias da_glVertexAttribI3uivEXT = void function(uint index, const uint *v);
+    alias da_glVertexAttribI4uivEXT = void function(uint index, const uint *v);
+    alias da_glVertexAttribI4bvEXT = void function(uint index, const byte *v);
+    alias da_glVertexAttribI4svEXT = void function(uint index, const short *v);
+    alias da_glVertexAttribI4ubvEXT = void function(uint index, const ubyte *v);
+    alias da_glVertexAttribI4usvEXT = void function(uint index, const ushort *v);
+    alias da_glVertexAttribIPointerEXT = void function(uint index, int size, GLenum type, GLsizei stride, const void *pointer);
+    alias da_glGetVertexAttribIivEXT = void function(uint index, GLenum pname, int *params);
+    alias da_glGetVertexAttribIuivEXT = void function(uint index, GLenum pname, uint *params);
+    alias da_glUniform1uiEXT = void function(int location, uint v0);
+    alias da_glUniform2uiEXT = void function(int location, uint v0, uint v1);
+    alias da_glUniform3uiEXT = void function(int location, uint v0, uint v1, uint v2);
+    alias da_glUniform4uiEXT = void function(int location, uint v0, uint v1, uint v2, uint v3);
+    alias da_glUniform1uivEXT = void function(int location, GLsizei count, const uint *value);
+    alias da_glUniform2uivEXT = void function(int location, GLsizei count, const uint *value);
+    alias da_glUniform3uivEXT = void function(int location, GLsizei count, const uint *value);
+    alias da_glUniform4uivEXT = void function(int location, GLsizei count, const uint *value);
+    alias da_glGetUniformuivEXT = void function(uint program, int location, uint *params);
+    alias da_glBindFragDataLocationEXT = void function(uint program, uint colorNumber, const char *name);
+    alias da_glGetFragDataLocationEXT = int function(uint program, const char *name);
+}
+
+__gshared {
+    da_glVertexAttribI1iEXT glVertexAttribI1iEXT;
+    da_glVertexAttribI2iEXT glVertexAttribI2iEXT;
+    da_glVertexAttribI3iEXT glVertexAttribI3iEXT;
+    da_glVertexAttribI4iEXT glVertexAttribI4iEXT;
+    da_glVertexAttribI1uiEXT glVertexAttribI1uiEXT;
+    da_glVertexAttribI2uiEXT glVertexAttribI2uiEXT;
+    da_glVertexAttribI3uiEXT glVertexAttribI3uiEXT;
+    da_glVertexAttribI4uiEXT glVertexAttribI4uiEXT;
+    da_glVertexAttribI1ivEXT glVertexAttribI1ivEXT;
+    da_glVertexAttribI2ivEXT glVertexAttribI2ivEXT;
+    da_glVertexAttribI3ivEXT glVertexAttribI3ivEXT;
+    da_glVertexAttribI4ivEXT glVertexAttribI4ivEXT;
+    da_glVertexAttribI1uivEXT glVertexAttribI1uivEXT;
+    da_glVertexAttribI2uivEXT glVertexAttribI2uivEXT;
+    da_glVertexAttribI3uivEXT glVertexAttribI3uivEXT;
+    da_glVertexAttribI4uivEXT glVertexAttribI4uivEXT;
+    da_glVertexAttribI4bvEXT glVertexAttribI4bvEXT;
+    da_glVertexAttribI4svEXT glVertexAttribI4svEXT;
+    da_glVertexAttribI4ubvEXT glVertexAttribI4ubvEXT;
+    da_glVertexAttribI4usvEXT glVertexAttribI4usvEXT;
+    da_glVertexAttribIPointerEXT glVertexAttribIPointerEXT;
+    da_glGetVertexAttribIivEXT glGetVertexAttribIivEXT;
+    da_glGetVertexAttribIuivEXT glGetVertexAttribIuivEXT;
+    da_glUniform1uiEXT glUniform1uiEXT;
+    da_glUniform2uiEXT glUniform2uiEXT;
+    da_glUniform3uiEXT glUniform3uiEXT;
+    da_glUniform4uiEXT glUniform4uiEXT;
+    da_glUniform1uivEXT glUniform1uivEXT;
+    da_glUniform2uivEXT glUniform2uivEXT;
+    da_glUniform3uivEXT glUniform3uivEXT;
+    da_glUniform4uivEXT glUniform4uivEXT;
+    da_glGetUniformuivEXT glGetUniformuivEXT;
+    da_glBindFragDataLocationEXT glBindFragDataLocationEXT;
+    da_glGetFragDataLocationEXT glGetFragDataLocationEXT;
+}
+
+private __gshared bool _EXT_gpu_shader4;
+bool EXT_gpu_shader4() @property { return _EXT_gpu_shader4; }
+private void load_EXT_gpu_shader4() {
+    try {
+        bindGLFunc( cast( void** )&glVertexAttribI1iEXT, "glVertexAttribI1iEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI2iEXT, "glVertexAttribI2iEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI3iEXT, "glVertexAttribI3iEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI4iEXT, "glVertexAttribI4iEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI1uiEXT, "glVertexAttribI1uiEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI2uiEXT, "glVertexAttribI2uiEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI3uiEXT, "glVertexAttribI3uiEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI4uiEXT, "glVertexAttribI4uiEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI1ivEXT, "glVertexAttribI1ivEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI2ivEXT, "glVertexAttribI2ivEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI3ivEXT, "glVertexAttribI3ivEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI4ivEXT, "glVertexAttribI4ivEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI1uivEXT, "glVertexAttribI1uivEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI2uivEXT, "glVertexAttribI2uivEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI3uivEXT, "glVertexAttribI3uivEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI4uivEXT, "glVertexAttribI4uivEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI4bvEXT, "glVertexAttribI4bvEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI4svEXT, "glVertexAttribI4svEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI4ubvEXT, "glVertexAttribI4ubvEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribI4usvEXT, "glVertexAttribI4usvEXT" );
+        bindGLFunc( cast( void** )&glVertexAttribIPointerEXT, "glVertexAttribIPointerEXT" );
+        bindGLFunc( cast( void** )&glGetVertexAttribIivEXT, "glGetVertexAttribIivEXT" );
+        bindGLFunc( cast( void** )&glGetVertexAttribIuivEXT, "glGetVertexAttribIuivEXT" );
+        bindGLFunc( cast( void** )&glUniform1uiEXT, "glUniform1uiEXT" );
+        bindGLFunc( cast( void** )&glUniform2uiEXT, "glUniform2uiEXT" );
+        bindGLFunc( cast( void** )&glUniform3uiEXT, "glUniform3uiEXT" );
+        bindGLFunc( cast( void** )&glUniform4uiEXT, "glUniform4uiEXT" );
+        bindGLFunc( cast( void** )&glUniform1uivEXT, "glUniform1uivEXT" );
+        bindGLFunc( cast( void** )&glUniform2uivEXT, "glUniform2uivEXT" );
+        bindGLFunc( cast( void** )&glUniform3uivEXT, "glUniform3uivEXT" );
+        bindGLFunc( cast( void** )&glUniform4uivEXT, "glUniform4uivEXT" );
+        bindGLFunc( cast( void** )&glGetUniformuivEXT, "glGetUniformuivEXT" );
+        bindGLFunc( cast( void** )&glBindFragDataLocationEXT, "glBindFragDataLocationEXT" );
+        bindGLFunc( cast( void** )&glGetFragDataLocationEXT, "glGetFragDataLocationEXT" );
+        _EXT_gpu_shader4 = true;
+    } catch ( Exception e ) {
+        _EXT_gpu_shader4 = false;
+    }
+}
+
+// GL_EXT_texture_integer
+extern ( System ) {
+    alias da_glClearColorIiEXT = void function ( int r, int g, int b, int a );
+    alias da_glClearColorIuiEXT = void function ( uint r, uint g, uint b, uint a );
+    alias da_glTexParameterIivEXT = void function( GLenum target, GLenum pname, int *params );
+    alias da_glTexParameterIuivEXT = void function( GLenum target, GLenum pname, uint *params );
+    alias da_glGetTexParameterIivEXT = void function ( GLenum target, GLenum pname, int *params);
+    alias da_glGetTexParameterIuivEXT = void function ( GLenum target, GLenum pname, uint *params);
+}
+
+__gshared {
+    da_glClearColorIiEXT glClearColorIiEXT;
+    da_glClearColorIuiEXT glClearColorIuiEXT;
+    da_glTexParameterIivEXT glTexParameterIivEXT;
+    da_glTexParameterIuivEXT glTexParameterIuivEXT;
+    da_glGetTexParameterIivEXT glGetTexParameterIivEXT;
+    da_glGetTexParameterIuivEXT glGetTexParameterIuivEXT;
+}
+
+private __gshared bool _EXT_texture_integer;
+bool EXT_texture_integer() @property { return _EXT_texture_integer; }
+private void load_EXT_texture_integer() {
+    try {
+        bindGLFunc( cast( void** )&glClearColorIiEXT, "glClearColorIiEXT" );
+        bindGLFunc( cast( void** )&glClearColorIuiEXT, "glClearColorIuiEXT" );
+        bindGLFunc( cast( void** )&glTexParameterIivEXT, "glTexParameterIivEXT" );
+        bindGLFunc( cast( void** )&glTexParameterIuivEXT, "glTexParameterIuivEXT" );
+        bindGLFunc( cast( void** )&glGetTexParameterIivEXT, "glGetTexParameterIivEXT" );
+        bindGLFunc( cast( void** )&glGetTexParameterIuivEXT, "glGetTexParameterIuivEXT" );
+        _EXT_texture_integer = true;
+    } catch ( Exception e ) {
+        _EXT_texture_integer = false;
+    }
+}
+
+// GL_EXT_texture_buffer_object
+extern ( System ) nothrow {
+    alias da_glTexBufferEXT = void function(GLenum target, GLenum internalformat, uint buffer);
+}
+
+__gshared {
+    da_glTexBufferEXT glTexBufferEXT;
+}
+
+private __gshared bool _EXT_texture_buffer_object;
+bool EXT_texture_buffer_object() @property { return _EXT_texture_buffer_object; }
+private void load_EXT_texture_buffer_object() {
+    try {
+        bindGLFunc( cast( void** )&glTexBufferEXT, "glTexBufferEXT" );
+        _EXT_texture_buffer_object = true;
+    } catch ( Exception e ) {
+        _EXT_texture_buffer_object = false;
     }
 }
 
@@ -292,15 +803,6 @@ extern ( System ) nothrow {
     alias da_glGetFloati_vEXT = void function(GLenum pname, uint index, float *params);
     alias da_glGetDoublei_vEXT = void function(GLenum pname, uint index, double *params);
     alias da_glGetPointeri_vEXT = void function(GLenum pname, uint index, void **params);
-    
-    //    <OpenGL 1.2.1:  Extend the functionality of these EXT_draw_buffers2
-    //    commands and queries for multitexture>
-    
-    alias da_glEnableIndexedEXT = void function(GLenum cap, uint index);
-    alias da_glDisableIndexedEXT = void function(GLenum cap, uint index);
-    alias da_glIsEnabledIndexedEXT = GLboolean function(GLenum target, uint index);
-    alias da_glGetIntegerIndexedvEXT = void function(GLenum target, uint index, int *params);
-    alias da_glGetGLbooleanIndexedvEXT = void function(GLenum target, uint index, GLboolean *params);
     
     //    <ARB_vertex_program: New program commands and queries add "Named"
     //    prefix to name and adds initial "uint program" parameter>
@@ -651,11 +1153,6 @@ __gshared {
     da_glGetFloati_vEXT glGetFloati_vEXT;
     da_glGetDoublei_vEXT glGetDoublei_vEXT;
     da_glGetPointeri_vEXT glGetPointeri_vEXT;
-    da_glEnableIndexedEXT glEnableIndexedEXT;
-    da_glDisableIndexedEXT glDisableIndexedEXT;
-    da_glIsEnabledIndexedEXT glIsEnabledIndexedEXT;
-    da_glGetIntegerIndexedvEXT glGetIntegerIndexedvEXT;
-    da_glGetGLbooleanIndexedvEXT glGetGLbooleanIndexedvEXT;
     da_glNamedProgramStringEXT glNamedProgramStringEXT;
     da_glNamedProgramLocalParameter4dEXT glNamedProgramLocalParameter4dEXT;
     da_glNamedProgramLocalParameter4dvEXT glNamedProgramLocalParameter4dvEXT;
@@ -787,39 +1284,9 @@ __gshared {
     da_glFlushMappedNamedBufferRangeEXT glFlushMappedNamedBufferRangeEXT;
 }
 
-// direct state access dependencies
+// ARB_vertex_program not present in the arb.d for some reason
 private __gshared bool _ARB_vertex_program;
 bool ARB_vertex_program() @property { return _ARB_vertex_program; }
-
-private __gshared bool _EXT_draw_buffers2;
-bool EXT_draw_buffers2() @property { return _EXT_draw_buffers2; }
-
-
-private __gshared bool _EXT_texture_buffer_object;
-bool EXT_texture_buffer_object() @property { return _EXT_texture_buffer_object; }
-
-private __gshared bool _EXT_texture_integer;
-bool EXT_texture_integer() @property { return _EXT_texture_integer; }
-
-private __gshared bool _EXT_gpu_shader4;
-bool EXT_gpu_shader4() @property { return _EXT_gpu_shader4; }
-
-private __gshared bool _EXT_gpu_program_parameters;
-bool EXT_gpu_program_parameters() @property { return _EXT_gpu_program_parameters; }
-
-private __gshared bool _NV_gpu_program4;
-bool NV_gpu_program4() @property { return _NV_gpu_program4; }
-
-private __gshared bool _NV_framebuffer_multisample_coverage;
-bool NV_framebuffer_multisample_coverage() @property { return _NV_framebuffer_multisample_coverage; }
-
-private __gshared bool _EXT_geometry_shader4;
-bool EXT_geometry_shader4() @property { return _EXT_geometry_shader4; }
-
-private __gshared bool _NV_explicit_multisample;
-bool NV_explicit_multisample() @property { return _NV_explicit_multisample; }
-
-import std.stdio;
 
 private __gshared bool _EXT_direct_state_access;
 bool EXT_direct_state_access() @property { return _EXT_direct_state_access; }
@@ -951,20 +1418,6 @@ private void load_EXT_direct_state_access() {
         bindGLFunc( cast( void** )&glGetFloati_vEXT, "glGetFloati_vEXT" );
         bindGLFunc( cast( void** )&glGetDoublei_vEXT, "glGetDoublei_vEXT" );
         bindGLFunc( cast( void** )&glGetPointeri_vEXT, "glGetPointeri_vEXT" );
-        
-        //    <OpenGL 1.2.1:  Extend the functionality of these EXT_draw_buffers2
-        //    commands and queries for multitexture>
-
-        // force this shit to false because even if EXT_draw_buffers2 is reported to be supported
-        // the DSA extension to it does not work on all vendors.
-        //if ( EXT_draw_buffers2 ) {
-        if ( false ) {
-            bindGLFunc( cast( void** )&glEnableIndexedEXT, "glEnableIndexedEXT" );
-            bindGLFunc( cast( void** )&glDisableIndexedEXT, "glDisableIndexedEXT" );
-            bindGLFunc( cast( void** )&glIsEnabledIndexedEXT, "glIsEnabledIndexedEXT" );
-            bindGLFunc( cast( void** )&glGetIntegerIndexedvEXT, "glGetIntegerIndexedvEXT" );
-            bindGLFunc( cast( void** )&glGetGLbooleanIndexedvEXT, "glGetGLbooleanIndexedvEXT" );
-        }
         
         //    <ARB_vertex_program: New program commands and queries add "Named"
         //    prefix to name and adds initial "uint program" parameter>
@@ -1239,17 +1692,35 @@ package void loadEXT( GLVersion glversion ) {
     if( _EXT_framebuffer_object ) load_EXT_framebuffer_object();
     
     _EXT_texture_buffer_object           = isExtSupported( glversion, "GL_EXT_texture_buffer_object" );
+    if ( _EXT_texture_buffer_object ) load_EXT_texture_buffer_object();
+    
     _EXT_texture_integer                 = isExtSupported( glversion, "GL_EXT_texture_integer" );
+    if ( _EXT_texture_integer ) load_EXT_texture_integer();
+    
     _EXT_gpu_shader4                     = isExtSupported( glversion, "GL_EXT_gpu_shader4" );
+    if ( _EXT_gpu_shader4 ) load_EXT_gpu_shader4();
+    
     _EXT_gpu_program_parameters          = isExtSupported( glversion, "GL_EXT_gpu_program_parameters" );
+    if ( _EXT_gpu_program_parameters ) load_EXT_gpu_program_parameters();
+    
     _NV_gpu_program4                     = isExtSupported( glversion, "GL_NV_gpu_program4" );
+    if ( _NV_gpu_program4 ) load_NV_gpu_program4();
+    
     _NV_framebuffer_multisample_coverage = isExtSupported( glversion, "GL_NV_framebuffer_multisample_coverage" );
+    if ( _NV_framebuffer_multisample_coverage ) load_NV_framebuffer_multisample_coverage();
+    
     _EXT_geometry_shader4                = isExtSupported( glversion, "GL_EXT_geometry_shader4" );
+    if ( _EXT_geometry_shader4 ) load_EXT_geometry_shader4();
+    
     _NV_explicit_multisample             = isExtSupported( glversion, "GL_NV_explicit_multisample" );
+    if ( _NV_explicit_multisample ) load_NV_explicit_multisample();
+    
     _ARB_vertex_program                  = isExtSupported( glversion, "GL_ARB_vertex_program" );
+    
     _EXT_draw_buffers2                   = isExtSupported( glversion, "GL_EXT_draw_buffers2" );
+    if ( _EXT_draw_buffers2 ) load_EXT_draw_buffers2();
     
     // Direct state access extension should be ALWAYS loaded in the last place
     _EXT_direct_state_access = isExtSupported( glversion, "GL_EXT_direct_state_access" );
-    if (_EXT_direct_state_access ) load_EXT_direct_state_access();
+    if ( _EXT_direct_state_access ) load_EXT_direct_state_access();
 }

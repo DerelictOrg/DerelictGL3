@@ -228,7 +228,14 @@ enum : uint {
     GL_MAX_TEXTURE_BUFFER_SIZE_EXT       = 0x8C2B,
     GL_TEXTURE_BINDING_BUFFER_EXT        = 0x8C2C,
     GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT = 0x8C2D,
-    GL_TEXTURE_BUFFER_FORMAT_EXT         = 0x8C2E
+    GL_TEXTURE_BUFFER_FORMAT_EXT         = 0x8C2E,
+    
+    
+    // GL_EXT_texture_compression_s3tc
+    GL_COMPRESSED_RGB_S3TC_DXT1_EXT      = 0x83F0,
+    GL_COMPRESSED_RGBA_S3TC_DXT1_EXT     = 0x83F1,
+    GL_COMPRESSED_RGBA_S3TC_DXT3_EXT     = 0x83F2,
+    GL_COMPRESSED_RGBA_S3TC_DXT5_EXT     = 0x83F3
 }
 
 // GL_EXT_texture_filter_anisotropic
@@ -1424,6 +1431,10 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
     }
 }
 
+// GL_EXT_texture_compression_s3tc
+private __gshared bool _EXT_texture_compression_s3tc;
+bool EXT_texture_compression_s3tc() @property { return _EXT_texture_compression_s3tc; }
+
 
 package void loadEXT( GLVersion glversion ) {
     _EXT_texture_filter_anisotropic = isExtSupported( glversion, "GL_EXT_texture_filter_anisotropic" );
@@ -1456,6 +1467,8 @@ package void loadEXT( GLVersion glversion ) {
 
     _EXT_draw_buffers2                   = isExtSupported( glversion, "GL_EXT_draw_buffers2" );
     if ( _EXT_draw_buffers2 ) load_EXT_draw_buffers2();
+    
+    _EXT_texture_compression_s3tc       = isExtSupported( glversion, "GL_EXT_texture_compression_s3tc" );
 
     // Direct state access extension should be ALWAYS loaded in the last place
     _EXT_direct_state_access = isExtSupported( glversion, "GL_EXT_direct_state_access" );

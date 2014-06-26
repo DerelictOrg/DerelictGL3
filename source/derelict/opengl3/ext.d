@@ -235,7 +235,13 @@ enum : uint {
     GL_COMPRESSED_RGB_S3TC_DXT1_EXT      = 0x83F0,
     GL_COMPRESSED_RGBA_S3TC_DXT1_EXT     = 0x83F1,
     GL_COMPRESSED_RGBA_S3TC_DXT3_EXT     = 0x83F2,
-    GL_COMPRESSED_RGBA_S3TC_DXT5_EXT     = 0x83F3
+    GL_COMPRESSED_RGBA_S3TC_DXT5_EXT     = 0x83F3,
+
+    // GL_EXT_texture_compression_rgtc
+    GL_COMPRESSED_RED_RGTC1_EXT          = 0x8DBB,
+    GL_COMPRESSED_SIGNED_RED_RGTC1_EXT   = 0x8DBC,
+    GL_COMPRESSED_RED_GREEN_RGTC2_EXT    = 0x8DBD,
+    GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT = 0x8DBE
 }
 
 // GL_EXT_texture_filter_anisotropic
@@ -1435,6 +1441,30 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
 private __gshared bool _EXT_texture_compression_s3tc;
 bool EXT_texture_compression_s3tc() @property { return _EXT_texture_compression_s3tc; }
 
+// GL_EXT_texture_compression_rgtc
+private __gshared bool _EXT_texture_compression_rgtc;
+bool EXT_texture_compression_rgtc() @property { return _EXT_texture_compression_rgtc; }
+
+// GL_NV_texture_barrier
+extern ( System ) {
+    alias da_glTextureBarrierNV = void function ();
+}
+
+__gshared {
+    da_glTextureBarrierNV glTextureBarrierNV;
+}
+
+private __gshared bool _NV_texture_barrier;
+bool NV_texture_barrier() @property { return _NV_texture_barrier; }
+private void load_NV_texture_barrier() {
+    try {
+        bindGLFunc( cast( void** )&glTextureBarrierNV, "glTextureBarrierNV" );
+        _NV_texture_barrier = true;
+    } catch ( Exception e ) {
+        _NV_texture_barrier = false;
+    }
+}
+
 
 package void loadEXT( GLVersion glversion ) {
     _EXT_texture_filter_anisotropic = isExtSupported( glversion, "GL_EXT_texture_filter_anisotropic" );
@@ -1468,7 +1498,12 @@ package void loadEXT( GLVersion glversion ) {
     _EXT_draw_buffers2                   = isExtSupported( glversion, "GL_EXT_draw_buffers2" );
     if ( _EXT_draw_buffers2 ) load_EXT_draw_buffers2();
     
-    _EXT_texture_compression_s3tc       = isExtSupported( glversion, "GL_EXT_texture_compression_s3tc" );
+    _EXT_texture_compression_s3tc        = isExtSupported( glversion, "GL_EXT_texture_compression_s3tc" );
+
+    _EXT_texture_compression_rgtc        = isExtSupported( glversion, "GL_EXT_texture_compression_rgtc" );
+
+    _NV_texture_barrier                  = isExtSupported( glversion, "GL_NV_texture_barrier" );
+    if ( _NV_texture_barrier ) load_NV_texture_barrier();
 
     // Direct state access extension should be ALWAYS loaded in the last place
     _EXT_direct_state_access = isExtSupported( glversion, "GL_EXT_direct_state_access" );

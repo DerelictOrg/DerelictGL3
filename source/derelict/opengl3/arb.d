@@ -2903,7 +2903,7 @@ package void loadARB( GLVersion glversion )
         _ARB_fragment_layer_viewport = isExtSupported( glversion, "GL_ARB_fragment_layer_viewport" );
         _ARB_shader_image_size = isExtSupported( glversion, "GL_ARB_shader_image_size" );
         _ARB_ES3_compatibility = isExtSupported( glversion, "GL_ARB_ES3_compatibility" );
-        if( isExtSupported( glversion, "GL_ARB_clear_ buffer_object" )  ) load_ARB_clear_buffer_object();
+        if( isExtSupported( glversion, "GL_ARB_clear_buffer_object" )  ) load_ARB_clear_buffer_object();
         if( isExtSupported( glversion, "GL_ARB_compute_shader" ) ) load_ARB_compute_shader();
         _ARB_copy_image = isExtSupported( glversion, "GL_ARB_copy_image" );
         if( isExtSupported( glversion, "GL_KHR_debug" ) ) load_KHR_debug();

@@ -27,9 +27,12 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl3.deprecatedFunctions;
 
-private import derelict.opengl3.types;
+private {
+    import derelict.opengl3.types;
+    import derelict.util.system;
+}
 
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     // 1.0 & 1.1 Deprecated functions
     alias da_glIsList = GLboolean function( GLuint );
     alias da_glDeleteLists = void function( GLuint,GLsizei );

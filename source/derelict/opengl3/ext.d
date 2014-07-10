@@ -28,6 +28,7 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl3.ext;
 
 private {
+    import derelict.util.system;
     import derelict.opengl3.types;
     import derelict.opengl3.constants;
     import derelict.opengl3.internal;
@@ -229,8 +230,8 @@ enum : uint {
     GL_TEXTURE_BINDING_BUFFER_EXT        = 0x8C2C,
     GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT = 0x8C2D,
     GL_TEXTURE_BUFFER_FORMAT_EXT         = 0x8C2E,
-    
-    
+
+
     // GL_EXT_texture_compression_s3tc
     GL_COMPRESSED_RGB_S3TC_DXT1_EXT      = 0x83F0,
     GL_COMPRESSED_RGBA_S3TC_DXT1_EXT     = 0x83F1,
@@ -249,7 +250,7 @@ private __gshared bool _EXT_texture_filter_anisotropic;
 bool EXT_texture_filter_anisotropic() @property { return _EXT_texture_filter_anisotropic; }
 
 // GL_EXT_framebuffer_object
-extern(  System  ) nothrow {
+extern(  System  ) @nogc nothrow {
     alias da_glIsRenderbufferEXT = GLboolean function( GLuint );
     alias da_glBindRenderbufferEXT = void function( GLenum, GLuint );
     alias da_glDeleteRenderbuffersEXT = void function( GLsizei, in GLuint* );
@@ -317,7 +318,7 @@ private void load_EXT_framebuffer_object() {
 }
 
 // GL_EXT_draw_buffers2
-extern ( System ) nothrow {
+extern ( System ) @nogc nothrow {
     alias da_glColorMaskIndexedEXT = void function(uint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
     alias da_glGetBooleanIndexedvEXT = void function(GLenum value, uint index, GLboolean *data);
     alias da_glGetIntegerIndexedvEXT = void function(GLenum value, uint index, int *data);
@@ -352,7 +353,7 @@ private void load_EXT_draw_buffers2() {
 }
 
 // GL_NV_explicit_multisample
-extern ( System ) nothrow {
+extern ( System ) @nogc nothrow {
     alias da_glGetMultisamplefvNV = void function(GLenum pname, uint index, float *val);
     alias da_glSampleMaskIndexedNV = void function(GLuint index, GLbitfield mask);
     alias da_glTexRenderbufferNV = void function(GLenum target, uint renderbuffer);
@@ -378,7 +379,7 @@ private void load_NV_explicit_multisample() {
 }
 
 // GL_EXT_geometry_shader4
-extern ( System ) nothrow {
+extern ( System ) @nogc nothrow {
     alias da_glProgramParameteriEXT = void function(uint program, GLenum pname, int value);
     alias da_glFramebufferTextureEXT = void function(GLenum target, GLenum attachment, uint texture, int level);
     alias da_glFramebufferTextureLayerEXT = void function(GLenum target, GLenum attachment, uint texture, int level, int layer);
@@ -407,7 +408,7 @@ private void load_EXT_geometry_shader4() {
 }
 
 // GL_NV_framebuffer_multisample_coverage
-extern ( System ) nothrow {
+extern ( System ) @nogc nothrow {
     alias da_glRenderbufferStorageMultisampleCoverageNV = void function(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
 }
 
@@ -492,7 +493,7 @@ private void load_NV_gpu_program4() {
 }
 
 // GL_EXT_gpu_program_parameters
-extern ( System ) nothrow {
+extern ( System ) @nogc nothrow {
     alias da_glProgramEnvParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params);
     alias da_glProgramLocalParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params);
 }
@@ -669,7 +670,7 @@ private void load_EXT_texture_integer() {
 }
 
 // GL_EXT_texture_buffer_object
-extern ( System ) nothrow {
+extern ( System ) @nogc nothrow {
     alias da_glTexBufferEXT = void function(GLenum target, GLenum internalformat, uint buffer);
 }
 
@@ -689,7 +690,7 @@ private void load_EXT_texture_buffer_object() {
 }
 
 // GL_EXT_direct_state_access
-extern ( System ) nothrow {
+extern ( System ) @nogc nothrow {
     alias da_glClientAttribDefaultEXT = void function(GLbitfield mask);
     alias da_glPushClientAttribDefaultEXT = void function(GLbitfield mask);
 
@@ -1497,7 +1498,7 @@ package void loadEXT( GLVersion glversion ) {
 
     _EXT_draw_buffers2                   = isExtSupported( glversion, "GL_EXT_draw_buffers2" );
     if ( _EXT_draw_buffers2 ) load_EXT_draw_buffers2();
-    
+
     _EXT_texture_compression_s3tc        = isExtSupported( glversion, "GL_EXT_texture_compression_s3tc" );
 
     _EXT_texture_compression_rgtc        = isExtSupported( glversion, "GL_EXT_texture_compression_rgtc" );

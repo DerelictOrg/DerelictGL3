@@ -34,6 +34,8 @@ version( Windows ) {
         import std.string;
 
         import derelict.util.wintypes;
+        import derelict.util.system;
+
         import derelict.opengl3.types;
         import derelict.opengl3.wgl;
         import derelict.opengl3.internal;
@@ -180,7 +182,7 @@ version( Windows ) {
 
     alias HPBUFFERARB = HANDLE;
 
-    extern( Windows ) nothrow {
+    extern( Windows ) @nogc nothrow {
         // WGL_ARB_extensions_string
         alias da_wglGetExtensionsStringARB = const( char* ) function( HDC );
 

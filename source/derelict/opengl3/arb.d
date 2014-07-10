@@ -954,7 +954,7 @@ private __gshared bool _ARB_shading_language_packing;
 bool ARB_shading_language_packing() @property { return _ARB_shading_language_packing; }
 
 // ARB_framebuffer_object
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glIsRenderbuffer = GLboolean function( GLuint );
     alias da_glBindRenderbuffer = void function( GLenum, GLuint );
     alias da_glDeleteRenderbuffers = void function( GLsizei, const( GLuint )* );
@@ -1033,7 +1033,7 @@ package void load_ARB_framebuffer_object( bool doThrow = false ) {
 }
 
 // ARB_map_buffer_range
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
         alias da_glMapBufferRange = GLvoid* function( GLenum, GLintptr, GLsizeiptr, GLbitfield );
         alias da_glFlushMappedBufferRange = void function( GLenum, GLintptr, GLsizeiptr );
 }
@@ -1054,7 +1054,7 @@ package void load_ARB_map_buffer_range( bool doThrow = false ) {
 }
 
 // ARB_vertex_array_object
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glBindVertexArray = void function( GLuint );
     alias da_glDeleteVertexArrays = void function( GLsizei, const( GLuint )* );
     alias da_glGenVertexArrays = void function( GLsizei, GLuint* );
@@ -1084,7 +1084,7 @@ package void load_ARB_vertex_array_object( bool doThrow = false ) {
 }
 
 // ARB_uniform_buffer_object
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glGetUniformIndices = void function( GLuint, GLsizei, const( GLchar* )*, GLuint* );
     alias da_glGetActiveUniformsiv = void function( GLuint, GLsizei, const( GLuint )*, GLenum, GLint* );
     alias da_glGetActiveUniformName = void function( GLuint, GLuint, GLsizei, GLsizei*, GLchar* );
@@ -1123,7 +1123,7 @@ package void load_ARB_uniform_buffer_object( bool doThrow = false ) {
 }
 
 // ARB_copy_buffer
-extern( System ) nothrow alias da_glCopyBufferSubData = void function( GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr );
+extern( System ) @nogc nothrow alias da_glCopyBufferSubData = void function( GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr );
 __gshared da_glCopyBufferSubData glCopyBufferSubData;
 
 private __gshared bool _ARB_copy_buffer;
@@ -1139,7 +1139,7 @@ package void load_ARB_copy_buffer( bool doThrow = false ) {
 }
 
 // ARB_draw_elements_base_vertex
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glDrawElementsBaseVertex = void function( GLenum, GLsizei, GLenum, const( GLvoid )*, GLint );
     alias da_glDrawRangeElementsBaseVertex = void function( GLenum, GLuint, GLuint, GLsizei, GLenum, const( GLvoid )*, GLint );
     alias da_glDrawElementsInstancedBaseVertex = void function( GLenum, GLsizei, GLenum, const( GLvoid )*, GLsizei, GLint );
@@ -1169,7 +1169,7 @@ package void load_ARB_draw_elements_base_vertex( bool doThrow = false ) {
 }
 
 // ARB_provoking_vertex
-extern( System ) nothrow alias da_glProvokingVertex = void function( GLenum );
+extern( System ) @nogc nothrow alias da_glProvokingVertex = void function( GLenum );
 __gshared da_glProvokingVertex glProvokingVertex;
 
 private __gshared bool _ARB_provoking_vertex;
@@ -1185,7 +1185,7 @@ package void load_ARB_provoking_vertex( bool doThrow = false ) {
 }
 
 // ARB_sync
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glFenceSync = GLsync function( GLenum, GLbitfield );
     alias da_glIsSync = GLboolean function( GLsync );
     alias da_glDeleteSync = void function( GLsync );
@@ -1224,7 +1224,7 @@ package void load_ARB_sync( bool doThrow = false ) {
 }
 
 // ARB_texture_multisample
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glTexImage2DMultisample = void function( GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean );
     alias da_glTexImage3DMultisample = void function( GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean );
     alias da_glGetMultisamplefv = void function( GLenum, GLuint, GLfloat* );
@@ -1254,7 +1254,7 @@ package void load_ARB_texture_multisample( bool doThrow = false ) {
 }
 
 // ARB_draw_buffers_blend
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glBlendEquationiARB = void function( GLuint, GLenum );
     alias da_glBlendEquationSeparateiARB = void function( GLuint, GLenum, GLenum );
     alias da_glBlendFunciARB = void function( GLuint, GLenum, GLenum );
@@ -1283,7 +1283,7 @@ package void load_ARB_draw_buffers_blend() {
 }
 
 // ARB_sample_shading
-extern( System ) nothrow alias da_glMinSampleShadingARB = void function( GLclampf );
+extern( System ) @nogc nothrow alias da_glMinSampleShadingARB = void function( GLclampf );
 __gshared da_glMinSampleShadingARB glMinSampleShadingARB;
 
 private __gshared bool _ARB_sample_shading;
@@ -1298,7 +1298,7 @@ package void load_ARB_sample_shading() {
 }
 
 // ARB_shading_language_include
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glNamedStringARB = void function( GLenum, GLint, const( GLchar )*, GLint, const( GLchar )* );
     alias da_glDeleteNamedStringARB = void function( GLint, const( GLchar )* );
     alias da_glCompileShaderIncludeARB = void function( GLuint, GLsizei, const( GLchar )*, const( GLint )* );
@@ -1333,7 +1333,7 @@ package void load_ARB_shading_language_include() {
 }
 
 // ARB_blend_func_extended
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glBindFragDataLocationIndexed = void function( GLuint, GLuint, GLuint, const( GLchar )* );
     alias da_glGetFragDataIndex = GLint function( GLuint, const( GLchar )* );
 }
@@ -1355,7 +1355,7 @@ package void load_ARB_blend_func_extended( bool doThrow = false ) {
 }
 
 // ARB_sampler_objects
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glGenSamplers = void function( GLsizei, GLuint* );
     alias da_glDeleteSamplers = void function( GLsizei, const( GLuint )* );
     alias da_glIsSampler = GLboolean function( GLuint );
@@ -1415,7 +1415,7 @@ package void load_ARB_sampler_objects( bool doThrow = false ) {
 }
 
 // ARB_timer_query
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glQueryCounter = void function( GLuint, GLenum );
     alias da_glGetQueryObjecti64v = void function( GLuint, GLenum, GLint64* );
     alias da_glGetQueryObjectui64v = void function( GLuint, GLenum, GLuint64* );
@@ -1442,7 +1442,7 @@ void load_ARB_timer_query( bool doThrow = false ) {
 }
 
 // ARB_vertex_type_2_10_10_10_rev
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glVertexP2ui = void function( GLenum, GLuint );
     alias da_glVertexP2uiv = void function( GLenum, const( GLuint )* );
     alias da_glVertexP3ui = void function( GLenum, GLuint );
@@ -1576,7 +1576,7 @@ package void load_ARB_vertex_type_2_10_10_10_rev( bool doThrow = false ) {
 }
 
 // ARB_draw_indirect
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glDrawArraysIndirect = void function( GLenum, const( GLvoid )* );
     alias da_glDrawElementsIndirect = void function( GLenum, GLenum, const( GLvoid )* );
 }
@@ -1600,7 +1600,7 @@ package void load_ARB_draw_indirect( bool doThrow = false ) {
 }
 
 // ARB_gpu_shader_fp64
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glUniform1d = void function( GLint, GLdouble );
     alias da_glUniform2d = void function( GLint, GLdouble, GLdouble );
     alias da_glUniform3d = void function( GLint, GLdouble, GLdouble, GLdouble );
@@ -1672,7 +1672,7 @@ package void load_ARB_gpu_shader_fp64( bool doThrow = false ) {
 }
 
 // ARB_shader_subroutine
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glGetSubroutineUniformLocation = GLint function( GLuint, GLenum, const( GLchar )* );
     alias da_glGetSubroutineIndex = GLuint function( GLuint, GLenum, const( GLchar )* );
     alias da_glGetActiveSubroutineUniformiv = void function( GLuint, GLenum, GLuint, GLenum, GLint* );
@@ -1714,7 +1714,7 @@ package void load_ARB_shader_subroutine( bool doThrow = false ) {
 }
 
 // ARB_tessellation_shader
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glPatchParameteri = void function( GLenum, GLint );
     alias da_glPatchParameterfv = void function( GLenum, const( GLfloat )* );
 }
@@ -1735,7 +1735,7 @@ package void load_ARB_tessellation_shader( bool doThrow = false ) {
 }
 
 // ARB_transform_feedback2
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glBindTransformFeedback = void function( GLenum, GLuint );
     alias da_glDeleteTransformFeedbacks = void function( GLsizei, const( GLuint )* );
     alias da_glGenTransformFeedbacks = void function( GLsizei, GLuint* );
@@ -1774,7 +1774,7 @@ void load_ARB_transform_feedback2( bool doThrow = false ) {
 }
 
 // ARB_transform_feedback3
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glDrawTransformFeedbackStream = void function( GLenum, GLuint, GLuint );
     alias da_glBeginQueryIndexed = void function( GLenum, GLuint, GLuint );
     alias da_glEndQueryIndexed = void function( GLenum, GLuint );
@@ -1804,7 +1804,7 @@ package void load_ARB_transform_feedback3( bool doThrow = false ) {
 }
 
 // ARB_ES2_compatibility
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glReleaseShaderCompiler = void function();
     alias da_glShaderBinary = void function( GLsizei, const( GLuint )*, GLenum, const( GLvoid )*, GLsizei );
     alias da_glGetShaderPrecisionFormat = void function( GLenum, GLenum, GLint*, GLint* );
@@ -1837,7 +1837,7 @@ package void load_ARB_ES2_compatibility( bool doThrow = false ) {
 }
 
 // ARB_get_program_binary
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glGetProgramBinary = void function( GLuint, GLsizei, GLsizei*, GLenum*, GLvoid* );
     alias da_glProgramBinary = void function( GLuint, GLenum, const( GLvoid )*, GLsizei );
     alias da_glProgramParameteri = void function( GLuint, GLenum, GLint );
@@ -1864,7 +1864,7 @@ package void load_ARB_get_program_binary( bool doThrow = false ) {
 }
 
 // ARB_separate_shader_objects
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glUseProgramStages = void function( GLuint, GLbitfield, GLuint );
     alias da_glActiveShaderProgram = void function( GLuint, GLuint );
     alias da_glCreateShaderProgramv = GLuint function( GLenum, GLsizei, const( GLchar* )* );
@@ -2062,7 +2062,7 @@ package void load_ARB_separate_shader_objects( bool doThrow = false ) {
 }
 
 // ARB_vertex_attrib_64bit
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glVertexAttribL1d = void function( GLuint, GLdouble );
     alias da_glVertexAttribL2d = void function( GLuint, GLdouble, GLdouble );
     alias da_glVertexAttribL3d = void function( GLuint, GLdouble, GLdouble, GLdouble );
@@ -2110,7 +2110,7 @@ package void load_ARB_vertex_attrib_64bit( bool doThrow = false ) {
 }
 
 // ARB_viewport_array
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glViewportArrayv = void function( GLuint, GLsizei, const( GLfloat )* );
     alias da_glViewportIndexedf = void function( GLuint, GLfloat, GLfloat, GLfloat, GLfloat );
     alias da_glViewportIndexedfv = void function( GLuint, const( GLfloat )* );
@@ -2158,7 +2158,7 @@ package void load_ARB_viewport_array( bool doThrow = false ) {
 }
 
 // ARB_cl_event
-extern( System ) nothrow alias  da_glCreateSyncFromCLeventARB = GLsync function( _cl_context*, _cl_event*, GLbitfield );
+extern( System ) @nogc nothrow alias  da_glCreateSyncFromCLeventARB = GLsync function( _cl_context*, _cl_event*, GLbitfield );
 __gshared da_glCreateSyncFromCLeventARB glCreateSyncFromCLeventARB;
 
 private __gshared bool _ARB_cl_event;
@@ -2173,7 +2173,7 @@ package void load_ARB_cl_event() {
 }
 
 // ARB_debug_output
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glDebugMessageControlARB = void function( GLenum, GLenum, GLenum, GLsizei, const( GLuint )*, GLboolean );
     alias da_glDebugMessageInsertARB = void function( GLenum, GLenum, GLuint, GLenum, GLsizei, const( GLchar )* );
     alias da_glDebugMessageCallbackARB = void function( GLDEBUGPROCARB, const( GLvoid )* );
@@ -2202,7 +2202,7 @@ package void load_ARB_debug_output() {
 }
 
 // ARB_robustness
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glGetGraphicsResetStatusARB = GLenum function();
     alias da_glGetnMapdvARB = void function( GLenum, GLenum, GLsizei, GLdouble* );
     alias da_glGetnMapfvARB = void function( GLenum, GLenum, GLsizei, GLfloat* );
@@ -2280,7 +2280,7 @@ package void load_ARB_robustness() {
 }
 
 // ARB_base_instance
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glDrawArraysInstancedBaseInstance = void function( GLenum, GLint, GLsizei, GLsizei, GLuint );
     alias da_glDrawElementsInstancedBaseInstance = void function( GLenum, GLsizei, GLenum, const( void )*, GLsizei, GLuint );
     alias da_glDrawElementsInstancedBaseVertexBaseInstance = void function( GLenum, GLsizei, GLenum, const( void )*, GLsizei, GLint, GLuint );
@@ -2307,7 +2307,7 @@ package void load_ARB_base_instance( bool doThrow = false ) {
 }
 
 // ARB_transform_feedback_instanced
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glDrawTransformFeedbackInstanced = void function( GLenum, GLuint, GLsizei );
     alias da_glDrawTransformFeedbackStreamInstanced = void function( GLenum, GLuint, GLuint, GLsizei );
 }
@@ -2328,7 +2328,7 @@ package void load_ARB_transform_feedback_instanced( bool doThrow = false ) {
 }
 
 // ARB_internalformat_query
-extern( System ) nothrow alias da_glGetInternalformativ = void function( GLenum, GLenum, GLenum, GLsizei, GLint* );
+extern( System ) @nogc nothrow alias da_glGetInternalformativ = void function( GLenum, GLenum, GLenum, GLsizei, GLint* );
 __gshared da_glGetInternalformativ glGetInternalformativ;
 
 private __gshared bool _ARB_internalformat_query;
@@ -2344,7 +2344,7 @@ package void load_ARB_internalformat_query( bool doThrow = false ) {
 }
 
 // ARB_shader_atomic_counters
-extern( System ) nothrow alias da_glGetActiveAtomicCounterBufferiv = void function( GLuint, GLuint, GLenum, GLint* );
+extern( System ) @nogc nothrow alias da_glGetActiveAtomicCounterBufferiv = void function( GLuint, GLuint, GLenum, GLint* );
 __gshared da_glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;
 
 private __gshared bool _ARB_shader_atomic_counters;
@@ -2360,7 +2360,7 @@ package void load_ARB_shader_atomic_counters( bool doThrow = false ) {
 }
 
 // ARB_shader_image_load_store
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glBindImageTexture = void function( GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum );
     alias da_glMemoryBarrier = void function( GLbitfield );
 }
@@ -2381,7 +2381,7 @@ package void load_ARB_shader_image_load_store( bool doThrow = false ) {
 }
 
 // ARB_texture_storage
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glTexStorage1D = void function( GLenum, GLsizei, GLenum, GLsizei );
     alias da_glTexStorage2D = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei );
     alias da_glTexStorage3D = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei );
@@ -2466,7 +2466,7 @@ package void load_ARB_clear_buffer_object( bool doThrow = false ) {
 }
 
 // ARB_compute_shader
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glDispatchCompute = void function( GLuint,GLuint,GLuint );
     alias da_glDispatchComputeIndirect = void function( GLintptr );
 }
@@ -2493,7 +2493,7 @@ private __gshared bool _ARB_copy_image;
 bool ARB_copy_image() @property { return _ARB_copy_image; }
 
 // KHR_debug
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     // GLDEBUGPROC is a callback type -- don't try to load it!
     alias GLDEBUGPROC = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )*,GLvoid* );
 
@@ -2548,7 +2548,7 @@ private __gshared bool _ARB_explicit_uniform_location;
 bool ARB_explicit_uniform_location() @property { return _ARB_explicit_uniform_location; }
 
 // ARB_framebuffer_no_attachments
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glFramebufferParameteri = void function( GLenum,GLenum,GLint );
     alias da_glGetFramebufferParameteriv = void function( GLenum,GLenum,GLint* );
     alias da_glNamedFramebufferParameteriEXT = void function( GLuint,GLenum,GLint );
@@ -2577,7 +2577,7 @@ package void load_ARB_framebuffer_no_attachments( bool doThrow = false ) {
 }
 
 // ARB_internalformat_query2
-extern( System ) nothrow alias da_glGetInternalformati64v = void function( GLenum,GLenum,GLenum,GLsizei,GLint64* );
+extern( System ) @nogc nothrow alias da_glGetInternalformati64v = void function( GLenum,GLenum,GLenum,GLsizei,GLint64* );
 __gshared da_glGetInternalformati64v glGetInternalformati64v;
 private __gshared bool _ARB_internalformat_query2;
 bool ARB_internalformat_query2() @property { return _ARB_internalformat_query2; }
@@ -2592,7 +2592,7 @@ package void load_ARB_internalformat_query2( bool doThrow = false ) {
 }
 
 // ARB_invalidate_subdata
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glInvalidateTexSubImage = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei );
     alias da_glInvalidateTexImage = void function( GLuint,GLint );
     alias da_glInvalidateBufferSubData = void function( GLuint,GLintptr,GLsizeiptr );
@@ -2628,7 +2628,7 @@ package void load_ARB_invalidate_subdata( bool doThrow = false ) {
 }
 
 // ARB_multi_draw_indirect
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glMultiDrawArraysIndirect = void function( GLenum,const( void )*,GLsizei,GLsizei );
     alias da_glMultiDrawElementsIndirect = void function( GLenum,GLenum,const( void )*,GLsizei,GLsizei );
 }
@@ -2648,7 +2648,7 @@ package void load_ARB_multi_draw_indirect( bool doThrow = false ) {
 }
 
 // ARB_program_interface_query
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glGetProgramInterfaceiv = void function( GLuint,GLenum,GLenum,GLint* );
     alias da_glGetProgramResourceIndex = GLuint function( GLuint,GLenum,const( GLchar )* );
     alias da_glGetProgramResourceName = void function( GLuint,GLenum,GLuint,GLsizei,GLsizei*,GLchar* );
@@ -2707,7 +2707,7 @@ private __gshared bool _ARB_stencil_texturing;
 bool ARB_stencil_texturing() @property { return _ARB_stencil_texturing; }
 
 // ARB_texture_buffer_range
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glTexBufferRange = void function( GLenum,GLenum,GLuint,GLintptr,GLsizeiptr );
     alias da_glTextureBufferRangeEXT = void function( GLuint,GLenum,GLenum,GLuint,GLintptr,GLsizeiptr );
 }
@@ -2731,7 +2731,7 @@ private __gshared bool _ARB_texture_query_levels;
 bool ARB_texture_query_levels() @property { return _ARB_texture_query_levels; }
 
 // ARB_texture_storage_multisample
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glTexStorage2DMultisample = void function( GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean );
     alias da_glTexStorage3DMultisample = void function( GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean );
     alias da_glTextureStorage2DMultisampleEXT = void function( GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean );
@@ -2761,7 +2761,7 @@ package void load_ARB_texture_storage_multisample( bool doThrow = false ) {
 }
 
 // ARB_texture_view
-extern( System ) nothrow alias da_glTextureView = void function( GLuint,GLenum,GLuint,GLenum,GLuint,GLuint,GLuint,GLuint );
+extern( System ) @nogc nothrow alias da_glTextureView = void function( GLuint,GLenum,GLuint,GLenum,GLuint,GLuint,GLuint,GLuint );
 __gshared da_glTextureView glTextureView;
 private __gshared bool _ARB_texture_view;
 bool ARB_texture_view() @property { return _ARB_texture_view; }
@@ -2776,7 +2776,7 @@ package void load_ARB_texture_view( bool doThrow = false ) {
 }
 
 // ARB_vertex_attrib_binding
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     alias da_glBindVertexBuffer = void function( GLuint,GLuint,GLintptr,GLsizei );
     alias da_glVertexAttribFormat = void function( GLuint,GLint,GLenum,GLboolean,GLuint );
     alias da_glVertexAttribIFormat = void function( GLuint,GLint,GLenum,GLuint );

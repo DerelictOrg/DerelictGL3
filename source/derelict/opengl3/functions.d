@@ -29,9 +29,10 @@ module derelict.opengl3.functions;
 
 private {
     import derelict.opengl3.types;
+    import derelict.util.system;
 }
 
-extern( System ) nothrow {
+extern( System ) @nogc nothrow {
     // OpenGL 1.0
     alias void function( GLenum ) da_glCullFace;
     alias void function( GLenum ) da_glFrontFace;

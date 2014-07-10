@@ -155,7 +155,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
         int pad[24];
     }
 
-    extern ( C ) nothrow {
+    extern ( C ) @nogc nothrow {
         alias da_glXChooseVisual = XVisualInfo* function( Display*,int,int* );
         alias da_glXCopyContext = void function( Display*,GLXContext,GLXContext,uint );
         alias da_glXCreateContext = GLXContext function( Display*,XVisualInfo*,GLXContext,Bool );

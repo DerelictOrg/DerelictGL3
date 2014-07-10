@@ -32,9 +32,10 @@ version( Windows ) {
     private {
         import std.string;
         import derelict.util.wintypes;
+        import derelict.util.system;
     }
 
-    extern( Windows ) nothrow {
+    extern( Windows ) @nogc nothrow {
         alias da_wglCopyContext = BOOL function( void*,void* );
         alias da_wglCreateContext = void* function( void* );
         alias da_wglCreateLayerContext = void* function( void*,int );

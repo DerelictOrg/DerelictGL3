@@ -29,8 +29,8 @@ module derelict.opengl3.internal;
 
 private {
     import core.stdc.string;
+    import std.array;
     import std.string;
-    import std.conv;
 
     import derelict.util.exception;
     import derelict.util.system;
@@ -42,6 +42,10 @@ private {
     else static if( Derelict_OS_Posix ) import derelict.opengl3.glx;
 }
 
+private {
+    Appender!( const( char )*[] ) _extCache;
+}
+
 package {
         void bindGLFunc( void** ptr, string symName ) {
             auto sym = loadGLFunc( symName );
@@ -50,14 +54,35 @@ package {
             *ptr = sym;
         }
 
+        void initExtensionCache( GLVersion glversion ) {
+            if( glversion >= GLVersion.GL30 ) {
+                int count;
+                glGetIntegerv( GL_NUM_EXTENSIONS, &count );
+
+                _extCache.shrinkTo( 0 );
+                _extCache.reserve( count );
+                import std.stdio;
+                for( int i=0; i<count; ++i ) {
+                    _extCache.put( glGetStringi( GL_EXTENSIONS, i ));
+                }
+            }
+        }
+
         bool isExtSupported( GLVersion glversion, string name ) {
             // If OpenGL 3+ is loaded, use glGetStringi.
             if( glversion >= GLVersion.GL30 ) {
                 auto cstr = name.toStringz(  );
+
+                /*
                 int count;
                 glGetIntegerv( GL_NUM_EXTENSIONS, &count );
                 for( int i=0; i<count; ++i ) {
                     if( strcmp( glGetStringi( GL_EXTENSIONS, i ), cstr ) == 0 )
+                        return true;
+                }
+                */
+                foreach( extname; _extCache.data ) {
+                    if( strcmp( extname, cstr ) == 0 )
                         return true;
                 }
                 return false;

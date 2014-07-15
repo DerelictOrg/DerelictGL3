@@ -404,6 +404,7 @@ class DerelictGL3Loader : SharedLibLoader
                 glVer = GLVersion.GL43;
             }
 
+            initExtensionCache( glVer );
             loadARB( glVer );
             loadEXT( glVer );
             loadPlatformEXT(  glVer  );

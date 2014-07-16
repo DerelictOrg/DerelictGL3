@@ -2176,9 +2176,9 @@ package void load_ARB_cl_event() {
 extern( System ) @nogc nothrow {
     alias da_glDebugMessageControlARB = void function( GLenum, GLenum, GLenum, GLsizei, const( GLuint )*, GLboolean );
     alias da_glDebugMessageInsertARB = void function( GLenum, GLenum, GLuint, GLenum, GLsizei, const( GLchar )* );
-    alias da_glDebugMessageCallbackARB = void function( GLDEBUGPROCARB, const( GLvoid )* );
     alias da_glGetDebugMessageLogARB = void function( GLuint, GLsizei, GLenum*, GLenum*, GLuint*, GLenum*, GLsizei*, GLchar* );
 }
+extern( System ) alias da_glDebugMessageCallbackARB = void function( GLDEBUGPROCARB, const( GLvoid )* ) @nogc nothrow;
 
 __gshared {
     da_glDebugMessageControlARB glDebugMessageControlARB;

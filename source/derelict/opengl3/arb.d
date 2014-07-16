@@ -2177,8 +2177,8 @@ extern( System ) @nogc nothrow {
     alias da_glDebugMessageControlARB = void function( GLenum, GLenum, GLenum, GLsizei, const( GLuint )*, GLboolean );
     alias da_glDebugMessageInsertARB = void function( GLenum, GLenum, GLuint, GLenum, GLsizei, const( GLchar )* );
     alias da_glGetDebugMessageLogARB = void function( GLuint, GLsizei, GLenum*, GLenum*, GLuint*, GLenum*, GLsizei*, GLchar* );
+    alias da_glDebugMessageCallbackARB = void function( GLDEBUGPROCARB, const( GLvoid )* );
 }
-extern( System ) alias da_glDebugMessageCallbackARB = void function( GLDEBUGPROCARB, const( GLvoid )* ) @nogc nothrow;
 
 __gshared {
     da_glDebugMessageControlARB glDebugMessageControlARB;
@@ -2493,9 +2493,13 @@ private __gshared bool _ARB_copy_image;
 bool ARB_copy_image() @property { return _ARB_copy_image; }
 
 // KHR_debug
-extern( System ) @nogc nothrow {
-    // GLDEBUGPROC is a callback type -- don't try to load it!
+// GLDEBUGPROC is a callback type -- don't try to load it!
+extern( System ) nothrow
+{
     alias GLDEBUGPROC = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )*,GLvoid* );
+}
+
+extern( System ) @nogc nothrow {
 
     // These are the functions that need loading.
     alias da_glDebugMessageControl = void function( GLenum,GLenum,GLenum,GLsizei,const( GLuint* ),GLboolean );

@@ -1258,7 +1258,7 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
         bindGLFunc( cast( void** )&glGetDoublei_vEXT, "glGetDoublei_vEXT" );
         bindGLFunc( cast( void** )&glGetPointeri_vEXT, "glGetPointeri_vEXT" );
 
-        if ( isExtSupported( glversion, "GL_ARB_vertex_program" )) {
+        if( isExtSupported( glversion, "GL_ARB_vertex_program" )) {
             bindGLFunc( cast( void** )&glNamedProgramStringEXT, "glNamedProgramStringEXT" );
             bindGLFunc( cast( void** )&glNamedProgramLocalParameter4dEXT, "glNamedProgramLocalParameter4dEXT" );
             bindGLFunc( cast( void** )&glNamedProgramLocalParameter4dvEXT, "glNamedProgramLocalParameter4dvEXT" );
@@ -1326,12 +1326,12 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
         bindGLFunc( cast( void** )&glProgramUniformMatrix3x4fvEXT, "glProgramUniformMatrix3x4fvEXT" );
         bindGLFunc( cast( void** )&glProgramUniformMatrix4x3fvEXT, "glProgramUniformMatrix4x3fvEXT" );
 
-        if ( EXT_texture_buffer_object ) {
+        if( EXT_texture_buffer_object ) {
             bindGLFunc( cast( void** )&glTextureBufferEXT, "glTextureBufferEXT" );
             bindGLFunc( cast( void** )&glMultiTexBufferEXT, "glMultiTexBufferEXT" );
         }
 
-        if ( EXT_texture_integer ) {
+        if( EXT_texture_integer ) {
             bindGLFunc( cast( void** )&glTextureParameterIivEXT, "glTextureParameterIivEXT" );
             bindGLFunc( cast( void** )&glTextureParameterIuivEXT, "glTextureParameterIuivEXT" );
             bindGLFunc( cast( void** )&glGetTextureParameterIivEXT, "glGetTextureParameterIivEXT" );
@@ -1342,7 +1342,7 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
             bindGLFunc( cast( void** )&glGetMultiTexParameterIuivEXT, "glGetMultiTexParameterIuivEXT" );
         }
 
-        if ( EXT_gpu_shader4 ) {
+        if( EXT_gpu_shader4 ) {
             bindGLFunc( cast( void** )&glProgramUniform1uiEXT, "glProgramUniform1uiEXT" );
             bindGLFunc( cast( void** )&glProgramUniform2uiEXT, "glProgramUniform2uiEXT" );
             bindGLFunc( cast( void** )&glProgramUniform3uiEXT, "glProgramUniform3uiEXT" );
@@ -1353,11 +1353,11 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
             bindGLFunc( cast( void** )&glProgramUniform4uivEXT, "glProgramUniform4uivEXT" );
         }
 
-        if ( EXT_gpu_program_parameters ) {
+        if( EXT_gpu_program_parameters ) {
             bindGLFunc( cast( void** )&glNamedProgramLocalParameters4fvEXT, "glNamedProgramLocalParameters4fvEXT" );
         }
 
-        if ( NV_gpu_program4 ) {
+        if( NV_gpu_program4 ) {
             bindGLFunc( cast( void** )&glNamedProgramLocalParameterI4iEXT, "glNamedProgramLocalParameterI4iEXT" );
             bindGLFunc( cast( void** )&glNamedProgramLocalParameterI4ivEXT, "glNamedProgramLocalParameterI4ivEXT" );
             bindGLFunc( cast( void** )&glNamedProgramLocalParametersI4ivEXT, "glNamedProgramLocalParametersI4ivEXT" );
@@ -1373,7 +1373,7 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
 
         bindGLFunc( cast( void** )&glNamedRenderbufferStorageMultisampleEXT, "glNamedRenderbufferStorageMultisampleEXT" );
 
-        if ( NV_framebuffer_multisample_coverage ) {
+        if( NV_framebuffer_multisample_coverage ) {
             bindGLFunc( cast( void** )&glNamedRenderbufferStorageMultisampleCoverageEXT, "glNamedRenderbufferStorageMultisampleCoverageEXT" );
         }
 
@@ -1396,13 +1396,13 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
 
         bindGLFunc( cast( void** )&glNamedCopyBufferSubDataEXT, "glNamedCopyBufferSubDataEXT" );
 
-        if ( EXT_geometry_shader4 || NV_gpu_program4 ) {
+        if( EXT_geometry_shader4 || NV_gpu_program4 ) {
             bindGLFunc( cast( void** )&glNamedFramebufferTextureEXT, "glNamedFramebufferTextureEXT" );
             bindGLFunc( cast( void** )&glNamedFramebufferTextureLayerEXT, "glNamedFramebufferTextureLayerEXT" );
             bindGLFunc( cast( void** )&glNamedFramebufferTextureFaceEXT, "glNamedFramebufferTextureFaceEXT" );
         }
 
-        if ( NV_explicit_multisample ) {
+        if( NV_explicit_multisample ) {
             bindGLFunc( cast( void** )&glTextureRenderbufferEXT, "glTextureRenderbufferEXT" );
             bindGLFunc( cast( void** )&glMultiTexRenderbufferEXT, "glMultiTexRenderbufferEXT" );
         }
@@ -1472,41 +1472,41 @@ package void loadEXT( GLVersion glversion ) {
     _EXT_framebuffer_object = isExtSupported( glversion, "GL_EXT_framebuffer_object" );
     if( _EXT_framebuffer_object ) load_EXT_framebuffer_object();
 
-    _EXT_texture_buffer_object           = isExtSupported( glversion, "GL_EXT_texture_buffer_object" );
-    if ( _EXT_texture_buffer_object ) load_EXT_texture_buffer_object();
+    _EXT_texture_buffer_object = isExtSupported( glversion, "GL_EXT_texture_buffer_object" );
+    if( _EXT_texture_buffer_object ) load_EXT_texture_buffer_object();
 
-    _EXT_texture_integer                 = isExtSupported( glversion, "GL_EXT_texture_integer" );
-    if ( _EXT_texture_integer ) load_EXT_texture_integer();
+    _EXT_texture_integer = isExtSupported( glversion, "GL_EXT_texture_integer" );
+    if( _EXT_texture_integer ) load_EXT_texture_integer();
 
-    _EXT_gpu_shader4                     = isExtSupported( glversion, "GL_EXT_gpu_shader4" );
-    if ( _EXT_gpu_shader4 ) load_EXT_gpu_shader4();
+    _EXT_gpu_shader4 = isExtSupported( glversion, "GL_EXT_gpu_shader4" );
+    if( _EXT_gpu_shader4 ) load_EXT_gpu_shader4();
 
-    _EXT_gpu_program_parameters          = isExtSupported( glversion, "GL_EXT_gpu_program_parameters" );
-    if ( _EXT_gpu_program_parameters ) load_EXT_gpu_program_parameters();
+    _EXT_gpu_program_parameters = isExtSupported( glversion, "GL_EXT_gpu_program_parameters" );
+    if( _EXT_gpu_program_parameters ) load_EXT_gpu_program_parameters();
 
-    _NV_gpu_program4                     = isExtSupported( glversion, "GL_NV_gpu_program4" );
-    if ( _NV_gpu_program4 ) load_NV_gpu_program4();
+    _NV_gpu_program4 = isExtSupported( glversion, "GL_NV_gpu_program4" );
+    if( _NV_gpu_program4 ) load_NV_gpu_program4();
 
     _NV_framebuffer_multisample_coverage = isExtSupported( glversion, "GL_NV_framebuffer_multisample_coverage" );
-    if ( _NV_framebuffer_multisample_coverage ) load_NV_framebuffer_multisample_coverage();
+    if( _NV_framebuffer_multisample_coverage ) load_NV_framebuffer_multisample_coverage();
 
-    _EXT_geometry_shader4                = isExtSupported( glversion, "GL_EXT_geometry_shader4" );
-    if ( _EXT_geometry_shader4 ) load_EXT_geometry_shader4();
+    _EXT_geometry_shader4 = isExtSupported( glversion, "GL_EXT_geometry_shader4" );
+    if( _EXT_geometry_shader4 ) load_EXT_geometry_shader4();
 
-    _NV_explicit_multisample             = isExtSupported( glversion, "GL_NV_explicit_multisample" );
-    if ( _NV_explicit_multisample ) load_NV_explicit_multisample();
+    _NV_explicit_multisample = isExtSupported( glversion, "GL_NV_explicit_multisample" );
+    if( _NV_explicit_multisample ) load_NV_explicit_multisample();
 
-    _EXT_draw_buffers2                   = isExtSupported( glversion, "GL_EXT_draw_buffers2" );
-    if ( _EXT_draw_buffers2 ) load_EXT_draw_buffers2();
+    _EXT_draw_buffers2 = isExtSupported( glversion, "GL_EXT_draw_buffers2" );
+    if( _EXT_draw_buffers2 ) load_EXT_draw_buffers2();
 
-    _EXT_texture_compression_s3tc        = isExtSupported( glversion, "GL_EXT_texture_compression_s3tc" );
+    _EXT_texture_compression_s3tc = isExtSupported( glversion, "GL_EXT_texture_compression_s3tc" );
 
-    _EXT_texture_compression_rgtc        = isExtSupported( glversion, "GL_EXT_texture_compression_rgtc" );
+    _EXT_texture_compression_rgtc = isExtSupported( glversion, "GL_EXT_texture_compression_rgtc" );
 
-    _NV_texture_barrier                  = isExtSupported( glversion, "GL_NV_texture_barrier" );
-    if ( _NV_texture_barrier ) load_NV_texture_barrier();
+    _NV_texture_barrier = isExtSupported( glversion, "GL_NV_texture_barrier" );
+    if( _NV_texture_barrier ) load_NV_texture_barrier();
 
     // Direct state access extension should be ALWAYS loaded in the last place
     _EXT_direct_state_access = isExtSupported( glversion, "GL_EXT_direct_state_access" );
-    if ( _EXT_direct_state_access ) load_EXT_direct_state_access( glversion );
+    if( _EXT_direct_state_access ) load_EXT_direct_state_access( glversion );
 }

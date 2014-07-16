@@ -290,6 +290,7 @@ version( Windows ) {
         // This needs to be loaded first. If it fails to load, just abort.
         wglGetExtensionsStringARB = cast( da_wglGetExtensionsStringARB ) loadGLFunc( "wglGetExtensionsStringARB" );
         if( !wglGetExtensionsStringARB ) return;
+        _WGL_ARB_extensions_string = true;
 
         if( isWGLExtSupported( "WGL_ARB_buffer_region" )) {
             try {

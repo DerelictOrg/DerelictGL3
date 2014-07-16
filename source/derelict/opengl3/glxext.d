@@ -553,6 +553,11 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
     bool GLX_SUN_get_transparent_index() @property { return _GLX_SUN_get_transparent_index; }
 
     private bool isGLXExtSupported( string name ) {
+        if ( !glXGetCurrentDisplayEXT ) {
+            // Can't get the current display, so assume the worst.
+            return false;
+        }
+
         auto display = glXGetCurrentDisplayEXT();
 
         return findEXT( glXQueryExtensionsString( display, 0 ), name );
@@ -561,7 +566,7 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
     package void loadPlatformEXT( GLVersion glversion ) {
         // glXGetCurrentDisplayEXT is needed to properly load the other extensions, so attempt
         // to load GLX_EXT_import_context first.
-        if ( _GLX_EXT_import_context ) {
+        if ( !glXGetCurrentDisplayEXT ) {
             try {
                 bindGLFunc( cast( void** )&glXGetCurrentDisplayEXT, "glXGetCurrentDisplayEXT" );
                 bindGLFunc( cast( void** )&glXQueryContextInfoEXT, "glXQueryContextInfoEXT" );

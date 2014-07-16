@@ -2492,13 +2492,6 @@ package void load_ARB_compute_shader( bool doThrow = false ) {
 private __gshared bool _ARB_copy_image;
 bool ARB_copy_image() @property { return _ARB_copy_image; }
 
-// KHR_debug
-// GLDEBUGPROC is a callback type -- don't try to load it!
-extern( System ) nothrow
-{
-    alias GLDEBUGPROC = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )*,GLvoid* );
-}
-
 extern( System ) @nogc nothrow {
 
     // These are the functions that need loading.

@@ -105,5 +105,6 @@ enum GLVersion {
     GL41 = 41,
     GL42 = 42,
     GL43 = 43,
-    HighestSupported = GL43,
+    GL44 = 44,
+    HighestSupported = GL44,
 }

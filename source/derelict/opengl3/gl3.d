@@ -408,6 +408,8 @@ class DerelictGL3Loader : SharedLibLoader
                 load_ARB_buffer_storage( GLVersion.GL44, true );
                 load_ARB_clear_texture( true );
                 load_ARB_multi_bind( true );
+
+                glVer = GLVersion.GL44;
             }
 
             initExtensionCache( glVer );

@@ -3044,6 +3044,7 @@ package void loadARB( GLVersion glversion )
     if( glversion < GLVersion.GL43 ) {
         if( isExtSupported( glversion, "GL_ARB_clear_buffer_object" )  ) load_ARB_clear_buffer_object();
         if( isExtSupported( glversion, "GL_ARB_compute_shader" )) load_ARB_compute_shader();
+        if( isExtSupported( glversion, "GL_ARB_debug_output" )) load_ARB_debug_output();
         if( isExtSupported( glversion, "GL_KHR_debug" )) load_KHR_debug();
         if( isExtSupported( glversion, "GL_ARB_framebuffer_no_attachments" )) load_ARB_framebuffer_no_attachments();
         if( isExtSupported( glversion, "GL_ARB_internalformat_query2" )) load_ARB_internalformat_query2();

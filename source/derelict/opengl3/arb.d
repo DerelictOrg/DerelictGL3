@@ -882,6 +882,16 @@ enum : uint {
 
     // ARB_clear_texture
     GL_CLEAR_TEXTURE = 0x9365,
+
+    // ARB_query_buffer_object
+    GL_QUERY_BUFFER                   = 0x9192,
+    GL_QUERY_BUFFER_BARRIER_BIT       = 0x00008000,
+    GL_QUERY_BUFFER_BINDING           = 0x9193,
+    GL_QUERY_RESULT_NO_WAIT           = 0x9194,
+
+    // ARB_texture_mirror_clamp_to_edge
+    GL_MIRROR_CLAMP_TO_EDGE           = 0x8743,
+
 }
 
 private __gshared bool _ARB_depth_buffer_float;
@@ -2888,6 +2898,10 @@ package void load_ARB_clear_texture( bool doThrow = false ) {
     }
 }
 
+// ARB_enhanced_layouts
+private bool _ARB_enhanced_layouts;
+bool ARB_enhanced_layouts() @property { return _ARB_enhanced_layouts; }
+
 // ARB_multi_bind
 extern( System ) @nogc nothrow {
     alias da_glBindBuffersBase = void function( GLenum,GLuint,GLsizei,const( GLuint )* );
@@ -2923,6 +2937,21 @@ package void load_ARB_multi_bind( bool doThrow = false ) {
     }
 }
 
+// ARB_query_buffer_object
+private bool _ARB_query_buffer_object;
+bool ARB_query_buffer_object() @property { return _ARB_query_buffer_object; }
+
+// ARB_texture_mirror_clamp_to_edge
+private bool _ARB_texture_mirror_clamp_to_edge;
+bool ARB_texture_mirror_clamp_to_edge() @property { return _ARB_texture_mirror_clamp_to_edge; }
+
+// ARB_texture_stencil8
+private bool _ARB_texture_stencil8;
+bool ARB_texture_stencil8() @property { return _ARB_texture_stencil8; }
+
+// ARB_vertex_type_10f_11f_11f_rev
+private bool _ARB_vertex_type_10f_11f_11f_rev;
+bool ARB_vertex_type_10f_11f_11f_rev() @property { return _ARB_vertex_type_10f_11f_11f_rev; }
 
 package void loadARB( GLVersion glversion )
 {
@@ -3023,9 +3052,17 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_vertex_attrib_binding" )) load_ARB_vertex_attrib_binding();
     }
 
+
+    _ARB_enhanced_layouts = isExtSupported( glversion, "GL_ARB_enhanced_layouts" );
+    _ARB_query_buffer_object = isExtSupported( glversion, "GL_ARB_query_buffer_object" );
+    _ARB_texture_mirror_clamp_to_edge = isExtSupported( glversion, "GL_ARB_texture_mirror_clamp_to_edge" );
+    _ARB_texture_stencil8 = isExtSupported( glversion, "GL_ARB_texture_stencil8" );
+    _ARB_vertex_type_10f_11f_11f_rev = isExtSupported( glversion, "GL_ARB_vertex_type_10f_11f_11f_rev" );
+
     if( glversion < GLVersion.GL44 ) {
         if( isExtSupported( glversion, "GL_ARB_buffer_storage" )) load_ARB_buffer_storage( glversion );
         if( isExtSupported( glversion, "GL_ARB_clear_texture" )) load_ARB_clear_texture();
         if( isExtSupported( glversion, "GL_ARB_multi_bind" )) load_ARB_multi_bind();
     }
+
 }

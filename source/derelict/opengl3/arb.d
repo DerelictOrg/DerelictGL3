@@ -3016,6 +3016,7 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_viewport_array" )) load_ARB_viewport_array();
     }
 
+    _ARB_texture_compression_bptc = isExtSupported( glversion, "GL__ARB_texture_compression_bptc" );
     _ARB_shading_language_420pack = isExtSupported( glversion, "GL_ARB_shading_language_420pack" );
     _ARB_compressed_texture_pixel_storage = isExtSupported( glversion, "GL_ARB_compressed_texture_pixel_storage" );
     _ARB_conservative_depth = isExtSupported( glversion, "GL_ARB_conservative_depth" );

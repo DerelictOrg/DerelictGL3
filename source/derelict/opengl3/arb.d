@@ -2998,8 +2998,10 @@ package void loadARB( GLVersion glversion )
     _ARB_texture_gather = isExtSupported( glversion, "GL_ARB_texture_gather" );
 
     if( glversion < GLVersion.GL40 ) {
+        if( isExtSupported( glversion, "GL_ARB_draw_buffers_blend" )) load_ARB_draw_buffers_blend();
         if( isExtSupported( glversion, "GL_ARB_draw_indirect" )) load_ARB_draw_indirect();
         if( isExtSupported( glversion, "GL_ARB_gpu_shader_fp64" )) load_ARB_gpu_shader_fp64();
+        if( isExtSupported( glversion, "GL_ARB_sample_shading")) load_ARB_sample_shading();
         if( isExtSupported( glversion, "GL_ARB_shader_subroutine" )) load_ARB_shader_subroutine();
         if( isExtSupported( glversion, "GL_ARB_tessellation_shader" )) load_ARB_tessellation_shader();
         if( isExtSupported( glversion, "GL_ARB_transform_feedback2" )) load_ARB_transform_feedback2();

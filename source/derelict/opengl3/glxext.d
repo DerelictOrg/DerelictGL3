@@ -526,31 +526,33 @@ static if( Derelict_OS_Posix && !Derelict_OS_Mac ) {
     private __gshared bool _GLX_SGI_video_sync;
     private __gshared bool _GLX_SUN_get_transparent_index;
 
-    bool GLX_ARB_create_context() @property { return _GLX_ARB_create_context; }
-    bool GLX_ARB_get_proc_address() @property { return _GLX_ARB_get_proc_address; }
-    bool GLX_EXT_import_context() @property { return _GLX_EXT_import_context; }
-    bool GLX_EXT_swap_control() @property { return _GLX_EXT_swap_control; }
-    bool GLX_EXT_texture_from_pixmap() @property { return _GLX_EXT_texture_from_pixmap; }
-    bool GLX_MESA_agp_offset() @property { return _GLX_MESA_agp_offset; }
-    bool GLX_MESA_pixmap_colormap() @property { return _GLX_MESA_pixmap_colormap; }
-    bool GLX_MESA_release_buffers() @property { return _GLX_MESA_release_buffers; }
-    bool GLX_MESA_set_3dfx_mode() @property { return _GLX_MESA_set_3dfx_mode; }
-    bool GLX_NV_copy_image() @property { return _GLX_NV_copy_image; }
-    bool GLX_NV_present_video() @property { return _GLX_NV_present_video; }
-    bool GLX_NV_swap_group() @property { return _GLX_NV_swap_group; }
-    bool GLX_NV_video_capture() @property { return _GLX_NV_video_capture; }
-    bool GLX_NV_video_output() @property { return _GLX_NV_video_output; }
-    bool GLX_OML_sync_control() @property { return _GLX_OML_sync_control; }
-    bool GLX_SGIX_fbconfig() @property { return _GLX_SGIX_fbconfig; }
-    bool GLX_SGIX_hyperpipe() @property { return _GLX_SGIX_hyperpipe; }
-    bool GLX_SGIX_pbuffer() @property { return _GLX_SGIX_pbuffer; }
-    bool GLX_SGIX_swap_barrier() @property { return _GLX_SGIX_swap_barrier; }
-    bool GLX_SGIX_swap_group() @property { return _GLX_SGIX_swap_group; }
-    bool GLX_SGIX_video_source() @property { return _GLX_SGIX_video_source; }
-    bool GLX_SGI_cushion() @property { return _GLX_SGI_cushion; }
-    bool GLX_SGI_swap_control() @property { return _GLX_SGI_swap_control; }
-    bool GLX_SGI_video_sync() @property { return _GLX_SGI_video_sync; }
-    bool GLX_SUN_get_transparent_index() @property { return _GLX_SUN_get_transparent_index; }
+    @nogc nothrow {
+        bool GLX_ARB_create_context() @property { return _GLX_ARB_create_context; }
+        bool GLX_ARB_get_proc_address() @property { return _GLX_ARB_get_proc_address; }
+        bool GLX_EXT_import_context() @property { return _GLX_EXT_import_context; }
+        bool GLX_EXT_swap_control() @property { return _GLX_EXT_swap_control; }
+        bool GLX_EXT_texture_from_pixmap() @property { return _GLX_EXT_texture_from_pixmap; }
+        bool GLX_MESA_agp_offset() @property { return _GLX_MESA_agp_offset; }
+        bool GLX_MESA_pixmap_colormap() @property { return _GLX_MESA_pixmap_colormap; }
+        bool GLX_MESA_release_buffers() @property { return _GLX_MESA_release_buffers; }
+        bool GLX_MESA_set_3dfx_mode() @property { return _GLX_MESA_set_3dfx_mode; }
+        bool GLX_NV_copy_image() @property { return _GLX_NV_copy_image; }
+        bool GLX_NV_present_video() @property { return _GLX_NV_present_video; }
+        bool GLX_NV_swap_group() @property { return _GLX_NV_swap_group; }
+        bool GLX_NV_video_capture() @property { return _GLX_NV_video_capture; }
+        bool GLX_NV_video_output() @property { return _GLX_NV_video_output; }
+        bool GLX_OML_sync_control() @property { return _GLX_OML_sync_control; }
+        bool GLX_SGIX_fbconfig() @property { return _GLX_SGIX_fbconfig; }
+        bool GLX_SGIX_hyperpipe() @property { return _GLX_SGIX_hyperpipe; }
+        bool GLX_SGIX_pbuffer() @property { return _GLX_SGIX_pbuffer; }
+        bool GLX_SGIX_swap_barrier() @property { return _GLX_SGIX_swap_barrier; }
+        bool GLX_SGIX_swap_group() @property { return _GLX_SGIX_swap_group; }
+        bool GLX_SGIX_video_source() @property { return _GLX_SGIX_video_source; }
+        bool GLX_SGI_cushion() @property { return _GLX_SGI_cushion; }
+        bool GLX_SGI_swap_control() @property { return _GLX_SGI_swap_control; }
+        bool GLX_SGI_video_sync() @property { return _GLX_SGI_video_sync; }
+        bool GLX_SUN_get_transparent_index() @property { return _GLX_SUN_get_transparent_index; }
+    }
 
     private bool isGLXExtSupported( string name ) {
         if ( !glXGetCurrentDisplayEXT ) {

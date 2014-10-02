@@ -265,22 +265,24 @@ version( Windows ) {
         bool _WGL_EXT_swap_control;
     }
 
-    bool WGL_ARB_extensions_string() @property { return _WGL_ARB_extensions_string; }
-    bool WGL_ARB_buffer_region() @property { return _WGL_ARB_buffer_region; }
-    bool WGL_ARB_create_context() @property { return _WGL_ARB_create_context; }
-    bool WGL_ARB_create_context_profile() @property { return _WGL_ARB_create_context_profile; }
-    bool WGL_ARB_create_context_robustness() @property { return _WGL_ARB_create_context_robustness; }
-    bool WGL_ARB_framebuffer_sRGB() @property { return _WGL_ARB_framebuffer_sRGB; }
-    bool WGL_ARB_make_current_read() @property { return _WGL_ARB_make_current_read; }
-    bool WGL_ARB_multisample() @property { return _WGL_ARB_multisample; }
-    bool WGL_ARB_pbuffer() @property { return _WGL_ARB_pbuffer; }
-    bool WGL_ARB_pixel_format() @property { return _WGL_ARB_pixel_format; }
-    bool WGL_ARB_pixel_format_float() @property { return _WGL_ARB_pixel_format_float; }
-    bool WGL_ARB_render_texture() @property { return _WGL_ARB_render_texture; }
-    bool WGL_ARB_robustness_application_isolation() @property { return _WGL_ARB_robustness_application_isolation; }
-    bool WGL_ARB_robustness_share_group_isolation() @property { return _WGL_ARB_robustness_share_group_isolation; }
+    @nogc nothrow {
+        bool WGL_ARB_extensions_string() @property { return _WGL_ARB_extensions_string; }
+        bool WGL_ARB_buffer_region() @property { return _WGL_ARB_buffer_region; }
+        bool WGL_ARB_create_context() @property { return _WGL_ARB_create_context; }
+        bool WGL_ARB_create_context_profile() @property { return _WGL_ARB_create_context_profile; }
+        bool WGL_ARB_create_context_robustness() @property { return _WGL_ARB_create_context_robustness; }
+        bool WGL_ARB_framebuffer_sRGB() @property { return _WGL_ARB_framebuffer_sRGB; }
+        bool WGL_ARB_make_current_read() @property { return _WGL_ARB_make_current_read; }
+        bool WGL_ARB_multisample() @property { return _WGL_ARB_multisample; }
+        bool WGL_ARB_pbuffer() @property { return _WGL_ARB_pbuffer; }
+        bool WGL_ARB_pixel_format() @property { return _WGL_ARB_pixel_format; }
+        bool WGL_ARB_pixel_format_float() @property { return _WGL_ARB_pixel_format_float; }
+        bool WGL_ARB_render_texture() @property { return _WGL_ARB_render_texture; }
+        bool WGL_ARB_robustness_application_isolation() @property { return _WGL_ARB_robustness_application_isolation; }
+        bool WGL_ARB_robustness_share_group_isolation() @property { return _WGL_ARB_robustness_share_group_isolation; }
 
-    bool WGL_EXT_swap_control() @property { return _WGL_EXT_swap_control; }
+        bool WGL_EXT_swap_control() @property { return _WGL_EXT_swap_control; }
+    }
 
     private bool isWGLExtSupported( string name ) {
         return findEXT( wglGetExtensionsStringARB(wglGetCurrentDC()), name );

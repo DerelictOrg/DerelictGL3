@@ -883,6 +883,11 @@ enum : uint {
     // ARB_clear_texture
     GL_CLEAR_TEXTURE = 0x9365,
 
+    // ARB_enhanced_layouts
+    GL_LOCATION_COMPONENT             = 0x934A,
+    GL_TRANSFORM_FEEDBACK_BUFFER_INDEX = 0x934B,
+    GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C,
+
     // ARB_query_buffer_object
     GL_QUERY_BUFFER                   = 0x9192,
     GL_QUERY_BUFFER_BARRIER_BIT       = 0x00008000,

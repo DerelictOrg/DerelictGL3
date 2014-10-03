@@ -2970,6 +2970,11 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_uniform_buffer_object" )) load_ARB_uniform_buffer_object();
     }
 
+    _ARB_vertex_array_bgra = isExtSupported( glversion, "GL_ARB_vertex_array_bgra" );
+    _ARB_fragment_coord_conventions = isExtSupported( glversion, "GL_ARB_fragment_coord_conventions" );
+    _ARB_seamless_cube_map = isExtSupported( glversion, "GL_ARB_seamless_cube_map" );
+    _ARB_depth_clamp = isExtSupported( glversion, "GL_ARB_depth_clamp" );
+
     if( glversion < GLVersion.GL32 ) {
         if( isExtSupported( glversion, "GL_ARB_draw_elements_base_vertex" )) load_ARB_draw_elements_base_vertex();
         if( isExtSupported( glversion, "GL_ARB_provoking_vertex" )) load_ARB_provoking_vertex();

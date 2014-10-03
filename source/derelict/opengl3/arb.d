@@ -898,12 +898,6 @@ enum : uint {
     GL_MIRROR_CLAMP_TO_EDGE           = 0x8743,
 }
 
-// 4.2 aliases
-alias GL_COPY_READ_BUFFER_BINDING = GL_COPY_READ_BUFFER;
-alias GL_COPY_WRITE_BUFFER_BINDING = GL_COPY_WRITE_BUFFER;
-alias GL_TRANSFORM_FEEDBACK_ACTIVE = GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE;
-alias GL_TRANSFORM_FEEDBACK_PAUSED = GL_TRANSFORM_FEEDBACK_BUFFER_PAUSED;
-
 private __gshared bool _ARB_depth_buffer_float;
 bool ARB_depth_buffer_float() @nogc nothrow @property { return _ARB_depth_buffer_float; }
 

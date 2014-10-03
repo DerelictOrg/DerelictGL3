@@ -2890,7 +2890,7 @@ __gshared {
     da_glClearTexSubImage glClearTexSubImage;
 }
 
-private bool _ARB_clear_texture;
+private __gshared bool _ARB_clear_texture;
 bool ARB_clear_texture() @nogc nothrow @property { return _ARB_clear_texture; }
 package void load_ARB_clear_texture( bool doThrow = false ) {
     try {
@@ -2903,7 +2903,7 @@ package void load_ARB_clear_texture( bool doThrow = false ) {
 }
 
 // ARB_enhanced_layouts
-private bool _ARB_enhanced_layouts;
+private __gshared bool _ARB_enhanced_layouts;
 bool ARB_enhanced_layouts() @nogc nothrow @property { return _ARB_enhanced_layouts; }
 
 // ARB_multi_bind
@@ -2925,7 +2925,7 @@ __gshared {
     da_glBindVertexBuffers glBindVertexBuffers;
 }
 
-private bool _ARB_multi_bind;
+private __gshared bool _ARB_multi_bind;
 bool ARB_multi_bind() @nogc nothrow @property { return _ARB_multi_bind; }
 package void load_ARB_multi_bind( bool doThrow = false ) {
     try {
@@ -2942,20 +2942,22 @@ package void load_ARB_multi_bind( bool doThrow = false ) {
 }
 
 // ARB_query_buffer_object
-private bool _ARB_query_buffer_object;
+private __gshared bool _ARB_query_buffer_object;
 bool ARB_query_buffer_object() @nogc nothrow @property { return _ARB_query_buffer_object; }
 
 // ARB_texture_mirror_clamp_to_edge
-private bool _ARB_texture_mirror_clamp_to_edge;
+private __gshared bool _ARB_texture_mirror_clamp_to_edge;
 bool ARB_texture_mirror_clamp_to_edge() @nogc nothrow @property { return _ARB_texture_mirror_clamp_to_edge; }
 
 // ARB_texture_stencil8
-private bool _ARB_texture_stencil8;
+private __gshared bool _ARB_texture_stencil8;
 bool ARB_texture_stencil8() @nogc nothrow @property { return _ARB_texture_stencil8; }
 
 // ARB_vertex_type_10f_11f_11f_rev
-private bool _ARB_vertex_type_10f_11f_11f_rev;
+private __gshared bool _ARB_vertex_type_10f_11f_11f_rev;
 bool ARB_vertex_type_10f_11f_11f_rev() @nogc nothrow @property { return _ARB_vertex_type_10f_11f_11f_rev; }
+
+// ARB_clip_control
 
 package void loadARB( GLVersion glversion )
 {

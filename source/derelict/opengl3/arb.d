@@ -2907,6 +2907,7 @@ package void load_ARB_buffer_storage( GLVersion glversion, bool doThrow = false 
         _ARB_buffer_storage = true;
     } catch( Exception e ) {
         _ARB_buffer_storage = false;
+        if( doThrow ) throw e;
     }
 }
 
@@ -2930,6 +2931,7 @@ package void load_ARB_clear_texture( bool doThrow = false ) {
         _ARB_clear_texture = true;
     } catch( Exception e ) {
         _ARB_clear_texture = false;
+        if( doThrow ) throw e;
     }
 }
 
@@ -2969,6 +2971,7 @@ package void load_ARB_multi_bind( bool doThrow = false ) {
         _ARB_multi_bind = true;
     } catch( Exception e ) {
         _ARB_multi_bind = false;
+        if( doThrow ) throw e;
     }
 }
 
@@ -3339,6 +3342,7 @@ package void load_ARB_direct_state_access( bool doThrow = false ) {
         _ARB_direct_state_access = true;
     } catch( Exception e ) {
         _ARB_direct_state_access = false;
+        if( doThrow ) throw e;
     }
 }
 
@@ -3362,6 +3366,7 @@ package void load_ARB_get_texture_sub_image( bool doThrow = false ) {
         _ARB_get_texture_sub_image = true;
     } catch( Exception e ) {
         _ARB_get_texture_sub_image = false;
+        if( doThrow ) throw e;
     }
 }
 
@@ -3394,6 +3399,7 @@ package void load_KHR_robustness( bool doThrow = false ) {
         _KHR_robustness = true;
     } catch( Exception e ) {
         _KHR_robustness = false;
+        if( doThrow ) throw e;
     }
 }
 

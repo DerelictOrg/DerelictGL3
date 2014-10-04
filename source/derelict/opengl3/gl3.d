@@ -412,6 +412,20 @@ class DerelictGL3Loader : SharedLibLoader
                 glVer = GLVersion.GL44;
             }
 
+            if( maxVer >= GLVersion.GL45 ) {
+                load_ARB_clip_control( true );
+                load_ARB_ES3_1_compatibility( true );
+                load_ARB_direct_state_access( true );
+                load_ARB_get_texture_sub_image( true );
+                load_KHR_robustness( true );
+                load_ARB_texture_barrier( true );
+
+                // This was mixed in with the KHR_robustness functions in glcorearb.h,
+                // but the spec for the extensions doesn't list it. As such, I'm loading
+                // it here rather than as part of the extension.
+                bindGLFunc( cast( void** )&glGetnTexImage, "glGetnTexImage" );
+            }
+
             initExtensionCache( glVer );
             loadARB( glVer );
             loadEXT( glVer );

@@ -331,6 +331,9 @@ extern( System ) @nogc nothrow {
     alias void function( GLuint, GLenum, GLenum ) da_glBlendEquationSeparatei;
     alias void function( GLuint, GLenum, GLenum ) da_glBlendFunci;
     alias void function( GLuint, GLenum, GLenum, GLenum, GLenum ) da_glBlendFuncSeparatei;
+
+    // OpenGL 4.5
+    alias void function( GLenum,GLint,GLenum,GLenum,GLsizei,void* ) da_glGetnTexImage;
 }
 
 __gshared {
@@ -607,4 +610,5 @@ __gshared {
     da_glBlendEquationSeparatei glBlendEquationSeparatei;
     da_glBlendFunci glBlendFunci;
     da_glBlendFuncSeparatei glBlendFuncSeparatei;
+    da_glGetnTexImage glGetnTexImage;
 }

@@ -421,7 +421,7 @@ class DerelictGL3Loader : SharedLibLoader
                 load_ARB_texture_barrier( true );
 
                 // This was mixed in with the KHR_robustness functions in glcorearb.h,
-                // but the spec for the extensions doesn't list it. As such, I'm loading
+                // but the spec for the extension doesn't list it. As such, I'm loading
                 // it here rather than as part of the extension.
                 bindGLFunc( cast( void** )&glGetnTexImage, "glGetnTexImage" );
             }

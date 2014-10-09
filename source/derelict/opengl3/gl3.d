@@ -424,6 +424,8 @@ class DerelictGL3Loader : SharedLibLoader
                 // but the spec for the extension doesn't list it. As such, I'm loading
                 // it here rather than as part of the extension.
                 bindGLFunc( cast( void** )&glGetnTexImage, "glGetnTexImage" );
+
+                glVer = GLVersion.GL45;
             }
 
             initExtensionCache( glVer );

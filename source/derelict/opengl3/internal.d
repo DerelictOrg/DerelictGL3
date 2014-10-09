@@ -28,10 +28,8 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl3.internal;
 
 private {
-    import core.stdc.string;
     import std.array;
 
-    import derelict.util.exception;
     import derelict.util.system;
     import derelict.opengl3.types;
     import derelict.opengl3.constants;
@@ -47,7 +45,7 @@ private {
 
 package {
         void bindGLFunc( void** ptr, string symName ) {
-            import derelict.util.exception;
+            import derelict.util.exception : SymbolLoadException;
 
             auto sym = loadGLFunc( symName );
             if( !sym )
@@ -80,7 +78,7 @@ package {
 
         // Assumes that name is null-terminated, i.e. a string literal
         bool isExtSupported( GLVersion glversion, string name ) {
-            import std.string : strcmp;
+            import core.stdc.string : strcmp;
 
             // If OpenGL 3+ is loaded, use the cache.
             if( glversion >= GLVersion.GL30 ) {
@@ -98,6 +96,8 @@ package {
 
         // Assumes that extname is null-terminated, i.e. a string literal
         bool findEXT( const( char )* extstr, string extname ) {
+            import core.stdc.string : strstr;
+
             auto res = strstr( extstr, extname.ptr );
             while( res ) {
                 // It's possible that the extension name is actually a

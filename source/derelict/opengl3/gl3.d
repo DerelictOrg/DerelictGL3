@@ -428,6 +428,11 @@ class DerelictGL3Loader : SharedLibLoader
                 glVer = GLVersion.GL45;
             }
 
+            // **** IMPORTANT **** !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // When adding support for new versions, don't forget to update
+            // the findMaxAvailable method
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             initExtensionCache( glVer );
             loadARB( glVer );
             loadEXT( glVer );

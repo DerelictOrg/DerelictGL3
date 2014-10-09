@@ -78,15 +78,14 @@ package {
             }
         }
 
+        // Assumes that name is null-terminated, i.e. a string literal
         bool isExtSupported( GLVersion glversion, string name ) {
-            import std.string;
+            import std.string : strcmp;
 
             // If OpenGL 3+ is loaded, use the cache.
             if( glversion >= GLVersion.GL30 ) {
-                auto cstr = name.toStringz();
-
                 foreach( extname; _extCache.data ) {
-                    if( strcmp( extname, cstr ) == 0 )
+                    if( strcmp( extname, name.ptr ) == 0 )
                         return true;
                 }
                 return false;

@@ -521,7 +521,9 @@ class DerelictGL3Loader : SharedLibLoader
 
             switch( major ) {
                 case '4':
-                    if( minor == '3' ) return GLVersion.GL43;
+                    if( minor == '5' ) return GLVersion.GL45;
+                    else if( minor == '4' ) return GLVersion.GL44;
+                    else if( minor == '3' ) return GLVersion.GL43;
                     else if( minor == '2' ) return GLVersion.GL42;
                     else if( minor == '1' ) return GLVersion.GL41;
                     else if( minor == '0' ) return GLVersion.GL40;

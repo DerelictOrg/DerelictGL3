@@ -247,7 +247,7 @@ enum : uint {
 
 // GL_EXT_texture_filter_anisotropic
 private __gshared bool _EXT_texture_filter_anisotropic;
-bool EXT_texture_filter_anisotropic() @nogc nothrow @property { return _EXT_texture_filter_anisotropic; }
+@nogc bool EXT_texture_filter_anisotropic() nothrow @property { return _EXT_texture_filter_anisotropic; }
 
 // GL_EXT_framebuffer_object
 extern(  System  ) @nogc nothrow {
@@ -291,7 +291,7 @@ __gshared {
 }
 
 private __gshared bool _EXT_framebuffer_object;
-bool EXT_framebuffer_object() @nogc nothrow @property { return _EXT_framebuffer_object; }
+@nogc bool EXT_framebuffer_object() nothrow @property { return _EXT_framebuffer_object; }
 private void load_EXT_framebuffer_object() {
     try {
         bindGLFunc( cast( void** )&glIsRenderbufferEXT, "glIsRenderbufferEXT" );
@@ -337,7 +337,7 @@ __gshared {
 }
 
 private __gshared bool _EXT_draw_buffers2;
-bool EXT_draw_buffers2() @nogc nothrow @property { return _EXT_draw_buffers2; }
+@nogc bool EXT_draw_buffers2() nothrow @property { return _EXT_draw_buffers2; }
 private void load_EXT_draw_buffers2() {
     try {
         bindGLFunc( cast( void** )&glColorMaskIndexedEXT, "glColorMaskIndexedEXT" );
@@ -366,7 +366,7 @@ __gshared {
 }
 
 private __gshared bool _NV_explicit_multisample;
-bool NV_explicit_multisample() @nogc nothrow @property { return _NV_explicit_multisample; }
+@nogc bool NV_explicit_multisample() nothrow @property { return _NV_explicit_multisample; }
 private void load_NV_explicit_multisample() {
     try {
         bindGLFunc( cast( void** )&glGetMultisamplefvNV, "glGetMultisamplefvNV" );
@@ -394,7 +394,7 @@ __gshared {
 }
 
 private __gshared bool _EXT_geometry_shader4;
-bool EXT_geometry_shader4() @nogc nothrow @property { return _EXT_geometry_shader4; }
+@nogc bool EXT_geometry_shader4() nothrow @property { return _EXT_geometry_shader4; }
 private void load_EXT_geometry_shader4() {
     try {
         bindGLFunc( cast( void** )&glProgramParameteriEXT, "glProgramParameteriEXT" );
@@ -408,16 +408,10 @@ private void load_EXT_geometry_shader4() {
 }
 
 // GL_NV_framebuffer_multisample_coverage
-extern ( System ) @nogc nothrow {
-    alias da_glRenderbufferStorageMultisampleCoverageNV = void function(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
-}
-
-__gshared {
-    da_glRenderbufferStorageMultisampleCoverageNV glRenderbufferStorageMultisampleCoverageNV;
-}
-
+extern ( System ) @nogc nothrow alias da_glRenderbufferStorageMultisampleCoverageNV = void function(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+__gshared da_glRenderbufferStorageMultisampleCoverageNV glRenderbufferStorageMultisampleCoverageNV;
 private __gshared bool _NV_framebuffer_multisample_coverage;
-bool NV_framebuffer_multisample_coverage() @nogc nothrow @property { return _NV_framebuffer_multisample_coverage; }
+@nogc bool NV_framebuffer_multisample_coverage() nothrow @property { return _NV_framebuffer_multisample_coverage; }
 private void load_NV_framebuffer_multisample_coverage() {
     try {
         bindGLFunc( cast( void** )&glRenderbufferStorageMultisampleCoverageNV, "glRenderbufferStorageMultisampleCoverageNV" );
@@ -467,7 +461,7 @@ __gshared {
 }
 
 private __gshared bool _NV_gpu_program4;
-bool NV_gpu_program4() @nogc nothrow @property { return _NV_gpu_program4; }
+@nogc bool NV_gpu_program4() nothrow @property { return _NV_gpu_program4; }
 private void load_NV_gpu_program4() {
     try {
         bindGLFunc( cast( void** )&glProgramLocalParameterI4iNV, "glProgramLocalParameterI4iNV" );
@@ -504,7 +498,7 @@ __gshared {
 }
 
 private __gshared bool _EXT_gpu_program_parameters;
-bool EXT_gpu_program_parameters() @nogc nothrow @property { return _EXT_gpu_program_parameters; }
+@nogc bool EXT_gpu_program_parameters() nothrow @property { return _EXT_gpu_program_parameters; }
 private void load_EXT_gpu_program_parameters() {
     try {
         bindGLFunc( cast( void** )&glProgramEnvParameters4fvEXT, "glProgramEnvParameters4fvEXT" );
@@ -591,7 +585,7 @@ __gshared {
 }
 
 private __gshared bool _EXT_gpu_shader4;
-bool EXT_gpu_shader4() @nogc nothrow @property { return _EXT_gpu_shader4; }
+@nogc bool EXT_gpu_shader4() nothrow @property { return _EXT_gpu_shader4; }
 private void load_EXT_gpu_shader4() {
     try {
         bindGLFunc( cast( void** )&glVertexAttribI1iEXT, "glVertexAttribI1iEXT" );
@@ -654,7 +648,7 @@ __gshared {
 }
 
 private __gshared bool _EXT_texture_integer;
-bool EXT_texture_integer() @nogc nothrow @property { return _EXT_texture_integer; }
+@nogc bool EXT_texture_integer() nothrow @property { return _EXT_texture_integer; }
 private void load_EXT_texture_integer() {
     try {
         bindGLFunc( cast( void** )&glClearColorIiEXT, "glClearColorIiEXT" );
@@ -679,7 +673,7 @@ __gshared {
 }
 
 private __gshared bool _EXT_texture_buffer_object;
-bool EXT_texture_buffer_object() @nogc nothrow @property { return _EXT_texture_buffer_object; }
+@nogc bool EXT_texture_buffer_object() nothrow @property { return _EXT_texture_buffer_object; }
 private void load_EXT_texture_buffer_object() {
     try {
         bindGLFunc( cast( void** )&glTexBufferEXT, "glTexBufferEXT" );
@@ -1162,7 +1156,7 @@ __gshared {
 }
 
 private __gshared bool _EXT_direct_state_access;
-bool EXT_direct_state_access() @nogc nothrow @property { return _EXT_direct_state_access; }
+@nogc bool EXT_direct_state_access() nothrow @property { return _EXT_direct_state_access; }
 private void load_EXT_direct_state_access( GLVersion glversion ) {
     try {
         bindGLFunc( cast( void** )&glClientAttribDefaultEXT, "glClientAttribDefaultEXT" );
@@ -1440,11 +1434,11 @@ private void load_EXT_direct_state_access( GLVersion glversion ) {
 
 // GL_EXT_texture_compression_s3tc
 private __gshared bool _EXT_texture_compression_s3tc;
-bool EXT_texture_compression_s3tc() @nogc nothrow @property { return _EXT_texture_compression_s3tc; }
+@nogc bool EXT_texture_compression_s3tc() nothrow @property { return _EXT_texture_compression_s3tc; }
 
 // GL_EXT_texture_compression_rgtc
 private __gshared bool _EXT_texture_compression_rgtc;
-bool EXT_texture_compression_rgtc() @nogc nothrow @property { return _EXT_texture_compression_rgtc; }
+@nogc bool EXT_texture_compression_rgtc() nothrow @property { return _EXT_texture_compression_rgtc; }
 
 // GL_NV_texture_barrier
 extern ( System ) {
@@ -1456,7 +1450,7 @@ __gshared {
 }
 
 private __gshared bool _NV_texture_barrier;
-bool NV_texture_barrier() @nogc nothrow @property { return _NV_texture_barrier; }
+@nogc bool NV_texture_barrier() nothrow @property { return _NV_texture_barrier; }
 private void load_NV_texture_barrier() {
     try {
         bindGLFunc( cast( void** )&glTextureBarrierNV, "glTextureBarrierNV" );

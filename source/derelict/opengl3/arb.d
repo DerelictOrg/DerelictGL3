@@ -930,85 +930,85 @@ enum : uint {
 }
 
 private __gshared bool _ARB_depth_buffer_float;
-bool ARB_depth_buffer_float() @nogc nothrow @property { return _ARB_depth_buffer_float; }
+@nogc bool ARB_depth_buffer_float() nothrow @property { return _ARB_depth_buffer_float; }
 
 private __gshared bool _ARB_framebuffer_sRGB;
-bool ARB_framebuffer_sRGB() @nogc nothrow @property { return _ARB_framebuffer_sRGB; }
+@nogc bool ARB_framebuffer_sRGB() nothrow @property { return _ARB_framebuffer_sRGB; }
 
 private __gshared bool _ARB_half_float_vertex;
-bool ARB_half_float_vertex() @nogc nothrow @property { return _ARB_half_float_vertex; }
+@nogc bool ARB_half_float_vertex() nothrow @property { return _ARB_half_float_vertex; }
 
 private __gshared bool _ARB_texture_compression_rgtc;
-bool ARB_texture_compression_rgtc() @nogc nothrow @property { return _ARB_texture_compression_rgtc; }
+@nogc bool ARB_texture_compression_rgtc() nothrow @property { return _ARB_texture_compression_rgtc; }
 
 private __gshared bool _ARB_texture_rg;
-bool ARB_texture_rg() @nogc nothrow @property { return _ARB_texture_rg; }
+@nogc bool ARB_texture_rg() nothrow @property { return _ARB_texture_rg; }
 
 private __gshared bool _ARB_depth_clamp;
-bool ARB_depth_clamp() @nogc nothrow @property { return _ARB_depth_clamp; }
+@nogc bool ARB_depth_clamp() nothrow @property { return _ARB_depth_clamp; }
 
 private __gshared bool _ARB_fragment_coord_conventions;
-bool ARB_fragment_coord_conventions() @nogc nothrow @property { return _ARB_fragment_coord_conventions; }
+@nogc bool ARB_fragment_coord_conventions() nothrow @property { return _ARB_fragment_coord_conventions; }
 
 private __gshared bool _ARB_seamless_cube_map;
-bool ARB_seamless_cube_map() @nogc nothrow @property { return _ARB_seamless_cube_map; }
+@nogc bool ARB_seamless_cube_map() nothrow @property { return _ARB_seamless_cube_map; }
 
 private __gshared bool _ARB_vertex_array_bgra;
-bool ARB_vertex_array_bgra() @nogc nothrow @property { return _ARB_vertex_array_bgra; }
+@nogc bool ARB_vertex_array_bgra() nothrow @property { return _ARB_vertex_array_bgra; }
 
 private __gshared bool _ARB_texture_cube_map_array;
-bool ARB_texture_cube_map_array() @nogc nothrow @property { return _ARB_texture_cube_map_array; }
+@nogc bool ARB_texture_cube_map_array() nothrow @property { return _ARB_texture_cube_map_array; }
 
 private __gshared bool _ARB_texture_gather;
-bool ARB_texture_gather() @nogc nothrow @property { return _ARB_texture_gather; }
+@nogc bool ARB_texture_gather() nothrow @property { return _ARB_texture_gather; }
 
 private __gshared bool _ARB_texture_query_lod;
-bool ARB_texture_query_lod() @nogc nothrow @property { return _ARB_texture_query_lod; }
+@nogc bool ARB_texture_query_lod() nothrow @property { return _ARB_texture_query_lod; }
 
 private __gshared bool _ARB_texture_compression_bptc;
-bool ARB_texture_compression_bptc() @nogc nothrow @property { return _ARB_texture_compression_bptc; }
+@nogc bool ARB_texture_compression_bptc() nothrow @property { return _ARB_texture_compression_bptc; }
 
 private __gshared bool _ARB_explicit_attrib_location;
-bool ARB_explicit_attrib_location() @nogc nothrow @property { return _ARB_explicit_attrib_location; }
+@nogc bool ARB_explicit_attrib_location() nothrow @property { return _ARB_explicit_attrib_location; }
 
 private __gshared bool _ARB_occlusion_query2;
-bool ARB_occlusion_query2() @nogc nothrow @property { return _ARB_occlusion_query2; }
+@nogc bool ARB_occlusion_query2() nothrow @property { return _ARB_occlusion_query2; }
 
 private __gshared bool _ARB_shader_bit_encoding;
-bool ARB_shader_bit_encoding() @nogc nothrow @property { return _ARB_shader_bit_encoding; }
+@nogc bool ARB_shader_bit_encoding() nothrow @property { return _ARB_shader_bit_encoding; }
 
 private __gshared bool _ARB_texture_rgb10_a2ui;
-bool ARB_texture_rgb10_a2ui() @nogc nothrow @property { return _ARB_texture_rgb10_a2ui; }
+@nogc bool ARB_texture_rgb10_a2ui() nothrow @property { return _ARB_texture_rgb10_a2ui; }
 
 private __gshared bool _ARB_texture_swizzle;
-bool ARB_texture_swizzle() @nogc nothrow @property { return _ARB_texture_swizzle; }
+@nogc bool ARB_texture_swizzle() nothrow @property { return _ARB_texture_swizzle; }
 
 private __gshared bool _ARB_gpu_shader5;
-bool ARB_gpu_shader5() @nogc nothrow @property { return _ARB_gpu_shader5; }
+@nogc bool ARB_gpu_shader5() nothrow @property { return _ARB_gpu_shader5; }
 
 private __gshared bool _ARB_texture_buffer_object_rgb32;
-bool ARB_texture_buffer_object_rgb32() @nogc nothrow @property { return _ARB_texture_buffer_object_rgb32; }
+@nogc bool ARB_texture_buffer_object_rgb32() nothrow @property { return _ARB_texture_buffer_object_rgb32; }
 
 private __gshared bool _ARB_shader_precision;
-bool ARB_shader_precision() @nogc nothrow @property { return _ARB_shader_precision; }
+@nogc bool ARB_shader_precision() nothrow @property { return _ARB_shader_precision; }
 
 private __gshared bool _ARB_shader_stencil_export;
-bool ARB_shader_stencil_export() @nogc nothrow @property { return _ARB_shader_stencil_export; }
+@nogc bool ARB_shader_stencil_export() nothrow @property { return _ARB_shader_stencil_export; }
 
 private __gshared bool _ARB_shading_language_420pack;
-bool ARB_shading_language_420pack() @nogc nothrow @property { return _ARB_shading_language_420pack; }
+@nogc bool ARB_shading_language_420pack() nothrow @property { return _ARB_shading_language_420pack; }
 
 private __gshared bool _ARB_compressed_texture_pixel_storage;
-bool ARB_compressed_texture_pixel_storage() @nogc nothrow @property { return _ARB_compressed_texture_pixel_storage; }
+@nogc bool ARB_compressed_texture_pixel_storage() nothrow @property { return _ARB_compressed_texture_pixel_storage; }
 
 private __gshared bool _ARB_conservative_depth;
-bool ARB_conservative_depth() @nogc nothrow @property { return _ARB_conservative_depth; }
+@nogc bool ARB_conservative_depth() nothrow @property { return _ARB_conservative_depth; }
 
 private __gshared bool _ARB_map_buffer_alignment;
-bool ARB_map_buffer_alignment() @nogc nothrow @property { return _ARB_map_buffer_alignment; }
+@nogc bool ARB_map_buffer_alignment() nothrow @property { return _ARB_map_buffer_alignment; }
 
 private __gshared bool _ARB_shading_language_packing;
-bool ARB_shading_language_packing() @nogc nothrow @property { return _ARB_shading_language_packing; }
+@nogc bool ARB_shading_language_packing() nothrow @property { return _ARB_shading_language_packing; }
 
 // ARB_framebuffer_object
 extern( System ) @nogc nothrow {
@@ -1059,7 +1059,7 @@ __gshared
 }
 
 private __gshared bool _ARB_framebuffer_object;
-bool ARB_framebuffer_object() @nogc nothrow @property { return _ARB_framebuffer_object; }
+@nogc bool ARB_framebuffer_object() nothrow @property { return _ARB_framebuffer_object; }
 package void load_ARB_framebuffer_object( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glIsRenderbuffer, "glIsRenderbuffer" );
@@ -1098,7 +1098,7 @@ __gshared da_glMapBufferRange glMapBufferRange;
 __gshared da_glFlushMappedBufferRange glFlushMappedBufferRange;
 
 private __gshared bool _ARB_map_buffer_range;
-bool ARB_map_buffer_range() @nogc nothrow @property { return _ARB_map_buffer_range; }
+@nogc bool ARB_map_buffer_range() nothrow @property { return _ARB_map_buffer_range; }
 package void load_ARB_map_buffer_range( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glMapBufferRange, "glMapBufferRange" );
@@ -1126,7 +1126,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_vertex_array_object;
-bool ARB_vertex_array_object() @nogc nothrow @property { return _ARB_vertex_array_object; }
+@nogc bool ARB_vertex_array_object() nothrow @property { return _ARB_vertex_array_object; }
 package void load_ARB_vertex_array_object( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glBindVertexArray, "glBindVertexArray" );
@@ -1162,7 +1162,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_uniform_buffer_object;
-bool ARB_uniform_buffer_object() @nogc nothrow @property { return _ARB_uniform_buffer_object; }
+@nogc bool ARB_uniform_buffer_object() nothrow @property { return _ARB_uniform_buffer_object; }
 package void load_ARB_uniform_buffer_object( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetUniformIndices, "glGetUniformIndices" );
@@ -1184,7 +1184,7 @@ extern( System ) @nogc nothrow alias da_glCopyBufferSubData = void function( GLe
 __gshared da_glCopyBufferSubData glCopyBufferSubData;
 
 private __gshared bool _ARB_copy_buffer;
-bool ARB_copy_buffer() @nogc nothrow @property { return _ARB_copy_buffer; }
+@nogc bool ARB_copy_buffer() nothrow @property { return _ARB_copy_buffer; }
 package void load_ARB_copy_buffer( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glCopyBufferSubData, "glCopyBufferSubData" );
@@ -1211,7 +1211,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_draw_elements_base_vertex;
-bool ARB_draw_elements_base_vertex() @nogc nothrow @property { return _ARB_draw_elements_base_vertex; }
+@nogc bool ARB_draw_elements_base_vertex() nothrow @property { return _ARB_draw_elements_base_vertex; }
 package void load_ARB_draw_elements_base_vertex( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glDrawElementsBaseVertex, "glDrawElementsBaseVertex" );
@@ -1230,7 +1230,7 @@ extern( System ) @nogc nothrow alias da_glProvokingVertex = void function( GLenu
 __gshared da_glProvokingVertex glProvokingVertex;
 
 private __gshared bool _ARB_provoking_vertex;
-bool ARB_provoking_vertex() @nogc nothrow @property { return _ARB_provoking_vertex; }
+@nogc bool ARB_provoking_vertex() nothrow @property { return _ARB_provoking_vertex; }
 package void load_ARB_provoking_vertex( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glProvokingVertex, "glProvokingVertex" );
@@ -1263,7 +1263,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_sync;
-bool ARB_sync() @nogc nothrow @property { return _ARB_sync; }
+@nogc bool ARB_sync() nothrow @property { return _ARB_sync; }
 package void load_ARB_sync( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glFenceSync, "glFenceSync" );
@@ -1296,7 +1296,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_texture_multisample;
-bool ARB_texture_multisample() @nogc nothrow @property { return _ARB_texture_multisample; }
+@nogc bool ARB_texture_multisample() nothrow @property { return _ARB_texture_multisample; }
 package void load_ARB_texture_multisample( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glTexImage2DMultisample, "glTexImage2DMultisample" );
@@ -1326,7 +1326,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_draw_buffers_blend;
-bool ARB_draw_buffers_blend() @nogc nothrow @property { return _ARB_draw_buffers_blend; }
+@nogc bool ARB_draw_buffers_blend() nothrow @property { return _ARB_draw_buffers_blend; }
 package void load_ARB_draw_buffers_blend() {
     try {
         bindGLFunc( cast( void** )&glBlendEquationiARB, "glBlendEquationiARB" );
@@ -1344,7 +1344,7 @@ extern( System ) @nogc nothrow alias da_glMinSampleShadingARB = void function( G
 __gshared da_glMinSampleShadingARB glMinSampleShadingARB;
 
 private __gshared bool _ARB_sample_shading;
-bool ARB_sample_shading() @nogc nothrow @property { return _ARB_sample_shading; }
+@nogc bool ARB_sample_shading() nothrow @property { return _ARB_sample_shading; }
 package void load_ARB_sample_shading() {
     try {
         bindGLFunc( cast( void** )&glMinSampleShadingARB, "glMinSampleShadingARB" );
@@ -1374,7 +1374,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_shading_language_include;
-bool ARB_shading_language_include() @nogc nothrow @property { return _ARB_shading_language_include; }
+@nogc bool ARB_shading_language_include() nothrow @property { return _ARB_shading_language_include; }
 package void load_ARB_shading_language_include() {
     try {
         bindGLFunc( cast( void** )&glNamedStringARB, "glNamedStringARB" );
@@ -1399,7 +1399,7 @@ __gshared da_glBindFragDataLocationIndexed glBindFragDataLocationIndexed;
 __gshared da_glGetFragDataIndex glGetFragDataIndex;
 
 private __gshared bool _ARB_blend_func_extended;
-bool ARB_blend_func_extended() @nogc nothrow @property { return _ARB_blend_func_extended; }
+@nogc bool ARB_blend_func_extended() nothrow @property { return _ARB_blend_func_extended; }
 package void load_ARB_blend_func_extended( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed" );
@@ -1447,7 +1447,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_sampler_objects;
-bool ARB_sampler_objects() @nogc nothrow @property { return _ARB_sampler_objects; }
+@nogc bool ARB_sampler_objects() nothrow @property { return _ARB_sampler_objects; }
 package void load_ARB_sampler_objects( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGenSamplers, "glGenSamplers" );
@@ -1485,7 +1485,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_timer_query;
-bool ARB_timer_query() @nogc nothrow @property { return _ARB_timer_query; }
+@nogc bool ARB_timer_query() nothrow @property { return _ARB_timer_query; }
 void load_ARB_timer_query( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glQueryCounter, "glQueryCounter" );
@@ -1582,7 +1582,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_vertex_type_2_10_10_10_rev;
-bool ARB_vertex_type_2_10_10_10_rev() @nogc nothrow @property { return _ARB_vertex_type_2_10_10_10_rev; }
+@nogc bool ARB_vertex_type_2_10_10_10_rev() nothrow @property { return _ARB_vertex_type_2_10_10_10_rev; }
 package void load_ARB_vertex_type_2_10_10_10_rev( bool doThrow = false ) {
     try {
         static if( !Derelict_OS_Mac ) {
@@ -1644,7 +1644,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_draw_indirect;
-bool ARB_draw_indirect() @nogc nothrow @property { return _ARB_draw_indirect; }
+@nogc bool ARB_draw_indirect() nothrow @property { return _ARB_draw_indirect; }
 package void load_ARB_draw_indirect( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glDrawArraysIndirect, "glDrawArraysIndirect" );
@@ -1700,7 +1700,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_gpu_shader_fp64;
-bool ARB_gpu_shader_fp64() @nogc nothrow @property { return _ARB_gpu_shader_fp64; }
+@nogc bool ARB_gpu_shader_fp64() nothrow @property { return _ARB_gpu_shader_fp64; }
 package void load_ARB_gpu_shader_fp64( bool doThrow = false ) {
     try
     {
@@ -1752,7 +1752,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_shader_subroutine;
-bool ARB_shader_subroutine() @nogc nothrow @property { return _ARB_shader_subroutine; }
+@nogc bool ARB_shader_subroutine() nothrow @property { return _ARB_shader_subroutine; }
 package void load_ARB_shader_subroutine( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetSubroutineUniformLocation, "glGetSubroutineUniformLocation" );
@@ -1779,7 +1779,7 @@ __gshared da_glPatchParameteri glPatchParameteri;
 __gshared da_glPatchParameterfv glPatchParameterfv;
 
 private __gshared bool _ARB_tessellation_shader;
-bool ARB_tessellation_shader() @nogc nothrow @property { return _ARB_tessellation_shader; }
+@nogc bool ARB_tessellation_shader() nothrow @property { return _ARB_tessellation_shader; }
 package void load_ARB_tessellation_shader( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glPatchParameteri, "glPatchParameteri" );
@@ -1813,7 +1813,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_transform_feedback2;
-bool ARB_transform_feedback2() { return _ARB_transform_feedback2; }
+@nogc bool ARB_transform_feedback2() { return _ARB_transform_feedback2; }
 void load_ARB_transform_feedback2( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glBindTransformFeedback, "glBindTransformFeedback" );
@@ -1846,7 +1846,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_transform_feedback3;
-bool ARB_transform_feedback3() { return _ARB_transform_feedback3; }
+@nogc bool ARB_transform_feedback3() { return _ARB_transform_feedback3; }
 package void load_ARB_transform_feedback3( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glDrawTransformFeedbackStream, "glDrawTransformFeedbackStream" );
@@ -1878,7 +1878,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_ES2_compatibility;
-bool ARB_ES2_compatibility() @nogc nothrow @property { return _ARB_ES2_compatibility; }
+@nogc bool ARB_ES2_compatibility() nothrow @property { return _ARB_ES2_compatibility; }
 package void load_ARB_ES2_compatibility( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glReleaseShaderCompiler, "glReleaseShaderCompiler" );
@@ -1907,7 +1907,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_get_program_binary;
-bool ARB_get_program_binary() @nogc nothrow @property { return _ARB_get_program_binary; }
+@nogc bool ARB_get_program_binary() nothrow @property { return _ARB_get_program_binary; }
 package void load_ARB_get_program_binary( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetProgramBinary, "glGetProgramBinary" );
@@ -2048,7 +2048,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_separate_shader_objects;
-bool ARB_separate_shader_objects() @nogc nothrow @property { return _ARB_separate_shader_objects; }
+@nogc bool ARB_separate_shader_objects() nothrow @property { return _ARB_separate_shader_objects; }
 package void load_ARB_separate_shader_objects( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glUseProgramStages, "glUseProgramStages" );
@@ -2146,7 +2146,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_vertex_attrib_64bit;
-bool ARB_vertex_attrib_64bit() @nogc nothrow @property { return _ARB_vertex_attrib_64bit; }
+@nogc bool ARB_vertex_attrib_64bit() nothrow @property { return _ARB_vertex_attrib_64bit; }
 package void load_ARB_vertex_attrib_64bit( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glVertexAttribL1d, "glVertexAttribL1d" );
@@ -2194,7 +2194,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_viewport_array;
-bool ARB_viewport_array() @nogc nothrow @property { return _ARB_viewport_array; }
+@nogc bool ARB_viewport_array() nothrow @property { return _ARB_viewport_array; }
 package void load_ARB_viewport_array( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glViewportArrayv, "glViewportArrayv" );
@@ -2219,7 +2219,7 @@ extern( System ) @nogc nothrow alias  da_glCreateSyncFromCLeventARB = GLsync fun
 __gshared da_glCreateSyncFromCLeventARB glCreateSyncFromCLeventARB;
 
 private __gshared bool _ARB_cl_event;
-bool ARB_cl_event() @nogc nothrow @property { return _ARB_cl_event; }
+@nogc bool ARB_cl_event() nothrow @property { return _ARB_cl_event; }
 package void load_ARB_cl_event() {
     try {
         bindGLFunc( cast( void** )&glCreateSyncFromCLeventARB, "glCreateSyncFromCLeventARB" );
@@ -2245,7 +2245,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_debug_output;
-bool ARB_debug_output() @nogc nothrow @property { return _ARB_debug_output; }
+@nogc bool ARB_debug_output() nothrow @property { return _ARB_debug_output; }
 package void load_ARB_debug_output() {
     try {
         bindGLFunc( cast( void** )&glDebugMessageControlARB, "glDebugMessageControlARB" );
@@ -2306,7 +2306,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_robustness;
-bool ARB_robustness() @nogc nothrow @property { return _ARB_robustness; }
+@nogc bool ARB_robustness() nothrow @property { return _ARB_robustness; }
 package void load_ARB_robustness() {
     try {
         bindGLFunc( cast( void** )&glGetGraphicsResetStatusARB, "glGetGraphicsResetStatusARB" );
@@ -2350,7 +2350,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_base_instance;
-bool ARB_base_instance() @nogc nothrow @property { return _ARB_base_instance; }
+@nogc bool ARB_base_instance() nothrow @property { return _ARB_base_instance; }
 package void load_ARB_base_instance( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance" );
@@ -2372,7 +2372,7 @@ __gshared da_glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
 __gshared da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
 
 private __gshared bool _ARB_transform_feedback_instanced;
-bool ARB_transform_feedback_instanced() @nogc nothrow @property { return _ARB_transform_feedback_instanced; }
+@nogc bool ARB_transform_feedback_instanced() nothrow @property { return _ARB_transform_feedback_instanced; }
 package void load_ARB_transform_feedback_instanced( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced" );
@@ -2389,7 +2389,7 @@ extern( System ) @nogc nothrow alias da_glGetInternalformativ = void function( G
 __gshared da_glGetInternalformativ glGetInternalformativ;
 
 private __gshared bool _ARB_internalformat_query;
-bool ARB_internalformat_query() @nogc nothrow @property { return _ARB_internalformat_query; }
+@nogc bool ARB_internalformat_query() nothrow @property { return _ARB_internalformat_query; }
 package void load_ARB_internalformat_query( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetInternalformativ, "glGetInternalformativ" );
@@ -2405,7 +2405,7 @@ extern( System ) @nogc nothrow alias da_glGetActiveAtomicCounterBufferiv = void 
 __gshared da_glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;
 
 private __gshared bool _ARB_shader_atomic_counters;
-bool ARB_shader_atomic_counters() @nogc nothrow @property { return _ARB_shader_atomic_counters; }
+@nogc bool ARB_shader_atomic_counters() nothrow @property { return _ARB_shader_atomic_counters; }
 package void load_ARB_shader_atomic_counters( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv" );
@@ -2425,7 +2425,7 @@ __gshared da_glBindImageTexture glBindImageTexture;
 __gshared da_glMemoryBarrier glMemoryBarrier;
 
 private __gshared bool _ARB_shader_image_load_store;
-bool ARB_shader_image_load_store() @nogc nothrow @property { return _ARB_shader_image_load_store; }
+@nogc bool ARB_shader_image_load_store() nothrow @property { return _ARB_shader_image_load_store; }
 package void load_ARB_shader_image_load_store( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glBindImageTexture, "glBindImageTexture" );
@@ -2457,7 +2457,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_texture_storage;
-bool ARB_texture_storage() @nogc nothrow @property { return _ARB_texture_storage; }
+@nogc bool ARB_texture_storage() nothrow @property { return _ARB_texture_storage; }
 package void load_ARB_texture_storage( GLVersion glversion, bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glTexStorage1D, "glTexStorage1D" );
@@ -2479,19 +2479,19 @@ package void load_ARB_texture_storage( GLVersion glversion, bool doThrow = false
 
 // ARB_array_of_arrays
 private __gshared bool _ARB_array_of_arrays;
-bool ARB_array_of_arrays() @nogc nothrow @property { return _ARB_array_of_arrays; }
+@nogc bool ARB_array_of_arrays() nothrow @property { return _ARB_array_of_arrays; }
 
 // ARB_fragment_layer_viewport
 private __gshared bool _ARB_fragment_layer_viewport;
-bool ARB_fragment_layer_viewport() @nogc nothrow @property { return _ARB_fragment_layer_viewport; }
+@nogc bool ARB_fragment_layer_viewport() nothrow @property { return _ARB_fragment_layer_viewport; }
 
 // ARB_shader_image_size
 private __gshared bool _ARB_shader_image_size;
-bool ARB_shader_image_size() @nogc nothrow @property { return _ARB_shader_image_size; }
+@nogc bool ARB_shader_image_size() nothrow @property { return _ARB_shader_image_size; }
 
 // ARB_ES3_compatibility
 private __gshared bool _ARB_ES3_compatibility;
-bool ARB_ES3_compatibility() @nogc nothrow @property { return _ARB_ES3_compatibility; }
+@nogc bool ARB_ES3_compatibility() nothrow @property { return _ARB_ES3_compatibility; }
 
 // ARB_clear_buffer_object
 extern( System ) {
@@ -2508,7 +2508,7 @@ __gshared {
     da_glClearNamedBufferSubDataEXT glClearNamedBufferSubDataEXT;
 }
 private __gshared bool _ARB_clear_buffer_object;
-bool ARB_clear_buffer_object() @nogc nothrow @property { return _ARB_clear_buffer_object; }
+@nogc bool ARB_clear_buffer_object() nothrow @property { return _ARB_clear_buffer_object; }
 package void load_ARB_clear_buffer_object( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glClearBufferData, "glClearBufferData" );
@@ -2533,7 +2533,7 @@ __gshared {
     da_glDispatchComputeIndirect glDispatchComputeIndirect;
 }
 private __gshared bool _ARB_compute_shader;
-bool ARB_compute_shader() @nogc nothrow @property { return _ARB_compute_shader; }
+@nogc bool ARB_compute_shader() nothrow @property { return _ARB_compute_shader; }
 package void load_ARB_compute_shader( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glDispatchCompute, "glDispatchCompute" );
@@ -2547,7 +2547,7 @@ package void load_ARB_compute_shader( bool doThrow = false ) {
 
 // ARB_copy_image
 private __gshared bool _ARB_copy_image;
-bool ARB_copy_image() @nogc nothrow @property { return _ARB_copy_image; }
+@nogc bool ARB_copy_image() nothrow @property { return _ARB_copy_image; }
 
 extern( System ) @nogc nothrow {
 
@@ -2577,7 +2577,7 @@ __gshared {
     da_glGetObjectPtrLabel glGetObjectPtrLabel;
 }
 private __gshared bool _KHR_debug;
-bool KHR_debug() @nogc nothrow @property { return _KHR_debug; }
+@nogc bool KHR_debug() nothrow @property { return _KHR_debug; }
 package void load_KHR_debug( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glDebugMessageControl, "glDebugMessageControl" );
@@ -2599,7 +2599,7 @@ package void load_KHR_debug( bool doThrow = false ) {
 
 // ARB_explicit_uniform_location
 private __gshared bool _ARB_explicit_uniform_location;
-bool ARB_explicit_uniform_location() @nogc nothrow @property { return _ARB_explicit_uniform_location; }
+@nogc bool ARB_explicit_uniform_location() nothrow @property { return _ARB_explicit_uniform_location; }
 
 // ARB_framebuffer_no_attachments
 extern( System ) @nogc nothrow {
@@ -2616,7 +2616,7 @@ __gshared {
     da_glGetNamedFramebufferParameterivEXT glGetNamedFramebufferParameterivEXT;
 }
 private __gshared bool _ARB_framebuffer_no_attachments;
-bool ARB_framebuffer_no_attachments() @nogc nothrow @property { return _ARB_framebuffer_no_attachments; }
+@nogc bool ARB_framebuffer_no_attachments() nothrow @property { return _ARB_framebuffer_no_attachments; }
 package void load_ARB_framebuffer_no_attachments( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glFramebufferParameteri, "glFramebufferParameteri" );
@@ -2634,7 +2634,7 @@ package void load_ARB_framebuffer_no_attachments( bool doThrow = false ) {
 extern( System ) @nogc nothrow alias da_glGetInternalformati64v = void function( GLenum,GLenum,GLenum,GLsizei,GLint64* );
 __gshared da_glGetInternalformati64v glGetInternalformati64v;
 private __gshared bool _ARB_internalformat_query2;
-bool ARB_internalformat_query2() @nogc nothrow @property { return _ARB_internalformat_query2; }
+@nogc bool ARB_internalformat_query2() nothrow @property { return _ARB_internalformat_query2; }
 package void load_ARB_internalformat_query2( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetInternalformati64v, "glGetInternalformati64v" );
@@ -2664,7 +2664,7 @@ __gshared {
     da_glInvalidateSubFramebuffer glInvalidateSubFramebuffer;
 }
 private __gshared bool _ARB_invalidate_subdata;
-bool ARB_invalidate_subdata() @nogc nothrow @property { return _ARB_invalidate_subdata; }
+@nogc bool ARB_invalidate_subdata() nothrow @property { return _ARB_invalidate_subdata; }
 package void load_ARB_invalidate_subdata( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glInvalidateTexSubImage, "glInvalidateTexSubImage" );
@@ -2689,7 +2689,7 @@ extern( System ) @nogc nothrow {
 __gshared da_glMultiDrawArraysIndirect glMultiDrawArraysIndirect;
 __gshared da_glMultiDrawElementsIndirect glMultiDrawElementsIndirect;
 private __gshared bool _ARB_multi_draw_indirect;
-bool ARB_multi_draw_indirect() @nogc nothrow @property { return _ARB_multi_draw_indirect; }
+@nogc bool ARB_multi_draw_indirect() nothrow @property { return _ARB_multi_draw_indirect; }
 package void load_ARB_multi_draw_indirect( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect" );
@@ -2721,7 +2721,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_program_interface_query;
-bool ARB_program_interface_query() @nogc nothrow @property { return _ARB_program_interface_query; }
+@nogc bool ARB_program_interface_query() nothrow @property { return _ARB_program_interface_query; }
 package void load_ARB_program_interface_query( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetProgramInterfaceiv, "glGetProgramInterfaceiv" );
@@ -2739,13 +2739,13 @@ package void load_ARB_program_interface_query( bool doThrow = false ) {
 
 // ARB_robust_buffer_access_behavior
 private __gshared bool _ARB_robust_buffer_access_behavior;
-bool ARB_robust_buffer_access_behavior() @nogc nothrow @property { return _ARB_robust_buffer_access_behavior; }
+@nogc bool ARB_robust_buffer_access_behavior() nothrow @property { return _ARB_robust_buffer_access_behavior; }
 
 // ARB_shader_storage_buffer_object
 extern( System ) alias da_glShaderStorageBlockBinding = void function( GLuint,GLuint,GLuint );
 __gshared da_glShaderStorageBlockBinding glShaderStorageBlockBinding;
 private __gshared bool _ARB_shader_storage_buffer_object;
-bool ARB_shader_storage_buffer_object() @nogc nothrow @property { return _ARB_shader_storage_buffer_object; }
+@nogc bool ARB_shader_storage_buffer_object() nothrow @property { return _ARB_shader_storage_buffer_object; }
 package void load_ARB_shader_storage_buffer_object( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glShaderStorageBlockBinding, "glShaderStorageBlockBinding" );
@@ -2758,7 +2758,7 @@ package void load_ARB_shader_storage_buffer_object( bool doThrow = false ) {
 
 // ARB_stencil_texturing
 private __gshared bool _ARB_stencil_texturing;
-bool ARB_stencil_texturing() @nogc nothrow @property { return _ARB_stencil_texturing; }
+@nogc bool ARB_stencil_texturing() nothrow @property { return _ARB_stencil_texturing; }
 
 // ARB_texture_buffer_range
 extern( System ) @nogc nothrow {
@@ -2768,7 +2768,7 @@ extern( System ) @nogc nothrow {
 __gshared da_glTexBufferRange glTexBufferRange;
 __gshared da_glTextureBufferRangeEXT glTextureBufferRangeEXT;
 private __gshared bool _ARB_texture_buffer_range;
-bool ARB_texture_buffer_range() @nogc nothrow @property { return _ARB_texture_buffer_range; }
+@nogc bool ARB_texture_buffer_range() nothrow @property { return _ARB_texture_buffer_range; }
 package void load_ARB_texture_buffer_range( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glTexBufferRange, "glTexBufferRange" );
@@ -2782,7 +2782,7 @@ package void load_ARB_texture_buffer_range( bool doThrow = false ) {
 
 // ARB_texture_query_levels
 private __gshared bool _ARB_texture_query_levels;
-bool ARB_texture_query_levels() @nogc nothrow @property { return _ARB_texture_query_levels; }
+@nogc bool ARB_texture_query_levels() nothrow @property { return _ARB_texture_query_levels; }
 
 // ARB_texture_storage_multisample
 extern( System ) @nogc nothrow {
@@ -2800,7 +2800,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_texture_storage_multisample;
-bool ARB_texture_storage_multisample() @nogc nothrow @property { return _ARB_texture_storage_multisample; }
+@nogc bool ARB_texture_storage_multisample() nothrow @property { return _ARB_texture_storage_multisample; }
 package void load_ARB_texture_storage_multisample( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glTexStorage2DMultisample, "glTexStorage2DMultisample" );
@@ -2818,7 +2818,7 @@ package void load_ARB_texture_storage_multisample( bool doThrow = false ) {
 extern( System ) @nogc nothrow alias da_glTextureView = void function( GLuint,GLenum,GLuint,GLenum,GLuint,GLuint,GLuint,GLuint );
 __gshared da_glTextureView glTextureView;
 private __gshared bool _ARB_texture_view;
-bool ARB_texture_view() @nogc nothrow @property { return _ARB_texture_view; }
+@nogc bool ARB_texture_view() nothrow @property { return _ARB_texture_view; }
 package void load_ARB_texture_view( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glTextureView, "glTextureView" );
@@ -2861,7 +2861,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_vertex_attrib_binding;
-bool ARB_vertex_attrib_binding() @nogc nothrow @property { return _ARB_vertex_attrib_binding; }
+@nogc bool ARB_vertex_attrib_binding() nothrow @property { return _ARB_vertex_attrib_binding; }
 package void load_ARB_vertex_attrib_binding( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glBindVertexBuffer, "glBindVertexBuffer" );
@@ -2895,7 +2895,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_buffer_storage;
-bool ARB_buffer_storage() @nogc nothrow @property { return _ARB_buffer_storage; }
+@nogc bool ARB_buffer_storage() nothrow @property { return _ARB_buffer_storage; }
 package void load_ARB_buffer_storage( GLVersion glversion, bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glBufferStorage, "glBufferStorage" );
@@ -2923,7 +2923,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_clear_texture;
-bool ARB_clear_texture() @nogc nothrow @property { return _ARB_clear_texture; }
+@nogc bool ARB_clear_texture() nothrow @property { return _ARB_clear_texture; }
 package void load_ARB_clear_texture( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glClearTexImage, "glClearTexImage" );
@@ -2937,7 +2937,7 @@ package void load_ARB_clear_texture( bool doThrow = false ) {
 
 // ARB_enhanced_layouts
 private __gshared bool _ARB_enhanced_layouts;
-bool ARB_enhanced_layouts() @nogc nothrow @property { return _ARB_enhanced_layouts; }
+@nogc bool ARB_enhanced_layouts() nothrow @property { return _ARB_enhanced_layouts; }
 
 // ARB_multi_bind
 extern( System ) @nogc nothrow {
@@ -2959,7 +2959,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_multi_bind;
-bool ARB_multi_bind() @nogc nothrow @property { return _ARB_multi_bind; }
+@nogc bool ARB_multi_bind() nothrow @property { return _ARB_multi_bind; }
 package void load_ARB_multi_bind( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glBindBuffersBase, "glBindBuffersBase" );
@@ -2977,25 +2977,25 @@ package void load_ARB_multi_bind( bool doThrow = false ) {
 
 // ARB_query_buffer_object
 private __gshared bool _ARB_query_buffer_object;
-bool ARB_query_buffer_object() @nogc nothrow @property { return _ARB_query_buffer_object; }
+@nogc bool ARB_query_buffer_object() nothrow @property { return _ARB_query_buffer_object; }
 
 // ARB_texture_mirror_clamp_to_edge
 private __gshared bool _ARB_texture_mirror_clamp_to_edge;
-bool ARB_texture_mirror_clamp_to_edge() @nogc nothrow @property { return _ARB_texture_mirror_clamp_to_edge; }
+@nogc bool ARB_texture_mirror_clamp_to_edge() nothrow @property { return _ARB_texture_mirror_clamp_to_edge; }
 
 // ARB_texture_stencil8
 private __gshared bool _ARB_texture_stencil8;
-bool ARB_texture_stencil8() @nogc nothrow @property { return _ARB_texture_stencil8; }
+@nogc bool ARB_texture_stencil8() nothrow @property { return _ARB_texture_stencil8; }
 
 // ARB_vertex_type_10f_11f_11f_rev
 private __gshared bool _ARB_vertex_type_10f_11f_11f_rev;
-bool ARB_vertex_type_10f_11f_11f_rev() @nogc nothrow @property { return _ARB_vertex_type_10f_11f_11f_rev; }
+@nogc bool ARB_vertex_type_10f_11f_11f_rev() nothrow @property { return _ARB_vertex_type_10f_11f_11f_rev; }
 
 // ARB_clip_control
 extern( System ) @nogc nothrow alias da_glClipControl = void function( GLenum,GLenum );
 __gshared da_glClipControl glClipControl;
 private __gshared bool _ARB_clip_control;
-bool ARB_clip_control() @nogc nothrow @property { return _ARB_clip_control; }
+@nogc bool ARB_clip_control() nothrow @property { return _ARB_clip_control; }
 package void load_ARB_clip_control( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glClipControl, "glClipControl" );
@@ -3008,13 +3008,13 @@ package void load_ARB_clip_control( bool doThrow = false ) {
 
 // ARB_cull_distance
 private __gshared bool _ARB_cull_distance;
-bool ARB_cull_distance() @nogc nothrow @property { return _ARB_cull_distance; }
+@nogc bool ARB_cull_distance() nothrow @property { return _ARB_cull_distance; }
 
 // ARB_ES3_1_compatibility
 extern( System ) @nogc nothrow alias da_glMemoryBarrierByRegion = void function( GLbitfield );
 __gshared da_glMemoryBarrierByRegion glMemoryBarrierByRegion;
 private __gshared bool _ARB_ES3_1_compatibility;
-bool ARB_ES3_1_compatibility() @nogc nothrow @property { return _ARB_ES3_1_compatibility; }
+@nogc bool ARB_ES3_1_compatibility() nothrow @property { return _ARB_ES3_1_compatibility; }
 package void load_ARB_ES3_1_compatibility( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glClipControl, "glClipControl" );
@@ -3027,15 +3027,15 @@ package void load_ARB_ES3_1_compatibility( bool doThrow = false ) {
 
 // ARB_conditional_render_inverted
 private __gshared bool _ARB_conditional_render_inverted;
-bool ARB_conditional_render_inverted() @nogc nothrow @property { return _ARB_conditional_render_inverted; }
+@nogc bool ARB_conditional_render_inverted() nothrow @property { return _ARB_conditional_render_inverted; }
 
 // KHR_context_flush_control
 private __gshared bool _KHR_context_flush_control;
-bool KHR_context_flush_control() @nogc nothrow @property { return _KHR_context_flush_control; }
+@nogc bool KHR_context_flush_control() nothrow @property { return _KHR_context_flush_control; }
 
 // ARB_derivative_control
 private __gshared bool _ARB_derivative_control;
-bool ARB_derivative_control() @nogc nothrow @property { return _ARB_derivative_control; }
+@nogc bool ARB_derivative_control() nothrow @property { return _ARB_derivative_control; }
 
 // ARB_direct_state_access
 extern( System ) @nogc nothrow {
@@ -3239,7 +3239,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_direct_state_access;
-bool ARB_direct_state_access() @nogc nothrow @property { return _ARB_direct_state_access; }
+@nogc bool ARB_direct_state_access() nothrow @property { return _ARB_direct_state_access; }
 package void load_ARB_direct_state_access( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glCreateTransformFeedbacks, "glCreateTransformFeedbacks" );
@@ -3358,7 +3358,7 @@ __gshared {
 }
 
 private __gshared bool _ARB_get_texture_sub_image;
-bool ARB_get_texture_sub_image() @nogc nothrow @property { return _ARB_get_texture_sub_image; }
+@nogc bool ARB_get_texture_sub_image() nothrow @property { return _ARB_get_texture_sub_image; }
 package void load_ARB_get_texture_sub_image( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetTextureSubImage, "glGetTextureSubImage" );
@@ -3388,7 +3388,7 @@ __gshared {
 }
 
 private __gshared bool _KHR_robustness;
-bool KHR_robustness() @nogc nothrow @property { return _KHR_robustness; }
+@nogc bool KHR_robustness() nothrow @property { return _KHR_robustness; }
 package void load_KHR_robustness( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glGetGraphicsResetStatus, "glGetGraphicsResetStatus" );
@@ -3405,13 +3405,13 @@ package void load_KHR_robustness( bool doThrow = false ) {
 
 // ARB_shader_texture_image_samples
 private __gshared bool _ARB_shader_texture_image_samples;
-bool ARB_shader_texture_image_samples() @nogc nothrow @property { return _ARB_shader_texture_image_samples; }
+@nogc bool ARB_shader_texture_image_samples() nothrow @property { return _ARB_shader_texture_image_samples; }
 
 // ARB_texture_barrier
 extern( System ) @nogc nothrow alias da_glTextureBarrier = void function();
 __gshared da_glTextureBarrier glTextureBarrier;
 private __gshared bool _ARB_texture_barrier;
-bool ARB_texture_barrier() @nogc nothrow @property { return _ARB_texture_barrier; }
+@nogc bool ARB_texture_barrier() nothrow @property { return _ARB_texture_barrier; }
 package void load_ARB_texture_barrier( bool doThrow = false ) {
     try {
         bindGLFunc( cast( void** )&glClipControl, "glClipControl" );

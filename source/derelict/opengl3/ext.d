@@ -321,7 +321,7 @@ private void load_EXT_framebuffer_object() {
 }
 
 // GL_EXT_draw_buffers2
-extern ( System ) @nogc nothrow {
+extern( System ) @nogc nothrow {
     alias da_glColorMaskIndexedEXT = void function(uint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
     alias da_glGetBooleanIndexedvEXT = void function(GLenum value, uint index, GLboolean *data);
     alias da_glGetIntegerIndexedvEXT = void function(GLenum value, uint index, int *data);
@@ -356,7 +356,7 @@ private void load_EXT_draw_buffers2() {
 }
 
 // GL_NV_explicit_multisample
-extern ( System ) @nogc nothrow {
+extern( System ) @nogc nothrow {
     alias da_glGetMultisamplefvNV = void function(GLenum pname, uint index, float *val);
     alias da_glSampleMaskIndexedNV = void function(GLuint index, GLbitfield mask);
     alias da_glTexRenderbufferNV = void function(GLenum target, uint renderbuffer);
@@ -382,7 +382,7 @@ private void load_NV_explicit_multisample() {
 }
 
 // GL_EXT_geometry_shader4
-extern ( System ) @nogc nothrow {
+extern( System ) @nogc nothrow {
     alias da_glProgramParameteriEXT = void function(uint program, GLenum pname, int value);
     alias da_glFramebufferTextureEXT = void function(GLenum target, GLenum attachment, uint texture, int level);
     alias da_glFramebufferTextureLayerEXT = void function(GLenum target, GLenum attachment, uint texture, int level, int layer);
@@ -411,7 +411,7 @@ private void load_EXT_geometry_shader4() {
 }
 
 // GL_NV_framebuffer_multisample_coverage
-extern ( System ) @nogc nothrow alias da_glRenderbufferStorageMultisampleCoverageNV = void function(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+extern( System ) @nogc nothrow alias da_glRenderbufferStorageMultisampleCoverageNV = void function(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
 __gshared da_glRenderbufferStorageMultisampleCoverageNV glRenderbufferStorageMultisampleCoverageNV;
 private __gshared bool _NV_framebuffer_multisample_coverage;
 @nogc bool NV_framebuffer_multisample_coverage() nothrow @property { return _NV_framebuffer_multisample_coverage; }
@@ -425,7 +425,7 @@ private void load_NV_framebuffer_multisample_coverage() {
 }
 
 // GL_NV_gpu_program4
-extern ( System ) {
+extern( System ) @nogc nothrow {
     alias da_glProgramLocalParameterI4iNV = void function(GLenum target, uint index, int x, int y, int z, int w);
     alias da_glProgramLocalParameterI4ivNV = void function(GLenum target, uint index, const int *params);
     alias da_glProgramLocalParametersI4ivNV = void function(GLenum target, uint index, GLsizei count, const int *params);
@@ -490,7 +490,7 @@ private void load_NV_gpu_program4() {
 }
 
 // GL_EXT_gpu_program_parameters
-extern ( System ) @nogc nothrow {
+extern( System ) @nogc nothrow {
     alias da_glProgramEnvParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params);
     alias da_glProgramLocalParameters4fvEXT = void function(GLenum target, uint index, GLsizei count, const float *params);
 }
@@ -513,7 +513,7 @@ private void load_EXT_gpu_program_parameters() {
 }
 
 // GL_EXT_gpu_shader4
-extern ( System ) {
+extern( System ) @nogc nothrow {
     alias da_glVertexAttribI1iEXT = void function(uint index, int x);
     alias da_glVertexAttribI2iEXT = void function(uint index, int x, int y);
     alias da_glVertexAttribI3iEXT = void function(uint index, int x, int y, int z);
@@ -632,7 +632,7 @@ private void load_EXT_gpu_shader4() {
 }
 
 // GL_EXT_texture_integer
-extern ( System ) {
+extern( System ) @nogc nothrow {
     alias da_glClearColorIiEXT = void function ( int r, int g, int b, int a );
     alias da_glClearColorIuiEXT = void function ( uint r, uint g, uint b, uint a );
     alias da_glTexParameterIivEXT = void function( GLenum target, GLenum pname, int *params );
@@ -667,7 +667,7 @@ private void load_EXT_texture_integer() {
 }
 
 // GL_EXT_texture_buffer_object
-extern ( System ) @nogc nothrow {
+extern( System ) @nogc nothrow {
     alias da_glTexBufferEXT = void function(GLenum target, GLenum internalformat, uint buffer);
 }
 
@@ -687,7 +687,7 @@ private void load_EXT_texture_buffer_object() {
 }
 
 // GL_EXT_direct_state_access
-extern ( System ) @nogc nothrow {
+extern( System ) @nogc nothrow {
     alias da_glClientAttribDefaultEXT = void function(GLbitfield mask);
     alias da_glPushClientAttribDefaultEXT = void function(GLbitfield mask);
 
@@ -1444,7 +1444,7 @@ private __gshared bool _EXT_texture_compression_rgtc;
 @nogc bool EXT_texture_compression_rgtc() nothrow @property { return _EXT_texture_compression_rgtc; }
 
 // GL_NV_texture_barrier
-extern ( System ) {
+extern( System ) @nogc nothrow {
     alias da_glTextureBarrierNV = void function ();
 }
 
@@ -1464,7 +1464,7 @@ private void load_NV_texture_barrier() {
 }
 
 // GL_APPLE_vertex_array_object
-extern( System ) {
+extern( System ) @nogc nothrow {
     alias da_glBindVertexArrayAPPLE = void function( GLuint );
     alias da_glDeleteVertexArraysAPPLE = void function( GLsizei,const( GLuint )* );
     alias da_glGenVertexArraysAPPLE = void function( GLsizei,GLuint* );

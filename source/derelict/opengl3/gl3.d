@@ -388,6 +388,7 @@ class DerelictGL3Loader : SharedLibLoader
 
             if( maxVer >= GLVersion.GL43 ) {
                 load_ARB_clear_buffer_object( true );
+                load_ARB_copy_image( true );
                 load_ARB_compute_shader( true );
                 load_KHR_debug( true );
                 load_ARB_framebuffer_no_attachments( true );

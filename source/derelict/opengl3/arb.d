@@ -2546,12 +2546,24 @@ package void load_ARB_compute_shader( bool doThrow = false ) {
 }
 
 // ARB_copy_image
+extern( System ) @nogc nothrow
+    alias da_glCopyImageSubData = void function( GLuint,GLenum,GLint,GLint,GLint,GLint,GLuint,GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei);
+__gshared da_glCopyImageSubData glCopyImageSubData;
+
 private __gshared bool _ARB_copy_image;
 @nogc bool ARB_copy_image() nothrow @property { return _ARB_copy_image; }
+package void load_ARB_copy_image( bool doThrow = false ) {
+    try {
+        bindGLFunc( cast( void** )&glCopyImageSubData, "glCopyImageSubData" );
+        _KHR_debug = true;
+    } catch( Exception e ) {
+        _KHR_debug = false;
+        if( doThrow ) throw e;
+    }
+}
 
+// KHR_debug
 extern( System ) @nogc nothrow {
-
-    // These are the functions that need loading.
     alias da_glDebugMessageControl = void function( GLenum,GLenum,GLenum,GLsizei,const( GLuint* ),GLboolean );
     alias da_glDebugMessageInsert = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )* );
     alias da_glDebugMessageCallback = void function( GLDEBUGPROC,const( void )* );
@@ -3514,7 +3526,8 @@ package void loadARB( GLVersion glversion )
     _ARB_texture_query_levels = isExtSupported( glversion, "GL_ARB_texture_query_levels" );
 
     if( glversion < GLVersion.GL43 ) {
-        if( isExtSupported( glversion, "GL_ARB_clear_buffer_object" )  ) load_ARB_clear_buffer_object();
+        if( isExtSupported( glversion, "GL_ARB_clear_buffer_object" )) load_ARB_clear_buffer_object();
+        if( isExtSupported( glversion, "GL_ARB_copy_image" )) load_ARB_copy_image();
         if( isExtSupported( glversion, "GL_ARB_compute_shader" )) load_ARB_compute_shader();
         if( isExtSupported( glversion, "GL_ARB_debug_output" )) load_ARB_debug_output();
         if( isExtSupported( glversion, "GL_KHR_debug" )) load_KHR_debug();

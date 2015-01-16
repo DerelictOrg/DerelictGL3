@@ -1494,46 +1494,25 @@ private void load_APPLE_vertex_array_object() {
 
 package void loadEXT( GLVersion glversion ) {
     _EXT_texture_filter_anisotropic = isExtSupported( glversion, "GL_EXT_texture_filter_anisotropic" );
-    _EXT_framebuffer_object = isExtSupported( glversion, "GL_EXT_framebuffer_object" );
-    if( _EXT_framebuffer_object ) load_EXT_framebuffer_object();
 
-    _EXT_texture_buffer_object = isExtSupported( glversion, "GL_EXT_texture_buffer_object" );
-    if( _EXT_texture_buffer_object ) load_EXT_texture_buffer_object();
-
-    _EXT_texture_integer = isExtSupported( glversion, "GL_EXT_texture_integer" );
-    if( _EXT_texture_integer ) load_EXT_texture_integer();
-
-    _EXT_gpu_shader4 = isExtSupported( glversion, "GL_EXT_gpu_shader4" );
-    if( _EXT_gpu_shader4 ) load_EXT_gpu_shader4();
-
-    _EXT_gpu_program_parameters = isExtSupported( glversion, "GL_EXT_gpu_program_parameters" );
-    if( _EXT_gpu_program_parameters ) load_EXT_gpu_program_parameters();
-
-    _NV_gpu_program4 = isExtSupported( glversion, "GL_NV_gpu_program4" );
-    if( _NV_gpu_program4 ) load_NV_gpu_program4();
-
-    _NV_framebuffer_multisample_coverage = isExtSupported( glversion, "GL_NV_framebuffer_multisample_coverage" );
-    if( _NV_framebuffer_multisample_coverage ) load_NV_framebuffer_multisample_coverage();
-
-    _EXT_geometry_shader4 = isExtSupported( glversion, "GL_EXT_geometry_shader4" );
-    if( _EXT_geometry_shader4 ) load_EXT_geometry_shader4();
-
-    _NV_explicit_multisample = isExtSupported( glversion, "GL_NV_explicit_multisample" );
-    if( _NV_explicit_multisample ) load_NV_explicit_multisample();
-
-    _EXT_draw_buffers2 = isExtSupported( glversion, "GL_EXT_draw_buffers2" );
-    if( _EXT_draw_buffers2 ) load_EXT_draw_buffers2();
+    if( isExtSupported( glversion, "GL_EXT_framebuffer_object" )) load_EXT_framebuffer_object();
+    if( isExtSupported( glversion, "GL_EXT_texture_buffer_object" )) load_EXT_texture_buffer_object();
+    if( isExtSupported( glversion, "GL_EXT_texture_integer" )) load_EXT_texture_integer();
+    if( isExtSupported( glversion, "GL_EXT_gpu_shader4" )) load_EXT_gpu_shader4();
+    if( isExtSupported( glversion, "GL_EXT_gpu_program_parameters" )) load_EXT_gpu_program_parameters();
+    if( isExtSupported( glversion, "GL_NV_gpu_program4" )) load_NV_gpu_program4();
+    if( isExtSupported( glversion, "GL_NV_framebuffer_multisample_coverage" )) load_NV_framebuffer_multisample_coverage();
+    if( isExtSupported( glversion, "GL_EXT_geometry_shader4" )) load_EXT_geometry_shader4();
+    if( isExtSupported( glversion, "GL_NV_explicit_multisample" )) load_NV_explicit_multisample();
+    if( isExtSupported( glversion, "GL_EXT_draw_buffers2" )) load_EXT_draw_buffers2();
 
     _EXT_texture_compression_s3tc = isExtSupported( glversion, "GL_EXT_texture_compression_s3tc" );
-
     _EXT_texture_compression_rgtc = isExtSupported( glversion, "GL_EXT_texture_compression_rgtc" );
 
-    _NV_texture_barrier = isExtSupported( glversion, "GL_NV_texture_barrier" );
-    if( _NV_texture_barrier ) load_NV_texture_barrier();
-
+    if( isExtSupported( glversion, "GL_NV_texture_barrier" )) load_NV_texture_barrier();
     if( isExtSupported( glversion, "GL_APPLE_vertex_array_object" )) load_APPLE_vertex_array_object();
 
+    // TODO Why does this need to be loaded last?? Who implemented it?
     // Direct state access extension should be ALWAYS loaded in the last place
-    _EXT_direct_state_access = isExtSupported( glversion, "GL_EXT_direct_state_access" );
-    if( _EXT_direct_state_access ) load_EXT_direct_state_access( glversion );
+    if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) load_EXT_direct_state_access( glversion );
 }

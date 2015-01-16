@@ -2494,7 +2494,7 @@ private __gshared bool _ARB_ES3_compatibility;
 @nogc bool ARB_ES3_compatibility() nothrow @property { return _ARB_ES3_compatibility; }
 
 // ARB_clear_buffer_object
-extern( System ) {
+extern( System ) @nogc nothrow {
     alias da_glClearBufferData = void function( GLenum,GLenum,GLenum,GLenum,const( void )* );
     alias da_glClearBufferSubData = void function( GLenum,GLenum,GLintptr,GLsizeiptr,GLenum,GLenum,const( void )* );
     alias da_glClearNamedBufferDataEXT = void function( GLuint,GLenum,GLenum,GLenum,const( void )* );

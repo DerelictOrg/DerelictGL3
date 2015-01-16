@@ -242,7 +242,10 @@ enum : uint {
     GL_COMPRESSED_RED_RGTC1_EXT          = 0x8DBB,
     GL_COMPRESSED_SIGNED_RED_RGTC1_EXT   = 0x8DBC,
     GL_COMPRESSED_RED_GREEN_RGTC2_EXT    = 0x8DBD,
-    GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT = 0x8DBE
+    GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT = 0x8DBE,
+
+    // GL_APPLE_vertex_array_object
+    GL_VERTEX_ARRAY_BINDING_APPLE        = 0x85B5,
 }
 
 // GL_EXT_texture_filter_anisotropic
@@ -1460,6 +1463,34 @@ private void load_NV_texture_barrier() {
     }
 }
 
+// GL_APPLE_vertex_array_object
+extern( System ) {
+    alias da_glBindVertexArrayAPPLE = void function( GLuint );
+    alias da_glDeleteVertexArraysAPPLE = void function( GLsizei,const( GLuint )* );
+    alias da_glGenVertexArraysAPPLE = void function( GLsizei,GLuint* );
+    alias da_glIsVertexArrayAPPLE = GLboolean function( GLuint );
+}
+
+__gshared {
+    da_glBindVertexArrayAPPLE glBindVertexArrayAPPLE;
+    da_glDeleteVertexArraysAPPLE glDeleteVertexArraysAPPLE;
+    da_glGenVertexArraysAPPLE glGenVertexArraysAPPLE;
+    da_glIsVertexArrayAPPLE glIsVertexArrayAPPLE;
+}
+
+private __gshared bool _APPLE_vertex_array_object;
+@nogc bool APPLE_vertex_array_object() nothrow @property { return _APPLE_vertex_array_object; }
+private void load_APPLE_vertex_array_object() {
+    try {
+        bindGLFunc( cast( void** )&glBindVertexArrayAPPLE, "glBindVertexArrayAPPLE" );
+        bindGLFunc( cast( void** )&glDeleteVertexArraysAPPLE, "glDeleteVertexArraysAPPLE" );
+        bindGLFunc( cast( void** )&glGenVertexArraysAPPLE, "glGenVertexArraysAPPLE" );
+        bindGLFunc( cast( void** )&glIsVertexArrayAPPLE, "glIsVertexArrayAPPLE" );
+        _APPLE_vertex_array_object = true;
+    } catch ( Exception e ) {
+        _APPLE_vertex_array_object = false;
+    }
+}
 
 package void loadEXT( GLVersion glversion ) {
     _EXT_texture_filter_anisotropic = isExtSupported( glversion, "GL_EXT_texture_filter_anisotropic" );
@@ -1499,6 +1530,8 @@ package void loadEXT( GLVersion glversion ) {
 
     _NV_texture_barrier = isExtSupported( glversion, "GL_NV_texture_barrier" );
     if( _NV_texture_barrier ) load_NV_texture_barrier();
+
+    if( isExtSupported( glversion, "GL_APPLE_vertex_array_object" )) load_APPLE_vertex_array_object();
 
     // Direct state access extension should be ALWAYS loaded in the last place
     _EXT_direct_state_access = isExtSupported( glversion, "GL_EXT_direct_state_access" );

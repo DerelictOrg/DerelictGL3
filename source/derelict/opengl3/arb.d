@@ -3450,6 +3450,11 @@ package void loadARB( GLVersion glversion )
     _ARB_vertex_array_bgra = isExtSupported( glversion, "GL_ARB_vertex_array_bgra" );
     _ARB_fragment_coord_conventions = isExtSupported( glversion, "GL_ARB_fragment_coord_conventions" );
     _ARB_seamless_cube_map = isExtSupported( glversion, "GL_ARB_seamless_cube_map" );
+    _ARB_depth_buffer_float = isExtSupported( glversion, "GL_ARB_depth_buffer_float" );
+    _ARB_framebuffer_sRGB = isExtSupported( glversion, "GL_ARB_framebuffer_sRGB" );
+    _ARB_half_float_vertex = isExtSupported( glversion, "GL_ARB_half_float_vertex" );
+    _ARB_texture_compression_rgtc = isExtSupported( glversion, "GL_ARB_texture_compression_rgtc" );
+    _ARB_texture_rg = isExtSupported( glversion, "GL_ARB_texture_rg" );
     _ARB_depth_clamp = isExtSupported( glversion, "GL_ARB_depth_clamp" );
 
     if( glversion < GLVersion.GL32 ) {

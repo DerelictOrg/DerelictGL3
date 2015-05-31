@@ -3029,7 +3029,7 @@ private __gshared bool _ARB_ES3_1_compatibility;
 @nogc bool ARB_ES3_1_compatibility() nothrow @property { return _ARB_ES3_1_compatibility; }
 package void load_ARB_ES3_1_compatibility( bool doThrow = false ) {
     try {
-        bindGLFunc( cast( void** )&glClipControl, "glClipControl" );
+        bindGLFunc( cast( void** )&glMemoryBarrierByRegion, "glMemoryBarrierByRegion" );
         _ARB_ES3_1_compatibility = true;
     } catch( Exception e ) {
         _ARB_ES3_1_compatibility = false;
@@ -3426,7 +3426,7 @@ private __gshared bool _ARB_texture_barrier;
 @nogc bool ARB_texture_barrier() nothrow @property { return _ARB_texture_barrier; }
 package void load_ARB_texture_barrier( bool doThrow = false ) {
     try {
-        bindGLFunc( cast( void** )&glClipControl, "glClipControl" );
+        bindGLFunc( cast( void** )&glTextureBarrier, "glTextureBarrier" );
         _ARB_texture_barrier = true;
     } catch( Exception e ) {
         _ARB_texture_barrier = false;
@@ -3559,7 +3559,7 @@ package void loadARB( GLVersion glversion )
     _ARB_conditional_render_inverted = isExtSupported(glversion, "GL_ARB_conditional_render_inverted" );
     _KHR_context_flush_control = isExtSupported( glversion, "GL_KHR_context_flush_control" );
     _ARB_derivative_control = isExtSupported( glversion, "GL_ARB_derivative_control" );
-    _ARB_shader_texture_image_samples = isExtSupported( glversion, "ARB_shader_texture_image_samples" );
+    _ARB_shader_texture_image_samples = isExtSupported( glversion, "GL_ARB_shader_texture_image_samples" );
 
     if( glversion < GLVersion.GL45 ) {
         if( isExtSupported( glversion, "GL_ARB_clip_control" )) load_ARB_clip_control();
@@ -3567,7 +3567,7 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_direct_state_access")) load_ARB_direct_state_access();
         if( isExtSupported( glversion, "GL_ARB_get_texture_sub_image")) load_ARB_get_texture_sub_image();
         if( isExtSupported( glversion, "GL_KHR_robustness" )) load_KHR_robustness();
-        if( isExtSupported( glversion, "ARB_texture_barrier" )) load_ARB_texture_barrier();
+        if( isExtSupported( glversion, "GL_ARB_texture_barrier" )) load_ARB_texture_barrier();
     }
 
 }

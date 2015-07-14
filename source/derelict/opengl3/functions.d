@@ -333,7 +333,9 @@ extern( System ) @nogc nothrow {
     alias da_glBlendFuncSeparatei = void function( GLuint,GLenum,GLenum,GLenum,GLenum );
 
     // OpenGL 4.5
+    alias da_glGetnCompressedTexImage = void function( GLenum,GLint,GLsizei,void* );
     alias da_glGetnTexImage = void function( GLenum,GLint,GLenum,GLenum,GLsizei,void* );
+    alias da_glGetnUniformdv = void function( GLuint,GLint,GLsizei,GLdouble* );
 }
 
 __gshared {
@@ -611,4 +613,6 @@ __gshared {
     da_glBlendFunci glBlendFunci;
     da_glBlendFuncSeparatei glBlendFuncSeparatei;
     da_glGetnTexImage glGetnTexImage;
+    da_glGetnCompressedTexImage = glGetnCompressedTexImage;
+    da_glGetnUniformdv = glGetnUniformdv;
 }

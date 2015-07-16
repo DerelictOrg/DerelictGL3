@@ -613,6 +613,6 @@ __gshared {
     da_glBlendFunci glBlendFunci;
     da_glBlendFuncSeparatei glBlendFuncSeparatei;
     da_glGetnTexImage glGetnTexImage;
-    da_glGetnCompressedTexImage = glGetnCompressedTexImage;
-    da_glGetnUniformdv = glGetnUniformdv;
+    da_glGetnCompressedTexImage glGetnCompressedTexImage;
+    da_glGetnUniformdv glGetnUniformdv;
 }

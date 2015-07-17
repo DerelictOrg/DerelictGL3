@@ -125,6 +125,26 @@ enum : uint {
     // ARB_framebuffer_sRGB
     GL_FRAMEBUFFER_SRGB               = 0x8DB9,
 
+    // ARB_geometry_shader4
+    GL_LINES_ADJACENCY_ARB            = 0x000A,
+    GL_LINE_STRIP_ADJACENCY_ARB       = 0x000B,
+    GL_TRIANGLES_ADJACENCY_ARB        = 0x000C,
+    GL_TRIANGLE_STRIP_ADJACENCY_ARB   = 0x000D,
+    GL_PROGRAM_POINT_SIZE_ARB         = 0x8642,
+    GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_ARB = 0x8C29,
+    GL_FRAMEBUFFER_ATTACHMENT_LAYERED_ARB = 0x8DA7,
+    GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_ARB = 0x8DA8,
+    GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_ARB = 0x8DA9,
+    GL_GEOMETRY_SHADER_ARB            = 0x8DD9,
+    GL_GEOMETRY_VERTICES_OUT_ARB      = 0x8DDA,
+    GL_GEOMETRY_INPUT_TYPE_ARB        = 0x8DDB,
+    GL_GEOMETRY_OUTPUT_TYPE_ARB       = 0x8DDC,
+    GL_MAX_GEOMETRY_VARYING_COMPONENTS_ARB = 0x8DDD,
+    GL_MAX_VERTEX_VARYING_COMPONENTS_ARB = 0x8DDE,
+    GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_ARB = 0x8DDF,
+    GL_MAX_GEOMETRY_OUTPUT_VERTICES_ARB = 0x8DE0,
+    GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_ARB = 0x8DE1,
+
     // ARB_half_float_vertex
     GL_HALF_FLOAT                     = 0x140B,
 
@@ -934,6 +954,37 @@ private __gshared bool _ARB_depth_buffer_float;
 
 private __gshared bool _ARB_framebuffer_sRGB;
 @nogc bool ARB_framebuffer_sRGB() nothrow @property { return _ARB_framebuffer_sRGB; }
+
+// ARB_geometry_shader4
+extern( System ) @nogc nothrow {
+    alias da_glProgramParameteriARB = void function( GLuint, GLenum, GLint );
+    alias da_glFramebufferTextureARB = void function( GLuint, GLenum, GLuint, GLint );
+    alias da_glFramebufferTextureLayerARB = void function( GLuint, GLenum, GLuint, GLint, GLint );
+    alias da_glFramebufferTextureFaceARB = void function( GLuint, GLenum, GLuint, GLint, GLenum );
+}
+
+__gshared
+{
+    da_glProgramParameteriARB glProgramParameteriARB;
+    da_glFramebufferTextureARB glFramebufferTextureARB;
+    da_glFramebufferTextureLayerARB glFramebufferTextureLayerARB;
+    da_glFramebufferTextureFaceARB glFramebufferTextureFaceARB;
+}
+
+private __gshared bool _ARB_geometry_shader4;
+@nogc bool ARB_geometry_shader4() nothrow @property { return _ARB_geometry_shader4; }
+package void load_ARB_geometry_shader4( bool doThrow = false ) {
+    try {
+        bindGLFunc( cast( void** )&glProgramParameteriARB, "glProgramParameteriARB" );
+        bindGLFunc( cast( void** )&glFramebufferTextureARB, "glFramebufferTextureARB" );
+        bindGLFunc( cast( void** )&glFramebufferTextureLayerARB, "glFramebufferTextureLayerARB" );
+        bindGLFunc( cast( void** )&glFramebufferTextureFaceARB, "glFramebufferTextureFaceARB" );
+        _ARB_geometry_shader4 = true;
+    } catch( Exception e ) {
+        _ARB_geometry_shader4 = false;
+        if( doThrow ) throw e;
+    }
+}
 
 private __gshared bool _ARB_half_float_vertex;
 @nogc bool ARB_half_float_vertex() nothrow @property { return _ARB_half_float_vertex; }
@@ -3450,6 +3501,11 @@ package void loadARB( GLVersion glversion )
     _ARB_vertex_array_bgra = isExtSupported( glversion, "GL_ARB_vertex_array_bgra" );
     _ARB_fragment_coord_conventions = isExtSupported( glversion, "GL_ARB_fragment_coord_conventions" );
     _ARB_seamless_cube_map = isExtSupported( glversion, "GL_ARB_seamless_cube_map" );
+    _ARB_depth_buffer_float = isExtSupported( glversion, "GL_ARB_depth_buffer_float" );
+    _ARB_framebuffer_sRGB = isExtSupported( glversion, "GL_ARB_framebuffer_sRGB" );
+    _ARB_half_float_vertex = isExtSupported( glversion, "GL_ARB_half_float_vertex" );
+    _ARB_texture_compression_rgtc = isExtSupported( glversion, "GL_ARB_texture_compression_rgtc" );
+    _ARB_texture_rg = isExtSupported( glversion, "GL_ARB_texture_rg" );
     _ARB_depth_clamp = isExtSupported( glversion, "GL_ARB_depth_clamp" );
 
     if( glversion < GLVersion.GL32 ) {
@@ -3565,6 +3621,7 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_clip_control" )) load_ARB_clip_control();
         if( isExtSupported( glversion, "GL_ARB_ES3_1_compatibility" )) load_ARB_ES3_1_compatibility();
         if( isExtSupported( glversion, "GL_ARB_direct_state_access")) load_ARB_direct_state_access();
+        if( isExtSupported( glversion, "GL_ARB_geometry_shader4")) load_ARB_geometry_shader4();
         if( isExtSupported( glversion, "GL_ARB_get_texture_sub_image")) load_ARB_get_texture_sub_image();
         if( isExtSupported( glversion, "GL_KHR_robustness" )) load_KHR_robustness();
         if( isExtSupported( glversion, "GL_ARB_texture_barrier" )) load_ARB_texture_barrier();

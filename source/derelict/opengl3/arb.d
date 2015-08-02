@@ -3155,7 +3155,7 @@ extern( System ) @nogc nothrow {
     alias da_glTextureStorage3DMultisample = void function( GLuint,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean );
     alias da_glTextureSubImage1D = void function( GLuint,GLint,GLint,GLsizei,GLenum,GLenum,const( void )* );
     alias da_glTextureSubImage2D = void function( GLuint,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLenum,const( void )* );
-    alias da_glTextureSubImage3D = void function( GLuint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const( void )* );
+    alias da_glTextureSubImage3D = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const( void )* );
     alias da_glCompressedTextureSubImage1D = void function( GLuint,GLint,GLint,GLsizei,GLenum,GLsizei,const( void )* );
     alias da_glCompressedTextureSubImage2D = void function( GLuint,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLsizei,const( void )* );
     alias da_glCompressedTextureSubImage3D = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLsizei,const( void )* );

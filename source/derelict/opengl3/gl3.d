@@ -77,7 +77,7 @@ class DerelictGL3Loader : SharedLibLoader
             return _loadedVersion;
         }
 
-        GLVersion reload() {
+        GLVersion reload(GLVersion limitVer = GLVersion.HighestSupported) {
             // Make sure a context is active, otherwise this could be meaningless.
             if( !hasValidContext() )
                 throw new DerelictException( "DerelictGL3.reload failure: An OpenGL context is not currently active." );
@@ -86,6 +86,9 @@ class DerelictGL3Loader : SharedLibLoader
             scope( exit ) _loadedVersion = glVer;
 
             GLVersion maxVer = findMaxAvailable();
+            if(maxVer > limitVer) {
+                maxVer = limitVer;
+            }
 
             if( maxVer >= GLVersion.GL12 ) {
                 bindGLFunc( cast( void** )&glBlendColor, "glBlendColor" );

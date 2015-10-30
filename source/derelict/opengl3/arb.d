@@ -937,6 +937,10 @@ enum : uint {
     GL_CONTEXT_RELEASE_BEHAVIOR       = 0x82FB,
     GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH = 0x82FC,
 
+    // ARB_direct_state_access
+    GL_TEXTURE_TARGET = 0x1006,
+    GL_QUERY_TARGET = 0x82EA,
+
     // KHR_robustness
     GL_GUILTY_CONTEXT_RESET           = 0x8253,
     GL_INNOCENT_CONTEXT_RESET         = 0x8254,
@@ -946,7 +950,6 @@ enum : uint {
     GL_LOSE_CONTEXT_ON_RESET          = 0x8252,
     GL_NO_RESET_NOTIFICATION          = 0x8261,
     GL_CONTEXT_LOST                   = 0x0507,
-
 }
 
 private __gshared bool _ARB_depth_buffer_float;

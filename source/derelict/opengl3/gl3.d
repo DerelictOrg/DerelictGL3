@@ -77,6 +77,10 @@ class DerelictGL3Loader : SharedLibLoader
             return _loadedVersion;
         }
 
+		void maxVersion(GLVersion maxVer) @property {
+			_maxVer = maxVer;
+		}
+
         GLVersion reload() {
             // Make sure a context is active, otherwise this could be meaningless.
             if( !hasValidContext() )
@@ -86,6 +90,9 @@ class DerelictGL3Loader : SharedLibLoader
             scope( exit ) _loadedVersion = glVer;
 
             GLVersion maxVer = findMaxAvailable();
+            if(maxVer > _maxVer) {
+                maxVer = _maxVer;
+            }
 
             if( maxVer >= GLVersion.GL12 ) {
                 bindGLFunc( cast( void** )&glDrawRangeElements, "glDrawRangeElements" );

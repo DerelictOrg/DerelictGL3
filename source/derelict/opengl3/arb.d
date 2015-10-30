@@ -148,6 +148,10 @@ enum : uint {
     // ARB_half_float_vertex
     GL_HALF_FLOAT                     = 0x140B,
 
+    // ARB_imaging
+    GL_BLEND_COLOR = 0x8005,
+    GL_BLEND_EQUATION = 0x8009,
+
     // ARB_map_buffer_range
     GL_MAP_READ_BIT                   = 0x0001,
     GL_MAP_WRITE_BIT                  = 0x0002,
@@ -991,6 +995,9 @@ package void load_ARB_geometry_shader4( bool doThrow = false ) {
 
 private __gshared bool _ARB_half_float_vertex;
 @nogc bool ARB_half_float_vertex() nothrow @property { return _ARB_half_float_vertex; }
+
+private __gshared bool _ARB_imaging;
+@nogc bool ARB_imaging() nothrow @property { return _ARB_imaging; }
 
 private __gshared bool _ARB_texture_compression_rgtc;
 @nogc bool ARB_texture_compression_rgtc() nothrow @property { return _ARB_texture_compression_rgtc; }
@@ -3583,6 +3590,7 @@ package void loadARB( GLVersion glversion )
     _ARB_depth_buffer_float = isExtSupported( glversion, "GL_ARB_depth_buffer_float" );
     _ARB_framebuffer_sRGB = isExtSupported( glversion, "GL_ARB_framebuffer_sRGB" );
     _ARB_half_float_vertex = isExtSupported( glversion, "GL_ARB_half_float_vertex" );
+    _ARB_imaging = isExtSupported( glversion, "GL_ARB_imaging" );
     _ARB_texture_compression_rgtc = isExtSupported( glversion, "GL_ARB_texture_compression_rgtc" );
     _ARB_texture_rg = isExtSupported( glversion, "GL_ARB_texture_rg" );
     _ARB_depth_clamp = isExtSupported( glversion, "GL_ARB_depth_clamp" );

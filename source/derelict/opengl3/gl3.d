@@ -88,8 +88,6 @@ class DerelictGL3Loader : SharedLibLoader
             GLVersion maxVer = findMaxAvailable();
 
             if( maxVer >= GLVersion.GL12 ) {
-                bindGLFunc( cast( void** )&glBlendColor, "glBlendColor" );
-                bindGLFunc( cast( void** )&glBlendEquation, "glBlendEquation" );
                 bindGLFunc( cast( void** )&glDrawRangeElements, "glDrawRangeElements" );
                 bindGLFunc( cast( void** )&glTexImage3D, "glTexImage3D" );
                 bindGLFunc( cast( void** )&glTexSubImage3D, "glTexSubImage3D" );
@@ -118,6 +116,8 @@ class DerelictGL3Loader : SharedLibLoader
                 bindGLFunc( cast( void** )&glPointParameterfv, "glPointParameterfv" );
                 bindGLFunc( cast( void** )&glPointParameteri, "glPointParameteri" );
                 bindGLFunc( cast( void** )&glPointParameteriv, "glPointParameteriv" );
+                bindGLFunc( cast( void** )&glBlendColor, "glBlendColor" );
+                bindGLFunc( cast( void** )&glBlendEquation, "glBlendEquation" );
                 glVer = GLVersion.GL14;
             }
 

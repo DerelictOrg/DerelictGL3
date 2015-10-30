@@ -77,7 +77,9 @@ class DerelictGL3Loader : SharedLibLoader
             return _loadedVersion;
         }
 
-        GLVersion reload() {
+        GLVersion reload( GLVersion minVersion = GLVersion.None, GLVersion maxVersion = GLVersion.HighestSupported) {
+            import std.format : format;
+
             // Make sure a context is active, otherwise this could be meaningless.
             if( !hasValidContext() )
                 throw new DerelictException( "DerelictGL3.reload failure: An OpenGL context is not currently active." );
@@ -86,6 +88,13 @@ class DerelictGL3Loader : SharedLibLoader
             scope( exit ) _loadedVersion = glVer;
 
             GLVersion maxVer = findMaxAvailable();
+            if( minVersion != GLVersion.None && maxVer < minVersion ) {
+                throw new DerelictException(format("OpenGL version %s was required, but context only supports %s", 
+                    minVersion, maxVer));
+            }
+            if( maxVer > maxVersion ) 
+                maxVer = maxVersion;
+
 
             if( maxVer >= GLVersion.GL12 ) {
                 bindGLFunc( cast( void** )&glDrawRangeElements, "glDrawRangeElements" );

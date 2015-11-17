@@ -78,7 +78,7 @@ class DerelictGL3Loader : SharedLibLoader
         }
 
         GLVersion reload( GLVersion minVersion = GLVersion.None, GLVersion maxVersion = GLVersion.HighestSupported) {
-            import std.format : format;
+            import std.string : format;
 
             // Make sure a context is active, otherwise this could be meaningless.
             if( !hasValidContext() )

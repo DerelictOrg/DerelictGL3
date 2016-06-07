@@ -29,6 +29,7 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl3.wglext;
 
 version( Windows ) {
+version(None):
     private {
         import std.conv;
         import std.string;

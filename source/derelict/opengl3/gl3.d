@@ -45,19 +45,14 @@ private {
     import derelict.opengl3.internal;
 
     static if(Derelict_OS_Android || Derelict_OS_iOS) {
-        // Android and iOS do not support OpenGL3; use DerelictOpenGLES.
-        static assert(false, "OpenGL is not supported on Android or iOS; use OpenGLES (DerelictGLES) instead");
+        static assert(0, "OpenGL is not supported on Android or iOS; use OpenGLES (DerelictGLES) instead");
     } else static if(Derelict_OS_Windows) {
-        //import derelict.opengl3.wgl;
-        //import derelict.opengl3.wglext;
         enum libNames = "opengl32.dll";
     } else static if(Derelict_OS_Mac) {
         import derelict.opengl3.cgl;
         enum libNames = "../Frameworks/OpenGL.framework/OpenGL, /Library/Frameworks/OpenGL.framework/OpenGL, /System/Library/Frameworks/OpenGL.framework/OpenGL";
         void loadPlatformEXT(GLVersion) {}
     } else static if(Derelict_OS_Posix) {
-        import derelict.opengl3.glx;
-        import derelict.opengl3.glxext;
         enum libNames = "libGL.so.1,libGL.so";
     } else
         static assert(0, "Need to implement OpenGL libNames for this operating system.");

@@ -114,7 +114,7 @@ package:
 private:
     Appender!(const(char)*[]) _extCache;
 
-    version(Windows) {
+    static if(Derelict_OS_Windows) {
         extern(Windows) @nogc nothrow {
             alias da_getProcAddress = void* function(const(char)*);
             alias da_getCurrentContext = void* function();
@@ -125,4 +125,16 @@ private:
 
         enum getProcAddressName = "wglGetProcAddress";
         enum getCurrentContextName = "wglGetCurrentContext";
+    }
+    else static if(Derelict_OS_Posix && !Derelict_OS_Mac) {
+        extern(C) @nogc nothrow {
+            alias da_getProcAddress = void* function(const(char)*);
+            alias da_getCurrentContext = void* function();
+        }
+
+        da_getProcAddress getProcAddress;
+        da_getCurrentContext getCurrentContext;
+
+        enum getProcAddressName = "glXGetProcAddress";
+        enum getCurrentContextName = "glXGetCurrentContext";
     }

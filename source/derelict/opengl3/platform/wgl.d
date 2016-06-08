@@ -29,7 +29,7 @@ module derelict.opengl3.platform.wgl;
 
 version(Windows):
 
-mixin template DerelictGL3_PlatformBind() {
+mixin template DerelictGL3_WindowsBind() {
     extern(Windows) @nogc nothrow {
         alias da_wglCopyContext = BOOL function(HGLRC,HGLRC,UINT);
         alias da_wglCreateContext = HGLRC function(HDC);
@@ -68,12 +68,12 @@ mixin template DerelictGL3_PlatformBind() {
         da_wglUseFontOutlinesW dwglUseFontOutlinesW;
     }
 
-    void DerelictGL3_loadPlatform() {
+    void DerelictGL3_loadWindows() {
         import derelict.util.exception : DerelictException;
         import derelict.opengl3.gl3 : DerelictGL3;
 
         if(!DerelictGL3.isLoaded) {
-            throw new DerelictException("DerelictGL3 mustbe loaded before calling DerelictGL3_loadPlatform.");
+            throw new DerelictException("DerelictGL3 must be loaded before loading Windows-specific functions.");
         }
 
         with(DerelictGL3) {
@@ -95,4 +95,6 @@ mixin template DerelictGL3_PlatformBind() {
             bindMixedFunc(cast(void**)&dwglUseFontOutlinesW, "wglUseFontOutlinesW");
         }
     }
+    alias DerelictGL3_loadPlatform = DerelictGL3_loadWindows;
 }
+alias DerelictGL3_PlatformBind = DerelictGL3_WindowsBind;

@@ -1,0 +1,8 @@
+name "derelict-gl3"
+description "A dynamic binding to the OpenGL library."
+homepage "https://github.com/DerelictOrg/DerelictGL3"
+authors "Mike Parker"
+license "Boost"
+targetPath "lib"
+targetName "DerelictGL3"
+dependency "derelict-util" version="3.0.0"

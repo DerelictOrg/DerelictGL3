@@ -33,7 +33,6 @@ import std.array;
 import derelict.util.loader,
        derelict.util.system;
 import derelict.opengl3.constants,
-       derelict.opengl3.functions,
        derelict.opengl3.types;
 
 package:
@@ -54,6 +53,10 @@ package:
         */
         void initExtensionCache(GLVersion glversion)
         {
+            import derelict.opengl3.versions.base : glGetIntegerv, GL_EXTENSIONS;
+            import derelict.opengl3.functions : glGetStringi;
+            import derelict.opengl3.constants : GL_NUM_EXTENSIONS;
+
             // There's no need to cache extension names using the pre-3.0 glString
             // technique, but the modern style of using glStringi results in a high
             // number of calls when testing for every extension Derelict supports.
@@ -77,6 +80,7 @@ package:
         bool isExtSupported(GLVersion glversion, string name)
         {
             import core.stdc.string : strcmp;
+            import derelict.opengl3.versions.base : glGetString, GL_EXTENSIONS;
 
             // If OpenGL 3+ is loaded, use the cache.
             if(glversion >= GLVersion.GL30) {

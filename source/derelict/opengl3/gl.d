@@ -414,7 +414,7 @@ final class DerelictGLLoader : DerelictGL3Loader {
         bindFunc( cast( void** )&glMatrixMode, "glMatrixMode" );
         bindFunc( cast( void** )&glOrtho, "glOrtho" );
         bindFunc( cast( void** )&glFrustum, "glFrustum" );
-        bindFunc( cast( void** )&glViewport, "glViewport" );
+        //bindFunc( cast( void** )&glViewport, "glViewport" );
         bindFunc( cast( void** )&glPushMatrix, "glPushMatrix" );
         bindFunc( cast( void** )&glPopMatrix, "glPopMatrix" );
         bindFunc( cast( void** )&glLoadIdentity, "glLoadIdentity" );
@@ -434,7 +434,7 @@ final class DerelictGLLoader : DerelictGL3Loader {
         bindFunc( cast( void** )&glIndexPointer, "glIndexPointer" );
         bindFunc( cast( void** )&glTexCoordPointer, "glTexCoordPointer" );
         bindFunc( cast( void** )&glEdgeFlagPointer, "glEdgeFlagPointer" );
-        bindFunc( cast( void** )&glGetPointerv, "glGetPointerv" );
+       // bindFunc( cast( void** )&glGetPointerv, "glGetPointerv" );
         bindFunc( cast( void** )&glArrayElement, "glArrayElement" );
         bindFunc( cast( void** )&glInterleavedArrays, "glInterleavedArrays" );
         bindFunc( cast( void** )&glEnableClientState, "glEnableClientState" );

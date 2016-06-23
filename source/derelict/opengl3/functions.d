@@ -33,71 +33,6 @@ private {
 }
 
 extern( System ) @nogc nothrow {
-    // OpenGL 1.0
-    alias da_glCullFace = void function( GLenum );
-    alias da_glFrontFace = void function( GLenum );
-    alias da_glHint = void function( GLenum,GLenum );
-    alias da_glLineWidth = void function( GLfloat );
-    alias da_glPointSize = void function( GLfloat );
-    alias da_glPolygonMode = void function( GLenum,GLenum );
-    alias da_glScissor = void function( GLint,GLint,GLsizei,GLsizei );
-    alias da_glTexParameterf = void function( GLenum,GLenum,GLfloat );
-    alias da_glTexParameterfv = void function( GLenum,GLenum,const( GLfloat )* );
-    alias da_glTexParameteri = void function( GLenum,GLenum,GLint );
-    alias da_glTexParameteriv = void function( GLenum,GLenum,const( GLint )* );
-    alias da_glTexImage1D = void function( GLenum,GLint,GLint,GLsizei,GLint,GLenum,GLenum,const( GLvoid )* );
-    alias da_glTexImage2D = void function( GLenum,GLint,GLint,GLsizei,GLsizei,GLint,GLenum,GLenum,const( GLvoid )* );
-    alias da_glDrawBuffer = void function( GLenum );
-    alias da_glClear = void function( GLbitfield );
-    alias da_glClearColor = void function( GLclampf,GLclampf,GLclampf,GLclampf );
-    alias da_glClearStencil = void function( GLint );
-    alias da_glClearDepth = void function( GLclampd );
-    alias da_glStencilMask = void function( GLuint );
-    alias da_glColorMask = void function( GLboolean,GLboolean,GLboolean,GLboolean );
-    alias da_glDepthMask = void function( GLboolean );
-    alias da_glDisable = void function( GLenum );
-    alias da_glEnable = void function( GLenum );
-    alias da_glFinish = void function();
-    alias da_glFlush = void function();
-    alias da_glBlendFunc = void function( GLenum,GLenum );
-    alias da_glLogicOp = void function( GLenum );
-    alias da_glStencilFunc = void function( GLenum,GLint,GLuint );
-    alias da_glStencilOp = void function( GLenum,GLenum,GLenum );
-    alias da_glDepthFunc = void function( GLenum );
-    alias da_glPixelStoref = void function( GLenum,GLfloat );
-    alias da_glPixelStorei = void function( GLenum,GLint );
-    alias da_glReadBuffer = void function( GLenum );
-    alias da_glReadPixels = void function( GLint,GLint,GLsizei,GLsizei,GLenum,GLenum,GLvoid* );
-    alias da_glGetBooleanv = void function( GLenum,GLboolean* );
-    alias da_glGetDoublev = void function( GLenum,GLdouble* );
-    alias da_glGetError = GLenum function();
-    alias da_glGetFloatv = void function( GLenum,GLfloat* );
-    alias da_glGetIntegerv = void function( GLenum,GLint* );
-    alias da_glGetString = const( char* ) function( GLenum );
-    alias da_glGetTexImage = void function( GLenum,GLint,GLenum,GLenum,GLvoid* );
-    alias da_glGetTexParameterfv = void function( GLenum,GLenum,GLfloat* );
-    alias da_glGetTexParameteriv = void function( GLenum,GLenum,GLint* );
-    alias da_glGetTexLevelParameterfv = void function( GLenum,GLint,GLenum,GLfloat* );
-    alias da_glGetTexLevelParameteriv = void function( GLenum,GLint,GLenum,GLint* );
-    alias da_glIsEnabled = GLboolean function( GLenum );
-    alias da_glDepthRange = void function( GLclampd,GLclampd );
-    alias da_glViewport = void function( GLint,GLint,GLsizei,GLsizei );
-
-    // OpenGL 1.1
-    alias da_glDrawArrays = void function( GLenum,GLint,GLsizei );
-    alias da_glDrawElements = void function( GLenum,GLsizei,GLenum,const( GLvoid )* );
-    alias da_glGetPointerv = void function( GLenum,GLvoid* );
-    alias da_glPolygonOffset = void function( GLfloat,GLfloat );
-    alias da_glCopyTexImage1D = void function( GLenum,GLint,GLenum,GLint,GLint,GLsizei,GLint );
-    alias da_glCopyTexImage2D = void function( GLenum,GLint,GLenum,GLint,GLint,GLsizei,GLsizei,GLint );
-    alias da_glCopyTexSubImage1D = void function( GLenum,GLint,GLint,GLint,GLint,GLsizei );
-    alias da_glCopyTexSubImage2D = void function( GLenum,GLint,GLint,GLint,GLint,GLint,GLsizei,GLsizei );
-    alias da_glTexSubImage1D = void function( GLenum,GLint,GLint,GLsizei,GLenum,GLenum,const( GLvoid )* );
-    alias da_glTexSubImage2D = void function( GLenum,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLenum,const( GLvoid )* );
-    alias da_glBindTexture = void function( GLenum,GLuint );
-    alias da_glDeleteTextures = void function( GLsizei,const( GLuint )* );
-    alias da_glGenTextures = void function( GLsizei,GLuint* );
-    alias da_glIsTexture = GLboolean function( GLuint );
 
     // OpenGL 1.2
     alias da_glDrawRangeElements = void function( GLenum,GLuint,GLuint,GLsizei,GLenum,const( GLvoid )* );
@@ -339,68 +274,7 @@ extern( System ) @nogc nothrow {
 }
 
 __gshared {
-    da_glCullFace glCullFace;
-    da_glFrontFace glFrontFace;
-    da_glHint glHint;
-    da_glLineWidth glLineWidth;
-    da_glPointSize glPointSize;
-    da_glPolygonMode glPolygonMode;
-    da_glScissor glScissor;
-    da_glTexParameterf glTexParameterf;
-    da_glTexParameterfv glTexParameterfv;
-    da_glTexParameteri glTexParameteri;
-    da_glTexParameteriv glTexParameteriv;
-    da_glTexImage1D glTexImage1D;
-    da_glTexImage2D glTexImage2D;
-    da_glDrawBuffer glDrawBuffer;
-    da_glClear glClear;
-    da_glClearColor glClearColor;
-    da_glClearStencil glClearStencil;
-    da_glClearDepth glClearDepth;
-    da_glStencilMask glStencilMask;
-    da_glColorMask glColorMask;
-    da_glDepthMask glDepthMask;
-    da_glDisable glDisable;
-    da_glEnable glEnable;
-    da_glFinish glFinish;
-    da_glFlush glFlush;
-    da_glBlendFunc glBlendFunc;
-    da_glLogicOp glLogicOp;
-    da_glStencilFunc glStencilFunc;
-    da_glStencilOp glStencilOp;
-    da_glDepthFunc glDepthFunc;
-    da_glPixelStoref glPixelStoref;
-    da_glPixelStorei glPixelStorei;
-    da_glReadBuffer glReadBuffer;
-    da_glReadPixels glReadPixels;
-    da_glGetBooleanv glGetBooleanv;
-    da_glGetDoublev glGetDoublev;
-    da_glGetError glGetError;
-    da_glGetFloatv glGetFloatv;
-    da_glGetIntegerv glGetIntegerv;
-    da_glGetString glGetString;
-    da_glGetTexImage glGetTexImage;
-    da_glGetTexParameterfv glGetTexParameterfv;
-    da_glGetTexParameteriv glGetTexParameteriv;
-    da_glGetTexLevelParameterfv glGetTexLevelParameterfv;
-    da_glGetTexLevelParameteriv glGetTexLevelParameteriv;
-    da_glIsEnabled glIsEnabled;
-    da_glDepthRange glDepthRange;
-    da_glViewport glViewport;
-    da_glDrawArrays glDrawArrays;
-    da_glDrawElements glDrawElements;
-    da_glGetPointerv glGetPointerv;
-    da_glPolygonOffset glPolygonOffset;
-    da_glCopyTexImage1D glCopyTexImage1D;
-    da_glCopyTexImage2D glCopyTexImage2D;
-    da_glCopyTexSubImage1D glCopyTexSubImage1D;
-    da_glCopyTexSubImage2D glCopyTexSubImage2D;
-    da_glTexSubImage1D glTexSubImage1D;
-    da_glTexSubImage2D glTexSubImage2D;
-    da_glBindTexture glBindTexture;
-    da_glDeleteTextures glDeleteTextures;
-    da_glGenTextures glGenTextures;
-    da_glIsTexture glIsTexture;
+
     da_glBlendColor glBlendColor;
     da_glBlendEquation glBlendEquation;
     da_glDrawRangeElements glDrawRangeElements;

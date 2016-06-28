@@ -27,7 +27,6 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl3.versions.base;
 
-import derelict.util.loader;
 import derelict.opengl3.types;
 
 enum : uint {
@@ -298,7 +297,8 @@ extern(System) @nogc nothrow {
     alias da_glIsTexture = GLboolean function(GLuint);
 }
 
-__gshared {
+enum funcs_11 =
+q{
     da_glCullFace glCullFace;
     da_glFrontFace glFrontFace;
     da_glHint glHint;
@@ -361,10 +361,16 @@ __gshared {
     da_glDeleteTextures glDeleteTextures;
     da_glGenTextures glGenTextures;
     da_glIsTexture glIsTexture;
+};
+
+static if(!useContexts) {
+    __gshared {
+        mixin(funcs_11);
+    }
 }
 
 package(derelict.opengl3)
-void loadBaseGL(SharedLibLoader loader)
+GLVersion loadBaseGL(T)(T loader)
 {
     with(loader)
     {
@@ -433,4 +439,5 @@ void loadBaseGL(SharedLibLoader loader)
         bindFunc(cast(void**)&glGenTextures, "glGenTextures");
         bindFunc(cast(void**)&glIsTexture, "glIsTexture");
     }
+    return GLVersion.GL11;
 }

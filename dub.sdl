@@ -6,3 +6,11 @@ license "Boost"
 targetPath "lib"
 targetName "DerelictGL3"
 dependency "derelict-util" version="3.0.0"
+
+configuration "default" {
+    versions "DerelictGL3_NoContexts"
+}
+
+configuration "use-contexts" {
+    versions "DerelictGL3_UseContexts"
+}

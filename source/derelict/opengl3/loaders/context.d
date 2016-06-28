@@ -25,8 +25,32 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3;
+module derelict.opengl3.loaders.context;
+
+import derelict.opengl3.loaders.internal;
+
+mixin(commonImports);
 
 public
-import derelict.opengl3.types,
-       derelict.opengl3.loaders;
+import derelict.opengl3.loaders.core;
+
+static if(useContexts) {
+    struct DerelictGL3Context
+    {
+        mixin(commonMembers);
+        mixin(funcs_11);
+        mixin(funcs_1x);
+        mixin(funcs_2x);
+
+        void load()
+        {
+            if(!DerelictGL3.isLoaded) DerelictGL3.load();
+            _loadedVersion = loadBaseGL(&this);
+            _loadedVersion = loadGL1x(&this);
+            _loadedVersion = loadGL2x(&this);
+        }
+
+        package(derelict.opengl3)
+        void bindFunc(void** ptr, string name) { DerelictGL3.bindFunc(ptr, name); }
+    }
+}

@@ -51,11 +51,14 @@ package:
         This is called from DerelictGL3.reload to reset the extension name cache,
         since supported extensions can potentially vary from context to context.
         */
-        void initExtensionCache(GLVersion glversion)
+        /*
+        void initExtensionCache(T)(T loader, GLVersion glversion)
         {
-            import derelict.opengl3.versions.base : glGetIntegerv, GL_EXTENSIONS;
-            import derelict.opengl3.functions : glGetStringi;
-            import derelict.opengl3.constants : GL_NUM_EXTENSIONS;
+            static if(is(T : SharedLibLoader)) {
+                import derelict.opengl3.versions.base : glGetIntegerv, GL_EXTENSIONS;
+                import derelict.opengl3.functions : glGetStringi;
+                import derelict.opengl3.constants : GL_NUM_EXTENSIONS;
+            }
 
             // There's no need to cache extension names using the pre-3.0 glString
             // technique, but the modern style of using glStringi results in a high
@@ -65,13 +68,19 @@ package:
             if(glversion >= GLVersion.GL30)
             {
                 int count;
-                glGetIntegerv(GL_NUM_EXTENSIONS, &count);
+                static if(is(T: SharedLibLoader))
+                    glGetIntegerv(GL_NUM_EXTENSIONS, &count);
+                else
+                    loader.glGetIntegerv(GL_NUM_EXTENSIONS, &count);
 
                 _extCache.shrinkTo(0);
                 _extCache.reserve(count);
 
                 for(int i=0; i<count; ++i) {
-                    _extCache.put(glGetStringi(GL_EXTENSIONS, i));
+                    static if(is(T : SharedLibLoader))
+                        _extCache.put(glGetStringi(GL_EXTENSIONS, i));
+                    else
+                        _extCache.put(loader.glGetStringi(GL_EXTENSIONS, i));
                 }
             }
         }
@@ -114,7 +123,7 @@ package:
 
             return false;
         }
-
+        */
         void initGLLoader(SharedLibLoader loader)
         {
             static if(Derelict_OS_Mac) _loader = loader;
@@ -122,9 +131,71 @@ package:
             loader.bindFunc(cast(void**)&getCurrentContext, getCurrentContextName);
         }
 
-        bool hasValidContext()
+        bool hasValidContext() { return getCurrentContext() != null; }
+        void *currentContext() { return getCurrentContext(); }
+
+        @property @nogc nothrow
+        GLVersion getContextVersion(T)(T loader)
         {
-            return getCurrentContext() != null;
+            import derelict.opengl3.versions.base : GL_VERSION;
+            static if(is(T : SharedLibLoader)) {
+                import derelict.opengl3.versions.base : glGetString;
+                const(char)* verstr = glGetString(GL_VERSION);
+            }
+            else const(char)* verstr = loader.glGetString(GL_VERSION);
+
+            /* glGetString(GL_VERSION) is guaranteed to return a constant string
+             of the format "[major].[minor].[build] xxxx", where xxxx is vendor-specific
+             information. Here, I'm pulling two characters out of the string, the major
+             and minor version numbers. */
+            char major = *verstr;
+            char minor = *(verstr + 2);
+
+            switch(major) {
+                case '4':
+                    if(minor == '5') return GLVersion.GL45;
+                    else if(minor == '4') return GLVersion.GL44;
+                    else if(minor == '3') return GLVersion.GL43;
+                    else if(minor == '2') return GLVersion.GL42;
+                    else if(minor == '1') return GLVersion.GL41;
+                    else if(minor == '0') return GLVersion.GL40;
+
+                    /* No default condition here, since it's possible for new
+                     minor versions of the 4.x series to be released before
+                     support is added to Derelict. That case is handled outside
+                     of the switch. When no more 4.x versions are released, this
+                     should be changed to return GL40 by default. */
+                    break;
+
+                case '3':
+                    if(minor == '3') return GLVersion.GL33;
+                    else if(minor == '2') return GLVersion.GL32;
+                    else if(minor == '1') return GLVersion.GL31;
+                    else return GLVersion.GL30;
+
+                case '2':
+                    if(minor == '1') return GLVersion.GL21;
+                    else return GLVersion.GL20;
+
+                case '1':
+                    if(minor == '5') return GLVersion.GL15;
+                    else if(minor == '4') return GLVersion.GL14;
+                    else if(minor == '3') return GLVersion.GL13;
+                    else if(minor == '2') return GLVersion.GL12;
+                    else return GLVersion.GL11;
+
+                default:
+                    /* glGetString(GL_VERSION) is guaranteed to return a result
+                     of a specific format, so if this point is reached it is
+                     going to be because a major version higher than what Derelict
+                     supports was encountered. That case is handled outside the
+                     switch. */
+                    break;
+            }
+
+            /* It's highly likely at this point that the version is higher than
+             what Derelict supports, so return the highest supported version. */
+            return GLVersion.HighestSupported;
         }
 
 private:

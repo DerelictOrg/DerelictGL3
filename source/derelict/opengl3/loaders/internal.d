@@ -25,8 +25,38 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3;
+module derelict.opengl3.loaders.internal;
 
-public
-import derelict.opengl3.types,
-       derelict.opengl3.loaders;
+enum commonImports =
+q{
+    import derelict.util.exception,
+           derelict.util.loader,
+           derelict.util.system;
+
+    import derelict.opengl3.internal,
+           derelict.opengl3.types;
+
+    static if(Derelict_OS_Android || Derelict_OS_iOS) {
+        // Android and iOS do not support OpenGL3; use DerelictOpenGLES.
+        static assert(false, "OpenGL is not supported on Android or iOS; use OpenGLES (DerelictGLES) instead");
+    } else static if(Derelict_OS_Windows) {
+        private enum libNames = "opengl32.dll";
+    } else static if(Derelict_OS_Mac) {
+        private enum libNames = "../Frameworks/OpenGL.framework/OpenGL, /Library/Frameworks/OpenGL.framework/OpenGL, /System/Library/Frameworks/OpenGL.framework/OpenGL";
+    } else static if(Derelict_OS_Posix) {
+        private enum libNames = "libGL.so.1,libGL.so";
+    } else
+        static assert(0, "Need to implement OpenGL libNames for this operating system.");
+};
+
+enum commonMembers =
+q{
+    private GLVersion _loadedVersion;
+    private GLVersion _contextVersion;
+
+    @property @nogc nothrow
+    GLVersion loadedVersion() { return _loadedVersion; }
+
+    @property @nogc nothrow
+    GLVersion contextVersion() { return _contextVersion; }
+};

@@ -27,6 +27,7 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl3.ext;
 
+version(None):
 private {
     import derelict.util.system;
     import derelict.opengl3.types;

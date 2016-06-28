@@ -25,8 +25,11 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3;
+module derelict.opengl3.loaders;
 
-public
-import derelict.opengl3.types,
-       derelict.opengl3.loaders;
+import derelict.opengl3.types;
+
+static if(!useContexts) {
+    public import derelict.opengl3.loaders.core;
+}
+else public import derelict.opengl3.loaders.context;

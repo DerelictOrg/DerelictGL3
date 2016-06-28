@@ -38,17 +38,33 @@ static if(useContexts) {
     struct DerelictGL3Context
     {
         mixin(commonMembers);
+        private void* _context;
+
         mixin(funcs_11);
         mixin(funcs_1x);
         mixin(funcs_2x);
+        mixin(funcs_3x);
 
-        void load()
+        GLVersion load()
         {
             if(!DerelictGL3.isLoaded) DerelictGL3.load();
-            _loadedVersion = loadBaseGL(&this);
-            _loadedVersion = loadGL1x(&this);
-            _loadedVersion = loadGL2x(&this);
+
+            _loadedVersion = .loadBaseGL(&this);
+
+            // Make sure a context is active, otherwise this could be meaningless.
+            if(!.currentContext)
+                throw new DerelictException("DerelictGL3.reload failure: An OpenGL context is not currently active.");
+            _context = .currentContext;
+            _contextVersion = getContextVersion();
+
+            _loadedVersion = .loadGL1x(&this);
+            _loadedVersion = .loadGL2x(&this);
+            _loadedVersion = .loadGL3x(&this);
+            return _loadedVersion;
         }
+
+        @property @nogc nothrow
+        bool isCurrent() { return _context == .currentContext; }
 
         package(derelict.opengl3)
         void bindFunc(void** ptr, string name) { DerelictGL3.bindFunc(ptr, name); }

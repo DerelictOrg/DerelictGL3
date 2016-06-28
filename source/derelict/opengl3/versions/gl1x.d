@@ -299,7 +299,7 @@ static if(!useContexts)
 
 GLVersion loadGL1x(T)(T loader)
 {
-    import derelict.opengl3.internal;
+    import derelict.opengl3.loaders.glloader : bindGLFunc;
 
     auto glVer = loader.loadedVersion;
 
@@ -307,15 +307,15 @@ GLVersion loadGL1x(T)(T loader)
     {
         auto maxVer = contextVersion();
 
-        if(maxVer >= GLVersion.GL12) {
+        if(maxVer >= GLVersion.gl12) {
             bindGLFunc(cast(void**)&glDrawRangeElements, "glDrawRangeElements");
             bindGLFunc(cast(void**)&glTexImage3D, "glTexImage3D");
             bindGLFunc(cast(void**)&glTexSubImage3D, "glTexSubImage3D");
             bindGLFunc(cast(void**)&glCopyTexSubImage3D, "glCopyTexSubImage3D");
-            glVer = GLVersion.GL12;
+            glVer = GLVersion.gl12;
         }
 
-        if(maxVer >= GLVersion.GL13) {
+        if(maxVer >= GLVersion.gl13) {
             bindGLFunc(cast(void**)&glActiveTexture, "glActiveTexture");
             bindGLFunc(cast(void**)&glSampleCoverage, "glSampleCoverage");
             bindGLFunc(cast(void**)&glCompressedTexImage3D, "glCompressedTexImage3D");
@@ -325,10 +325,10 @@ GLVersion loadGL1x(T)(T loader)
             bindGLFunc(cast(void**)&glCompressedTexSubImage2D, "glCompressedTexSubImage2D");
             bindGLFunc(cast(void**)&glCompressedTexSubImage1D, "glCompressedTexSubImage1D");
             bindGLFunc(cast(void**)&glGetCompressedTexImage, "glGetCompressedTexImage");
-            glVer = GLVersion.GL13;
+            glVer = GLVersion.gl13;
         }
 
-        if(maxVer >= GLVersion.GL14) {
+        if(maxVer >= GLVersion.gl14) {
             bindGLFunc(cast(void**)&glBlendFuncSeparate, "glBlendFuncSeparate");
             bindGLFunc(cast(void**)&glMultiDrawArrays, "glMultiDrawArrays");
             bindGLFunc(cast(void**)&glMultiDrawElements, "glMultiDrawElements");
@@ -338,10 +338,10 @@ GLVersion loadGL1x(T)(T loader)
             bindGLFunc(cast(void**)&glPointParameteriv, "glPointParameteriv");
             bindGLFunc(cast(void**)&glBlendColor, "glBlendColor");
             bindGLFunc(cast(void**)&glBlendEquation, "glBlendEquation");
-            glVer = GLVersion.GL14;
+            glVer = GLVersion.gl14;
         }
 
-        if(maxVer >= GLVersion.GL15) {
+        if(maxVer >= GLVersion.gl15) {
             bindGLFunc(cast(void**)&glGenQueries, "glGenQueries");
             bindGLFunc(cast(void**)&glDeleteQueries, "glDeleteQueries");
             bindGLFunc(cast(void**)&glIsQuery, "glIsQuery");
@@ -361,7 +361,7 @@ GLVersion loadGL1x(T)(T loader)
             bindGLFunc(cast(void**)&glUnmapBuffer, "glUnmapBuffer");
             bindGLFunc(cast(void**)&glGetBufferParameteriv, "glGetBufferParameteriv");
             bindGLFunc(cast(void**)&glGetBufferPointerv, "glGetBufferPointerv");
-            glVer = GLVersion.GL15;
+            glVer = GLVersion.gl15;
         }
     }
 

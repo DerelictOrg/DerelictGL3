@@ -89,26 +89,40 @@ extern( System ) nothrow {
 
 // This is a Derelict type, not from OpenGL
 enum GLVersion {
-    None,
-    GL11 = 11,
-    GL12 = 12,
-    GL13 = 13,
-    GL14 = 14,
-    GL15 = 15,
-    GL20 = 20,
-    GL21 = 21,
-    GL30 = 30,
-    GL31 = 31,
-    GL32 = 32,
-    GL33 = 33,
-    GL40 = 40,
-    GL41 = 41,
-    GL42 = 42,
-    GL43 = 43,
-    GL44 = 44,
-    GL45 = 45,
-    HighestSupported = GL45,
+    none,
+    gl11 = 11,
+    gl12 = 12,
+    gl13 = 13,
+    gl14 = 14,
+    gl15 = 15,
+    gl20 = 20,
+    gl21 = 21,
+    gl30 = 30,
+    gl31 = 31,
+    gl32 = 32,
+    gl33 = 33,
+    gl40 = 40,
+    gl41 = 41,
+    gl42 = 42,
+    gl43 = 43,
+    gl44 = 44,
+    gl45 = 45,
+    highestSupported = gl45,
 }
 
 version(DerelictGL3_UseContexts) enum useContexts = true;
 else enum useContexts = false;
+
+version(45) enum useGLVersion = GLVersion.gl45;
+else version(44) enum useGLVersion = GLVersion.gl44;
+else version(43) enum useGLVersion = GLVersion.gl43;
+else version(42) enum useGLVersion = GLVersion.gl42;
+else version(41) enum useGLVersion = GLVersion.gl41;
+else version(40) enum useGLVersion = GLVersion.gl40;
+else version(33) enum useGLVersion = GLVersion.gl33;
+else version(32) enum useGLVersion = GLVersion.gl32;
+else version(31) enum useGLVersion = GLVersion.gl31;
+else version(30) enum useGLVersion = GLVersion.gl30;
+else enum useGLVersion = GLVersion.highestSupported;
+
+enum useGL(int v) = (useGLVersion >= v);

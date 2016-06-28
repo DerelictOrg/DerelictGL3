@@ -352,7 +352,7 @@ static if(!useContexts)
 
 GLVersion loadGL2x(T)(T loader)
 {
-    import derelict.opengl3.internal;
+    import derelict.opengl3.loaders.glloader : bindGLFunc;
 
     auto glVer = loader.loadedVersion;
 
@@ -360,7 +360,7 @@ GLVersion loadGL2x(T)(T loader)
     {
         auto maxVer = contextVersion();
 
-        if(maxVer >= GLVersion.GL20) {
+        if(maxVer >= GLVersion.gl20) {
             bindGLFunc(cast(void**)&glBlendEquationSeparate, "glBlendEquationSeparate");
             bindGLFunc(cast(void**)&glDrawBuffers, "glDrawBuffers");
             bindGLFunc(cast(void**)&glStencilOpSeparate, "glStencilOpSeparate");
@@ -453,17 +453,17 @@ GLVersion loadGL2x(T)(T loader)
             bindGLFunc(cast(void**)&glVertexAttrib4uiv, "glVertexAttrib4uiv");
             bindGLFunc(cast(void**)&glVertexAttrib4usv, "glVertexAttrib4usv");
             bindGLFunc(cast(void**)&glVertexAttribPointer, "glVertexAttribPointer");
-            glVer = GLVersion.GL20;
+            glVer = GLVersion.gl20;
         }
 
-        if(maxVer >= GLVersion.GL21) {
+        if(maxVer >= GLVersion.gl21) {
             bindGLFunc(cast(void**)&glUniformMatrix2x3fv, "glUniformMatrix2x3fv");
             bindGLFunc(cast(void**)&glUniformMatrix3x2fv, "glUniformMatrix3x2fv");
             bindGLFunc(cast(void**)&glUniformMatrix2x4fv, "glUniformMatrix2x4fv");
             bindGLFunc(cast(void**)&glUniformMatrix4x2fv, "glUniformMatrix4x2fv");
             bindGLFunc(cast(void**)&glUniformMatrix3x4fv, "glUniformMatrix3x4fv");
             bindGLFunc(cast(void**)&glUniformMatrix4x3fv, "glUniformMatrix4x3fv");
-            glVer = GLVersion.GL21;
+            glVer = GLVersion.gl21;
         }
     }
 

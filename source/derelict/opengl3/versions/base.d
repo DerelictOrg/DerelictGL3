@@ -439,5 +439,5 @@ GLVersion loadBaseGL(T)(T loader)
         bindFunc(cast(void**)&glGenTextures, "glGenTextures");
         bindFunc(cast(void**)&glIsTexture, "glIsTexture");
     }
-    return GLVersion.GL11;
+    return GLVersion.gl11;
 }

@@ -32,7 +32,8 @@ import derelict.opengl3.loaders.internal;
 public
 import derelict.opengl3.versions.base,
        derelict.opengl3.versions.gl1x,
-       derelict.opengl3.versions.gl2x;
+       derelict.opengl3.versions.gl2x,
+       derelict.opengl3.versions.gl3x;
 
 mixin(commonImports);
 
@@ -45,33 +46,33 @@ static if(!useContexts) {
 
         this() { super(libNames); }
 
-        GLVersion reload(GLVersion minVersion = GLVersion.None, GLVersion maxVersion = GLVersion.HighestSupported)
+        GLVersion reload(GLVersion minVersion = GLVersion.none, GLVersion maxVersion = GLVersion.highestSupported)
         {
             import std.string : format;
-            import derelict.opengl3.versions.gl1x : loadGL1x;
 
             // Make sure a context is active, otherwise this could be meaningless.
-            if(!hasValidContext())
+            if(!.currentContext())
                 throw new DerelictException("DerelictGL3.reload failure: An OpenGL context is not currently active.");
 
-            _contextVersion = getContextVersion(this);
-            if(minVersion != GLVersion.None && _contextVersion < minVersion) {
+            _contextVersion = getContextVersion();
+            if(minVersion != GLVersion.none && _contextVersion < minVersion) {
                 throw new DerelictException(format("OpenGL version %s was required, but context only supports %s",
                     minVersion, _contextVersion));
             }
             if(_contextVersion > maxVersion)
                 _contextVersion = maxVersion;
 
-            _loadedVersion = loadGL1x(this);
-            _loadedVersion = loadGL2x(this);
+            _loadedVersion = .loadGL1x(this);
+            _loadedVersion = .loadGL2x(this);
+            _loadedVersion = .loadGL3x(this);
 
             return _loadedVersion;
         }
 
         protected override void loadSymbols()
         {
-            _loadedVersion = loadBaseGL(this);
-            initGLLoader(this);
+            _loadedVersion = .loadBaseGL(this);
+            .initGLLoader(this);
         }
     }
 }
@@ -82,7 +83,7 @@ else {
 
         protected override void loadSymbols()
         {
-            initGLLoader(this);
+            .initGLLoader(this);
         }
     }
 }

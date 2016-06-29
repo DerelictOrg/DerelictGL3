@@ -164,9 +164,9 @@ q{
     da_glFramebufferTextureLayer glFramebufferTextureLayer;
 };
 
-static if(!useContexts && !useGL!30) {
+static if(!useGL!30) {
     mixin(arbFramebufferObjectDecls);
-    mixin(arbFramebufferObjectFuncs);
+    static if(!useContexts) mixin(arbFramebufferObjectFuncs);
 }
 
 enum arbFramebufferObjectLoader =

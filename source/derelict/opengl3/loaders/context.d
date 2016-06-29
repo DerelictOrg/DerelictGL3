@@ -31,10 +31,11 @@ import derelict.opengl3.loaders.internal;
 
 mixin(commonImports);
 
-public
-import derelict.opengl3.loaders.core;
-
 static if(useContexts) {
+    public
+    import derelict.opengl3.loaders.core;
+    import derelict.opengl3.arb;
+
     struct DerelictGL3Context(Args...) if(Args.length)
     {
         mixin(commonMembers);
@@ -61,7 +62,7 @@ static if(useContexts) {
 
             _loadedVersion = .loadGL1x(&this);
             _loadedVersion = .loadGL2x(&this);
-            _loadedVersion = .loadGL3x(&this);
+            static if(useGL!30) _loadedVersion = .loadGL3x(&this);
             return _loadedVersion;
         }
 

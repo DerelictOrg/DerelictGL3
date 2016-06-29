@@ -47,6 +47,9 @@ final class DerelictGL3Loader : SharedLibLoader
     GLVersion reload(GLVersion minVersion = GLVersion.none, GLVersion maxVersion = GLVersion.highestSupported)
     {
         import std.string : format;
+        import derelict.opengl.versions.gl1x : loadGL1x;
+        import derelict.opengl.versions.gl2x : loadGL2x;
+        import derelict.opengl.versions.gl3x : loadGL3x;
 
         // Make sure a context is active, otherwise this could be meaningless.
         if(!getCurrentContext())
@@ -60,9 +63,9 @@ final class DerelictGL3Loader : SharedLibLoader
         if(_contextVersion > maxVersion)
             _contextVersion = maxVersion;
 
-        //_loadedVersion = .loadGL1x();
-        //_loadedVersion = .loadGL2x();
-        //_loadedVersion = .loadGL3x();
+        _loadedVersion = loadGL1x();
+        _loadedVersion = loadGL2x();
+        _loadedVersion = loadGL3x();
 
         return _loadedVersion;
     }

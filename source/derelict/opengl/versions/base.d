@@ -366,7 +366,6 @@ package(derelict.opengl)
 GLVersion loadBaseGL()
 {
     import derelict.opengl.gl : DerelictGL3;
-
     with(DerelictGL3)
     {
         // OpenGL 1.0

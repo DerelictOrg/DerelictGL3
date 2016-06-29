@@ -25,9 +25,9 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.versions.gl1x;
+module derelict.opengl.versions.gl1x;
 
-import derelict.opengl3.types;
+import derelict.opengl.types;
 
 enum : uint
 {
@@ -287,16 +287,15 @@ __gshared {
     da_glUnmapBuffer glUnmapBuffer;
     da_glGetBufferParameteriv glGetBufferParameteriv;
     da_glGetBufferPointerv glGetBufferPointerv;
-};
+}
 
+package(derelict.opengl)
 GLVersion loadGL1x()
 {
-    import derelict.opengl3.loaders.glloader : bindGLFunc;
-
-    auto glVer = DerelictGL3.loadedVersion;
-
-    with(loader)
+    import derelict.opengl.gl : DerelictGL3;
+    with(DerelictGL3)
     {
+        auto glVer = loadedVersion;
         auto maxVer = contextVersion();
 
         if(maxVer >= GLVersion.gl12) {
@@ -355,7 +354,7 @@ GLVersion loadGL1x()
             bindGLFunc(cast(void**)&glGetBufferPointerv, "glGetBufferPointerv");
             glVer = GLVersion.gl15;
         }
-    }
 
-    return glVer;
+        return glVer;
+    }
 }

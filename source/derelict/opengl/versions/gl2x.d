@@ -25,9 +25,9 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.versions.gl2x;
+module derelict.opengl.versions.gl2x;
 
-import derelict.opengl3.types;
+import derelict.opengl.types;
 
 enum : uint
 {
@@ -237,8 +237,7 @@ extern(System) @nogc nothrow {
     alias da_glUniformMatrix4x3fv = void function( GLint,GLsizei,GLboolean,const( GLfloat )* );
 }
 
-enum funcs_2x =
-q{
+__gshared {
     // OpenGL 2.0
     da_glBlendEquationSeparate glBlendEquationSeparate;
     da_glDrawBuffers glDrawBuffers;
@@ -341,23 +340,15 @@ q{
     da_glUniformMatrix4x2fv glUniformMatrix4x2fv;
     da_glUniformMatrix3x4fv glUniformMatrix3x4fv;
     da_glUniformMatrix4x3fv glUniformMatrix4x3fv;
-};
-
-static if(!useContexts)
-{
-    __gshared {
-        mixin(funcs_2x);
-    }
 }
 
-GLVersion loadGL2x(T)(T loader)
+package(derelict.opengl)
+GLVersion loadGL2x()
 {
-    import derelict.opengl3.loaders.glloader : bindGLFunc;
-
-    auto glVer = loader.loadedVersion;
-
-    with(loader)
+    import derelict.opengl.gl : DerelictGL3;
+    with(DerelictGL3)
     {
+        auto glVer = loadedVersion;
         auto maxVer = contextVersion();
 
         if(maxVer >= GLVersion.gl20) {
@@ -465,7 +456,7 @@ GLVersion loadGL2x(T)(T loader)
             bindGLFunc(cast(void**)&glUniformMatrix4x3fv, "glUniformMatrix4x3fv");
             glVer = GLVersion.gl21;
         }
-    }
 
-    return glVer;
+        return glVer;
+    }
 }

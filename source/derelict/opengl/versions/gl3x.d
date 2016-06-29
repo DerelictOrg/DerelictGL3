@@ -25,16 +25,12 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.versions.gl3x;
+module derelict.opengl.versions.gl3x;
 
-import derelict.opengl3.types;
-
-static if(useGL!30):
-
-public
-import derelict.opengl3.versions.arb.framebuffer_object;
+import derelict.opengl.types;
 
 enum : uint {
+    // OpenGL 3.0
     GL_COMPARE_REF_TO_TEXTURE         = 0x884E,
     GL_CLIP_DISTANCE0                 = 0x3000,
     GL_CLIP_DISTANCE1                 = 0x3001,
@@ -135,9 +131,8 @@ enum : uint {
     GL_BUFFER_ACCESS_FLAGS            = 0x911F,
     GL_BUFFER_MAP_LENGTH              = 0x9120,
     GL_BUFFER_MAP_OFFSET              = 0x9121,
-}
 
-static if(useGL!31) enum : uint   {
+    // OpenGL 3.1
     GL_SAMPLER_2D_RECT                = 0x8B63,
     GL_SAMPLER_2D_RECT_SHADOW         = 0x8B64,
     GL_SAMPLER_BUFFER                 = 0x8DC2,
@@ -169,9 +164,8 @@ static if(useGL!31) enum : uint   {
     GL_SIGNED_NORMALIZED              = 0x8F9C,
     GL_PRIMITIVE_RESTART              = 0x8F9D,
     GL_PRIMITIVE_RESTART_INDEX        = 0x8F9E,
-}
 
-static if(useGL!32) enum : uint {
+    // OpenGL 3.2
     GL_CONTEXT_CORE_PROFILE_BIT       = 0x00000001,
     GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002,
     GL_LINES_ADJACENCY                = 0x000A,
@@ -194,11 +188,13 @@ static if(useGL!32) enum : uint {
     GL_MAX_GEOMETRY_OUTPUT_COMPONENTS = 0x9124,
     GL_MAX_FRAGMENT_INPUT_COMPONENTS  = 0x9125,
     GL_CONTEXT_PROFILE_MASK           = 0x9126,
+
+    // OpenGL 3.3
+    GL_VERTEX_ATTRIB_ARRAY_DIVISOR   = 0x88FE
 }
 
-static if(useGL!33) enum uint GL_VERTEX_ATTRIB_ARRAY_DIVISOR   = 0x88FE;
-
 extern(System) @nogc nothrow {
+    // OpenGL 3.0
     alias da_glColorMaski = void function(GLuint,GLboolean,GLboolean,GLboolean,GLboolean);
     alias da_glGetBooleani_v = void function(GLenum,GLuint,GLboolean*);
     alias da_glGetIntegeri_v = void function(GLenum,GLuint,GLint*);
@@ -258,27 +254,23 @@ extern(System) @nogc nothrow {
     alias da_glClearBufferfi = void function(GLenum,GLint,GLfloat,GLint);
     alias da_glGetStringi = const(char)* function(GLenum,GLuint);
 
-    static if(useGL!31) {
-        alias da_glDrawArraysInstanced = void function(GLenum,GLint,GLsizei,GLsizei);
-        alias da_glDrawElementsInstanced = void function(GLenum,GLsizei,GLenum,const(GLvoid)*,GLsizei);
-        alias da_glTexBuffer = void function(GLenum,GLenum,GLuint);
-        alias da_glPrimitiveRestartIndex = void function(GLuint);
-    }
+    // OpenGL 3.1
+    alias da_glDrawArraysInstanced = void function(GLenum,GLint,GLsizei,GLsizei);
+    alias da_glDrawElementsInstanced = void function(GLenum,GLsizei,GLenum,const(GLvoid)*,GLsizei);
+    alias da_glTexBuffer = void function(GLenum,GLenum,GLuint);
+    alias da_glPrimitiveRestartIndex = void function(GLuint);
 
-    static if(useGL!32) {
-        alias da_glGetInteger64i_v = void function(GLenum,GLuint,GLint64*);
-        alias da_glGetBufferParameteri64v = void function(GLenum,GLenum,GLint64*);
-        alias da_glFramebufferTexture = void function(GLenum,GLenum,GLuint,GLint);
-    }
+    // OpenGL 3.2
+    alias da_glGetInteger64i_v = void function(GLenum,GLuint,GLint64*);
+    alias da_glGetBufferParameteri64v = void function(GLenum,GLenum,GLint64*);
+    alias da_glFramebufferTexture = void function(GLenum,GLenum,GLuint,GLint);
 
-    static if(useGL!33) alias da_glVertexAttribDivisor = void function(GLuint,GLuint);
-
+    // OpenGL 3.3
+    alias da_glVertexAttribDivisor = void function(GLuint,GLuint);
 }
 
-mixin(arbFramebufferObjectDecls);
-
-enum core_funcs_30 =
-q{
+__gshared {
+    // OpenGL 3.0
     da_glColorMaski glColorMaski;
     da_glGetBooleani_v glGetBooleani_v;
     da_glGetIntegeri_v glGetIntegeri_v;
@@ -337,63 +329,33 @@ q{
     da_glClearBufferfv glClearBufferfv;
     da_glClearBufferfi glClearBufferfi;
     da_glGetStringi glGetStringi;
-};
-enum funcs_30 = core_funcs_30 ~ arbFramebufferObjectFuncs;
 
-static if(useGL!31) {
-    enum core_funcs_31 =
-q{
+    // OpenGL 3.1
     da_glDrawArraysInstanced glDrawArraysInstanced;
     da_glDrawElementsInstanced glDrawElementsInstanced;
     da_glTexBuffer glTexBuffer;
     da_glPrimitiveRestartIndex glPrimitiveRestartIndex;
-};
-    enum funcs_31 = core_funcs_31;
-}
-else enum funcs_31 = "";
 
-static if(useGL!32)  {
-    enum core_funcs_32 =
-q{
+    // OpenGL 3.2
     da_glGetInteger64i_v glGetInteger64i_v;
     da_glGetBufferParameteri64v glGetBufferParameteri64v;
     da_glFramebufferTexture glFramebufferTexture;
-};
-    enum funcs_32 = core_funcs_32;
-}
-else enum funcs_32 = "";
 
-static if(useGL!33)  {
-    enum core_funcs_33 =
-q{
+    // OpenGL 3.3
     da_glVertexAttribDivisor glVertexAttribDivisor;
-};
-    enum funcs_33 = core_funcs_33;
-}
-else enum funcs_33 = "";
-
-enum funcs_3x = funcs_30 ~ funcs_31 ~ funcs_32 ~ funcs_33;
-
-static if(!useContexts)
-{
-    __gshared {
-        mixin(funcs_3x);
-    }
 }
 
-GLVersion loadGL3x(T)(T loader)
+package(derelict.opengl)
+GLVersion loadGL3x()
 {
-    import derelict.opengl3.loaders.glloader : bindGLFunc;
-
-    auto glVer = loader.loadedVersion;
-
-    with(loader)
+    import derelict.opengl.gl : DerelictGL3;
+    with(DerelictGL3)
     {
-        auto maxVer = contextVersion();
+        auto glVer = loadedVersion;
+        auto maxVer = contextVersion;
 
-        static if(useGL!30) if(maxVer >= GLVersion.gl30) {
-            mixin(arbFramebufferObjectLoader);
-
+        if(maxVer >= GLVersion.gl30) {
+            //load_ARB_framebuffer_object(true);
             //load_ARB_map_buffer_range(true);
             //load_ARB_vertex_array_object(true);
 
@@ -458,7 +420,7 @@ GLVersion loadGL3x(T)(T loader)
             glVer = GLVersion.gl30;
         }
 
-        static if(useGL!31) if(maxVer >= GLVersion.gl31) {
+        if(maxVer >= GLVersion.gl31) {
            // load_ARB_copy_buffer(true);
            // load_ARB_uniform_buffer_object(true);
 
@@ -469,7 +431,7 @@ GLVersion loadGL3x(T)(T loader)
             glVer = GLVersion.gl31;
         }
 
-        static if(useGL!32) if(maxVer >= GLVersion.gl32) {
+        if(maxVer >= GLVersion.gl32) {
            // load_ARB_draw_elements_base_vertex(true);
            // load_ARB_provoking_vertex(true);
            // load_ARB_sync(true);
@@ -481,7 +443,7 @@ GLVersion loadGL3x(T)(T loader)
             glVer = GLVersion.gl32;
         }
 
-        static if(useGL!33) if(maxVer >= GLVersion.gl33) {
+        if(maxVer >= GLVersion.gl33) {
            // load_ARB_blend_func_extended(true);
            // load_ARB_sampler_objects(true);
            // load_ARB_timer_query(true);
@@ -490,7 +452,7 @@ GLVersion loadGL3x(T)(T loader)
             bindGLFunc(cast(void**)&glVertexAttribDivisor, "glVertexAttribDivisor");
             glVer = GLVersion.gl33;
         }
-    }
 
-    return glVer;
+        return glVer;
+    }
 }

@@ -29,8 +29,10 @@ module derelict.opengl3.versions.arb.framebuffer_object;
 
 import derelict.opengl3.types;
 
-enum GL_ARB_framebuffer_object = "GL_ARB_framebuffer_object";
+enum ARB_framebuffer_object = ExtensionInfo(arbFramebufferObjectFuncs, GLVersion.gl30);
 
+enum arbFramebufferObjectDecls =
+q{
 enum : uint
 {
     GL_INVALID_FRAMEBUFFER_OPERATION  = 0x0506,
@@ -133,7 +135,7 @@ extern(System) @nogc nothrow {
     alias da_glBlitFramebuffer = void function(GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum);
     alias da_glRenderbufferStorageMultisample = void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei);
     alias da_glFramebufferTextureLayer = void function(GLenum, GLenum, GLuint, GLint, GLint);
-}
+}};
 
 enum arbFramebufferObjectFuncs =
 q{
@@ -162,41 +164,47 @@ q{
     da_glFramebufferTextureLayer glFramebufferTextureLayer;
 };
 
-static if(!useContexts) {
+static if(!useContexts && !useGL!30) {
+    mixin(arbFramebufferObjectDecls);
     mixin(arbFramebufferObjectFuncs);
 }
 
-package(derelict.opengl3)
-void loadARBFramebufferObject(T)(T loader, bool doThrow = false)
-{
-    import derelict.opengl3.loaders.glloader : bindGLFunc;
+enum arbFramebufferObjectLoader =
+q{
+    bindGLFunc(cast(void**)&glIsRenderbuffer, "glIsRenderbuffer");
+    bindGLFunc(cast(void**)&glBindRenderbuffer, "glBindRenderbuffer");
+    bindGLFunc(cast(void**)&glDeleteRenderbuffers, "glDeleteRenderbuffers");
+    bindGLFunc(cast(void**)&glGenRenderbuffers, "glGenRenderbuffers");
+    bindGLFunc(cast(void**)&glRenderbufferStorage, "glRenderbufferStorage");
+    bindGLFunc(cast(void**)&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv");
+    bindGLFunc(cast(void**)&glIsFramebuffer, "glIsFramebuffer");
+    bindGLFunc(cast(void**)&glBindFramebuffer, "glBindFramebuffer");
+    bindGLFunc(cast(void**)&glDeleteFramebuffers, "glDeleteFramebuffers");
+    bindGLFunc(cast(void**)&glGenFramebuffers, "glGenFramebuffers");
+    bindGLFunc(cast(void**)&glCheckFramebufferStatus, "glCheckFramebufferStatus");
+    bindGLFunc(cast(void**)&glFramebufferTexture1D, "glFramebufferTexture1D");
+    bindGLFunc(cast(void**)&glFramebufferTexture2D, "glFramebufferTexture2D");
+    bindGLFunc(cast(void**)&glFramebufferTexture3D, "glFramebufferTexture3D");
+    bindGLFunc(cast(void**)&glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
+    bindGLFunc(cast(void**)&glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv");
+    bindGLFunc(cast(void**)&glGenerateMipmap, "glGenerateMipmap");
+    bindGLFunc(cast(void**)&glBlitFramebuffer, "glBlitFramebuffer");
+    bindGLFunc(cast(void**)&glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample");
+    bindGLFunc(cast(void**)&glFramebufferTextureLayer, "glFramebufferTextureLayer");
+    _isARBFramebufferObject = true;
+};
 
-    with(loader) try {
-        if(loadedVersion >= GLVersion.gl30) return;
+static if(!useGL!30) {
+    package(derelict.opengl3)
+    void loadARBFramebufferObject(T)(T loader, bool doThrow = false)
+    {
+        import derelict.opengl3.loaders.glloader : bindGLFunc;
 
-        bindGLFunc(cast(void**)&glIsRenderbuffer, "glIsRenderbuffer");
-        bindGLFunc(cast(void**)&glBindRenderbuffer, "glBindRenderbuffer");
-        bindGLFunc(cast(void**)&glDeleteRenderbuffers, "glDeleteRenderbuffers");
-        bindGLFunc(cast(void**)&glGenRenderbuffers, "glGenRenderbuffers");
-        bindGLFunc(cast(void**)&glRenderbufferStorage, "glRenderbufferStorage");
-        bindGLFunc(cast(void**)&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv");
-        bindGLFunc(cast(void**)&glIsFramebuffer, "glIsFramebuffer");
-        bindGLFunc(cast(void**)&glBindFramebuffer, "glBindFramebuffer");
-        bindGLFunc(cast(void**)&glDeleteFramebuffers, "glDeleteFramebuffers");
-        bindGLFunc(cast(void**)&glGenFramebuffers, "glGenFramebuffers");
-        bindGLFunc(cast(void**)&glCheckFramebufferStatus, "glCheckFramebufferStatus");
-        bindGLFunc(cast(void**)&glFramebufferTexture1D, "glFramebufferTexture1D");
-        bindGLFunc(cast(void**)&glFramebufferTexture2D, "glFramebufferTexture2D");
-        bindGLFunc(cast(void**)&glFramebufferTexture3D, "glFramebufferTexture3D");
-        bindGLFunc(cast(void**)&glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
-        bindGLFunc(cast(void**)&glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv");
-        bindGLFunc(cast(void**)&glGenerateMipmap, "glGenerateMipmap");
-        bindGLFunc(cast(void**)&glBlitFramebuffer, "glBlitFramebuffer");
-        bindGLFunc(cast(void**)&glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample");
-        bindGLFunc(cast(void**)&glFramebufferTextureLayer, "glFramebufferTextureLayer");
-        _isARBFramebufferObject = true;
-    } catch(Exception e) {
-        _isARBFramebufferObject = false;
-        if(doThrow) throw e;
+        with(loader) try {
+            mixin(arbFramebufferObjectLoader);
+        } catch(Exception e) {
+            _isARBFramebufferObject = false;
+            if(doThrow) throw e;
+        }
     }
 }

@@ -123,6 +123,13 @@ else version(33) enum useGLVersion = GLVersion.gl33;
 else version(32) enum useGLVersion = GLVersion.gl32;
 else version(31) enum useGLVersion = GLVersion.gl31;
 else version(30) enum useGLVersion = GLVersion.gl30;
+else version(11) enum useGLVersion = GLVersion.gl21;
 else enum useGLVersion = GLVersion.highestSupported;
 
 enum useGL(int v) = (useGLVersion >= v);
+
+struct ExtensionInfo
+{
+    string funcString;
+    GLVersion coreVersion;
+}

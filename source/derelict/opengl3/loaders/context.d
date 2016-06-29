@@ -35,7 +35,7 @@ public
 import derelict.opengl3.loaders.core;
 
 static if(useContexts) {
-    struct DerelictGL3Context
+    struct DerelictGL3Context(Args...) if(Args.length)
     {
         mixin(commonMembers);
         private void* _context;
@@ -43,7 +43,9 @@ static if(useContexts) {
         mixin(funcs_11);
         mixin(funcs_1x);
         mixin(funcs_2x);
-        mixin(funcs_3x);
+        static if(useGL!30) mixin(funcs_3x);
+
+        mixin(genExtensions!Args);
 
         GLVersion load()
         {
@@ -68,5 +70,15 @@ static if(useContexts) {
 
         package(derelict.opengl3)
         void bindFunc(void** ptr, string name) { DerelictGL3.bindFunc(ptr, name); }
+    }
+
+    private string genExtensions(Args...)()
+    {
+        string ret = "";
+        foreach(ext; Args) {
+            static if(ext.coreVersion > useGLVersion)
+                ret ~= ext.funcString;
+        }
+        return ret;
     }
 }

@@ -34,7 +34,7 @@ static if(useGL!30):
 public
 import derelict.opengl3.versions.arb.framebuffer_object;
 
-static if(useGL!30) enum : uint {
+enum : uint {
     GL_COMPARE_REF_TO_TEXTURE         = 0x884E,
     GL_CLIP_DISTANCE0                 = 0x3000,
     GL_CLIP_DISTANCE1                 = 0x3001,
@@ -199,66 +199,64 @@ static if(useGL!32) enum : uint {
 static if(useGL!33) enum uint GL_VERTEX_ATTRIB_ARRAY_DIVISOR   = 0x88FE;
 
 extern(System) @nogc nothrow {
-    static if(useGL!30) {
-        alias da_glColorMaski = void function( GLuint,GLboolean,GLboolean,GLboolean,GLboolean );
-        alias da_glGetBooleani_v = void function( GLenum,GLuint,GLboolean* );
-        alias da_glGetIntegeri_v = void function( GLenum,GLuint,GLint* );
-        alias da_glEnablei = void function( GLenum,GLuint );
-        alias da_glDisablei = void function( GLenum,GLuint );
-        alias da_glIsEnabledi = GLboolean function( GLenum,GLuint );
-        alias da_glBeginTransformFeedback = void function( GLenum );
-        alias da_glEndTransformFeedback = void function();
-        alias da_glBindBufferRange = void function( GLenum,GLuint,GLuint,GLintptr,GLsizeiptr );
-        alias da_glBindBufferBase = void function( GLenum,GLuint,GLuint );
-        alias da_glTransformFeedbackVaryings = void function( GLuint,GLsizei,const( GLchar* )*,GLenum );
-        alias da_glGetTransformFeedbackVarying = void function( GLuint,GLuint,GLsizei,GLsizei*,GLsizei*,GLenum*,GLchar* );
-        alias da_glClampColor = void function( GLenum,GLenum );
-        alias da_glBeginConditionalRender = void function( GLuint,GLenum );
-        alias da_glEndConditionalRender = void function();
-        alias da_glVertexAttribIPointer = void function( GLuint,GLint,GLenum,GLsizei,const( GLvoid )* );
-        alias da_glGetVertexAttribIiv = void function( GLuint,GLenum,GLint* );
-        alias da_glGetVertexAttribIuiv = void function( GLuint,GLenum,GLuint* );
-        alias da_glVertexAttribI1i = void function( GLuint,GLint );
-        alias da_glVertexAttribI2i = void function( GLuint,GLint,GLint );
-        alias da_glVertexAttribI3i = void function( GLuint,GLint,GLint,GLint );
-        alias da_glVertexAttribI4i = void function( GLuint,GLint,GLint,GLint,GLint );
-        alias da_glVertexAttribI1ui = void function( GLuint,GLuint );
-        alias da_glVertexAttribI2ui = void function( GLuint,GLuint,GLuint );
-        alias da_glVertexAttribI3ui = void function( GLuint,GLuint,GLuint,GLuint );
-        alias da_glVertexAttribI4ui = void function( GLuint,GLuint,GLuint,GLuint,GLuint );
-        alias da_glVertexAttribI1iv = void function( GLuint,const( GLint )* );
-        alias da_glVertexAttribI2iv = void function( GLuint,const( GLint )* );
-        alias da_glVertexAttribI3iv = void function( GLuint,const( GLint )* );
-        alias da_glVertexAttribI4iv = void function( GLuint,const( GLint )* );
-        alias da_glVertexAttribI1uiv = void function( GLuint,const( GLuint )* );
-        alias da_glVertexAttribI2uiv = void function( GLuint,const( GLuint )* );
-        alias da_glVertexAttribI3uiv = void function( GLuint,const( GLuint )* );
-        alias da_glVertexAttribI4uiv = void function( GLuint,const( GLuint )* );
-        alias da_glVertexAttribI4bv = void function( GLuint,const( GLbyte )* );
-        alias da_glVertexAttribI4sv = void function( GLuint,const( GLshort )* );
-        alias da_glVertexAttribI4ubv = void function( GLuint,const( GLubyte )* );
-        alias da_glVertexAttribI4usv = void function( GLuint,const( GLushort )* );
-        alias da_glGetUniformuiv = void function( GLuint,GLint,GLuint* );
-        alias da_glBindFragDataLocation = void function( GLuint,GLuint,const( GLchar )* );
-        alias da_glGetFragDataLocation = GLint function( GLuint,const( GLchar )* );
-        alias da_glUniform1ui = void function( GLint,GLuint );
-        alias da_glUniform2ui = void function( GLint,GLuint,GLuint );
-        alias da_glUniform3ui = void function( GLint,GLuint,GLuint,GLuint );
-        alias da_glUniform4ui = void function( GLint,GLuint,GLuint,GLuint,GLuint );
-        alias da_glUniform1uiv = void function( GLint,GLsizei,const( GLuint )* );
-        alias da_glUniform2uiv = void function( GLint,GLsizei,const( GLuint )* );
-        alias da_glUniform3uiv = void function( GLint,GLsizei,const( GLuint )* );
-        alias da_glUniform4uiv = void function( GLint,GLsizei,const( GLuint )* );
-        alias da_glTexParameterIiv = void function( GLenum,GLenum,const( GLint )* );
-        alias da_glTexParameterIuiv = void function( GLenum,GLenum,const( GLuint )* );
-        alias da_glGetTexParameterIiv = void function( GLenum,GLenum,GLint* );
-        alias da_glGetTexParameterIuiv = void function( GLenum,GLenum,GLuint* );
-        alias da_glClearBufferiv = void function( GLenum,GLint,const( GLint )* );
-        alias da_glClearBufferuiv = void function( GLenum,GLint,const( GLuint )* );
-        alias da_glClearBufferfv = void function( GLenum,GLint,const( GLfloat )* );
-        alias da_glClearBufferfi = void function( GLenum,GLint,GLfloat,GLint );
-        alias da_glGetStringi = const( char )* function( GLenum,GLuint );
-    }
+    alias da_glColorMaski = void function( GLuint,GLboolean,GLboolean,GLboolean,GLboolean );
+    alias da_glGetBooleani_v = void function( GLenum,GLuint,GLboolean* );
+    alias da_glGetIntegeri_v = void function( GLenum,GLuint,GLint* );
+    alias da_glEnablei = void function( GLenum,GLuint );
+    alias da_glDisablei = void function( GLenum,GLuint );
+    alias da_glIsEnabledi = GLboolean function( GLenum,GLuint );
+    alias da_glBeginTransformFeedback = void function( GLenum );
+    alias da_glEndTransformFeedback = void function();
+    alias da_glBindBufferRange = void function( GLenum,GLuint,GLuint,GLintptr,GLsizeiptr );
+    alias da_glBindBufferBase = void function( GLenum,GLuint,GLuint );
+    alias da_glTransformFeedbackVaryings = void function( GLuint,GLsizei,const( GLchar* )*,GLenum );
+    alias da_glGetTransformFeedbackVarying = void function( GLuint,GLuint,GLsizei,GLsizei*,GLsizei*,GLenum*,GLchar* );
+    alias da_glClampColor = void function( GLenum,GLenum );
+    alias da_glBeginConditionalRender = void function( GLuint,GLenum );
+    alias da_glEndConditionalRender = void function();
+    alias da_glVertexAttribIPointer = void function( GLuint,GLint,GLenum,GLsizei,const( GLvoid )* );
+    alias da_glGetVertexAttribIiv = void function( GLuint,GLenum,GLint* );
+    alias da_glGetVertexAttribIuiv = void function( GLuint,GLenum,GLuint* );
+    alias da_glVertexAttribI1i = void function( GLuint,GLint );
+    alias da_glVertexAttribI2i = void function( GLuint,GLint,GLint );
+    alias da_glVertexAttribI3i = void function( GLuint,GLint,GLint,GLint );
+    alias da_glVertexAttribI4i = void function( GLuint,GLint,GLint,GLint,GLint );
+    alias da_glVertexAttribI1ui = void function( GLuint,GLuint );
+    alias da_glVertexAttribI2ui = void function( GLuint,GLuint,GLuint );
+    alias da_glVertexAttribI3ui = void function( GLuint,GLuint,GLuint,GLuint );
+    alias da_glVertexAttribI4ui = void function( GLuint,GLuint,GLuint,GLuint,GLuint );
+    alias da_glVertexAttribI1iv = void function( GLuint,const( GLint )* );
+    alias da_glVertexAttribI2iv = void function( GLuint,const( GLint )* );
+    alias da_glVertexAttribI3iv = void function( GLuint,const( GLint )* );
+    alias da_glVertexAttribI4iv = void function( GLuint,const( GLint )* );
+    alias da_glVertexAttribI1uiv = void function( GLuint,const( GLuint )* );
+    alias da_glVertexAttribI2uiv = void function( GLuint,const( GLuint )* );
+    alias da_glVertexAttribI3uiv = void function( GLuint,const( GLuint )* );
+    alias da_glVertexAttribI4uiv = void function( GLuint,const( GLuint )* );
+    alias da_glVertexAttribI4bv = void function( GLuint,const( GLbyte )* );
+    alias da_glVertexAttribI4sv = void function( GLuint,const( GLshort )* );
+    alias da_glVertexAttribI4ubv = void function( GLuint,const( GLubyte )* );
+    alias da_glVertexAttribI4usv = void function( GLuint,const( GLushort )* );
+    alias da_glGetUniformuiv = void function( GLuint,GLint,GLuint* );
+    alias da_glBindFragDataLocation = void function( GLuint,GLuint,const( GLchar )* );
+    alias da_glGetFragDataLocation = GLint function( GLuint,const( GLchar )* );
+    alias da_glUniform1ui = void function( GLint,GLuint );
+    alias da_glUniform2ui = void function( GLint,GLuint,GLuint );
+    alias da_glUniform3ui = void function( GLint,GLuint,GLuint,GLuint );
+    alias da_glUniform4ui = void function( GLint,GLuint,GLuint,GLuint,GLuint );
+    alias da_glUniform1uiv = void function( GLint,GLsizei,const( GLuint )* );
+    alias da_glUniform2uiv = void function( GLint,GLsizei,const( GLuint )* );
+    alias da_glUniform3uiv = void function( GLint,GLsizei,const( GLuint )* );
+    alias da_glUniform4uiv = void function( GLint,GLsizei,const( GLuint )* );
+    alias da_glTexParameterIiv = void function( GLenum,GLenum,const( GLint )* );
+    alias da_glTexParameterIuiv = void function( GLenum,GLenum,const( GLuint )* );
+    alias da_glGetTexParameterIiv = void function( GLenum,GLenum,GLint* );
+    alias da_glGetTexParameterIuiv = void function( GLenum,GLenum,GLuint* );
+    alias da_glClearBufferiv = void function( GLenum,GLint,const( GLint )* );
+    alias da_glClearBufferuiv = void function( GLenum,GLint,const( GLuint )* );
+    alias da_glClearBufferfv = void function( GLenum,GLint,const( GLfloat )* );
+    alias da_glClearBufferfi = void function( GLenum,GLint,GLfloat,GLint );
+    alias da_glGetStringi = const( char )* function( GLenum,GLuint );
 
     static if(useGL!31) {
         alias da_glDrawArraysInstanced = void function( GLenum,GLint,GLsizei,GLsizei );
@@ -277,8 +275,9 @@ extern(System) @nogc nothrow {
 
 }
 
-static if(useGL!30)  {
-    enum core_funcs_30 =
+mixin(arbFramebufferObjectDecls);
+
+enum core_funcs_30 =
 q{
     da_glColorMaski glColorMaski;
     da_glGetBooleani_v glGetBooleani_v;
@@ -339,9 +338,7 @@ q{
     da_glClearBufferfi glClearBufferfi;
     da_glGetStringi glGetStringi;
 };
-    enum funcs_30 = core_funcs_30 ~ arbFramebufferObjectFuncs;
-}
-else enum funcs_30 = "";
+enum funcs_30 = core_funcs_30 ~ arbFramebufferObjectFuncs;
 
 static if(useGL!31) {
     enum core_funcs_31 =
@@ -375,13 +372,14 @@ q{
 }
 else enum funcs_33 = "";
 
+enum funcs_3x = funcs_30 ~ funcs_31 ~ funcs_32 ~ funcs_33;
+
 static if(!useContexts)
 {
     __gshared {
-        mixin(core_funcs_30 ~ core_funcs_31 ~ core_funcs_32 ~ core_funcs_33);
+        mixin(funcs_3x);
     }
 }
-else enum funcs_3x = funcs_30 ~ funcs_31 ~ funcs_32 ~ funcs_33;
 
 GLVersion loadGL3x(T)(T loader)
 {
@@ -394,7 +392,8 @@ GLVersion loadGL3x(T)(T loader)
         auto maxVer = contextVersion();
 
         static if(useGL!30) if(maxVer >= GLVersion.gl30) {
-            loadARBFramebufferObject(loader, true);
+            mixin(arbFramebufferObjectLoader);
+
             //load_ARB_map_buffer_range(true);
             //load_ARB_vertex_array_object(true);
 

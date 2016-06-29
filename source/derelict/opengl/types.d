@@ -25,7 +25,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl3.types;
+module derelict.opengl.types;
 
 alias GLenum = uint;
 alias GLvoid = void;
@@ -108,29 +108,4 @@ enum GLVersion {
     gl44 = 44,
     gl45 = 45,
     highestSupported = gl45,
-}
-
-version(DerelictGL3_UseContexts) enum useContexts = true;
-else enum useContexts = false;
-
-version(45) enum useGLVersion = GLVersion.gl45;
-else version(44) enum useGLVersion = GLVersion.gl44;
-else version(43) enum useGLVersion = GLVersion.gl43;
-else version(42) enum useGLVersion = GLVersion.gl42;
-else version(41) enum useGLVersion = GLVersion.gl41;
-else version(40) enum useGLVersion = GLVersion.gl40;
-else version(33) enum useGLVersion = GLVersion.gl33;
-else version(32) enum useGLVersion = GLVersion.gl32;
-else version(31) enum useGLVersion = GLVersion.gl31;
-else version(30) enum useGLVersion = GLVersion.gl30;
-else version(11) enum useGLVersion = GLVersion.gl21;
-else enum useGLVersion = GLVersion.highestSupported;
-
-enum useGL(int v) = (useGLVersion >= v);
-
-struct ExtensionInfo
-{
-    string funcString;
-    string loaderString;
-    GLVersion coreVersion;
 }

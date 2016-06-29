@@ -238,8 +238,7 @@ extern(System) @nogc nothrow {
     alias da_glGetBufferPointerv = void function( GLenum,GLenum,GLvoid* );
 }
 
-enum funcs_1x =
-q{
+__gshared {
     // OpenGL 1.2
     da_glDrawRangeElements glDrawRangeElements;
     da_glTexImage3D glTexImage3D;
@@ -290,18 +289,11 @@ q{
     da_glGetBufferPointerv glGetBufferPointerv;
 };
 
-static if(!useContexts)
-{
-    __gshared {
-        mixin(funcs_1x);
-    }
-}
-
-GLVersion loadGL1x(T)(T loader)
+GLVersion loadGL1x()
 {
     import derelict.opengl3.loaders.glloader : bindGLFunc;
 
-    auto glVer = loader.loadedVersion;
+    auto glVer = DerelictGL3.loadedVersion;
 
     with(loader)
     {

@@ -63,58 +63,37 @@ q{
     GLVersion contextVersion() { return _contextVersion; }
 
     // Assumes that name is null-terminated, i.e. a string literal
-    bool isExtSupported(GLVersion glversion, string name)
+    bool isExtSupported(string name)
     {
         import core.stdc.string : strstr;
 
-        static if(useGL!30) {
-            // If OpenGL 3+ is loaded, use the cache.
+        if(_contextVersion >= GLVersion.gl30) {
             import core.stdc.string : strcmp;
-            if(glversion >= GLVersion.gl30) {
-                foreach(extname; _extCache.data) {
-                    if(strcmp(extname, name.ptr) == 0)
-                        return true;
-                }
-                return false;
-            }
-        }
-
-        auto cstr = glGetString(GL_EXTENSIONS);
-        auto res = strstr(cstr, name.ptr);
-        while(res) {
-            // It's possible that the extension name is actually a
-            // substring of another extension. If not, then the
-            // character following the name in the extension string
-            // should be a space (or possibly the null character).
-            if(res[name.length] == ' ' || res[name.length] == '\0')
+            foreach(extname; _extCache.data) {
+            if(strcmp(extname, name.ptr) == 0)
                 return true;
-            res = strstr(res + name.length, name.ptr);
+            }
+            return false;
         }
-
-        return false;
-    }
-
-
-    static if(useGL!30) private
-    void initExtensionCache()
-    {
-        // There's no need to cache extension names using the pre-3.0 glString
-        // technique, but the modern style of using glStringi results in a high
-        // number of calls when testing for every extension Derelict supports.
-        // This causes extreme slowdowns when using GLSL-Debugger. The cache
-        // solves that problem. Can't hurt load time, either.
-        if(_loadedVersion >= GLVersion.gl30)
-        {
-            int count;
-            glGetIntegerv(GL_NUM_EXTENSIONS, &count);
-
-            _extCache.shrinkTo(0);
-            _extCache.reserve(count);
-
-            for(int i=0; i<count; ++i)
-                _extCache.put(glGetStringi(GL_EXTENSIONS, i));
+        else {
+            import std.stdio; writeln("Looking for ", name);
+            auto cstr = glGetString(GL_EXTENSIONS);
+            auto res = strstr(cstr, name.ptr);
+            while(res) {
+                // It's possible that the extension name is actually a
+                // substring of another extension. If not, then the
+                // character following the name in the extension string
+                // should be a space (or possibly the null character).
+                if(res[name.length] == ' ' || res[name.length] == '\0')
+                    return true;
+                res = strstr(res + name.length, name.ptr);
+            }
+            return false;
         }
     }
+
+
+    void initExtensionCache() {  fillExtensionCache(&_extCache, _loadedVersion, _contextVersion);  }
 
     private
     GLVersion getContextVersion()

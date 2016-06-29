@@ -131,5 +131,6 @@ enum useGL(int v) = (useGLVersion >= v);
 struct ExtensionInfo
 {
     string funcString;
+    string loaderString;
     GLVersion coreVersion;
 }

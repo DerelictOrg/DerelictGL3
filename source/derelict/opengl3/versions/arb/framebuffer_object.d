@@ -29,7 +29,7 @@ module derelict.opengl3.versions.arb.framebuffer_object;
 
 import derelict.opengl3.types;
 
-enum ARB_framebuffer_object = ExtensionInfo(arbFramebufferObjectFuncs, GLVersion.gl30);
+enum ARB_framebuffer_object = ExtensionInfo(arbFramebufferObjectFuncs, arbFramebufferObjectTest, GLVersion.gl30);
 
 enum arbFramebufferObjectDecls =
 q{
@@ -194,7 +194,10 @@ q{
     _isARBFramebufferObject = true;
 };
 
-static if(!useGL!30) {
+enum arbFramebufferObjectTest = `if(isExtSupported("GL_ARB_framebuffer_object")) {` ~
+            arbFramebufferObjectLoader ~ "}";
+
+static if(!useContexts && !useGL!30) {
     package(derelict.opengl3)
     void loadARBFramebufferObject(T)(T loader, bool doThrow = false)
     {

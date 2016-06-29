@@ -27,10 +27,11 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl3.loaders.glloader;
 
+import std.array;
+
 import derelict.util.loader,
        derelict.util.system;
-import derelict.opengl3.constants,
-       derelict.opengl3.types;
+import derelict.opengl3.types;
 
 package(derelict.opengl3):
         // Assumes that symName is null-terminated, i.e. a string literal
@@ -54,6 +55,27 @@ package(derelict.opengl3):
         @property @nogc nothrow
         void* currentContext() { return getCurrentContext(); }
 
+        bool fillExtensionCache(Appender!(const(char)*[])* cache, GLVersion loadedVersion, GLVersion contextVersion)
+        {
+            import derelict.opengl3.versions.base : GL_EXTENSIONS;
+
+            if(contextVersion < GLVersion.gl30) return false;
+
+            bindGLFunc(cast(void**)&getStringi, "glGetStringi");
+            bindGLFunc(cast(void**)&getIntegerv, "glGetIntegerv");
+
+            int count;
+            getIntegerv(GL_NUM_EXTENSIONS, &count);
+
+            cache.shrinkTo(0);
+            cache.reserve(count);
+
+            for(int i=0; i<count; ++i)
+                cache.put(getStringi(GL_EXTENSIONS, i));
+            return true;
+        }
+
+
 private:
     static if(Derelict_OS_Mac) SharedLibLoader _loader;
     else {
@@ -74,6 +96,15 @@ private:
     else static if(Derelict_OS_Posix) {
         enum getProcAddressName = "glXGetProcAddress";
         enum getCurrentContextName = "glXGetCurrentContext";
+    }
+
+    static if(!useGL!30) {
+        enum uint GL_NUM_EXTENSIONS = 0x821D;
+        alias da_glGetStringi = const(char)* function(GLenum,GLuint);
+        alias da_glGetIntegerv = void function(GLenum,GLint*);
+
+        da_glGetStringi getStringi;
+        da_glGetIntegerv getIntegerv;
     }
 
     void* loadGLFunc(const(char)* name)

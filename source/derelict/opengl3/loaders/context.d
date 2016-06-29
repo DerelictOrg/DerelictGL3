@@ -46,7 +46,7 @@ static if(useContexts) {
         mixin(funcs_2x);
         static if(useGL!30) mixin(funcs_3x);
 
-        mixin(genExtensions!Args);
+        mixin(genExtensionFuncs!Args);
 
         GLVersion load()
         {
@@ -63,6 +63,8 @@ static if(useContexts) {
             _loadedVersion = .loadGL1x(&this);
             _loadedVersion = .loadGL2x(&this);
             static if(useGL!30) _loadedVersion = .loadGL3x(&this);
+
+            loadExtensions();
             return _loadedVersion;
         }
 
@@ -71,14 +73,32 @@ static if(useContexts) {
 
         package(derelict.opengl3)
         void bindFunc(void** ptr, string name) { DerelictGL3.bindFunc(ptr, name); }
+
+        private
+        void loadExtensions()
+        {
+            initExtensionCache();
+            mixin(genExtensionLoaders!Args);
+        }
     }
 
-    private string genExtensions(Args...)()
+ private:
+    string genExtensionFuncs(Args...)()
     {
         string ret = "";
         foreach(ext; Args) {
             static if(ext.coreVersion > useGLVersion)
                 ret ~= ext.funcString;
+        }
+        return ret;
+    }
+
+    string genExtensionLoaders(Args...)()
+    {
+        string ret = "";
+        foreach(ext; Args) {
+            static if(ext.coreVersion > useGLVersion)
+                ret ~= ext.loaderString;
         }
         return ret;
     }

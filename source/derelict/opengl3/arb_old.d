@@ -77,12 +77,6 @@ enum : uint {
     GL_BLEND_EQUATION = 0x8009,
 
     // ARB_map_buffer_range
-    GL_MAP_READ_BIT                   = 0x0001,
-    GL_MAP_WRITE_BIT                  = 0x0002,
-    GL_MAP_INVALIDATE_RANGE_BIT       = 0x0004,
-    GL_MAP_INVALIDATE_BUFFER_BIT      = 0x0008,
-    GL_MAP_FLUSH_EXPLICIT_BIT         = 0x0010,
-    GL_MAP_UNSYNCHRONIZED_BIT         = 0x0020,
 
     // ARB_texture_compression_rgtc
     GL_COMPRESSED_RED_RGTC1           = 0x8DBB,
@@ -996,134 +990,11 @@ private __gshared bool _ARB_shading_language_packing;
 @nogc bool ARB_shading_language_packing() nothrow @property { return _ARB_shading_language_packing; }
 
 // ARB_framebuffer_object
-extern( System ) @nogc nothrow {
-    alias da_glIsRenderbuffer = GLboolean function( GLuint );
-    alias da_glBindRenderbuffer = void function( GLenum, GLuint );
-    alias da_glDeleteRenderbuffers = void function( GLsizei, const( GLuint )* );
-    alias da_glGenRenderbuffers = void function( GLsizei, GLuint* );
-    alias da_glRenderbufferStorage = void function( GLenum, GLenum, GLsizei, GLsizei );
-    alias da_glGetRenderbufferParameteriv = void function( GLenum, GLenum, GLint* );
-    alias da_glIsFramebuffer = GLboolean function( GLuint );
-    alias da_glBindFramebuffer = void function( GLenum, GLuint );
-    alias da_glDeleteFramebuffers = void function( GLsizei, const( GLuint )* );
-    alias da_glGenFramebuffers = void function( GLsizei, GLuint* );
-    alias da_glCheckFramebufferStatus = GLenum function( GLenum );
-    alias da_glFramebufferTexture1D = void function( GLenum, GLenum, GLenum, GLuint, GLint );
-    alias da_glFramebufferTexture2D = void function( GLenum, GLenum, GLenum, GLuint, GLint );
-    alias da_glFramebufferTexture3D = void function( GLenum, GLenum, GLenum, GLuint, GLint, GLint );
-    alias da_glFramebufferRenderbuffer = void function( GLenum, GLenum, GLenum, GLuint );
-    alias da_glGetFramebufferAttachmentParameteriv = void function( GLenum, GLenum, GLenum, GLint* );
-    alias da_glGenerateMipmap = void function( GLenum );
-    alias da_glBlitFramebuffer = void function( GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum );
-    alias da_glRenderbufferStorageMultisample = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei );
-    alias da_glFramebufferTextureLayer = void function( GLenum, GLenum, GLuint, GLint, GLint );
-}
 
-__gshared
-{
-    da_glIsRenderbuffer glIsRenderbuffer;
-    da_glBindRenderbuffer glBindRenderbuffer;
-    da_glDeleteRenderbuffers glDeleteRenderbuffers;
-    da_glGenRenderbuffers glGenRenderbuffers;
-    da_glRenderbufferStorage glRenderbufferStorage;
-    da_glGetRenderbufferParameteriv glGetRenderbufferParameteriv;
-    da_glIsFramebuffer glIsFramebuffer;
-    da_glBindFramebuffer glBindFramebuffer;
-    da_glDeleteFramebuffers glDeleteFramebuffers;
-    da_glGenFramebuffers glGenFramebuffers;
-    da_glCheckFramebufferStatus glCheckFramebufferStatus;
-    da_glFramebufferTexture1D glFramebufferTexture1D;
-    da_glFramebufferTexture2D glFramebufferTexture2D;
-    da_glFramebufferTexture3D glFramebufferTexture3D;
-    da_glFramebufferRenderbuffer glFramebufferRenderbuffer;
-    da_glGetFramebufferAttachmentParameteriv glGetFramebufferAttachmentParameteriv;
-    da_glGenerateMipmap glGenerateMipmap;
-    da_glBlitFramebuffer glBlitFramebuffer;
-    da_glRenderbufferStorageMultisample glRenderbufferStorageMultisample;
-    da_glFramebufferTextureLayer glFramebufferTextureLayer;
-}
-
-private __gshared bool _ARB_framebuffer_object;
-@nogc bool ARB_framebuffer_object() nothrow @property { return _ARB_framebuffer_object; }
-package void load_ARB_framebuffer_object( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glIsRenderbuffer, "glIsRenderbuffer" );
-        bindGLFunc( cast( void** )&glBindRenderbuffer, "glBindRenderbuffer" );
-        bindGLFunc( cast( void** )&glDeleteRenderbuffers, "glDeleteRenderbuffers" );
-        bindGLFunc( cast( void** )&glGenRenderbuffers, "glGenRenderbuffers" );
-        bindGLFunc( cast( void** )&glRenderbufferStorage, "glRenderbufferStorage" );
-        bindGLFunc( cast( void** )&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv" );
-        bindGLFunc( cast( void** )&glIsFramebuffer, "glIsFramebuffer" );
-        bindGLFunc( cast( void** )&glBindFramebuffer, "glBindFramebuffer" );
-        bindGLFunc( cast( void** )&glDeleteFramebuffers, "glDeleteFramebuffers" );
-        bindGLFunc( cast( void** )&glGenFramebuffers, "glGenFramebuffers" );
-        bindGLFunc( cast( void** )&glCheckFramebufferStatus, "glCheckFramebufferStatus" );
-        bindGLFunc( cast( void** )&glFramebufferTexture1D, "glFramebufferTexture1D" );
-        bindGLFunc( cast( void** )&glFramebufferTexture2D, "glFramebufferTexture2D" );
-        bindGLFunc( cast( void** )&glFramebufferTexture3D, "glFramebufferTexture3D" );
-        bindGLFunc( cast( void** )&glFramebufferRenderbuffer, "glFramebufferRenderbuffer" );
-        bindGLFunc( cast( void** )&glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv" );
-        bindGLFunc( cast( void** )&glGenerateMipmap, "glGenerateMipmap" );
-        bindGLFunc( cast( void** )&glBlitFramebuffer, "glBlitFramebuffer" );
-        bindGLFunc( cast( void** )&glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample" );
-        bindGLFunc( cast( void** )&glFramebufferTextureLayer, "glFramebufferTextureLayer" );
-        _ARB_framebuffer_object = true;
-    } catch( Exception e ) {
-        _ARB_framebuffer_object = false;
-        if( doThrow ) throw e;
-    }
-}
 
 // ARB_map_buffer_range
-extern( System ) @nogc nothrow {
-        alias da_glMapBufferRange = GLvoid* function( GLenum, GLintptr, GLsizeiptr, GLbitfield );
-        alias da_glFlushMappedBufferRange = void function( GLenum, GLintptr, GLsizeiptr );
-}
-__gshared da_glMapBufferRange glMapBufferRange;
-__gshared da_glFlushMappedBufferRange glFlushMappedBufferRange;
-
-private __gshared bool _ARB_map_buffer_range;
-@nogc bool ARB_map_buffer_range() nothrow @property { return _ARB_map_buffer_range; }
-package void load_ARB_map_buffer_range( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glMapBufferRange, "glMapBufferRange" );
-        bindGLFunc( cast( void** )&glFlushMappedBufferRange, "glFlushMappedBufferRange" );
-        _ARB_map_buffer_range = true;
-    } catch( Exception e ) {
-        _ARB_map_buffer_range = false;
-        if( doThrow ) throw e;
-    }
-}
 
 // ARB_vertex_array_object
-extern( System ) @nogc nothrow {
-    alias da_glBindVertexArray = void function( GLuint );
-    alias da_glDeleteVertexArrays = void function( GLsizei, const( GLuint )* );
-    alias da_glGenVertexArrays = void function( GLsizei, GLuint* );
-    alias da_glIsVertexArray = GLboolean function( GLuint );
-}
-
-__gshared {
-    da_glBindVertexArray glBindVertexArray;
-    da_glDeleteVertexArrays glDeleteVertexArrays;
-    da_glGenVertexArrays glGenVertexArrays;
-    da_glIsVertexArray glIsVertexArray;
-}
-
-private __gshared bool _ARB_vertex_array_object;
-@nogc bool ARB_vertex_array_object() nothrow @property { return _ARB_vertex_array_object; }
-package void load_ARB_vertex_array_object( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glBindVertexArray, "glBindVertexArray" );
-        bindGLFunc( cast( void** )&glDeleteVertexArrays, "glDeleteVertexArrays" );
-        bindGLFunc( cast( void** )&glGenVertexArrays, "glGenVertexArrays" );
-        bindGLFunc( cast( void** )&glIsVertexArray, "glIsVertexArray" );
-        _ARB_vertex_array_object = true;
-    } catch( Exception e ) {
-        _ARB_vertex_array_object = false;
-        if( doThrow ) throw e;
-    }
-}
 
 // ARB_uniform_buffer_object
 extern( System ) @nogc nothrow {

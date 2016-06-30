@@ -27,7 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.versions.gl3x;
 
-import derelict.opengl.types;
+import derelict.opengl.types,
+       derelict.opengl.arb.core_30;
 
 enum : uint {
     // OpenGL 3.0
@@ -345,6 +346,9 @@ __gshared {
     da_glVertexAttribDivisor glVertexAttribDivisor;
 }
 
+mixin(arbFramebufferObject);
+mixin(arbMapBufferRange);
+
 package(derelict.opengl)
 GLVersion loadGL3x()
 {
@@ -355,10 +359,6 @@ GLVersion loadGL3x()
         auto maxVer = contextVersion;
 
         if(maxVer >= GLVersion.gl30) {
-            //load_ARB_framebuffer_object(true);
-            //load_ARB_map_buffer_range(true);
-            //load_ARB_vertex_array_object(true);
-
             bindGLFunc(cast(void**)&glColorMaski, "glColorMaski");
             bindGLFunc(cast(void**)&glGetBooleani_v, "glGetBooleani_v");
             bindGLFunc(cast(void**)&glGetIntegeri_v, "glGetIntegeri_v");

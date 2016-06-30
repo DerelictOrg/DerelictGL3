@@ -32,11 +32,17 @@ import derelict.util.exception,
        derelict.util.loader,
        derelict.util.system;
 
-import derelict.opengl.types : GLVersion;
+import derelict.opengl.extloader,
+       derelict.opengl.types : GLVersion;
+
 
 final class DerelictGL3Loader : SharedLibLoader
 {
-    this() { super(libNames); }
+    this()
+    {
+        super(libNames);
+        _extLoader.initialize(this);
+    }
 
     @property @nogc nothrow
     GLVersion loadedVersion() { return _loadedVersion; }
@@ -67,6 +73,8 @@ final class DerelictGL3Loader : SharedLibLoader
         _loadedVersion = loadGL2x();
         _loadedVersion = loadGL3x();
 
+        _extLoader.reload();
+
         return _loadedVersion;
     }
 
@@ -92,7 +100,7 @@ protected:
     }
 
 private:
-    Appender!(const(char)*[]) _extCache;
+    ExtLoader!DerelictGL3Loader _extLoader;
     GLVersion _loadedVersion;
     GLVersion _contextVersion;
 

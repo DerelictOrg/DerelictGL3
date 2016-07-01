@@ -27,8 +27,19 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.versions.gl3x;
 
-import derelict.opengl.types,
-       derelict.opengl.arb.core_30;
+import derelict.opengl.types;
+
+import derelict.opengl.arb.core_30 : corearb30;
+import derelict.opengl.arb.core_31 : corearb31;
+import derelict.opengl.arb.core_32 : corearb32;
+import derelict.opengl.arb.core_33 : corearb33;
+
+public {
+    import derelict.opengl.arb.core_30 : ARB_framebuffer_object, ARB_map_buffer_range, ARB_vertex_array_object;
+    import derelict.opengl.arb.core_31 : ARB_copy_buffer, ARB_uniform_buffer_object;
+    import derelict.opengl.arb.core_32 : ARB_draw_elements_base_vertex, ARB_provoking_vertex, ARB_sync, ARB_texture_multisample;
+    import derelict.opengl.arb.core_33;
+}
 
 enum : uint {
     // OpenGL 3.0
@@ -346,8 +357,10 @@ __gshared {
     da_glVertexAttribDivisor glVertexAttribDivisor;
 }
 
-mixin(arbFramebufferObject);
-mixin(arbMapBufferRange);
+mixin(corearb30);
+mixin(corearb31);
+mixin(corearb32);
+mixin(corearb33);
 
 package(derelict.opengl)
 GLVersion loadGL3x()
@@ -421,9 +434,6 @@ GLVersion loadGL3x()
         }
 
         if(maxVer >= GLVersion.gl31) {
-           // load_ARB_copy_buffer(true);
-           // load_ARB_uniform_buffer_object(true);
-
             bindGLFunc(cast(void**)&glDrawArraysInstanced, "glDrawArraysInstanced");
             bindGLFunc(cast(void**)&glDrawElementsInstanced, "glDrawElementsInstanced");
             bindGLFunc(cast(void**)&glTexBuffer, "glTexBuffer");
@@ -432,11 +442,6 @@ GLVersion loadGL3x()
         }
 
         if(maxVer >= GLVersion.gl32) {
-           // load_ARB_draw_elements_base_vertex(true);
-           // load_ARB_provoking_vertex(true);
-           // load_ARB_sync(true);
-           // load_ARB_texture_multisample(true);
-
             bindGLFunc(cast(void**)&glGetInteger64i_v, "glGetInteger64i_v");
             bindGLFunc(cast(void**)&glGetBufferParameteri64v, "glGetBufferParameteri64v");
             bindGLFunc(cast(void**)&glFramebufferTexture, "glFramebufferTexture");

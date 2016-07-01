@@ -31,9 +31,9 @@ import derelict.opengl.types,
        derelict.opengl.arb.internal;
 
 // ARB_framebuffer_object
+enum ARB_framebuffer_object = "GL_ARB_framebuffer_object";
 enum arbFramebufferObjectDecls =
 q{
-enum ARB_framebuffer_object = "GL_ARB_framebuffer_object";
 enum : uint
 {
     GL_INVALID_FRAMEBUFFER_OPERATION  = 0x0506,
@@ -162,53 +162,37 @@ q{
     da_glFramebufferTextureLayer glFramebufferTextureLayer;
 };
 
-enum arbFramebufferObjectLoader =
+enum arbFramebufferObjectLoaderImpl =
 q{
-    struct ARBFramebufferObject
-    {
-        static this()
-        {
-            import derelict.opengl.extloader : registerExtensionLoader;
-            registerExtensionLoader(ARB_framebuffer_object, &load);
-        }
-        static bool load(GLVersion loadedVersion, void delegate(void**,string) bindGLFunc)
-        {
-            try {
-                bindGLFunc(cast(void**)&glIsRenderbuffer, "glIsRenderbuffer");
-                bindGLFunc(cast(void**)&glBindRenderbuffer, "glBindRenderbuffer");
-                bindGLFunc(cast(void**)&glDeleteRenderbuffers, "glDeleteRenderbuffers");
-                bindGLFunc(cast(void**)&glGenRenderbuffers, "glGenRenderbuffers");
-                bindGLFunc(cast(void**)&glRenderbufferStorage, "glRenderbufferStorage");
-                bindGLFunc(cast(void**)&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv");
-                bindGLFunc(cast(void**)&glIsFramebuffer, "glIsFramebuffer");
-                bindGLFunc(cast(void**)&glBindFramebuffer, "glBindFramebuffer");
-                bindGLFunc(cast(void**)&glDeleteFramebuffers, "glDeleteFramebuffers");
-                bindGLFunc(cast(void**)&glGenFramebuffers, "glGenFramebuffers");
-                bindGLFunc(cast(void**)&glCheckFramebufferStatus, "glCheckFramebufferStatus");
-                bindGLFunc(cast(void**)&glFramebufferTexture1D, "glFramebufferTexture1D");
-                bindGLFunc(cast(void**)&glFramebufferTexture2D, "glFramebufferTexture2D");
-                bindGLFunc(cast(void**)&glFramebufferTexture3D, "glFramebufferTexture3D");
-                bindGLFunc(cast(void**)&glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
-                bindGLFunc(cast(void**)&glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv");
-                bindGLFunc(cast(void**)&glGenerateMipmap, "glGenerateMipmap");
-                bindGLFunc(cast(void**)&glBlitFramebuffer, "glBlitFramebuffer");
-                bindGLFunc(cast(void**)&glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample");
-                bindGLFunc(cast(void**)&glFramebufferTextureLayer, "glFramebufferTextureLayer");
-            } catch(Exception e) {
-                if(loadedVersion >= GLVersion.gl30) throw e;
-                else return false;
-            }
-            return true;
-        }
-    }
+    bindGLFunc(cast(void**)&glIsRenderbuffer, "glIsRenderbuffer");
+    bindGLFunc(cast(void**)&glBindRenderbuffer, "glBindRenderbuffer");
+    bindGLFunc(cast(void**)&glDeleteRenderbuffers, "glDeleteRenderbuffers");
+    bindGLFunc(cast(void**)&glGenRenderbuffers, "glGenRenderbuffers");
+    bindGLFunc(cast(void**)&glRenderbufferStorage, "glRenderbufferStorage");
+    bindGLFunc(cast(void**)&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv");
+    bindGLFunc(cast(void**)&glIsFramebuffer, "glIsFramebuffer");
+    bindGLFunc(cast(void**)&glBindFramebuffer, "glBindFramebuffer");
+    bindGLFunc(cast(void**)&glDeleteFramebuffers, "glDeleteFramebuffers");
+    bindGLFunc(cast(void**)&glGenFramebuffers, "glGenFramebuffers");
+    bindGLFunc(cast(void**)&glCheckFramebufferStatus, "glCheckFramebufferStatus");
+    bindGLFunc(cast(void**)&glFramebufferTexture1D, "glFramebufferTexture1D");
+    bindGLFunc(cast(void**)&glFramebufferTexture2D, "glFramebufferTexture2D");
+    bindGLFunc(cast(void**)&glFramebufferTexture3D, "glFramebufferTexture3D");
+    bindGLFunc(cast(void**)&glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
+    bindGLFunc(cast(void**)&glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv");
+    bindGLFunc(cast(void**)&glGenerateMipmap, "glGenerateMipmap");
+    bindGLFunc(cast(void**)&glBlitFramebuffer, "glBlitFramebuffer");
+    bindGLFunc(cast(void**)&glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample");
+    bindGLFunc(cast(void**)&glFramebufferTextureLayer, "glFramebufferTextureLayer");
 };
 
+enum arbFramebufferObjectLoader = makeLoader(ARB_framebuffer_object, arbFramebufferObjectLoaderImpl, "gl30");
 enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs.makeGShared() ~ arbFramebufferObjectLoader;
 
 // ARB_map_buffer_range
+enum ARB_map_buffer_range = "GL_ARB_map_buffer_range";
 enum arbMapBufferRangeDecls =
 q{
-enum ARB_map_buffer_range = "GL_ARB_map_buffer_range";
 enum : uint
 {
     GL_MAP_READ_BIT                   = 0x0001,
@@ -230,35 +214,19 @@ q{
     da_glFlushMappedBufferRange glFlushMappedBufferRange;
 };
 
-enum arbMapBufferRangeLoader =
+enum arbMapBufferRangeLoaderImpl =
 q{
-    struct ARBMapBufferRange
-    {
-        static this()
-        {
-            import derelict.opengl.extloader : registerExtensionLoader;
-            registerExtensionLoader(ARB_map_buffer_range, &load);
-        }
-        static bool load(GLVersion loadedVersion, void delegate(void**,string) bindGLFunc)
-        {
-            try {
-                bindGLFunc(cast(void**)&glMapBufferRange, "glMapBufferRange");
-                bindGLFunc(cast(void**)&glFlushMappedBufferRange, "glFlushMappedBufferRange");
-            } catch(Exception e) {
-                if(loadedVersion >= GLVersion.gl30) throw e;
-                else return false;
-            }
-            return true;
-        }
-    }
+    bindGLFunc(cast(void**)&glMapBufferRange, "glMapBufferRange");
+    bindGLFunc(cast(void**)&glFlushMappedBufferRange, "glFlushMappedBufferRange");
 };
 
+enum arbMapBufferRangeLoader = makeLoader(ARB_map_buffer_range, arbMapBufferRangeLoaderImpl, "gl30");
 enum arbMapBufferRange = arbMapBufferRangeDecls ~ arbMapBufferRangeFuncs.makeGShared() ~ arbMapBufferRangeLoader;
 
 // ARB_vertex_array_object
+enum ARB_vertex_array_object = "GL_ARB_vertex_array_object";
 enum arbVertexArrayObjectDecls =
 q{
-enum ARB_vertex_array_object = "GL_ARB_vertex_array_object";
 enum uint GL_VERTEX_ARRAY_BINDING = 0x85B5;
 
 extern(System) @nogc nothrow {
@@ -276,30 +244,17 @@ q{
     da_glIsVertexArray glIsVertexArray;
 };
 
-enum arbVertexArrayObjectLoader =
+enum arbVertexArrayObjectLoaderImpl =
 q{
-    struct ARBVertexArrayObject
-    {
-        static this()
-        {
-            import derelict.opengl.extloader : registerExtensionLoader;
-            registerExtensionLoader(ARB_map_buffer_range, &load);
-        }
-        static bool load(GLVersion loadedVersion, void delegate(void**,string) bindGLFunc)
-        {
-            try {
-                bindGLFunc(cast(void**)&glBindVertexArray, "glBindVertexArray");
-                bindGLFunc(cast(void**)&glDeleteVertexArrays, "glDeleteVertexArrays");
-                bindGLFunc(cast(void**)&glGenVertexArrays, "glGenVertexArrays");
-                bindGLFunc(cast(void**)&glIsVertexArray, "glIsVertexArray");
-            } catch(Exception e) {
-                if(loadedVersion >= GLVersion.gl30) throw e;
-                else return false;
-            }
-            return true;
-        }
-    }
+    bindGLFunc(cast(void**)&glBindVertexArray, "glBindVertexArray");
+    bindGLFunc(cast(void**)&glDeleteVertexArrays, "glDeleteVertexArrays");
+    bindGLFunc(cast(void**)&glGenVertexArrays, "glGenVertexArrays");
+    bindGLFunc(cast(void**)&glIsVertexArray, "glIsVertexArray");
 };
 
+enum arbVertexArrayObjectLoader = makeLoader(ARB_vertex_array_object, arbVertexArrayObjectLoaderImpl, "gl30");
 enum arbVertexArrayObject = arbVertexArrayObjectDecls ~ arbVertexArrayObjectFuncs.makeGShared() ~ arbVertexArrayObjectLoader;
 
+enum corearb30 = arbFramebufferObject ~ arbMapBufferRange ~ arbVertexArrayObject;
+enum corearb30Decls = arbFramebufferObjectDecls ~ arbMapBufferRangeDecls ~ arbVertexArrayObjectDecls;
+enum corearb30Funcs = arbFramebufferObjectFuncs ~ arbMapBufferRangeFuncs ~ arbVertexArrayObjectFuncs;

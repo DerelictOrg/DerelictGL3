@@ -109,97 +109,19 @@ enum : uint {
     GL_RG32UI                         = 0x823C,
 
     // ARB_vertex_array_object
-    GL_VERTEX_ARRAY_BINDING           = 0x85B5,
-
     // ARB_uniform_buffer_object
-    GL_UNIFORM_BUFFER                 = 0x8A11,
-    GL_UNIFORM_BUFFER_BINDING         = 0x8A28,
-    GL_UNIFORM_BUFFER_START           = 0x8A29,
-    GL_UNIFORM_BUFFER_SIZE            = 0x8A2A,
-    GL_MAX_VERTEX_UNIFORM_BLOCKS      = 0x8A2B,
-    GL_MAX_GEOMETRY_UNIFORM_BLOCKS    = 0x8A2C,
-    GL_MAX_FRAGMENT_UNIFORM_BLOCKS    = 0x8A2D,
-    GL_MAX_COMBINED_UNIFORM_BLOCKS    = 0x8A2E,
-    GL_MAX_UNIFORM_BUFFER_BINDINGS    = 0x8A2F,
-    GL_MAX_UNIFORM_BLOCK_SIZE         = 0x8A30,
-    GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS = 0x8A31,
-    GL_MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS = 0x8A32,
-    GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS = 0x8A33,
-    GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT = 0x8A34,
-    GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH = 0x8A35,
-    GL_ACTIVE_UNIFORM_BLOCKS          = 0x8A36,
-    GL_UNIFORM_TYPE                   = 0x8A37,
-    GL_UNIFORM_SIZE                   = 0x8A38,
-    GL_UNIFORM_NAME_LENGTH            = 0x8A39,
-    GL_UNIFORM_BLOCK_INDEX            = 0x8A3A,
-    GL_UNIFORM_OFFSET                 = 0x8A3B,
-    GL_UNIFORM_ARRAY_STRIDE           = 0x8A3C,
-    GL_UNIFORM_MATRIX_STRIDE          = 0x8A3D,
-    GL_UNIFORM_IS_ROW_MAJOR           = 0x8A3E,
-    GL_UNIFORM_BLOCK_BINDING          = 0x8A3F,
-    GL_UNIFORM_BLOCK_DATA_SIZE        = 0x8A40,
-    GL_UNIFORM_BLOCK_NAME_LENGTH      = 0x8A41,
-    GL_UNIFORM_BLOCK_ACTIVE_UNIFORMS  = 0x8A42,
-    GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES = 0x8A43,
-    GL_UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER = 0x8A44,
-    GL_UNIFORM_BLOCK_REFERENCED_BY_GEOMETRY_SHADER = 0x8A45,
-    GL_UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER = 0x8A46,
-    GL_INVALID_INDEX                  = 0xFFFFFFFFu,
-
     // ARB_copy_buffer
-    GL_COPY_READ_BUFFER               = 0x8F36,
-    GL_COPY_WRITE_BUFFER              = 0x8F37,
 
     // ARB_depth_clamp
     GL_DEPTH_CLAMP                    = 0x864F,
 
     // ARB_provoking_vertex
-    GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = 0x8E4C,
-    GL_FIRST_VERTEX_CONVENTION        = 0x8E4D,
-    GL_LAST_VERTEX_CONVENTION         = 0x8E4E,
-    GL_PROVOKING_VERTEX               = 0x8E4F,
 
     // ARB_seamless_cube_map
     GL_TEXTURE_CUBE_MAP_SEAMLESS      = 0x884F,
 
     // ARB_sync
-    GL_MAX_SERVER_WAIT_TIMEOUT        = 0x9111,
-    GL_OBJECT_TYPE                    = 0x9112,
-    GL_SYNC_CONDITION                 = 0x9113,
-    GL_SYNC_STATUS                    = 0x9114,
-    GL_SYNC_FLAGS                     = 0x9115,
-    GL_SYNC_FENCE                     = 0x9116,
-    GL_SYNC_GPU_COMMANDS_COMPLETE     = 0x9117,
-    GL_UNSIGNALED                     = 0x9118,
-    GL_SIGNALED                       = 0x9119,
-    GL_ALREADY_SIGNALED               = 0x911A,
-    GL_TIMEOUT_EXPIRED                = 0x911B,
-    GL_CONDITION_SATISFIED            = 0x911C,
-    GL_WAIT_FAILED                    = 0x911D,
-    GL_SYNC_FLUSH_COMMANDS_BIT        = 0x00000001,
-
     // ARB_texture_multisample
-    GL_SAMPLE_POSITION                = 0x8E50,
-    GL_SAMPLE_MASK                    = 0x8E51,
-    GL_SAMPLE_MASK_VALUE              = 0x8E52,
-    GL_MAX_SAMPLE_MASK_WORDS          = 0x8E59,
-    GL_TEXTURE_2D_MULTISAMPLE         = 0x9100,
-    GL_PROXY_TEXTURE_2D_MULTISAMPLE   = 0x9101,
-    GL_TEXTURE_2D_MULTISAMPLE_ARRAY   = 0x9102,
-    GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9103,
-    GL_TEXTURE_BINDING_2D_MULTISAMPLE = 0x9104,
-    GL_TEXTURE_BINDING_2D_MULTISAMPLE_ARRAY = 0x9105,
-    GL_TEXTURE_SAMPLES                = 0x9106,
-    GL_TEXTURE_FIXED_SAMPLE_LOCATIONS = 0x9107,
-    GL_SAMPLER_2D_MULTISAMPLE         = 0x9108,
-    GL_INT_SAMPLER_2D_MULTISAMPLE     = 0x9109,
-    GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE = 0x910A,
-    GL_SAMPLER_2D_MULTISAMPLE_ARRAY   = 0x910B,
-    GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910C,
-    GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910D,
-    GL_MAX_COLOR_TEXTURE_SAMPLES      = 0x910E,
-    GL_MAX_DEPTH_TEXTURE_SAMPLES      = 0x910F,
-    GL_MAX_INTEGER_SAMPLES            = 0x9110,
 
     // ARB_sample_shading
     GL_SAMPLE_SHADING_ARB             = 0x8C36,
@@ -230,16 +152,11 @@ enum : uint {
     GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_ARB = 0x8E8F,
 
     // ARB_blend_func_extended
-    GL_SRC1_COLOR                     = 0x88F9,
-    GL_ONE_MINUS_SRC1_COLOR           = 0x88FA,
-    GL_ONE_MINUS_SRC1_ALPHA           = 0x88FB,
-    GL_MAX_DUAL_SOURCE_DRAW_BUFFERS   = 0x88FC,
 
     // ARB_occlusion_query2
     GL_ANY_SAMPLES_PASSED             = 0x8C2F,
 
     // ARB_sampler_objects
-    GL_SAMPLER_BINDING                = 0x8919,
 
     // ARB_texture_rgb10_a2ui
     GL_RGB10_A2UI                     = 0x906F,
@@ -990,182 +907,14 @@ private __gshared bool _ARB_shading_language_packing;
 @nogc bool ARB_shading_language_packing() nothrow @property { return _ARB_shading_language_packing; }
 
 // ARB_framebuffer_object
-
-
 // ARB_map_buffer_range
-
 // ARB_vertex_array_object
-
 // ARB_uniform_buffer_object
-extern( System ) @nogc nothrow {
-    alias da_glGetUniformIndices = void function( GLuint, GLsizei, const( GLchar* )*, GLuint* );
-    alias da_glGetActiveUniformsiv = void function( GLuint, GLsizei, const( GLuint )*, GLenum, GLint* );
-    alias da_glGetActiveUniformName = void function( GLuint, GLuint, GLsizei, GLsizei*, GLchar* );
-    alias da_glGetUniformBlockIndex = GLuint function( GLuint, const( GLchar )* );
-    alias da_glGetActiveUniformBlockiv = void function( GLuint, GLuint, GLenum, GLint* );
-    alias da_glGetActiveUniformBlockName = void function( GLuint, GLuint, GLsizei, GLsizei*, GLchar* );
-    alias da_glUniformBlockBinding = void function( GLuint, GLuint, GLuint );
-}
-
-__gshared {
-    da_glGetUniformIndices glGetUniformIndices;
-    da_glGetActiveUniformsiv glGetActiveUniformsiv;
-    da_glGetActiveUniformName glGetActiveUniformName;
-    da_glGetUniformBlockIndex glGetUniformBlockIndex;
-    da_glGetActiveUniformBlockiv glGetActiveUniformBlockiv;
-    da_glGetActiveUniformBlockName glGetActiveUniformBlockName;
-    da_glUniformBlockBinding glUniformBlockBinding;
-}
-
-private __gshared bool _ARB_uniform_buffer_object;
-@nogc bool ARB_uniform_buffer_object() nothrow @property { return _ARB_uniform_buffer_object; }
-package void load_ARB_uniform_buffer_object( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glGetUniformIndices, "glGetUniformIndices" );
-        bindGLFunc( cast( void** )&glGetActiveUniformsiv, "glGetActiveUniformsiv" );
-        bindGLFunc( cast( void** )&glGetActiveUniformName, "glGetActiveUniformName" );
-        bindGLFunc( cast( void** )&glGetUniformBlockIndex, "glGetUniformBlockIndex" );
-        bindGLFunc( cast( void** )&glGetActiveUniformBlockiv, "glGetActiveUniformBlockiv" );
-        bindGLFunc( cast( void** )&glGetActiveUniformBlockName, "glGetActiveUniformBlockName" );
-        bindGLFunc( cast( void** )&glUniformBlockBinding, "glUniformBlockBinding" );
-        _ARB_uniform_buffer_object = true;
-    } catch( Exception e ) {
-        _ARB_uniform_buffer_object = true;
-        if( doThrow ) throw e;
-    }
-}
-
 // ARB_copy_buffer
-extern( System ) @nogc nothrow alias da_glCopyBufferSubData = void function( GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr );
-__gshared da_glCopyBufferSubData glCopyBufferSubData;
-
-private __gshared bool _ARB_copy_buffer;
-@nogc bool ARB_copy_buffer() nothrow @property { return _ARB_copy_buffer; }
-package void load_ARB_copy_buffer( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glCopyBufferSubData, "glCopyBufferSubData" );
-        _ARB_copy_buffer = true;
-    } catch( Exception e ) {
-        _ARB_copy_buffer = false;
-        if( doThrow ) throw e;
-    }
-}
-
 // ARB_draw_elements_base_vertex
-extern( System ) @nogc nothrow {
-    alias da_glDrawElementsBaseVertex = void function( GLenum, GLsizei, GLenum, const( GLvoid )*, GLint );
-    alias da_glDrawRangeElementsBaseVertex = void function( GLenum, GLuint, GLuint, GLsizei, GLenum, const( GLvoid )*, GLint );
-    alias da_glDrawElementsInstancedBaseVertex = void function( GLenum, GLsizei, GLenum, const( GLvoid )*, GLsizei, GLint );
-    alias da_glMultiDrawElementsBaseVertex = void function( GLenum, const( GLsizei )*, GLenum, const( GLvoid* )*, GLsizei, const( GLint )* );
-}
-
-__gshared {
-    da_glDrawElementsBaseVertex glDrawElementsBaseVertex;
-    da_glDrawRangeElementsBaseVertex glDrawRangeElementsBaseVertex;
-    da_glDrawElementsInstancedBaseVertex glDrawElementsInstancedBaseVertex;
-    da_glMultiDrawElementsBaseVertex glMultiDrawElementsBaseVertex;
-}
-
-private __gshared bool _ARB_draw_elements_base_vertex;
-@nogc bool ARB_draw_elements_base_vertex() nothrow @property { return _ARB_draw_elements_base_vertex; }
-package void load_ARB_draw_elements_base_vertex( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glDrawElementsBaseVertex, "glDrawElementsBaseVertex" );
-        bindGLFunc( cast( void** )&glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex" );
-        bindGLFunc( cast( void** )&glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex" );
-        bindGLFunc( cast( void** )&glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex" );
-        _ARB_draw_elements_base_vertex = true;
-    } catch( Exception e ) {
-        _ARB_draw_elements_base_vertex = false;
-        if( doThrow ) throw e;
-    }
-}
-
 // ARB_provoking_vertex
-extern( System ) @nogc nothrow alias da_glProvokingVertex = void function( GLenum );
-__gshared da_glProvokingVertex glProvokingVertex;
-
-private __gshared bool _ARB_provoking_vertex;
-@nogc bool ARB_provoking_vertex() nothrow @property { return _ARB_provoking_vertex; }
-package void load_ARB_provoking_vertex( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glProvokingVertex, "glProvokingVertex" );
-        _ARB_provoking_vertex = true;
-    } catch( Exception e ) {
-        _ARB_provoking_vertex = false;
-        if( doThrow ) throw e;
-    }
-}
-
 // ARB_sync
-extern( System ) @nogc nothrow {
-    alias da_glFenceSync = GLsync function( GLenum, GLbitfield );
-    alias da_glIsSync = GLboolean function( GLsync );
-    alias da_glDeleteSync = void function( GLsync );
-    alias da_glClientWaitSync = GLenum function( GLsync, GLbitfield, GLuint64 );
-    alias da_glWaitSync = void function( GLsync, GLbitfield, GLuint64 );
-    alias da_glGetInteger64v = void function( GLsync, GLint64* );
-    alias da_glGetSynciv = void function( GLsync, GLenum, GLsizei, GLsizei*, GLint* );
-}
-
-__gshared {
-    da_glFenceSync glFenceSync;
-    da_glIsSync glIsSync;
-    da_glDeleteSync glDeleteSync;
-    da_glClientWaitSync glClientWaitSync;
-    da_glWaitSync glWaitSync;
-    da_glGetInteger64v glGetInteger64v;
-    da_glGetSynciv glGetSynciv;
-}
-
-private __gshared bool _ARB_sync;
-@nogc bool ARB_sync() nothrow @property { return _ARB_sync; }
-package void load_ARB_sync( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glFenceSync, "glFenceSync" );
-        bindGLFunc( cast( void** )&glIsSync, "glIsSync" );
-        bindGLFunc( cast( void** )&glDeleteSync, "glDeleteSync" );
-        bindGLFunc( cast( void** )&glClientWaitSync, "glClientWaitSync" );
-        bindGLFunc( cast( void** )&glWaitSync, "glWaitSync" );
-        bindGLFunc( cast( void** )&glGetInteger64v, "glGetInteger64v" );
-        bindGLFunc( cast( void** )&glGetSynciv, "glGetSynciv" );
-        _ARB_sync = true;
-    } catch( Exception e ) {
-        _ARB_sync = false;
-        if( doThrow ) throw e;
-    }
-}
-
 // ARB_texture_multisample
-extern( System ) @nogc nothrow {
-    alias da_glTexImage2DMultisample = void function( GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean );
-    alias da_glTexImage3DMultisample = void function( GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean );
-    alias da_glGetMultisamplefv = void function( GLenum, GLuint, GLfloat* );
-    alias da_glSampleMaski = void function( GLuint, GLbitfield );
-}
-
-__gshared {
-    da_glTexImage2DMultisample glTexImage2DMultisample;
-    da_glTexImage3DMultisample glTexImage3DMultisample;
-    da_glGetMultisamplefv glGetMultisamplefv;
-    da_glSampleMaski glSampleMaski;
-}
-
-private __gshared bool _ARB_texture_multisample;
-@nogc bool ARB_texture_multisample() nothrow @property { return _ARB_texture_multisample; }
-package void load_ARB_texture_multisample( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glTexImage2DMultisample, "glTexImage2DMultisample" );
-        bindGLFunc( cast( void** )&glTexImage3DMultisample, "glTexImage3DMultisample" );
-        bindGLFunc( cast( void** )&glGetMultisamplefv, "glGetMultisamplefv" );
-        bindGLFunc( cast( void** )&glSampleMaski, "glSampleMaski" );
-        _ARB_texture_multisample = true;
-    } catch( Exception e ) {
-        _ARB_texture_multisample = false;
-        if( doThrow ) throw e;
-    }
-}
-
 // ARB_draw_buffers_blend
 extern( System ) @nogc nothrow {
     alias da_glBlendEquationiARB = void function( GLuint, GLenum );
@@ -1184,11 +933,11 @@ __gshared {
 private __gshared bool _ARB_draw_buffers_blend;
 @nogc bool ARB_draw_buffers_blend() nothrow @property { return _ARB_draw_buffers_blend; }
 package void load_ARB_draw_buffers_blend() {
-    try {
-        bindGLFunc( cast( void** )&glBlendEquationiARB, "glBlendEquationiARB" );
-        bindGLFunc( cast( void** )&glBlendEquationSeparateiARB, "glBlendEquationSeparateiARB" );
-        bindGLFunc( cast( void** )&glBlendFunciARB, "glBlendFunciARB" );
-        bindGLFunc( cast( void** )&glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB" );
+try {
+    bindGLFunc( cast( void** )&glBlendEquationiARB, "glBlendEquationiARB" );
+    bindGLFunc( cast( void** )&glBlendEquationSeparateiARB, "glBlendEquationSeparateiARB" );
+    bindGLFunc( cast( void** )&glBlendFunciARB, "glBlendFunciARB" );
+    bindGLFunc( cast( void** )&glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB" );
         _ARB_draw_buffers_blend = true;
     } catch( Exception e ) {
         _ARB_draw_buffers_blend = false;
@@ -1245,87 +994,8 @@ package void load_ARB_shading_language_include() {
     }
 }
 
-// ARB_blend_func_extended
-extern( System ) @nogc nothrow {
-    alias da_glBindFragDataLocationIndexed = void function( GLuint, GLuint, GLuint, const( GLchar )* );
-    alias da_glGetFragDataIndex = GLint function( GLuint, const( GLchar )* );
-}
-
-__gshared da_glBindFragDataLocationIndexed glBindFragDataLocationIndexed;
-__gshared da_glGetFragDataIndex glGetFragDataIndex;
-
-private __gshared bool _ARB_blend_func_extended;
-@nogc bool ARB_blend_func_extended() nothrow @property { return _ARB_blend_func_extended; }
-package void load_ARB_blend_func_extended( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed" );
-        bindGLFunc( cast( void** )&glGetFragDataIndex, "glGetFragDataIndex" );
-        _ARB_blend_func_extended = true;
-    } catch( Exception e ) {
-        _ARB_blend_func_extended = false;
-        if( doThrow ) throw e;
-    }
-}
-
+// ARB_blend_func_extended\
 // ARB_sampler_objects
-extern( System ) @nogc nothrow {
-    alias da_glGenSamplers = void function( GLsizei, GLuint* );
-    alias da_glDeleteSamplers = void function( GLsizei, const( GLuint )* );
-    alias da_glIsSampler = GLboolean function( GLuint );
-    alias da_glBindSampler = void function( GLuint, GLuint );
-    alias da_glSamplerParameteri = void function( GLuint, GLenum, GLint );
-    alias da_glSamplerParameteriv = void function( GLuint, GLenum, const( GLint )* );
-    alias da_glSamplerParameterf = void function( GLuint, GLenum, GLfloat );
-    alias da_glSamplerParameterfv = void function( GLuint, GLenum, const( GLfloat )* );
-    alias da_glSamplerParameterIiv = void function( GLuint, GLenum, const( GLint )* );
-    alias da_glSamplerParameterIuiv = void function( GLuint, GLenum, const( GLuint )* );
-    alias da_glGetSamplerParameteriv = void function( GLuint, GLenum, GLint* );
-    alias da_glGetSamplerParameterIiv = void function( GLuint, GLenum, GLint* );
-    alias da_glGetSamplerParameterfv = void function( GLuint, GLenum, GLfloat* );
-    alias da_glGetSamplerParameterIuiv = void function( GLuint, GLenum, GLuint* );
-}
-
-__gshared {
-    da_glGenSamplers glGenSamplers;
-    da_glDeleteSamplers glDeleteSamplers;
-    da_glIsSampler glIsSampler;
-    da_glBindSampler glBindSampler;
-    da_glSamplerParameteri glSamplerParameteri;
-    da_glSamplerParameteriv glSamplerParameteriv;
-    da_glSamplerParameterf glSamplerParameterf;
-    da_glSamplerParameterfv glSamplerParameterfv;
-    da_glSamplerParameterIiv glSamplerParameterIiv;
-    da_glSamplerParameterIuiv glSamplerParameterIuiv;
-    da_glGetSamplerParameteriv glGetSamplerParameteriv;
-    da_glGetSamplerParameterIiv glGetSamplerParameterIiv;
-    da_glGetSamplerParameterfv glGetSamplerParameterfv;
-    da_glGetSamplerParameterIuiv glGetSamplerParameterIuiv;
-}
-
-private __gshared bool _ARB_sampler_objects;
-@nogc bool ARB_sampler_objects() nothrow @property { return _ARB_sampler_objects; }
-package void load_ARB_sampler_objects( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glGenSamplers, "glGenSamplers" );
-        bindGLFunc( cast( void** )&glDeleteSamplers, "glDeleteSamplers" );
-        bindGLFunc( cast( void** )&glIsSampler, "glIsSampler" );
-        bindGLFunc( cast( void** )&glBindSampler, "glBindSampler" );
-        bindGLFunc( cast( void** )&glSamplerParameteri, "glSamplerParameteri" );
-        bindGLFunc( cast( void** )&glSamplerParameteriv, "glSamplerParameteriv" );
-        bindGLFunc( cast( void** )&glSamplerParameterf, "glSamplerParameterf" );
-        bindGLFunc( cast( void** )&glSamplerParameterfv, "glSamplerParameterfv" );
-        bindGLFunc( cast( void** )&glSamplerParameterIiv, "glSamplerParameterIiv" );
-        bindGLFunc( cast( void** )&glSamplerParameterIuiv, "glSamplerParameterIuiv" );
-        bindGLFunc( cast( void** )&glGetSamplerParameteriv, "glGetSamplerParameteriv" );
-        bindGLFunc( cast( void** )&glGetSamplerParameterIiv, "glGetSamplerParameterIiv" );
-        bindGLFunc( cast( void** )&glGetSamplerParameterfv, "glGetSamplerParameterfv" );
-        bindGLFunc( cast( void** )&glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv" );
-        _ARB_sampler_objects = true;
-    } catch( Exception e ) {
-        _ARB_sampler_objects = false;
-        if( doThrow ) throw e;
-    }
-}
 
 // ARB_timer_query
 extern( System ) @nogc nothrow {

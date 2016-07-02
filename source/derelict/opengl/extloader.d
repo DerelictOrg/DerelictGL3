@@ -30,7 +30,7 @@ module derelict.opengl.extloader;
 import std.array;
 import derelict.opengl.types : GLVersion;
 
-alias ExtLoaderFunc = bool function(GLVersion, void delegate(void**,string));
+alias ExtLoaderFunc = bool function(void delegate(void**,string), bool);
 
 struct ExtLoader(T) {
     static if(is(T == class)) alias RefType = T;
@@ -69,11 +69,58 @@ struct ExtLoader(T) {
         for(int i=0; i<count; ++i)
             _extCache.put(glGetStringi(GL_EXTENSIONS, i));
 
-        // Now attempt to load every registered extension.
-        foreach(name, loader; _registry) {
+        // Now attempt to load every registered, non core extension.
+        foreach(name, load; _registry) {
             if(isSupported(name)) {
-                _extState[name] = loader(_glLoader.loadedVersion, &_glLoader.bindGLFunc);
+                _extState[name] = load(&_glLoader.bindGLFunc, false);
             }
+        }
+
+        // ARB extensions that were promoted to core will already be loaded if the version in
+        // which they were promoted has been loaded. If that version was not loaded, then any
+        // of those extensions that have been registered need to be loaded now.
+        import std.stdio : writefln;
+        writefln("Loaded version: %s. Load unloaded core extensions", _glLoader.loadedVersion);
+        with(GLVersion) final switch(_glLoader.loadedVersion) {
+            case none: break;
+            case gl11:
+            case gl12:
+            case gl13:
+            case gl14:
+            case gl15:
+            case gl20:
+            case gl21:
+                loadCoreExtensions(gl30); goto case gl30;
+            case gl30:
+                loadCoreExtensions(gl31); goto case gl31;
+            case gl31:
+                loadCoreExtensions(gl32); goto case gl32;
+            case gl32:
+                loadCoreExtensions(gl33); goto case gl33;
+            case gl33:
+                loadCoreExtensions(gl40); goto case gl40;
+            case gl40:
+                loadCoreExtensions(gl41); goto case gl41;
+            case gl41:
+                loadCoreExtensions(gl42); goto case gl42;
+            case gl42:
+                loadCoreExtensions(gl43); goto case gl43;
+            case gl43:
+                loadCoreExtensions(gl44); goto case gl44;
+            case gl44:
+                loadCoreExtensions(gl45); goto case gl45;
+            case gl45:
+                break;
+        }
+    }
+
+    void loadCoreExtensions(GLVersion glVersion, bool doThrow = false)
+    {
+        import std.stdio : writeln;
+        writeln("Loading core extensions for version ", glVersion);
+        if(auto loaders = (glVersion in _coreExtRegistry)) {
+            foreach(loader; (*loaders))
+                _extState[loader.name] = loader.load(&_glLoader.bindGLFunc, doThrow);
         }
     }
 
@@ -124,11 +171,20 @@ private:
     da_getStringi getStringi;
 }
 
-void registerExtensionLoader(string name, ExtLoaderFunc loader)
+void registerExtensionLoader(string name, ExtLoaderFunc loader, GLVersion coreVersion)
 {
-    _registry[name] = loader;
+    if(coreVersion == GLVersion.none) _registry[name] = loader;
+    else _coreExtRegistry[coreVersion] ~= CoreExtLoader(name, loader);
 }
 
 private:
     extern(System) @nogc nothrow alias da_getStringi = const(char)* function(uint, uint);
+
+    struct CoreExtLoader
+    {
+        string name;
+        ExtLoaderFunc load;
+    }
+
     ExtLoaderFunc[string] _registry;
+    CoreExtLoader[][GLVersion] _coreExtRegistry;

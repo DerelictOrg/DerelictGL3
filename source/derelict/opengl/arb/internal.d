@@ -3,7 +3,7 @@ module derelict.opengl.arb.internal;
 package:
 string makeGShared(string funcs) { return "__gshared{" ~ funcs ~ "}"; }
 
-string makeLoader(string name, string impl, string glversion)
+string makeLoader(string name, string impl, string glVersion)
 {
     return `struct ` ~ name ~
 `
@@ -11,14 +11,14 @@ string makeLoader(string name, string impl, string glversion)
     static this()
     {
         import derelict.opengl.extloader : registerExtensionLoader;
-        registerExtensionLoader("` ~ name ~ `", &load);
+        registerExtensionLoader("` ~ name ~ `", &load, GLVersion.` ~ glVersion ~`);
     }
-    static bool load(GLVersion loadedVersion, void delegate(void**,string) bindGLFunc)
+    static bool load(void delegate(void**,string) bindGLFunc, bool doThrow)
     {
         try {`
             ~ impl ~
 `       } catch(Exception e) {
-            if(loadedVersion >= GLVersion.` ~ glversion ~ `) throw e;
+            if(doThrow) throw e;
             else return false;
         }
         return true;

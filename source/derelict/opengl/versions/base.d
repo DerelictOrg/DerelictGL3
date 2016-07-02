@@ -29,6 +29,12 @@ module derelict.opengl.versions.base;
 
 import derelict.opengl.types;
 
+
+enum : ubyte {
+    GL_FALSE                          = 0,
+    GL_TRUE                           = 1,
+}
+
 enum : uint {
     GL_DEPTH_BUFFER_BIT               = 0x00000100,
     GL_STENCIL_BUFFER_BIT             = 0x00000400,

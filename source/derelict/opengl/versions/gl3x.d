@@ -372,6 +372,7 @@ GLVersion loadGL3x()
         auto maxVer = contextVersion;
 
         if(maxVer >= GLVersion.gl30) {
+            loadCoreExtensions(GLVersion.gl30);
             bindGLFunc(cast(void**)&glColorMaski, "glColorMaski");
             bindGLFunc(cast(void**)&glGetBooleani_v, "glGetBooleani_v");
             bindGLFunc(cast(void**)&glGetIntegeri_v, "glGetIntegeri_v");
@@ -434,6 +435,7 @@ GLVersion loadGL3x()
         }
 
         if(maxVer >= GLVersion.gl31) {
+            loadCoreExtensions(GLVersion.gl31);
             bindGLFunc(cast(void**)&glDrawArraysInstanced, "glDrawArraysInstanced");
             bindGLFunc(cast(void**)&glDrawElementsInstanced, "glDrawElementsInstanced");
             bindGLFunc(cast(void**)&glTexBuffer, "glTexBuffer");
@@ -442,6 +444,7 @@ GLVersion loadGL3x()
         }
 
         if(maxVer >= GLVersion.gl32) {
+            loadCoreExtensions(GLVersion.gl32);
             bindGLFunc(cast(void**)&glGetInteger64i_v, "glGetInteger64i_v");
             bindGLFunc(cast(void**)&glGetBufferParameteri64v, "glGetBufferParameteri64v");
             bindGLFunc(cast(void**)&glFramebufferTexture, "glFramebufferTexture");
@@ -449,11 +452,7 @@ GLVersion loadGL3x()
         }
 
         if(maxVer >= GLVersion.gl33) {
-           // load_ARB_blend_func_extended(true);
-           // load_ARB_sampler_objects(true);
-           // load_ARB_timer_query(true);
-           // load_ARB_vertex_type_2_10_10_10_rev(true);
-
+            loadCoreExtensions(GLVersion.gl33);
             bindGLFunc(cast(void**)&glVertexAttribDivisor, "glVertexAttribDivisor");
             glVer = GLVersion.gl33;
         }

@@ -56,6 +56,7 @@ final class DerelictGL3Loader : SharedLibLoader
         import derelict.opengl.versions.gl1x : loadGL1x;
         import derelict.opengl.versions.gl2x : loadGL2x;
         import derelict.opengl.versions.gl3x : loadGL3x;
+        import derelict.opengl.versions.gl4x : loadGL4x;
 
         // Make sure a context is active, otherwise this could be meaningless.
         if(!getCurrentContext())
@@ -72,6 +73,7 @@ final class DerelictGL3Loader : SharedLibLoader
         _loadedVersion = loadGL1x();
         _loadedVersion = loadGL2x();
         _loadedVersion = loadGL3x();
+        _loadedVersion = loadGL4x();
 
         _extLoader.reload();
 
@@ -88,6 +90,8 @@ final class DerelictGL3Loader : SharedLibLoader
             throw new SymbolLoadException("Failed to load OpenGL symbol [" ~ symName ~ "]");
         *ptr = sym;
     }
+
+    void loadCoreExtensions(GLVersion glVersion) { _extLoader.loadCoreExtensions(glVersion, true); }
 
     @property @nogc nothrow
     bool isExtensionLoaded(string name) { return _extLoader.isLoaded(name); }

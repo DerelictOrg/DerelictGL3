@@ -257,21 +257,17 @@ q{
     bindGLFunc(cast(void**)&glTexStorage1D, "glTexStorage1D");
     bindGLFunc(cast(void**)&glTexStorage2D, "glTexStorage2D");
     bindGLFunc(cast(void**)&glTexStorage3D, "glTexStorage3D");
-
-    // TODO ARRRRRRRGGGGGGHHHHHH!!!!!!!
-    /*
-    if(isExtensionSupported("GL_EXT_direct_state_access")) {
-        try {
-            bindGLFunc(cast(void**)&glTextureStorage1DEXT, "glTextureStorage1DEXT");
-            bindGLFunc(cast(void**)&glTextureStorage2DEXT, "glTextureStorage2DEXT");
-            bindGLFunc(cast(void**)&glTextureStorage3DEXT, "glTextureStorage3DEXT");
-        } catch(Exception e) {}
-    } */
+    // The following are present if EXT_direct_state_access is supported.
+    try {
+        bindGLFunc(cast(void**)&glTextureStorage1DEXT, "glTextureStorage1DEXT");
+        bindGLFunc(cast(void**)&glTextureStorage2DEXT, "glTextureStorage2DEXT");
+        bindGLFunc(cast(void**)&glTextureStorage3DEXT, "glTextureStorage3DEXT");
+    }
+    catch(Exception e) {}
 };
 
 enum arbTextureStorageLoader = makeLoader(ARB_texture_storage, arbTextureStorageLoaderImpl, "gl42");
 enum arbTextureStorage = arbTextureStorageDecls ~ arbTextureStorageFuncs.makeGShared() ~ arbTextureStorageLoader;
-
 
 enum corearb42 = arbBaseInstance ~ arbTransformFeedbackInstanced ~ arbInternalFormatQuery ~ arbShaderAtomicCounters
         ~ arbShaderImageLoadStore ~ arbTextureStorage;

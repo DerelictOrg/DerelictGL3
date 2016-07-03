@@ -32,11 +32,20 @@ import derelict.opengl.types;
 import derelict.opengl.arb.core_40 : corearb40;
 import derelict.opengl.arb.core_41 : corearb41;
 import derelict.opengl.arb.core_42 : corearb42;
+import derelict.opengl.arb.core_43 : corearb43;
+import derelict.opengl.arb.core_44 : corearb44;
+import derelict.opengl.arb.core_45 : corearb45;
 
 public {
     import derelict.opengl.arb.core_40 : ARB_draw_indirect, ARB_gpu_shader_fp64, ARB_shader_subroutine, ARB_tessellation_shader, ARB_transform_feedback2, ARB_transform_feedback3;
     import derelict.opengl.arb.core_41 : ARB_ES2_compatibility, ARB_get_program_binary, ARB_separate_shader_objects, ARB_vertex_attrib_64bit, ARB_viewport_array;
     import derelict.opengl.arb.core_42 : ARB_base_instance, ARB_transform_feedback_instanced, ARB_internalformat_query, ARB_shader_atomic_counters, ARB_shader_image_load_store, ARB_texture_storage;
+    import derelict.opengl.arb.core_43 : ARB_clear_buffer_object, ARB_compute_shader, ARB_copy_image, KHR_debug, ARB_framebuffer_no_attachments, ARB_internalformat_query2, ARB_invalidate_subdata,
+                                         ARB_multi_draw_indirect, ARB_program_interface_query, ARB_shader_storage_buffer_object, ARB_texture_buffer_range, ARB_texture_storage_multisample,
+                                         ARB_texture_view, ARB_vertex_attrib_binding;
+    import derelict.opengl.arb.core_44 : ARB_buffer_storage, ARB_clear_texture, ARB_multi_bind;
+    import derelict.opengl.arb.core_45 : ARB_clip_control, ARB_ES3_1_compatibility, ARB_direct_state_access, ARB_get_texture_sub_image,
+                                         KHR_robustness, ARB_texture_barrier;
 }
 
 enum : uint {
@@ -104,6 +113,9 @@ __gshared {
 mixin(corearb40);
 mixin(corearb41);
 mixin(corearb42);
+mixin(corearb43);
+mixin(corearb44);
+mixin(corearb45);
 
 package(derelict.opengl)
 GLVersion loadGL4x()
@@ -135,43 +147,20 @@ GLVersion loadGL4x()
         }
 
         if(maxVer >= GLVersion.gl43) {
-    //            load_ARB_clear_buffer_object(true);
-    //            load_ARB_copy_image(true);
-       //         load_ARB_compute_shader(true);
-     //           load_KHR_debug(true);
-      //          load_ARB_framebuffer_no_attachments(true);
-      //          load_ARB_internalformat_query2(true);
-      //          load_ARB_invalidate_subdata(true);
-      //          load_ARB_multi_draw_indirect(true);
-      //          load_ARB_program_interface_query(true);
-     //           load_ARB_shader_storage_buffer_object(true);
-     // //          load_ARB_texture_buffer_range(true);
-     //           load_ARB_texture_storage_multisample(true);
-     //           load_ARB_texture_view(true);
-     //           load_ARB_vertex_attrib_binding(true);
-
+            loadCoreExtensions(GLVersion.gl43);
             glVer = GLVersion.gl43;
         }
 
         if(maxVer >= GLVersion.gl44) {
-          //      load_ARB_buffer_storage(GLVersion.GL44, true);
-         //       load_ARB_clear_texture(true);
-          //      load_ARB_multi_bind(true);
+            loadCoreExtensions(GLVersion.gl44);
             glVer = GLVersion.gl44;
         }
 
         if(maxVer >= GLVersion.gl45) {
-
-          //      load_ARB_clip_control(true);
-         //       load_ARB_ES3_1_compatibility(true);
-          //      load_ARB_direct_state_access(true);
-          //      load_ARB_get_texture_sub_image(true);
-          //      load_KHR_robustness(true);
-          //      load_ARB_texture_barrier(true);
-
-                bindGLFunc(cast(void**)&glGetnTexImage, "glGetnTexImage");
-                bindGLFunc(cast(void**)&glGetnCompressedTexImage, "glGetnCompressedTexImage");
-                bindGLFunc(cast(void**)&glGetnUniformdv, "glGetnUniformdv");
+            loadCoreExtensions(GLVersion.gl45);
+            bindGLFunc(cast(void**)&glGetnTexImage, "glGetnTexImage");
+            bindGLFunc(cast(void**)&glGetnCompressedTexImage, "glGetnCompressedTexImage");
+            bindGLFunc(cast(void**)&glGetnUniformdv, "glGetnUniformdv");
 
             glVer = GLVersion.gl45;
         }

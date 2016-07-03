@@ -31,10 +31,12 @@ import derelict.opengl.types;
 
 import derelict.opengl.arb.core_40 : corearb40;
 import derelict.opengl.arb.core_41 : corearb41;
+import derelict.opengl.arb.core_42 : corearb42;
 
 public {
     import derelict.opengl.arb.core_40 : ARB_draw_indirect, ARB_gpu_shader_fp64, ARB_shader_subroutine, ARB_tessellation_shader, ARB_transform_feedback2, ARB_transform_feedback3;
     import derelict.opengl.arb.core_41 : ARB_ES2_compatibility, ARB_get_program_binary, ARB_separate_shader_objects, ARB_vertex_attrib_64bit, ARB_viewport_array;
+    import derelict.opengl.arb.core_42 : ARB_base_instance, ARB_transform_feedback_instanced, ARB_internalformat_query, ARB_shader_atomic_counters, ARB_shader_image_load_store, ARB_texture_storage;
 }
 
 enum : uint {
@@ -101,6 +103,7 @@ __gshared {
 
 mixin(corearb40);
 mixin(corearb41);
+mixin(corearb42);
 
 package(derelict.opengl)
 GLVersion loadGL4x()
@@ -127,12 +130,7 @@ GLVersion loadGL4x()
         }
 
         if(maxVer >= GLVersion.gl42) {
-          //      load_ARB_base_instance(true);
-         //       load_ARB_transform_feedback_instanced(true);
-         //       load_ARB_internalformat_query(true);
-          //      load_ARB_shader_atomic_counters(true);
-          //      load_ARB_shader_image_load_store(true);
-         //       load_ARB_texture_storage(GLVersion.GL42, true);
+            loadCoreExtensions(GLVersion.gl42);
             glVer = GLVersion.gl42;
         }
 

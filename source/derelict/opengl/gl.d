@@ -96,6 +96,9 @@ final class DerelictGL3Loader : SharedLibLoader
     @property @nogc nothrow
     bool isExtensionLoaded(string name) { return _extLoader.isLoaded(name); }
 
+    @property @nogc nothrow
+    bool isExtensionSupported(string name) { return _extLoader.isSupported(name); }
+
 protected:
     override void loadSymbols()
     {

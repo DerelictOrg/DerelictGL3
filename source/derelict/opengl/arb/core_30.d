@@ -30,6 +30,9 @@ module derelict.opengl.arb.core_30;
 import derelict.opengl.types,
        derelict.opengl.arb.internal;
 
+version(DerelictGL3_Contexts) {}
+else version = DerelictGL3_NoContexts;
+
 // ARB_framebuffer_object
 enum ARB_framebuffer_object = "GL_ARB_framebuffer_object";
 enum arbFramebufferObjectDecls =
@@ -187,7 +190,7 @@ q{
 };
 
 enum arbFramebufferObjectLoader = makeLoader(ARB_framebuffer_object, arbFramebufferObjectLoaderImpl, "gl30");
-enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs.makeGShared() ~ arbFramebufferObjectLoader;
+version(DerelictGL3_NoContexts) enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs ~ arbFramebufferObjectLoader;
 
 // ARB_map_buffer_range
 enum ARB_map_buffer_range = "GL_ARB_map_buffer_range";
@@ -255,6 +258,6 @@ q{
 enum arbVertexArrayObjectLoader = makeLoader(ARB_vertex_array_object, arbVertexArrayObjectLoaderImpl, "gl30");
 enum arbVertexArrayObject = arbVertexArrayObjectDecls ~ arbVertexArrayObjectFuncs.makeGShared() ~ arbVertexArrayObjectLoader;
 
-enum corearb30 = arbFramebufferObject ~ arbMapBufferRange ~ arbVertexArrayObject;
 enum corearb30Decls = arbFramebufferObjectDecls ~ arbMapBufferRangeDecls ~ arbVertexArrayObjectDecls;
 enum corearb30Funcs = arbFramebufferObjectFuncs ~ arbMapBufferRangeFuncs ~ arbVertexArrayObjectFuncs;
+enum corearb30Loader = arbFramebufferObjectLoaderImpl ~ arbMapBufferRangeLoaderImpl ~ arbVertexArrayObjectLoaderImpl;

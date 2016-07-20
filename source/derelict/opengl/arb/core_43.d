@@ -695,11 +695,6 @@ q{
 enum arbVertexAttribBindingLoader = makeLoader(ARB_vertex_attrib_binding, arbVertexAttribBindingLoaderImpl, "gl43");
 enum arbVertexAttribBinding = arbVertexAttribBindingDecls ~ arbVertexAttribBindingFuncs.makeGShared() ~ arbVertexAttribBindingLoader;
 
-enum corearb43 = arbClearBufferObject ~ arbComputeShader ~ arbCopyImage ~ khrDebug ~ arbFramebufferNoAttachments
-        ~ arbInternalFormatQuery2 ~ arbInvalidateSubdata ~ arbMultiDrawIndirect ~ arbProgramInterfaceQuery
-        ~ arbShaderStorageBufferObject ~ arbTextureBufferRange ~ arbTextureStorageMultisample ~ arbTextureView
-        ~ arbVertexAttribBinding;
-
 enum corearb43Decls = arbClearBufferObjectDecls ~ arbComputeShaderDecls ~ arbCopyImageDecls ~ khrDebugDecls
         ~ arbFramebufferNoAttachmentsDecls ~ arbInternalFormatQuery2Decls ~ arbInvalidateSubdataDecls ~ arbMultiDrawIndirectDecls
         ~ arbProgramInterfaceQueryDecls ~ arbShaderStorageBufferObjectDecls ~ arbTextureBufferRangeDecls ~ arbTextureStorageMultisampleDecls
@@ -709,3 +704,8 @@ enum corearb43Funcs = arbClearBufferObjectFuncs ~ arbComputeShaderFuncs ~ arbCop
         ~ arbFramebufferNoAttachmentsFuncs ~ arbInternalFormatQuery2Funcs ~ arbInvalidateSubdataFuncs ~ arbMultiDrawIndirectFuncs
         ~ arbProgramInterfaceQueryFuncs ~ arbShaderStorageBufferObjectFuncs ~ arbTextureBufferRangeFuncs ~ arbTextureStorageMultisampleFuncs
         ~ arbTextureViewFuncs ~ arbVertexAttribBindingFuncs;
+
+enum corearb43Loader = arbClearBufferObjectLoader ~ arbComputeShaderLoader ~ arbCopyImageLoader ~ khrDebugLoader
+        ~ arbFramebufferNoAttachmentsLoader ~ arbInternalFormatQuery2Loader ~ arbInvalidateSubdataLoader ~ arbMultiDrawIndirectLoader
+        ~ arbProgramInterfaceQueryLoader ~ arbShaderStorageBufferObjectLoader ~ arbTextureBufferRangeLoader ~ arbTextureStorageMultisampleLoader
+        ~ arbTextureViewLoader ~ arbVertexAttribBindingLoader;

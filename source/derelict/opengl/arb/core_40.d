@@ -340,9 +340,9 @@ q{
 enum arbTransformFeedback3Loader = makeLoader(ARB_transform_feedback3, arbTransformFeedback3LoaderImpl, "gl40");
 enum arbTransformFeedback3 = arbTransformFeedback3Decls ~ arbTransformFeedback3Funcs.makeGShared() ~ arbTransformFeedback3Loader;
 
-enum corearb40 = arbDrawIndirect ~ arbGPUShaderFP64 ~ arbShaderSubroutine ~ arbTesselationShader
-        ~ arbTransformFeedback2 ~ arbTransformFeedback3;
 enum corearb40Decls = arbDrawIndirectDecls ~ arbGPUShaderFP64Decls ~ arbShaderSubroutineDecls
         ~ arbTesselationShaderDecls ~ arbTransformFeedback2Decls ~ arbTransformFeedback3Decls;
 enum corearb40Funcs = arbDrawIndirectFuncs ~ arbGPUShaderFP64Funcs ~ arbShaderSubroutineFuncs
         ~ arbTesselationShaderFuncs ~ arbTransformFeedback2Funcs ~ arbTransformFeedback3Funcs;
+enum corearb40Loader = arbDrawIndirectLoader ~ arbGPUShaderFP64Loader ~ arbShaderSubroutineLoader
+        ~ arbTesselationShaderLoader ~ arbTransformFeedback2Loader ~ arbTransformFeedback3Loader;

@@ -131,3 +131,4 @@ enum arbUniformBufferObject = arbUniformBufferObjectDecls ~ arbUniformBufferObje
 enum corearb31 = arbCopyBuffer ~ arbUniformBufferObject;
 enum corearb31Decls = arbCopyBufferDecls ~ arbUniformBufferObjectDecls;
 enum corearb31Funcs = arbCopyBufferFuncs ~ arbUniformBufferObjectFuncs;
+enum corearb31Loader = arbCopyBufferLoaderImpl ~ arbUniformBufferObjectLoaderImpl;

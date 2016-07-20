@@ -195,3 +195,5 @@ enum arbTextureMultiSample = arbTextureMultiSampleDecls ~ arbTextureMultiSampleF
 enum corearb32 = arbDrawElementsBaseVertex ~ arbProvokingVertex ~ arbSync ~ arbTextureMultiSample;
 enum corearb32Decls = arbDrawElementsBaseVertexDecls ~ arbProvokingVertexDecls ~ arbSyncDecls ~ arbTextureMultiSampleDecls;
 enum corearb32Funcs = arbDrawElementsBaseVertexFuncs ~ arbProvokingVertexFuncs ~ arbSyncFuncs ~ arbTextureMultiSampleFuncs;
+enum corearb32Loader = arbDrawElementsBaseVertexLoaderImpl ~ arbProvokingVertexLoaderImpl ~
+        arbSyncLoaderImpl ~ arbTextureMultiSampleLoaderImpl;

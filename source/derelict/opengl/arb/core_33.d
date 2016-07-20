@@ -125,3 +125,4 @@ enum arbSamplerObjects = arbSamplerObjectsDecls ~ arbSamplerObjectsFuncs.makeGSh
 enum corearb33 = arbBlendFuncExtended ~ arbSamplerObjects;
 enum corearb33Decls = arbBlendFuncExtendedDecls ~ arbSamplerObjectsDecls;
 enum corearb33Funcs = arbBlendFuncExtendedFuncs ~ arbSamplerObjectsFuncs;
+enum corearb33Loader = arbBlendFuncExtendedLoaderImpl ~ arbSamplerObjectsLoaderImpl;

@@ -27,29 +27,17 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.versions.gl4x;
 
-import derelict.opengl.types;
+import derelict.opengl.types,
+       derelict.opengl.arb.core_40,
+       derelict.opengl.arb.core_41,
+       derelict.opengl.arb.core_42,
+       derelict.opengl.arb.core_43,
+       derelict.opengl.arb.core_44,
+       derelict.opengl.arb.core_45;
 
-import derelict.opengl.arb.core_40 : corearb40;
-import derelict.opengl.arb.core_41 : corearb41;
-import derelict.opengl.arb.core_42 : corearb42;
-import derelict.opengl.arb.core_43 : corearb43;
-import derelict.opengl.arb.core_44 : corearb44;
-import derelict.opengl.arb.core_45 : corearb45;
-
-public {
-    import derelict.opengl.arb.core_40 : ARB_draw_indirect, ARB_gpu_shader_fp64, ARB_shader_subroutine, ARB_tessellation_shader, ARB_transform_feedback2, ARB_transform_feedback3;
-    import derelict.opengl.arb.core_41 : ARB_ES2_compatibility, ARB_get_program_binary, ARB_separate_shader_objects, ARB_vertex_attrib_64bit, ARB_viewport_array;
-    import derelict.opengl.arb.core_42 : ARB_base_instance, ARB_transform_feedback_instanced, ARB_internalformat_query, ARB_shader_atomic_counters, ARB_shader_image_load_store, ARB_texture_storage;
-    import derelict.opengl.arb.core_43 : ARB_clear_buffer_object, ARB_compute_shader, ARB_copy_image, KHR_debug, ARB_framebuffer_no_attachments, ARB_internalformat_query2, ARB_invalidate_subdata,
-                                         ARB_multi_draw_indirect, ARB_program_interface_query, ARB_shader_storage_buffer_object, ARB_texture_buffer_range, ARB_texture_storage_multisample,
-                                         ARB_texture_view, ARB_vertex_attrib_binding;
-    import derelict.opengl.arb.core_44 : ARB_buffer_storage, ARB_clear_texture, ARB_multi_bind;
-    import derelict.opengl.arb.core_45 : ARB_clip_control, ARB_ES3_1_compatibility, ARB_direct_state_access, ARB_get_texture_sub_image,
-                                         KHR_robustness, ARB_texture_barrier;
-}
-
+enum _gl40Decls =
+q{
 enum : uint {
-    // OpenGL 4.0
     GL_SAMPLE_SHADING                 = 0x8C36,
     GL_MIN_SAMPLE_SHADING_VALUE       = 0x8C37,
     GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5E,
@@ -61,110 +49,128 @@ enum : uint {
     GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW  = 0x900D,
     GL_INT_SAMPLER_CUBE_MAP_ARRAY     = 0x900E,
     GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = 0x900F,
-
-    // OpenGL 4.2
-    GL_COPY_READ_BUFFER_BINDING  = 0x8F36,
-    GL_COPY_WRITE_BUFFER_BINDING = 0x8F37,
-    GL_TRANSFORM_FEEDBACK_PAUSED = 0x8E23,
-    GL_TRANSFORM_FEEDBACK_ACTIVE = 0x8E24,
-
-    // OpenGL 4.3
-    GL_NUM_SHADING_LANGUAGE_VERSIONS = 0x82E9,
-    GL_VERTEX_ATTRIB_ARRAY_LONG = 0x874E,
-    GL_VERTEX_BINDING_BUFFER = 0x8F4F,
-
-    // OpenGL 4.4
-    GL_MAX_VERTEX_ATTRIB_STRIDE       = 0x82E5,
-    GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221,
-    GL_TEXTURE_BUFFER_BINDING         = 0x8C2A,
-
-    // OpenGL 4.5
-    GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT = 0x00000004,
 }
 
 extern(System) @nogc nothrow {
-    // OpenGL 4.0
     alias da_glMinSampleShading = void function( GLclampf );
     alias da_glBlendEquationi = void function( GLuint,GLenum );
     alias da_glBlendEquationSeparatei = void function( GLuint,GLenum,GLenum );
     alias da_glBlendFunci = void function( GLuint,GLenum,GLenum );
     alias da_glBlendFuncSeparatei = void function( GLuint,GLenum,GLenum,GLenum,GLenum );
+}};
+enum gl40Decls = corearb40Decls ~ _gl40Decls;
 
-    // OpenGL 4.5
+enum gl41Decls = corearb41Decls;
+
+enum _gl42Decls =
+q{
+enum : uint {
+    GL_COPY_READ_BUFFER_BINDING  = 0x8F36,
+    GL_COPY_WRITE_BUFFER_BINDING = 0x8F37,
+    GL_TRANSFORM_FEEDBACK_PAUSED = 0x8E23,
+    GL_TRANSFORM_FEEDBACK_ACTIVE = 0x8E24,
+}};
+enum gl42Decls = corearb42Decls ~ _gl42Decls;
+
+enum _gl43Decls =
+q{
+enum : uint {
+    GL_NUM_SHADING_LANGUAGE_VERSIONS = 0x82E9,
+    GL_VERTEX_ATTRIB_ARRAY_LONG = 0x874E,
+    GL_VERTEX_BINDING_BUFFER = 0x8F4F,
+}};
+enum gl43Decls = corearb43Decls ~ _gl43Decls;
+
+enum _gl44Decls =
+q{
+enum : uint {
+    GL_MAX_VERTEX_ATTRIB_STRIDE       = 0x82E5,
+    GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221,
+    GL_TEXTURE_BUFFER_BINDING         = 0x8C2A,
+}};
+enum gl44Decls = corearb44Decls ~ _gl44Decls;
+
+enum _gl45Decls =
+q{
+enum uint GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT = 0x00000004;
+extern(System) @nogc nothrow {
     alias da_glGetnCompressedTexImage = void function( GLenum,GLint,GLsizei,void* );
     alias da_glGetnTexImage = void function( GLenum,GLint,GLenum,GLenum,GLsizei,void* );
     alias da_glGetnUniformdv = void function( GLuint,GLint,GLsizei,GLdouble* );
-}
+}};
+enum gl45Decls = corearb45Decls ~ _gl45Decls;
 
-__gshared {
-    // OpenGL 4.0
+enum _gl40Funcs =
+q{
     da_glMinSampleShading glMinSampleShading;
     da_glBlendEquationi glBlendEquationi;
     da_glBlendEquationSeparatei glBlendEquationSeparatei;
     da_glBlendFunci glBlendFunci;
     da_glBlendFuncSeparatei glBlendFuncSeparatei;
+};
+enum gl40Funcs = corearb40Funcs ~ _gl40Funcs;
 
-    // OpenGL 4.5
+enum gl41Funcs = corearb41Funcs;
+enum gl42Funcs = corearb42Funcs;
+enum gl43Funcs = corearb43Funcs;
+enum gl44Funcs = corearb44Funcs;
+
+enum _gl45Funcs =
+q{
     da_glGetnTexImage glGetnTexImage;
     da_glGetnCompressedTexImage glGetnCompressedTexImage;
     da_glGetnUniformdv glGetnUniformdv;
-}
+};
+enum gl45Funcs = corearb45Funcs ~ _gl45Funcs;
 
-mixin(corearb40);
-mixin(corearb41);
-mixin(corearb42);
-mixin(corearb43);
-mixin(corearb44);
-mixin(corearb45);
+enum _gl40Loader =
+q{
+    bindGLFunc(cast(void**)&glMinSampleShading, "glMinSampleShading");
+    bindGLFunc(cast(void**)&glBlendEquationi, "glBlendEquationi");
+    bindGLFunc(cast(void**)&glBlendEquationSeparatei, "glBlendEquationSeparatei");
+    bindGLFunc(cast(void**)&glBlendFunci, "glBlendFunci");
+    bindGLFunc(cast(void**)&glBlendFuncSeparatei, "glBlendFuncSeparatei");
+    glVer = GLVersion.gl40;
+};
+version(DerelictGL3_Contexts)
+    enum _gl40LoaderAdd = corearb40Loader;
+else
+    enum _gl40LoaderAdd = `loadExtensionSet(GLVersion.gl40, true);`;
+enum gl40Loader = `if(maxVer >= GLVersion.gl40) {` ~ _gl40LoaderAdd ~ _gl40Loader ~ `}`;
 
-package(derelict.opengl)
-GLVersion loadGL4x()
-{
-    import derelict.opengl.gl : DerelictGL3;
-    with(DerelictGL3)
-    {
-        auto glVer = loadedVersion;
-        auto maxVer = contextVersion;
+version(DerelictGL3_Contexts)
+    enum _gl41LoaderAdd = corearb41Loader;
+else
+    enum _gl41LoaderAdd = `loadExtensionSet(GLVersion.gl41, true);`;
+enum gl41Loader = `if(maxVer >= GLVersion.gl41) {` ~ _gl41LoaderAdd ~ `}`;
 
-        if(maxVer >= GLVersion.gl40) {
-            loadCoreExtensions(GLVersion.gl40);
-            bindGLFunc(cast(void**)&glMinSampleShading, "glMinSampleShading");
-            bindGLFunc(cast(void**)&glBlendEquationi, "glBlendEquationi");
-            bindGLFunc(cast(void**)&glBlendEquationSeparatei, "glBlendEquationSeparatei");
-            bindGLFunc(cast(void**)&glBlendFunci, "glBlendFunci");
-            bindGLFunc(cast(void**)&glBlendFuncSeparatei, "glBlendFuncSeparatei");
-            glVer = GLVersion.gl40;
-        }
+version(DerelictGL3_Contexts)
+    enum _gl42LoaderAdd = corearb42Loader;
+else
+    enum _gl42LoaderAdd = `loadExtensionSet(GLVersion.gl42, true);`;
+enum gl42Loader = `if(maxVer >= GLVersion.gl42) {` ~ _gl42LoaderAdd ~ `}`;
 
-        if(maxVer >= GLVersion.gl41) {
-            loadCoreExtensions(GLVersion.gl41);
-            glVer = GLVersion.gl41;
-        }
+version(DerelictGL3_Contexts)
+    enum _gl43LoaderAdd = corearb43Loader;
+else
+    enum _gl43LoaderAdd = `loadExtensionSet(GLVersion.gl43, true);`;
+enum gl43Loader = `if(maxVer >= GLVersion.gl43) {` ~ _gl43LoaderAdd ~ `}`;
 
-        if(maxVer >= GLVersion.gl42) {
-            loadCoreExtensions(GLVersion.gl42);
-            glVer = GLVersion.gl42;
-        }
+version(DerelictGL3_Contexts)
+    enum _gl44LoaderAdd = corearb44Loader;
+else
+    enum _gl44LoaderAdd = `loadExtensionSet(GLVersion.gl44, true);`;
+enum gl44Loader = `if(maxVer >= GLVersion.gl44) {` ~ _gl44LoaderAdd ~ `}`;
 
-        if(maxVer >= GLVersion.gl43) {
-            loadCoreExtensions(GLVersion.gl43);
-            glVer = GLVersion.gl43;
-        }
-
-        if(maxVer >= GLVersion.gl44) {
-            loadCoreExtensions(GLVersion.gl44);
-            glVer = GLVersion.gl44;
-        }
-
-        if(maxVer >= GLVersion.gl45) {
-            loadCoreExtensions(GLVersion.gl45);
-            bindGLFunc(cast(void**)&glGetnTexImage, "glGetnTexImage");
-            bindGLFunc(cast(void**)&glGetnCompressedTexImage, "glGetnCompressedTexImage");
-            bindGLFunc(cast(void**)&glGetnUniformdv, "glGetnUniformdv");
-
-            glVer = GLVersion.gl45;
-        }
-
-        return glVer;
-    }
-}
+enum _gl45Loader =
+q{
+    bindGLFunc(cast(void**)&glGetnTexImage, "glGetnTexImage");
+    bindGLFunc(cast(void**)&glGetnCompressedTexImage, "glGetnCompressedTexImage");
+    bindGLFunc(cast(void**)&glGetnUniformdv, "glGetnUniformdv");
+    glVer = GLVersion.gl45;
+};
+version(DerelictGL3_Contexts)
+    enum _gl45LoaderAdd = corearb45Loader;
+else
+    enum _gl45LoaderAdd = `loadExtensionSet(GLVersion.gl45, true);`;
+enum gl45Loader = `if(maxVer >= GLVersion.gl45) {` ~ _gl45LoaderAdd ~ _gl45Loader ~ `}`;

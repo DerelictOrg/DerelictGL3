@@ -127,6 +127,6 @@ q{
 enum arbMultBindLoader = makeLoader(ARB_multi_bind, arbMultBindLoaderImpl, "gl44");
 enum arbMultBind = arbMultBindDecls ~ arbMultBindFuncs.makeGShared() ~ arbMultBindLoader;
 
-enum corearb44 = arbBufferStorage ~ arbClearTexture ~ arbMultBind;
 enum corearb44Decls = arbBufferStorageDecls~ arbClearTextureDecls ~ arbMultBindDecls;
 enum corearb44Funcs = arbBufferStorageFuncs ~ arbClearTextureFuncs ~ arbMultBindFuncs;
+enum corearb44Loader = arbBufferStorageLoader ~ arbClearTextureLoader ~ arbMultBindLoader;

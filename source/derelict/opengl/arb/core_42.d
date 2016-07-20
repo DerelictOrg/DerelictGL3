@@ -269,9 +269,9 @@ q{
 enum arbTextureStorageLoader = makeLoader(ARB_texture_storage, arbTextureStorageLoaderImpl, "gl42");
 enum arbTextureStorage = arbTextureStorageDecls ~ arbTextureStorageFuncs.makeGShared() ~ arbTextureStorageLoader;
 
-enum corearb42 = arbBaseInstance ~ arbTransformFeedbackInstanced ~ arbInternalFormatQuery ~ arbShaderAtomicCounters
-        ~ arbShaderImageLoadStore ~ arbTextureStorage;
 enum corearb42Decls = arbBaseInstanceDecls ~ arbTransformFeedbackInstancedDecls ~ arbInternalFormatQueryDecls
         ~ arbShaderAtomicCountersDecls ~ arbShaderImageLoadStoreDecls ~ arbTextureStorageDecls;
 enum corearb42Funcs = arbBaseInstanceFuncs ~ arbTransformFeedbackInstancedFuncs ~ arbInternalFormatQueryFuncs
         ~ arbShaderAtomicCountersFuncs ~ arbShaderImageLoadStoreFuncs ~ arbTextureStorageFuncs;
+enum corearb42Loader = arbBaseInstanceLoader ~ arbTransformFeedbackInstancedLoader ~ arbInternalFormatQueryLoader
+        ~ arbShaderAtomicCountersLoader ~ arbShaderImageLoadStoreLoader ~ arbTextureStorageLoader;

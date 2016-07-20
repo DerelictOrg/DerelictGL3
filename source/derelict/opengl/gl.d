@@ -28,149 +28,30 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl.gl;
 
 import std.array;
-import derelict.util.exception,
-       derelict.util.loader,
+import derelict.util.loader,
        derelict.util.system;
 
-import derelict.opengl.extloader,
+import derelict.opengl.glloader,
        derelict.opengl.types : GLVersion;
 
+version(DerelictGL3_Contexts) {}
+else version = DerelictGL3_NoContexts;
 
 final class DerelictGL3Loader : SharedLibLoader
 {
-    this()
-    {
-        super(libNames);
-        _extLoader.initialize(this);
+    this() { super(libNames); }
+
+    version(DerelictGL3_NoContexts) {
+        GLLoader glLoader;
+        alias glLoader this;
+
+        GLVersion reload() { return glLoader.loadExtra(); }
     }
-
-    @property @nogc nothrow
-    GLVersion loadedVersion() { return _loadedVersion; }
-
-    @property @nogc nothrow
-    GLVersion contextVersion() { return _contextVersion; }
-
-    GLVersion reload(GLVersion minVersion = GLVersion.none, GLVersion maxVersion = GLVersion.highestSupported)
-    {
-        import std.string : format;
-        import derelict.opengl.versions.gl1x : loadGL1x;
-        import derelict.opengl.versions.gl2x : loadGL2x;
-        import derelict.opengl.versions.gl3x : loadGL3x;
-        import derelict.opengl.versions.gl4x : loadGL4x;
-
-        // Make sure a context is active, otherwise this could be meaningless.
-        if(!getCurrentContext())
-            throw new DerelictException("DerelictGL3.reload failure: An OpenGL context is not currently active.");
-
-        _contextVersion = getContextVersion();
-        if(minVersion != GLVersion.none && _contextVersion < minVersion) {
-            throw new DerelictException(format("OpenGL version %s was required, but context only supports %s",
-                minVersion, _contextVersion));
-        }
-        if(_contextVersion > maxVersion)
-            _contextVersion = maxVersion;
-
-        _loadedVersion = loadGL1x();
-        _loadedVersion = loadGL2x();
-        _loadedVersion = loadGL3x();
-        _loadedVersion = loadGL4x();
-
-        _extLoader.reload();
-
-        return _loadedVersion;
-    }
-
-    static if(Derelict_OS_Mac) alias bindGLFunc = bindFunc;
-    else void bindGLFunc(void** ptr, string symName)
-    {
-        import derelict.util.exception : SymbolLoadException;
-
-        auto sym = getProcAddress(symName.ptr);
-        if(!sym)
-            throw new SymbolLoadException("Failed to load OpenGL symbol [" ~ symName ~ "]");
-        *ptr = sym;
-    }
-
-    void loadCoreExtensions(GLVersion glVersion) { _extLoader.loadCoreExtensions(glVersion, true); }
-
-    @property @nogc nothrow
-    bool isExtensionLoaded(string name) { return _extLoader.isLoaded(name); }
-
-    @property @nogc nothrow
-    bool isExtensionSupported(string name) { return _extLoader.isSupported(name); }
 
 protected:
     override void loadSymbols()
     {
-        import derelict.opengl.versions.base : loadBaseGL;
-
-        _loadedVersion = loadBaseGL();
-        static if(!Derelict_OS_Mac) bindFunc(cast(void**)&getProcAddress, getProcAddressName);
-        bindFunc(cast(void**)&getCurrentContext, getCurrentContextName);
-    }
-
-private:
-    ExtLoader!DerelictGL3Loader _extLoader;
-    GLVersion _loadedVersion;
-    GLVersion _contextVersion;
-
-    GLVersion getContextVersion()
-    {
-        import derelict.opengl.versions.base : GL_VERSION, glGetString;
-
-        /* glGetString(GL_VERSION) is guaranteed to return a constant string
-         of the format "[major].[minor].[build] xxxx", where xxxx is vendor-specific
-         information. Here, I'm pulling two characters out of the string, the major
-         and minor version numbers. */
-        auto verstr = glGetString(GL_VERSION);
-        char major = *verstr;
-        char minor = *(verstr + 2);
-
-        switch(major) {
-            case '4':
-                if(minor == '5') return GLVersion.gl45;
-                else if(minor == '4') return GLVersion.gl44;
-                else if(minor == '3') return GLVersion.gl43;
-                else if(minor == '2') return GLVersion.gl42;
-                else if(minor == '1') return GLVersion.gl41;
-                else if(minor == '0') return GLVersion.gl40;
-
-                /* No default condition here, since it's possible for new
-                 minor versions of the 4.x series to be released before
-                 support is added to Derelict. That case is handled outside
-                 of the switch. When no more 4.x versions are released, this
-                 should be changed to return GL40 by default. */
-                break;
-
-            case '3':
-                if(minor == '3') return GLVersion.gl33;
-                else if(minor == '2') return GLVersion.gl32;
-                else if(minor == '1') return GLVersion.gl31;
-                else return GLVersion.gl30;
-
-            case '2':
-                if(minor == '1') return GLVersion.gl21;
-                else return GLVersion.gl20;
-
-            case '1':
-                if(minor == '5') return GLVersion.gl15;
-                else if(minor == '4') return GLVersion.gl14;
-                else if(minor == '3') return GLVersion.gl13;
-                else if(minor == '2') return GLVersion.gl12;
-                else return GLVersion.gl11;
-
-            default:
-                /* glGetString(GL_VERSION) is guaranteed to return a result
-                 of a specific format, so if this point is reached it is
-                 going to be because a major version higher than what Derelict
-                 supports was encountered. That case is handled outside the
-                 switch. */
-                break;
-        }
-
-        /* It's highly likely at this point that the version is higher than
-         what Derelict supports, so return the highest supported version. */
-        return GLVersion.highestSupported;
+        version(DerelictGL3_NoContexts) glLoader.loadBase();
     }
 }
 
@@ -193,22 +74,3 @@ private:
     } else
         static assert(0, "Need to implement OpenGL libNames for this operating system.");
 
-    static if(!Derelict_OS_Mac) {
-        extern(C) @nogc nothrow alias da_getProcAddress = void* function(const(char)*);
-        __gshared da_getProcAddress getProcAddress;
-    }
-
-    extern(System) @nogc nothrow alias da_getCurrentContext = void* function();
-    __gshared da_getCurrentContext getCurrentContext;
-
-    static if(Derelict_OS_Windows) {
-        enum getProcAddressName = "wglGetProcAddress";
-        enum getCurrentContextName = "wglGetCurrentContext";
-    }
-    else static if(Derelict_OS_Mac) {
-        enum getCurrentContextName = "CGLGetCurrentContext";
-    }
-    else static if(Derelict_OS_Posix) {
-        enum getProcAddressName = "glXGetProcAddress";
-        enum getCurrentContextName = "glXGetCurrentContext";
-    }

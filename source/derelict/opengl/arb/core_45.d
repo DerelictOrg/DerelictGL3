@@ -452,8 +452,9 @@ enum arbTextureBarrierLoaderImpl = `bindGLFunc(cast(void**)&glTextureBarrier, "g
 enum arbTextureBarrierLoader = makeLoader(ARB_texture_barrier, arbTextureBarrierLoaderImpl, "gl45");
 enum arbTextureBarrier = arbTextureBarrierDecls ~ arbTextureBarrierFuncs.makeGShared() ~ arbTextureBarrierLoader;
 
-enum corearb45 = arbClipControl ~ arbES31Compatibility ~ arbDirectStateAccess ~ arbGetTextureSubImage ~ khrRobustness ~ arbTextureBarrier;
 enum corearb45Decls = arbClipControlDecls ~ arbES31CompatibilityDecls ~ arbDirectStateAccessDecls~ arbGetTextureSubImageDecls
         ~ khrRobustnessDecls ~ arbTextureBarrierDecls;
 enum corearb45Funcs = arbClipControlFuncs ~ arbES31CompatibilityFuncs ~ arbDirectStateAccessFuncs ~ arbGetTextureSubImageFuncs
         ~ khrRobustnessFuncs ~ arbTextureBarrierFuncs;
+enum corearb45Loader = arbClipControlLoader ~ arbES31CompatibilityLoader ~ arbDirectStateAccessLoader ~ arbGetTextureSubImageLoader
+        ~ khrRobustnessLoader ~ arbTextureBarrierLoader;

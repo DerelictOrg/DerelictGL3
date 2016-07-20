@@ -27,8 +27,11 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.versions.gl1x;
 
-import derelict.opengl.types;
+import derelict.opengl.types,
+       derelict.opengl.versions.base;
 
+enum _gl1Decls =
+q{
 enum : uint
 {
     // OpenGL 1.2
@@ -236,9 +239,10 @@ extern(System) @nogc nothrow {
     alias da_glUnmapBuffer = GLboolean function( GLenum );
     alias da_glGetBufferParameteriv = void function( GLenum,GLenum,GLint* );
     alias da_glGetBufferPointerv = void function( GLenum,GLenum,GLvoid* );
-}
+}};
 
-__gshared {
+enum _gl1Funcs =
+q{
     // OpenGL 1.2
     da_glDrawRangeElements glDrawRangeElements;
     da_glTexImage3D glTexImage3D;
@@ -287,74 +291,67 @@ __gshared {
     da_glUnmapBuffer glUnmapBuffer;
     da_glGetBufferParameteriv glGetBufferParameteriv;
     da_glGetBufferPointerv glGetBufferPointerv;
-}
+};
 
-package(derelict.opengl)
-GLVersion loadGL1x()
-{
-    import derelict.opengl.gl : DerelictGL3;
-    with(DerelictGL3)
-    {
-        auto glVer = loadedVersion;
-        auto maxVer = contextVersion();
-
-        if(maxVer >= GLVersion.gl12) {
-            bindGLFunc(cast(void**)&glDrawRangeElements, "glDrawRangeElements");
-            bindGLFunc(cast(void**)&glTexImage3D, "glTexImage3D");
-            bindGLFunc(cast(void**)&glTexSubImage3D, "glTexSubImage3D");
-            bindGLFunc(cast(void**)&glCopyTexSubImage3D, "glCopyTexSubImage3D");
-            glVer = GLVersion.gl12;
-        }
-
-        if(maxVer >= GLVersion.gl13) {
-            bindGLFunc(cast(void**)&glActiveTexture, "glActiveTexture");
-            bindGLFunc(cast(void**)&glSampleCoverage, "glSampleCoverage");
-            bindGLFunc(cast(void**)&glCompressedTexImage3D, "glCompressedTexImage3D");
-            bindGLFunc(cast(void**)&glCompressedTexImage2D, "glCompressedTexImage2D");
-            bindGLFunc(cast(void**)&glCompressedTexImage1D, "glCompressedTexImage1D");
-            bindGLFunc(cast(void**)&glCompressedTexSubImage3D, "glCompressedTexSubImage3D");
-            bindGLFunc(cast(void**)&glCompressedTexSubImage2D, "glCompressedTexSubImage2D");
-            bindGLFunc(cast(void**)&glCompressedTexSubImage1D, "glCompressedTexSubImage1D");
-            bindGLFunc(cast(void**)&glGetCompressedTexImage, "glGetCompressedTexImage");
-            glVer = GLVersion.gl13;
-        }
-
-        if(maxVer >= GLVersion.gl14) {
-            bindGLFunc(cast(void**)&glBlendFuncSeparate, "glBlendFuncSeparate");
-            bindGLFunc(cast(void**)&glMultiDrawArrays, "glMultiDrawArrays");
-            bindGLFunc(cast(void**)&glMultiDrawElements, "glMultiDrawElements");
-            bindGLFunc(cast(void**)&glPointParameterf, "glPointParameterf");
-            bindGLFunc(cast(void**)&glPointParameterfv, "glPointParameterfv");
-            bindGLFunc(cast(void**)&glPointParameteri, "glPointParameteri");
-            bindGLFunc(cast(void**)&glPointParameteriv, "glPointParameteriv");
-            bindGLFunc(cast(void**)&glBlendColor, "glBlendColor");
-            bindGLFunc(cast(void**)&glBlendEquation, "glBlendEquation");
-            glVer = GLVersion.gl14;
-        }
-
-        if(maxVer >= GLVersion.gl15) {
-            bindGLFunc(cast(void**)&glGenQueries, "glGenQueries");
-            bindGLFunc(cast(void**)&glDeleteQueries, "glDeleteQueries");
-            bindGLFunc(cast(void**)&glIsQuery, "glIsQuery");
-            bindGLFunc(cast(void**)&glBeginQuery, "glBeginQuery");
-            bindGLFunc(cast(void**)&glEndQuery, "glEndQuery");
-            bindGLFunc(cast(void**)&glGetQueryiv, "glGetQueryiv");
-            bindGLFunc(cast(void**)&glGetQueryObjectiv, "glGetQueryObjectiv");
-            bindGLFunc(cast(void**)&glGetQueryObjectuiv, "glGetQueryObjectuiv");
-            bindGLFunc(cast(void**)&glBindBuffer, "glBindBuffer");
-            bindGLFunc(cast(void**)&glDeleteBuffers, "glDeleteBuffers");
-            bindGLFunc(cast(void**)&glGenBuffers, "glGenBuffers");
-            bindGLFunc(cast(void**)&glIsBuffer, "glIsBuffer");
-            bindGLFunc(cast(void**)&glBufferData, "glBufferData");
-            bindGLFunc(cast(void**)&glBufferSubData, "glBufferSubData");
-            bindGLFunc(cast(void**)&glGetBufferSubData, "glGetBufferSubData");
-            bindGLFunc(cast(void**)&glMapBuffer, "glMapBuffer");
-            bindGLFunc(cast(void**)&glUnmapBuffer, "glUnmapBuffer");
-            bindGLFunc(cast(void**)&glGetBufferParameteriv, "glGetBufferParameteriv");
-            bindGLFunc(cast(void**)&glGetBufferPointerv, "glGetBufferPointerv");
-            glVer = GLVersion.gl15;
-        }
-
-        return glVer;
+enum gl1Loader =
+q{
+    if(maxVer >= GLVersion.gl12) {
+        bindGLFunc(cast(void**)&glDrawRangeElements, "glDrawRangeElements");
+        bindGLFunc(cast(void**)&glTexImage3D, "glTexImage3D");
+        bindGLFunc(cast(void**)&glTexSubImage3D, "glTexSubImage3D");
+        bindGLFunc(cast(void**)&glCopyTexSubImage3D, "glCopyTexSubImage3D");
+        glVer = GLVersion.gl12;
     }
-}
+
+    if(maxVer >= GLVersion.gl13) {
+        bindGLFunc(cast(void**)&glActiveTexture, "glActiveTexture");
+        bindGLFunc(cast(void**)&glSampleCoverage, "glSampleCoverage");
+        bindGLFunc(cast(void**)&glCompressedTexImage3D, "glCompressedTexImage3D");
+        bindGLFunc(cast(void**)&glCompressedTexImage2D, "glCompressedTexImage2D");
+        bindGLFunc(cast(void**)&glCompressedTexImage1D, "glCompressedTexImage1D");
+        bindGLFunc(cast(void**)&glCompressedTexSubImage3D, "glCompressedTexSubImage3D");
+        bindGLFunc(cast(void**)&glCompressedTexSubImage2D, "glCompressedTexSubImage2D");
+        bindGLFunc(cast(void**)&glCompressedTexSubImage1D, "glCompressedTexSubImage1D");
+        bindGLFunc(cast(void**)&glGetCompressedTexImage, "glGetCompressedTexImage");
+        glVer = GLVersion.gl13;
+    }
+
+    if(maxVer >= GLVersion.gl14) {
+        bindGLFunc(cast(void**)&glBlendFuncSeparate, "glBlendFuncSeparate");
+        bindGLFunc(cast(void**)&glMultiDrawArrays, "glMultiDrawArrays");
+        bindGLFunc(cast(void**)&glMultiDrawElements, "glMultiDrawElements");
+        bindGLFunc(cast(void**)&glPointParameterf, "glPointParameterf");
+        bindGLFunc(cast(void**)&glPointParameterfv, "glPointParameterfv");
+        bindGLFunc(cast(void**)&glPointParameteri, "glPointParameteri");
+        bindGLFunc(cast(void**)&glPointParameteriv, "glPointParameteriv");
+        bindGLFunc(cast(void**)&glBlendColor, "glBlendColor");
+        bindGLFunc(cast(void**)&glBlendEquation, "glBlendEquation");
+        glVer = GLVersion.gl14;
+    }
+
+    if(maxVer >= GLVersion.gl15) {
+        bindGLFunc(cast(void**)&glGenQueries, "glGenQueries");
+        bindGLFunc(cast(void**)&glDeleteQueries, "glDeleteQueries");
+        bindGLFunc(cast(void**)&glIsQuery, "glIsQuery");
+        bindGLFunc(cast(void**)&glBeginQuery, "glBeginQuery");
+        bindGLFunc(cast(void**)&glEndQuery, "glEndQuery");
+        bindGLFunc(cast(void**)&glGetQueryiv, "glGetQueryiv");
+        bindGLFunc(cast(void**)&glGetQueryObjectiv, "glGetQueryObjectiv");
+        bindGLFunc(cast(void**)&glGetQueryObjectuiv, "glGetQueryObjectuiv");
+        bindGLFunc(cast(void**)&glBindBuffer, "glBindBuffer");
+        bindGLFunc(cast(void**)&glDeleteBuffers, "glDeleteBuffers");
+        bindGLFunc(cast(void**)&glGenBuffers, "glGenBuffers");
+        bindGLFunc(cast(void**)&glIsBuffer, "glIsBuffer");
+        bindGLFunc(cast(void**)&glBufferData, "glBufferData");
+        bindGLFunc(cast(void**)&glBufferSubData, "glBufferSubData");
+        bindGLFunc(cast(void**)&glGetBufferSubData, "glGetBufferSubData");
+        bindGLFunc(cast(void**)&glMapBuffer, "glMapBuffer");
+        bindGLFunc(cast(void**)&glUnmapBuffer, "glUnmapBuffer");
+        bindGLFunc(cast(void**)&glGetBufferParameteriv, "glGetBufferParameteriv");
+        bindGLFunc(cast(void**)&glGetBufferPointerv, "glGetBufferPointerv");
+        glVer = GLVersion.gl15;
+    }
+};
+
+enum gl1Decls = baseDecls ~ _gl1Decls;
+enum gl1Funcs = baseFuncs ~ _gl1Funcs;

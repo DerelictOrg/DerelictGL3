@@ -27,8 +27,11 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.versions.gl2x;
 
-import derelict.opengl.types;
+import derelict.opengl.types,
+       derelict.opengl.versions.gl1x;
 
+enum _gl2Decls =
+q{
 enum : uint
 {
     // OpenGL 2.0
@@ -235,9 +238,10 @@ extern(System) @nogc nothrow {
     alias da_glUniformMatrix4x2fv = void function( GLint,GLsizei,GLboolean,const( GLfloat )* );
     alias da_glUniformMatrix3x4fv = void function( GLint,GLsizei,GLboolean,const( GLfloat )* );
     alias da_glUniformMatrix4x3fv = void function( GLint,GLsizei,GLboolean,const( GLfloat )* );
-}
+}};
 
-__gshared {
+enum _gl2Funcs =
+q{
     // OpenGL 2.0
     da_glBlendEquationSeparate glBlendEquationSeparate;
     da_glDrawBuffers glDrawBuffers;
@@ -340,123 +344,117 @@ __gshared {
     da_glUniformMatrix4x2fv glUniformMatrix4x2fv;
     da_glUniformMatrix3x4fv glUniformMatrix3x4fv;
     da_glUniformMatrix4x3fv glUniformMatrix4x3fv;
-}
+};
 
-package(derelict.opengl)
-GLVersion loadGL2x()
-{
-    import derelict.opengl.gl : DerelictGL3;
-    with(DerelictGL3)
-    {
-        auto glVer = loadedVersion;
-        auto maxVer = contextVersion();
-
-        if(maxVer >= GLVersion.gl20) {
-            bindGLFunc(cast(void**)&glBlendEquationSeparate, "glBlendEquationSeparate");
-            bindGLFunc(cast(void**)&glDrawBuffers, "glDrawBuffers");
-            bindGLFunc(cast(void**)&glStencilOpSeparate, "glStencilOpSeparate");
-            bindGLFunc(cast(void**)&glStencilFuncSeparate, "glStencilFuncSeparate");
-            bindGLFunc(cast(void**)&glStencilMaskSeparate, "glStencilMaskSeparate");
-            bindGLFunc(cast(void**)&glAttachShader, "glAttachShader");
-            bindGLFunc(cast(void**)&glBindAttribLocation, "glBindAttribLocation");
-            bindGLFunc(cast(void**)&glCompileShader, "glCompileShader");
-            bindGLFunc(cast(void**)&glCreateProgram, "glCreateProgram");
-            bindGLFunc(cast(void**)&glCreateShader, "glCreateShader");
-            bindGLFunc(cast(void**)&glDeleteProgram, "glDeleteProgram");
-            bindGLFunc(cast(void**)&glDeleteShader, "glDeleteShader");
-            bindGLFunc(cast(void**)&glDetachShader, "glDetachShader");
-            bindGLFunc(cast(void**)&glDisableVertexAttribArray, "glDisableVertexAttribArray");
-            bindGLFunc(cast(void**)&glEnableVertexAttribArray, "glEnableVertexAttribArray");
-            bindGLFunc(cast(void**)&glGetActiveAttrib, "glGetActiveAttrib");
-            bindGLFunc(cast(void**)&glGetActiveUniform, "glGetActiveUniform");
-            bindGLFunc(cast(void**)&glGetAttachedShaders, "glGetAttachedShaders");
-            bindGLFunc(cast(void**)&glGetAttribLocation, "glGetAttribLocation");
-            bindGLFunc(cast(void**)&glGetProgramiv, "glGetProgramiv");
-            bindGLFunc(cast(void**)&glGetProgramInfoLog, "glGetProgramInfoLog");
-            bindGLFunc(cast(void**)&glGetShaderiv, "glGetShaderiv");
-            bindGLFunc(cast(void**)&glGetShaderInfoLog, "glGetShaderInfoLog");
-            bindGLFunc(cast(void**)&glGetShaderSource, "glGetShaderSource");
-            bindGLFunc(cast(void**)&glGetUniformLocation, "glGetUniformLocation");
-            bindGLFunc(cast(void**)&glGetUniformfv, "glGetUniformfv");
-            bindGLFunc(cast(void**)&glGetUniformiv, "glGetUniformiv");
-            bindGLFunc(cast(void**)&glGetVertexAttribdv, "glGetVertexAttribdv");
-            bindGLFunc(cast(void**)&glGetVertexAttribfv, "glGetVertexAttribfv");
-            bindGLFunc(cast(void**)&glGetVertexAttribiv, "glGetVertexAttribiv");
-            bindGLFunc(cast(void**)&glGetVertexAttribPointerv, "glGetVertexAttribPointerv");
-            bindGLFunc(cast(void**)&glIsProgram, "glIsProgram");
-            bindGLFunc(cast(void**)&glIsShader, "glIsShader");
-            bindGLFunc(cast(void**)&glLinkProgram, "glLinkProgram");
-            bindGLFunc(cast(void**)&glShaderSource, "glShaderSource");
-            bindGLFunc(cast(void**)&glUseProgram, "glUseProgram");
-            bindGLFunc(cast(void**)&glUniform1f, "glUniform1f");
-            bindGLFunc(cast(void**)&glUniform2f, "glUniform2f");
-            bindGLFunc(cast(void**)&glUniform3f, "glUniform3f");
-            bindGLFunc(cast(void**)&glUniform4f, "glUniform4f");
-            bindGLFunc(cast(void**)&glUniform1i, "glUniform1i");
-            bindGLFunc(cast(void**)&glUniform2i, "glUniform2i");
-            bindGLFunc(cast(void**)&glUniform4i, "glUniform4i");
-            bindGLFunc(cast(void**)&glUniform1fv, "glUniform1fv");
-            bindGLFunc(cast(void**)&glUniform2fv, "glUniform2fv");
-            bindGLFunc(cast(void**)&glUniform3fv, "glUniform3fv");
-            bindGLFunc(cast(void**)&glUniform4fv, "glUniform4fv");
-            bindGLFunc(cast(void**)&glUniform1iv, "glUniform1iv");
-            bindGLFunc(cast(void**)&glUniform2iv, "glUniform2iv");
-            bindGLFunc(cast(void**)&glUniform3iv, "glUniform3iv");
-            bindGLFunc(cast(void**)&glUniform4iv, "glUniform4iv");
-            bindGLFunc(cast(void**)&glUniformMatrix2fv, "glUniformMatrix2fv");
-            bindGLFunc(cast(void**)&glUniformMatrix3fv, "glUniformMatrix3fv");
-            bindGLFunc(cast(void**)&glUniformMatrix4fv, "glUniformMatrix4fv");
-            bindGLFunc(cast(void**)&glValidateProgram, "glValidateProgram");
-            bindGLFunc(cast(void**)&glVertexAttrib1d, "glVertexAttrib1d");
-            bindGLFunc(cast(void**)&glVertexAttrib1dv, "glVertexAttrib1dv");
-            bindGLFunc(cast(void**)&glVertexAttrib1f, "glVertexAttrib1f");
-            bindGLFunc(cast(void**)&glVertexAttrib1fv, "glVertexAttrib1fv");
-            bindGLFunc(cast(void**)&glVertexAttrib1s, "glVertexAttrib1s");
-            bindGLFunc(cast(void**)&glVertexAttrib1sv, "glVertexAttrib1sv");
-            bindGLFunc(cast(void**)&glVertexAttrib2d, "glVertexAttrib2d");
-            bindGLFunc(cast(void**)&glVertexAttrib2dv, "glVertexAttrib2dv");
-            bindGLFunc(cast(void**)&glVertexAttrib2f, "glVertexAttrib2f");
-            bindGLFunc(cast(void**)&glVertexAttrib2fv, "glVertexAttrib2fv");
-            bindGLFunc(cast(void**)&glVertexAttrib2s, "glVertexAttrib2s");
-            bindGLFunc(cast(void**)&glVertexAttrib2sv, "glVertexAttrib2sv");
-            bindGLFunc(cast(void**)&glVertexAttrib3d, "glVertexAttrib3d");
-            bindGLFunc(cast(void**)&glVertexAttrib3dv, "glVertexAttrib3dv");
-            bindGLFunc(cast(void**)&glVertexAttrib3f, "glVertexAttrib3f");
-            bindGLFunc(cast(void**)&glVertexAttrib3fv, "glVertexAttrib3fv");
-            bindGLFunc(cast(void**)&glVertexAttrib3s, "glVertexAttrib3s");
-            bindGLFunc(cast(void**)&glVertexAttrib3sv, "glVertexAttrib3sv");
-            bindGLFunc(cast(void**)&glVertexAttrib4Nbv, "glVertexAttrib4Nbv");
-            bindGLFunc(cast(void**)&glVertexAttrib4Niv, "glVertexAttrib4Niv");
-            bindGLFunc(cast(void**)&glVertexAttrib4Nsv, "glVertexAttrib4Nsv");
-            bindGLFunc(cast(void**)&glVertexAttrib4Nub, "glVertexAttrib4Nub");
-            bindGLFunc(cast(void**)&glVertexAttrib4Nubv, "glVertexAttrib4Nubv");
-            bindGLFunc(cast(void**)&glVertexAttrib4Nuiv, "glVertexAttrib4Nuiv");
-            bindGLFunc(cast(void**)&glVertexAttrib4Nusv, "glVertexAttrib4Nusv");
-            bindGLFunc(cast(void**)&glVertexAttrib4bv, "glVertexAttrib4bv");
-            bindGLFunc(cast(void**)&glVertexAttrib4d, "glVertexAttrib4d");
-            bindGLFunc(cast(void**)&glVertexAttrib4dv, "glVertexAttrib4dv");
-            bindGLFunc(cast(void**)&glVertexAttrib4f, "glVertexAttrib4f");
-            bindGLFunc(cast(void**)&glVertexAttrib4fv, "glVertexAttrib4fv");
-            bindGLFunc(cast(void**)&glVertexAttrib4iv, "glVertexAttrib4iv");
-            bindGLFunc(cast(void**)&glVertexAttrib4s, "glVertexAttrib4s");
-            bindGLFunc(cast(void**)&glVertexAttrib4sv, "glVertexAttrib4sv");
-            bindGLFunc(cast(void**)&glVertexAttrib4ubv, "glVertexAttrib4ubv");
-            bindGLFunc(cast(void**)&glVertexAttrib4uiv, "glVertexAttrib4uiv");
-            bindGLFunc(cast(void**)&glVertexAttrib4usv, "glVertexAttrib4usv");
-            bindGLFunc(cast(void**)&glVertexAttribPointer, "glVertexAttribPointer");
-            glVer = GLVersion.gl20;
-        }
-
-        if(maxVer >= GLVersion.gl21) {
-            bindGLFunc(cast(void**)&glUniformMatrix2x3fv, "glUniformMatrix2x3fv");
-            bindGLFunc(cast(void**)&glUniformMatrix3x2fv, "glUniformMatrix3x2fv");
-            bindGLFunc(cast(void**)&glUniformMatrix2x4fv, "glUniformMatrix2x4fv");
-            bindGLFunc(cast(void**)&glUniformMatrix4x2fv, "glUniformMatrix4x2fv");
-            bindGLFunc(cast(void**)&glUniformMatrix3x4fv, "glUniformMatrix3x4fv");
-            bindGLFunc(cast(void**)&glUniformMatrix4x3fv, "glUniformMatrix4x3fv");
-            glVer = GLVersion.gl21;
-        }
-
-        return glVer;
+enum _gl2Loader =
+q{
+    if(maxVer >= GLVersion.gl20) {
+        bindGLFunc(cast(void**)&glBlendEquationSeparate, "glBlendEquationSeparate");
+        bindGLFunc(cast(void**)&glDrawBuffers, "glDrawBuffers");
+        bindGLFunc(cast(void**)&glStencilOpSeparate, "glStencilOpSeparate");
+        bindGLFunc(cast(void**)&glStencilFuncSeparate, "glStencilFuncSeparate");
+        bindGLFunc(cast(void**)&glStencilMaskSeparate, "glStencilMaskSeparate");
+        bindGLFunc(cast(void**)&glAttachShader, "glAttachShader");
+        bindGLFunc(cast(void**)&glBindAttribLocation, "glBindAttribLocation");
+        bindGLFunc(cast(void**)&glCompileShader, "glCompileShader");
+        bindGLFunc(cast(void**)&glCreateProgram, "glCreateProgram");
+        bindGLFunc(cast(void**)&glCreateShader, "glCreateShader");
+        bindGLFunc(cast(void**)&glDeleteProgram, "glDeleteProgram");
+        bindGLFunc(cast(void**)&glDeleteShader, "glDeleteShader");
+        bindGLFunc(cast(void**)&glDetachShader, "glDetachShader");
+        bindGLFunc(cast(void**)&glDisableVertexAttribArray, "glDisableVertexAttribArray");
+        bindGLFunc(cast(void**)&glEnableVertexAttribArray, "glEnableVertexAttribArray");
+        bindGLFunc(cast(void**)&glGetActiveAttrib, "glGetActiveAttrib");
+        bindGLFunc(cast(void**)&glGetActiveUniform, "glGetActiveUniform");
+        bindGLFunc(cast(void**)&glGetAttachedShaders, "glGetAttachedShaders");
+        bindGLFunc(cast(void**)&glGetAttribLocation, "glGetAttribLocation");
+        bindGLFunc(cast(void**)&glGetProgramiv, "glGetProgramiv");
+        bindGLFunc(cast(void**)&glGetProgramInfoLog, "glGetProgramInfoLog");
+        bindGLFunc(cast(void**)&glGetShaderiv, "glGetShaderiv");
+        bindGLFunc(cast(void**)&glGetShaderInfoLog, "glGetShaderInfoLog");
+        bindGLFunc(cast(void**)&glGetShaderSource, "glGetShaderSource");
+        bindGLFunc(cast(void**)&glGetUniformLocation, "glGetUniformLocation");
+        bindGLFunc(cast(void**)&glGetUniformfv, "glGetUniformfv");
+        bindGLFunc(cast(void**)&glGetUniformiv, "glGetUniformiv");
+        bindGLFunc(cast(void**)&glGetVertexAttribdv, "glGetVertexAttribdv");
+        bindGLFunc(cast(void**)&glGetVertexAttribfv, "glGetVertexAttribfv");
+        bindGLFunc(cast(void**)&glGetVertexAttribiv, "glGetVertexAttribiv");
+        bindGLFunc(cast(void**)&glGetVertexAttribPointerv, "glGetVertexAttribPointerv");
+        bindGLFunc(cast(void**)&glIsProgram, "glIsProgram");
+        bindGLFunc(cast(void**)&glIsShader, "glIsShader");
+        bindGLFunc(cast(void**)&glLinkProgram, "glLinkProgram");
+        bindGLFunc(cast(void**)&glShaderSource, "glShaderSource");
+        bindGLFunc(cast(void**)&glUseProgram, "glUseProgram");
+        bindGLFunc(cast(void**)&glUniform1f, "glUniform1f");
+        bindGLFunc(cast(void**)&glUniform2f, "glUniform2f");
+        bindGLFunc(cast(void**)&glUniform3f, "glUniform3f");
+        bindGLFunc(cast(void**)&glUniform4f, "glUniform4f");
+        bindGLFunc(cast(void**)&glUniform1i, "glUniform1i");
+        bindGLFunc(cast(void**)&glUniform2i, "glUniform2i");
+        bindGLFunc(cast(void**)&glUniform4i, "glUniform4i");
+        bindGLFunc(cast(void**)&glUniform1fv, "glUniform1fv");
+        bindGLFunc(cast(void**)&glUniform2fv, "glUniform2fv");
+        bindGLFunc(cast(void**)&glUniform3fv, "glUniform3fv");
+        bindGLFunc(cast(void**)&glUniform4fv, "glUniform4fv");
+        bindGLFunc(cast(void**)&glUniform1iv, "glUniform1iv");
+        bindGLFunc(cast(void**)&glUniform2iv, "glUniform2iv");
+        bindGLFunc(cast(void**)&glUniform3iv, "glUniform3iv");
+        bindGLFunc(cast(void**)&glUniform4iv, "glUniform4iv");
+        bindGLFunc(cast(void**)&glUniformMatrix2fv, "glUniformMatrix2fv");
+        bindGLFunc(cast(void**)&glUniformMatrix3fv, "glUniformMatrix3fv");
+        bindGLFunc(cast(void**)&glUniformMatrix4fv, "glUniformMatrix4fv");
+        bindGLFunc(cast(void**)&glValidateProgram, "glValidateProgram");
+        bindGLFunc(cast(void**)&glVertexAttrib1d, "glVertexAttrib1d");
+        bindGLFunc(cast(void**)&glVertexAttrib1dv, "glVertexAttrib1dv");
+        bindGLFunc(cast(void**)&glVertexAttrib1f, "glVertexAttrib1f");
+        bindGLFunc(cast(void**)&glVertexAttrib1fv, "glVertexAttrib1fv");
+        bindGLFunc(cast(void**)&glVertexAttrib1s, "glVertexAttrib1s");
+        bindGLFunc(cast(void**)&glVertexAttrib1sv, "glVertexAttrib1sv");
+        bindGLFunc(cast(void**)&glVertexAttrib2d, "glVertexAttrib2d");
+        bindGLFunc(cast(void**)&glVertexAttrib2dv, "glVertexAttrib2dv");
+        bindGLFunc(cast(void**)&glVertexAttrib2f, "glVertexAttrib2f");
+        bindGLFunc(cast(void**)&glVertexAttrib2fv, "glVertexAttrib2fv");
+        bindGLFunc(cast(void**)&glVertexAttrib2s, "glVertexAttrib2s");
+        bindGLFunc(cast(void**)&glVertexAttrib2sv, "glVertexAttrib2sv");
+        bindGLFunc(cast(void**)&glVertexAttrib3d, "glVertexAttrib3d");
+        bindGLFunc(cast(void**)&glVertexAttrib3dv, "glVertexAttrib3dv");
+        bindGLFunc(cast(void**)&glVertexAttrib3f, "glVertexAttrib3f");
+        bindGLFunc(cast(void**)&glVertexAttrib3fv, "glVertexAttrib3fv");
+        bindGLFunc(cast(void**)&glVertexAttrib3s, "glVertexAttrib3s");
+        bindGLFunc(cast(void**)&glVertexAttrib3sv, "glVertexAttrib3sv");
+        bindGLFunc(cast(void**)&glVertexAttrib4Nbv, "glVertexAttrib4Nbv");
+        bindGLFunc(cast(void**)&glVertexAttrib4Niv, "glVertexAttrib4Niv");
+        bindGLFunc(cast(void**)&glVertexAttrib4Nsv, "glVertexAttrib4Nsv");
+        bindGLFunc(cast(void**)&glVertexAttrib4Nub, "glVertexAttrib4Nub");
+        bindGLFunc(cast(void**)&glVertexAttrib4Nubv, "glVertexAttrib4Nubv");
+        bindGLFunc(cast(void**)&glVertexAttrib4Nuiv, "glVertexAttrib4Nuiv");
+        bindGLFunc(cast(void**)&glVertexAttrib4Nusv, "glVertexAttrib4Nusv");
+        bindGLFunc(cast(void**)&glVertexAttrib4bv, "glVertexAttrib4bv");
+        bindGLFunc(cast(void**)&glVertexAttrib4d, "glVertexAttrib4d");
+        bindGLFunc(cast(void**)&glVertexAttrib4dv, "glVertexAttrib4dv");
+        bindGLFunc(cast(void**)&glVertexAttrib4f, "glVertexAttrib4f");
+        bindGLFunc(cast(void**)&glVertexAttrib4fv, "glVertexAttrib4fv");
+        bindGLFunc(cast(void**)&glVertexAttrib4iv, "glVertexAttrib4iv");
+        bindGLFunc(cast(void**)&glVertexAttrib4s, "glVertexAttrib4s");
+        bindGLFunc(cast(void**)&glVertexAttrib4sv, "glVertexAttrib4sv");
+        bindGLFunc(cast(void**)&glVertexAttrib4ubv, "glVertexAttrib4ubv");
+        bindGLFunc(cast(void**)&glVertexAttrib4uiv, "glVertexAttrib4uiv");
+        bindGLFunc(cast(void**)&glVertexAttrib4usv, "glVertexAttrib4usv");
+        bindGLFunc(cast(void**)&glVertexAttribPointer, "glVertexAttribPointer");
+        glVer = GLVersion.gl20;
     }
-}
+
+    if(maxVer >= GLVersion.gl21) {
+        bindGLFunc(cast(void**)&glUniformMatrix2x3fv, "glUniformMatrix2x3fv");
+        bindGLFunc(cast(void**)&glUniformMatrix3x2fv, "glUniformMatrix3x2fv");
+        bindGLFunc(cast(void**)&glUniformMatrix2x4fv, "glUniformMatrix2x4fv");
+        bindGLFunc(cast(void**)&glUniformMatrix4x2fv, "glUniformMatrix4x2fv");
+        bindGLFunc(cast(void**)&glUniformMatrix3x4fv, "glUniformMatrix3x4fv");
+        bindGLFunc(cast(void**)&glUniformMatrix4x3fv, "glUniformMatrix4x3fv");
+        glVer = GLVersion.gl21;
+    }
+};
+
+enum gl2Decls = gl1Decls ~ _gl2Decls;
+enum gl2Funcs = gl1Funcs ~ _gl2Funcs;
+enum gl2Loader = gl1Loader ~ _gl2Loader;

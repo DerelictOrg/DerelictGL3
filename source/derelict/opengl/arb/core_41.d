@@ -429,9 +429,9 @@ q{
 enum arbViewportArrayLoader = makeLoader(ARB_viewport_array, arbViewportArrayLoaderImpl, "gl41");
 enum arbViewportArray = arbViewportArrayDecls ~ arbViewportArrayFuncs.makeGShared() ~ arbViewportArrayLoader;
 
-enum corearb41 = arbES2Compatibility ~ arbGetProgramBinary ~ arbSeparateShaderObjects ~ arbVertexAttrib64Bit
-        ~ arbViewportArray;
 enum corearb41Decls = arbES2CompatibilityDecls ~ arbGetProgramBinaryDecls ~ arbSeparateShaderObjectsDecls
         ~ arbVertexAttrib64BitDecls ~ arbViewportArrayDecls;
 enum corearb41Funcs = arbES2CompatibilityFuncs ~ arbGetProgramBinaryFuncs ~ arbSeparateShaderObjectsFuncs
         ~ arbVertexAttrib64BitFuncs ~ arbViewportArrayFuncs;
+enum corearb41Loader = arbES2CompatibilityLoader ~ arbGetProgramBinaryLoader ~ arbSeparateShaderObjectsLoader
+        ~ arbVertexAttrib64BitLoader ~ arbViewportArrayLoader;

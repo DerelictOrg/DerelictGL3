@@ -29,7 +29,8 @@ module derelict.opengl.versions.base;
 
 import derelict.opengl.types;
 
-
+enum baseDecls =
+q{
 enum : ubyte {
     GL_FALSE                          = 0,
     GL_TRUE                           = 1,
@@ -301,9 +302,10 @@ extern(System) @nogc nothrow {
     alias da_glDeleteTextures = void function(GLsizei,const(GLuint)*);
     alias da_glGenTextures = void function(GLsizei,GLuint*);
     alias da_glIsTexture = GLboolean function(GLuint);
-}
+}};
 
-__gshared {
+enum baseFuncs =
+q{
     da_glCullFace glCullFace;
     da_glFrontFace glFrontFace;
     da_glHint glHint;
@@ -368,76 +370,70 @@ __gshared {
     da_glIsTexture glIsTexture;
 };
 
-package(derelict.opengl)
-GLVersion loadBaseGL()
-{
-    import derelict.opengl.gl : DerelictGL3;
-    with(DerelictGL3)
-    {
-        // OpenGL 1.0
-        bindFunc(cast(void**)&glCullFace, "glCullFace");
-        bindFunc(cast(void**)&glFrontFace, "glFrontFace");
-        bindFunc(cast(void**)&glHint, "glHint");
-        bindFunc(cast(void**)&glLineWidth, "glLineWidth");
-        bindFunc(cast(void**)&glPointSize, "glPointSize");
-        bindFunc(cast(void**)&glPolygonMode, "glPolygonMode");
-        bindFunc(cast(void**)&glScissor, "glScissor");
-        bindFunc(cast(void**)&glTexParameterf, "glTexParameterf");
-        bindFunc(cast(void**)&glTexParameterfv, "glTexParameterfv");
-        bindFunc(cast(void**)&glTexParameteri, "glTexParameteri");
-        bindFunc(cast(void**)&glTexParameteriv, "glTexParameteriv");
-        bindFunc(cast(void**)&glTexImage1D, "glTexImage1D");
-        bindFunc(cast(void**)&glTexImage2D, "glTexImage2D");
-        bindFunc(cast(void**)&glDrawBuffer, "glDrawBuffer");
-        bindFunc(cast(void**)&glClear, "glClear");
-        bindFunc(cast(void**)&glClearColor, "glClearColor");
-        bindFunc(cast(void**)&glClearStencil, "glClearStencil");
-        bindFunc(cast(void**)&glClearDepth, "glClearDepth");
-        bindFunc(cast(void**)&glStencilMask, "glStencilMask");
-        bindFunc(cast(void**)&glColorMask, "glColorMask");
-        bindFunc(cast(void**)&glDepthMask, "glDepthMask");
-        bindFunc(cast(void**)&glDisable, "glDisable");
-        bindFunc(cast(void**)&glEnable, "glEnable");
-        bindFunc(cast(void**)&glFinish, "glFinish");
-        bindFunc(cast(void**)&glFlush, "glFlush");
-        bindFunc(cast(void**)&glBlendFunc, "glBlendFunc");
-        bindFunc(cast(void**)&glLogicOp, "glLogicOp");
-        bindFunc(cast(void**)&glStencilFunc, "glStencilFunc");
-        bindFunc(cast(void**)&glStencilOp, "glStencilOp");
-        bindFunc(cast(void**)&glDepthFunc, "glDepthFunc");
-        bindFunc(cast(void**)&glPixelStoref, "glPixelStoref");
-        bindFunc(cast(void**)&glPixelStorei, "glPixelStorei");
-        bindFunc(cast(void**)&glReadBuffer, "glReadBuffer");
-        bindFunc(cast(void**)&glReadPixels, "glReadPixels");
-        bindFunc(cast(void**)&glGetBooleanv, "glGetBooleanv");
-        bindFunc(cast(void**)&glGetDoublev, "glGetDoublev");
-        bindFunc(cast(void**)&glGetError, "glGetError");
-        bindFunc(cast(void**)&glGetFloatv, "glGetFloatv");
-        bindFunc(cast(void**)&glGetIntegerv, "glGetIntegerv");
-        bindFunc(cast(void**)&glGetString, "glGetString");
-        bindFunc(cast(void**)&glGetTexImage, "glGetTexImage");
-        bindFunc(cast(void**)&glGetTexParameterfv, "glGetTexParameterfv");
-        bindFunc(cast(void**)&glGetTexParameteriv, "glGetTexParameteriv");
-        bindFunc(cast(void**)&glGetTexLevelParameterfv, "glGetTexLevelParameterfv");
-        bindFunc(cast(void**)&glGetTexLevelParameteriv, "glGetTexLevelParameteriv");
-        bindFunc(cast(void**)&glIsEnabled, "glIsEnabled");
-        bindFunc(cast(void**)&glDepthRange, "glDepthRange");
-        bindFunc(cast(void**)&glViewport, "glViewport");
+enum baseLoader =
+q{
+    // OpenGL 1.0
+    bindFunc(cast(void**)&glCullFace, "glCullFace");
+    bindFunc(cast(void**)&glFrontFace, "glFrontFace");
+    bindFunc(cast(void**)&glHint, "glHint");
+    bindFunc(cast(void**)&glLineWidth, "glLineWidth");
+    bindFunc(cast(void**)&glPointSize, "glPointSize");
+    bindFunc(cast(void**)&glPolygonMode, "glPolygonMode");
+    bindFunc(cast(void**)&glScissor, "glScissor");
+    bindFunc(cast(void**)&glTexParameterf, "glTexParameterf");
+    bindFunc(cast(void**)&glTexParameterfv, "glTexParameterfv");
+    bindFunc(cast(void**)&glTexParameteri, "glTexParameteri");
+    bindFunc(cast(void**)&glTexParameteriv, "glTexParameteriv");
+    bindFunc(cast(void**)&glTexImage1D, "glTexImage1D");
+    bindFunc(cast(void**)&glTexImage2D, "glTexImage2D");
+    bindFunc(cast(void**)&glDrawBuffer, "glDrawBuffer");
+    bindFunc(cast(void**)&glClear, "glClear");
+    bindFunc(cast(void**)&glClearColor, "glClearColor");
+    bindFunc(cast(void**)&glClearStencil, "glClearStencil");
+    bindFunc(cast(void**)&glClearDepth, "glClearDepth");
+    bindFunc(cast(void**)&glStencilMask, "glStencilMask");
+    bindFunc(cast(void**)&glColorMask, "glColorMask");
+    bindFunc(cast(void**)&glDepthMask, "glDepthMask");
+    bindFunc(cast(void**)&glDisable, "glDisable");
+    bindFunc(cast(void**)&glEnable, "glEnable");
+    bindFunc(cast(void**)&glFinish, "glFinish");
+    bindFunc(cast(void**)&glFlush, "glFlush");
+    bindFunc(cast(void**)&glBlendFunc, "glBlendFunc");
+    bindFunc(cast(void**)&glLogicOp, "glLogicOp");
+    bindFunc(cast(void**)&glStencilFunc, "glStencilFunc");
+    bindFunc(cast(void**)&glStencilOp, "glStencilOp");
+    bindFunc(cast(void**)&glDepthFunc, "glDepthFunc");
+    bindFunc(cast(void**)&glPixelStoref, "glPixelStoref");
+    bindFunc(cast(void**)&glPixelStorei, "glPixelStorei");
+    bindFunc(cast(void**)&glReadBuffer, "glReadBuffer");
+    bindFunc(cast(void**)&glReadPixels, "glReadPixels");
+    bindFunc(cast(void**)&glGetBooleanv, "glGetBooleanv");
+    bindFunc(cast(void**)&glGetDoublev, "glGetDoublev");
+    bindFunc(cast(void**)&glGetError, "glGetError");
+    bindFunc(cast(void**)&glGetFloatv, "glGetFloatv");
+    bindFunc(cast(void**)&glGetIntegerv, "glGetIntegerv");
+    bindFunc(cast(void**)&glGetString, "glGetString");
+    bindFunc(cast(void**)&glGetTexImage, "glGetTexImage");
+    bindFunc(cast(void**)&glGetTexParameterfv, "glGetTexParameterfv");
+    bindFunc(cast(void**)&glGetTexParameteriv, "glGetTexParameteriv");
+    bindFunc(cast(void**)&glGetTexLevelParameterfv, "glGetTexLevelParameterfv");
+    bindFunc(cast(void**)&glGetTexLevelParameteriv, "glGetTexLevelParameteriv");
+    bindFunc(cast(void**)&glIsEnabled, "glIsEnabled");
+    bindFunc(cast(void**)&glDepthRange, "glDepthRange");
+    bindFunc(cast(void**)&glViewport, "glViewport");
 
-        // OpenGL 1.1
-        bindFunc(cast(void**)&glDrawArrays, "glDrawArrays");
-        bindFunc(cast(void**)&glDrawElements, "glDrawElements");
-        bindFunc(cast(void**)&glPolygonOffset, "glPolygonOffset");
-        bindFunc(cast(void**)&glCopyTexImage1D, "glCopyTexImage1D");
-        bindFunc(cast(void**)&glCopyTexImage2D, "glCopyTexImage2D");
-        bindFunc(cast(void**)&glCopyTexSubImage1D, "glCopyTexSubImage1D");
-        bindFunc(cast(void**)&glCopyTexSubImage2D, "glCopyTexSubImage2D");
-        bindFunc(cast(void**)&glTexSubImage1D, "glTexSubImage1D");
-        bindFunc(cast(void**)&glTexSubImage2D, "glTexSubImage2D");
-        bindFunc(cast(void**)&glBindTexture, "glBindTexture");
-        bindFunc(cast(void**)&glDeleteTextures, "glDeleteTextures");
-        bindFunc(cast(void**)&glGenTextures, "glGenTextures");
-        bindFunc(cast(void**)&glIsTexture, "glIsTexture");
-    }
-    return GLVersion.gl11;
-}
+    // OpenGL 1.1
+    bindFunc(cast(void**)&glDrawArrays, "glDrawArrays");
+    bindFunc(cast(void**)&glDrawElements, "glDrawElements");
+    bindFunc(cast(void**)&glPolygonOffset, "glPolygonOffset");
+    bindFunc(cast(void**)&glCopyTexImage1D, "glCopyTexImage1D");
+    bindFunc(cast(void**)&glCopyTexImage2D, "glCopyTexImage2D");
+    bindFunc(cast(void**)&glCopyTexSubImage1D, "glCopyTexSubImage1D");
+    bindFunc(cast(void**)&glCopyTexSubImage2D, "glCopyTexSubImage2D");
+    bindFunc(cast(void**)&glTexSubImage1D, "glTexSubImage1D");
+    bindFunc(cast(void**)&glTexSubImage2D, "glTexSubImage2D");
+    bindFunc(cast(void**)&glBindTexture, "glBindTexture");
+    bindFunc(cast(void**)&glDeleteTextures, "glDeleteTextures");
+    bindFunc(cast(void**)&glGenTextures, "glGenTextures");
+    bindFunc(cast(void**)&glIsTexture, "glIsTexture");
+};

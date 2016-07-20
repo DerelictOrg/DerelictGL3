@@ -87,7 +87,7 @@ extern( System ) nothrow {
     alias GLDEBUGPROC = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )*,GLvoid* );
 }
 
-// This is a Derelict type, not from OpenGL
+// This following are Derelict types, not from OpenGL
 enum GLVersion {
     none,
     gl11 = 11,
@@ -109,3 +109,8 @@ enum GLVersion {
     gl45 = 45,
     highestSupported = gl45,
 }
+
+version(DerelictGl3_Contexts)
+    enum usingContexts = true;
+else
+    enum usingContexts = false;

@@ -76,15 +76,15 @@ alias __GLsync* GLsync;
 struct _cl_context;
 struct _cl_event;
 
-extern( System ) nothrow {
+extern(System) nothrow {
     // ARB_debug_output
-    alias GLDEBUGPROCARB = void function( GLenum, GLenum, GLuint, GLenum, GLsizei, in GLchar*, GLvoid* );
+    alias GLDEBUGPROCARB = void function(GLenum, GLenum, GLuint, GLenum, GLsizei, in GLchar*, GLvoid*);
 
     // AMD_debug_output
-    alias GLDEBUGPROCAMD = void function( GLuint, GLenum, GLenum, GLsizei, in GLchar*, GLvoid* );
+    alias GLDEBUGPROCAMD = void function(GLuint, GLenum, GLenum, GLsizei, in GLchar*, GLvoid*);
 
     // KHR_debug
-    alias GLDEBUGPROC = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )*,GLvoid* );
+    alias GLDEBUGPROC = void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*,GLvoid*);
 }
 
 // This following are Derelict types, not from OpenGL

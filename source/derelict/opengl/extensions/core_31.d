@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_31;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_copy_buffer
 enum ARB_copy_buffer = "GL_ARB_copy_buffer";
@@ -50,7 +50,7 @@ q{
 
 enum arbCopyBufferLoaderImpl = `bindGLFunc(cast(void**)&glCopyBufferSubData, "glCopyBufferSubData");`;
 enum arbCopyBufferLoader = makeLoader(ARB_copy_buffer, arbCopyBufferLoaderImpl, "gl31");
-enum arbCopyBuffer = arbCopyBufferDecls ~ arbCopyBufferFuncs.makeGShared() ~ arbCopyBufferLoader;
+static if(!usingContexts) enum arbCopyBuffer = arbCopyBufferDecls ~ arbCopyBufferFuncs.makeGShared() ~ arbCopyBufferLoader;
 
 // ARB_uniform_buffer_object
 enum ARB_uniform_buffer_object = "GL_ARB_uniform_buffer_object";
@@ -126,7 +126,7 @@ q{
 };
 
 enum arbUniformBufferObjectLoader = makeLoader(ARB_uniform_buffer_object, arbUniformBufferObjectLoaderImpl, "gl31");
-enum arbUniformBufferObject = arbUniformBufferObjectDecls ~ arbUniformBufferObjectFuncs.makeGShared() ~ arbUniformBufferObjectLoader;
+static if(!usingContexts) enum arbUniformBufferObject = arbUniformBufferObjectDecls ~ arbUniformBufferObjectFuncs.makeGShared() ~ arbUniformBufferObjectLoader;
 
 enum corearb31 = arbCopyBuffer ~ arbUniformBufferObject;
 enum corearb31Decls = arbCopyBufferDecls ~ arbUniformBufferObjectDecls;

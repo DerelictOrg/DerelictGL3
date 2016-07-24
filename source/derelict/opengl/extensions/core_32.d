@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_32;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_draw_elements_base_vertex
 enum ARB_draw_elements_base_vertex = "GL_ARB_draw_elements_base_vertex";
@@ -59,7 +59,7 @@ q{
 };
 
 enum arbDrawElementsBaseVertexLoader = makeLoader(ARB_draw_elements_base_vertex, arbDrawElementsBaseVertexLoaderImpl, "gl32");
-enum arbDrawElementsBaseVertex = arbDrawElementsBaseVertexDecls ~ arbDrawElementsBaseVertexFuncs.makeGShared() ~ arbDrawElementsBaseVertexLoader;
+static if(!usingContexts) enum arbDrawElementsBaseVertex = arbDrawElementsBaseVertexDecls ~ arbDrawElementsBaseVertexFuncs.makeGShared() ~ arbDrawElementsBaseVertexLoader;
 
 // ARB_provoking_vertex
 enum ARB_provoking_vertex = "GL_ARB_provoking_vertex";
@@ -79,12 +79,17 @@ extern(System) @nogc nothrow alias da_glProvokingVertex = void function(GLenum);
 enum arbProvokingVertexFuncs = `da_glProvokingVertex glProvokingVertex;`;
 enum arbProvokingVertexLoaderImpl = `bindGLFunc(cast(void**)&glProvokingVertex, "glProvokingVertex");`;
 enum arbProvokingVertexLoader = makeLoader(ARB_provoking_vertex, arbProvokingVertexLoaderImpl, "gl32");
-enum arbProvokingVertex = arbProvokingVertexDecls ~ arbProvokingVertexFuncs.makeGShared() ~ arbProvokingVertexLoader;
+static if(!usingContexts) enum arbProvokingVertex = arbProvokingVertexDecls ~ arbProvokingVertexFuncs.makeGShared() ~ arbProvokingVertexLoader;
 
 // ARB_sync
 enum ARB_sync = "GL_ARB_sync";
 enum arbSyncDecls =
 q{
+enum ulong GL_TIMEOUT_IGNORED  = 0xFFFFFFFFFFFFFFFF;
+alias GLint64 = long;
+alias GLuint64 = ulong;
+struct __GLsync;
+alias __GLsync* GLsync;
 enum : uint
 {
     GL_MAX_SERVER_WAIT_TIMEOUT        = 0x9111,
@@ -136,7 +141,7 @@ q{
 };
 
 enum arbSyncLoader = makeLoader(ARB_sync, arbSyncLoaderImpl, "gl32");
-enum arbSync = arbSyncDecls ~ arbSyncFuncs.makeGShared() ~ arbSyncLoader;
+static if(!usingContexts) enum arbSync = arbSyncDecls ~ arbSyncFuncs.makeGShared() ~ arbSyncLoader;
 
 enum ARB_texture_multisample = "GL_ARB_texture_multisample";
 enum arbTextureMultiSampleDecls =
@@ -190,7 +195,7 @@ q{
 };
 
 enum arbTextureMultiSampleLoader = makeLoader(ARB_texture_multisample, arbTextureMultiSampleLoaderImpl, "gl32");
-enum arbTextureMultiSample = arbTextureMultiSampleDecls ~ arbTextureMultiSampleFuncs.makeGShared() ~ arbTextureMultiSampleLoader;
+static if(!usingContexts) enum arbTextureMultiSample = arbTextureMultiSampleDecls ~ arbTextureMultiSampleFuncs.makeGShared() ~ arbTextureMultiSampleLoader;
 
 enum corearb32 = arbDrawElementsBaseVertex ~ arbProvokingVertex ~ arbSync ~ arbTextureMultiSample;
 enum corearb32Decls = arbDrawElementsBaseVertexDecls ~ arbProvokingVertexDecls ~ arbSyncDecls ~ arbTextureMultiSampleDecls;

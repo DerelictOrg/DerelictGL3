@@ -34,15 +34,8 @@ private {
     import derelict.opengl3.internal;
 }
 
-// Part of ARB_sync
-enum ulong GL_TIMEOUT_IGNORED  = 0xFFFFFFFFFFFFFFFF;
-
 enum : uint {
     // ARB_depth_buffer_float
-    GL_DEPTH_COMPONENT32F             = 0x8CAC,
-    GL_DEPTH32F_STENCIL8              = 0x8CAD,
-    GL_FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD,
-
     // ARB_framebuffer_object
 
 
@@ -317,10 +310,6 @@ enum : uint {
     // ARB_direct_state_access
     // KHR_robustness
 }
-
-private __gshared bool _ARB_depth_buffer_float;
-@nogc bool ARB_depth_buffer_float() nothrow @property { return _ARB_depth_buffer_float; }
-
 private __gshared bool _ARB_framebuffer_sRGB;
 @nogc bool ARB_framebuffer_sRGB() nothrow @property { return _ARB_framebuffer_sRGB; }
 

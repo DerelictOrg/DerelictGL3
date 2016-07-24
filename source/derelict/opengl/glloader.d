@@ -33,7 +33,7 @@ import derelict.opengl.gl,
        derelict.opengl.types : GLVersion, usingContexts;
 
 static if(!usingContexts) {
-    private alias ExtLoaderFunc = bool function(GLLoader loader, bool doThrow);
+    private alias ExtLoaderFunc = bool function(ref GLLoader loader, bool doThrow);
     private struct ExtLoader
     {
         string name;
@@ -115,8 +115,17 @@ struct GLLoader
         _loadedVersion = _extraLoader();
 
         static if(!usingContexts) {
-            for(int ver = loadedVersion + 1; ver <= GLVersion.highestSupported; ++ver)
-                loadExtensionSet(ver, false);
+            int[] versions = [
+            GLVersion.gl30, GLVersion.gl31, GLVersion.gl32, GLVersion.gl33,
+            GLVersion.gl40, GLVersion.gl41, GLVersion.gl42, GLVersion.gl43,
+            GLVersion.gl44, GLVersion.gl45
+            ];
+
+            foreach(ver; versions) {
+                if(ver > loadedVersion)
+                    loadExtensionSet(ver, false);
+            }
+            loadExtensionSet(GLVersion.none, false);
         }
 
         return _loadedVersion;
@@ -132,10 +141,10 @@ struct GLLoader
     {
         import core.stdc.string : strcmp, strstr;
 
-        // If the cache is populated, use the modern approach.
-        if(_extCache.data.length > 0) {
+        // With a modern context, use the modern approach.
+        if(_contextVersion >= GLVersion.gl30) {
             foreach(extname; _extCache.data) {
-                if(strcmp(extname, name.ptr) == 0)
+                if(extname && strcmp(extname, name.ptr) == 0)
                     return true;
             }
             return false;
@@ -262,17 +271,23 @@ private:
         int count;
         getIntegerv(glNumExtensions, &count);
 
+        import std.stdio, std.conv;
+        writeln("Num extensions: ", count);
+
         _extCache.shrinkTo(0);
         _extCache.reserve(count);
 
-        for(int i=0; i<count; ++i)
-            _extCache.put(_getStringi(glExtensions, i));
+        const(char)* extname;
+        for(int i=0; i<count; ++i) {
+            extname = _getStringi(glExtensions, i);
+            if(extname) _extCache.put(extname);
+        }
     }
 }
 
 private:
     enum uint glVersion = 0x1F02;
-    enum uint glExtensions = 0x1F02;
+    enum uint glExtensions = 0x1F03;
     enum uint glNumExtensions = 0x821D;
     extern(System) @nogc nothrow {
         alias da_getString = const(char)* function(uint);

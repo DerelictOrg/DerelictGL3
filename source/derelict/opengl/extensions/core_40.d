@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_40;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_draw_indirect
 enum ARB_draw_indirect = "GL_ARB_draw_indirect";
@@ -57,7 +57,7 @@ q{
 };
 
 enum arbDrawIndirectLoader = makeLoader(ARB_draw_indirect, arbDrawIndirectLoaderImpl, "gl40");
-enum arbDrawIndirect = arbDrawIndirectDecls ~ arbDrawIndirectFuncs.makeGShared() ~ arbDrawIndirectLoader;
+static if(!usingContexts) enum arbDrawIndirect = arbDrawIndirectDecls ~ arbDrawIndirectFuncs.makeGShared() ~ arbDrawIndirectLoader;
 
 // ARB_gpu_shader_fp64
 enum ARB_gpu_shader_fp64 = "GL_ARB_gpu_shader_fp64";
@@ -143,7 +143,7 @@ q{
 };
 
 enum arbGPUShaderFP64Loader = makeLoader(ARB_gpu_shader_fp64, arbGPUShaderFP64LoaderImpl, "gl40");
-enum arbGPUShaderFP64 = arbGPUShaderFP64Decls ~ arbGPUShaderFP64Funcs.makeGShared() ~ arbGPUShaderFP64Loader;
+static if(!usingContexts) enum arbGPUShaderFP64 = arbGPUShaderFP64Decls ~ arbGPUShaderFP64Funcs.makeGShared() ~ arbGPUShaderFP64Loader;
 
 // ARB_shader_subroutine
 enum ARB_shader_subroutine = "GL_ARB_shader_subroutine";
@@ -197,7 +197,7 @@ q{
 };
 
 enum arbShaderSubroutineLoader = makeLoader(ARB_shader_subroutine, arbShaderSubroutineLoaderImpl, "gl40");
-enum arbShaderSubroutine = arbShaderSubroutineDecls ~ arbShaderSubroutineFuncs.makeGShared() ~ arbShaderSubroutineLoader;
+static if(!usingContexts) enum arbShaderSubroutine = arbShaderSubroutineDecls ~ arbShaderSubroutineFuncs.makeGShared() ~ arbShaderSubroutineLoader;
 
 // ARB_tessellation_shader
 enum ARB_tessellation_shader = "GL_ARB_tessellation_shader";
@@ -256,7 +256,7 @@ q{
 };
 
 enum arbTesselationShaderLoader = makeLoader(ARB_tessellation_shader, arbTesselationShaderLoaderImpl, "gl40");
-enum arbTesselationShader = arbTesselationShaderDecls ~ arbTesselationShaderFuncs.makeGShared() ~ arbTesselationShaderLoader;
+static if(!usingContexts) enum arbTesselationShader = arbTesselationShaderDecls ~ arbTesselationShaderFuncs.makeGShared() ~ arbTesselationShaderLoader;
 
 // ARB_transform_feedback2
 enum ARB_transform_feedback2 = "GL_ARB_transform_feedback2";
@@ -302,8 +302,7 @@ q{
 };
 
 enum arbTransformFeedback2Loader = makeLoader(ARB_transform_feedback2, arbTransformFeedback2LoaderImpl, "gl40");
-enum arbTransformFeedback2 = arbTransformFeedback2Decls ~ arbTransformFeedback2Funcs.makeGShared() ~ arbTransformFeedback2Loader;
-
+static if(!usingContexts) enum arbTransformFeedback2 = arbTransformFeedback2Decls ~ arbTransformFeedback2Funcs.makeGShared() ~ arbTransformFeedback2Loader;
 
 // ARB_transform_feedback3
 enum ARB_transform_feedback3 = "GL_ARB_transform_feedback3";
@@ -338,7 +337,7 @@ q{
 };
 
 enum arbTransformFeedback3Loader = makeLoader(ARB_transform_feedback3, arbTransformFeedback3LoaderImpl, "gl40");
-enum arbTransformFeedback3 = arbTransformFeedback3Decls ~ arbTransformFeedback3Funcs.makeGShared() ~ arbTransformFeedback3Loader;
+static if(!usingContexts) enum arbTransformFeedback3 = arbTransformFeedback3Decls ~ arbTransformFeedback3Funcs.makeGShared() ~ arbTransformFeedback3Loader;
 
 enum corearb40Decls = arbDrawIndirectDecls ~ arbGPUShaderFP64Decls ~ arbShaderSubroutineDecls
         ~ arbTesselationShaderDecls ~ arbTransformFeedback2Decls ~ arbTransformFeedback3Decls;

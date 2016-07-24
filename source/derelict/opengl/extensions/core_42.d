@@ -27,8 +27,9 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_42;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
+
 
 // ARB_base_instance
 enum ARB_base_instance = "GL_ARB_base_instance";
@@ -55,7 +56,7 @@ q{
 };
 
 enum arbBaseInstanceLoader = makeLoader(ARB_base_instance, arbBaseInstanceLoaderImpl, "gl42");
-enum arbBaseInstance = arbBaseInstanceDecls ~ arbBaseInstanceFuncs.makeGShared() ~ arbBaseInstanceLoader;
+static if(!usingContexts) enum arbBaseInstance = arbBaseInstanceDecls ~ arbBaseInstanceFuncs.makeGShared() ~ arbBaseInstanceLoader;
 
 // ARB_transform_feedback_instanced
 enum ARB_transform_feedback_instanced = "GL_ARB_transform_feedback_instanced";
@@ -79,7 +80,7 @@ q{
 };
 
 enum arbTransformFeedbackInstancedLoader = makeLoader(ARB_transform_feedback_instanced, arbTransformFeedbackInstancedLoaderImpl, "gl42");
-enum arbTransformFeedbackInstanced = arbTransformFeedbackInstancedDecls ~ arbTransformFeedbackInstancedFuncs.makeGShared() ~ arbTransformFeedbackInstancedLoader;
+static if(!usingContexts) enum arbTransformFeedbackInstanced = arbTransformFeedbackInstancedDecls ~ arbTransformFeedbackInstancedFuncs.makeGShared() ~ arbTransformFeedbackInstancedLoader;
 
 // ARB_internalformat_query
 enum ARB_internalformat_query = "GL_ARB_internalformat_query";
@@ -92,7 +93,7 @@ extern(System) @nogc nothrow alias da_glGetInternalformativ = void function(GLen
 enum arbInternalFormatQueryFuncs = `da_glGetInternalformativ glGetInternalformativ;`;
 enum arbInternalFormatQueryLoaderImpl = `bindGLFunc(cast(void**)&glGetInternalformativ, "glGetInternalformativ");`;
 enum arbInternalFormatQueryLoader = makeLoader(ARB_internalformat_query, arbInternalFormatQueryLoaderImpl, "gl42");
-enum arbInternalFormatQuery = arbInternalFormatQueryDecls ~ arbInternalFormatQueryFuncs.makeGShared() ~ arbInternalFormatQueryLoader;
+static if(!usingContexts) enum arbInternalFormatQuery = arbInternalFormatQueryDecls ~ arbInternalFormatQueryFuncs.makeGShared() ~ arbInternalFormatQueryLoader;
 
 // ARB_shader_atomic_counters
 enum ARB_shader_atomic_counters = "GL_ARB_shader_atomic_counters";
@@ -135,7 +136,7 @@ extern(System) @nogc nothrow alias da_glGetActiveAtomicCounterBufferiv = void fu
 enum arbShaderAtomicCountersFuncs = `da_glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;`;
 enum arbShaderAtomicCountersLoaderImpl = `bindGLFunc(cast(void**)&glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv");`;
 enum arbShaderAtomicCountersLoader = makeLoader(ARB_shader_atomic_counters, arbShaderAtomicCountersLoaderImpl, "gl42");
-enum arbShaderAtomicCounters = arbShaderAtomicCountersDecls ~ arbShaderAtomicCountersFuncs.makeGShared() ~ arbShaderAtomicCountersLoader;
+static if(!usingContexts) enum arbShaderAtomicCounters = arbShaderAtomicCountersDecls ~ arbShaderAtomicCountersFuncs.makeGShared() ~ arbShaderAtomicCountersLoader;
 
 // ARB_shader_image_load_store
 enum ARB_shader_image_load_store = "GL_ARB_shader_image_load_store";
@@ -226,7 +227,7 @@ q{
 };
 
 enum arbShaderImageLoadStoreLoader = makeLoader(ARB_shader_image_load_store, arbShaderImageLoadStoreLoaderImpl, "gl42");
-enum arbShaderImageLoadStore = arbShaderImageLoadStoreDecls ~ arbShaderImageLoadStoreFuncs.makeGShared() ~ arbShaderImageLoadStoreLoader;
+static if(!usingContexts) enum arbShaderImageLoadStore = arbShaderImageLoadStoreDecls ~ arbShaderImageLoadStoreFuncs.makeGShared() ~ arbShaderImageLoadStoreLoader;
 
 // ARB_texture_storage
 enum ARB_texture_storage = "GL_ARB_texture_storage";
@@ -267,7 +268,7 @@ q{
 };
 
 enum arbTextureStorageLoader = makeLoader(ARB_texture_storage, arbTextureStorageLoaderImpl, "gl42");
-enum arbTextureStorage = arbTextureStorageDecls ~ arbTextureStorageFuncs.makeGShared() ~ arbTextureStorageLoader;
+static if(!usingContexts) enum arbTextureStorage = arbTextureStorageDecls ~ arbTextureStorageFuncs.makeGShared() ~ arbTextureStorageLoader;
 
 enum corearb42Decls = arbBaseInstanceDecls ~ arbTransformFeedbackInstancedDecls ~ arbInternalFormatQueryDecls
         ~ arbShaderAtomicCountersDecls ~ arbShaderImageLoadStoreDecls ~ arbTextureStorageDecls;

@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_41;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_ES2_compatibility
 enum ARB_ES2_compatibility = "GL_ARB_ES2_compatibility";
@@ -78,7 +78,7 @@ q{
 };
 
 enum arbES2CompatibilityLoader = makeLoader(ARB_ES2_compatibility, arbES2CompatibilityLoaderImpl, "gl41");
-enum arbES2Compatibility = arbES2CompatibilityDecls ~ arbES2CompatibilityFuncs.makeGShared() ~ arbES2CompatibilityLoader;
+static if(!usingContexts) enum arbES2Compatibility = arbES2CompatibilityDecls ~ arbES2CompatibilityFuncs.makeGShared() ~ arbES2CompatibilityLoader;
 
 // ARB_get_program_binary
 enum ARB_get_program_binary = "GL_ARB_get_program_binary";
@@ -112,7 +112,7 @@ q{
 };
 
 enum arbGetProgramBinaryLoader = makeLoader(ARB_get_program_binary, arbGetProgramBinaryLoaderImpl, "gl41");
-enum arbGetProgramBinary = arbGetProgramBinaryDecls ~ arbGetProgramBinaryFuncs.makeGShared() ~ arbGetProgramBinaryLoader;
+static if(!usingContexts) enum arbGetProgramBinary = arbGetProgramBinaryDecls ~ arbGetProgramBinaryFuncs.makeGShared() ~ arbGetProgramBinaryLoader;
 
 // ARB_separate_shader_objects
 enum ARB_separate_shader_objects = "GL_ARB_separate_shader_objects";
@@ -322,7 +322,7 @@ q{
 };
 
 enum arbSeparateShaderObjectsLoader = makeLoader(ARB_separate_shader_objects, arbSeparateShaderObjectsLoaderImpl, "gl41");
-enum arbSeparateShaderObjects = arbSeparateShaderObjectsDecls ~ arbSeparateShaderObjectsFuncs.makeGShared() ~ arbSeparateShaderObjectsLoader;
+static if(!usingContexts) enum arbSeparateShaderObjects = arbSeparateShaderObjectsDecls ~ arbSeparateShaderObjectsFuncs.makeGShared() ~ arbSeparateShaderObjectsLoader;
 
 // ARB_vertex_attrib_64bit
 enum ARB_vertex_attrib_64bit = "GL_ARB_vertex_attrib_64bit";
@@ -370,7 +370,7 @@ q{
 };
 
 enum arbVertexAttrib64BitLoader = makeLoader(ARB_vertex_attrib_64bit, arbVertexAttrib64BitLoaderImpl, "gl41");
-enum arbVertexAttrib64Bit = arbVertexAttrib64BitDecls ~ arbVertexAttrib64BitFuncs.makeGShared() ~ arbVertexAttrib64BitLoader;
+static if(!usingContexts) enum arbVertexAttrib64Bit = arbVertexAttrib64BitDecls ~ arbVertexAttrib64BitFuncs.makeGShared() ~ arbVertexAttrib64BitLoader;
 
 // ARB_viewport_array
 enum ARB_viewport_array = "GL_ARB_viewport_array";
@@ -427,7 +427,7 @@ q{
 };
 
 enum arbViewportArrayLoader = makeLoader(ARB_viewport_array, arbViewportArrayLoaderImpl, "gl41");
-enum arbViewportArray = arbViewportArrayDecls ~ arbViewportArrayFuncs.makeGShared() ~ arbViewportArrayLoader;
+static if(!usingContexts) enum arbViewportArray = arbViewportArrayDecls ~ arbViewportArrayFuncs.makeGShared() ~ arbViewportArrayLoader;
 
 enum corearb41Decls = arbES2CompatibilityDecls ~ arbGetProgramBinaryDecls ~ arbSeparateShaderObjectsDecls
         ~ arbVertexAttrib64BitDecls ~ arbViewportArrayDecls;

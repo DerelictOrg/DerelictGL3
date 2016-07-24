@@ -27,11 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_30;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
-
-version(DerelictGL3_Contexts) {}
-else version = DerelictGL3_NoContexts;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_framebuffer_object
 enum ARB_framebuffer_object = "GL_ARB_framebuffer_object";
@@ -190,7 +187,7 @@ q{
 };
 
 enum arbFramebufferObjectLoader = makeLoader(ARB_framebuffer_object, arbFramebufferObjectLoaderImpl, "gl30");
-version(DerelictGL3_NoContexts) enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs ~ arbFramebufferObjectLoader;
+static if(!usingContexts) enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs ~ arbFramebufferObjectLoader;
 
 // ARB_map_buffer_range
 enum ARB_map_buffer_range = "GL_ARB_map_buffer_range";
@@ -224,7 +221,7 @@ q{
 };
 
 enum arbMapBufferRangeLoader = makeLoader(ARB_map_buffer_range, arbMapBufferRangeLoaderImpl, "gl30");
-enum arbMapBufferRange = arbMapBufferRangeDecls ~ arbMapBufferRangeFuncs.makeGShared() ~ arbMapBufferRangeLoader;
+static if(!usingContexts) enum arbMapBufferRange = arbMapBufferRangeDecls ~ arbMapBufferRangeFuncs.makeGShared() ~ arbMapBufferRangeLoader;
 
 // ARB_vertex_array_object
 enum ARB_vertex_array_object = "GL_ARB_vertex_array_object";
@@ -256,7 +253,7 @@ q{
 };
 
 enum arbVertexArrayObjectLoader = makeLoader(ARB_vertex_array_object, arbVertexArrayObjectLoaderImpl, "gl30");
-enum arbVertexArrayObject = arbVertexArrayObjectDecls ~ arbVertexArrayObjectFuncs.makeGShared() ~ arbVertexArrayObjectLoader;
+static if(!usingContexts) enum arbVertexArrayObject = arbVertexArrayObjectDecls ~ arbVertexArrayObjectFuncs.makeGShared() ~ arbVertexArrayObjectLoader;
 
 enum corearb30Decls = arbFramebufferObjectDecls ~ arbMapBufferRangeDecls ~ arbVertexArrayObjectDecls;
 enum corearb30Funcs = arbFramebufferObjectFuncs ~ arbMapBufferRangeFuncs ~ arbVertexArrayObjectFuncs;

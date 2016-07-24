@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_43;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_clear_buffer_object
 enum ARB_clear_buffer_object = "GL_ARB_clear_buffer_object";
@@ -61,7 +61,7 @@ q{
 };
 
 enum arbClearBufferObjectLoader = makeLoader(ARB_clear_buffer_object, arbClearBufferObjectLoaderImpl, "gl43");
-enum arbClearBufferObject = arbClearBufferObjectDecls ~ arbClearBufferObjectFuncs.makeGShared() ~ arbClearBufferObjectLoader;
+static if(!usingContexts) enum arbClearBufferObject = arbClearBufferObjectDecls ~ arbClearBufferObjectFuncs.makeGShared() ~ arbClearBufferObjectLoader;
 
 // ARB_compute_shader
 enum ARB_compute_shader = "GL_ARB_compute_shader";
@@ -105,7 +105,7 @@ q{
 };
 
 enum arbComputeShaderLoader = makeLoader(ARB_compute_shader, arbComputeShaderLoaderImpl, "gl43");
-enum arbComputeShader = arbComputeShaderDecls ~ arbComputeShaderFuncs.makeGShared() ~ arbComputeShaderLoader;
+static if(!usingContexts) enum arbComputeShader = arbComputeShaderDecls ~ arbComputeShaderFuncs.makeGShared() ~ arbComputeShaderLoader;
 
 // ARB_copy_image
 enum ARB_copy_image = "GL_ARB_copy_image";
@@ -114,7 +114,7 @@ enum arbCopyImageFuncs = `da_glCopyImageSubData glCopyImageSubData;`;
 enum arbCopyImageLoaderImpl = `bindGLFunc(cast(void**)&glCopyImageSubData, "glCopyImageSubData");`;
 
 enum arbCopyImageLoader = makeLoader(ARB_copy_image, arbCopyImageLoaderImpl, "gl43");
-enum arbCopyImage = arbCopyImageDecls ~ arbCopyImageFuncs.makeGShared() ~ arbCopyImageLoader;
+static if(!usingContexts) enum arbCopyImage = arbCopyImageDecls ~ arbCopyImageFuncs.makeGShared() ~ arbCopyImageLoader;
 
 // KHR_debug
 enum KHR_debug = "GL_KHR_debug";
@@ -161,6 +161,7 @@ enum : uint
     GL_DEBUG_OUTPUT                   = 0x92E0,
     GL_CONTEXT_FLAG_DEBUG_BIT         = 0x00000002,
 }
+extern(System) nothrow alias GLDEBUGPROC = void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*,GLvoid*);
 extern(System) @nogc nothrow {
     alias da_glDebugMessageControl = void function(GLenum,GLenum,GLenum,GLsizei,const(GLuint*),GLboolean);
     alias da_glDebugMessageInsert = void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*);
@@ -203,7 +204,7 @@ q{
 };
 
 enum khrDebugLoader = makeLoader(KHR_debug, khrDebugLoaderImpl, "gl43");
-enum khrDebug = khrDebugDecls ~ khrDebugFuncs.makeGShared() ~ khrDebugLoader;
+static if(!usingContexts) enum khrDebug = khrDebugDecls ~ khrDebugFuncs.makeGShared() ~ khrDebugLoader;
 
 // ARB_framebuffer_no_attachments
 enum ARB_framebuffer_no_attachments = "GL_ARB_framebuffer_no_attachments";
@@ -249,7 +250,7 @@ q{
 };
 
 enum arbFramebufferNoAttachmentsLoader = makeLoader(ARB_framebuffer_no_attachments, arbFramebufferNoAttachmentsLoaderImpl, "gl43");
-enum arbFramebufferNoAttachments = arbFramebufferNoAttachmentsDecls ~ arbFramebufferNoAttachmentsFuncs.makeGShared() ~ arbFramebufferNoAttachmentsLoader;
+static if(!usingContexts) enum arbFramebufferNoAttachments = arbFramebufferNoAttachmentsDecls ~ arbFramebufferNoAttachmentsFuncs.makeGShared() ~ arbFramebufferNoAttachmentsLoader;
 
 // ARB_internalformat_query2
 enum ARB_internalformat_query2 = "GL_ARB_internalformat_query2";
@@ -363,7 +364,7 @@ extern(System) @nogc nothrow alias da_glGetInternalformati64v = void function(GL
 enum arbInternalFormatQuery2Funcs = `da_glGetInternalformati64v glGetInternalformati64v;`;
 enum arbInternalFormatQuery2LoaderImpl = `bindGLFunc(cast(void**)&glGetInternalformati64v, "glGetInternalformati64v");`;
 enum arbInternalFormatQuery2Loader = makeLoader(ARB_internalformat_query2, arbInternalFormatQuery2LoaderImpl, "gl43");
-enum arbInternalFormatQuery2 = arbInternalFormatQuery2Decls ~ arbInternalFormatQuery2Funcs.makeGShared() ~ arbInternalFormatQuery2Loader;
+static if(!usingContexts) enum arbInternalFormatQuery2 = arbInternalFormatQuery2Decls ~ arbInternalFormatQuery2Funcs.makeGShared() ~ arbInternalFormatQuery2Loader;
 
 // ARB_invalidate_subdata
 enum ARB_invalidate_subdata = "GL_ARB_invalidate_subdata";
@@ -399,7 +400,7 @@ q{
 };
 
 enum arbInvalidateSubdataLoader = makeLoader(ARB_invalidate_subdata, arbInvalidateSubdataLoaderImpl, "gl43");
-enum arbInvalidateSubdata = arbInvalidateSubdataDecls ~ arbInvalidateSubdataFuncs.makeGShared() ~ arbInvalidateSubdataLoader;
+static if(!usingContexts) enum arbInvalidateSubdata = arbInvalidateSubdataDecls ~ arbInvalidateSubdataFuncs.makeGShared() ~ arbInvalidateSubdataLoader;
 
 // ARB_multi_draw_indirect
 enum ARB_multi_draw_indirect = "GL_ARB_multi_draw_indirect";
@@ -423,7 +424,7 @@ q{
 };
 
 enum arbMultiDrawIndirectLoader = makeLoader(ARB_multi_draw_indirect, arbMultiDrawIndirectLoaderImpl, "gl43");
-enum arbMultiDrawIndirect = arbMultiDrawIndirectDecls ~ arbMultiDrawIndirectFuncs.makeGShared() ~ arbMultiDrawIndirectLoader;
+static if(!usingContexts) enum arbMultiDrawIndirect = arbMultiDrawIndirectDecls ~ arbMultiDrawIndirectFuncs.makeGShared() ~ arbMultiDrawIndirectLoader;
 
 // ARB_program_interface_query
 enum ARB_program_interface_query = "GL_ARB_program_interface_query";
@@ -510,7 +511,7 @@ q{
 };
 
 enum arbProgramInterfaceQueryLoader = makeLoader(ARB_program_interface_query, arbProgramInterfaceQueryLoaderImpl, "gl43");
-enum arbProgramInterfaceQuery = arbProgramInterfaceQueryDecls ~ arbProgramInterfaceQueryFuncs.makeGShared() ~ arbProgramInterfaceQueryLoader;
+static if(!usingContexts) enum arbProgramInterfaceQuery = arbProgramInterfaceQueryDecls ~ arbProgramInterfaceQueryFuncs.makeGShared() ~ arbProgramInterfaceQueryLoader;
 
 // ARB_shader_storage_buffer_object
 enum ARB_shader_storage_buffer_object = "GL_ARB_shader_storage_buffer_object";
@@ -541,7 +542,7 @@ extern(System) @nogc nothrow alias da_glShaderStorageBlockBinding = void functio
 enum arbShaderStorageBufferObjectFuncs = `da_glShaderStorageBlockBinding glShaderStorageBlockBinding;`;
 enum arbShaderStorageBufferObjectLoaderImpl = `bindGLFunc(cast(void**)&glShaderStorageBlockBinding, "glShaderStorageBlockBinding");`;
 enum arbShaderStorageBufferObjectLoader = makeLoader(ARB_shader_storage_buffer_object, arbShaderStorageBufferObjectLoaderImpl, "gl43");
-enum arbShaderStorageBufferObject = arbShaderStorageBufferObjectDecls ~ arbShaderStorageBufferObjectFuncs.makeGShared() ~ arbShaderStorageBufferObjectLoader;
+static if(!usingContexts) enum arbShaderStorageBufferObject = arbShaderStorageBufferObjectDecls ~ arbShaderStorageBufferObjectFuncs.makeGShared() ~ arbShaderStorageBufferObjectLoader;
 
 // ARB_texture_buffer_range
 enum ARB_texture_buffer_range = "GL_ARB_texture_buffer_range";
@@ -572,7 +573,7 @@ q{
 };
 
 enum arbTextureBufferRangeLoader = makeLoader(ARB_texture_buffer_range, arbTextureBufferRangeLoaderImpl, "gl43");
-enum arbTextureBufferRange = arbTextureBufferRangeDecls ~ arbTextureBufferRangeFuncs.makeGShared() ~ arbTextureBufferRangeLoader;
+static if(!usingContexts) enum arbTextureBufferRange = arbTextureBufferRangeDecls ~ arbTextureBufferRangeFuncs.makeGShared() ~ arbTextureBufferRangeLoader;
 
 // ARB_texture_storage_multisample
 enum ARB_texture_storage_multisample = "GL_ARB_texture_storage_multisample";
@@ -605,7 +606,7 @@ q{
 };
 
 enum arbTextureStorageMultisampleLoader = makeLoader(ARB_texture_storage_multisample, arbTextureStorageMultisampleLoaderImpl, "gl43");
-enum arbTextureStorageMultisample = arbTextureStorageMultisampleDecls ~ arbTextureStorageMultisampleFuncs.makeGShared() ~ arbTextureStorageMultisampleLoader;
+static if(!usingContexts) enum arbTextureStorageMultisample = arbTextureStorageMultisampleDecls ~ arbTextureStorageMultisampleFuncs.makeGShared() ~ arbTextureStorageMultisampleLoader;
 
 // ARB_texture_view
 enum ARB_texture_view = "GL_ARB_texture_view";
@@ -625,7 +626,7 @@ enum arbTextureViewFuncs = `da_glTextureView glTextureView;`;
 enum arbTextureViewLoaderImpl = `bindGLFunc(cast(void**)&glTextureView, "glTextureView");`;
 
 enum arbTextureViewLoader = makeLoader(ARB_texture_view, arbTextureViewLoaderImpl, "gl43");
-enum arbTextureView = arbTextureViewDecls ~ arbTextureViewFuncs.makeGShared() ~ arbTextureViewLoader;
+static if(!usingContexts) enum arbTextureView = arbTextureViewDecls ~ arbTextureViewFuncs.makeGShared() ~ arbTextureViewLoader;
 
 // ARB_vertex_attrib_binding
 enum ARB_vertex_attrib_binding = "GL_ARB_vertex_attrib_binding";
@@ -693,7 +694,7 @@ q{
 };
 
 enum arbVertexAttribBindingLoader = makeLoader(ARB_vertex_attrib_binding, arbVertexAttribBindingLoaderImpl, "gl43");
-enum arbVertexAttribBinding = arbVertexAttribBindingDecls ~ arbVertexAttribBindingFuncs.makeGShared() ~ arbVertexAttribBindingLoader;
+static if(!usingContexts) enum arbVertexAttribBinding = arbVertexAttribBindingDecls ~ arbVertexAttribBindingFuncs.makeGShared() ~ arbVertexAttribBindingLoader;
 
 enum corearb43Decls = arbClearBufferObjectDecls ~ arbComputeShaderDecls ~ arbCopyImageDecls ~ khrDebugDecls
         ~ arbFramebufferNoAttachmentsDecls ~ arbInternalFormatQuery2Decls ~ arbInvalidateSubdataDecls ~ arbMultiDrawIndirectDecls

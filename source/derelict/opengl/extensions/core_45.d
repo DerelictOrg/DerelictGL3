@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_45;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_clip_control
 enum ARB_clip_control = "GL_ARB_clip_control";
@@ -47,7 +47,7 @@ extern(System) @nogc nothrow alias da_glClipControl = void function(GLenum,GLenu
 enum arbClipControlFuncs = `da_glClipControl glClipControl;`;
 enum arbClipControlLoaderImpl = `bindGLFunc(cast(void**)&glClipControl, "glClipControl");`;
 enum arbClipControlLoader = makeLoader(ARB_clip_control, arbClipControlLoaderImpl, "gl45");
-enum arbClipControl = arbClipControlDecls ~ arbClipControlFuncs.makeGShared() ~ arbClipControlLoader;
+static if(!usingContexts) enum arbClipControl = arbClipControlDecls ~ arbClipControlFuncs.makeGShared() ~ arbClipControlLoader;
 
 // ARB_ES3_1_compatibility
 enum ARB_ES3_1_compatibility = "GL_ARB_ES3_1_compatibility";
@@ -59,7 +59,7 @@ extern(System) @nogc nothrow alias da_glMemoryBarrierByRegion = void function(GL
 enum arbES31CompatibilityFuncs = `da_glMemoryBarrierByRegion glMemoryBarrierByRegion;`;
 enum arbES31CompatibilityLoaderImpl = `bindGLFunc(cast(void**)&glMemoryBarrierByRegion, "glMemoryBarrierByRegion");`;
 enum arbES31CompatibilityLoader = makeLoader(ARB_ES3_1_compatibility, arbES31CompatibilityLoaderImpl, "gl45");
-enum arbES31Compatibility = arbES31CompatibilityDecls ~ arbES31CompatibilityFuncs.makeGShared() ~ arbES31CompatibilityLoader;
+static if(!usingContexts) enum arbES31Compatibility = arbES31CompatibilityDecls ~ arbES31CompatibilityFuncs.makeGShared() ~ arbES31CompatibilityLoader;
 
 // ARB_direct_state_access
 enum ARB_direct_state_access = "GL_ARB_direct_state_access";
@@ -373,7 +373,7 @@ q{
 };
 
 enum arbDirectStateAccessLoader = makeLoader(ARB_direct_state_access, arbDirectStateAccessLoaderImpl, "gl45");
-enum arbDirectStateAccess = arbDirectStateAccessDecls ~ arbDirectStateAccessFuncs.makeGShared() ~ arbDirectStateAccessLoader;
+static if(!usingContexts) enum arbDirectStateAccess = arbDirectStateAccessDecls ~ arbDirectStateAccessFuncs.makeGShared() ~ arbDirectStateAccessLoader;
 
 // ARB_get_texture_sub_image
 enum ARB_get_texture_sub_image = "GL_ARB_get_texture_sub_image";
@@ -398,7 +398,7 @@ q{
 };
 
 enum arbGetTextureSubImageLoader = makeLoader(ARB_get_texture_sub_image, arbGetTextureSubImageLoaderImpl, "gl45");
-enum arbGetTextureSubImage = arbGetTextureSubImageDecls ~ arbGetTextureSubImageFuncs.makeGShared() ~ arbGetTextureSubImageLoader;
+static if(!usingContexts) enum arbGetTextureSubImage = arbGetTextureSubImageDecls ~ arbGetTextureSubImageFuncs.makeGShared() ~ arbGetTextureSubImageLoader;
 
 // KHR_robustness
 enum KHR_robustness = "GL_KHR_robustness";
@@ -442,7 +442,7 @@ q{
 };
 
 enum khrRobustnessLoader = makeLoader(KHR_robustness, khrRobustnessLoaderImpl, "gl45");
-enum khrRobustness = khrRobustnessDecls ~ khrRobustnessFuncs.makeGShared() ~ khrRobustnessLoader;
+static if(!usingContexts) enum khrRobustness = khrRobustnessDecls ~ khrRobustnessFuncs.makeGShared() ~ khrRobustnessLoader;
 
 // ARB_texture_barrier
 enum ARB_texture_barrier = "GL_ARB_texture_barrier";
@@ -450,7 +450,7 @@ enum arbTextureBarrierDecls = `extern(System) @nogc nothrow alias da_glTextureBa
 enum arbTextureBarrierFuncs = `da_glTextureBarrier glTextureBarrier;`;
 enum arbTextureBarrierLoaderImpl = `bindGLFunc(cast(void**)&glTextureBarrier, "glTextureBarrier");`;
 enum arbTextureBarrierLoader = makeLoader(ARB_texture_barrier, arbTextureBarrierLoaderImpl, "gl45");
-enum arbTextureBarrier = arbTextureBarrierDecls ~ arbTextureBarrierFuncs.makeGShared() ~ arbTextureBarrierLoader;
+static if(!usingContexts) enum arbTextureBarrier = arbTextureBarrierDecls ~ arbTextureBarrierFuncs.makeGShared() ~ arbTextureBarrierLoader;
 
 enum corearb45Decls = arbClipControlDecls ~ arbES31CompatibilityDecls ~ arbDirectStateAccessDecls~ arbGetTextureSubImageDecls
         ~ khrRobustnessDecls ~ arbTextureBarrierDecls;

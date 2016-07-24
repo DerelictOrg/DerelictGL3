@@ -65,13 +65,6 @@ alias GLhalfNV = ushort;
 alias GLint64EXT = long;
 alias GLuint64EXT = ulong;
 
-    // ARB_sync
-alias GLint64 = long;
-alias GLuint64 = ulong;
-
-struct __GLsync;
-alias __GLsync* GLsync;
-
 // ARB_cl_event
 struct _cl_context;
 struct _cl_event;
@@ -83,8 +76,6 @@ extern(System) nothrow {
     // AMD_debug_output
     alias GLDEBUGPROCAMD = void function(GLuint, GLenum, GLenum, GLsizei, in GLchar*, GLvoid*);
 
-    // KHR_debug
-    alias GLDEBUGPROC = void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*,GLvoid*);
 }
 
 // This following are Derelict types, not from OpenGL

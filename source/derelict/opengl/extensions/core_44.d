@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_44;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_buffer_storage
 enum ARB_buffer_storage = "GL_ARB_buffer_storage";
@@ -63,7 +63,7 @@ q{
 };
 
 enum arbBufferStorageLoader = makeLoader(ARB_buffer_storage, arbBufferStorageLoaderImpl, "gl44");
-enum arbBufferStorage = arbBufferStorageDecls ~ arbBufferStorageFuncs.makeGShared() ~ arbBufferStorageLoader;
+static if(!usingContexts) enum arbBufferStorage = arbBufferStorageDecls ~ arbBufferStorageFuncs.makeGShared() ~ arbBufferStorageLoader;
 
 // ARB_clear_texture
 enum ARB_clear_texture = "GL_ARB_clear_texture";
@@ -89,7 +89,7 @@ q{
 };
 
 enum arbClearTextureLoader = makeLoader(ARB_clear_texture, arbClearTextureLoaderImpl, "gl44");
-enum arbClearTexture = arbClearTextureDecls ~ arbClearTextureFuncs.makeGShared() ~ arbClearTextureLoader;
+static if(!usingContexts) enum arbClearTexture = arbClearTextureDecls ~ arbClearTextureFuncs.makeGShared() ~ arbClearTextureLoader;
 
 // ARB_multi_bind
 enum ARB_multi_bind = "GL_ARB_multi_bind";
@@ -125,7 +125,7 @@ q{
 };
 
 enum arbMultBindLoader = makeLoader(ARB_multi_bind, arbMultBindLoaderImpl, "gl44");
-enum arbMultBind = arbMultBindDecls ~ arbMultBindFuncs.makeGShared() ~ arbMultBindLoader;
+static if(!usingContexts) enum arbMultBind = arbMultBindDecls ~ arbMultBindFuncs.makeGShared() ~ arbMultBindLoader;
 
 enum corearb44Decls = arbBufferStorageDecls~ arbClearTextureDecls ~ arbMultBindDecls;
 enum corearb44Funcs = arbBufferStorageFuncs ~ arbClearTextureFuncs ~ arbMultBindFuncs;

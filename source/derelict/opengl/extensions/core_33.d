@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_33;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.internal;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
 // ARB_blend_func_extended
 enum ARB_blend_func_extended = "GL_ARB_blend_func_extended";
@@ -59,7 +59,7 @@ q{
 };
 
 enum arbBlendFuncExtendedLoader = makeLoader(ARB_blend_func_extended, arbBlendFuncExtendedLoaderImpl, "gl33");
-enum arbBlendFuncExtended = arbBlendFuncExtendedDecls ~ arbBlendFuncExtendedFuncs.makeGShared() ~ arbBlendFuncExtendedLoader;
+static if(!usingContexts) enum arbBlendFuncExtended = arbBlendFuncExtendedDecls ~ arbBlendFuncExtendedFuncs.makeGShared() ~ arbBlendFuncExtendedLoader;
 
 // ARB_sampler_objects
 enum ARB_sampler_objects = "GL_ARB_sampler_objects";
@@ -120,7 +120,7 @@ q{
 };
 
 enum arbSamplerObjectsLoader = makeLoader(ARB_sampler_objects, arbSamplerObjectsLoaderImpl, "gl33");
-enum arbSamplerObjects = arbSamplerObjectsDecls ~ arbSamplerObjectsFuncs.makeGShared() ~ arbSamplerObjectsLoader;
+static if(!usingContexts) enum arbSamplerObjects = arbSamplerObjectsDecls ~ arbSamplerObjectsFuncs.makeGShared() ~ arbSamplerObjectsLoader;
 
 enum corearb33 = arbBlendFuncExtended ~ arbSamplerObjects;
 enum corearb33Decls = arbBlendFuncExtendedDecls ~ arbSamplerObjectsDecls;

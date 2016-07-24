@@ -25,10 +25,10 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.arb.core_40;
+module derelict.opengl.extensions.core_40;
 
 import derelict.opengl.types,
-       derelict.opengl.arb.internal;
+       derelict.opengl.extensions.internal;
 
 // ARB_draw_indirect
 enum ARB_draw_indirect = "GL_ARB_draw_indirect";

@@ -25,10 +25,10 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.arb.core_30;
+module derelict.opengl.extensions.core_30;
 
 import derelict.opengl.types,
-       derelict.opengl.arb.internal;
+       derelict.opengl.extensions.internal;
 
 version(DerelictGL3_Contexts) {}
 else version = DerelictGL3_NoContexts;

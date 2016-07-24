@@ -25,10 +25,10 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.arb.core_45;
+module derelict.opengl.extensions.core_45;
 
 import derelict.opengl.types,
-       derelict.opengl.arb.internal;
+       derelict.opengl.extensions.internal;
 
 // ARB_clip_control
 enum ARB_clip_control = "GL_ARB_clip_control";

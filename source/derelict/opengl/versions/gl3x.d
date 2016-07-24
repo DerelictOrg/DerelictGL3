@@ -28,10 +28,10 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl.versions.gl3x;
 
 import derelict.opengl.types,
-       derelict.opengl.arb.core_30,
-       derelict.opengl.arb.core_31,
-       derelict.opengl.arb.core_32,
-       derelict.opengl.arb.core_33;
+       derelict.opengl.extensions.core_30,
+       derelict.opengl.extensions.core_31,
+       derelict.opengl.extensions.core_32,
+       derelict.opengl.extensions.core_33;
 
 enum _gl30Decls =
 q{

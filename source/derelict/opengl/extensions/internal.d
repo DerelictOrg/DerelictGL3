@@ -1,4 +1,4 @@
-module derelict.opengl.arb.internal;
+module derelict.opengl.extensions.internal;
 
 package:
 string makeGShared(string funcs) { return "__gshared{" ~ funcs ~ "}"; }

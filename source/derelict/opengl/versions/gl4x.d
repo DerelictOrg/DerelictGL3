@@ -28,12 +28,12 @@ DEALINGS IN THE SOFTWARE.
 module derelict.opengl.versions.gl4x;
 
 import derelict.opengl.types,
-       derelict.opengl.arb.core_40,
-       derelict.opengl.arb.core_41,
-       derelict.opengl.arb.core_42,
-       derelict.opengl.arb.core_43,
-       derelict.opengl.arb.core_44,
-       derelict.opengl.arb.core_45;
+       derelict.opengl.extensions.core_40,
+       derelict.opengl.extensions.core_41,
+       derelict.opengl.extensions.core_42,
+       derelict.opengl.extensions.core_43,
+       derelict.opengl.extensions.core_44,
+       derelict.opengl.extensions.core_45;
 
 enum _gl40Decls =
 q{

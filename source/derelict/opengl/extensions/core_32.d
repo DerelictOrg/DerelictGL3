@@ -25,10 +25,10 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.arb.core_32;
+module derelict.opengl.extensions.core_32;
 
 import derelict.opengl.types,
-       derelict.opengl.arb.internal;
+       derelict.opengl.extensions.internal;
 
 // ARB_draw_elements_base_vertex
 enum ARB_draw_elements_base_vertex = "GL_ARB_draw_elements_base_vertex";

@@ -65,20 +65,7 @@ alias GLhalfNV = ushort;
 alias GLint64EXT = long;
 alias GLuint64EXT = ulong;
 
-// ARB_cl_event
-struct _cl_context;
-struct _cl_event;
-
-extern(System) nothrow {
-    // ARB_debug_output
-    alias GLDEBUGPROCARB = void function(GLenum, GLenum, GLuint, GLenum, GLsizei, in GLchar*, GLvoid*);
-
-    // AMD_debug_output
-    alias GLDEBUGPROCAMD = void function(GLuint, GLenum, GLenum, GLsizei, in GLchar*, GLvoid*);
-
-}
-
-// This following are Derelict types, not from OpenGL
+// The following are Derelict types, not from OpenGL
 enum GLVersion {
     none,
     gl11 = 11,

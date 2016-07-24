@@ -35,12 +35,6 @@ private {
 }
 
 enum : uint {
-    // ARB_depth_buffer_float
-    // ARB_framebuffer_object
-
-
-    // ARB_framebuffer_sRGB
-    GL_FRAMEBUFFER_SRGB               = 0x8DB9,
 
     // ARB_geometry_shader4
     GL_LINES_ADJACENCY_ARB            = 0x000A,
@@ -101,15 +95,6 @@ enum : uint {
     GL_RG32I                          = 0x823B,
     GL_RG32UI                         = 0x823C,
 
-    // ARB_vertex_array_object
-    // ARB_uniform_buffer_object
-    // ARB_copy_buffer
-
-    // ARB_depth_clamp
-    GL_DEPTH_CLAMP                    = 0x864F,
-
-    // ARB_provoking_vertex
-
     // ARB_seamless_cube_map
     GL_TEXTURE_CUBE_MAP_SEAMLESS      = 0x884F,
 
@@ -144,7 +129,6 @@ enum : uint {
     GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT_ARB = 0x8E8E,
     GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_ARB = 0x8E8F,
 
-    // ARB_blend_func_extended
 
     // ARB_occlusion_query2
     GL_ANY_SAMPLES_PASSED             = 0x8C2F,
@@ -168,7 +152,7 @@ enum : uint {
     // ARB_vertex_type_2_10_10_10_rev
     GL_INT_2_10_10_10_REV             = 0x8D9F,
 
-    // ARB_draw_indirect
+
 
     // ARB_gpu_shader5
     GL_GEOMETRY_SHADER_INVOCATIONS    = 0x887F,
@@ -177,43 +161,6 @@ enum : uint {
     GL_MAX_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5C,
     GL_FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D,
 
-    // ARB_gpu_shader_fp64
-    // ARB_shader_subroutine
-    // ARB_tessellation_shader
-    // ARB_transform_feedback2
-    // ARB_transform_feedback3
-    // ARB_ES2_compatibility
-    // ARB_get_program_binary
-    // ARB_separate_shader_objects
-    // ARB_viewport_array
-
-    // ARB_cl_event
-    GL_SYNC_CL_EVENT_ARB              = 0x8240,
-    GL_SYNC_CL_EVENT_COMPLETE_ARB     = 0x8241,
-
-    // ARB_debug_output
-    GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB   = 0x8242,
-    GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_ARB = 0x8243,
-    GL_DEBUG_CALLBACK_FUNCTION_ARB    = 0x8244,
-    GL_DEBUG_CALLBACK_USER_PARAM_ARB  = 0x8245,
-    GL_DEBUG_SOURCE_API_ARB           = 0x8246,
-    GL_DEBUG_SOURCE_WINDOW_SYSTEM_ARB = 0x8247,
-    GL_DEBUG_SOURCE_SHADER_COMPILER_ARB = 0x8248,
-    GL_DEBUG_SOURCE_THIRD_PARTY_ARB   = 0x8249,
-    GL_DEBUG_SOURCE_APPLICATION_ARB   = 0x824A,
-    GL_DEBUG_SOURCE_OTHER_ARB         = 0x824B,
-    GL_DEBUG_TYPE_ERROR_ARB           = 0x824C,
-    GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR_ARB = 0x824D,
-    GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR_ARB = 0x824E,
-    GL_DEBUG_TYPE_PORTABILITY_ARB     = 0x824F,
-    GL_DEBUG_TYPE_PERFORMANCE_ARB     = 0x8250,
-    GL_DEBUG_TYPE_OTHER_ARB           = 0x8251,
-    GL_MAX_DEBUG_MESSAGE_LENGTH_ARB   = 0x9143,
-    GL_MAX_DEBUG_LOGGED_MESSAGES_ARB  = 0x9144,
-    GL_DEBUG_LOGGED_MESSAGES_ARB      = 0x9145,
-    GL_DEBUG_SEVERITY_HIGH_ARB        = 0x9146,
-    GL_DEBUG_SEVERITY_MEDIUM_ARB      = 0x9147,
-    GL_DEBUG_SEVERITY_LOW_ARB         = 0x9148,
 
     // ARB_robustness
     GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = 0x00000004,
@@ -224,23 +171,8 @@ enum : uint {
     GL_RESET_NOTIFICATION_STRATEGY_ARB = 0x8256,
     GL_NO_RESET_NOTIFICATION_ARB      = 0x8261,
 
-    // ARB_compressed_texture_pixel_storage
-    GL_UNPACK_COMPRESSED_BLOCK_WIDTH  = 0x9127,
-    GL_UNPACK_COMPRESSED_BLOCK_HEIGHT = 0x9128,
-    GL_UNPACK_COMPRESSED_BLOCK_DEPTH  = 0x9129,
-    GL_UNPACK_COMPRESSED_BLOCK_SIZE   = 0x912A,
-    GL_PACK_COMPRESSED_BLOCK_WIDTH    = 0x912B,
-    GL_PACK_COMPRESSED_BLOCK_HEIGHT   = 0x912C,
-    GL_PACK_COMPRESSED_BLOCK_DEPTH    = 0x912D,
-    GL_PACK_COMPRESSED_BLOCK_SIZE     = 0x912E,
-
-    // ARB_internalformat_query
     // ARB_map_buffer_alignment
     GL_MIN_MAP_BUFFER_ALIGNMENT       = 0x90BC,
-
-    // ARB_shader_atomic_counters
-    // ARB_shader_image_load_store
-    // ARB_texture_storage
 
 
     // ARB_ES3_compatibility
@@ -258,24 +190,13 @@ enum : uint {
     GL_ANY_SAMPLES_PASSED_CONSERVATIVE = 0x8D6A,
     GL_MAX_ELEMENT_INDEX              = 0x8D6B,
 
-    // ARB_compute_shader
-    // KHR_debug
 
     // ARB_explicit_uniform_location
     GL_MAX_UNIFORM_LOCATIONS = 0x826E,
 
-    // ARB_framebuffer_no_attachments
-    // ARB_internalformat_query2
-    // ARB_program_interface_query
-    // ARB_shader_storage_buffer_object
     // ARB_stencil_texturing
     GL_DEPTH_STENCIL_TEXTURE_MODE = 0x90EA,
 
-    // ARB_texture_buffer_range
-    // ARB_texture_view
-    // ARB_vertex_attrib_binding
-    // ARB_buffer_storage
-    // ARB_clear_texture
 
     // ARB_enhanced_layouts
     GL_LOCATION_COMPONENT             = 0x934A,
@@ -291,17 +212,7 @@ enum : uint {
     // ARB_texture_mirror_clamp_to_edge
     GL_MIRROR_CLAMP_TO_EDGE           = 0x8743,
 
-    // ARB_clip_control
-
-    // ARB_cull_distance
-    GL_MAX_CULL_DISTANCES             = 0x82F9,
-    GL_MAX_COMBINED_CLIP_AND_CULL_DISTANCES = 0x82FA,
-
     // ARB_conditional_render_inverted
-    GL_QUERY_WAIT_INVERTED            = 0x8E17,
-    GL_QUERY_NO_WAIT_INVERTED         = 0x8E18,
-    GL_QUERY_BY_REGION_WAIT_INVERTED  = 0x8E19,
-    GL_QUERY_BY_REGION_NO_WAIT_INVERTED = 0x8E1A,
 
     // KHR_context_flush_control
     GL_CONTEXT_RELEASE_BEHAVIOR       = 0x82FB,
@@ -310,9 +221,6 @@ enum : uint {
     // ARB_direct_state_access
     // KHR_robustness
 }
-private __gshared bool _ARB_framebuffer_sRGB;
-@nogc bool ARB_framebuffer_sRGB() nothrow @property { return _ARB_framebuffer_sRGB; }
-
 // ARB_geometry_shader4
 extern( System ) @nogc nothrow {
     alias da_glProgramParameteriARB = void function( GLuint, GLenum, GLint );
@@ -355,12 +263,6 @@ private __gshared bool _ARB_texture_compression_rgtc;
 
 private __gshared bool _ARB_texture_rg;
 @nogc bool ARB_texture_rg() nothrow @property { return _ARB_texture_rg; }
-
-private __gshared bool _ARB_depth_clamp;
-@nogc bool ARB_depth_clamp() nothrow @property { return _ARB_depth_clamp; }
-
-private __gshared bool _ARB_fragment_coord_conventions;
-@nogc bool ARB_fragment_coord_conventions() nothrow @property { return _ARB_fragment_coord_conventions; }
 
 private __gshared bool _ARB_seamless_cube_map;
 @nogc bool ARB_seamless_cube_map() nothrow @property { return _ARB_seamless_cube_map; }
@@ -410,9 +312,6 @@ private __gshared bool _ARB_shader_stencil_export;
 private __gshared bool _ARB_shading_language_420pack;
 @nogc bool ARB_shading_language_420pack() nothrow @property { return _ARB_shading_language_420pack; }
 
-private __gshared bool _ARB_compressed_texture_pixel_storage;
-@nogc bool ARB_compressed_texture_pixel_storage() nothrow @property { return _ARB_compressed_texture_pixel_storage; }
-
 private __gshared bool _ARB_conservative_depth;
 @nogc bool ARB_conservative_depth() nothrow @property { return _ARB_conservative_depth; }
 
@@ -422,43 +321,7 @@ private __gshared bool _ARB_map_buffer_alignment;
 private __gshared bool _ARB_shading_language_packing;
 @nogc bool ARB_shading_language_packing() nothrow @property { return _ARB_shading_language_packing; }
 
-// ARB_framebuffer_object
-// ARB_map_buffer_range
-// ARB_vertex_array_object
-// ARB_uniform_buffer_object
-// ARB_copy_buffer
-// ARB_draw_elements_base_vertex
-// ARB_provoking_vertex
-// ARB_sync
-// ARB_texture_multisample
-// ARB_draw_buffers_blend
-extern( System ) @nogc nothrow {
-    alias da_glBlendEquationiARB = void function( GLuint, GLenum );
-    alias da_glBlendEquationSeparateiARB = void function( GLuint, GLenum, GLenum );
-    alias da_glBlendFunciARB = void function( GLuint, GLenum, GLenum );
-    alias da_glBlendFuncSeparateiARB = void function( GLuint, GLenum, GLenum, GLenum, GLenum );
-}
 
-__gshared {
-    da_glBlendEquationiARB glBlendEquationiARB;
-    da_glBlendEquationSeparateiARB glBlendEquationSeparateiARB;
-    da_glBlendFunciARB glBlendFunciARB;
-    da_glBlendFuncSeparateiARB glBlendFuncSeparateiARB;
-}
-
-private __gshared bool _ARB_draw_buffers_blend;
-@nogc bool ARB_draw_buffers_blend() nothrow @property { return _ARB_draw_buffers_blend; }
-package void load_ARB_draw_buffers_blend() {
-try {
-    bindGLFunc( cast( void** )&glBlendEquationiARB, "glBlendEquationiARB" );
-    bindGLFunc( cast( void** )&glBlendEquationSeparateiARB, "glBlendEquationSeparateiARB" );
-    bindGLFunc( cast( void** )&glBlendFunciARB, "glBlendFunciARB" );
-    bindGLFunc( cast( void** )&glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB" );
-        _ARB_draw_buffers_blend = true;
-    } catch( Exception e ) {
-        _ARB_draw_buffers_blend = false;
-    }
-}
 
 // ARB_sample_shading
 extern( System ) @nogc nothrow alias da_glMinSampleShadingARB = void function( GLclampf );
@@ -510,7 +373,6 @@ package void load_ARB_shading_language_include() {
     }
 }
 
-// ARB_blend_func_extended\
 // ARB_sampler_objects
 
 // ARB_timer_query
@@ -674,77 +536,6 @@ package void load_ARB_vertex_type_2_10_10_10_rev( bool doThrow = false ) {
     }
 }
 
-// ARB_draw_indirect
-// ARB_gpu_shader_fp64
-// ARB_shader_subroutine
-// ARB_tessellation_shader
-// ARB_transform_feedback3
-// ARB_ES2_compatibility
-// ARB_get_program_binary
-// ARB_separate_shader_objects
-// ARB_vertex_attrib_64bit
-// ARB_viewport_array
-extern( System ) @nogc nothrow {
-}
-
-__gshared {
-}
-
-private __gshared bool _ARB_viewport_array;
-@nogc bool ARB_viewport_array() nothrow @property { return _ARB_viewport_array; }
-package void load_ARB_viewport_array( bool doThrow = false ) {
-try {
-        _ARB_viewport_array = true;
-    } catch( Exception e ) {
-        _ARB_viewport_array = false;
-        if( doThrow ) throw e;
-    }
-}
-
-// ARB_cl_event
-extern( System ) @nogc nothrow alias  da_glCreateSyncFromCLeventARB = GLsync function( _cl_context*, _cl_event*, GLbitfield );
-__gshared da_glCreateSyncFromCLeventARB glCreateSyncFromCLeventARB;
-
-private __gshared bool _ARB_cl_event;
-@nogc bool ARB_cl_event() nothrow @property { return _ARB_cl_event; }
-package void load_ARB_cl_event() {
-    try {
-        bindGLFunc( cast( void** )&glCreateSyncFromCLeventARB, "glCreateSyncFromCLeventARB" );
-        _ARB_cl_event = true;
-    } catch( Exception e ) {
-        _ARB_cl_event = false;
-    }
-}
-
-// ARB_debug_output
-extern( System ) @nogc nothrow {
-    alias da_glDebugMessageControlARB = void function( GLenum, GLenum, GLenum, GLsizei, const( GLuint )*, GLboolean );
-    alias da_glDebugMessageInsertARB = void function( GLenum, GLenum, GLuint, GLenum, GLsizei, const( GLchar )* );
-    alias da_glGetDebugMessageLogARB = void function( GLuint, GLsizei, GLenum*, GLenum*, GLuint*, GLenum*, GLsizei*, GLchar* );
-    alias da_glDebugMessageCallbackARB = void function( GLDEBUGPROCARB, const( GLvoid )* );
-}
-
-__gshared {
-    da_glDebugMessageControlARB glDebugMessageControlARB;
-    da_glDebugMessageInsertARB glDebugMessageInsertARB;
-    da_glDebugMessageCallbackARB glDebugMessageCallbackARB;
-    da_glGetDebugMessageLogARB glGetDebugMessageLogARB;
-}
-
-private __gshared bool _ARB_debug_output;
-@nogc bool ARB_debug_output() nothrow @property { return _ARB_debug_output; }
-package void load_ARB_debug_output() {
-    try {
-        bindGLFunc( cast( void** )&glDebugMessageControlARB, "glDebugMessageControlARB" );
-        bindGLFunc( cast( void** )&glDebugMessageInsertARB, "glDebugMessageInsertARB" );
-        bindGLFunc( cast( void** )&glDebugMessageCallbackARB, "glDebugMessageCallbackARB" );
-        bindGLFunc( cast( void** )&glGetDebugMessageLogARB, "glGetDebugMessageLogARB" );
-        _ARB_debug_output = true;
-    } catch( Exception e ) {
-        _ARB_debug_output = false;
-    }
-}
-
 // ARB_robustness
 extern( System ) @nogc nothrow {
     alias da_glGetGraphicsResetStatusARB = GLenum function();
@@ -823,21 +614,6 @@ package void load_ARB_robustness() {
     }
 }
 
-// ARB_base_instance
-// ARB_transform_feedback_instanced
-// ARB_internalformat_query
-
-// ARB_shader_atomic_counters
-// ARB_shader_image_load_store
-// ARB_texture_storage
-// ARB_array_of_arrays
-private __gshared bool _ARB_array_of_arrays;
-@nogc bool ARB_array_of_arrays() nothrow @property { return _ARB_array_of_arrays; }
-
-// ARB_fragment_layer_viewport
-private __gshared bool _ARB_fragment_layer_viewport;
-@nogc bool ARB_fragment_layer_viewport() nothrow @property { return _ARB_fragment_layer_viewport; }
-
 // ARB_shader_image_size
 private __gshared bool _ARB_shader_image_size;
 @nogc bool ARB_shader_image_size() nothrow @property { return _ARB_shader_image_size; }
@@ -846,20 +622,11 @@ private __gshared bool _ARB_shader_image_size;
 private __gshared bool _ARB_ES3_compatibility;
 @nogc bool ARB_ES3_compatibility() nothrow @property { return _ARB_ES3_compatibility; }
 
-// ARB_clear_buffer_object
-// ARB_compute_shader
-// ARB_copy_image
-// KHR_debug
 
 // ARB_explicit_uniform_location
 private __gshared bool _ARB_explicit_uniform_location;
 @nogc bool ARB_explicit_uniform_location() nothrow @property { return _ARB_explicit_uniform_location; }
 
-// ARB_framebuffer_no_attachments
-// ARB_internalformat_query2
-// ARB_invalidate_subdata
-// ARB_multi_draw_indirect
-// ARB_program_interface_query
 // ARB_robust_buffer_access_behavior
 private __gshared bool _ARB_robust_buffer_access_behavior;
 @nogc bool ARB_robust_buffer_access_behavior() nothrow @property { return _ARB_robust_buffer_access_behavior; }
@@ -907,8 +674,6 @@ try {
     }
 }
 
-// ARB_buffer_storage
-// ARB_clear_texture
 // ARB_enhanced_layouts
 private __gshared bool _ARB_enhanced_layouts;
 @nogc bool ARB_enhanced_layouts() nothrow @property { return _ARB_enhanced_layouts; }
@@ -930,10 +695,6 @@ private __gshared bool _ARB_texture_stencil8;
 private __gshared bool _ARB_vertex_type_10f_11f_11f_rev;
 @nogc bool ARB_vertex_type_10f_11f_11f_rev() nothrow @property { return _ARB_vertex_type_10f_11f_11f_rev; }
 
-// ARB_clip_control
-// ARB_cull_distance
-private __gshared bool _ARB_cull_distance;
-@nogc bool ARB_cull_distance() nothrow @property { return _ARB_cull_distance; }
 
 // ARB_ES3_1_compatibility
 extern( System ) @nogc nothrow alias da_glMemoryBarrierByRegion = void function( GLbitfield );
@@ -950,10 +711,6 @@ package void load_ARB_ES3_1_compatibility( bool doThrow = false ) {
     }
 }
 
-// ARB_conditional_render_inverted
-private __gshared bool _ARB_conditional_render_inverted;
-@nogc bool ARB_conditional_render_inverted() nothrow @property { return _ARB_conditional_render_inverted; }
-
 // KHR_context_flush_control
 private __gshared bool _KHR_context_flush_control;
 @nogc bool KHR_context_flush_control() nothrow @property { return _KHR_context_flush_control; }
@@ -964,23 +721,6 @@ private __gshared bool _ARB_derivative_control;
 
 // ARB_direct_state_access
 // ARB_get_texture_sub_image
-extern( System ) @nogc nothrow {
-}
-
-__gshared {
-}
-
-private __gshared bool _ARB_get_texture_sub_image;
-@nogc bool ARB_get_texture_sub_image() nothrow @property { return _ARB_get_texture_sub_image; }
-package void load_ARB_get_texture_sub_image( bool doThrow = false ) {
-try {
-        _ARB_get_texture_sub_image = true;
-    } catch( Exception e ) {
-        _ARB_get_texture_sub_image = false;
-        if( doThrow ) throw e;
-    }
-}
-
 // KHR_robustness
 // ARB_shader_texture_image_samples
 private __gshared bool _ARB_shader_texture_image_samples;

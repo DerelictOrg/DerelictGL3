@@ -174,34 +174,8 @@ enum : uint {
     // ARB_map_buffer_alignment
     GL_MIN_MAP_BUFFER_ALIGNMENT       = 0x90BC,
 
-
-    // ARB_ES3_compatibility
-    GL_COMPRESSED_RGB8_ETC2           = 0x9274,
-    GL_COMPRESSED_SRGB8_ETC2          = 0x9275,
-    GL_COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2 = 0x9276,
-    GL_COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2 = 0x9277,
-    GL_COMPRESSED_RGBA8_ETC2_EAC      = 0x9278,
-    GL_COMPRESSED_SRGB8_ALPHA8_ETC2_EAC = 0x9279,
-    GL_COMPRESSED_R11_EAC             = 0x9270,
-    GL_COMPRESSED_SIGNED_R11_EAC      = 0x9271,
-    GL_COMPRESSED_RG11_EAC            = 0x9272,
-    GL_COMPRESSED_SIGNED_RG11_EAC     = 0x9273,
-    GL_PRIMITIVE_RESTART_FIXED_INDEX  = 0x8D69,
-    GL_ANY_SAMPLES_PASSED_CONSERVATIVE = 0x8D6A,
-    GL_MAX_ELEMENT_INDEX              = 0x8D6B,
-
-
-    // ARB_explicit_uniform_location
-    GL_MAX_UNIFORM_LOCATIONS = 0x826E,
-
     // ARB_stencil_texturing
     GL_DEPTH_STENCIL_TEXTURE_MODE = 0x90EA,
-
-
-    // ARB_enhanced_layouts
-    GL_LOCATION_COMPONENT             = 0x934A,
-    GL_TRANSFORM_FEEDBACK_BUFFER_INDEX = 0x934B,
-    GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C,
 
     // ARB_query_buffer_object
     GL_QUERY_BUFFER                   = 0x9192,
@@ -212,14 +186,10 @@ enum : uint {
     // ARB_texture_mirror_clamp_to_edge
     GL_MIRROR_CLAMP_TO_EDGE           = 0x8743,
 
-    // ARB_conditional_render_inverted
-
     // KHR_context_flush_control
     GL_CONTEXT_RELEASE_BEHAVIOR       = 0x82FB,
     GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH = 0x82FC,
 
-    // ARB_direct_state_access
-    // KHR_robustness
 }
 // ARB_geometry_shader4
 extern( System ) @nogc nothrow {
@@ -281,9 +251,6 @@ private __gshared bool _ARB_texture_query_lod;
 
 private __gshared bool _ARB_texture_compression_bptc;
 @nogc bool ARB_texture_compression_bptc() nothrow @property { return _ARB_texture_compression_bptc; }
-
-private __gshared bool _ARB_explicit_attrib_location;
-@nogc bool ARB_explicit_attrib_location() nothrow @property { return _ARB_explicit_attrib_location; }
 
 private __gshared bool _ARB_occlusion_query2;
 @nogc bool ARB_occlusion_query2() nothrow @property { return _ARB_occlusion_query2; }
@@ -618,15 +585,6 @@ package void load_ARB_robustness() {
 private __gshared bool _ARB_shader_image_size;
 @nogc bool ARB_shader_image_size() nothrow @property { return _ARB_shader_image_size; }
 
-// ARB_ES3_compatibility
-private __gshared bool _ARB_ES3_compatibility;
-@nogc bool ARB_ES3_compatibility() nothrow @property { return _ARB_ES3_compatibility; }
-
-
-// ARB_explicit_uniform_location
-private __gshared bool _ARB_explicit_uniform_location;
-@nogc bool ARB_explicit_uniform_location() nothrow @property { return _ARB_explicit_uniform_location; }
-
 // ARB_robust_buffer_access_behavior
 private __gshared bool _ARB_robust_buffer_access_behavior;
 @nogc bool ARB_robust_buffer_access_behavior() nothrow @property { return _ARB_robust_buffer_access_behavior; }
@@ -650,35 +608,10 @@ package void load_ARB_shader_storage_buffer_object( bool doThrow = false ) {
 private __gshared bool _ARB_stencil_texturing;
 @nogc bool ARB_stencil_texturing() nothrow @property { return _ARB_stencil_texturing; }
 
-// ARB_texture_buffer_range
 // ARB_texture_query_levels
 private __gshared bool _ARB_texture_query_levels;
 @nogc bool ARB_texture_query_levels() nothrow @property { return _ARB_texture_query_levels; }
 
-// ARB_texture_storage_multisample
-// ARB_texture_view
-// ARB_vertex_attrib_binding
-extern( System ) @nogc nothrow {
-}
-
-__gshared {
-}
-
-private __gshared bool _ARB_vertex_attrib_binding;
-@nogc bool ARB_vertex_attrib_binding() nothrow @property { return _ARB_vertex_attrib_binding; }
-package void load_ARB_vertex_attrib_binding( bool doThrow = false ) {
-try {
-    } catch( Exception e ) {
-        _ARB_vertex_attrib_binding = false;
-        if( doThrow ) throw e;
-    }
-}
-
-// ARB_enhanced_layouts
-private __gshared bool _ARB_enhanced_layouts;
-@nogc bool ARB_enhanced_layouts() nothrow @property { return _ARB_enhanced_layouts; }
-
-// ARB_multi_bind
 // ARB_query_buffer_object
 private __gshared bool _ARB_query_buffer_object;
 @nogc bool ARB_query_buffer_object() nothrow @property { return _ARB_query_buffer_object; }
@@ -695,22 +628,6 @@ private __gshared bool _ARB_texture_stencil8;
 private __gshared bool _ARB_vertex_type_10f_11f_11f_rev;
 @nogc bool ARB_vertex_type_10f_11f_11f_rev() nothrow @property { return _ARB_vertex_type_10f_11f_11f_rev; }
 
-
-// ARB_ES3_1_compatibility
-extern( System ) @nogc nothrow alias da_glMemoryBarrierByRegion = void function( GLbitfield );
-__gshared
-private __gshared bool _ARB_ES3_1_compatibility;
-@nogc bool ARB_ES3_1_compatibility() nothrow @property { return _ARB_ES3_1_compatibility; }
-package void load_ARB_ES3_1_compatibility( bool doThrow = false ) {
-    try {
-
-        _ARB_ES3_1_compatibility = true;
-    } catch( Exception e ) {
-        _ARB_ES3_1_compatibility = false;
-        if( doThrow ) throw e;
-    }
-}
-
 // KHR_context_flush_control
 private __gshared bool _KHR_context_flush_control;
 @nogc bool KHR_context_flush_control() nothrow @property { return _KHR_context_flush_control; }
@@ -719,11 +636,6 @@ private __gshared bool _KHR_context_flush_control;
 private __gshared bool _ARB_derivative_control;
 @nogc bool ARB_derivative_control() nothrow @property { return _ARB_derivative_control; }
 
-// ARB_direct_state_access
-// ARB_get_texture_sub_image
-// KHR_robustness
 // ARB_shader_texture_image_samples
 private __gshared bool _ARB_shader_texture_image_samples;
 @nogc bool ARB_shader_texture_image_samples() nothrow @property { return _ARB_shader_texture_image_samples; }
-
-// ARB_texture_barrier

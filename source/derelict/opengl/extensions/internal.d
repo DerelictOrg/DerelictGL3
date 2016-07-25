@@ -6,7 +6,12 @@ string makeGShared(string funcs) { return "__gshared{" ~ funcs ~ "}"; }
 version(DerelictGL3_Contexts) {
     string makeLoader(string name, string impl, string glVersion)
     {
-        return
+        if(impl == "") {
+            return
+            `if(contextVersion < GLVersion.` ~ glVersion ~ `)
+                setExtensionState("` ~ name ~ `", isExtensionSupported("` ~ name ~ `"));`;
+        }
+        else return
         `if(contextVersion >= GLVersion.` ~ glVersion ~ `|| isExtensionSupported("` ~ name ~ `")) {
             try {`
                 ~ impl ~
@@ -38,7 +43,7 @@ version(DerelictGL3_Contexts) {
 else {
     string makeLoader(string name, string impl, string glVersion)
     {
-        return `struct ` ~ name ~
+        auto front = `struct ` ~ name ~
         `
         {
             import derelict.opengl.glloader;
@@ -47,17 +52,20 @@ else {
                 GLLoader.registerExtensionLoader("` ~ name ~ `", &load, GLVersion.` ~ glVersion ~`);
             }
             static bool load(ref GLLoader loader, bool doThrow)
-            {
-                if(!doThrow && !loader.isExtensionSupported("` ~ name ~ `")) return false;
+            {`;
+
+        if(impl == "") return front ~
+            `if(!doThrow) return loader.isExtensionSupported("` ~ name ~ `");
+             else return true; }}`;
+        else return front ~
+            `if(!doThrow && !loader.isExtensionSupported("` ~ name ~ `")) return false;
                 with(loader) try {`
                     ~ impl ~
                 `} catch(Exception e) {
                     if(doThrow) throw e;
                     else return false;
                 }
-                return true;
-            }
-        }`;
+                return true; }}`;
     }
 
     string makeExtLoader(string name, string impl = "")
@@ -74,9 +82,9 @@ else {
             static bool load(ref GLLoader loader, bool doThrow)
             {`;
 
-        string back;
-        if(impl == "") back = `return loader.isExtensionSupported("` ~ name ~ `"); }}`;
-        else back =
+        if(impl == "") return front ~
+            `return loader.isExtensionSupported("` ~ name ~ `"); }}`;
+        else return front ~
             `if(!loader.isExtensionSupported("` ~ name ~ `")) return false;
             with(loader) try {`
                 ~ impl ~
@@ -84,9 +92,6 @@ else {
                 if(doThrow) throw e;
                 else return false;
             }
-            return true;
-        }}`;
-
-        return front ~ back;
+            return true; }}`;
     }
 }

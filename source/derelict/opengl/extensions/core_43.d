@@ -721,7 +721,7 @@ q{
 enum arbVertexAttribBindingLoader = makeLoader(ARB_vertex_attrib_binding, arbVertexAttribBindingLoaderImpl, "gl43");
 static if(!usingContexts) enum arbVertexAttribBinding = arbVertexAttribBindingDecls ~ arbVertexAttribBindingFuncs.makeGShared() ~ arbVertexAttribBindingLoader;
 
-enum corearb43Decls = arbClearBufferObjectDecls ~ arbComputeShaderDecls ~ arbCopyImageDecls ~ khrDebugDecls
+enum corearb43Decls = arbClearBufferObjectDecls ~ arbComputeShaderDecls ~ arbCopyImageDecls ~ khrDebugDecls ~ arbES3CompatibilityDecls
         ~ arbFramebufferNoAttachmentsDecls ~ arbInternalFormatQuery2Decls ~ arbInvalidateSubdataDecls ~ arbMultiDrawIndirectDecls
         ~ arbProgramInterfaceQueryDecls ~ arbShaderStorageBufferObjectDecls ~ arbTextureBufferRangeDecls ~ arbTextureStorageMultisampleDecls
         ~ arbTextureViewDecls ~ arbVertexAttribBindingDecls;
@@ -731,7 +731,7 @@ enum corearb43Funcs = arbClearBufferObjectFuncs ~ arbComputeShaderFuncs ~ arbCop
         ~ arbProgramInterfaceQueryFuncs ~ arbShaderStorageBufferObjectFuncs ~ arbTextureBufferRangeFuncs ~ arbTextureStorageMultisampleFuncs
         ~ arbTextureViewFuncs ~ arbVertexAttribBindingFuncs;
 
-enum corearb43Loader = arbClearBufferObjectLoader ~ arbComputeShaderLoader ~ arbCopyImageLoader ~ khrDebugLoader
-        ~ arbFramebufferNoAttachmentsLoader ~ arbInternalFormatQuery2Loader ~ arbInvalidateSubdataLoader ~ arbMultiDrawIndirectLoader
-        ~ arbProgramInterfaceQueryLoader ~ arbShaderStorageBufferObjectLoader ~ arbTextureBufferRangeLoader ~ arbTextureStorageMultisampleLoader
-        ~ arbTextureViewLoader ~ arbVertexAttribBindingLoader;
+enum corearb43Loader = arbClearBufferObjectLoader ~ arbComputeShaderLoaderImpl ~ arbCopyImageLoaderImpl ~ khrDebugLoaderImpl ~ arbFramebufferNoAttachmentsLoaderImpl
+        ~ arbInternalFormatQuery2LoaderImpl ~ arbInvalidateSubdataLoaderImpl ~ arbMultiDrawIndirectLoaderImpl ~ arbProgramInterfaceQueryLoaderImpl
+        ~ arbShaderStorageBufferObjectLoaderImpl ~ arbTextureBufferRangeLoaderImpl ~ arbTextureStorageMultisampleLoaderImpl ~ arbTextureViewLoaderImpl
+        ~ arbVertexAttribBindingLoaderImpl;

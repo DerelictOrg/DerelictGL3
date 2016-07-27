@@ -433,5 +433,5 @@ enum corearb41Decls = arbES2CompatibilityDecls ~ arbGetProgramBinaryDecls ~ arbS
         ~ arbVertexAttrib64BitDecls ~ arbViewportArrayDecls;
 enum corearb41Funcs = arbES2CompatibilityFuncs ~ arbGetProgramBinaryFuncs ~ arbSeparateShaderObjectsFuncs
         ~ arbVertexAttrib64BitFuncs ~ arbViewportArrayFuncs;
-enum corearb41Loader = arbES2CompatibilityLoader ~ arbGetProgramBinaryLoader ~ arbSeparateShaderObjectsLoader
-        ~ arbVertexAttrib64BitLoader ~ arbViewportArrayLoader;
+enum corearb41Loader = arbES2CompatibilityLoaderImpl ~ arbGetProgramBinaryLoaderImpl ~ arbSeparateShaderObjectsLoaderImpl
+        ~ arbVertexAttrib64BitLoaderImpl ~ arbViewportArrayLoaderImpl;

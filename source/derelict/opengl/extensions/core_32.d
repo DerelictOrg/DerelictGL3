@@ -81,6 +81,12 @@ enum arbProvokingVertexLoaderImpl = `bindGLFunc(cast(void**)&glProvokingVertex, 
 enum arbProvokingVertexLoader = makeLoader(ARB_provoking_vertex, arbProvokingVertexLoaderImpl, "gl32");
 static if(!usingContexts) enum arbProvokingVertex = arbProvokingVertexDecls ~ arbProvokingVertexFuncs.makeGShared() ~ arbProvokingVertexLoader;
 
+// ARB_seamless_cube_map
+enum ARB_seamless_cube_map = "GL_ARB_seamless_cube_map";
+enum arbSeamlessCubeMapDecls = `enum uint GL_TEXTURE_CUBE_MAP_SEAMLESS = 0x884F;`;
+enum arbSeamlessCubeMapLoader = makeLoader(ARB_seamless_cube_map, "", "gl32");
+static if(!usingContexts) enum arbSeamlessCubeMap = arbSeamlessCubeMapDecls ~ arbSeamlessCubeMapLoader;
+
 // ARB_sync
 enum ARB_sync = "GL_ARB_sync";
 enum arbSyncDecls =
@@ -198,7 +204,7 @@ enum arbTextureMultiSampleLoader = makeLoader(ARB_texture_multisample, arbTextur
 static if(!usingContexts) enum arbTextureMultiSample = arbTextureMultiSampleDecls ~ arbTextureMultiSampleFuncs.makeGShared() ~ arbTextureMultiSampleLoader;
 
 enum corearb32 = arbDrawElementsBaseVertex ~ arbProvokingVertex ~ arbSync ~ arbTextureMultiSample;
-enum corearb32Decls = arbDrawElementsBaseVertexDecls ~ arbProvokingVertexDecls ~ arbSyncDecls ~ arbTextureMultiSampleDecls;
+enum corearb32Decls = arbDrawElementsBaseVertexDecls ~ arbProvokingVertexDecls ~ arbSeamlessCubeMapDecls ~ arbSyncDecls ~ arbTextureMultiSampleDecls;
 enum corearb32Funcs = arbDrawElementsBaseVertexFuncs ~ arbProvokingVertexFuncs ~ arbSyncFuncs ~ arbTextureMultiSampleFuncs;
 enum corearb32Loader = arbDrawElementsBaseVertexLoaderImpl ~ arbProvokingVertexLoaderImpl ~
         arbSyncLoaderImpl ~ arbTextureMultiSampleLoaderImpl;

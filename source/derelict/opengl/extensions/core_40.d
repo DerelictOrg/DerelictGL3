@@ -59,6 +59,22 @@ q{
 enum arbDrawIndirectLoader = makeLoader(ARB_draw_indirect, arbDrawIndirectLoaderImpl, "gl40");
 static if(!usingContexts) enum arbDrawIndirect = arbDrawIndirectDecls ~ arbDrawIndirectFuncs.makeGShared() ~ arbDrawIndirectLoader;
 
+// ARB_gpu_shader5
+enum ARB_gpu_shader5 = "GL_ARB_gpu_shader5";
+enum arbGPUShader5Decls =
+q{
+enum : uint
+{
+    GL_GEOMETRY_SHADER_INVOCATIONS    = 0x887F,
+    GL_MAX_GEOMETRY_SHADER_INVOCATIONS = 0x8E5A,
+    GL_MIN_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5B,
+    GL_MAX_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5C,
+    GL_FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D,
+}};
+
+enum arbGPUShader5Loader = makeLoader(ARB_gpu_shader5, "", "gl40");
+static if(!usingContexts) enum arbGPUShader5 = arbGPUShader5Decls ~ arbGPUShader5Loader;
+
 // ARB_gpu_shader_fp64
 enum ARB_gpu_shader_fp64 = "GL_ARB_gpu_shader_fp64";
 enum arbGPUShaderFP64Decls =
@@ -339,9 +355,9 @@ q{
 enum arbTransformFeedback3Loader = makeLoader(ARB_transform_feedback3, arbTransformFeedback3LoaderImpl, "gl40");
 static if(!usingContexts) enum arbTransformFeedback3 = arbTransformFeedback3Decls ~ arbTransformFeedback3Funcs.makeGShared() ~ arbTransformFeedback3Loader;
 
-enum corearb40Decls = arbDrawIndirectDecls ~ arbGPUShaderFP64Decls ~ arbShaderSubroutineDecls
+enum corearb40Decls = arbDrawIndirectDecls ~ arbGPUShader5Decls ~ arbGPUShaderFP64Decls ~ arbShaderSubroutineDecls
         ~ arbTesselationShaderDecls ~ arbTransformFeedback2Decls ~ arbTransformFeedback3Decls;
 enum corearb40Funcs = arbDrawIndirectFuncs ~ arbGPUShaderFP64Funcs ~ arbShaderSubroutineFuncs
         ~ arbTesselationShaderFuncs ~ arbTransformFeedback2Funcs ~ arbTransformFeedback3Funcs;
-enum corearb40Loader = arbDrawIndirectLoader ~ arbGPUShaderFP64Loader ~ arbShaderSubroutineLoader
-        ~ arbTesselationShaderLoader ~ arbTransformFeedback2Loader ~ arbTransformFeedback3Loader;
+enum corearb40Loader = arbDrawIndirectLoaderImpl ~ arbGPUShaderFP64LoaderImpl ~ arbShaderSubroutineLoaderImpl
+        ~ arbTesselationShaderLoaderImpl ~ arbTransformFeedback2LoaderImpl ~ arbTransformFeedback3LoaderImpl;

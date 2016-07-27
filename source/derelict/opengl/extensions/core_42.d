@@ -58,30 +58,6 @@ q{
 enum arbBaseInstanceLoader = makeLoader(ARB_base_instance, arbBaseInstanceLoaderImpl, "gl42");
 static if(!usingContexts) enum arbBaseInstance = arbBaseInstanceDecls ~ arbBaseInstanceFuncs.makeGShared() ~ arbBaseInstanceLoader;
 
-// ARB_transform_feedback_instanced
-enum ARB_transform_feedback_instanced = "GL_ARB_transform_feedback_instanced";
-enum arbTransformFeedbackInstancedDecls =
-q{
-extern(System) @nogc nothrow {
-    alias da_glDrawTransformFeedbackInstanced = void function(GLenum, GLuint, GLsizei);
-    alias da_glDrawTransformFeedbackStreamInstanced = void function(GLenum, GLuint, GLuint, GLsizei);
-}};
-
-enum arbTransformFeedbackInstancedFuncs =
-q{
-    da_glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
-    da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
-};
-
-enum arbTransformFeedbackInstancedLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced");
-    bindGLFunc(cast(void**)&glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced");
-};
-
-enum arbTransformFeedbackInstancedLoader = makeLoader(ARB_transform_feedback_instanced, arbTransformFeedbackInstancedLoaderImpl, "gl42");
-static if(!usingContexts) enum arbTransformFeedbackInstanced = arbTransformFeedbackInstancedDecls ~ arbTransformFeedbackInstancedFuncs.makeGShared() ~ arbTransformFeedbackInstancedLoader;
-
 // ARB_internalformat_query
 enum ARB_internalformat_query = "GL_ARB_internalformat_query";
 enum arbInternalFormatQueryDecls =
@@ -94,6 +70,12 @@ enum arbInternalFormatQueryFuncs = `da_glGetInternalformativ glGetInternalformat
 enum arbInternalFormatQueryLoaderImpl = `bindGLFunc(cast(void**)&glGetInternalformativ, "glGetInternalformativ");`;
 enum arbInternalFormatQueryLoader = makeLoader(ARB_internalformat_query, arbInternalFormatQueryLoaderImpl, "gl42");
 static if(!usingContexts) enum arbInternalFormatQuery = arbInternalFormatQueryDecls ~ arbInternalFormatQueryFuncs.makeGShared() ~ arbInternalFormatQueryLoader;
+
+// ARB_map_buffer_alignment
+enum ARB_map_buffer_alignment = "GL_ARB_map_buffer_alignment";
+enum arbMapBufferAlignmentDecls = `enum uint GL_MIN_MAP_BUFFER_ALIGNMENT = 0x90BC;`;
+enum arbMapBufferAlignmentLoader = makeLoader(ARB_map_buffer_alignment, "", "gl42");
+static if(!usingContexts) enum arbMapBufferAlignment = arbMapBufferAlignmentDecls ~ arbMapBufferAlignmentLoader;
 
 // ARB_shader_atomic_counters
 enum ARB_shader_atomic_counters = "GL_ARB_shader_atomic_counters";
@@ -270,9 +252,33 @@ q{
 enum arbTextureStorageLoader = makeLoader(ARB_texture_storage, arbTextureStorageLoaderImpl, "gl42");
 static if(!usingContexts) enum arbTextureStorage = arbTextureStorageDecls ~ arbTextureStorageFuncs.makeGShared() ~ arbTextureStorageLoader;
 
-enum corearb42Decls = arbBaseInstanceDecls ~ arbTransformFeedbackInstancedDecls ~ arbInternalFormatQueryDecls
-        ~ arbShaderAtomicCountersDecls ~ arbShaderImageLoadStoreDecls ~ arbTextureStorageDecls;
-enum corearb42Funcs = arbBaseInstanceFuncs ~ arbTransformFeedbackInstancedFuncs ~ arbInternalFormatQueryFuncs
-        ~ arbShaderAtomicCountersFuncs ~ arbShaderImageLoadStoreFuncs ~ arbTextureStorageFuncs;
-enum corearb42Loader = arbBaseInstanceLoader ~ arbTransformFeedbackInstancedLoader ~ arbInternalFormatQueryLoader
-        ~ arbShaderAtomicCountersLoader ~ arbShaderImageLoadStoreLoader ~ arbTextureStorageLoader;
+// ARB_transform_feedback_instanced
+enum ARB_transform_feedback_instanced = "GL_ARB_transform_feedback_instanced";
+enum arbTransformFeedbackInstancedDecls =
+q{
+extern(System) @nogc nothrow {
+    alias da_glDrawTransformFeedbackInstanced = void function(GLenum, GLuint, GLsizei);
+    alias da_glDrawTransformFeedbackStreamInstanced = void function(GLenum, GLuint, GLuint, GLsizei);
+}};
+
+enum arbTransformFeedbackInstancedFuncs =
+q{
+    da_glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
+    da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
+};
+
+enum arbTransformFeedbackInstancedLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced");
+    bindGLFunc(cast(void**)&glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced");
+};
+
+enum arbTransformFeedbackInstancedLoader = makeLoader(ARB_transform_feedback_instanced, arbTransformFeedbackInstancedLoaderImpl, "gl42");
+static if(!usingContexts) enum arbTransformFeedbackInstanced = arbTransformFeedbackInstancedDecls ~ arbTransformFeedbackInstancedFuncs.makeGShared() ~ arbTransformFeedbackInstancedLoader;
+
+enum corearb42Decls = arbBaseInstanceDecls ~ arbMapBufferAlignmentDecls ~ arbInternalFormatQueryDecls
+        ~ arbShaderAtomicCountersDecls ~ arbShaderImageLoadStoreDecls ~ arbTextureStorageDecls ~ arbTransformFeedbackInstancedDecls ;
+enum corearb42Funcs = arbBaseInstanceFuncs ~ arbInternalFormatQueryFuncs ~ arbShaderAtomicCountersFuncs
+        ~ arbShaderImageLoadStoreFuncs ~ arbTextureStorageFuncs ~ arbTransformFeedbackInstancedFuncs;
+enum corearb42Loader = arbBaseInstanceLoaderImpl ~ arbInternalFormatQueryLoaderImpl ~ arbShaderAtomicCountersLoaderImpl
+        ~ arbShaderImageLoadStoreLoaderImpl ~ arbTextureStorageLoaderImpl ~ arbTransformFeedbackInstancedLoaderImpl;

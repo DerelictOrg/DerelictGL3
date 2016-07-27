@@ -189,6 +189,12 @@ q{
 enum arbFramebufferObjectLoader = makeLoader(ARB_framebuffer_object, arbFramebufferObjectLoaderImpl, "gl30");
 static if(!usingContexts) enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs ~ arbFramebufferObjectLoader;
 
+// ARB_half_float_vertex
+enum ARB_half_float_vertex = "GL_ARB_half_float_vertex";
+enum arbHalfFloatVertexDecls = "enum uint GL_HALF_FLOAT = 0x140B;";
+enum arbHalfFloatVertexLoader = makeLoader(ARB_half_float_vertex, "", "gl30");
+static if(!usingContexts) enum arbHalfFloatVertex = arbHalfFloatVertexDecls;
+
 // ARB_map_buffer_range
 enum ARB_map_buffer_range = "GL_ARB_map_buffer_range";
 enum arbMapBufferRangeDecls =
@@ -223,6 +229,54 @@ q{
 enum arbMapBufferRangeLoader = makeLoader(ARB_map_buffer_range, arbMapBufferRangeLoaderImpl, "gl30");
 static if(!usingContexts) enum arbMapBufferRange = arbMapBufferRangeDecls ~ arbMapBufferRangeFuncs.makeGShared() ~ arbMapBufferRangeLoader;
 
+// ARB_texture_compression_rgtc
+enum ARB_texture_compression_rgtc = "GL_ARB_texture_compression_rgtc";
+enum arbTextureCompressionRGTCDecls =
+q{
+enum : uint
+{
+    GL_COMPRESSED_RED_RGTC1           = 0x8DBB,
+    GL_COMPRESSED_SIGNED_RED_RGTC1    = 0x8DBC,
+    GL_COMPRESSED_RG_RGTC2            = 0x8DBD,
+    GL_COMPRESSED_SIGNED_RG_RGTC2     = 0x8DBE,
+}};
+
+enum arbTextureCompressionRGTCLoader = makeLoader(ARB_texture_compression_rgtc, "", "gl30");
+static if(!usingContexts) enum arbTextureCompressionRGTC = arbTextureCompressionRGTCDecls ~ arbTextureCompressionRGTCLoader;
+
+// ARB_texture_rg
+enum ARB_texture_rg = "GL_ARB_texture_rg";
+enum arbTextureRGDecls =
+q{
+enum : uint
+{
+    GL_RG                             = 0x8227,
+    GL_RG_INTEGER                     = 0x8228,
+    GL_R8                             = 0x8229,
+    GL_R16                            = 0x822A,
+    GL_RG8                            = 0x822B,
+    GL_RG16                           = 0x822C,
+    GL_R16F                           = 0x822D,
+    GL_R32F                           = 0x822E,
+    GL_RG16F                          = 0x822F,
+    GL_RG32F                          = 0x8230,
+    GL_R8I                            = 0x8231,
+    GL_R8UI                           = 0x8232,
+    GL_R16I                           = 0x8233,
+    GL_R16UI                          = 0x8234,
+    GL_R32I                           = 0x8235,
+    GL_R32UI                          = 0x8236,
+    GL_RG8I                           = 0x8237,
+    GL_RG8UI                          = 0x8238,
+    GL_RG16I                          = 0x8239,
+    GL_RG16UI                         = 0x823A,
+    GL_RG32I                          = 0x823B,
+    GL_RG32UI                         = 0x823C,
+}};
+
+enum arbTextureRGLoader = makeLoader(ARB_texture_rg, "", "gl30");
+static if(!usingContexts) enum arbTextureRG = arbTextureRGDecls ~ arbTextureCompressionRGTCLoader;
+
 // ARB_vertex_array_object
 enum ARB_vertex_array_object = "GL_ARB_vertex_array_object";
 enum arbVertexArrayObjectDecls =
@@ -255,6 +309,6 @@ q{
 enum arbVertexArrayObjectLoader = makeLoader(ARB_vertex_array_object, arbVertexArrayObjectLoaderImpl, "gl30");
 static if(!usingContexts) enum arbVertexArrayObject = arbVertexArrayObjectDecls ~ arbVertexArrayObjectFuncs.makeGShared() ~ arbVertexArrayObjectLoader;
 
-enum corearb30Decls = arbFramebufferObjectDecls ~ arbMapBufferRangeDecls ~ arbVertexArrayObjectDecls;
+enum corearb30Decls = arbFramebufferObjectDecls ~ arbHalfFloatVertexDecls ~ arbMapBufferRangeDecls ~ arbTextureCompressionRGTCDecls ~ arbTextureRGDecls ~ arbVertexArrayObjectDecls;
 enum corearb30Funcs = arbFramebufferObjectFuncs ~ arbMapBufferRangeFuncs ~ arbVertexArrayObjectFuncs;
 enum corearb30Loader = arbFramebufferObjectLoaderImpl ~ arbMapBufferRangeLoaderImpl ~ arbVertexArrayObjectLoaderImpl;

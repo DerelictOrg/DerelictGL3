@@ -36,71 +36,6 @@ private {
 
 enum : uint {
 
-    // ARB_geometry_shader4
-    GL_LINES_ADJACENCY_ARB            = 0x000A,
-    GL_LINE_STRIP_ADJACENCY_ARB       = 0x000B,
-    GL_TRIANGLES_ADJACENCY_ARB        = 0x000C,
-    GL_TRIANGLE_STRIP_ADJACENCY_ARB   = 0x000D,
-    GL_PROGRAM_POINT_SIZE_ARB         = 0x8642,
-    GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_ARB = 0x8C29,
-    GL_FRAMEBUFFER_ATTACHMENT_LAYERED_ARB = 0x8DA7,
-    GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_ARB = 0x8DA8,
-    GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_ARB = 0x8DA9,
-    GL_GEOMETRY_SHADER_ARB            = 0x8DD9,
-    GL_GEOMETRY_VERTICES_OUT_ARB      = 0x8DDA,
-    GL_GEOMETRY_INPUT_TYPE_ARB        = 0x8DDB,
-    GL_GEOMETRY_OUTPUT_TYPE_ARB       = 0x8DDC,
-    GL_MAX_GEOMETRY_VARYING_COMPONENTS_ARB = 0x8DDD,
-    GL_MAX_VERTEX_VARYING_COMPONENTS_ARB = 0x8DDE,
-    GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_ARB = 0x8DDF,
-    GL_MAX_GEOMETRY_OUTPUT_VERTICES_ARB = 0x8DE0,
-    GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_ARB = 0x8DE1,
-
-    // ARB_half_float_vertex
-    GL_HALF_FLOAT                     = 0x140B,
-
-    // ARB_imaging
-    GL_BLEND_COLOR = 0x8005,
-    GL_BLEND_EQUATION = 0x8009,
-
-    // ARB_map_buffer_range
-
-    // ARB_texture_compression_rgtc
-    GL_COMPRESSED_RED_RGTC1           = 0x8DBB,
-    GL_COMPRESSED_SIGNED_RED_RGTC1    = 0x8DBC,
-    GL_COMPRESSED_RG_RGTC2            = 0x8DBD,
-    GL_COMPRESSED_SIGNED_RG_RGTC2     = 0x8DBE,
-
-    // ARB_texture_rg
-    GL_RG                             = 0x8227,
-    GL_RG_INTEGER                     = 0x8228,
-    GL_R8                             = 0x8229,
-    GL_R16                            = 0x822A,
-    GL_RG8                            = 0x822B,
-    GL_RG16                           = 0x822C,
-    GL_R16F                           = 0x822D,
-    GL_R32F                           = 0x822E,
-    GL_RG16F                          = 0x822F,
-    GL_RG32F                          = 0x8230,
-    GL_R8I                            = 0x8231,
-    GL_R8UI                           = 0x8232,
-    GL_R16I                           = 0x8233,
-    GL_R16UI                          = 0x8234,
-    GL_R32I                           = 0x8235,
-    GL_R32UI                          = 0x8236,
-    GL_RG8I                           = 0x8237,
-    GL_RG8UI                          = 0x8238,
-    GL_RG16I                          = 0x8239,
-    GL_RG16UI                         = 0x823A,
-    GL_RG32I                          = 0x823B,
-    GL_RG32UI                         = 0x823C,
-
-    // ARB_seamless_cube_map
-    GL_TEXTURE_CUBE_MAP_SEAMLESS      = 0x884F,
-
-    // ARB_sync
-    // ARB_texture_multisample
-
     // ARB_sample_shading
     GL_SAMPLE_SHADING_ARB             = 0x8C36,
     GL_MIN_SAMPLE_SHADING_VALUE_ARB   = 0x8C37,
@@ -130,10 +65,6 @@ enum : uint {
     GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_ARB = 0x8E8F,
 
 
-    // ARB_occlusion_query2
-    GL_ANY_SAMPLES_PASSED             = 0x8C2F,
-
-    // ARB_sampler_objects
 
     // ARB_texture_rgb10_a2ui
     GL_RGB10_A2UI                     = 0x906F,
@@ -152,16 +83,6 @@ enum : uint {
     // ARB_vertex_type_2_10_10_10_rev
     GL_INT_2_10_10_10_REV             = 0x8D9F,
 
-
-
-    // ARB_gpu_shader5
-    GL_GEOMETRY_SHADER_INVOCATIONS    = 0x887F,
-    GL_MAX_GEOMETRY_SHADER_INVOCATIONS = 0x8E5A,
-    GL_MIN_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5B,
-    GL_MAX_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5C,
-    GL_FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D,
-
-
     // ARB_robustness
     GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = 0x00000004,
     GL_LOSE_CONTEXT_ON_RESET_ARB      = 0x8252,
@@ -171,8 +92,7 @@ enum : uint {
     GL_RESET_NOTIFICATION_STRATEGY_ARB = 0x8256,
     GL_NO_RESET_NOTIFICATION_ARB      = 0x8261,
 
-    // ARB_map_buffer_alignment
-    GL_MIN_MAP_BUFFER_ALIGNMENT       = 0x90BC,
+
 
     // ARB_stencil_texturing
     GL_DEPTH_STENCIL_TEXTURE_MODE = 0x90EA,
@@ -191,52 +111,6 @@ enum : uint {
     GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH = 0x82FC,
 
 }
-// ARB_geometry_shader4
-extern( System ) @nogc nothrow {
-    alias da_glProgramParameteriARB = void function( GLuint, GLenum, GLint );
-    alias da_glFramebufferTextureARB = void function( GLuint, GLenum, GLuint, GLint );
-    alias da_glFramebufferTextureLayerARB = void function( GLuint, GLenum, GLuint, GLint, GLint );
-    alias da_glFramebufferTextureFaceARB = void function( GLuint, GLenum, GLuint, GLint, GLenum );
-}
-
-__gshared
-{
-    da_glProgramParameteriARB glProgramParameteriARB;
-    da_glFramebufferTextureARB glFramebufferTextureARB;
-    da_glFramebufferTextureLayerARB glFramebufferTextureLayerARB;
-    da_glFramebufferTextureFaceARB glFramebufferTextureFaceARB;
-}
-
-private __gshared bool _ARB_geometry_shader4;
-@nogc bool ARB_geometry_shader4() nothrow @property { return _ARB_geometry_shader4; }
-package void load_ARB_geometry_shader4( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glProgramParameteriARB, "glProgramParameteriARB" );
-        bindGLFunc( cast( void** )&glFramebufferTextureARB, "glFramebufferTextureARB" );
-        bindGLFunc( cast( void** )&glFramebufferTextureLayerARB, "glFramebufferTextureLayerARB" );
-        bindGLFunc( cast( void** )&glFramebufferTextureFaceARB, "glFramebufferTextureFaceARB" );
-        _ARB_geometry_shader4 = true;
-    } catch( Exception e ) {
-        _ARB_geometry_shader4 = false;
-        if( doThrow ) throw e;
-    }
-}
-
-private __gshared bool _ARB_half_float_vertex;
-@nogc bool ARB_half_float_vertex() nothrow @property { return _ARB_half_float_vertex; }
-
-private __gshared bool _ARB_imaging;
-@nogc bool ARB_imaging() nothrow @property { return _ARB_imaging; }
-
-private __gshared bool _ARB_texture_compression_rgtc;
-@nogc bool ARB_texture_compression_rgtc() nothrow @property { return _ARB_texture_compression_rgtc; }
-
-private __gshared bool _ARB_texture_rg;
-@nogc bool ARB_texture_rg() nothrow @property { return _ARB_texture_rg; }
-
-private __gshared bool _ARB_seamless_cube_map;
-@nogc bool ARB_seamless_cube_map() nothrow @property { return _ARB_seamless_cube_map; }
-
 private __gshared bool _ARB_vertex_array_bgra;
 @nogc bool ARB_vertex_array_bgra() nothrow @property { return _ARB_vertex_array_bgra; }
 
@@ -252,9 +126,6 @@ private __gshared bool _ARB_texture_query_lod;
 private __gshared bool _ARB_texture_compression_bptc;
 @nogc bool ARB_texture_compression_bptc() nothrow @property { return _ARB_texture_compression_bptc; }
 
-private __gshared bool _ARB_occlusion_query2;
-@nogc bool ARB_occlusion_query2() nothrow @property { return _ARB_occlusion_query2; }
-
 private __gshared bool _ARB_shader_bit_encoding;
 @nogc bool ARB_shader_bit_encoding() nothrow @property { return _ARB_shader_bit_encoding; }
 
@@ -263,9 +134,6 @@ private __gshared bool _ARB_texture_rgb10_a2ui;
 
 private __gshared bool _ARB_texture_swizzle;
 @nogc bool ARB_texture_swizzle() nothrow @property { return _ARB_texture_swizzle; }
-
-private __gshared bool _ARB_gpu_shader5;
-@nogc bool ARB_gpu_shader5() nothrow @property { return _ARB_gpu_shader5; }
 
 private __gshared bool _ARB_texture_buffer_object_rgb32;
 @nogc bool ARB_texture_buffer_object_rgb32() nothrow @property { return _ARB_texture_buffer_object_rgb32; }
@@ -282,8 +150,6 @@ private __gshared bool _ARB_shading_language_420pack;
 private __gshared bool _ARB_conservative_depth;
 @nogc bool ARB_conservative_depth() nothrow @property { return _ARB_conservative_depth; }
 
-private __gshared bool _ARB_map_buffer_alignment;
-@nogc bool ARB_map_buffer_alignment() nothrow @property { return _ARB_map_buffer_alignment; }
 
 private __gshared bool _ARB_shading_language_packing;
 @nogc bool ARB_shading_language_packing() nothrow @property { return _ARB_shading_language_packing; }

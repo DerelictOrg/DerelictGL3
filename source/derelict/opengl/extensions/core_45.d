@@ -456,5 +456,5 @@ enum corearb45Decls = arbClipControlDecls ~ arbDirectStateAccessDecls ~ arbES31C
         ~ khrRobustnessDecls ~ arbTextureBarrierDecls;
 enum corearb45Funcs = arbClipControlFuncs ~ arbDirectStateAccessFuncs ~ arbES31CompatibilityFuncs ~ arbGetTextureSubImageFuncs
         ~ khrRobustnessFuncs ~ arbTextureBarrierFuncs;
-enum corearb45Loader = arbClipControlLoader ~ arbDirectStateAccessLoader ~ arbES31CompatibilityLoader ~ arbGetTextureSubImageLoader
-        ~ khrRobustnessLoader ~ arbTextureBarrierLoader;
+enum corearb45LoaderImpl = arbClipControlLoaderImpl ~ arbDirectStateAccessLoaderImpl ~ arbES31CompatibilityLoaderImpl ~ arbGetTextureSubImageLoaderImpl
+        ~ khrRobustnessLoaderImpl ~ arbTextureBarrierLoaderImpl;

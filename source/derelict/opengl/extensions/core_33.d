@@ -61,6 +61,17 @@ q{
 enum arbBlendFuncExtendedLoader = makeLoader(ARB_blend_func_extended, arbBlendFuncExtendedLoaderImpl, "gl33");
 static if(!usingContexts) enum arbBlendFuncExtended = arbBlendFuncExtendedDecls ~ arbBlendFuncExtendedFuncs.makeGShared() ~ arbBlendFuncExtendedLoader;
 
+// ARB_fragment_coord_conventions
+enum ARB_fragment_coord_conventions = "GL_ARB_fragment_coord_conventions";
+enum arbFragmentCoordConventionsLoader = makeLoader(ARB_fragment_coord_conventions, "", "gl33");
+static if(!usingContexts) enum arbFragmentCoordConventions = arbFragmentCoordConventionsLoader;
+
+// ARB_occlusion_query2
+enum ARB_occlusion_query2 = "GL_ARB_occlusion_query2";
+enum arbOcclusionQuery2Decls = `enum uint GL_ANY_SAMPLES_PASSED = 0x8C2F;`;
+enum arbOcclusionQuery2Loader = makeLoader(ARB_occlusion_query2, "", "gl33");
+static if(!usingContexts) enum arbOcclusionQuery2 = arbOcclusionQuery2Decls ~ arbOcclusionQuery2Loader;
+
 // ARB_sampler_objects
 enum ARB_sampler_objects = "GL_ARB_sampler_objects";
 enum arbSamplerObjectsDecls =
@@ -122,7 +133,7 @@ q{
 enum arbSamplerObjectsLoader = makeLoader(ARB_sampler_objects, arbSamplerObjectsLoaderImpl, "gl33");
 static if(!usingContexts) enum arbSamplerObjects = arbSamplerObjectsDecls ~ arbSamplerObjectsFuncs.makeGShared() ~ arbSamplerObjectsLoader;
 
-enum corearb33 = arbBlendFuncExtended ~ arbSamplerObjects;
+enum corearb33 = arbBlendFuncExtended ~ arbOcclusionQuery2Decls ~ arbSamplerObjects;
 enum corearb33Decls = arbBlendFuncExtendedDecls ~ arbSamplerObjectsDecls;
 enum corearb33Funcs = arbBlendFuncExtendedFuncs ~ arbSamplerObjectsFuncs;
 enum corearb33Loader = arbBlendFuncExtendedLoaderImpl ~ arbSamplerObjectsLoaderImpl;

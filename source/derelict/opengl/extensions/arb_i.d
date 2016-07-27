@@ -25,18 +25,20 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.extensions.arb_f;
+module derelict.opengl.extensions.arb_i;
 
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_fragment_layer_viewport
-enum ARB_fragment_layer_viewport = "GL_ARB_fragment_layer_viewport";
-enum arbFragmentLayerViewportLoader = makeExtLoader(ARB_fragment_layer_viewport);
-static if(!usingContexts) enum arbFragmentLayerViewport = arbFragmentLayerViewportLoader;
+// ARB_imaging
+enum ARB_imaging = "GL_ARB_imaging";
+enum arbImagingDecls =
+q{
+enum : uint
+{
+    GL_BLEND_COLOR = 0x8005,
+    GL_BLEND_EQUATION = 0x8009,
+}};
 
-// ARB_framebuffer_sRGB
-enum ARB_framebuffer_sRGB = "GL_ARB_framebuffer_sRGB";
-enum arbFramebufferSRGBDecls = `enum uint GL_FRAMEBUFFER_SRGB = 0x8DB9;`;
-enum arbFramebufferSRGBLoader = makeExtLoader(ARB_framebuffer_sRGB);
-static if(!usingContexts) enum arbFramebufferSRGB = arbFramebufferSRGBDecls ~ arbFramebufferSRGBLoader;
+enum arbImagingLoader = makeExtLoader(ARB_imaging);
+static if(!usingContexts) enum arbImaging = arbImagingDecls ~ arbImagingLoader;

@@ -79,4 +79,4 @@ q{
 };
 
 enum arbGeometryShader4Loader = makeExtLoader(ARB_geometry_shader4, arbGeometryShader4LoaderImpl);
-static if(!usingContexts) enum arbGeometryShader4 = arbGeometryShader4Decls ~ arbGeometryShader4Funcs ~ arbGeometryShader4Loader;
+static if(!usingContexts) enum arbGeometryShader4 = arbGeometryShader4Decls ~ arbGeometryShader4Funcs.makeGShared() ~ arbGeometryShader4Loader;

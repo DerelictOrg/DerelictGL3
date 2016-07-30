@@ -127,6 +127,19 @@ q{
 enum arbMultBindLoader = makeLoader(ARB_multi_bind, arbMultBindLoaderImpl, "gl44");
 static if(!usingContexts) enum arbMultBind = arbMultBindDecls ~ arbMultBindFuncs.makeGShared() ~ arbMultBindLoader;
 
-enum corearb44Decls = arbBufferStorageDecls~ arbClearTextureDecls ~ arbMultBindDecls;
+// ARB_query_buffer_object
+enum ARB_query_buffer_object = "GL_ARB_query_buffer_object";
+enum arbQueryBufferObjectDecls =
+q{
+    GL_QUERY_BUFFER                   = 0x9192,
+    GL_QUERY_BUFFER_BARRIER_BIT       = 0x00008000,
+    GL_QUERY_BUFFER_BINDING           = 0x9193,
+    GL_QUERY_RESULT_NO_WAIT           = 0x9194,
+}};
+
+enum arbQueryBufferObjectLoader = makeLoader(ARB_query_buffer_object, "", "gl44");
+static if(!usingContexts) enum arbQueryBufferObject = arbQueryBufferObjectDecls ~ arbQueryBufferObjectLoader;
+
+enum corearb44Decls = arbBufferStorageDecls~ arbClearTextureDecls ~ arbMultBindDecls ~ arbQueryBufferObjectDecls;
 enum corearb44Funcs = arbBufferStorageFuncs ~ arbClearTextureFuncs ~ arbMultBindFuncs;
 enum corearb44Loader = arbBufferStorageLoader ~ arbClearTextureLoader ~ arbMultBindLoader;

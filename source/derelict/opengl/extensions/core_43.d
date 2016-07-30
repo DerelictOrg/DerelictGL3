@@ -30,6 +30,11 @@ module derelict.opengl.extensions.core_43;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_array_of_arrays
+enum ARB_array_of_arrays = "GL_ARB_array_of_arrays";
+enum arbArrayOfArraysLoader = makeLoader(ARB_array_of_arrays, "", "gl43");
+static if(!usingContexts) enum arbArrayOfArrays = arbArrayOfArraysLoader;
+
 // ARB_clear_buffer_object
 enum ARB_clear_buffer_object = "GL_ARB_clear_buffer_object";
 enum arbClearBufferObjectDecls =
@@ -734,15 +739,15 @@ static if(!usingContexts) enum arbVertexAttribBinding = arbVertexAttribBindingDe
 
 enum corearb43Decls = arbClearBufferObjectDecls ~ arbComputeShaderDecls ~ arbCopyImageDecls ~ khrDebugDecls ~ arbES3CompatibilityDecls
         ~ arbFramebufferNoAttachmentsDecls ~ arbInternalFormatQuery2Decls ~ arbInvalidateSubdataDecls ~ arbMultiDrawIndirectDecls
-        ~ arbProgramInterfaceQueryDecls ~ arbShaderStorageBufferObjectDecls ~ arbTextureBufferRangeDecls ~ arbTextureStorageMultisampleDecls
-        ~ arbTextureViewDecls ~ arbVertexAttribBindingDecls;
+        ~ arbProgramInterfaceQueryDecls ~ arbShaderStorageBufferObjectDecls ~ arbStencilTexturingDecls ~ arbTextureBufferRangeDecls
+         ~ arbTextureStorageMultisampleDecls ~ arbTextureViewDecls ~ arbVertexAttribBindingDecls;
 
-enum corearb43Funcs = arbClearBufferObjectFuncs ~ arbComputeShaderFuncs ~ arbCopyImageFuncs ~ khrDebugFuncs
-        ~ arbFramebufferNoAttachmentsFuncs ~ arbInternalFormatQuery2Funcs ~ arbInvalidateSubdataFuncs ~ arbMultiDrawIndirectFuncs
-        ~ arbProgramInterfaceQueryFuncs ~ arbShaderStorageBufferObjectFuncs ~ arbTextureBufferRangeFuncs ~ arbTextureStorageMultisampleFuncs
-        ~ arbTextureViewFuncs ~ arbVertexAttribBindingFuncs;
+enum corearb43Funcs = arbClearBufferObjectFuncs ~ arbComputeShaderFuncs ~ arbCopyImageFuncs ~ khrDebugFuncs ~ arbFramebufferNoAttachmentsFuncs
+        ~ arbInternalFormatQuery2Funcs ~ arbInvalidateSubdataFuncs ~ arbMultiDrawIndirectFuncs ~ arbProgramInterfaceQueryFuncs
+        ~ arbShaderStorageBufferObjectFuncs ~ arbTextureBufferRangeFuncs ~ arbTextureStorageMultisampleFuncs ~ arbTextureViewFuncs
+        ~ arbVertexAttribBindingFuncs;
 
-enum corearb43Loader = arbClearBufferObjectLoader ~ arbComputeShaderLoaderImpl ~ arbCopyImageLoaderImpl ~ khrDebugLoaderImpl ~ arbFramebufferNoAttachmentsLoaderImpl
+enum corearb43Loader = arbClearBufferObjectLoaderImpl ~ arbComputeShaderLoaderImpl ~ arbCopyImageLoaderImpl ~ khrDebugLoaderImpl ~ arbFramebufferNoAttachmentsLoaderImpl
         ~ arbInternalFormatQuery2LoaderImpl ~ arbInvalidateSubdataLoaderImpl ~ arbMultiDrawIndirectLoaderImpl ~ arbProgramInterfaceQueryLoaderImpl
         ~ arbShaderStorageBufferObjectLoaderImpl ~ arbTextureBufferRangeLoaderImpl ~ arbTextureStorageMultisampleLoaderImpl ~ arbTextureViewLoaderImpl
         ~ arbVertexAttribBindingLoaderImpl;

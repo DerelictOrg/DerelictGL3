@@ -87,7 +87,7 @@ q{
 };
 
 enum arbDebugOutputLoader = makeExtLoader(ARB_debug_output, arbDebugOutputLoaderImpl);
-static if(!usingContexts) enum arbDebugOutput = arbDebugOutputDecls ~ arbDebugOutputFuncs ~ arbDebugOutputLoader;
+static if(!usingContexts) enum arbDebugOutput = arbDebugOutputDecls ~ arbDebugOutputFuncs.makeGShared() ~ arbDebugOutputLoader;
 
 // ARB_depth_buffer_float
 enum ARB_depth_buffer_float = "GL_ARB_depth_buffer_float";
@@ -142,4 +142,4 @@ q{
 };
 
 enum arbDrawBuffersBlendLoader = makeExtLoader(ARB_draw_buffers_blend, arbDrawBuffersBlendLoaderImpl);
-static if(!usingContexts) enum arbDrawBuffersBlend = arbDrawBuffersBlendDecls ~ arbDrawBuffersBlendFuncs ~ arbDrawBuffersBlendLoader;
+static if(!usingContexts) enum arbDrawBuffersBlend = arbDrawBuffersBlendDecls ~ arbDrawBuffersBlendFuncs.makeGShared() ~ arbDrawBuffersBlendLoader;

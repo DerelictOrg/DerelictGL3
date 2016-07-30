@@ -92,7 +92,7 @@ q{
 };
 
 enum arbShadingLanguageIncludeLoader = makeExtLoader(ARB_shading_language_include, arbShadingLanguageIncludeLoaderImpl);
-static if(!usingContexts) enum arbShadingLanguageInclude = arbShadingLanguageIncludeDecls ~ arbShadingLanguageIncludeFuncs ~ arbShadingLanguageIncludeLoader;
+static if(!usingContexts) enum arbShadingLanguageInclude = arbShadingLanguageIncludeDecls ~ arbShadingLanguageIncludeFuncs.makeGShared() ~ arbShadingLanguageIncludeLoader;
 
 // ARB_shading_language_packing
 enum ARB_shading_language_packing = "GL_ARB_shading_language_packing";

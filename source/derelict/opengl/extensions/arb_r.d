@@ -117,4 +117,4 @@ q{
 };
 
 enum arbRobustnessLoader = makeExtLoader(ARB_robustness, arbRobustnessLoaderImpl);
-static if(!usingContexts) enum arbRobustness = arbRobustnessDecls ~ arbRobustnessFuncs ~ arbRobustnessLoader;
+static if(!usingContexts) enum arbRobustness = arbRobustnessDecls ~ arbRobustnessFuncs.makeGShared() ~ arbRobustnessLoader;

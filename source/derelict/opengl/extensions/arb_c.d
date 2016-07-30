@@ -47,7 +47,7 @@ extern(System) @nogc nothrow alias  da_glCreateSyncFromCLeventARB = GLsync funct
 enum arbCLEventFuncs = `da_glCreateSyncFromCLeventARB glCreateSyncFromCLeventARB;`;
 enum arbCLEventLoaderImpl = `bindGLFunc(cast(void**)&glCreateSyncFromCLeventARB, "glCreateSyncFromCLeventARB");`;
 enum arbCLEventLoader = makeExtLoader(ARB_cl_event, arbCLEventLoaderImpl);
-static if(!usingContexts) enum arbCLEvent = arbCLEventDecls ~ arbCLEventFuncs ~ arbCLEventLoader;
+static if(!usingContexts) enum arbCLEvent = arbCLEventDecls ~ arbCLEventFuncs.makeGShared() ~ arbCLEventLoader;
 
 // ARB_compressed_texture_pixel_storage
 enum ARB_compressed_texture_pixel_storage = "GL_ARB_compressed_texture_pixel_storage";

@@ -75,13 +75,6 @@ enum : uint {
     // ARB_vertex_type_2_10_10_10_rev
     GL_INT_2_10_10_10_REV             = 0x8D9F,
 
-
-    // ARB_query_buffer_object
-    GL_QUERY_BUFFER                   = 0x9192,
-    GL_QUERY_BUFFER_BARRIER_BIT       = 0x00008000,
-    GL_QUERY_BUFFER_BINDING           = 0x9193,
-    GL_QUERY_RESULT_NO_WAIT           = 0x9194,
-
     // ARB_texture_mirror_clamp_to_edge
     GL_MIRROR_CLAMP_TO_EDGE           = 0x8743,
 
@@ -279,28 +272,10 @@ package void load_ARB_vertex_type_2_10_10_10_rev( bool doThrow = false ) {
 private __gshared bool _ARB_shader_image_size;
 @nogc bool ARB_shader_image_size() nothrow @property { return _ARB_shader_image_size; }
 
-// ARB_shader_storage_buffer_object
-extern( System )
-__gshared
-private __gshared bool _ARB_shader_storage_buffer_object;
-@nogc bool ARB_shader_storage_buffer_object() nothrow @property { return _ARB_shader_storage_buffer_object; }
-package void load_ARB_shader_storage_buffer_object( bool doThrow = false ) {
-    try {
-
-        _ARB_shader_storage_buffer_object = true;
-    } catch( Exception e ) {
-        _ARB_shader_storage_buffer_object = false;
-        if( doThrow ) throw e;
-    }
-}
 
 // ARB_texture_query_levels
 private __gshared bool _ARB_texture_query_levels;
 @nogc bool ARB_texture_query_levels() nothrow @property { return _ARB_texture_query_levels; }
-
-// ARB_query_buffer_object
-private __gshared bool _ARB_query_buffer_object;
-@nogc bool ARB_query_buffer_object() nothrow @property { return _ARB_query_buffer_object; }
 
 // ARB_texture_mirror_clamp_to_edge
 private __gshared bool _ARB_texture_mirror_clamp_to_edge;

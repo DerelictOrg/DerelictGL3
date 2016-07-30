@@ -538,6 +538,11 @@ q{
 enum arbProgramInterfaceQueryLoader = makeLoader(ARB_program_interface_query, arbProgramInterfaceQueryLoaderImpl, "gl43");
 static if(!usingContexts) enum arbProgramInterfaceQuery = arbProgramInterfaceQueryDecls ~ arbProgramInterfaceQueryFuncs.makeGShared() ~ arbProgramInterfaceQueryLoader;
 
+// ARB_robust_buffer_access_behavior
+enum ARB_robust_buffer_access_behavior = "GL_ARB_robust_buffer_access_behavior";
+enum arbRobustBufferAccessBehaviorLoader = makeLoader(ARB_robust_buffer_access_behavior, "", "gl43");
+static if(!usingContexts) enum arbRobustBufferAccessBehavior = arbRobustBufferAccessBehaviorLoader;
+
 // ARB_shader_storage_buffer_object
 enum ARB_shader_storage_buffer_object = "GL_ARB_shader_storage_buffer_object";
 enum arbShaderStorageBufferObjectDecls =
@@ -568,6 +573,12 @@ enum arbShaderStorageBufferObjectFuncs = `da_glShaderStorageBlockBinding glShade
 enum arbShaderStorageBufferObjectLoaderImpl = `bindGLFunc(cast(void**)&glShaderStorageBlockBinding, "glShaderStorageBlockBinding");`;
 enum arbShaderStorageBufferObjectLoader = makeLoader(ARB_shader_storage_buffer_object, arbShaderStorageBufferObjectLoaderImpl, "gl43");
 static if(!usingContexts) enum arbShaderStorageBufferObject = arbShaderStorageBufferObjectDecls ~ arbShaderStorageBufferObjectFuncs.makeGShared() ~ arbShaderStorageBufferObjectLoader;
+
+// ARB_stencil_texturing
+enum ARB_stencil_texturing = "GL_ARB_stencil_texturing";
+enum arbStencilTexturingDecls = `enum uint GL_DEPTH_STENCIL_TEXTURE_MODE = 0x90EA;`;
+enum arbStencilTexturingLoader = makeLoader(ARB_stencil_texturing, "", "gl43");
+static if(!usingContexts) enum arbStencilTexturing = arbStencilTexturingDecls ~ arbStencilTexturingLoader;
 
 // ARB_texture_buffer_range
 enum ARB_texture_buffer_range = "GL_ARB_texture_buffer_range";

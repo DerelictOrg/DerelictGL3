@@ -36,10 +36,6 @@ private {
 
 enum : uint {
 
-    // ARB_sample_shading
-    GL_SAMPLE_SHADING_ARB             = 0x8C36,
-    GL_MIN_SAMPLE_SHADING_VALUE_ARB   = 0x8C37,
-
     // ARB_texture_cube_map_array
     GL_TEXTURE_CUBE_MAP_ARRAY_ARB     = 0x9009,
     GL_TEXTURE_BINDING_CUBE_MAP_ARRAY_ARB = 0x900A,
@@ -53,10 +49,6 @@ enum : uint {
     GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET_ARB = 0x8E5E,
     GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET_ARB = 0x8E5F,
 
-    // ARB_shading_language_include
-    GL_SHADER_INCLUDE_ARB             = 0x8DAE,
-    GL_NAMED_STRING_LENGTH_ARB        = 0x8DE9,
-    GL_NAMED_STRING_TYPE_ARB          = 0x8DEA,
 
     // ARB_texture_compression_bptc
     GL_COMPRESSED_RGBA_BPTC_UNORM_ARB = 0x8E8C,
@@ -83,19 +75,6 @@ enum : uint {
     // ARB_vertex_type_2_10_10_10_rev
     GL_INT_2_10_10_10_REV             = 0x8D9F,
 
-    // ARB_robustness
-    GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = 0x00000004,
-    GL_LOSE_CONTEXT_ON_RESET_ARB      = 0x8252,
-    GL_GUILTY_CONTEXT_RESET_ARB       = 0x8253,
-    GL_INNOCENT_CONTEXT_RESET_ARB     = 0x8254,
-    GL_UNKNOWN_CONTEXT_RESET_ARB      = 0x8255,
-    GL_RESET_NOTIFICATION_STRATEGY_ARB = 0x8256,
-    GL_NO_RESET_NOTIFICATION_ARB      = 0x8261,
-
-
-
-    // ARB_stencil_texturing
-    GL_DEPTH_STENCIL_TEXTURE_MODE = 0x90EA,
 
     // ARB_query_buffer_object
     GL_QUERY_BUFFER                   = 0x9192,
@@ -126,9 +105,6 @@ private __gshared bool _ARB_texture_query_lod;
 private __gshared bool _ARB_texture_compression_bptc;
 @nogc bool ARB_texture_compression_bptc() nothrow @property { return _ARB_texture_compression_bptc; }
 
-private __gshared bool _ARB_shader_bit_encoding;
-@nogc bool ARB_shader_bit_encoding() nothrow @property { return _ARB_shader_bit_encoding; }
-
 private __gshared bool _ARB_texture_rgb10_a2ui;
 @nogc bool ARB_texture_rgb10_a2ui() nothrow @property { return _ARB_texture_rgb10_a2ui; }
 
@@ -137,76 +113,6 @@ private __gshared bool _ARB_texture_swizzle;
 
 private __gshared bool _ARB_texture_buffer_object_rgb32;
 @nogc bool ARB_texture_buffer_object_rgb32() nothrow @property { return _ARB_texture_buffer_object_rgb32; }
-
-private __gshared bool _ARB_shader_precision;
-@nogc bool ARB_shader_precision() nothrow @property { return _ARB_shader_precision; }
-
-private __gshared bool _ARB_shader_stencil_export;
-@nogc bool ARB_shader_stencil_export() nothrow @property { return _ARB_shader_stencil_export; }
-
-private __gshared bool _ARB_shading_language_420pack;
-@nogc bool ARB_shading_language_420pack() nothrow @property { return _ARB_shading_language_420pack; }
-
-private __gshared bool _ARB_conservative_depth;
-@nogc bool ARB_conservative_depth() nothrow @property { return _ARB_conservative_depth; }
-
-
-private __gshared bool _ARB_shading_language_packing;
-@nogc bool ARB_shading_language_packing() nothrow @property { return _ARB_shading_language_packing; }
-
-
-
-// ARB_sample_shading
-extern( System ) @nogc nothrow alias da_glMinSampleShadingARB = void function( GLclampf );
-__gshared da_glMinSampleShadingARB glMinSampleShadingARB;
-
-private __gshared bool _ARB_sample_shading;
-@nogc bool ARB_sample_shading() nothrow @property { return _ARB_sample_shading; }
-package void load_ARB_sample_shading() {
-    try {
-        bindGLFunc( cast( void** )&glMinSampleShadingARB, "glMinSampleShadingARB" );
-        _ARB_sample_shading = true;
-    } catch( Exception e ) {
-        _ARB_sample_shading = false;
-    }
-}
-
-// ARB_shading_language_include
-extern( System ) @nogc nothrow {
-    alias da_glNamedStringARB = void function( GLenum, GLint, const( GLchar )*, GLint, const( GLchar )* );
-    alias da_glDeleteNamedStringARB = void function( GLint, const( GLchar )* );
-    alias da_glCompileShaderIncludeARB = void function( GLuint, GLsizei, const( GLchar )*, const( GLint )* );
-    alias da_glIsNamedStringARB = GLboolean function( GLint, const( GLchar )* );
-    alias da_glGetNamedStringARB = void function( GLint, const( GLchar )*, GLsizei, GLint*, GLchar* );
-    alias da_glGetNamedStringivARB = void function( GLint, const( GLchar )*, GLenum, GLint* );
-}
-
-__gshared {
-    da_glNamedStringARB glNamedStringARB;
-    da_glDeleteNamedStringARB glDeleteNamedStringARB;
-    da_glCompileShaderIncludeARB glCompileShaderIncludeARB;
-    da_glIsNamedStringARB glIsNamedStringARB;
-    da_glGetNamedStringARB glGetNamedStringARB;
-    da_glGetNamedStringivARB glGetNamedStringivARB;
-}
-
-private __gshared bool _ARB_shading_language_include;
-@nogc bool ARB_shading_language_include() nothrow @property { return _ARB_shading_language_include; }
-package void load_ARB_shading_language_include() {
-    try {
-        bindGLFunc( cast( void** )&glNamedStringARB, "glNamedStringARB" );
-        bindGLFunc( cast( void** )&glDeleteNamedStringARB, "glDeleteNamedStringARB" );
-        bindGLFunc( cast( void** )&glCompileShaderIncludeARB, "glCompileShaderIncludeARB" );
-        bindGLFunc( cast( void** )&glIsNamedStringARB, "glIsNamedStringARB" );
-        bindGLFunc( cast( void** )&glGetNamedStringARB, "glGetNamedStringARB" );
-        bindGLFunc( cast( void** )&glGetNamedStringivARB, "glGetNamedStringivARB" );
-        _ARB_shading_language_include = true;
-    } catch( Exception e ) {
-        _ARB_shading_language_include = false;
-    }
-}
-
-// ARB_sampler_objects
 
 // ARB_timer_query
 extern( System ) @nogc nothrow {
@@ -369,91 +275,9 @@ package void load_ARB_vertex_type_2_10_10_10_rev( bool doThrow = false ) {
     }
 }
 
-// ARB_robustness
-extern( System ) @nogc nothrow {
-    alias da_glGetGraphicsResetStatusARB = GLenum function();
-    alias da_glGetnMapdvARB = void function( GLenum, GLenum, GLsizei, GLdouble* );
-    alias da_glGetnMapfvARB = void function( GLenum, GLenum, GLsizei, GLfloat* );
-    alias da_glGetnMapivARB = void function( GLenum, GLenum, GLsizei, GLint* );
-    alias da_glGetnPixelMapfvARB = void function( GLenum, GLsizei, GLfloat* );
-    alias da_glGetnPixelMapuivARB = void function( GLenum, GLsizei, GLuint* );
-    alias da_glGetnPixelMapusvARB = void function( GLenum, GLsizei, GLushort* );
-    alias da_glGetnPolygonStippleARB = void function( GLsizei, GLubyte* );
-    alias da_glGetnColorTableARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnConvolutionFilterARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnSeparableFilterARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid*, GLsizei, GLvoid*, GLvoid* );
-    alias da_glGetnHistogramARB = void function( GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnMinmaxARB = void function( GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnTexImageARB = void function( GLenum, GLint, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glReadnPixelsARB = void function( GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnCompressedTexImageARB = void function( GLenum, GLint, GLsizei, GLvoid* );
-    alias da_glGetnUniformfvARB = void function( GLuint, GLint, GLsizei, GLfloat* );
-    alias da_glGetnUniformivARB = void function( GLuint, GLint, GLsizei, GLint* );
-    alias da_glGetnUniformuivARB = void function( GLuint, GLint, GLsizei, GLuint* );
-    alias da_glGetnUniformdvARB = void function( GLuint, GLint, GLsizei, GLdouble* );
-}
-
-__gshared {
-    da_glGetGraphicsResetStatusARB glGetGraphicsResetStatusARB;
-    da_glGetnMapdvARB glGetnMapdvARB;
-    da_glGetnMapfvARB glGetnMapfvARB;
-    da_glGetnMapivARB glGetnMapivARB;
-    da_glGetnPixelMapfvARB glGetnPixelMapfvARB;
-    da_glGetnPixelMapuivARB glGetnPixelMapuivARB;
-    da_glGetnPixelMapusvARB glGetnPixelMapusvARB;
-    da_glGetnPolygonStippleARB glGetnPolygonStippleARB;
-    da_glGetnColorTableARB glGetnColorTableARB;
-    da_glGetnConvolutionFilterARB glGetnConvolutionFilterARB;
-    da_glGetnSeparableFilterARB glGetnSeparableFilterARB;
-    da_glGetnHistogramARB glGetnHistogramARB;
-    da_glGetnMinmaxARB glGetnMinmaxARB;
-    da_glGetnTexImageARB glGetnTexImageARB;
-    da_glReadnPixelsARB glReadnPixelsARB;
-    da_glGetnCompressedTexImageARB glGetnCompressedTexImageARB;
-    da_glGetnUniformfvARB glGetnUniformfvARB;
-    da_glGetnUniformivARB glGetnUniformivARB;
-    da_glGetnUniformuivARB glGetnUniformuivARB;
-    da_glGetnUniformdvARB glGetnUniformdvARB;
-}
-
-private __gshared bool _ARB_robustness;
-@nogc bool ARB_robustness() nothrow @property { return _ARB_robustness; }
-package void load_ARB_robustness() {
-    try {
-        bindGLFunc( cast( void** )&glGetGraphicsResetStatusARB, "glGetGraphicsResetStatusARB" );
-        bindGLFunc( cast( void** )&glGetnMapdvARB, "glGetnMapdvARB" );
-        bindGLFunc( cast( void** )&glGetnMapfvARB, "glGetnMapfvARB" );
-        bindGLFunc( cast( void** )&glGetnMapivARB, "glGetnMapivARB" );
-        bindGLFunc( cast( void** )&glGetnPixelMapfvARB, "glGetnPixelMapfvARB" );
-        bindGLFunc( cast( void** )&glGetnPixelMapuivARB, "glGetnPixelMapuivARB" );
-        bindGLFunc( cast( void** )&glGetnPixelMapusvARB, "glGetnPixelMapusvARB" );
-        bindGLFunc( cast( void** )&glGetnPolygonStippleARB, "glGetnPolygonStippleARB" );
-        bindGLFunc( cast( void** )&glGetnColorTableARB, "glGetnColorTableARB" );
-        bindGLFunc( cast( void** )&glGetnConvolutionFilterARB, "glGetnConvolutionFilterARB" );
-        bindGLFunc( cast( void** )&glGetnSeparableFilterARB, "glGetnSeparableFilterARB" );
-        bindGLFunc( cast( void** )&glGetnHistogramARB, "glGetnHistogramARB" );
-        bindGLFunc( cast( void** )&glGetnMinmaxARB, "glGetnMinmaxARB" );
-        bindGLFunc( cast( void** )&glGetnTexImageARB, "glGetnTexImageARB" );
-        bindGLFunc( cast( void** )&glReadnPixelsARB, "glReadnPixelsARB" );
-        bindGLFunc( cast( void** )&glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB" );
-        bindGLFunc( cast( void** )&glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB" );
-        bindGLFunc( cast( void** )&glGetnUniformfvARB, "glGetnUniformfvARB" );
-        bindGLFunc( cast( void** )&glGetnUniformivARB, "glGetnUniformivARB" );
-        bindGLFunc( cast( void** )&glGetnUniformuivARB, "glGetnUniformuivARB" );
-        bindGLFunc( cast( void** )&glGetnUniformdvARB, "glGetnUniformdvARB" );
-        _ARB_robustness = true;
-    } catch( Exception e ) {
-        _ARB_robustness = false;
-    }
-}
-
 // ARB_shader_image_size
 private __gshared bool _ARB_shader_image_size;
 @nogc bool ARB_shader_image_size() nothrow @property { return _ARB_shader_image_size; }
-
-// ARB_robust_buffer_access_behavior
-private __gshared bool _ARB_robust_buffer_access_behavior;
-@nogc bool ARB_robust_buffer_access_behavior() nothrow @property { return _ARB_robust_buffer_access_behavior; }
 
 // ARB_shader_storage_buffer_object
 extern( System )
@@ -469,10 +293,6 @@ package void load_ARB_shader_storage_buffer_object( bool doThrow = false ) {
         if( doThrow ) throw e;
     }
 }
-
-// ARB_stencil_texturing
-private __gshared bool _ARB_stencil_texturing;
-@nogc bool ARB_stencil_texturing() nothrow @property { return _ARB_stencil_texturing; }
 
 // ARB_texture_query_levels
 private __gshared bool _ARB_texture_query_levels;

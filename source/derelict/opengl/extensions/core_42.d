@@ -58,6 +58,11 @@ q{
 enum arbBaseInstanceLoader = makeLoader(ARB_base_instance, arbBaseInstanceLoaderImpl, "gl42");
 static if(!usingContexts) enum arbBaseInstance = arbBaseInstanceDecls ~ arbBaseInstanceFuncs.makeGShared() ~ arbBaseInstanceLoader;
 
+// ARB_conservative_depth
+enum ARB_conservative_depth = "GL_ARB_conservative_depth";
+enum arbConservativeDepthLoader = makeLoader(ARB_conservative_depth, "", "gl42");
+static if(!usingContexts) enum arbConservativeDepth = arbConservativeDepthLoader;
+
 // ARB_internalformat_query
 enum ARB_internalformat_query = "GL_ARB_internalformat_query";
 enum arbInternalFormatQueryDecls =
@@ -210,6 +215,11 @@ q{
 
 enum arbShaderImageLoadStoreLoader = makeLoader(ARB_shader_image_load_store, arbShaderImageLoadStoreLoaderImpl, "gl42");
 static if(!usingContexts) enum arbShaderImageLoadStore = arbShaderImageLoadStoreDecls ~ arbShaderImageLoadStoreFuncs.makeGShared() ~ arbShaderImageLoadStoreLoader;
+
+// ARB_shading_language_420pack
+enum ARB_shading_language_420pack = "GL_ARB_shading_language_420pack";
+enum arbShadingLanguage420PackLoader = makeLoader(ARB_shading_language_420pack, "", "gl42");
+static if(!usingContexts) enum arbShadingLanguage420Pack = arbShadingLanguage420PackLoader;
 
 // ARB_texture_storage
 enum ARB_texture_storage = "GL_ARB_texture_storage";

@@ -324,6 +324,11 @@ q{
 enum arbSeparateShaderObjectsLoader = makeLoader(ARB_separate_shader_objects, arbSeparateShaderObjectsLoaderImpl, "gl41");
 static if(!usingContexts) enum arbSeparateShaderObjects = arbSeparateShaderObjectsDecls ~ arbSeparateShaderObjectsFuncs.makeGShared() ~ arbSeparateShaderObjectsLoader;
 
+// ARB_shader_precision
+enum ARB_shader_precision = "GL_ARB_shader_precision";
+enum arbShaderPrecisionLoader = makeLoader(ARB_shader_precision, "", "gl41");
+static if(!usingContexts) enum arbShaderPrecision = arbShaderPrecisionLoader;
+
 // ARB_vertex_attrib_64bit
 enum ARB_vertex_attrib_64bit = "GL_ARB_vertex_attrib_64bit";
 enum arbVertexAttrib64BitDecls =

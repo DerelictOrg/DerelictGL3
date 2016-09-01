@@ -3497,32 +3497,32 @@ package void load_ARB_texture_barrier( bool doThrow = false ) {
 
 package void loadARB( GLVersion glversion )
 {
-    if( glversion  < GLVersion.GL30 ) {
+    if( glversion >= GLVersion.GL30 ) {
         if( isExtSupported( glversion, "GL_ARB_framebuffer_object" )) load_ARB_framebuffer_object();
         if( isExtSupported( glversion, "GL_ARB_map_buffer_range" )) load_ARB_map_buffer_range();
         if( isExtSupported( glversion, "GL_ARB_vertex_array_object" )) load_ARB_vertex_array_object();
     }
 
-    if( glversion < GLVersion.GL31 ) {
+    if( glversion >= GLVersion.GL31 ) {
         if( isExtSupported( glversion, "GL_ARB_copy_buffer" )) load_ARB_copy_buffer();
         if( isExtSupported( glversion, "GL_ARB_uniform_buffer_object" )) load_ARB_uniform_buffer_object();
     }
 
-    if( glversion < GLVersion.GL32 ) {
+    if( glversion >= GLVersion.GL32 ) {
         if( isExtSupported( glversion, "GL_ARB_draw_elements_base_vertex" )) load_ARB_draw_elements_base_vertex();
         if( isExtSupported( glversion, "GL_ARB_provoking_vertex" )) load_ARB_provoking_vertex();
         if( isExtSupported( glversion, "GL_ARB_sync" )) load_ARB_sync();
         if( isExtSupported( glversion, "GL_ARB_texture_multisample" )) load_ARB_texture_multisample();
     }
 
-    if( glversion < GLVersion.GL33 ) {
+    if( glversion >= GLVersion.GL33 ) {
         if( isExtSupported( glversion, "GL_ARB_blend_func_extended" )) load_ARB_blend_func_extended();
         if( isExtSupported( glversion, "GL_ARB_sampler_objects" )) load_ARB_sampler_objects();
         if( isExtSupported( glversion, "GL_ARB_timer_query" )) load_ARB_timer_query();
         if( isExtSupported( glversion, "GL_ARB_vertex_type_2_10_10_10_rev" )) load_ARB_vertex_type_2_10_10_10_rev();
     }
 
-    if( glversion < GLVersion.GL40 ) {
+    if( glversion >= GLVersion.GL40 ) {
         if( isExtSupported( glversion, "GL_ARB_draw_buffers_blend" )) load_ARB_draw_buffers_blend();
         if( isExtSupported( glversion, "GL_ARB_draw_indirect" )) load_ARB_draw_indirect();
         if( isExtSupported( glversion, "GL_ARB_gpu_shader_fp64" )) load_ARB_gpu_shader_fp64();
@@ -3533,7 +3533,7 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_transform_feedback3" )) load_ARB_transform_feedback3();
     }
 
-    if( glversion < GLVersion.GL41 ) {
+    if( glversion >= GLVersion.GL41 ) {
         if( isExtSupported( glversion, "GL_ARB_ES2_compatibility" )) load_ARB_ES2_compatibility();
         if( isExtSupported( glversion, "GL_ARB_get_program_binary" )) load_ARB_get_program_binary();
         if( isExtSupported( glversion, "GL_ARB_separate_shader_objects" )) load_ARB_separate_shader_objects();
@@ -3541,7 +3541,7 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_viewport_array" )) load_ARB_viewport_array();
     }
 
-    if( glversion < GLVersion.GL42 ) {
+    if( glversion >= GLVersion.GL42 ) {
         if( isExtSupported( glversion, "GL_ARB_base_instance" )) load_ARB_base_instance();
         if( isExtSupported( glversion, "GL_ARB_transform_feedback_instanced" )) load_ARB_transform_feedback_instanced();
         if( isExtSupported( glversion, "GL_ARB_internalformat_query" )) load_ARB_internalformat_query();
@@ -3550,7 +3550,7 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_texture_storage" )) load_ARB_texture_storage( glversion );
     }
 
-    if( glversion < GLVersion.GL43 ) {
+    if( glversion >= GLVersion.GL43 ) {
         if( isExtSupported( glversion, "GL_ARB_clear_buffer_object" )) load_ARB_clear_buffer_object();
         if( isExtSupported( glversion, "GL_ARB_copy_image" )) load_ARB_copy_image();
         if( isExtSupported( glversion, "GL_ARB_compute_shader" )) load_ARB_compute_shader();
@@ -3568,13 +3568,13 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_vertex_attrib_binding" )) load_ARB_vertex_attrib_binding();
     }
 
-    if( glversion < GLVersion.GL44 ) {
+    if( glversion >= GLVersion.GL44 ) {
         if( isExtSupported( glversion, "GL_ARB_buffer_storage" )) load_ARB_buffer_storage( glversion );
         if( isExtSupported( glversion, "GL_ARB_clear_texture" )) load_ARB_clear_texture();
         if( isExtSupported( glversion, "GL_ARB_multi_bind" )) load_ARB_multi_bind();
     }
 
-    if( glversion < GLVersion.GL45 ) {
+    if( glversion >= GLVersion.GL45 ) {
         if( isExtSupported( glversion, "GL_ARB_clip_control" )) load_ARB_clip_control();
         if( isExtSupported( glversion, "GL_ARB_ES3_1_compatibility" )) load_ARB_ES3_1_compatibility();
         if( isExtSupported( glversion, "GL_ARB_direct_state_access")) load_ARB_direct_state_access();

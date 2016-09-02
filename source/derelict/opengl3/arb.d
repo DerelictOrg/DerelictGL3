@@ -3554,7 +3554,6 @@ package void loadARB( GLVersion glversion )
         if( isExtSupported( glversion, "GL_ARB_clear_buffer_object" )) load_ARB_clear_buffer_object();
         if( isExtSupported( glversion, "GL_ARB_copy_image" )) load_ARB_copy_image();
         if( isExtSupported( glversion, "GL_ARB_compute_shader" )) load_ARB_compute_shader();
-        if( isExtSupported( glversion, "GL_ARB_debug_output" )) load_ARB_debug_output();
         if( isExtSupported( glversion, "GL_KHR_debug" )) load_KHR_debug();
         if( isExtSupported( glversion, "GL_ARB_framebuffer_no_attachments" )) load_ARB_framebuffer_no_attachments();
         if( isExtSupported( glversion, "GL_ARB_internalformat_query2" )) load_ARB_internalformat_query2();
@@ -3584,6 +3583,7 @@ package void loadARB( GLVersion glversion )
     }
 
     if( isExtSupported( glversion, "GL_ARB_geometry_shader4")) load_ARB_geometry_shader4();
+    if( isExtSupported( glversion, "GL_ARB_debug_output" )) load_ARB_debug_output();
     _ARB_vertex_array_bgra = isExtSupported( glversion, "GL_ARB_vertex_array_bgra" );
     _ARB_fragment_coord_conventions = isExtSupported( glversion, "GL_ARB_fragment_coord_conventions" );
     _ARB_seamless_cube_map = isExtSupported( glversion, "GL_ARB_seamless_cube_map" );

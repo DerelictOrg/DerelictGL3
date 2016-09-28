@@ -58,7 +58,8 @@ enum : uint
     GL_TEXTURE_TARGET = 0x1006,
     GL_QUERY_TARGET = 0x82EA,
 }
-extern(System) @nogc nothrow {
+extern(System) @nogc nothrow
+{
     alias da_glCreateTransformFeedbacks = void function(GLsizei,GLuint*);
     alias da_glTransformFeedbackBufferBase = void function(GLsizei,GLuint,GLuint);
     alias da_glTransformFeedbackBufferRange = void function(GLuint,GLuint,GLuint,GLintptr,GLsizei);
@@ -365,11 +366,7 @@ static if(!usingContexts) enum arbDirectStateAccess = arbDirectStateAccessDecls 
 
 // ARB_ES3_1_compatibility
 enum ARB_ES3_1_compatibility = "GL_ARB_ES3_1_compatibility";
-enum arbES31CompatibilityDecls =
-q{
-extern(System) @nogc nothrow alias da_glMemoryBarrierByRegion = void function(GLbitfield);
-};
-
+enum arbES31CompatibilityDecls = `extern(System) @nogc nothrow alias da_glMemoryBarrierByRegion = void function(GLbitfield);`;
 enum arbES31CompatibilityFuncs = `da_glMemoryBarrierByRegion glMemoryBarrierByRegion;`;
 enum arbES31CompatibilityLoaderImpl = `bindGLFunc(cast(void**)&glMemoryBarrierByRegion, "glMemoryBarrierByRegion");`;
 enum arbES31CompatibilityLoader = makeLoader(ARB_ES3_1_compatibility, arbES31CompatibilityLoaderImpl, "gl45");
@@ -400,6 +397,11 @@ q{
 enum arbGetTextureSubImageLoader = makeLoader(ARB_get_texture_sub_image, arbGetTextureSubImageLoaderImpl, "gl45");
 static if(!usingContexts) enum arbGetTextureSubImage = arbGetTextureSubImageDecls ~ arbGetTextureSubImageFuncs.makeGShared() ~ arbGetTextureSubImageLoader;
 
+// KHR_context_flush_control
+enum KHR_context_flush_control = "GL_KHR_context_flush_control";
+enum khrContextFlushControlLoader = makeLoader(KHR_context_flush_control, "", "gl45");
+static if(!usingContexts) enum khrContextFlushControl = khrContextFlushControlLoader;
+
 // KHR_robustness
 enum KHR_robustness = "GL_KHR_robustness";
 enum khrRobustnessDecls =
@@ -415,7 +417,8 @@ enum : uint
     GL_NO_RESET_NOTIFICATION          = 0x8261,
     GL_CONTEXT_LOST                   = 0x0507,
 }
-extern(System) @nogc nothrow {
+extern(System) @nogc nothrow
+{
     alias da_glGetGraphicsResetStatus = GLenum function();
     alias da_glReadnPixels = void function(GLint,GLint,GLsizei,GLsizei,GLenum,GLenum,GLsizei,void*);
     alias da_glGetnUniformfv = void function(GLuint,GLint,GLsizei,GLfloat*);

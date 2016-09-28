@@ -47,10 +47,15 @@ enum arbSampleShadingLoaderImpl = `bindGLFunc(cast(void**)&glMinSampleShadingARB
 enum arbSampleShadingLoader = makeExtLoader(ARB_sample_shading, arbSampleShadingLoaderImpl);
 static if(!usingContexts) enum arbSampleShading = arbSampleShadingDecls ~ arbSampleShadingFuncs ~ arbSampleShadingLoader;
 
-// ARB_shader_bit_encoding
-enum ARB_shader_bit_encoding = "GL_ARB_shader_bit_encoding";
-enum arbShaderBitEncodingLoader = makeExtLoader(ARB_shader_bit_encoding);
-static if(!usingContexts) enum arbShaderBitEncoding = arbShaderBitEncodingLoader;
+// ARB_shader_image_size
+enum ARB_shader_image_size = "GL_ARB_shader_image_size";
+enum arbShaderImageSizeLoader = makeExtLoader(ARB_shader_image_size);
+static if(!usingContexts) enum arbShaderImageSize = arbShaderImageSizeLoader;
+
+// ARB_shader_texture_image_samples
+enum ARB_shader_texture_image_samples = "GL_ARB_shader_texture_image_samples";
+enum arbShaderTextureImageSamplesLoader = makeExtLoader(ARB_shader_texture_image_samples);
+static if(!usingContexts) enum arbShaderTextureImageSamples = arbShaderTextureImageSamplesLoader;
 
 // ARB_shading_language_include
 enum ARB_shading_language_include = "GL_ARB_shading_language_include";

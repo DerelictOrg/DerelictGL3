@@ -61,6 +61,11 @@ q{
 enum arbDrawElementsBaseVertexLoader = makeLoader(ARB_draw_elements_base_vertex, arbDrawElementsBaseVertexLoaderImpl, "gl32");
 static if(!usingContexts) enum arbDrawElementsBaseVertex = arbDrawElementsBaseVertexDecls ~ arbDrawElementsBaseVertexFuncs.makeGShared() ~ arbDrawElementsBaseVertexLoader;
 
+// ARB_fragment_coord_conventions
+enum ARB_fragment_coord_conventions = "GL_ARB_fragment_coord_conventions";
+enum arbFragmentCoordConventionsLoader = makeLoader(ARB_fragment_coord_conventions, "", "gl32");
+static if(!usingContexts) enum arbFragmentCoordConventions = arbFragmentCoordConventionsLoader;
+
 // ARB_provoking_vertex
 enum ARB_provoking_vertex = "GL_ARB_provoking_vertex";
 enum arbProvokingVertexDecls =

@@ -36,47 +36,8 @@ private {
 
 enum : uint {
 
-    // ARB_texture_cube_map_array
-    GL_TEXTURE_CUBE_MAP_ARRAY_ARB     = 0x9009,
-    GL_TEXTURE_BINDING_CUBE_MAP_ARRAY_ARB = 0x900A,
-    GL_PROXY_TEXTURE_CUBE_MAP_ARRAY_ARB = 0x900B,
-    GL_SAMPLER_CUBE_MAP_ARRAY_ARB     = 0x900C,
-    GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW_ARB = 0x900D,
-    GL_INT_SAMPLER_CUBE_MAP_ARRAY_ARB = 0x900E,
-    GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY_ARB = 0x900F,
-
-    // ARB_texture_gather
-    GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET_ARB = 0x8E5E,
-    GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET_ARB = 0x8E5F,
-
-
-    // ARB_texture_compression_bptc
-    GL_COMPRESSED_RGBA_BPTC_UNORM_ARB = 0x8E8C,
-    GL_COMPRESSED_SRGB_ALPHA_BPTC_UNORM_ARB = 0x8E8D,
-    GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT_ARB = 0x8E8E,
-    GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_ARB = 0x8E8F,
-
-
-
-    // ARB_texture_rgb10_a2ui
-    GL_RGB10_A2UI                     = 0x906F,
-
-    // ARB_texture_swizzle
-    GL_TEXTURE_SWIZZLE_R              = 0x8E42,
-    GL_TEXTURE_SWIZZLE_G              = 0x8E43,
-    GL_TEXTURE_SWIZZLE_B              = 0x8E44,
-    GL_TEXTURE_SWIZZLE_A              = 0x8E45,
-    GL_TEXTURE_SWIZZLE_RGBA           = 0x8E46,
-
-    // ARB_timer_query
-    GL_TIME_ELAPSED                   = 0x88BF,
-    GL_TIMESTAMP                      = 0x8E28,
-
     // ARB_vertex_type_2_10_10_10_rev
     GL_INT_2_10_10_10_REV             = 0x8D9F,
-
-    // ARB_texture_mirror_clamp_to_edge
-    GL_MIRROR_CLAMP_TO_EDGE           = 0x8743,
 
     // KHR_context_flush_control
     GL_CONTEXT_RELEASE_BEHAVIOR       = 0x82FB,
@@ -85,54 +46,6 @@ enum : uint {
 }
 private __gshared bool _ARB_vertex_array_bgra;
 @nogc bool ARB_vertex_array_bgra() nothrow @property { return _ARB_vertex_array_bgra; }
-
-private __gshared bool _ARB_texture_cube_map_array;
-@nogc bool ARB_texture_cube_map_array() nothrow @property { return _ARB_texture_cube_map_array; }
-
-private __gshared bool _ARB_texture_gather;
-@nogc bool ARB_texture_gather() nothrow @property { return _ARB_texture_gather; }
-
-private __gshared bool _ARB_texture_query_lod;
-@nogc bool ARB_texture_query_lod() nothrow @property { return _ARB_texture_query_lod; }
-
-private __gshared bool _ARB_texture_compression_bptc;
-@nogc bool ARB_texture_compression_bptc() nothrow @property { return _ARB_texture_compression_bptc; }
-
-private __gshared bool _ARB_texture_rgb10_a2ui;
-@nogc bool ARB_texture_rgb10_a2ui() nothrow @property { return _ARB_texture_rgb10_a2ui; }
-
-private __gshared bool _ARB_texture_swizzle;
-@nogc bool ARB_texture_swizzle() nothrow @property { return _ARB_texture_swizzle; }
-
-private __gshared bool _ARB_texture_buffer_object_rgb32;
-@nogc bool ARB_texture_buffer_object_rgb32() nothrow @property { return _ARB_texture_buffer_object_rgb32; }
-
-// ARB_timer_query
-extern( System ) @nogc nothrow {
-    alias da_glQueryCounter = void function( GLuint, GLenum );
-    alias da_glGetQueryObjecti64v = void function( GLuint, GLenum, GLint64* );
-    alias da_glGetQueryObjectui64v = void function( GLuint, GLenum, GLuint64* );
-}
-
-__gshared {
-    da_glQueryCounter glQueryCounter;
-    da_glGetQueryObjecti64v glGetQueryObjecti64v;
-    da_glGetQueryObjectui64v glGetQueryObjectui64v;
-}
-
-private __gshared bool _ARB_timer_query;
-@nogc bool ARB_timer_query() nothrow @property { return _ARB_timer_query; }
-void load_ARB_timer_query( bool doThrow = false ) {
-    try {
-        bindGLFunc( cast( void** )&glQueryCounter, "glQueryCounter" );
-        bindGLFunc( cast( void** )&glGetQueryObjecti64v, "glGetQueryObjecti64v" );
-        bindGLFunc( cast( void** )&glGetQueryObjectui64v, "glGetQueryObjectui64v" );
-        _ARB_timer_query = true;
-    } catch( Exception e ) {
-        _ARB_timer_query = false;
-        if( doThrow ) throw e;
-    }
-}
 
 // ARB_vertex_type_2_10_10_10_rev
 extern( System ) @nogc nothrow {
@@ -268,35 +181,6 @@ package void load_ARB_vertex_type_2_10_10_10_rev( bool doThrow = false ) {
     }
 }
 
-// ARB_shader_image_size
-private __gshared bool _ARB_shader_image_size;
-@nogc bool ARB_shader_image_size() nothrow @property { return _ARB_shader_image_size; }
-
-
-// ARB_texture_query_levels
-private __gshared bool _ARB_texture_query_levels;
-@nogc bool ARB_texture_query_levels() nothrow @property { return _ARB_texture_query_levels; }
-
-// ARB_texture_mirror_clamp_to_edge
-private __gshared bool _ARB_texture_mirror_clamp_to_edge;
-@nogc bool ARB_texture_mirror_clamp_to_edge() nothrow @property { return _ARB_texture_mirror_clamp_to_edge; }
-
-// ARB_texture_stencil8
-private __gshared bool _ARB_texture_stencil8;
-@nogc bool ARB_texture_stencil8() nothrow @property { return _ARB_texture_stencil8; }
-
 // ARB_vertex_type_10f_11f_11f_rev
 private __gshared bool _ARB_vertex_type_10f_11f_11f_rev;
 @nogc bool ARB_vertex_type_10f_11f_11f_rev() nothrow @property { return _ARB_vertex_type_10f_11f_11f_rev; }
-
-// KHR_context_flush_control
-private __gshared bool _KHR_context_flush_control;
-@nogc bool KHR_context_flush_control() nothrow @property { return _KHR_context_flush_control; }
-
-// ARB_derivative_control
-private __gshared bool _ARB_derivative_control;
-@nogc bool ARB_derivative_control() nothrow @property { return _ARB_derivative_control; }
-
-// ARB_shader_texture_image_samples
-private __gshared bool _ARB_shader_texture_image_samples;
-@nogc bool ARB_shader_texture_image_samples() nothrow @property { return _ARB_shader_texture_image_samples; }

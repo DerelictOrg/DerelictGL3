@@ -42,8 +42,8 @@ enum : uint
     GL_MAX_DUAL_SOURCE_DRAW_BUFFERS   = 0x88FC,
 }
 extern(System) @nogc nothrow {
-    alias da_glBindFragDataLocationIndexed = void function( GLuint, GLuint, GLuint, const( GLchar )* );
-    alias da_glGetFragDataIndex = GLint function( GLuint, const( GLchar )* );
+    alias da_glBindFragDataLocationIndexed = void function(GLuint, GLuint, GLuint, const(GLchar)*);
+    alias da_glGetFragDataIndex = GLint function(GLuint, const(GLchar)*);
 }};
 
 enum arbBlendFuncExtendedFuncs =
@@ -54,17 +54,12 @@ q{
 
 enum arbBlendFuncExtendedLoaderImpl =
 q{
-    bindGLFunc( cast( void** )&glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed" );
-    bindGLFunc( cast( void** )&glGetFragDataIndex, "glGetFragDataIndex" );
+    bindGLFunc(cast(void**)&glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed");
+    bindGLFunc(cast(void**)&glGetFragDataIndex, "glGetFragDataIndex");
 };
 
 enum arbBlendFuncExtendedLoader = makeLoader(ARB_blend_func_extended, arbBlendFuncExtendedLoaderImpl, "gl33");
 static if(!usingContexts) enum arbBlendFuncExtended = arbBlendFuncExtendedDecls ~ arbBlendFuncExtendedFuncs.makeGShared() ~ arbBlendFuncExtendedLoader;
-
-// ARB_fragment_coord_conventions
-enum ARB_fragment_coord_conventions = "GL_ARB_fragment_coord_conventions";
-enum arbFragmentCoordConventionsLoader = makeLoader(ARB_fragment_coord_conventions, "", "gl33");
-static if(!usingContexts) enum arbFragmentCoordConventions = arbFragmentCoordConventionsLoader;
 
 // ARB_occlusion_query2
 enum ARB_occlusion_query2 = "GL_ARB_occlusion_query2";
@@ -77,21 +72,22 @@ enum ARB_sampler_objects = "GL_ARB_sampler_objects";
 enum arbSamplerObjectsDecls =
 q{
 enum uint GL_SAMPLER_BINDING = 0x8919;
-extern(System) @nogc nothrow {
-    alias da_glGenSamplers = void function( GLsizei, GLuint* );
-    alias da_glDeleteSamplers = void function( GLsizei, const( GLuint )* );
-    alias da_glIsSampler = GLboolean function( GLuint );
-    alias da_glBindSampler = void function( GLuint, GLuint );
-    alias da_glSamplerParameteri = void function( GLuint, GLenum, GLint );
-    alias da_glSamplerParameteriv = void function( GLuint, GLenum, const( GLint )* );
-    alias da_glSamplerParameterf = void function( GLuint, GLenum, GLfloat );
-    alias da_glSamplerParameterfv = void function( GLuint, GLenum, const( GLfloat )* );
-    alias da_glSamplerParameterIiv = void function( GLuint, GLenum, const( GLint )* );
-    alias da_glSamplerParameterIuiv = void function( GLuint, GLenum, const( GLuint )* );
-    alias da_glGetSamplerParameteriv = void function( GLuint, GLenum, GLint* );
-    alias da_glGetSamplerParameterIiv = void function( GLuint, GLenum, GLint* );
-    alias da_glGetSamplerParameterfv = void function( GLuint, GLenum, GLfloat* );
-    alias da_glGetSamplerParameterIuiv = void function( GLuint, GLenum, GLuint* );
+extern(System) @nogc nothrow
+{
+    alias da_glGenSamplers = void function(GLsizei, GLuint*);
+    alias da_glDeleteSamplers = void function(GLsizei, const(GLuint)*);
+    alias da_glIsSampler = GLboolean function(GLuint);
+    alias da_glBindSampler = void function(GLuint, GLuint);
+    alias da_glSamplerParameteri = void function(GLuint, GLenum, GLint);
+    alias da_glSamplerParameteriv = void function(GLuint, GLenum, const(GLint)*);
+    alias da_glSamplerParameterf = void function(GLuint, GLenum, GLfloat);
+    alias da_glSamplerParameterfv = void function(GLuint, GLenum, const(GLfloat)*);
+    alias da_glSamplerParameterIiv = void function(GLuint, GLenum, const(GLint)*);
+    alias da_glSamplerParameterIuiv = void function(GLuint, GLenum, const(GLuint)*);
+    alias da_glGetSamplerParameteriv = void function(GLuint, GLenum, GLint*);
+    alias da_glGetSamplerParameterIiv = void function(GLuint, GLenum, GLint*);
+    alias da_glGetSamplerParameterfv = void function(GLuint, GLenum, GLfloat*);
+    alias da_glGetSamplerParameterIuiv = void function(GLuint, GLenum, GLuint*);
 }};
 
 enum arbSamplerObjectsFuncs =
@@ -114,26 +110,64 @@ q{
 
 enum arbSamplerObjectsLoaderImpl =
 q{
-    bindGLFunc( cast( void** )&glGenSamplers, "glGenSamplers" );
-    bindGLFunc( cast( void** )&glDeleteSamplers, "glDeleteSamplers" );
-    bindGLFunc( cast( void** )&glIsSampler, "glIsSampler" );
-    bindGLFunc( cast( void** )&glBindSampler, "glBindSampler" );
-    bindGLFunc( cast( void** )&glSamplerParameteri, "glSamplerParameteri" );
-    bindGLFunc( cast( void** )&glSamplerParameteriv, "glSamplerParameteriv" );
-    bindGLFunc( cast( void** )&glSamplerParameterf, "glSamplerParameterf" );
-    bindGLFunc( cast( void** )&glSamplerParameterfv, "glSamplerParameterfv" );
-    bindGLFunc( cast( void** )&glSamplerParameterIiv, "glSamplerParameterIiv" );
-    bindGLFunc( cast( void** )&glSamplerParameterIuiv, "glSamplerParameterIuiv" );
-    bindGLFunc( cast( void** )&glGetSamplerParameteriv, "glGetSamplerParameteriv" );
-    bindGLFunc( cast( void** )&glGetSamplerParameterIiv, "glGetSamplerParameterIiv" );
-    bindGLFunc( cast( void** )&glGetSamplerParameterfv, "glGetSamplerParameterfv" );
-    bindGLFunc( cast( void** )&glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv" );
+    bindGLFunc(cast(void**)&glGenSamplers, "glGenSamplers");
+    bindGLFunc(cast(void**)&glDeleteSamplers, "glDeleteSamplers");
+    bindGLFunc(cast(void**)&glIsSampler, "glIsSampler");
+    bindGLFunc(cast(void**)&glBindSampler, "glBindSampler");
+    bindGLFunc(cast(void**)&glSamplerParameteri, "glSamplerParameteri");
+    bindGLFunc(cast(void**)&glSamplerParameteriv, "glSamplerParameteriv");
+    bindGLFunc(cast(void**)&glSamplerParameterf, "glSamplerParameterf");
+    bindGLFunc(cast(void**)&glSamplerParameterfv, "glSamplerParameterfv");
+    bindGLFunc(cast(void**)&glSamplerParameterIiv, "glSamplerParameterIiv");
+    bindGLFunc(cast(void**)&glSamplerParameterIuiv, "glSamplerParameterIuiv");
+    bindGLFunc(cast(void**)&glGetSamplerParameteriv, "glGetSamplerParameteriv");
+    bindGLFunc(cast(void**)&glGetSamplerParameterIiv, "glGetSamplerParameterIiv");
+    bindGLFunc(cast(void**)&glGetSamplerParameterfv, "glGetSamplerParameterfv");
+    bindGLFunc(cast(void**)&glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv");
 };
 
 enum arbSamplerObjectsLoader = makeLoader(ARB_sampler_objects, arbSamplerObjectsLoaderImpl, "gl33");
 static if(!usingContexts) enum arbSamplerObjects = arbSamplerObjectsDecls ~ arbSamplerObjectsFuncs.makeGShared() ~ arbSamplerObjectsLoader;
 
-enum corearb33 = arbBlendFuncExtended ~ arbOcclusionQuery2Decls ~ arbSamplerObjects;
-enum corearb33Decls = arbBlendFuncExtendedDecls ~ arbSamplerObjectsDecls;
-enum corearb33Funcs = arbBlendFuncExtendedFuncs ~ arbSamplerObjectsFuncs;
-enum corearb33Loader = arbBlendFuncExtendedLoaderImpl ~ arbSamplerObjectsLoaderImpl;
+// ARB_shader_bit_encoding
+enum ARB_shader_bit_encoding = "GL_ARB_shader_bit_encoding";
+enum arbShaderBitEncodingLoader = makeLoader(ARB_shader_bit_encoding, "", "gl33");
+static if(!usingContexts) enum arbShaderBitEncoding = arbShaderBitEncodingLoader;
+
+// ARB_timer_query
+enum ARB_timer_query = "GL_ARB_timer_query";
+enum arbTimerQueryDecls =
+q{
+enum : uint {
+    GL_TIME_ELAPSED                   = 0x88BF,
+    GL_TIMESTAMP                      = 0x8E28,
+}
+extern(System) @nogc nothrow
+{
+    alias da_glQueryCounter = void function(GLuint, GLenum);
+    alias da_glGetQueryObjecti64v = void function(GLuint, GLenum, GLint64*);
+    alias da_glGetQueryObjectui64v = void function(GLuint, GLenum, GLuint64*);
+}};
+
+enum arbTimerQueryFuncs =
+q{
+    da_glQueryCounter glQueryCounter;
+    da_glGetQueryObjecti64v glGetQueryObjecti64v;
+    da_glGetQueryObjectui64v glGetQueryObjectui64v;
+};
+
+enum arbTimerQueryLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glQueryCounter, "glQueryCounter");
+    bindGLFunc(cast(void**)&glGetQueryObjecti64v, "glGetQueryObjecti64v");
+    bindGLFunc(cast(void**)&glGetQueryObjectui64v, "glGetQueryObjectui64v");
+};
+
+enum arbTimerQueryLoader = makeLoader(ARB_timer_query, arbTimerQueryLoaderImpl, "gl33");
+static if(!usingContexts) enum arbTimerQuery = arbTimerQueryDecls ~ arbTimerQueryFuncs.makeGShared() ~ arbTimerQueryLoader;
+
+
+enum corearb33 = arbBlendFuncExtended ~ arbOcclusionQuery2Decls ~ arbSamplerObjects ~ arbTimerQuery;
+enum corearb33Decls = arbBlendFuncExtendedDecls ~ arbSamplerObjectsDecls ~ arbTimerQueryDecls;
+enum corearb33Funcs = arbBlendFuncExtendedFuncs ~ arbSamplerObjectsFuncs ~ arbTimerQueryFuncs;
+enum corearb33Loader = arbBlendFuncExtendedLoaderImpl ~ arbSamplerObjectsLoaderImpl ~ arbTimerQueryLoaderImpl;

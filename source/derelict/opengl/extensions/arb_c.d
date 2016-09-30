@@ -127,7 +127,7 @@ enum arbClipControlLoaderImpl = `bindGLFunc(cast(void**)&glClipControl, "glClipC
 enum arbClipControlLoader = makeLoader(ARB_clip_control, arbClipControlLoaderImpl, "gl45");
 static if(!usingContexts) enum arbClipControl = arbClipControlDecls ~ arbClipControlFuncs.makeGShared() ~ arbClipControlLoader;
 
-// ARB_compressed_texture_pixel_storage
+// ARB_compressed_texture_pixel_storage <-- Core in GL 4.2
 enum ARB_compressed_texture_pixel_storage = "GL_ARB_compressed_texture_pixel_storage";
 enum arbCompressedTexturePixelStorageDecls =
 q{
@@ -143,7 +143,7 @@ enum : uint
     GL_PACK_COMPRESSED_BLOCK_SIZE     = 0x912E,
 }};
 
-enum arbCompressedTexturePixelStorageLoader = makeExtLoader(ARB_compressed_texture_pixel_storage);
+enum arbCompressedTexturePixelStorageLoader = makeLoader(ARB_compressed_texture_pixel_storage, "", "gl42");
 static if(!usingContexts) enum arbCompressedTexturePixelStorage = arbCompressedTexturePixelStorageDecls ~ arbCompressedTexturePixelStorageLoader;
 
 // ARB_compute_shader <-- Core in GL 4.3
@@ -205,9 +205,9 @@ enum : uint
 enum arbConditionalRenderInvertedLoader = makeLoader(ARB_conditional_render_inverted, "", "gl45");
 static if(!usingContexts) enum arbConditionalRenderInverted = arbConditionalRenderInvertedDecls ~ arbConditionalRenderInvertedLoader;
 
-// ARB_conservative_depth
+// ARB_conservative_depth <-- Core in GL 4.2
 enum ARB_conservative_depth = "GL_ARB_conservative_depth";
-enum arbConservativeDepthLoader = makeExtLoader(ARB_conservative_depth);
+enum arbConservativeDepthLoader = makeLoader(ARB_conservative_depth, "", "gl42");
 static if(!usingContexts) enum arbConservativeDepth = arbConservativeDepthLoader;
 
 // ARB_copy_image <-- Core in GL 4.3

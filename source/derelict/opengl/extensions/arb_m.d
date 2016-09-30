@@ -30,6 +30,12 @@ module derelict.opengl.extensions.arb_m;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_map_buffer_alignment <-- Core in GL 4.2
+enum ARB_map_buffer_alignment = "GL_ARB_map_buffer_alignment";
+enum arbMapBufferAlignmentDecls = `enum uint GL_MIN_MAP_BUFFER_ALIGNMENT = 0x90BC;`;
+enum arbMapBufferAlignmentLoader = makeLoader(ARB_map_buffer_alignment, "", "gl42");
+static if(!usingContexts) enum arbMapBufferAlignment = arbMapBufferAlignmentDecls ~ arbMapBufferAlignmentLoader;
+
 // ARB_multi_bind <-- Core in GL 4.4
 enum ARB_multi_bind = "GL_ARB_multi_bind";
 enum arbMultBindDecls =

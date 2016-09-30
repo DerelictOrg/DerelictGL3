@@ -27,268 +27,34 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_42;
 
-import derelict.opengl.types : usingContexts;
-import derelict.opengl.extensions.internal;
+import derelict.opengl.extensions.arb_b : arbBaseInstanceDecls, arbBaseInstanceFuncs, arbBaseInstanceLoaderImpl;
+import derelict.opengl.extensions.arb_c : arbCompressedTexturePixelStorageDecls;
+import derelict.opengl.extensions.arb_i : arbInternalFormatQueryDecls, arbInternalFormatQueryFuncs, arbInternalFormatQueryLoaderImpl;
+import derelict.opengl.extensions.arb_m : arbMapBufferAlignmentDecls;
+import derelict.opengl.extensions.arb_s : arbShaderAtomicCountersDecls, arbShaderAtomicCountersFuncs, arbShaderAtomicCountersLoaderImpl,
+                                          arbShaderImageLoadStoreDecls, arbShaderImageLoadStoreFuncs, arbShaderImageLoadStoreLoaderImpl;
+import derelict.opengl.extensions.arb_t : arbTextureCompressionBPTCDecls,
+                                          arbTextureStorageDecls, arbTextureStorageFuncs, arbTextureStorageLoaderImpl,
+                                          arbTransformFeedbackInstancedDecls, arbTransformFeedbackInstancedFuncs, arbTransformFeedbackInstancedLoaderImpl;
 
-
-// ARB_base_instance
-enum ARB_base_instance = "GL_ARB_base_instance";
-enum arbBaseInstanceDecls =
-q{
-extern(System) @nogc nothrow {
-    alias da_glDrawArraysInstancedBaseInstance = void function(GLenum, GLint, GLsizei, GLsizei, GLuint);
-    alias da_glDrawElementsInstancedBaseInstance = void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLuint);
-    alias da_glDrawElementsInstancedBaseVertexBaseInstance = void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLint, GLuint);
-}};
-
-enum arbBaseInstanceFuncs =
-q{
-    da_glDrawArraysInstancedBaseInstance glDrawArraysInstancedBaseInstance;
-    da_glDrawElementsInstancedBaseInstance glDrawElementsInstancedBaseInstance;
-    da_glDrawElementsInstancedBaseVertexBaseInstance glDrawElementsInstancedBaseVertexBaseInstance;
-};
-
-enum arbBaseInstanceLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance");
-    bindGLFunc(cast(void**)&glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance");
-    bindGLFunc(cast(void**)&glDrawElementsInstancedBaseVertexBaseInstance, "glDrawElementsInstancedBaseVertexBaseInstance");
-};
-
-enum arbBaseInstanceLoader = makeLoader(ARB_base_instance, arbBaseInstanceLoaderImpl, "gl42");
-static if(!usingContexts) enum arbBaseInstance = arbBaseInstanceDecls ~ arbBaseInstanceFuncs.makeGShared() ~ arbBaseInstanceLoader;
-
-// ARB_conservative_depth
-enum ARB_conservative_depth = "GL_ARB_conservative_depth";
-enum arbConservativeDepthLoader = makeLoader(ARB_conservative_depth, "", "gl42");
-static if(!usingContexts) enum arbConservativeDepth = arbConservativeDepthLoader;
-
-// ARB_internalformat_query
-enum ARB_internalformat_query = "GL_ARB_internalformat_query";
-enum arbInternalFormatQueryDecls =
-q{
-enum uint GL_NUM_SAMPLE_COUNTS = 0x9380;
-extern(System) @nogc nothrow alias da_glGetInternalformativ = void function(GLenum, GLenum, GLenum, GLsizei, GLint*);
-};
-
-enum arbInternalFormatQueryFuncs = `da_glGetInternalformativ glGetInternalformativ;`;
-enum arbInternalFormatQueryLoaderImpl = `bindGLFunc(cast(void**)&glGetInternalformativ, "glGetInternalformativ");`;
-enum arbInternalFormatQueryLoader = makeLoader(ARB_internalformat_query, arbInternalFormatQueryLoaderImpl, "gl42");
-static if(!usingContexts) enum arbInternalFormatQuery = arbInternalFormatQueryDecls ~ arbInternalFormatQueryFuncs.makeGShared() ~ arbInternalFormatQueryLoader;
-
-// ARB_map_buffer_alignment
-enum ARB_map_buffer_alignment = "GL_ARB_map_buffer_alignment";
-enum arbMapBufferAlignmentDecls = `enum uint GL_MIN_MAP_BUFFER_ALIGNMENT = 0x90BC;`;
-enum arbMapBufferAlignmentLoader = makeLoader(ARB_map_buffer_alignment, "", "gl42");
-static if(!usingContexts) enum arbMapBufferAlignment = arbMapBufferAlignmentDecls ~ arbMapBufferAlignmentLoader;
-
-// ARB_shader_atomic_counters
-enum ARB_shader_atomic_counters = "GL_ARB_shader_atomic_counters";
-enum arbShaderAtomicCountersDecls =
-q{
-enum : uint {
-    GL_ATOMIC_COUNTER_BUFFER          = 0x92C0,
-    GL_ATOMIC_COUNTER_BUFFER_BINDING  = 0x92C1,
-    GL_ATOMIC_COUNTER_BUFFER_START    = 0x92C2,
-    GL_ATOMIC_COUNTER_BUFFER_SIZE     = 0x92C3,
-    GL_ATOMIC_COUNTER_BUFFER_DATA_SIZE = 0x92C4,
-    GL_ATOMIC_COUNTER_BUFFER_ACTIVE_ATOMIC_COUNTERS = 0x92C5,
-    GL_ATOMIC_COUNTER_BUFFER_ACTIVE_ATOMIC_COUNTER_INDICES = 0x92C6,
-    GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_VERTEX_SHADER = 0x92C7,
-    GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_TESS_CONTROL_SHADER = 0x92C8,
-    GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_TESS_EVALUATION_SHADER = 0x92C9,
-    GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_GEOMETRY_SHADER = 0x92CA,
-    GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_FRAGMENT_SHADER = 0x92CB,
-    GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS = 0x92CC,
-    GL_MAX_TESS_CONTROL_ATOMIC_COUNTER_BUFFERS = 0x92CD,
-    GL_MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS = 0x92CE,
-    GL_MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS = 0x92CF,
-    GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS = 0x92D0,
-    GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS = 0x92D1,
-    GL_MAX_VERTEX_ATOMIC_COUNTERS     = 0x92D2,
-    GL_MAX_TESS_CONTROL_ATOMIC_COUNTERS = 0x92D3,
-    GL_MAX_TESS_EVALUATION_ATOMIC_COUNTERS = 0x92D4,
-    GL_MAX_GEOMETRY_ATOMIC_COUNTERS   = 0x92D5,
-    GL_MAX_FRAGMENT_ATOMIC_COUNTERS   = 0x92D6,
-    GL_MAX_COMBINED_ATOMIC_COUNTERS   = 0x92D7,
-    GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE = 0x92D8,
-    GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS = 0x92DC,
-    GL_ACTIVE_ATOMIC_COUNTER_BUFFERS  = 0x92D9,
-    GL_UNIFORM_ATOMIC_COUNTER_BUFFER_INDEX = 0x92DA,
-    GL_UNSIGNED_INT_ATOMIC_COUNTER    = 0x92DB,
-}
-extern(System) @nogc nothrow alias da_glGetActiveAtomicCounterBufferiv = void function(GLuint, GLuint, GLenum, GLint*);
-};
-
-enum arbShaderAtomicCountersFuncs = `da_glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;`;
-enum arbShaderAtomicCountersLoaderImpl = `bindGLFunc(cast(void**)&glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv");`;
-enum arbShaderAtomicCountersLoader = makeLoader(ARB_shader_atomic_counters, arbShaderAtomicCountersLoaderImpl, "gl42");
-static if(!usingContexts) enum arbShaderAtomicCounters = arbShaderAtomicCountersDecls ~ arbShaderAtomicCountersFuncs.makeGShared() ~ arbShaderAtomicCountersLoader;
-
-// ARB_shader_image_load_store
-enum ARB_shader_image_load_store = "GL_ARB_shader_image_load_store";
-enum arbShaderImageLoadStoreDecls =
-q{
-enum : uint
-{
-    GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT = 0x00000001,
-    GL_ELEMENT_ARRAY_BARRIER_BIT      = 0x00000002,
-    GL_UNIFORM_BARRIER_BIT            = 0x00000004,
-    GL_TEXTURE_FETCH_BARRIER_BIT      = 0x00000008,
-    GL_SHADER_IMAGE_ACCESS_BARRIER_BIT = 0x00000020,
-    GL_COMMAND_BARRIER_BIT            = 0x00000040,
-    GL_PIXEL_BUFFER_BARRIER_BIT       = 0x00000080,
-    GL_TEXTURE_UPDATE_BARRIER_BIT     = 0x00000100,
-    GL_BUFFER_UPDATE_BARRIER_BIT      = 0x00000200,
-    GL_FRAMEBUFFER_BARRIER_BIT        = 0x00000400,
-    GL_TRANSFORM_FEEDBACK_BARRIER_BIT = 0x00000800,
-    GL_ATOMIC_COUNTER_BARRIER_BIT     = 0x00001000,
-    GL_ALL_BARRIER_BITS               = 0xFFFFFFFF,
-    GL_MAX_IMAGE_UNITS                = 0x8F38,
-    GL_MAX_COMBINED_IMAGE_UNITS_AND_FRAGMENT_OUTPUTS = 0x8F39,
-    GL_IMAGE_BINDING_NAME             = 0x8F3A,
-    GL_IMAGE_BINDING_LEVEL            = 0x8F3B,
-    GL_IMAGE_BINDING_LAYERED          = 0x8F3C,
-    GL_IMAGE_BINDING_LAYER            = 0x8F3D,
-    GL_IMAGE_BINDING_ACCESS           = 0x8F3E,
-    GL_IMAGE_1D                       = 0x904C,
-    GL_IMAGE_2D                       = 0x904D,
-    GL_IMAGE_3D                       = 0x904E,
-    GL_IMAGE_2D_RECT                  = 0x904F,
-    GL_IMAGE_CUBE                     = 0x9050,
-    GL_IMAGE_BUFFER                   = 0x9051,
-    GL_IMAGE_1D_ARRAY                 = 0x9052,
-    GL_IMAGE_2D_ARRAY                 = 0x9053,
-    GL_IMAGE_CUBE_MAP_ARRAY           = 0x9054,
-    GL_IMAGE_2D_MULTISAMPLE           = 0x9055,
-    GL_IMAGE_2D_MULTISAMPLE_ARRAY     = 0x9056,
-    GL_INT_IMAGE_1D                   = 0x9057,
-    GL_INT_IMAGE_2D                   = 0x9058,
-    GL_INT_IMAGE_3D                   = 0x9059,
-    GL_INT_IMAGE_2D_RECT              = 0x905A,
-    GL_INT_IMAGE_CUBE                 = 0x905B,
-    GL_INT_IMAGE_BUFFER               = 0x905C,
-    GL_INT_IMAGE_1D_ARRAY             = 0x905D,
-    GL_INT_IMAGE_2D_ARRAY             = 0x905E,
-    GL_INT_IMAGE_CUBE_MAP_ARRAY       = 0x905F,
-    GL_INT_IMAGE_2D_MULTISAMPLE       = 0x9060,
-    GL_INT_IMAGE_2D_MULTISAMPLE_ARRAY = 0x9061,
-    GL_UNSIGNED_INT_IMAGE_1D          = 0x9062,
-    GL_UNSIGNED_INT_IMAGE_2D          = 0x9063,
-    GL_UNSIGNED_INT_IMAGE_3D          = 0x9064,
-    GL_UNSIGNED_INT_IMAGE_2D_RECT     = 0x9065,
-    GL_UNSIGNED_INT_IMAGE_CUBE        = 0x9066,
-    GL_UNSIGNED_INT_IMAGE_BUFFER      = 0x9067,
-    GL_UNSIGNED_INT_IMAGE_1D_ARRAY    = 0x9068,
-    GL_UNSIGNED_INT_IMAGE_2D_ARRAY    = 0x9069,
-    GL_UNSIGNED_INT_IMAGE_CUBE_MAP_ARRAY = 0x906A,
-    GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE = 0x906B,
-    GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE_ARRAY = 0x906C,
-    GL_MAX_IMAGE_SAMPLES              = 0x906D,
-    GL_IMAGE_BINDING_FORMAT           = 0x906E,
-    GL_IMAGE_FORMAT_COMPATIBILITY_TYPE = 0x90C7,
-    GL_IMAGE_FORMAT_COMPATIBILITY_BY_SIZE = 0x90C8,
-    GL_IMAGE_FORMAT_COMPATIBILITY_BY_CLASS = 0x90C9,
-    GL_MAX_VERTEX_IMAGE_UNIFORMS      = 0x90CA,
-    GL_MAX_TESS_CONTROL_IMAGE_UNIFORMS = 0x90CB,
-    GL_MAX_TESS_EVALUATION_IMAGE_UNIFORMS = 0x90CC,
-    GL_MAX_GEOMETRY_IMAGE_UNIFORMS    = 0x90CD,
-    GL_MAX_FRAGMENT_IMAGE_UNIFORMS    = 0x90CE,
-    GL_MAX_COMBINED_IMAGE_UNIFORMS    = 0x90CF,
-}
-extern(System) @nogc nothrow {
-    alias da_glBindImageTexture = void function(GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum);
-    alias da_glMemoryBarrier = void function(GLbitfield);
-}};
-
-enum arbShaderImageLoadStoreFuncs =
-q{
-    da_glBindImageTexture glBindImageTexture;
-    da_glMemoryBarrier glMemoryBarrier;
-};
-
-enum arbShaderImageLoadStoreLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glBindImageTexture, "glBindImageTexture");
-    bindGLFunc(cast(void**)&glMemoryBarrier, "glMemoryBarrier");
-};
-
-enum arbShaderImageLoadStoreLoader = makeLoader(ARB_shader_image_load_store, arbShaderImageLoadStoreLoaderImpl, "gl42");
-static if(!usingContexts) enum arbShaderImageLoadStore = arbShaderImageLoadStoreDecls ~ arbShaderImageLoadStoreFuncs.makeGShared() ~ arbShaderImageLoadStoreLoader;
-
-// ARB_shading_language_420pack
-enum ARB_shading_language_420pack = "GL_ARB_shading_language_420pack";
-enum arbShadingLanguage420PackLoader = makeLoader(ARB_shading_language_420pack, "", "gl42");
-static if(!usingContexts) enum arbShadingLanguage420Pack = arbShadingLanguage420PackLoader;
-
-// ARB_texture_storage
-enum ARB_texture_storage = "GL_ARB_texture_storage";
-enum arbTextureStorageDecls =
-q{
-enum uint GL_TEXTURE_IMMUTABLE_FORMAT = 0x912F;
-extern(System) @nogc nothrow {
-    alias da_glTexStorage1D = void function(GLenum, GLsizei, GLenum, GLsizei);
-    alias da_glTexStorage2D = void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei);
-    alias da_glTexStorage3D = void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei);
-    alias da_glTextureStorage1DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei);
-    alias da_glTextureStorage2DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei);
-    alias da_glTextureStorage3DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei);
-}};
-
-enum arbTextureStorageFuncs =
-q{
-    da_glTexStorage1D glTexStorage1D;
-    da_glTexStorage2D glTexStorage2D;
-    da_glTexStorage3D glTexStorage3D;
-    da_glTextureStorage1DEXT glTextureStorage1DEXT;
-    da_glTextureStorage2DEXT glTextureStorage2DEXT;
-    da_glTextureStorage3DEXT glTextureStorage3DEXT;
-};
-
-enum arbTextureStorageLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glTexStorage1D, "glTexStorage1D");
-    bindGLFunc(cast(void**)&glTexStorage2D, "glTexStorage2D");
-    bindGLFunc(cast(void**)&glTexStorage3D, "glTexStorage3D");
-    // The following are present if EXT_direct_state_access is supported.
-    try {
-        bindGLFunc(cast(void**)&glTextureStorage1DEXT, "glTextureStorage1DEXT");
-        bindGLFunc(cast(void**)&glTextureStorage2DEXT, "glTextureStorage2DEXT");
-        bindGLFunc(cast(void**)&glTextureStorage3DEXT, "glTextureStorage3DEXT");
-    }
-    catch(Exception e) {}
-};
-
-enum arbTextureStorageLoader = makeLoader(ARB_texture_storage, arbTextureStorageLoaderImpl, "gl42");
-static if(!usingContexts) enum arbTextureStorage = arbTextureStorageDecls ~ arbTextureStorageFuncs.makeGShared() ~ arbTextureStorageLoader;
-
-// ARB_transform_feedback_instanced
-enum ARB_transform_feedback_instanced = "GL_ARB_transform_feedback_instanced";
-enum arbTransformFeedbackInstancedDecls =
-q{
-extern(System) @nogc nothrow {
-    alias da_glDrawTransformFeedbackInstanced = void function(GLenum, GLuint, GLsizei);
-    alias da_glDrawTransformFeedbackStreamInstanced = void function(GLenum, GLuint, GLuint, GLsizei);
-}};
-
-enum arbTransformFeedbackInstancedFuncs =
-q{
-    da_glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
-    da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
-};
-
-enum arbTransformFeedbackInstancedLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced");
-    bindGLFunc(cast(void**)&glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced");
-};
-
-enum arbTransformFeedbackInstancedLoader = makeLoader(ARB_transform_feedback_instanced, arbTransformFeedbackInstancedLoaderImpl, "gl42");
-static if(!usingContexts) enum arbTransformFeedbackInstanced = arbTransformFeedbackInstancedDecls ~ arbTransformFeedbackInstancedFuncs.makeGShared() ~ arbTransformFeedbackInstancedLoader;
-
-enum corearb42Decls = arbBaseInstanceDecls ~ arbMapBufferAlignmentDecls ~ arbInternalFormatQueryDecls
-        ~ arbShaderAtomicCountersDecls ~ arbShaderImageLoadStoreDecls ~ arbTextureStorageDecls ~ arbTransformFeedbackInstancedDecls ;
-enum corearb42Funcs = arbBaseInstanceFuncs ~ arbInternalFormatQueryFuncs ~ arbShaderAtomicCountersFuncs
-        ~ arbShaderImageLoadStoreFuncs ~ arbTextureStorageFuncs ~ arbTransformFeedbackInstancedFuncs;
-enum corearb42Loader = arbBaseInstanceLoaderImpl ~ arbInternalFormatQueryLoaderImpl ~ arbShaderAtomicCountersLoaderImpl
-        ~ arbShaderImageLoadStoreLoaderImpl ~ arbTextureStorageLoaderImpl ~ arbTransformFeedbackInstancedLoaderImpl;
+enum corearb42Decls = arbBaseInstanceDecls
+                    ~ arbCompressedTexturePixelStorageDecls
+                    ~ arbMapBufferAlignmentDecls
+                    ~ arbInternalFormatQueryDecls
+                    ~ arbShaderAtomicCountersDecls
+                    ~ arbShaderImageLoadStoreDecls
+                    ~ arbTextureCompressionBPTCDecls
+                    ~ arbTextureStorageDecls
+                    ~ arbTransformFeedbackInstancedDecls ;
+enum corearb42Funcs = arbBaseInstanceFuncs
+                    ~ arbInternalFormatQueryFuncs
+                    ~ arbShaderAtomicCountersFuncs
+                    ~ arbShaderImageLoadStoreFuncs
+                    ~ arbTextureStorageFuncs
+                    ~ arbTransformFeedbackInstancedFuncs;
+enum corearb42Loader = arbBaseInstanceLoaderImpl
+                     ~ arbInternalFormatQueryLoaderImpl
+                     ~ arbShaderAtomicCountersLoaderImpl
+                     ~ arbShaderImageLoadStoreLoaderImpl
+                     ~ arbTextureStorageLoaderImpl
+                     ~ arbTransformFeedbackInstancedLoaderImpl;

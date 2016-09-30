@@ -74,7 +74,7 @@ enum ARB_texture_buffer_object_rgb32 = "GL_ARB_texture_buffer_object_rgb32";
 enum arbTextureBufferObjectRGB32Loader = makeExtLoader(ARB_texture_buffer_object_rgb32);
 static if(!usingContexts) enum arbTextureBufferObjectRGB32 = arbTextureBufferObjectRGB32Loader;
 
-// ARB_texture_compression_bptc
+// ARB_texture_compression_bptc <-- Core in GL 4.2
 enum ARB_texture_compression_bptc = "GL_ARB_texture_compression_bptc";
 enum arbTextureCompressionBPTCDecls =
 q{
@@ -86,7 +86,7 @@ enum : uint
     GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_ARB = 0x8E8F,
 }};
 
-enum arbTextureCompressionBPTCLoader = makeExtLoader(ARB_texture_compression_bptc);
+enum arbTextureCompressionBPTCLoader = makeLoader(ARB_texture_compression_bptc, "", "gl42");
 static if(!usingContexts) enum arbTextureCompressionBPTC = arbTextureCompressionBPTCDecls ~ arbTextureCompressionBPTCLoader;
 
 // ARB_texture_cube_map_array
@@ -147,6 +147,47 @@ static if(!usingContexts) enum arbTextureRGB10A2UI = arbTextureRGB10A2UIDecls ~ 
 enum ARB_texture_stencil8 = "GL_ARB_texture_stencil8";
 enum arbTextureStencil8Loader = makeLoader(ARB_texture_stencil8, "", "gl44");
 static if(!usingContexts) enum arbTextureStencil8 = arbTextureStencil8Loader;
+
+// ARB_texture_storage <-- Core in GL 4.2
+enum ARB_texture_storage = "GL_ARB_texture_storage";
+enum arbTextureStorageDecls =
+q{
+enum uint GL_TEXTURE_IMMUTABLE_FORMAT = 0x912F;
+extern(System) @nogc nothrow {
+    alias da_glTexStorage1D = void function(GLenum, GLsizei, GLenum, GLsizei);
+    alias da_glTexStorage2D = void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei);
+    alias da_glTexStorage3D = void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei);
+    alias da_glTextureStorage1DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei);
+    alias da_glTextureStorage2DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei);
+    alias da_glTextureStorage3DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei);
+}};
+
+enum arbTextureStorageFuncs =
+q{
+    da_glTexStorage1D glTexStorage1D;
+    da_glTexStorage2D glTexStorage2D;
+    da_glTexStorage3D glTexStorage3D;
+    da_glTextureStorage1DEXT glTextureStorage1DEXT;
+    da_glTextureStorage2DEXT glTextureStorage2DEXT;
+    da_glTextureStorage3DEXT glTextureStorage3DEXT;
+};
+
+enum arbTextureStorageLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glTexStorage1D, "glTexStorage1D");
+    bindGLFunc(cast(void**)&glTexStorage2D, "glTexStorage2D");
+    bindGLFunc(cast(void**)&glTexStorage3D, "glTexStorage3D");
+    // The following are present if EXT_direct_state_access is supported.
+    try {
+        bindGLFunc(cast(void**)&glTextureStorage1DEXT, "glTextureStorage1DEXT");
+        bindGLFunc(cast(void**)&glTextureStorage2DEXT, "glTextureStorage2DEXT");
+        bindGLFunc(cast(void**)&glTextureStorage3DEXT, "glTextureStorage3DEXT");
+    }
+    catch(Exception e) {}
+};
+
+enum arbTextureStorageLoader = makeLoader(ARB_texture_storage, arbTextureStorageLoaderImpl, "gl42");
+static if(!usingContexts) enum arbTextureStorage = arbTextureStorageDecls ~ arbTextureStorageFuncs.makeGShared() ~ arbTextureStorageLoader;
 
 // ARB_texture_storage_multisample <-- Core in GL 4.3
 enum ARB_texture_storage_multisample = "GL_ARB_texture_storage_multisample";
@@ -216,3 +257,27 @@ enum arbTextureViewLoaderImpl = `bindGLFunc(cast(void**)&glTextureView, "glTextu
 
 enum arbTextureViewLoader = makeLoader(ARB_texture_view, arbTextureViewLoaderImpl, "gl43");
 static if(!usingContexts) enum arbTextureView = arbTextureViewDecls ~ arbTextureViewFuncs.makeGShared() ~ arbTextureViewLoader;
+
+// ARB_transform_feedback_instanced <-- Core in GL 4.2
+enum ARB_transform_feedback_instanced = "GL_ARB_transform_feedback_instanced";
+enum arbTransformFeedbackInstancedDecls =
+q{
+extern(System) @nogc nothrow {
+    alias da_glDrawTransformFeedbackInstanced = void function(GLenum, GLuint, GLsizei);
+    alias da_glDrawTransformFeedbackStreamInstanced = void function(GLenum, GLuint, GLuint, GLsizei);
+}};
+
+enum arbTransformFeedbackInstancedFuncs =
+q{
+    da_glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
+    da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
+};
+
+enum arbTransformFeedbackInstancedLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced");
+    bindGLFunc(cast(void**)&glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced");
+};
+
+enum arbTransformFeedbackInstancedLoader = makeLoader(ARB_transform_feedback_instanced, arbTransformFeedbackInstancedLoaderImpl, "gl42");
+static if(!usingContexts) enum arbTransformFeedbackInstanced = arbTransformFeedbackInstancedDecls ~ arbTransformFeedbackInstancedFuncs.makeGShared() ~ arbTransformFeedbackInstancedLoader;

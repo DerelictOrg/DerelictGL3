@@ -429,7 +429,7 @@ q{
 enum arbDirectStateAccessLoader = makeLoader(ARB_direct_state_access, arbDirectStateAccessLoaderImpl, "gl45");
 static if(!usingContexts) enum arbDirectStateAccess = arbDirectStateAccessDecls ~ arbDirectStateAccessFuncs.makeGShared() ~ arbDirectStateAccessLoader;
 
-// ARB_draw_buffers_blend
+// ARB_draw_buffers_blend <-- Core in GL 4.0
 enum ARB_draw_buffers_blend = "GL_ARB_draw_buffers_blend";
 enum arbDrawBuffersBlendDecls =
 q{
@@ -456,5 +456,5 @@ q{
     bindGLFunc(cast(void**)&glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB");
 };
 
-enum arbDrawBuffersBlendLoader = makeExtLoader(ARB_draw_buffers_blend, arbDrawBuffersBlendLoaderImpl);
+enum arbDrawBuffersBlendLoader = makeLoader(ARB_draw_buffers_blend, arbDrawBuffersBlendLoaderImpl, "gl40");
 static if(!usingContexts) enum arbDrawBuffersBlend = arbDrawBuffersBlendDecls ~ arbDrawBuffersBlendFuncs.makeGShared() ~ arbDrawBuffersBlendLoader;

@@ -30,6 +30,33 @@ module derelict.opengl.extensions.arb_b;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_base_instance <-- Core in GL 4.2
+enum ARB_base_instance = "GL_ARB_base_instance";
+enum arbBaseInstanceDecls =
+q{
+extern(System) @nogc nothrow {
+    alias da_glDrawArraysInstancedBaseInstance = void function(GLenum, GLint, GLsizei, GLsizei, GLuint);
+    alias da_glDrawElementsInstancedBaseInstance = void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLuint);
+    alias da_glDrawElementsInstancedBaseVertexBaseInstance = void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLint, GLuint);
+}};
+
+enum arbBaseInstanceFuncs =
+q{
+    da_glDrawArraysInstancedBaseInstance glDrawArraysInstancedBaseInstance;
+    da_glDrawElementsInstancedBaseInstance glDrawElementsInstancedBaseInstance;
+    da_glDrawElementsInstancedBaseVertexBaseInstance glDrawElementsInstancedBaseVertexBaseInstance;
+};
+
+enum arbBaseInstanceLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance");
+    bindGLFunc(cast(void**)&glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance");
+    bindGLFunc(cast(void**)&glDrawElementsInstancedBaseVertexBaseInstance, "glDrawElementsInstancedBaseVertexBaseInstance");
+};
+
+enum arbBaseInstanceLoader = makeLoader(ARB_base_instance, arbBaseInstanceLoaderImpl, "gl42");
+static if(!usingContexts) enum arbBaseInstance = arbBaseInstanceDecls ~ arbBaseInstanceFuncs.makeGShared() ~ arbBaseInstanceLoader;
+
 // ARB_buffer_storage <-- Core in GL 4.4
 enum ARB_buffer_storage = "GL_ARB_buffer_storage";
 enum arbBufferStorageDecls =

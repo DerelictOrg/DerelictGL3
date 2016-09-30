@@ -43,6 +43,19 @@ enum : uint
 enum arbImagingLoader = makeExtLoader(ARB_imaging);
 static if(!usingContexts) enum arbImaging = arbImagingDecls ~ arbImagingLoader;
 
+// ARB_internalformat_query <-- Core in GL 4.2
+enum ARB_internalformat_query = "GL_ARB_internalformat_query";
+enum arbInternalFormatQueryDecls =
+q{
+enum uint GL_NUM_SAMPLE_COUNTS = 0x9380;
+extern(System) @nogc nothrow alias da_glGetInternalformativ = void function(GLenum, GLenum, GLenum, GLsizei, GLint*);
+};
+
+enum arbInternalFormatQueryFuncs = `da_glGetInternalformativ glGetInternalformativ;`;
+enum arbInternalFormatQueryLoaderImpl = `bindGLFunc(cast(void**)&glGetInternalformativ, "glGetInternalformativ");`;
+enum arbInternalFormatQueryLoader = makeLoader(ARB_internalformat_query, arbInternalFormatQueryLoaderImpl, "gl42");
+static if(!usingContexts) enum arbInternalFormatQuery = arbInternalFormatQueryDecls ~ arbInternalFormatQueryFuncs.makeGShared() ~ arbInternalFormatQueryLoader;
+
 // ARB_internalformat_query2 <-- Core in GL 4.3
 enum ARB_internalformat_query2 = "GL_ARB_internalformat_query2";
 enum arbInternalFormatQuery2Decls =

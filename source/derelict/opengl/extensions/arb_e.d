@@ -43,6 +43,14 @@ enum : uint
 enum arbEnhancedLayoutsLoader = makeExtLoader(ARB_enhanced_layouts);
 static if(!usingContexts) enum arbEnhancedLayouts = arbEnhancedLayoutsDecls ~ arbEnhancedLayoutsLoader;
 
+// ARB_ES3_1_compatibility <-- Core in GL 4.5
+enum ARB_ES3_1_compatibility = "GL_ARB_ES3_1_compatibility";
+enum arbES31CompatibilityDecls = `extern(System) @nogc nothrow alias da_glMemoryBarrierByRegion = void function(GLbitfield);`;
+enum arbES31CompatibilityFuncs = `da_glMemoryBarrierByRegion glMemoryBarrierByRegion;`;
+enum arbES31CompatibilityLoaderImpl = `bindGLFunc(cast(void**)&glMemoryBarrierByRegion, "glMemoryBarrierByRegion");`;
+enum arbES31CompatibilityLoader = makeLoader(ARB_ES3_1_compatibility, arbES31CompatibilityLoaderImpl, "gl45");
+static if(!usingContexts) enum arbES31Compatibility = arbES31CompatibilityDecls ~ arbES31CompatibilityFuncs.makeGShared() ~ arbES31CompatibilityLoader;
+
 // ARB_explicit_attrib_location
 enum ARB_explicit_attrib_location = "GL_ARB_explicit_attrib_location";
 enum arbExplicitAttribLocationLoader = makeExtLoader(ARB_explicit_attrib_location);

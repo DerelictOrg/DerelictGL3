@@ -52,9 +52,9 @@ enum ARB_shader_image_size = "GL_ARB_shader_image_size";
 enum arbShaderImageSizeLoader = makeExtLoader(ARB_shader_image_size);
 static if(!usingContexts) enum arbShaderImageSize = arbShaderImageSizeLoader;
 
-// ARB_shader_texture_image_samples
+// ARB_shader_texture_image_samples <-- Core in GL 4.5
 enum ARB_shader_texture_image_samples = "GL_ARB_shader_texture_image_samples";
-enum arbShaderTextureImageSamplesLoader = makeExtLoader(ARB_shader_texture_image_samples);
+enum arbShaderTextureImageSamplesLoader = makeLoader(ARB_shader_texture_image_samples, "", "gl45");
 static if(!usingContexts) enum arbShaderTextureImageSamples = arbShaderTextureImageSamplesLoader;
 
 // ARB_shading_language_include

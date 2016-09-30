@@ -80,3 +80,29 @@ q{
 
 enum arbGeometryShader4Loader = makeExtLoader(ARB_geometry_shader4, arbGeometryShader4LoaderImpl);
 static if(!usingContexts) enum arbGeometryShader4 = arbGeometryShader4Decls ~ arbGeometryShader4Funcs.makeGShared() ~ arbGeometryShader4Loader;
+
+
+// ARB_get_texture_sub_image <-- Core in GL 4.5
+enum ARB_get_texture_sub_image = "GL_ARB_get_texture_sub_image";
+enum arbGetTextureSubImageDecls =
+q{
+extern(System) @nogc nothrow
+{
+    alias da_glGetTextureSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,GLsizei,void*);
+    alias da_glGetCompressedTextureSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLsizei,void*);
+}};
+
+enum arbGetTextureSubImageFuncs =
+q{
+    da_glGetTextureSubImage glGetTextureSubImage;
+    da_glGetCompressedTextureSubImage glGetCompressedTextureSubImage;
+};
+
+enum arbGetTextureSubImageLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glGetTextureSubImage, "glGetTextureSubImage");
+    bindGLFunc(cast(void**)&glGetCompressedTextureSubImage, "glGetCompressedTextureSubImage");
+};
+
+enum arbGetTextureSubImageLoader = makeLoader(ARB_get_texture_sub_image, arbGetTextureSubImageLoaderImpl, "gl45");
+static if(!usingContexts) enum arbGetTextureSubImage = arbGetTextureSubImageDecls ~ arbGetTextureSubImageFuncs.makeGShared() ~ arbGetTextureSubImageLoader;

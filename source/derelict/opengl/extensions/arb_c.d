@@ -49,6 +49,25 @@ enum arbCLEventLoaderImpl = `bindGLFunc(cast(void**)&glCreateSyncFromCLeventARB,
 enum arbCLEventLoader = makeExtLoader(ARB_cl_event, arbCLEventLoaderImpl);
 static if(!usingContexts) enum arbCLEvent = arbCLEventDecls ~ arbCLEventFuncs.makeGShared() ~ arbCLEventLoader;
 
+// ARB_clip_control <-- Core in GL 4.5
+enum ARB_clip_control = "GL_ARB_clip_control";
+enum arbClipControlDecls =
+q{
+enum : uint
+{
+    GL_NEGATIVE_ONE_TO_ONE            = 0x935E,
+    GL_ZERO_TO_ONE                    = 0x935F,
+    GL_CLIP_ORIGIN                    = 0x935C,
+    GL_CLIP_DEPTH_MODE                = 0x935D,
+}
+extern(System) @nogc nothrow alias da_glClipControl = void function(GLenum,GLenum);
+};
+
+enum arbClipControlFuncs = `da_glClipControl glClipControl;`;
+enum arbClipControlLoaderImpl = `bindGLFunc(cast(void**)&glClipControl, "glClipControl");`;
+enum arbClipControlLoader = makeLoader(ARB_clip_control, arbClipControlLoaderImpl, "gl45");
+static if(!usingContexts) enum arbClipControl = arbClipControlDecls ~ arbClipControlFuncs.makeGShared() ~ arbClipControlLoader;
+
 // ARB_compressed_texture_pixel_storage
 enum ARB_compressed_texture_pixel_storage = "GL_ARB_compressed_texture_pixel_storage";
 enum arbCompressedTexturePixelStorageDecls =
@@ -68,7 +87,7 @@ enum : uint
 enum arbCompressedTexturePixelStorageLoader = makeExtLoader(ARB_compressed_texture_pixel_storage);
 static if(!usingContexts) enum arbCompressedTexturePixelStorage = arbCompressedTexturePixelStorageDecls ~ arbCompressedTexturePixelStorageLoader;
 
-// ARB_conditional_render_inverted
+// ARB_conditional_render_inverted <-- Core in GL 4.5
 enum ARB_conditional_render_inverted = "GL_ARB_conditional_render_inverted";
 enum arbConditionalRenderInvertedDecls =
 q{
@@ -80,7 +99,7 @@ enum : uint
     GL_QUERY_BY_REGION_NO_WAIT_INVERTED = 0x8E1A,
 }};
 
-enum arbConditionalRenderInvertedLoader = makeExtLoader(ARB_conditional_render_inverted);
+enum arbConditionalRenderInvertedLoader = makeLoader(ARB_conditional_render_inverted, "", "gl45");
 static if(!usingContexts) enum arbConditionalRenderInverted = arbConditionalRenderInvertedDecls ~ arbConditionalRenderInvertedLoader;
 
 // ARB_conservative_depth
@@ -88,7 +107,7 @@ enum ARB_conservative_depth = "GL_ARB_conservative_depth";
 enum arbConservativeDepthLoader = makeExtLoader(ARB_conservative_depth);
 static if(!usingContexts) enum arbConservativeDepth = arbConservativeDepthLoader;
 
-// ARB_cull_distance
+// ARB_cull_distance <-- Core in GL 4.5
 enum ARB_cull_distance = "GL_ARB_cull_distance";
 enum arbCullDistanceDecls =
 q{
@@ -98,5 +117,5 @@ enum : uint
     GL_MAX_COMBINED_CLIP_AND_CULL_DISTANCES = 0x82FA,
 }};
 
-enum arbCullDistanceLoader = makeExtLoader(ARB_cull_distance);
+enum arbCullDistanceLoader = makeLoader(ARB_cull_distance, "", "gl45");
 static if(!usingContexts) enum arbCullDistance = arbCullDistanceDecls ~ arbCullDistanceLoader;

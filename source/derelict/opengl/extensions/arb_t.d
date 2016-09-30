@@ -30,6 +30,14 @@ module derelict.opengl.extensions.arb_t;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_texture_barrier <-- Core in GL 4.5
+enum ARB_texture_barrier = "GL_ARB_texture_barrier";
+enum arbTextureBarrierDecls = `extern(System) @nogc nothrow alias da_glTextureBarrier = void function();`;
+enum arbTextureBarrierFuncs = `da_glTextureBarrier glTextureBarrier;`;
+enum arbTextureBarrierLoaderImpl = `bindGLFunc(cast(void**)&glTextureBarrier, "glTextureBarrier");`;
+enum arbTextureBarrierLoader = makeLoader(ARB_texture_barrier, arbTextureBarrierLoaderImpl, "gl45");
+static if(!usingContexts) enum arbTextureBarrier = arbTextureBarrierDecls ~ arbTextureBarrierFuncs.makeGShared() ~ arbTextureBarrierLoader;
+
 // ARB_texture_buffer_object_rgb32
 enum ARB_texture_buffer_object_rgb32 = "GL_ARB_texture_buffer_object_rgb32";
 enum arbTextureBufferObjectRGB32Loader = makeExtLoader(ARB_texture_buffer_object_rgb32);

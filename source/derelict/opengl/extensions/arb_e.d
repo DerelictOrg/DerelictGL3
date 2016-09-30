@@ -43,6 +43,56 @@ enum : uint
 enum arbEnhancedLayoutsLoader = makeLoader(ARB_enhanced_layouts, "", "gl44");
 static if(!usingContexts) enum arbEnhancedLayouts = arbEnhancedLayoutsDecls ~ arbEnhancedLayoutsLoader;
 
+// ARB_ES2_compatibility <-- Core in GL 4.1
+enum ARB_ES2_compatibility = "GL_ARB_ES2_compatibility";
+enum arbES2CompatibilityDecls =
+q{
+enum : uint
+{
+    GL_FIXED                          = 0x140C,
+    GL_IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A,
+    GL_IMPLEMENTATION_COLOR_READ_FORMAT = 0x8B9B,
+    GL_LOW_FLOAT                      = 0x8DF0,
+    GL_MEDIUM_FLOAT                   = 0x8DF1,
+    GL_HIGH_FLOAT                     = 0x8DF2,
+    GL_LOW_INT                        = 0x8DF3,
+    GL_MEDIUM_INT                     = 0x8DF4,
+    GL_HIGH_INT                       = 0x8DF5,
+    GL_SHADER_COMPILER                = 0x8DFA,
+    GL_NUM_SHADER_BINARY_FORMATS      = 0x8DF9,
+    GL_MAX_VERTEX_UNIFORM_VECTORS     = 0x8DFB,
+    GL_MAX_VARYING_VECTORS            = 0x8DFC,
+    GL_MAX_FRAGMENT_UNIFORM_VECTORS   = 0x8DFD,
+}
+extern(System) @nogc nothrow {
+    alias da_glReleaseShaderCompiler = void function();
+    alias da_glShaderBinary = void function(GLsizei, const(GLuint)*, GLenum, const(GLvoid)*, GLsizei);
+    alias da_glGetShaderPrecisionFormat = void function(GLenum, GLenum, GLint*, GLint*);
+    alias da_glDepthRangef = void function(GLclampf, GLclampf);
+    alias da_glClearDepthf = void function(GLclampf);
+}};
+
+enum arbES2CompatibilityFuncs =
+q{
+    da_glReleaseShaderCompiler glReleaseShaderCompiler;
+    da_glShaderBinary glShaderBinary;
+    da_glGetShaderPrecisionFormat glGetShaderPrecisionFormat;
+    da_glDepthRangef glDepthRangef;
+    da_glClearDepthf glClearDepthf;
+};
+
+enum arbES2CompatibilityLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glReleaseShaderCompiler, "glReleaseShaderCompiler");
+    bindGLFunc(cast(void**)&glShaderBinary, "glShaderBinary");
+    bindGLFunc(cast(void**)&glGetShaderPrecisionFormat, "glGetShaderPrecisionFormat");
+    bindGLFunc(cast(void**)&glDepthRangef, "glDepthRangef");
+    bindGLFunc(cast(void**)&glClearDepthf, "glClearDepthf");
+};
+
+enum arbES2CompatibilityLoader = makeLoader(ARB_ES2_compatibility, arbES2CompatibilityLoaderImpl, "gl41");
+static if(!usingContexts) enum arbES2Compatibility = arbES2CompatibilityDecls ~ arbES2CompatibilityFuncs.makeGShared() ~ arbES2CompatibilityLoader;
+
 // ARB_ES3_compatibility <-- Core in GL 4.3
 enum ARB_ES3_compatibility = "GL_ARB_ES3_compatibility";
 enum arbES3CompatibilityDecls =

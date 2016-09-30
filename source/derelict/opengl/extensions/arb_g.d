@@ -81,6 +81,39 @@ q{
 enum arbGeometryShader4Loader = makeExtLoader(ARB_geometry_shader4, arbGeometryShader4LoaderImpl);
 static if(!usingContexts) enum arbGeometryShader4 = arbGeometryShader4Decls ~ arbGeometryShader4Funcs.makeGShared() ~ arbGeometryShader4Loader;
 
+// ARB_get_program_binary <-- Core in GL 4.1
+enum ARB_get_program_binary = "GL_ARB_get_program_binary";
+enum arbGetProgramBinaryDecls =
+q{
+enum : uint
+{
+    GL_PROGRAM_BINARY_RETRIEVABLE_HINT = 0x8257,
+    GL_PROGRAM_BINARY_LENGTH          = 0x8741,
+    GL_NUM_PROGRAM_BINARY_FORMATS     = 0x87FE,
+    GL_PROGRAM_BINARY_FORMATS         = 0x87FF,
+}
+extern(System) @nogc nothrow {
+    alias da_glGetProgramBinary = void function(GLuint, GLsizei, GLsizei*, GLenum*, GLvoid*);
+    alias da_glProgramBinary = void function(GLuint, GLenum, const(GLvoid)*, GLsizei);
+    alias da_glProgramParameteri = void function(GLuint, GLenum, GLint);
+}};
+
+enum arbGetProgramBinaryFuncs =
+q{
+    da_glGetProgramBinary glGetProgramBinary;
+    da_glProgramBinary glProgramBinary;
+    da_glProgramParameteri glProgramParameteri;
+};
+
+enum arbGetProgramBinaryLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glGetProgramBinary, "glGetProgramBinary");
+    bindGLFunc(cast(void**)&glProgramBinary, "glProgramBinary");
+    bindGLFunc(cast(void**)&glProgramParameteri, "glProgramParameteri");
+};
+
+enum arbGetProgramBinaryLoader = makeLoader(ARB_get_program_binary, arbGetProgramBinaryLoaderImpl, "gl41");
+static if(!usingContexts) enum arbGetProgramBinary = arbGetProgramBinaryDecls ~ arbGetProgramBinaryFuncs.makeGShared() ~ arbGetProgramBinaryLoader;
 
 // ARB_get_texture_sub_image <-- Core in GL 4.5
 enum ARB_get_texture_sub_image = "GL_ARB_get_texture_sub_image";

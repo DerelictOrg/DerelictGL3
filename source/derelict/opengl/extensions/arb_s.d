@@ -47,6 +47,216 @@ enum arbSampleShadingLoaderImpl = `bindGLFunc(cast(void**)&glMinSampleShadingARB
 enum arbSampleShadingLoader = makeExtLoader(ARB_sample_shading, arbSampleShadingLoaderImpl);
 static if(!usingContexts) enum arbSampleShading = arbSampleShadingDecls ~ arbSampleShadingFuncs ~ arbSampleShadingLoader;
 
+// ARB_separate_shader_objects <-- Core in GL 4.1
+enum ARB_separate_shader_objects = "GL_ARB_separate_shader_objects";
+enum arbSeparateShaderObjectsDecls =
+q{
+enum : uint
+{
+    GL_VERTEX_SHADER_BIT              = 0x00000001,
+    GL_FRAGMENT_SHADER_BIT            = 0x00000002,
+    GL_GEOMETRY_SHADER_BIT            = 0x00000004,
+    GL_TESS_CONTROL_SHADER_BIT        = 0x00000008,
+    GL_TESS_EVALUATION_SHADER_BIT     = 0x00000010,
+    GL_ALL_SHADER_BITS                = 0xFFFFFFFF,
+    GL_PROGRAM_SEPARABLE              = 0x8258,
+    GL_ACTIVE_PROGRAM                 = 0x8259,
+    GL_PROGRAM_PIPELINE_BINDING       = 0x825A,
+}
+extern(System) @nogc nothrow {
+    alias da_glUseProgramStages = void function(GLuint, GLbitfield, GLuint);
+    alias da_glActiveShaderProgram = void function(GLuint, GLuint);
+    alias da_glCreateShaderProgramv = GLuint function(GLenum, GLsizei, const(GLchar*)*);
+    alias da_glBindProgramPipeline = void function(GLuint);
+    alias da_glDeleteProgramPipelines = void function(GLsizei, const(GLuint)*);
+    alias da_glGenProgramPipelines = void function(GLsizei, GLuint*);
+    alias da_glIsProgramPipeline = GLboolean function(GLuint);
+    alias da_glGetProgramPipelineiv = void function(GLuint, GLenum, GLint*);
+    alias da_glProgramUniform1i = void function(GLuint, GLint, GLint);
+    alias da_glProgramUniform1iv = void function(GLuint, GLint, GLsizei, const(GLint)*);
+    alias da_glProgramUniform1f = void function(GLuint, GLint, GLfloat);
+    alias da_glProgramUniform1fv = void function(GLuint, GLint, GLsizei, const(GLfloat)*);
+    alias da_glProgramUniform1d = void function(GLuint, GLint, GLdouble);
+    alias da_glProgramUniform1dv = void function(GLuint, GLint, GLsizei, const(GLdouble)*);
+    alias da_glProgramUniform1ui = void function(GLuint, GLint, GLuint);
+    alias da_glProgramUniform1uiv = void function(GLuint, GLint, GLsizei, const(GLuint)*);
+    alias da_glProgramUniform2i = void function(GLuint, GLint, GLint, GLint);
+    alias da_glProgramUniform2iv = void function(GLuint, GLint, GLsizei, const(GLint)*);
+    alias da_glProgramUniform2f = void function(GLuint, GLint, GLfloat, GLfloat);
+    alias da_glProgramUniform2fv = void function(GLuint, GLint, GLsizei, const(GLfloat)*);
+    alias da_glProgramUniform2d = void function(GLuint, GLint, GLdouble, GLdouble);
+    alias da_glProgramUniform2dv = void function(GLuint, GLint, GLsizei, const(GLdouble)*);
+    alias da_glProgramUniform2ui = void function(GLuint, GLint, GLuint, GLuint);
+    alias da_glProgramUniform2uiv = void function(GLuint, GLint, GLsizei, const(GLuint)*);
+    alias da_glProgramUniform3i = void function(GLuint, GLint, GLint, GLint, GLint);
+    alias da_glProgramUniform3iv = void function(GLuint, GLint, GLsizei, const(GLint)*);
+    alias da_glProgramUniform3f = void function(GLuint, GLint, GLfloat, GLfloat, GLfloat);
+    alias da_glProgramUniform3fv = void function(GLuint, GLint, GLsizei, const(GLfloat)*);
+    alias da_glProgramUniform3d = void function(GLuint, GLint, GLdouble, GLdouble, GLdouble);
+    alias da_glProgramUniform3dv = void function(GLuint, GLint, GLsizei, const(GLdouble)*);
+    alias da_glProgramUniform3ui = void function(GLuint, GLint, GLuint, GLuint, GLuint);
+    alias da_glProgramUniform3uiv = void function(GLuint, GLint, GLsizei, const(GLuint)*);
+    alias da_glProgramUniform4i = void function(GLuint, GLint, GLint, GLint, GLint, GLint);
+    alias da_glProgramUniform4iv = void function(GLuint, GLint, GLsizei, const(GLint)*);
+    alias da_glProgramUniform4f = void function(GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat);
+    alias da_glProgramUniform4fv = void function(GLuint, GLint, GLsizei, const(GLfloat)*);
+    alias da_glProgramUniform4d = void function(GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble);
+    alias da_glProgramUniform4dv = void function(GLuint, GLint, GLsizei, const(GLdouble)*);
+    alias da_glProgramUniform4ui = void function(GLuint, GLint, GLuint, GLuint, GLuint, GLuint);
+    alias da_glProgramUniform4uiv = void function(GLuint, GLint, GLsizei, const(GLuint)*);
+    alias da_glProgramUniformMatrix2fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix3fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix4fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix2dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix3dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix4dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix2x3fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix3x2fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix2x4fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix4x2fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix3x4fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix4x3fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix2x3dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix3x2dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix2x4dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix4x2dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix3x4dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix4x3dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glValidateProgramPipeline = void function(GLuint);
+    alias da_glGetProgramPipelineInfoLog = void function(GLuint, GLsizei, GLsizei*, GLchar*);
+}};
+
+enum arbSeparateShaderObjectsFuncs =
+q{
+    da_glUseProgramStages glUseProgramStages;
+    da_glActiveShaderProgram glActiveShaderProgram;
+    da_glCreateShaderProgramv glCreateShaderProgramv;
+    da_glBindProgramPipeline glBindProgramPipeline;
+    da_glDeleteProgramPipelines glDeleteProgramPipelines;
+    da_glGenProgramPipelines glGenProgramPipelines;
+    da_glIsProgramPipeline glIsProgramPipeline;
+    da_glGetProgramPipelineiv glGetProgramPipelineiv;
+    da_glProgramUniform1i glProgramUniform1i;
+    da_glProgramUniform1iv glProgramUniform1iv;
+    da_glProgramUniform1f glProgramUniform1f;
+    da_glProgramUniform1fv glProgramUniform1fv;
+    da_glProgramUniform1d glProgramUniform1d;
+    da_glProgramUniform1dv glProgramUniform1dv;
+    da_glProgramUniform1ui glProgramUniform1ui;
+    da_glProgramUniform1uiv glProgramUniform1uiv;
+    da_glProgramUniform2i glProgramUniform2i;
+    da_glProgramUniform2iv glProgramUniform2iv;
+    da_glProgramUniform2f glProgramUniform2f;
+    da_glProgramUniform2fv glProgramUniform2fv;
+    da_glProgramUniform2d glProgramUniform2d;
+    da_glProgramUniform2dv glProgramUniform2dv;
+    da_glProgramUniform2ui glProgramUniform2ui;
+    da_glProgramUniform2uiv glProgramUniform2uiv;
+    da_glProgramUniform3i glProgramUniform3i;
+    da_glProgramUniform3iv glProgramUniform3iv;
+    da_glProgramUniform3f glProgramUniform3f;
+    da_glProgramUniform3fv glProgramUniform3fv;
+    da_glProgramUniform3d glProgramUniform3d;
+    da_glProgramUniform3dv glProgramUniform3dv;
+    da_glProgramUniform3ui glProgramUniform3ui;
+    da_glProgramUniform3uiv glProgramUniform3uiv;
+    da_glProgramUniform4i glProgramUniform4i;
+    da_glProgramUniform4iv glProgramUniform4iv;
+    da_glProgramUniform4f glProgramUniform4f;
+    da_glProgramUniform4fv glProgramUniform4fv;
+    da_glProgramUniform4d glProgramUniform4d;
+    da_glProgramUniform4dv glProgramUniform4dv;
+    da_glProgramUniform4ui glProgramUniform4ui;
+    da_glProgramUniform4uiv glProgramUniform4uiv;
+    da_glProgramUniformMatrix2fv glProgramUniformMatrix2fv;
+    da_glProgramUniformMatrix3fv glProgramUniformMatrix3fv;
+    da_glProgramUniformMatrix4fv glProgramUniformMatrix4fv;
+    da_glProgramUniformMatrix2dv glProgramUniformMatrix2dv;
+    da_glProgramUniformMatrix3dv glProgramUniformMatrix3dv;
+    da_glProgramUniformMatrix4dv glProgramUniformMatrix4dv;
+    da_glProgramUniformMatrix2x3fv glProgramUniformMatrix2x3fv;
+    da_glProgramUniformMatrix3x2fv glProgramUniformMatrix3x2fv;
+    da_glProgramUniformMatrix2x4fv glProgramUniformMatrix2x4fv;
+    da_glProgramUniformMatrix4x2fv glProgramUniformMatrix4x2fv;
+    da_glProgramUniformMatrix3x4fv glProgramUniformMatrix3x4fv;
+    da_glProgramUniformMatrix4x3fv glProgramUniformMatrix4x3fv;
+    da_glProgramUniformMatrix2x3dv glProgramUniformMatrix2x3dv;
+    da_glProgramUniformMatrix3x2dv glProgramUniformMatrix3x2dv;
+    da_glProgramUniformMatrix2x4dv glProgramUniformMatrix2x4dv;
+    da_glProgramUniformMatrix4x2dv glProgramUniformMatrix4x2dv;
+    da_glProgramUniformMatrix3x4dv glProgramUniformMatrix3x4dv;
+    da_glProgramUniformMatrix4x3dv glProgramUniformMatrix4x3dv;
+    da_glValidateProgramPipeline glValidateProgramPipeline;
+    da_glGetProgramPipelineInfoLog glGetProgramPipelineInfoLog;
+};
+
+enum arbSeparateShaderObjectsLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glUseProgramStages, "glUseProgramStages");
+    bindGLFunc(cast(void**)&glActiveShaderProgram, "glActiveShaderProgram");
+    bindGLFunc(cast(void**)&glCreateShaderProgramv, "glCreateShaderProgramv");
+    bindGLFunc(cast(void**)&glBindProgramPipeline, "glBindProgramPipeline");
+    bindGLFunc(cast(void**)&glDeleteProgramPipelines, "glDeleteProgramPipelines");
+    bindGLFunc(cast(void**)&glGenProgramPipelines, "glGenProgramPipelines");
+    bindGLFunc(cast(void**)&glIsProgramPipeline, "glIsProgramPipeline");
+    bindGLFunc(cast(void**)&glGetProgramPipelineiv, "glGetProgramPipelineiv");
+    bindGLFunc(cast(void**)&glProgramUniform1i, "glProgramUniform1i");
+    bindGLFunc(cast(void**)&glProgramUniform1iv, "glProgramUniform1iv");
+    bindGLFunc(cast(void**)&glProgramUniform1f, "glProgramUniform1f");
+    bindGLFunc(cast(void**)&glProgramUniform1fv, "glProgramUniform1fv");
+    bindGLFunc(cast(void**)&glProgramUniform1d, "glProgramUniform1d");
+    bindGLFunc(cast(void**)&glProgramUniform1dv, "glProgramUniform1dv");
+    bindGLFunc(cast(void**)&glProgramUniform1ui, "glProgramUniform1ui");
+    bindGLFunc(cast(void**)&glProgramUniform1uiv, "glProgramUniform1uiv");
+    bindGLFunc(cast(void**)&glProgramUniform2i, "glProgramUniform2i");
+    bindGLFunc(cast(void**)&glProgramUniform2iv, "glProgramUniform2iv");
+    bindGLFunc(cast(void**)&glProgramUniform2f, "glProgramUniform2f");
+    bindGLFunc(cast(void**)&glProgramUniform2fv, "glProgramUniform2fv");
+    bindGLFunc(cast(void**)&glProgramUniform2d, "glProgramUniform2d");
+    bindGLFunc(cast(void**)&glProgramUniform2dv, "glProgramUniform2dv");
+    bindGLFunc(cast(void**)&glProgramUniform2ui, "glProgramUniform2ui");
+    bindGLFunc(cast(void**)&glProgramUniform2uiv, "glProgramUniform2uiv");
+    bindGLFunc(cast(void**)&glProgramUniform3i, "glProgramUniform3i");
+    bindGLFunc(cast(void**)&glProgramUniform3iv, "glProgramUniform3iv");
+    bindGLFunc(cast(void**)&glProgramUniform3f, "glProgramUniform3f");
+    bindGLFunc(cast(void**)&glProgramUniform3fv, "glProgramUniform3fv");
+    bindGLFunc(cast(void**)&glProgramUniform3d, "glProgramUniform3d");
+    bindGLFunc(cast(void**)&glProgramUniform3dv, "glProgramUniform3dv");
+    bindGLFunc(cast(void**)&glProgramUniform3ui, "glProgramUniform3ui");
+    bindGLFunc(cast(void**)&glProgramUniform3uiv, "glProgramUniform3uiv");
+    bindGLFunc(cast(void**)&glProgramUniform4i, "glProgramUniform4i");
+    bindGLFunc(cast(void**)&glProgramUniform4iv, "glProgramUniform4iv");
+    bindGLFunc(cast(void**)&glProgramUniform4f, "glProgramUniform4f");
+    bindGLFunc(cast(void**)&glProgramUniform4fv, "glProgramUniform4fv");
+    bindGLFunc(cast(void**)&glProgramUniform4d, "glProgramUniform4d");
+    bindGLFunc(cast(void**)&glProgramUniform4dv, "glProgramUniform4dv");
+    bindGLFunc(cast(void**)&glProgramUniform4ui, "glProgramUniform4ui");
+    bindGLFunc(cast(void**)&glProgramUniform4uiv, "glProgramUniform4uiv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix2fv, "glProgramUniformMatrix2fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix3fv, "glProgramUniformMatrix3fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix4fv, "glProgramUniformMatrix4fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix2dv, "glProgramUniformMatrix2dv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix3dv, "glProgramUniformMatrix3dv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix4dv, "glProgramUniformMatrix4dv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix2x3fv, "glProgramUniformMatrix2x3fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix3x2fv, "glProgramUniformMatrix3x2fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix2x4fv, "glProgramUniformMatrix2x4fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix4x2fv, "glProgramUniformMatrix4x2fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix3x4fv, "glProgramUniformMatrix3x4fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix4x3fv, "glProgramUniformMatrix4x3fv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix2x3dv, "glProgramUniformMatrix2x3dv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix3x2dv, "glProgramUniformMatrix3x2dv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix2x4dv, "glProgramUniformMatrix2x4dv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix4x2dv, "glProgramUniformMatrix4x2dv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix3x4dv, "glProgramUniformMatrix3x4dv");
+    bindGLFunc(cast(void**)&glProgramUniformMatrix4x3dv, "glProgramUniformMatrix4x3dv");
+    bindGLFunc(cast(void**)&glValidateProgramPipeline, "glValidateProgramPipeline");
+    bindGLFunc(cast(void**)&glGetProgramPipelineInfoLog, "glGetProgramPipelineInfoLog");
+};
+
+enum arbSeparateShaderObjectsLoader = makeLoader(ARB_separate_shader_objects, arbSeparateShaderObjectsLoaderImpl, "gl41");
+static if(!usingContexts) enum arbSeparateShaderObjects = arbSeparateShaderObjectsDecls ~ arbSeparateShaderObjectsFuncs.makeGShared() ~ arbSeparateShaderObjectsLoader;
+
 // ARB_shader_atomic_counters <-- Core in GL 4.2
 enum ARB_shader_atomic_counters = "GL_ARB_shader_atomic_counters";
 enum arbShaderAtomicCountersDecls =
@@ -185,6 +395,11 @@ static if(!usingContexts) enum arbShaderImageLoadStore = arbShaderImageLoadStore
 enum ARB_shader_image_size = "GL_ARB_shader_image_size";
 enum arbShaderImageSizeLoader = makeLoader(ARB_shader_image_size, "", "gl43");
 static if(!usingContexts) enum arbShaderImageSize = arbShaderImageSizeLoader;
+
+// ARB_shader_precision <-- Core in GL 4.1
+enum ARB_shader_precision = "GL_ARB_shader_precision";
+enum arbShaderPrecisionLoader = makeLoader(ARB_shader_precision, "", "gl41");
+static if(!usingContexts) enum arbShaderPrecision = arbShaderPrecisionLoader;
 
 // ARB_shader_stencil_export
 enum ARB_shader_stencil_export = "GL_ARB_shader_stencil_export";

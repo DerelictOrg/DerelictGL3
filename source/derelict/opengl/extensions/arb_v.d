@@ -30,6 +30,54 @@ module derelict.opengl.extensions.arb_v;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_vertex_attrib_64bit <-- Core in 4.1
+enum ARB_vertex_attrib_64bit = "GL_ARB_vertex_attrib_64bit";
+enum arbVertexAttrib64BitDecls =
+q{
+extern(System) @nogc nothrow {
+    alias da_glVertexAttribL1d = void function(GLuint, GLdouble);
+    alias da_glVertexAttribL2d = void function(GLuint, GLdouble, GLdouble);
+    alias da_glVertexAttribL3d = void function(GLuint, GLdouble, GLdouble, GLdouble);
+    alias da_glVertexAttribL4d = void function(GLuint, GLdouble, GLdouble, GLdouble, GLdouble);
+    alias da_glVertexAttribL1dv = void function(GLuint, const(GLdouble)*);
+    alias da_glVertexAttribL2dv = void function(GLuint, const(GLdouble)*);
+    alias da_glVertexAttribL3dv = void function(GLuint, const(GLdouble)*);
+    alias da_glVertexAttribL4dv = void function(GLuint, const(GLdouble)*);
+    alias da_glVertexAttribLPointer = void function(GLuint, GLint, GLenum, GLsizei, const(GLvoid)*);
+    alias da_glGetVertexAttribLdv = void function(GLuint, GLenum, GLdouble*);
+}};
+
+enum arbVertexAttrib64BitFuncs =
+q{
+    da_glVertexAttribL1d glVertexAttribL1d;
+    da_glVertexAttribL2d glVertexAttribL2d;
+    da_glVertexAttribL3d glVertexAttribL3d;
+    da_glVertexAttribL4d glVertexAttribL4d;
+    da_glVertexAttribL1dv glVertexAttribL1dv;
+    da_glVertexAttribL2dv glVertexAttribL2dv;
+    da_glVertexAttribL3dv glVertexAttribL3dv;
+    da_glVertexAttribL4dv glVertexAttribL4dv;
+    da_glVertexAttribLPointer glVertexAttribLPointer;
+    da_glGetVertexAttribLdv glGetVertexAttribLdv;
+};
+
+enum arbVertexAttrib64BitLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glVertexAttribL1d, "glVertexAttribL1d");
+    bindGLFunc(cast(void**)&glVertexAttribL2d, "glVertexAttribL2d");
+    bindGLFunc(cast(void**)&glVertexAttribL3d, "glVertexAttribL3d");
+    bindGLFunc(cast(void**)&glVertexAttribL4d, "glVertexAttribL4d");
+    bindGLFunc(cast(void**)&glVertexAttribL1dv, "glVertexAttribL1dv");
+    bindGLFunc(cast(void**)&glVertexAttribL2dv, "glVertexAttribL2dv");
+    bindGLFunc(cast(void**)&glVertexAttribL3dv, "glVertexAttribL3dv");
+    bindGLFunc(cast(void**)&glVertexAttribL4dv, "glVertexAttribL4dv");
+    bindGLFunc(cast(void**)&glVertexAttribLPointer, "glVertexAttribLPointer");
+    bindGLFunc(cast(void**)&glGetVertexAttribLdv, "glGetVertexAttribLdv");
+};
+
+enum arbVertexAttrib64BitLoader = makeLoader(ARB_vertex_attrib_64bit, arbVertexAttrib64BitLoaderImpl, "gl41");
+static if(!usingContexts) enum arbVertexAttrib64Bit = arbVertexAttrib64BitDecls ~ arbVertexAttrib64BitFuncs.makeGShared() ~ arbVertexAttrib64BitLoader;
+
 // ARB_vertex_attrib_binding <-- Core in GL 4.3
 enum ARB_vertex_attrib_binding = "GL_ARB_vertex_attrib_binding";
 enum arbVertexAttribBindingDecls =
@@ -102,3 +150,60 @@ static if(!usingContexts) enum arbVertexAttribBinding = arbVertexAttribBindingDe
 enum ARB_vertex_type_10f_11f_11f_rev = "GL_ARB_vertex_type_10f_11f_11f_rev";
 enum arbVertexType10f11f11fRevLoader = makeLoader(ARB_vertex_type_10f_11f_11f_rev, "", "gl44");
 static if(!usingContexts) enum arbVertexType10f11f11fRev = arbVertexType10f11f11fRevLoader;
+
+// ARB_viewport_array <-- Core in GL 4.1
+enum ARB_viewport_array = "GL_ARB_viewport_array";
+enum arbViewportArrayDecls =
+q{
+enum : uint
+{
+    GL_MAX_VIEWPORTS                  = 0x825B,
+    GL_VIEWPORT_SUBPIXEL_BITS         = 0x825C,
+    GL_VIEWPORT_BOUNDS_RANGE          = 0x825D,
+    GL_LAYER_PROVOKING_VERTEX         = 0x825E,
+    GL_VIEWPORT_INDEX_PROVOKING_VERTEX = 0x825F,
+    GL_UNDEFINED_VERTEX               = 0x8260,
+}
+extern(System) @nogc nothrow {
+    alias da_glViewportArrayv = void function(GLuint, GLsizei, const(GLfloat)*);
+    alias da_glViewportIndexedf = void function(GLuint, GLfloat, GLfloat, GLfloat, GLfloat);
+    alias da_glViewportIndexedfv = void function(GLuint, const(GLfloat)*);
+    alias da_glScissorArrayv = void function(GLuint, GLsizei, const(GLint)*);
+    alias da_glScissorIndexed = void function(GLuint, GLint, GLint, GLsizei, GLsizei);
+    alias da_glScissorIndexedv = void function(GLuint, const(GLint)*);
+    alias da_glDepthRangeArrayv = void function(GLuint, GLsizei, const(GLclampd)*);
+    alias da_glDepthRangeIndexed = void function(GLuint, GLclampd, GLclampd);
+    alias da_glGetFloati_v = void function(GLenum, GLuint, GLfloat*);
+    alias da_glGetDoublei_v = void function(GLenum, GLuint, GLdouble*);
+}};
+
+enum arbViewportArrayFuncs =
+q{
+    da_glViewportArrayv glViewportArrayv;
+    da_glViewportIndexedf glViewportIndexedf;
+    da_glViewportIndexedfv glViewportIndexedfv;
+    da_glScissorArrayv glScissorArrayv;
+    da_glScissorIndexed glScissorIndexed;
+    da_glScissorIndexedv glScissorIndexedv;
+    da_glDepthRangeArrayv glDepthRangeArrayv;
+    da_glDepthRangeIndexed glDepthRangeIndexed;
+    da_glGetFloati_v glGetFloati_v;
+    da_glGetDoublei_v glGetDoublei_v;
+};
+
+enum arbViewportArrayLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glViewportArrayv, "glViewportArrayv");
+    bindGLFunc(cast(void**)&glViewportIndexedf, "glViewportIndexedf");
+    bindGLFunc(cast(void**)&glViewportIndexedfv, "glViewportIndexedfv");
+    bindGLFunc(cast(void**)&glScissorArrayv, "glScissorArrayv");
+    bindGLFunc(cast(void**)&glScissorIndexed, "glScissorIndexed");
+    bindGLFunc(cast(void**)&glScissorIndexedv, "glScissorIndexedv");
+    bindGLFunc(cast(void**)&glDepthRangeArrayv, "glDepthRangeArrayv");
+    bindGLFunc(cast(void**)&glDepthRangeIndexed, "glDepthRangeIndexed");
+    bindGLFunc(cast(void**)&glGetFloati_v, "glGetFloati_v");
+    bindGLFunc(cast(void**)&glGetDoublei_v, "glGetDoublei_v");
+};
+
+enum arbViewportArrayLoader = makeLoader(ARB_viewport_array, arbViewportArrayLoaderImpl, "gl41");
+static if(!usingContexts) enum arbViewportArray = arbViewportArrayDecls ~ arbViewportArrayFuncs.makeGShared() ~ arbViewportArrayLoader;

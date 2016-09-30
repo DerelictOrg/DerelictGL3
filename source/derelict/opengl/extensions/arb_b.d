@@ -25,27 +25,42 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.extensions.core_44;
+module derelict.opengl.extensions.arb_b;
 
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-import derelict.opengl.extensions.arb_b : arbBufferStorageDecls, arbBufferStorageFuncs, arbBufferStorageLoaderImpl;
-import derelict.opengl.extensions.arb_c : arbClearTextureDecls, arbClearTextureFuncs, arbClearTextureLoaderImpl;
-import derelict.opengl.extensions.arb_e : arbEnhancedLayoutsDecls;
-import derelict.opengl.extensions.arb_m : arbMultBindDecls, arbMultBindFuncs, arbMultBindLoaderImpl;
-import derelict.opengl.extensions.arb_q : arbQueryBufferObjectDecls;
-import derelict.opengl.extensions.arb_t : arbTextureMirrorClampToEdgeDecls;
+// ARB_buffer_storage <-- Core in GL 4.4
+enum ARB_buffer_storage = "GL_ARB_buffer_storage";
+enum arbBufferStorageDecls =
+q{
+enum : uint
+{
+    GL_MAP_PERSISTENT_BIT             = 0x0040,
+    GL_MAP_COHERENT_BIT               = 0x0080,
+    GL_DYNAMIC_STORAGE_BIT            = 0x0100,
+    GL_CLIENT_STORAGE_BIT             = 0x0200,
+    GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT = 0x00004000,
+    GL_BUFFER_IMMUTABLE_STORAGE       = 0x821F,
+    GL_BUFFER_STORAGE_FLAGS           = 0x8220,
+}
+extern(System) @nogc nothrow {
+    alias da_glBufferStorage = void function(GLenum,GLsizeiptr,const(void)*,GLbitfield);
+    alias da_glNamedBufferStorageEXT = void function(GLuint,GLsizeiptr,const(void)*,GLbitfield);
+}};
 
-enum corearb44Decls = arbBufferStorageDecls
-                    ~ arbClearTextureDecls
-                    ~ arbEnhancedLayoutsDecls
-                    ~ arbMultBindDecls
-                    ~ arbQueryBufferObjectDecls
-                    ~ arbTextureMirrorClampToEdgeDecls;
-enum corearb44Funcs = arbBufferStorageFuncs
-                    ~ arbClearTextureFuncs
-                    ~ arbMultBindFuncs;
-enum corearb44Loader = arbBufferStorageLoaderImpl
-                     ~ arbClearTextureLoaderImpl
-                     ~ arbMultBindLoaderImpl;
+enum arbBufferStorageFuncs =
+q{
+    da_glBufferStorage glBufferStorage;
+    da_glNamedBufferStorageEXT glNamedBufferStorageEXT;
+};
+
+enum arbBufferStorageLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glBufferStorage, "glBufferStorage");
+    try { bindGLFunc(cast(void**)&glNamedBufferStorageEXT, "glNamedBufferStorageEXT"); }
+    catch(Exception e) {}
+};
+
+enum arbBufferStorageLoader = makeLoader(ARB_buffer_storage, arbBufferStorageLoaderImpl, "gl44");
+static if(!usingContexts) enum arbBufferStorage = arbBufferStorageDecls ~ arbBufferStorageFuncs.makeGShared() ~ arbBufferStorageLoader;

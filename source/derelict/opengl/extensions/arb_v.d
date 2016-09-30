@@ -29,3 +29,8 @@ module derelict.opengl.extensions.arb_v;
 
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
+
+// ARB_vertex_type_10f_11f_11f_rev <-- Core in GL 4.4
+enum ARB_vertex_type_10f_11f_11f_rev = "GL_ARB_vertex_type_10f_11f_11f_rev";
+enum arbVertexType10f11f11fRevLoader = makeLoader(ARB_vertex_type_10f_11f_11f_rev, "", "gl44");
+static if(!usingContexts) enum arbVertexType10f11f11fRev = arbVertexType10f11f11fRevLoader;

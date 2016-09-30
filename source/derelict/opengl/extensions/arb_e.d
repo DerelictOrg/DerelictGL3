@@ -30,7 +30,7 @@ module derelict.opengl.extensions.arb_e;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_enhanced_layouts
+// ARB_enhanced_layouts <-- Core in GL 4.4
 enum ARB_enhanced_layouts = "GL_ARB_enhanced_layouts";
 enum arbEnhancedLayoutsDecls =
 q{
@@ -40,7 +40,7 @@ enum : uint
     GL_TRANSFORM_FEEDBACK_BUFFER_INDEX = 0x934B,
     GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C,
 }};
-enum arbEnhancedLayoutsLoader = makeExtLoader(ARB_enhanced_layouts);
+enum arbEnhancedLayoutsLoader = makeLoader(ARB_enhanced_layouts, "", "gl44");
 static if(!usingContexts) enum arbEnhancedLayouts = arbEnhancedLayoutsDecls ~ arbEnhancedLayoutsLoader;
 
 // ARB_ES3_1_compatibility <-- Core in GL 4.5

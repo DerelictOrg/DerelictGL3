@@ -49,6 +49,32 @@ enum arbCLEventLoaderImpl = `bindGLFunc(cast(void**)&glCreateSyncFromCLeventARB,
 enum arbCLEventLoader = makeExtLoader(ARB_cl_event, arbCLEventLoaderImpl);
 static if(!usingContexts) enum arbCLEvent = arbCLEventDecls ~ arbCLEventFuncs.makeGShared() ~ arbCLEventLoader;
 
+// ARB_clear_texture <-- Core in GL 4.4
+enum ARB_clear_texture = "GL_ARB_clear_texture";
+enum arbClearTextureDecls =
+q{
+enum uint GL_CLEAR_TEXTURE = 0x9365;
+extern(System) @nogc nothrow
+{
+    alias da_glClearTexImage = void function(GLuint,GLint,GLenum,GLenum,const(void)*);
+    alias da_glClearTexSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const(void)*);
+}};
+
+enum arbClearTextureFuncs =
+q{
+    da_glClearTexImage glClearTexImage;
+    da_glClearTexSubImage glClearTexSubImage;
+};
+
+enum arbClearTextureLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glClearTexImage, "glClearTexImage");
+    bindGLFunc(cast(void**)&glClearTexSubImage, "glClearTexSubImage");
+};
+
+enum arbClearTextureLoader = makeLoader(ARB_clear_texture, arbClearTextureLoaderImpl, "gl44");
+static if(!usingContexts) enum arbClearTexture = arbClearTextureDecls ~ arbClearTextureFuncs.makeGShared() ~ arbClearTextureLoader;
+
 // ARB_clip_control <-- Core in GL 4.5
 enum ARB_clip_control = "GL_ARB_clip_control";
 enum arbClipControlDecls =

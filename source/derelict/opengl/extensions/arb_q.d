@@ -25,27 +25,21 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.extensions.core_44;
+module derelict.opengl.extensions.arb_q;
 
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-import derelict.opengl.extensions.arb_b : arbBufferStorageDecls, arbBufferStorageFuncs, arbBufferStorageLoaderImpl;
-import derelict.opengl.extensions.arb_c : arbClearTextureDecls, arbClearTextureFuncs, arbClearTextureLoaderImpl;
-import derelict.opengl.extensions.arb_e : arbEnhancedLayoutsDecls;
-import derelict.opengl.extensions.arb_m : arbMultBindDecls, arbMultBindFuncs, arbMultBindLoaderImpl;
-import derelict.opengl.extensions.arb_q : arbQueryBufferObjectDecls;
-import derelict.opengl.extensions.arb_t : arbTextureMirrorClampToEdgeDecls;
+// ARB_query_buffer_object <-- Core in GL 4.4
+enum ARB_query_buffer_object = "GL_ARB_query_buffer_object";
+enum arbQueryBufferObjectDecls =
+q{
+enum : uint {
+    GL_QUERY_BUFFER                   = 0x9192,
+    GL_QUERY_BUFFER_BARRIER_BIT       = 0x00008000,
+    GL_QUERY_BUFFER_BINDING           = 0x9193,
+    GL_QUERY_RESULT_NO_WAIT           = 0x9194,
+}};
 
-enum corearb44Decls = arbBufferStorageDecls
-                    ~ arbClearTextureDecls
-                    ~ arbEnhancedLayoutsDecls
-                    ~ arbMultBindDecls
-                    ~ arbQueryBufferObjectDecls
-                    ~ arbTextureMirrorClampToEdgeDecls;
-enum corearb44Funcs = arbBufferStorageFuncs
-                    ~ arbClearTextureFuncs
-                    ~ arbMultBindFuncs;
-enum corearb44Loader = arbBufferStorageLoaderImpl
-                     ~ arbClearTextureLoaderImpl
-                     ~ arbMultBindLoaderImpl;
+enum arbQueryBufferObjectLoader = makeLoader(ARB_query_buffer_object, "", "gl44");
+static if(!usingContexts) enum arbQueryBufferObject = arbQueryBufferObjectDecls ~ arbQueryBufferObjectLoader;

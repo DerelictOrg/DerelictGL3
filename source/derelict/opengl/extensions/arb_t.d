@@ -89,11 +89,10 @@ enum : uint
 enum arbTextureGatherLoader = makeExtLoader(ARB_texture_gather);
 static if(!usingContexts) enum arbTextureGather = arbTextureGatherDecls ~ arbTextureGatherLoader;
 
-// ARB_texture_mirror_clamp_to_edge
+// ARB_texture_mirror_clamp_to_edge <-- Core in GL 4.4
 enum ARB_texture_mirror_clamp_to_edge = "GL_ARB_texture_mirror_clamp_to_edge";
 enum arbTextureMirrorClampToEdgeDecls = `enum uint GL_MIRROR_CLAMP_TO_EDGE = 0x8743;`;
-
-enum arbTextureMirrorClampToEdgeLoader = makeExtLoader(ARB_texture_mirror_clamp_to_edge);
+enum arbTextureMirrorClampToEdgeLoader = makeLoader(ARB_texture_mirror_clamp_to_edge, "", "gl44");
 static if(!usingContexts) enum arbTextureMirrorClampToEdge = arbTextureMirrorClampToEdgeDecls ~ arbTextureMirrorClampToEdgeLoader;
 
 // ARB_texture_query_levels
@@ -113,9 +112,9 @@ enum arbTextureRGB10A2UIDecls = `enum uint GL_RGB10_A2UI = 0x906F;`;
 enum arbTextureRGB10A2UILoader = makeExtLoader(ARB_texture_rgb10_a2ui);
 static if(!usingContexts) enum arbTextureRGB10A2UI = arbTextureRGB10A2UIDecls ~ arbTextureRGB10A2UILoader;
 
-// ARB_texture_stencil8
+// ARB_texture_stencil8 <-- Core in GL 4.4
 enum ARB_texture_stencil8 = "GL_ARB_texture_stencil8";
-enum arbTextureStencil8Loader = makeExtLoader(ARB_texture_stencil8);
+enum arbTextureStencil8Loader = makeLoader(ARB_texture_stencil8, "", "gl44");
 static if(!usingContexts) enum arbTextureStencil8 = arbTextureStencil8Loader;
 
 // ARB_texture_swizzle

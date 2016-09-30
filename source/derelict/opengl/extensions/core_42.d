@@ -33,8 +33,7 @@ import derelict.opengl.extensions.arb_i : arbInternalFormatQueryDecls, arbIntern
 import derelict.opengl.extensions.arb_m : arbMapBufferAlignmentDecls;
 import derelict.opengl.extensions.arb_s : arbShaderAtomicCountersDecls, arbShaderAtomicCountersFuncs, arbShaderAtomicCountersLoaderImpl,
                                           arbShaderImageLoadStoreDecls, arbShaderImageLoadStoreFuncs, arbShaderImageLoadStoreLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTextureCompressionBPTCDecls,
-                                          arbTextureStorageDecls, arbTextureStorageFuncs, arbTextureStorageLoaderImpl,
+import derelict.opengl.extensions.arb_t : arbTextureStorageDecls, arbTextureStorageFuncs, arbTextureStorageLoaderImpl,
                                           arbTransformFeedbackInstancedDecls, arbTransformFeedbackInstancedFuncs, arbTransformFeedbackInstancedLoaderImpl;
 
 enum corearb42Decls = arbBaseInstanceDecls
@@ -43,7 +42,6 @@ enum corearb42Decls = arbBaseInstanceDecls
                     ~ arbInternalFormatQueryDecls
                     ~ arbShaderAtomicCountersDecls
                     ~ arbShaderImageLoadStoreDecls
-                    ~ arbTextureCompressionBPTCDecls
                     ~ arbTextureStorageDecls
                     ~ arbTransformFeedbackInstancedDecls ;
 enum corearb42Funcs = arbBaseInstanceFuncs

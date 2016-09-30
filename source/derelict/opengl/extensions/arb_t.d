@@ -30,6 +30,66 @@ module derelict.opengl.extensions.arb_t;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_tessellation_shader <-- Core in GL 4.0
+enum ARB_tessellation_shader = "GL_ARB_tessellation_shader";
+enum arbTesselationShaderDecls =
+q{
+enum : uint
+{
+    GL_PATCHES                        = 0x000E,
+    GL_PATCH_VERTICES                 = 0x8E72,
+    GL_PATCH_DEFAULT_INNER_LEVEL      = 0x8E73,
+    GL_PATCH_DEFAULT_OUTER_LEVEL      = 0x8E74,
+    GL_TESS_CONTROL_OUTPUT_VERTICES   = 0x8E75,
+    GL_TESS_GEN_MODE                  = 0x8E76,
+    GL_TESS_GEN_SPACING               = 0x8E77,
+    GL_TESS_GEN_VERTEX_ORDER          = 0x8E78,
+    GL_TESS_GEN_POINT_MODE            = 0x8E79,
+    GL_ISOLINES                       = 0x8E7A,
+    GL_FRACTIONAL_ODD                 = 0x8E7B,
+    GL_FRACTIONAL_EVEN                = 0x8E7C,
+    GL_MAX_PATCH_VERTICES             = 0x8E7D,
+    GL_MAX_TESS_GEN_LEVEL             = 0x8E7E,
+    GL_MAX_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E7F,
+    GL_MAX_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E80,
+    GL_MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS = 0x8E81,
+    GL_MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS = 0x8E82,
+    GL_MAX_TESS_CONTROL_OUTPUT_COMPONENTS = 0x8E83,
+    GL_MAX_TESS_PATCH_COMPONENTS      = 0x8E84,
+    GL_MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS = 0x8E85,
+    GL_MAX_TESS_EVALUATION_OUTPUT_COMPONENTS = 0x8E86,
+    GL_MAX_TESS_CONTROL_UNIFORM_BLOCKS = 0x8E89,
+    GL_MAX_TESS_EVALUATION_UNIFORM_BLOCKS = 0x8E8A,
+    GL_MAX_TESS_CONTROL_INPUT_COMPONENTS = 0x886C,
+    GL_MAX_TESS_EVALUATION_INPUT_COMPONENTS = 0x886D,
+    GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E1E,
+    GL_MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E1F,
+    GL_UNIFORM_BLOCK_REFERENCED_BY_TESS_CONTROL_SHADER = 0x84F0,
+    GL_UNIFORM_BLOCK_REFERENCED_BY_TESS_EVALUATION_SHADER = 0x84F1,
+    GL_TESS_EVALUATION_SHADER         = 0x8E87,
+    GL_TESS_CONTROL_SHADER            = 0x8E88,
+}
+extern(System) @nogc nothrow {
+    alias da_glPatchParameteri = void function(GLenum, GLint);
+    alias da_glPatchParameterfv = void function(GLenum, const(GLfloat)*);
+}};
+
+enum arbTesselationShaderFuncs =
+q{
+    da_glPatchParameteri glPatchParameteri;
+    da_glPatchParameterfv glPatchParameterfv;
+};
+
+enum arbTesselationShaderLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glPatchParameteri, "glPatchParameteri");
+    bindGLFunc(cast(void**)&glPatchParameterfv, "glPatchParameterfv");
+};
+
+enum arbTesselationShaderLoader = makeLoader(ARB_tessellation_shader, arbTesselationShaderLoaderImpl, "gl40");
+static if(!usingContexts) enum arbTesselationShader = arbTesselationShaderDecls ~ arbTesselationShaderFuncs.makeGShared() ~ arbTesselationShaderLoader;
+
+
 // ARB_texture_barrier <-- Core in GL 4.5
 enum ARB_texture_barrier = "GL_ARB_texture_barrier";
 enum arbTextureBarrierDecls = `extern(System) @nogc nothrow alias da_glTextureBarrier = void function();`;
@@ -69,12 +129,12 @@ q{
 enum arbTextureBufferRangeLoader = makeLoader(ARB_texture_buffer_range, arbTextureBufferRangeLoaderImpl, "gl43");
 static if(!usingContexts) enum arbTextureBufferRange = arbTextureBufferRangeDecls ~ arbTextureBufferRangeFuncs.makeGShared() ~ arbTextureBufferRangeLoader;
 
-// ARB_texture_buffer_object_rgb32
+// ARB_texture_buffer_object_rgb32 <-- Core in GL 4.0
 enum ARB_texture_buffer_object_rgb32 = "GL_ARB_texture_buffer_object_rgb32";
-enum arbTextureBufferObjectRGB32Loader = makeExtLoader(ARB_texture_buffer_object_rgb32);
+enum arbTextureBufferObjectRGB32Loader = makeLoader(ARB_texture_buffer_object_rgb32, "", "gl40");
 static if(!usingContexts) enum arbTextureBufferObjectRGB32 = arbTextureBufferObjectRGB32Loader;
 
-// ARB_texture_compression_bptc <-- Core in GL 4.2
+// ARB_texture_compression_bptc
 enum ARB_texture_compression_bptc = "GL_ARB_texture_compression_bptc";
 enum arbTextureCompressionBPTCDecls =
 q{
@@ -86,7 +146,7 @@ enum : uint
     GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_ARB = 0x8E8F,
 }};
 
-enum arbTextureCompressionBPTCLoader = makeLoader(ARB_texture_compression_bptc, "", "gl42");
+enum arbTextureCompressionBPTCLoader = makeExtLoader(ARB_texture_compression_bptc);
 static if(!usingContexts) enum arbTextureCompressionBPTC = arbTextureCompressionBPTCDecls ~ arbTextureCompressionBPTCLoader;
 
 // ARB_texture_cube_map_array
@@ -131,15 +191,14 @@ enum ARB_texture_query_levels = "GL_ARB_texture_query_levels";
 enum arbTextureQueryLevelsLoader = makeLoader(ARB_texture_query_levels, "", "gl43");
 static if(!usingContexts) enum arbTextureQueryLevels = arbTextureQueryLevelsLoader;
 
-// ARB_texture_query_lod
+// ARB_texture_query_lod <-- Core in GL 4.0
 enum ARB_texture_query_lod = "GL_ARB_texture_query_lod";
-enum arbTextureQueryLODLoader = makeExtLoader(ARB_texture_query_lod);
+enum arbTextureQueryLODLoader = makeLoader(ARB_texture_query_lod, "", "gl40");
 static if(!usingContexts) enum arbTextureQueryLOD = arbTextureQueryLODLoader;
 
 // ARB_texture_rgb10_a2ui
 enum ARB_texture_rgb10_a2ui = "GL_ARB_texture_rgb10_a2ui";
 enum arbTextureRGB10A2UIDecls = `enum uint GL_RGB10_A2UI = 0x906F;`;
-
 enum arbTextureRGB10A2UILoader = makeExtLoader(ARB_texture_rgb10_a2ui);
 static if(!usingContexts) enum arbTextureRGB10A2UI = arbTextureRGB10A2UIDecls ~ arbTextureRGB10A2UILoader;
 
@@ -257,6 +316,87 @@ enum arbTextureViewLoaderImpl = `bindGLFunc(cast(void**)&glTextureView, "glTextu
 
 enum arbTextureViewLoader = makeLoader(ARB_texture_view, arbTextureViewLoaderImpl, "gl43");
 static if(!usingContexts) enum arbTextureView = arbTextureViewDecls ~ arbTextureViewFuncs.makeGShared() ~ arbTextureViewLoader;
+
+// ARB_transform_feedback2 <-- Core in GL 4.0
+enum ARB_transform_feedback2 = "GL_ARB_transform_feedback2";
+enum arbTransformFeedback2Decls =
+q{
+enum : uint
+{
+    GL_TRANSFORM_FEEDBACK             = 0x8E22,
+    GL_TRANSFORM_FEEDBACK_BUFFER_PAUSED = 0x8E23,
+    GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE = 0x8E24,
+    GL_TRANSFORM_FEEDBACK_BINDING     = 0x8E25,
+}
+extern(System) @nogc nothrow {
+    alias da_glBindTransformFeedback = void function(GLenum, GLuint);
+    alias da_glDeleteTransformFeedbacks = void function(GLsizei, const(GLuint)*);
+    alias da_glGenTransformFeedbacks = void function(GLsizei, GLuint*);
+    alias da_glIsTransformFeedback = GLboolean function(GLuint);
+    alias da_glPauseTransformFeedback = void function();
+    alias da_glResumeTransformFeedback = void function();
+    alias da_glDrawTransformFeedback = void function(GLenum, GLuint);
+}};
+
+enum arbTransformFeedback2Funcs =
+q{
+    da_glBindTransformFeedback glBindTransformFeedback;
+    da_glDeleteTransformFeedbacks glDeleteTransformFeedbacks;
+    da_glGenTransformFeedbacks glGenTransformFeedbacks;
+    da_glIsTransformFeedback glIsTransformFeedback;
+    da_glPauseTransformFeedback glPauseTransformFeedback;
+    da_glResumeTransformFeedback glResumeTransformFeedback;
+    da_glDrawTransformFeedback glDrawTransformFeedback;
+};
+
+enum arbTransformFeedback2LoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glBindTransformFeedback, "glBindTransformFeedback");
+    bindGLFunc(cast(void**)&glDeleteTransformFeedbacks, "glDeleteTransformFeedbacks");
+    bindGLFunc(cast(void**)&glGenTransformFeedbacks, "glGenTransformFeedbacks");
+    bindGLFunc(cast(void**)&glIsTransformFeedback, "glIsTransformFeedback");
+    bindGLFunc(cast(void**)&glPauseTransformFeedback, "glPauseTransformFeedback");
+    bindGLFunc(cast(void**)&glResumeTransformFeedback, "glResumeTransformFeedback");
+    bindGLFunc(cast(void**)&glDrawTransformFeedback, "glDrawTransformFeedback");
+};
+
+enum arbTransformFeedback2Loader = makeLoader(ARB_transform_feedback2, arbTransformFeedback2LoaderImpl, "gl40");
+static if(!usingContexts) enum arbTransformFeedback2 = arbTransformFeedback2Decls ~ arbTransformFeedback2Funcs.makeGShared() ~ arbTransformFeedback2Loader;
+
+// ARB_transform_feedback3 <-- Core in GL 4.0
+enum ARB_transform_feedback3 = "GL_ARB_transform_feedback3";
+enum arbTransformFeedback3Decls =
+q{
+enum : uint
+{
+    GL_MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70,
+    GL_MAX_VERTEX_STREAMS             = 0x8E71,
+}
+extern(System) @nogc nothrow {
+    alias da_glDrawTransformFeedbackStream = void function(GLenum, GLuint, GLuint);
+    alias da_glBeginQueryIndexed = void function(GLenum, GLuint, GLuint);
+    alias da_glEndQueryIndexed = void function(GLenum, GLuint);
+    alias da_glGetQueryIndexediv = void function(GLenum, GLuint, GLenum, GLint*);
+}};
+
+enum arbTransformFeedback3Funcs =
+q{
+    da_glDrawTransformFeedbackStream glDrawTransformFeedbackStream;
+    da_glBeginQueryIndexed glBeginQueryIndexed;
+    da_glEndQueryIndexed glEndQueryIndexed;
+    da_glGetQueryIndexediv glGetQueryIndexediv;
+};
+
+enum arbTransformFeedback3LoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glDrawTransformFeedbackStream, "glDrawTransformFeedbackStream");
+    bindGLFunc(cast(void**)&glBeginQueryIndexed, "glBeginQueryIndexed");
+    bindGLFunc(cast(void**)&glEndQueryIndexed, "glEndQueryIndexed");
+    bindGLFunc(cast(void**)&glGetQueryIndexediv, "glGetQueryIndexediv");
+};
+
+enum arbTransformFeedback3Loader = makeLoader(ARB_transform_feedback3, arbTransformFeedback3LoaderImpl, "gl40");
+static if(!usingContexts) enum arbTransformFeedback3 = arbTransformFeedback3Decls ~ arbTransformFeedback3Funcs.makeGShared() ~ arbTransformFeedback3Loader;
 
 // ARB_transform_feedback_instanced <-- Core in GL 4.2
 enum ARB_transform_feedback_instanced = "GL_ARB_transform_feedback_instanced";

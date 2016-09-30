@@ -139,3 +139,105 @@ q{
 
 enum arbGetTextureSubImageLoader = makeLoader(ARB_get_texture_sub_image, arbGetTextureSubImageLoaderImpl, "gl45");
 static if(!usingContexts) enum arbGetTextureSubImage = arbGetTextureSubImageDecls ~ arbGetTextureSubImageFuncs.makeGShared() ~ arbGetTextureSubImageLoader;
+
+// ARB_gpu_shader5 <-- Core in GL 4.0
+enum ARB_gpu_shader5 = "GL_ARB_gpu_shader5";
+enum arbGPUShader5Decls =
+q{
+enum : uint
+{
+    GL_GEOMETRY_SHADER_INVOCATIONS    = 0x887F,
+    GL_MAX_GEOMETRY_SHADER_INVOCATIONS = 0x8E5A,
+    GL_MIN_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5B,
+    GL_MAX_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5C,
+    GL_FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D,
+}};
+
+enum arbGPUShader5Loader = makeLoader(ARB_gpu_shader5, "", "gl40");
+static if(!usingContexts) enum arbGPUShader5 = arbGPUShader5Decls ~ arbGPUShader5Loader;
+
+// ARB_gpu_shader_fp64 <-- Core in GL 4.0
+enum ARB_gpu_shader_fp64 = "GL_ARB_gpu_shader_fp64";
+enum arbGPUShaderFP64Decls =
+q{
+enum : uint
+{
+    GL_DOUBLE_VEC2                    = 0x8FFC,
+    GL_DOUBLE_VEC3                    = 0x8FFD,
+    GL_DOUBLE_VEC4                    = 0x8FFE,
+    GL_DOUBLE_MAT2                    = 0x8F46,
+    GL_DOUBLE_MAT3                    = 0x8F47,
+    GL_DOUBLE_MAT4                    = 0x8F48,
+    GL_DOUBLE_MAT2x3                  = 0x8F49,
+    GL_DOUBLE_MAT2x4                  = 0x8F4A,
+    GL_DOUBLE_MAT3x2                  = 0x8F4B,
+    GL_DOUBLE_MAT3x4                  = 0x8F4C,
+    GL_DOUBLE_MAT4x2                  = 0x8F4D,
+    GL_DOUBLE_MAT4x3                  = 0x8F4E,
+}
+extern(System) @nogc nothrow {
+    alias da_glUniform1d = void function(GLint, GLdouble);
+    alias da_glUniform2d = void function(GLint, GLdouble, GLdouble);
+    alias da_glUniform3d = void function(GLint, GLdouble, GLdouble, GLdouble);
+    alias da_glUniform4d = void function(GLint, GLdouble, GLdouble, GLdouble, GLdouble);
+    alias da_glUniform1dv = void function(GLint, GLsizei, const(GLdouble)*);
+    alias da_glUniform2dv = void function(GLint, GLsizei, const(GLdouble)*);
+    alias da_glUniform3dv = void function(GLint, GLsizei, const(GLdouble)*);
+    alias da_glUniform4dv = void function(GLint, GLsizei, const(GLdouble)*);
+    alias da_glUniformMatrix2dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix3dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix4dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix2x3dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix2x4dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix3x2dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix3x4dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix4x2dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix4x3dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glGetUniformdv = void function(GLuint, GLint, GLdouble*);
+}};
+
+enum arbGPUShaderFP64Funcs =
+q{
+    da_glUniform1d glUniform1d;
+    da_glUniform2d glUniform2d;
+    da_glUniform3d glUniform3d;
+    da_glUniform4d glUniform4d;
+    da_glUniform1dv glUniform1dv;
+    da_glUniform2dv glUniform2dv;
+    da_glUniform3dv glUniform3dv;
+    da_glUniform4dv glUniform4dv;
+    da_glUniformMatrix2dv glUniformMatrix2dv;
+    da_glUniformMatrix3dv glUniformMatrix3dv;
+    da_glUniformMatrix4dv glUniformMatrix4dv;
+    da_glUniformMatrix2x3dv glUniformMatrix2x3dv;
+    da_glUniformMatrix2x4dv glUniformMatrix2x4dv;
+    da_glUniformMatrix3x2dv glUniformMatrix3x2dv;
+    da_glUniformMatrix3x4dv glUniformMatrix3x4dv;
+    da_glUniformMatrix4x2dv glUniformMatrix4x2dv;
+    da_glUniformMatrix4x3dv glUniformMatrix4x3dv;
+    da_glGetUniformdv glGetUniformdv;
+};
+
+enum arbGPUShaderFP64LoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glUniform1d, "glUniform1d");
+    bindGLFunc(cast(void**)&glUniform2d, "glUniform2d");
+    bindGLFunc(cast(void**)&glUniform3d, "glUniform3d");
+    bindGLFunc(cast(void**)&glUniform4d, "glUniform4d");
+    bindGLFunc(cast(void**)&glUniform1dv, "glUniform1dv");
+    bindGLFunc(cast(void**)&glUniform2dv, "glUniform2dv");
+    bindGLFunc(cast(void**)&glUniform3dv, "glUniform3dv");
+    bindGLFunc(cast(void**)&glUniform4dv, "glUniform4dv");
+    bindGLFunc(cast(void**)&glUniformMatrix2dv, "glUniformMatrix2dv");
+    bindGLFunc(cast(void**)&glUniformMatrix3dv, "glUniformMatrix3dv");
+    bindGLFunc(cast(void**)&glUniformMatrix4dv, "glUniformMatrix4dv");
+    bindGLFunc(cast(void**)&glUniformMatrix2x3dv, "glUniformMatrix2x3dv");
+    bindGLFunc(cast(void**)&glUniformMatrix2x4dv, "glUniformMatrix2x4dv");
+    bindGLFunc(cast(void**)&glUniformMatrix3x2dv, "glUniformMatrix3x2dv");
+    bindGLFunc(cast(void**)&glUniformMatrix3x4dv, "glUniformMatrix3x4dv");
+    bindGLFunc(cast(void**)&glUniformMatrix4x2dv, "glUniformMatrix4x2dv");
+    bindGLFunc(cast(void**)&glUniformMatrix4x3dv, "glUniformMatrix4x3dv");
+};
+
+enum arbGPUShaderFP64Loader = makeLoader(ARB_gpu_shader_fp64, arbGPUShaderFP64LoaderImpl, "gl40");
+static if(!usingContexts) enum arbGPUShaderFP64 = arbGPUShaderFP64Decls ~ arbGPUShaderFP64Funcs.makeGShared() ~ arbGPUShaderFP64Loader;

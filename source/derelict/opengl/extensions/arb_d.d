@@ -458,3 +458,32 @@ q{
 
 enum arbDrawBuffersBlendLoader = makeLoader(ARB_draw_buffers_blend, arbDrawBuffersBlendLoaderImpl, "gl40");
 static if(!usingContexts) enum arbDrawBuffersBlend = arbDrawBuffersBlendDecls ~ arbDrawBuffersBlendFuncs.makeGShared() ~ arbDrawBuffersBlendLoader;
+
+// ARB_draw_indirect <-- Core in GL 4.0
+enum ARB_draw_indirect = "GL_ARB_draw_indirect";
+enum arbDrawIndirectDecls =
+q{
+enum : uint
+{
+    GL_DRAW_INDIRECT_BUFFER           = 0x8F3F,
+    GL_DRAW_INDIRECT_BUFFER_BINDING   = 0x8F43,
+}
+extern(System) @nogc nothrow {
+    alias da_glDrawArraysIndirect = void function(GLenum, const(GLvoid)*);
+    alias da_glDrawElementsIndirect = void function(GLenum, GLenum, const(GLvoid)*);
+}};
+
+enum arbDrawIndirectFuncs =
+q{
+    da_glDrawArraysIndirect glDrawArraysIndirect;
+    da_glDrawElementsIndirect glDrawElementsIndirect;
+};
+
+enum arbDrawIndirectLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glDrawArraysIndirect, "glDrawArraysIndirect");
+    bindGLFunc(cast(void**)&glDrawElementsIndirect, "glDrawElementsIndirect");
+};
+
+enum arbDrawIndirectLoader = makeLoader(ARB_draw_indirect, arbDrawIndirectLoaderImpl, "gl40");
+static if(!usingContexts) enum arbDrawIndirect = arbDrawIndirectDecls ~ arbDrawIndirectFuncs.makeGShared() ~ arbDrawIndirectLoader;

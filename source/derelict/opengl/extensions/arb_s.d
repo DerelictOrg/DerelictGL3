@@ -30,7 +30,7 @@ module derelict.opengl.extensions.arb_s;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_sample_shading
+// ARB_sample_shading <-- Core in GL 4.0
 enum ARB_sample_shading = "GL_ARB_sample_shading";
 enum arbSampleShadingDecls =
 q{
@@ -44,7 +44,7 @@ extern(System) @nogc nothrow alias da_glMinSampleShadingARB = void function(GLcl
 
 enum arbSampleShadingFuncs = `da_glMinSampleShadingARB glMinSampleShadingARB;`;
 enum arbSampleShadingLoaderImpl = `bindGLFunc(cast(void**)&glMinSampleShadingARB, "glMinSampleShadingARB");`;
-enum arbSampleShadingLoader = makeExtLoader(ARB_sample_shading, arbSampleShadingLoaderImpl);
+enum arbSampleShadingLoader = makeLoader(ARB_sample_shading, arbSampleShadingLoaderImpl, "gl40");
 static if(!usingContexts) enum arbSampleShading = arbSampleShadingDecls ~ arbSampleShadingFuncs ~ arbSampleShadingLoader;
 
 // ARB_separate_shader_objects <-- Core in GL 4.1
@@ -436,6 +436,60 @@ enum arbShaderStorageBufferObjectFuncs = `da_glShaderStorageBlockBinding glShade
 enum arbShaderStorageBufferObjectLoaderImpl = `bindGLFunc(cast(void**)&glShaderStorageBlockBinding, "glShaderStorageBlockBinding");`;
 enum arbShaderStorageBufferObjectLoader = makeLoader(ARB_shader_storage_buffer_object, arbShaderStorageBufferObjectLoaderImpl, "gl43");
 static if(!usingContexts) enum arbShaderStorageBufferObject = arbShaderStorageBufferObjectDecls ~ arbShaderStorageBufferObjectFuncs.makeGShared() ~ arbShaderStorageBufferObjectLoader;
+
+// ARB_shader_subroutine <-- Core in GL 4.0
+enum ARB_shader_subroutine = "GL_ARB_shader_subroutine";
+enum arbShaderSubroutineDecls =
+q{
+enum : uint
+{
+    GL_ACTIVE_SUBROUTINES             = 0x8DE5,
+    GL_ACTIVE_SUBROUTINE_UNIFORMS     = 0x8DE6,
+    GL_ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS = 0x8E47,
+    GL_ACTIVE_SUBROUTINE_MAX_LENGTH   = 0x8E48,
+    GL_ACTIVE_SUBROUTINE_UNIFORM_MAX_LENGTH = 0x8E49,
+    GL_MAX_SUBROUTINES                = 0x8DE7,
+    GL_MAX_SUBROUTINE_UNIFORM_LOCATIONS = 0x8DE8,
+    GL_NUM_COMPATIBLE_SUBROUTINES     = 0x8E4A,
+    GL_COMPATIBLE_SUBROUTINES         = 0x8E4B,
+}
+extern(System) @nogc nothrow {
+    alias da_glGetSubroutineUniformLocation = GLint function(GLuint, GLenum, const(GLchar)*);
+    alias da_glGetSubroutineIndex = GLuint function(GLuint, GLenum, const(GLchar)*);
+    alias da_glGetActiveSubroutineUniformiv = void function(GLuint, GLenum, GLuint, GLenum, GLint*);
+    alias da_glGetActiveSubroutineUniformName = void function(GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar*);
+    alias da_glGetActiveSubroutineName = void function(GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar*);
+    alias da_glUniformSubroutinesuiv = void function(GLenum, GLsizei, const(GLuint)*);
+    alias da_glGetUniformSubroutineuiv = void function(GLenum, GLint, GLuint*);
+    alias da_glGetProgramStageiv = void function(GLuint, GLenum, GLenum, GLint*);
+}};
+
+enum arbShaderSubroutineFuncs =
+q{
+    da_glGetSubroutineUniformLocation glGetSubroutineUniformLocation;
+    da_glGetSubroutineIndex glGetSubroutineIndex;
+    da_glGetActiveSubroutineUniformiv glGetActiveSubroutineUniformiv;
+    da_glGetActiveSubroutineUniformName glGetActiveSubroutineUniformName;
+    da_glGetActiveSubroutineName glGetActiveSubroutineName;
+    da_glUniformSubroutinesuiv glUniformSubroutinesuiv;
+    da_glGetUniformSubroutineuiv glGetUniformSubroutineuiv;
+    da_glGetProgramStageiv glGetProgramStageiv;
+};
+
+enum arbShaderSubroutineLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glGetSubroutineUniformLocation, "glGetSubroutineUniformLocation");
+    bindGLFunc(cast(void**)&glGetSubroutineIndex, "glGetSubroutineIndex");
+    bindGLFunc(cast(void**)&glGetActiveSubroutineUniformiv, "glGetActiveSubroutineUniformiv");
+    bindGLFunc(cast(void**)&glGetActiveSubroutineUniformName, "glGetActiveSubroutineUniformName");
+    bindGLFunc(cast(void**)&glGetActiveSubroutineName, "glGetActiveSubroutineName");
+    bindGLFunc(cast(void**)&glUniformSubroutinesuiv, "glUniformSubroutinesuiv");
+    bindGLFunc(cast(void**)&glGetUniformSubroutineuiv, "glGetUniformSubroutineuiv");
+    bindGLFunc(cast(void**)&glGetProgramStageiv, "glGetProgramStageiv");
+};
+
+enum arbShaderSubroutineLoader = makeLoader(ARB_shader_subroutine, arbShaderSubroutineLoaderImpl, "gl40");
+static if(!usingContexts) enum arbShaderSubroutine = arbShaderSubroutineDecls ~ arbShaderSubroutineFuncs.makeGShared() ~ arbShaderSubroutineLoader;
 
 // ARB_shader_texture_image_samples <-- Core in GL 4.5
 enum ARB_shader_texture_image_samples = "GL_ARB_shader_texture_image_samples";

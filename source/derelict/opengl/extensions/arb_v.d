@@ -30,6 +30,74 @@ module derelict.opengl.extensions.arb_v;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_vertex_attrib_binding <-- Core in GL 4.3
+enum ARB_vertex_attrib_binding = "GL_ARB_vertex_attrib_binding";
+enum arbVertexAttribBindingDecls =
+q{
+enum : uint
+{
+    GL_VERTEX_ATTRIB_BINDING          = 0x82D4,
+    GL_VERTEX_ATTRIB_RELATIVE_OFFSET  = 0x82D5,
+    GL_VERTEX_BINDING_DIVISOR         = 0x82D6,
+    GL_VERTEX_BINDING_OFFSET          = 0x82D7,
+    GL_VERTEX_BINDING_STRIDE          = 0x82D8,
+    GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET = 0x82D9,
+    GL_MAX_VERTEX_ATTRIB_BINDINGS     = 0x82DA,
+}
+extern(System) @nogc nothrow
+{
+    alias da_glBindVertexBuffer = void function(GLuint,GLuint,GLintptr,GLsizei);
+    alias da_glVertexAttribFormat = void function(GLuint,GLint,GLenum,GLboolean,GLuint);
+    alias da_glVertexAttribIFormat = void function(GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexAttribLFormat = void function(GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexAttribBinding = void function(GLuint,GLuint);
+    alias da_glVertexBindingDivisor = void function(GLuint,GLuint);
+    alias da_glVertexArrayBindVertexBufferEXT = void function(GLuint,GLuint,GLuint,GLintptr,GLsizei);
+    alias da_glVertexArrayVertexAttribFormatEXT = void function(GLuint,GLuint,GLint,GLenum,GLboolean,GLuint);
+    alias da_glVertexArrayVertexAttribIFormatEXT = void function(GLuint,GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexArrayVertexAttribLFormatEXT = void function(GLuint,GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexArrayVertexAttribBindingEXT = void function(GLuint,GLuint,GLuint);
+    alias da_glVertexArrayVertexBindingDivisorEXT = void function(GLuint,GLuint,GLuint);
+}};
+
+enum arbVertexAttribBindingFuncs =
+q{
+    da_glBindVertexBuffer glBindVertexBuffer;
+    da_glVertexAttribFormat glVertexAttribFormat;
+    da_glVertexAttribIFormat glVertexAttribIFormat;
+    da_glVertexAttribLFormat glVertexAttribLFormat;
+    da_glVertexAttribBinding glVertexAttribBinding;
+    da_glVertexBindingDivisor glVertexBindingDivisor;
+    da_glVertexArrayBindVertexBufferEXT glVertexArrayBindVertexBufferEXT;
+    da_glVertexArrayVertexAttribFormatEXT glVertexArrayVertexAttribFormatEXT;
+    da_glVertexArrayVertexAttribIFormatEXT glVertexArrayVertexAttribIFormatEXT;
+    da_glVertexArrayVertexAttribLFormatEXT glVertexArrayVertexAttribLFormatEXT;
+    da_glVertexArrayVertexAttribBindingEXT glVertexArrayVertexAttribBindingEXT;
+    da_glVertexArrayVertexBindingDivisorEXT glVertexArrayVertexBindingDivisorEXT;
+};
+
+enum arbVertexAttribBindingLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glBindVertexBuffer, "glBindVertexBuffer");
+    bindGLFunc(cast(void**)&glVertexAttribFormat, "glVertexAttribFormat");
+    bindGLFunc(cast(void**)&glVertexAttribIFormat, "glVertexAttribIFormat");
+    bindGLFunc(cast(void**)&glVertexAttribLFormat, "glVertexAttribLFormat");
+    bindGLFunc(cast(void**)&glVertexAttribBinding, "glVertexAttribBinding");
+    bindGLFunc(cast(void**)&glVertexBindingDivisor, "glVertexBindingDivisor");
+    try {
+        bindGLFunc(cast(void**)&glVertexArrayBindVertexBufferEXT, "glVertexArrayBindVertexBufferEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribFormatEXT, "glVertexArrayVertexAttribFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribIFormatEXT, "glVertexArrayVertexAttribIFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribLFormatEXT, "glVertexArrayVertexAttribLFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribBindingEXT, "glVertexArrayVertexAttribBindingEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexBindingDivisorEXT, "glVertexArrayVertexBindingDivisorEXT");
+    }
+    catch(Exception e) {}
+};
+
+enum arbVertexAttribBindingLoader = makeLoader(ARB_vertex_attrib_binding, arbVertexAttribBindingLoaderImpl, "gl43");
+static if(!usingContexts) enum arbVertexAttribBinding = arbVertexAttribBindingDecls ~ arbVertexAttribBindingFuncs.makeGShared() ~ arbVertexAttribBindingLoader;
+
 // ARB_vertex_type_10f_11f_11f_rev <-- Core in GL 4.4
 enum ARB_vertex_type_10f_11f_11f_rev = "GL_ARB_vertex_type_10f_11f_11f_rev";
 enum arbVertexType10f11f11fRevLoader = makeLoader(ARB_vertex_type_10f_11f_11f_rev, "", "gl44");

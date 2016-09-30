@@ -30,7 +30,7 @@ module derelict.opengl.extensions.arb_d;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_debug_output
+// ARB_debug_output <-- Core in GL 4.3
 enum ARB_debug_output = "GL_ARB_debug_output";
 enum arbDebugOutputDecls =
 q{
@@ -86,7 +86,7 @@ q{
     bindGLFunc(cast(void**)&glGetDebugMessageLogARB, "glGetDebugMessageLogARB");
 };
 
-enum arbDebugOutputLoader = makeExtLoader(ARB_debug_output, arbDebugOutputLoaderImpl);
+enum arbDebugOutputLoader = makeLoader(ARB_debug_output, arbDebugOutputLoaderImpl, "gl43");
 static if(!usingContexts) enum arbDebugOutput = arbDebugOutputDecls ~ arbDebugOutputFuncs.makeGShared() ~ arbDebugOutputLoader;
 
 // ARB_depth_buffer_float

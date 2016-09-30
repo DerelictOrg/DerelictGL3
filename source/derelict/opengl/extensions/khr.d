@@ -43,6 +43,96 @@ enum : uint
 enum khrContextFlushControlLoader = makeLoader(KHR_context_flush_control, "", "gl45");
 static if(!usingContexts) enum khrContextFlushControl = khrContextFlushControlDecls ~ khrContextFlushControlLoader;
 
+// KHR_debug <-- Core in GL 4.3
+enum KHR_debug = "GL_KHR_debug";
+enum khrDebugDecls =
+q{
+enum : uint
+{
+    GL_DEBUG_OUTPUT_SYNCHRONOUS       = 0x8242,
+    GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH = 0x8243,
+    GL_DEBUG_CALLBACK_FUNCTION        = 0x8244,
+    GL_DEBUG_CALLBACK_USER_PARAM      = 0x8245,
+    GL_DEBUG_SOURCE_API               = 0x8246,
+    GL_DEBUG_SOURCE_WINDOW_SYSTEM     = 0x8247,
+    GL_DEBUG_SOURCE_SHADER_COMPILER   = 0x8248,
+    GL_DEBUG_SOURCE_THIRD_PARTY       = 0x8249,
+    GL_DEBUG_SOURCE_APPLICATION       = 0x824A,
+    GL_DEBUG_SOURCE_OTHER             = 0x824B,
+    GL_DEBUG_TYPE_ERROR               = 0x824C,
+    GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR = 0x824D,
+    GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR  = 0x824E,
+    GL_DEBUG_TYPE_PORTABILITY         = 0x824F,
+    GL_DEBUG_TYPE_PERFORMANCE         = 0x8250,
+    GL_DEBUG_TYPE_OTHER               = 0x8251,
+    GL_DEBUG_TYPE_MARKER              = 0x8268,
+    GL_DEBUG_TYPE_PUSH_GROUP          = 0x8269,
+    GL_DEBUG_TYPE_POP_GROUP           = 0x826A,
+    GL_DEBUG_SEVERITY_NOTIFICATION    = 0x826B,
+    GL_MAX_DEBUG_GROUP_STACK_DEPTH    = 0x826C,
+    GL_DEBUG_GROUP_STACK_DEPTH        = 0x826D,
+    GL_BUFFER                         = 0x82E0,
+    GL_SHADER                         = 0x82E1,
+    GL_PROGRAM                        = 0x82E2,
+    GL_QUERY                          = 0x82E3,
+    GL_PROGRAM_PIPELINE               = 0x82E4,
+    GL_SAMPLER                        = 0x82E6,
+    GL_DISPLAY_LIST                   = 0x82E7,
+    GL_MAX_LABEL_LENGTH               = 0x82E8,
+    GL_MAX_DEBUG_MESSAGE_LENGTH       = 0x9143,
+    GL_MAX_DEBUG_LOGGED_MESSAGES      = 0x9144,
+    GL_DEBUG_LOGGED_MESSAGES          = 0x9145,
+    GL_DEBUG_SEVERITY_HIGH            = 0x9146,
+    GL_DEBUG_SEVERITY_MEDIUM          = 0x9147,
+    GL_DEBUG_SEVERITY_LOW             = 0x9148,
+    GL_DEBUG_OUTPUT                   = 0x92E0,
+    GL_CONTEXT_FLAG_DEBUG_BIT         = 0x00000002,
+}
+extern(System) nothrow alias GLDEBUGPROC = void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*,GLvoid*);
+extern(System) @nogc nothrow {
+    alias da_glDebugMessageControl = void function(GLenum,GLenum,GLenum,GLsizei,const(GLuint*),GLboolean);
+    alias da_glDebugMessageInsert = void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*);
+    alias da_glDebugMessageCallback = void function(GLDEBUGPROC,const(void)*);
+    alias da_glGetDebugMessageLog = GLuint function(GLuint,GLsizei,GLenum*,GLenum*,GLuint*,GLenum*,GLsizei*,GLchar*);
+    alias da_glPushDebugGroup = void function(GLenum,GLuint,GLsizei,const(GLchar)*);
+    alias da_glPopDebugGroup = void function();
+    alias da_glObjectLabel = void function(GLenum,GLuint,GLsizei,GLsizei,const(GLchar)*);
+    alias da_glGetObjectLabel = void function(GLenum,GLuint,GLsizei,GLsizei*,GLchar*);
+    alias da_glObjectPtrLabel = void function(const(void)*,GLsizei,const(GLchar)*);
+    alias da_glGetObjectPtrLabel = void function(const(void)*,GLsizei,GLsizei*,GLchar*);
+}};
+
+enum khrDebugFuncs =
+q{
+    da_glDebugMessageControl glDebugMessageControl;
+    da_glDebugMessageInsert glDebugMessageInsert;
+    da_glDebugMessageCallback glDebugMessageCallback;
+    da_glGetDebugMessageLog glGetDebugMessageLog;
+    da_glPushDebugGroup glPushDebugGroup;
+    da_glPopDebugGroup glPopDebugGroup;
+    da_glObjectLabel glObjectLabel;
+    da_glGetObjectLabel glGetObjectLabel;
+    da_glObjectPtrLabel glObjectPtrLabel;
+    da_glGetObjectPtrLabel glGetObjectPtrLabel;
+};
+
+enum khrDebugLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glDebugMessageControl, "glDebugMessageControl");
+    bindGLFunc(cast(void**)&glDebugMessageInsert, "glDebugMessageInsert");
+    bindGLFunc(cast(void**)&glDebugMessageCallback, "glDebugMessageCallback");
+    bindGLFunc(cast(void**)&glGetDebugMessageLog, "glGetDebugMessageLog");
+    bindGLFunc(cast(void**)&glPushDebugGroup, "glPushDebugGroup");
+    bindGLFunc(cast(void**)&glPopDebugGroup, "glPopDebugGroup");
+    bindGLFunc(cast(void**)&glObjectLabel, "glObjectLabel");
+    bindGLFunc(cast(void**)&glGetObjectLabel, "glGetObjectLabel");
+    bindGLFunc(cast(void**)&glObjectPtrLabel, "glObjectPtrLabel");
+    bindGLFunc(cast(void**)&glGetObjectPtrLabel, "glGetObjectPtrLabel");
+};
+
+enum khrDebugLoader = makeLoader(KHR_debug, khrDebugLoaderImpl, "gl43");
+static if(!usingContexts) enum khrDebug = khrDebugDecls ~ khrDebugFuncs.makeGShared() ~ khrDebugLoader;
+
 // KHR_robustness <-- Core in GL 4.5
 enum KHR_robustness = "GL_KHR_robustness";
 enum khrRobustnessDecls =

@@ -47,10 +47,46 @@ enum arbSampleShadingLoaderImpl = `bindGLFunc(cast(void**)&glMinSampleShadingARB
 enum arbSampleShadingLoader = makeExtLoader(ARB_sample_shading, arbSampleShadingLoaderImpl);
 static if(!usingContexts) enum arbSampleShading = arbSampleShadingDecls ~ arbSampleShadingFuncs ~ arbSampleShadingLoader;
 
-// ARB_shader_image_size
+// ARB_shader_image_size <-- Core in GL 4.3
 enum ARB_shader_image_size = "GL_ARB_shader_image_size";
-enum arbShaderImageSizeLoader = makeExtLoader(ARB_shader_image_size);
+enum arbShaderImageSizeLoader = makeLoader(ARB_shader_image_size, "", "gl43");
 static if(!usingContexts) enum arbShaderImageSize = arbShaderImageSizeLoader;
+
+// ARB_shader_stencil_export
+enum ARB_shader_stencil_export = "GL_ARB_shader_stencil_export";
+enum arbShaderStencilExportLoader = makeExtLoader(ARB_shader_stencil_export);
+static if(!usingContexts) enum arbShaderStencilExport = arbShaderStencilExportLoader;
+
+// ARB_shader_storage_buffer_object <-- Core in GL 4.3
+enum ARB_shader_storage_buffer_object = "GL_ARB_shader_storage_buffer_object";
+enum arbShaderStorageBufferObjectDecls =
+q{
+enum : uint
+{
+    GL_SHADER_STORAGE_BUFFER          = 0x90D2,
+    GL_SHADER_STORAGE_BUFFER_BINDING  = 0x90D3,
+    GL_SHADER_STORAGE_BUFFER_START    = 0x90D4,
+    GL_SHADER_STORAGE_BUFFER_SIZE     = 0x90D5,
+    GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS = 0x90D6,
+    GL_MAX_GEOMETRY_SHADER_STORAGE_BLOCKS = 0x90D7,
+    GL_MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS = 0x90D8,
+    GL_MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS = 0x90D9,
+    GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS = 0x90DA,
+    GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS = 0x90DB,
+    GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS = 0x90DC,
+    GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS = 0x90DD,
+    GL_MAX_SHADER_STORAGE_BLOCK_SIZE  = 0x90DE,
+    GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT = 0x90DF,
+    GL_SHADER_STORAGE_BARRIER_BIT     = 0x2000,
+    GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES = 0x8F39,
+}
+extern(System) @nogc nothrow alias da_glShaderStorageBlockBinding = void function(GLuint,GLuint,GLuint);
+};
+
+enum arbShaderStorageBufferObjectFuncs = `da_glShaderStorageBlockBinding glShaderStorageBlockBinding;`;
+enum arbShaderStorageBufferObjectLoaderImpl = `bindGLFunc(cast(void**)&glShaderStorageBlockBinding, "glShaderStorageBlockBinding");`;
+enum arbShaderStorageBufferObjectLoader = makeLoader(ARB_shader_storage_buffer_object, arbShaderStorageBufferObjectLoaderImpl, "gl43");
+static if(!usingContexts) enum arbShaderStorageBufferObject = arbShaderStorageBufferObjectDecls ~ arbShaderStorageBufferObjectFuncs.makeGShared() ~ arbShaderStorageBufferObjectLoader;
 
 // ARB_shader_texture_image_samples <-- Core in GL 4.5
 enum ARB_shader_texture_image_samples = "GL_ARB_shader_texture_image_samples";
@@ -104,7 +140,8 @@ enum ARB_shading_language_packing = "GL_ARB_shading_language_packing";
 enum arbShadingLanguagePackingLoader = makeExtLoader(ARB_shading_language_packing);
 static if(!usingContexts) enum arbShadingLanguagePacking = arbShadingLanguagePackingLoader;
 
-// ARB_shader_stencil_export
-enum ARB_shader_stencil_export = "GL_ARB_shader_stencil_export";
-enum arbShaderStencilExportLoader = makeExtLoader(ARB_shader_stencil_export);
-static if(!usingContexts) enum arbShaderStencilExport = arbShaderStencilExportLoader;
+// ARB_stencil_texturing <-- Core in GL 4.3
+enum ARB_stencil_texturing = "GL_ARB_stencil_texturing";
+enum arbStencilTexturingDecls = `enum uint GL_DEPTH_STENCIL_TEXTURE_MODE = 0x90EA;`;
+enum arbStencilTexturingLoader = makeLoader(ARB_stencil_texturing, "", "gl43");
+static if(!usingContexts) enum arbStencilTexturing = arbStencilTexturingDecls ~ arbStencilTexturingLoader;

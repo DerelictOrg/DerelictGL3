@@ -118,3 +118,8 @@ q{
 
 enum arbRobustnessLoader = makeExtLoader(ARB_robustness, arbRobustnessLoaderImpl);
 static if(!usingContexts) enum arbRobustness = arbRobustnessDecls ~ arbRobustnessFuncs.makeGShared() ~ arbRobustnessLoader;
+
+// ARB_robust_buffer_access_behavior <-- Core in GL 4.3
+enum ARB_robust_buffer_access_behavior = "GL_ARB_robust_buffer_access_behavior";
+enum arbRobustBufferAccessBehaviorLoader = makeLoader(ARB_robust_buffer_access_behavior, "", "gl43");
+static if(!usingContexts) enum arbRobustBufferAccessBehavior = arbRobustBufferAccessBehaviorLoader;

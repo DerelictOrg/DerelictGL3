@@ -25,24 +25,12 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.extensions.core_44;
+module derelict.opengl.extensions.arb_a;
 
-import derelict.opengl.extensions.arb_b : arbBufferStorageDecls, arbBufferStorageFuncs, arbBufferStorageLoaderImpl;
-import derelict.opengl.extensions.arb_c : arbClearTextureDecls, arbClearTextureFuncs, arbClearTextureLoaderImpl;
-import derelict.opengl.extensions.arb_e : arbEnhancedLayoutsDecls;
-import derelict.opengl.extensions.arb_m : arbMultBindDecls, arbMultBindFuncs, arbMultBindLoaderImpl;
-import derelict.opengl.extensions.arb_q : arbQueryBufferObjectDecls;
-import derelict.opengl.extensions.arb_t : arbTextureMirrorClampToEdgeDecls;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
-enum corearb44Decls = arbBufferStorageDecls
-                    ~ arbClearTextureDecls
-                    ~ arbEnhancedLayoutsDecls
-                    ~ arbMultBindDecls
-                    ~ arbQueryBufferObjectDecls
-                    ~ arbTextureMirrorClampToEdgeDecls;
-enum corearb44Funcs = arbBufferStorageFuncs
-                    ~ arbClearTextureFuncs
-                    ~ arbMultBindFuncs;
-enum corearb44Loader = arbBufferStorageLoaderImpl
-                     ~ arbClearTextureLoaderImpl
-                     ~ arbMultBindLoaderImpl;
+// ARB_array_of_arrays <-- Core in GL 4.3
+enum ARB_array_of_arrays = "GL_ARB_array_of_arrays";
+enum arbArrayOfArraysLoader = makeLoader(ARB_array_of_arrays, "", "gl43");
+static if(!usingContexts) enum arbArrayOfArrays = arbArrayOfArraysLoader;

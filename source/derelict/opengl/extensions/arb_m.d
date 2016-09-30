@@ -65,3 +65,27 @@ q{
 
 enum arbMultBindLoader = makeLoader(ARB_multi_bind, arbMultBindLoaderImpl, "gl44");
 static if(!usingContexts) enum arbMultBind = arbMultBindDecls ~ arbMultBindFuncs.makeGShared() ~ arbMultBindLoader;
+
+// ARB_multi_draw_indirect <-- Core in GL 4.3
+enum ARB_multi_draw_indirect = "GL_ARB_multi_draw_indirect";
+enum arbMultiDrawIndirectDecls =
+q{
+extern(System) @nogc nothrow {
+    alias da_glMultiDrawArraysIndirect = void function(GLenum,const(void)*,GLsizei,GLsizei);
+    alias da_glMultiDrawElementsIndirect = void function(GLenum,GLenum,const(void)*,GLsizei,GLsizei);
+}};
+
+enum arbMultiDrawIndirectFuncs =
+q{
+    da_glMultiDrawArraysIndirect glMultiDrawArraysIndirect;
+    da_glMultiDrawElementsIndirect glMultiDrawElementsIndirect;
+};
+
+enum arbMultiDrawIndirectLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect");
+    bindGLFunc(cast(void**)&glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect");
+};
+
+enum arbMultiDrawIndirectLoader = makeLoader(ARB_multi_draw_indirect, arbMultiDrawIndirectLoaderImpl, "gl43");
+static if(!usingContexts) enum arbMultiDrawIndirect = arbMultiDrawIndirectDecls ~ arbMultiDrawIndirectFuncs.makeGShared() ~ arbMultiDrawIndirectLoader;

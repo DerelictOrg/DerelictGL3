@@ -30,9 +30,9 @@ module derelict.opengl.extensions.arb_f;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_fragment_layer_viewport
+// ARB_fragment_layer_viewport <-- Core in GL 4.3
 enum ARB_fragment_layer_viewport = "GL_ARB_fragment_layer_viewport";
-enum arbFragmentLayerViewportLoader = makeExtLoader(ARB_fragment_layer_viewport);
+enum arbFragmentLayerViewportLoader = makeLoader(ARB_fragment_layer_viewport, "", "gl43");
 static if(!usingContexts) enum arbFragmentLayerViewport = arbFragmentLayerViewportLoader;
 
 // ARB_framebuffer_sRGB
@@ -40,3 +40,49 @@ enum ARB_framebuffer_sRGB = "GL_ARB_framebuffer_sRGB";
 enum arbFramebufferSRGBDecls = `enum uint GL_FRAMEBUFFER_SRGB = 0x8DB9;`;
 enum arbFramebufferSRGBLoader = makeExtLoader(ARB_framebuffer_sRGB);
 static if(!usingContexts) enum arbFramebufferSRGB = arbFramebufferSRGBDecls ~ arbFramebufferSRGBLoader;
+
+// ARB_framebuffer_no_attachments <-- Core in GL 4.3
+enum ARB_framebuffer_no_attachments = "GL_ARB_framebuffer_no_attachments";
+enum arbFramebufferNoAttachmentsDecls =
+q{
+enum : uint
+{
+    GL_FRAMEBUFFER_DEFAULT_WIDTH      = 0x9310,
+    GL_FRAMEBUFFER_DEFAULT_HEIGHT     = 0x9311,
+    GL_FRAMEBUFFER_DEFAULT_LAYERS     = 0x9312,
+    GL_FRAMEBUFFER_DEFAULT_SAMPLES    = 0x9313,
+    GL_FRAMEBUFFER_DEFAULT_FIXED_SAMPLE_LOCATIONS = 0x9314,
+    GL_MAX_FRAMEBUFFER_WIDTH          = 0x9315,
+    GL_MAX_FRAMEBUFFER_HEIGHT         = 0x9316,
+    GL_MAX_FRAMEBUFFER_LAYERS         = 0x9317,
+    GL_MAX_FRAMEBUFFER_SAMPLES        = 0x9318,
+}
+extern(System) @nogc nothrow
+{
+    alias da_glFramebufferParameteri = void function(GLenum,GLenum,GLint);
+    alias da_glGetFramebufferParameteriv = void function(GLenum,GLenum,GLint*);
+    alias da_glNamedFramebufferParameteriEXT = void function(GLuint,GLenum,GLint);
+    alias da_glGetNamedFramebufferParameterivEXT = void function(GLuint,GLenum,GLint*);
+}};
+
+enum arbFramebufferNoAttachmentsFuncs =
+q{
+    da_glFramebufferParameteri glFramebufferParameteri;
+    da_glGetFramebufferParameteriv glGetFramebufferParameteriv;
+    da_glNamedFramebufferParameteriEXT glNamedFramebufferParameteriEXT;
+    da_glGetNamedFramebufferParameterivEXT glGetNamedFramebufferParameterivEXT;
+};
+
+enum arbFramebufferNoAttachmentsLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glFramebufferParameteri, "glFramebufferParameteri");
+    bindGLFunc(cast(void**)&glGetFramebufferParameteriv, "glGetFramebufferParameteriv");
+    try {
+        bindGLFunc(cast(void**)&glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT");
+        bindGLFunc(cast(void**)&glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT");
+    }
+    catch(Exception e) {}
+};
+
+enum arbFramebufferNoAttachmentsLoader = makeLoader(ARB_framebuffer_no_attachments, arbFramebufferNoAttachmentsLoaderImpl, "gl43");
+static if(!usingContexts) enum arbFramebufferNoAttachments = arbFramebufferNoAttachmentsDecls ~ arbFramebufferNoAttachmentsFuncs.makeGShared() ~ arbFramebufferNoAttachmentsLoader;

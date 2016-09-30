@@ -49,6 +49,39 @@ enum arbCLEventLoaderImpl = `bindGLFunc(cast(void**)&glCreateSyncFromCLeventARB,
 enum arbCLEventLoader = makeExtLoader(ARB_cl_event, arbCLEventLoaderImpl);
 static if(!usingContexts) enum arbCLEvent = arbCLEventDecls ~ arbCLEventFuncs.makeGShared() ~ arbCLEventLoader;
 
+// ARB_clear_buffer_object <-- Core in GL 4.3
+enum ARB_clear_buffer_object = "GL_ARB_clear_buffer_object";
+enum arbClearBufferObjectDecls =
+q{
+extern(System) @nogc nothrow {
+    alias da_glClearBufferData = void function(GLenum,GLenum,GLenum,GLenum,const(void)*);
+    alias da_glClearBufferSubData = void function(GLenum,GLenum,GLintptr,GLsizeiptr,GLenum,GLenum,const(void)*);
+    alias da_glClearNamedBufferDataEXT = void function(GLuint,GLenum,GLenum,GLenum,const(void)*);
+    alias da_glClearNamedBufferSubDataEXT = void function(GLuint,GLenum,GLenum,GLenum,GLsizeiptr,GLsizeiptr,const(void)*);
+}};
+
+enum arbClearBufferObjectFuncs =
+q{
+    da_glClearBufferData glClearBufferData;
+    da_glClearBufferSubData glClearBufferSubData;
+    da_glClearNamedBufferDataEXT glClearNamedBufferDataEXT;
+    da_glClearNamedBufferSubDataEXT glClearNamedBufferSubDataEXT;
+};
+
+enum arbClearBufferObjectLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glClearBufferData, "glClearBufferData");
+    bindGLFunc(cast(void**)&glClearBufferSubData, "glClearBufferSubData");
+    try {
+        bindGLFunc(cast(void**)&glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT");
+        bindGLFunc(cast(void**)&glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT");
+    }
+    catch(Exception e) {}
+};
+
+enum arbClearBufferObjectLoader = makeLoader(ARB_clear_buffer_object, arbClearBufferObjectLoaderImpl, "gl43");
+static if(!usingContexts) enum arbClearBufferObject = arbClearBufferObjectDecls ~ arbClearBufferObjectFuncs.makeGShared() ~ arbClearBufferObjectLoader;
+
 // ARB_clear_texture <-- Core in GL 4.4
 enum ARB_clear_texture = "GL_ARB_clear_texture";
 enum arbClearTextureDecls =
@@ -113,6 +146,50 @@ enum : uint
 enum arbCompressedTexturePixelStorageLoader = makeExtLoader(ARB_compressed_texture_pixel_storage);
 static if(!usingContexts) enum arbCompressedTexturePixelStorage = arbCompressedTexturePixelStorageDecls ~ arbCompressedTexturePixelStorageLoader;
 
+// ARB_compute_shader <-- Core in GL 4.3
+enum ARB_compute_shader = "GL_ARB_compute_shader";
+enum arbComputeShaderDecls =
+q{
+enum : uint
+{
+    GL_COMPUTE_SHADER                 = 0x91B9,
+    GL_MAX_COMPUTE_UNIFORM_BLOCKS     = 0x91BB,
+    GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS = 0x91BC,
+    GL_MAX_COMPUTE_IMAGE_UNIFORMS     = 0x91BD,
+    GL_MAX_COMPUTE_SHARED_MEMORY_SIZE = 0x8262,
+    GL_MAX_COMPUTE_UNIFORM_COMPONENTS = 0x8263,
+    GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS = 0x8264,
+    GL_MAX_COMPUTE_ATOMIC_COUNTERS    = 0x8265,
+    GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS = 0x8266,
+    GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS  = 0x90EB,
+    GL_MAX_COMPUTE_WORK_GROUP_COUNT   = 0x91BE,
+    GL_MAX_COMPUTE_WORK_GROUP_SIZE    = 0x91BF,
+    GL_COMPUTE_WORK_GROUP_SIZE        = 0x8267,
+    GL_UNIFORM_BLOCK_REFERENCED_BY_COMPUTE_SHADER = 0x90EC,
+    GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_COMPUTE_SHADER = 0x90ED,
+    GL_DISPATCH_INDIRECT_BUFFER       = 0x90EE,
+    GL_DISPATCH_INDIRECT_BUFFER_BINDING = 0x90EF,
+    GL_COMPUTE_SHADER_BIT             = 0x00000020,
+}
+extern(System) @nogc nothrow {
+    alias da_glDispatchCompute = void function(GLuint,GLuint,GLuint);
+    alias da_glDispatchComputeIndirect = void function(GLintptr);
+}};
+
+enum arbComputeShaderFuncs =
+q{
+    da_glDispatchCompute glDispatchCompute;
+    da_glDispatchComputeIndirect glDispatchComputeIndirect;
+};
+enum arbComputeShaderLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glDispatchCompute, "glDispatchCompute");
+    bindGLFunc(cast(void**)&glDispatchComputeIndirect, "glDispatchComputeIndirect");
+};
+
+enum arbComputeShaderLoader = makeLoader(ARB_compute_shader, arbComputeShaderLoaderImpl, "gl43");
+static if(!usingContexts) enum arbComputeShader = arbComputeShaderDecls ~ arbComputeShaderFuncs.makeGShared() ~ arbComputeShaderLoader;
+
 // ARB_conditional_render_inverted <-- Core in GL 4.5
 enum ARB_conditional_render_inverted = "GL_ARB_conditional_render_inverted";
 enum arbConditionalRenderInvertedDecls =
@@ -132,6 +209,14 @@ static if(!usingContexts) enum arbConditionalRenderInverted = arbConditionalRend
 enum ARB_conservative_depth = "GL_ARB_conservative_depth";
 enum arbConservativeDepthLoader = makeExtLoader(ARB_conservative_depth);
 static if(!usingContexts) enum arbConservativeDepth = arbConservativeDepthLoader;
+
+// ARB_copy_image <-- Core in GL 4.3
+enum ARB_copy_image = "GL_ARB_copy_image";
+enum arbCopyImageDecls = `extern(System) @nogc nothrow alias da_glCopyImageSubData = void function(GLuint,GLenum,GLint,GLint,GLint,GLint,GLuint,GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei);`;
+enum arbCopyImageFuncs = `da_glCopyImageSubData glCopyImageSubData;`;
+enum arbCopyImageLoaderImpl = `bindGLFunc(cast(void**)&glCopyImageSubData, "glCopyImageSubData");`;
+enum arbCopyImageLoader = makeLoader(ARB_copy_image, arbCopyImageLoaderImpl, "gl43");
+static if(!usingContexts) enum arbCopyImage = arbCopyImageDecls ~ arbCopyImageFuncs.makeGShared() ~ arbCopyImageLoader;
 
 // ARB_cull_distance <-- Core in GL 4.5
 enum ARB_cull_distance = "GL_ARB_cull_distance";

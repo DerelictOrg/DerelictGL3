@@ -399,8 +399,16 @@ static if(!usingContexts) enum arbGetTextureSubImage = arbGetTextureSubImageDecl
 
 // KHR_context_flush_control
 enum KHR_context_flush_control = "GL_KHR_context_flush_control";
+enum khrContextFlushControlDecls =
+q{
+enum : uint
+{
+    GL_CONTEXT_RELEASE_BEHAVIOR       = 0x82FB,
+    GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH = 0x82FC,
+}};
+
 enum khrContextFlushControlLoader = makeLoader(KHR_context_flush_control, "", "gl45");
-static if(!usingContexts) enum khrContextFlushControl = khrContextFlushControlLoader;
+static if(!usingContexts) enum khrContextFlushControl = khrContextFlushControlDecls ~ khrContextFlushControlLoader;
 
 // KHR_robustness
 enum KHR_robustness = "GL_KHR_robustness";

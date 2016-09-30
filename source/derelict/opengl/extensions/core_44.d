@@ -140,6 +140,11 @@ q{
 enum arbQueryBufferObjectLoader = makeLoader(ARB_query_buffer_object, "", "gl44");
 static if(!usingContexts) enum arbQueryBufferObject = arbQueryBufferObjectDecls ~ arbQueryBufferObjectLoader;
 
+// ARB_vertex_type_10f_11f_11f_rev
+enum ARB_vertex_type_10f_11f_11f_rev = "GL_ARB_vertex_type_10f_11f_11f_rev";
+enum arbVertexType10f11f11fRevLoader = makeLoader(ARB_vertex_type_10f_11f_11f_rev, "", "gl44");
+static if(!usingContexts) enum arbVertexType10f11f11fRev = arbVertexType10f11f11fRevLoader;
+
 enum corearb44Decls = arbBufferStorageDecls~ arbClearTextureDecls ~ arbMultBindDecls ~ arbQueryBufferObjectDecls;
 enum corearb44Funcs = arbBufferStorageFuncs ~ arbClearTextureFuncs ~ arbMultBindFuncs;
-enum corearb44Loader = arbBufferStorageLoader ~ arbClearTextureLoader ~ arbMultBindLoader;
+enum corearb44Loader = arbBufferStorageLoader ~ arbClearTextureLoader ~ arbMultBindLoader ~ arbQueryBufferObjectLoader ~ arbVertexType10f11f11fRevLoader;

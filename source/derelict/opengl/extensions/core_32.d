@@ -208,7 +208,14 @@ q{
 enum arbTextureMultiSampleLoader = makeLoader(ARB_texture_multisample, arbTextureMultiSampleLoaderImpl, "gl32");
 static if(!usingContexts) enum arbTextureMultiSample = arbTextureMultiSampleDecls ~ arbTextureMultiSampleFuncs.makeGShared() ~ arbTextureMultiSampleLoader;
 
-enum corearb32 = arbDrawElementsBaseVertex ~ arbProvokingVertex ~ arbSync ~ arbTextureMultiSample;
+
+// ARB_vertex_array_bgra
+enum ARB_vertex_array_bgra = "GL_ARB_vertex_array_bgra";
+enum arbVertexArrayBGRALoader = makeLoader(ARB_vertex_array_bgra, "", "gl32");
+static if(!usingContexts) enum arbVertexArrayBGRA = arbVertexArrayBGRALoader;
+
+
+static if(!usingContexts) enum corearb32 = arbDrawElementsBaseVertex ~ arbProvokingVertex ~ arbSync ~ arbTextureMultiSample;
 enum corearb32Decls = arbDrawElementsBaseVertexDecls ~ arbProvokingVertexDecls ~ arbSeamlessCubeMapDecls ~ arbSyncDecls ~ arbTextureMultiSampleDecls;
 enum corearb32Funcs = arbDrawElementsBaseVertexFuncs ~ arbProvokingVertexFuncs ~ arbSyncFuncs ~ arbTextureMultiSampleFuncs;
 enum corearb32Loader = arbDrawElementsBaseVertexLoaderImpl ~ arbProvokingVertexLoaderImpl ~

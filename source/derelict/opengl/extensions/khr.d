@@ -52,11 +52,11 @@ enum : uint
     GL_GUILTY_CONTEXT_RESET           = 0x8253,
     GL_INNOCENT_CONTEXT_RESET         = 0x8254,
     GL_UNKNOWN_CONTEXT_RESET          = 0x8255,
-    GL_CONTEXT_ROBUST_ACCESS          = 0x90F3,
     GL_RESET_NOTIFICATION_STRATEGY    = 0x8256,
     GL_LOSE_CONTEXT_ON_RESET          = 0x8252,
     GL_NO_RESET_NOTIFICATION          = 0x8261,
     GL_CONTEXT_LOST                   = 0x0507,
+    GL_CONTEXT_ROBUST_ACCESS          = 0x90F3,
 }
 extern(System) @nogc nothrow
 {

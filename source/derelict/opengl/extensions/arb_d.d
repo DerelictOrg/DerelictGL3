@@ -109,6 +109,11 @@ enum arbDepthClampDecls = `enum uint GL_DEPTH_CLAMP = 0x864F;`;
 enum arbDepthClampLoader = makeExtLoader(ARB_depth_clamp);
 static if(!usingContexts) enum arbDepthClamp = arbDepthClampDecls ~ arbDepthClampLoader;
 
+// ARB_derivative_control <-- Core in GL 4.5
+enum ARB_derivative_control = "GL_ARB_derivative_control";
+enum arbDerivativeControlLoader = makeLoader(ARB_derivative_control, "", "gl45");
+static if(!usingContexts) enum arbDerivativeControl = arbDerivativeControlLoader;
+
 // ARB_direct_state_access <-- Core in GL 4.5
 enum ARB_direct_state_access = "GL_ARB_direct_state_access";
 enum arbDirectStateAccessDecls =
@@ -423,11 +428,6 @@ q{
 
 enum arbDirectStateAccessLoader = makeLoader(ARB_direct_state_access, arbDirectStateAccessLoaderImpl, "gl45");
 static if(!usingContexts) enum arbDirectStateAccess = arbDirectStateAccessDecls ~ arbDirectStateAccessFuncs.makeGShared() ~ arbDirectStateAccessLoader;
-
-// ARB_derivative_control <-- Core in GL 4.5
-enum ARB_derivative_control = "GL_ARB_derivative_control";
-enum arbDerivativeControlLoader = makeLoader(ARB_derivative_control, "", "gl45");
-static if(!usingContexts) enum arbDerivativeControl = arbDerivativeControlLoader;
 
 // ARB_draw_buffers_blend
 enum ARB_draw_buffers_blend = "GL_ARB_draw_buffers_blend";

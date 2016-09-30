@@ -131,6 +131,7 @@ static if(!usingContexts) enum arbMultBind = arbMultBindDecls ~ arbMultBindFuncs
 enum ARB_query_buffer_object = "GL_ARB_query_buffer_object";
 enum arbQueryBufferObjectDecls =
 q{
+enum : uint {
     GL_QUERY_BUFFER                   = 0x9192,
     GL_QUERY_BUFFER_BARRIER_BIT       = 0x00008000,
     GL_QUERY_BUFFER_BINDING           = 0x9193,

@@ -83,7 +83,7 @@ static if(!usingContexts) enum arbTextureGather = arbTextureGatherDecls ~ arbTex
 
 // ARB_texture_mirror_clamp_to_edge
 enum ARB_texture_mirror_clamp_to_edge = "GL_ARB_texture_mirror_clamp_to_edge";
-enum arbTextureMirrorClampToEdgeDecls = `enum uint GL_MIRROR_CLAMP_TO_EDGE = 0x8743;`
+enum arbTextureMirrorClampToEdgeDecls = `enum uint GL_MIRROR_CLAMP_TO_EDGE = 0x8743;`;
 
 enum arbTextureMirrorClampToEdgeLoader = makeExtLoader(ARB_texture_mirror_clamp_to_edge);
 static if(!usingContexts) enum arbTextureMirrorClampToEdge = arbTextureMirrorClampToEdgeDecls ~ arbTextureMirrorClampToEdgeLoader;
@@ -100,7 +100,7 @@ static if(!usingContexts) enum arbTextureQueryLOD = arbTextureQueryLODLoader;
 
 // ARB_texture_rgb10_a2ui
 enum ARB_texture_rgb10_a2ui = "GL_ARB_texture_rgb10_a2ui";
-enum arbTextureRGB10A2UIDecls = `enum uint GL_RGB10_A2UI = 0x906F;`
+enum arbTextureRGB10A2UIDecls = `enum uint GL_RGB10_A2UI = 0x906F;`;
 
 enum arbTextureRGB10A2UILoader = makeExtLoader(ARB_texture_rgb10_a2ui);
 static if(!usingContexts) enum arbTextureRGB10A2UI = arbTextureRGB10A2UIDecls ~ arbTextureRGB10A2UILoader;

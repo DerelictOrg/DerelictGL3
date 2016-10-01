@@ -89,7 +89,6 @@ q{
 enum arbTesselationShaderLoader = makeLoader(ARB_tessellation_shader, arbTesselationShaderLoaderImpl, "gl40");
 static if(!usingContexts) enum arbTesselationShader = arbTesselationShaderDecls ~ arbTesselationShaderFuncs.makeGShared() ~ arbTesselationShaderLoader;
 
-
 // ARB_texture_barrier <-- Core in GL 4.5
 enum ARB_texture_barrier = "GL_ARB_texture_barrier";
 enum arbTextureBarrierDecls = `extern(System) @nogc nothrow alias da_glTextureBarrier = void function();`;
@@ -97,6 +96,11 @@ enum arbTextureBarrierFuncs = `da_glTextureBarrier glTextureBarrier;`;
 enum arbTextureBarrierLoaderImpl = `bindGLFunc(cast(void**)&glTextureBarrier, "glTextureBarrier");`;
 enum arbTextureBarrierLoader = makeLoader(ARB_texture_barrier, arbTextureBarrierLoaderImpl, "gl45");
 static if(!usingContexts) enum arbTextureBarrier = arbTextureBarrierDecls ~ arbTextureBarrierFuncs.makeGShared() ~ arbTextureBarrierLoader;
+
+// ARB_texture_buffer_object_rgb32 <-- Core in GL 4.0
+enum ARB_texture_buffer_object_rgb32 = "GL_ARB_texture_buffer_object_rgb32";
+enum arbTextureBufferObjectRGB32Loader = makeLoader(ARB_texture_buffer_object_rgb32, "", "gl40");
+static if(!usingContexts) enum arbTextureBufferObjectRGB32 = arbTextureBufferObjectRGB32Loader;
 
 // ARB_texture_buffer_range <-- Core in GL 4.3
 enum ARB_texture_buffer_range = "GL_ARB_texture_buffer_range";
@@ -128,11 +132,6 @@ q{
 
 enum arbTextureBufferRangeLoader = makeLoader(ARB_texture_buffer_range, arbTextureBufferRangeLoaderImpl, "gl43");
 static if(!usingContexts) enum arbTextureBufferRange = arbTextureBufferRangeDecls ~ arbTextureBufferRangeFuncs.makeGShared() ~ arbTextureBufferRangeLoader;
-
-// ARB_texture_buffer_object_rgb32 <-- Core in GL 4.0
-enum ARB_texture_buffer_object_rgb32 = "GL_ARB_texture_buffer_object_rgb32";
-enum arbTextureBufferObjectRGB32Loader = makeLoader(ARB_texture_buffer_object_rgb32, "", "gl40");
-static if(!usingContexts) enum arbTextureBufferObjectRGB32 = arbTextureBufferObjectRGB32Loader;
 
 // ARB_texture_compression_bptc
 enum ARB_texture_compression_bptc = "GL_ARB_texture_compression_bptc";

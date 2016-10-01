@@ -30,105 +30,12 @@ module derelict.opengl.extensions.core_31;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_copy_buffer
-enum ARB_copy_buffer = "GL_ARB_copy_buffer";
-enum arbCopyBufferDecls =
-q{
-enum : uint
-{
-    GL_COPY_READ_BUFFER               = 0x8F36,
-    GL_COPY_WRITE_BUFFER              = 0x8F37,
-}
+import derelict.opengl.extensions.arb_c : arbCopyBufferDecls, arbCopyBufferFuncs, arbCopyBufferLoaderImpl;
+import derelict.opengl.extensions.arb_u : arbUniformBufferObjectDecls, arbUniformBufferObjectFuncs, arbUniformBufferObjectLoaderImpl;
 
-extern(System) @nogc nothrow alias da_glCopyBufferSubData = void function(GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr);
-};
-
-enum arbCopyBufferFuncs =
-q{
-    da_glCopyBufferSubData glCopyBufferSubData;
-};
-
-enum arbCopyBufferLoaderImpl = `bindGLFunc(cast(void**)&glCopyBufferSubData, "glCopyBufferSubData");`;
-enum arbCopyBufferLoader = makeLoader(ARB_copy_buffer, arbCopyBufferLoaderImpl, "gl31");
-static if(!usingContexts) enum arbCopyBuffer = arbCopyBufferDecls ~ arbCopyBufferFuncs.makeGShared() ~ arbCopyBufferLoader;
-
-// ARB_uniform_buffer_object
-enum ARB_uniform_buffer_object = "GL_ARB_uniform_buffer_object";
-enum arbUniformBufferObjectDecls =
-q{
-enum : uint
-{
-    GL_UNIFORM_BUFFER                 = 0x8A11,
-    GL_UNIFORM_BUFFER_BINDING         = 0x8A28,
-    GL_UNIFORM_BUFFER_START           = 0x8A29,
-    GL_UNIFORM_BUFFER_SIZE            = 0x8A2A,
-    GL_MAX_VERTEX_UNIFORM_BLOCKS      = 0x8A2B,
-    GL_MAX_GEOMETRY_UNIFORM_BLOCKS    = 0x8A2C,
-    GL_MAX_FRAGMENT_UNIFORM_BLOCKS    = 0x8A2D,
-    GL_MAX_COMBINED_UNIFORM_BLOCKS    = 0x8A2E,
-    GL_MAX_UNIFORM_BUFFER_BINDINGS    = 0x8A2F,
-    GL_MAX_UNIFORM_BLOCK_SIZE         = 0x8A30,
-    GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS = 0x8A31,
-    GL_MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS = 0x8A32,
-    GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS = 0x8A33,
-    GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT = 0x8A34,
-    GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH = 0x8A35,
-    GL_ACTIVE_UNIFORM_BLOCKS          = 0x8A36,
-    GL_UNIFORM_TYPE                   = 0x8A37,
-    GL_UNIFORM_SIZE                   = 0x8A38,
-    GL_UNIFORM_NAME_LENGTH            = 0x8A39,
-    GL_UNIFORM_BLOCK_INDEX            = 0x8A3A,
-    GL_UNIFORM_OFFSET                 = 0x8A3B,
-    GL_UNIFORM_ARRAY_STRIDE           = 0x8A3C,
-    GL_UNIFORM_MATRIX_STRIDE          = 0x8A3D,
-    GL_UNIFORM_IS_ROW_MAJOR           = 0x8A3E,
-    GL_UNIFORM_BLOCK_BINDING          = 0x8A3F,
-    GL_UNIFORM_BLOCK_DATA_SIZE        = 0x8A40,
-    GL_UNIFORM_BLOCK_NAME_LENGTH      = 0x8A41,
-    GL_UNIFORM_BLOCK_ACTIVE_UNIFORMS  = 0x8A42,
-    GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES = 0x8A43,
-    GL_UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER = 0x8A44,
-    GL_UNIFORM_BLOCK_REFERENCED_BY_GEOMETRY_SHADER = 0x8A45,
-    GL_UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER = 0x8A46,
-    GL_INVALID_INDEX                  = 0xFFFFFFFFu,
-}
-
-extern(System) @nogc nothrow {
-    alias da_glGetUniformIndices = void function(GLuint, GLsizei, const(GLchar*)*, GLuint*);
-    alias da_glGetActiveUniformsiv = void function(GLuint, GLsizei, const(GLuint)*, GLenum, GLint*);
-    alias da_glGetActiveUniformName = void function(GLuint, GLuint, GLsizei, GLsizei*, GLchar*);
-    alias da_glGetUniformBlockIndex = GLuint function(GLuint, const(GLchar)*);
-    alias da_glGetActiveUniformBlockiv = void function(GLuint, GLuint, GLenum, GLint*);
-    alias da_glGetActiveUniformBlockName = void function(GLuint, GLuint, GLsizei, GLsizei*, GLchar*);
-    alias da_glUniformBlockBinding = void function(GLuint, GLuint, GLuint);
-}};
-
-enum arbUniformBufferObjectFuncs =
-q{
-    da_glGetUniformIndices glGetUniformIndices;
-    da_glGetActiveUniformsiv glGetActiveUniformsiv;
-    da_glGetActiveUniformName glGetActiveUniformName;
-    da_glGetUniformBlockIndex glGetUniformBlockIndex;
-    da_glGetActiveUniformBlockiv glGetActiveUniformBlockiv;
-    da_glGetActiveUniformBlockName glGetActiveUniformBlockName;
-    da_glUniformBlockBinding glUniformBlockBinding;
-};
-
-enum arbUniformBufferObjectLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glGetUniformIndices, "glGetUniformIndices");
-    bindGLFunc(cast(void**)&glGetActiveUniformsiv, "glGetActiveUniformsiv");
-    bindGLFunc(cast(void**)&glGetActiveUniformName, "glGetActiveUniformName");
-    bindGLFunc(cast(void**)&glGetUniformBlockIndex, "glGetUniformBlockIndex");
-    bindGLFunc(cast(void**)&glGetActiveUniformBlockiv, "glGetActiveUniformBlockiv");
-    bindGLFunc(cast(void**)&glGetActiveUniformBlockName, "glGetActiveUniformBlockName");
-    bindGLFunc(cast(void**)&glUniformBlockBinding, "glUniformBlockBinding");
-};
-
-enum arbUniformBufferObjectLoader = makeLoader(ARB_uniform_buffer_object, arbUniformBufferObjectLoaderImpl, "gl31");
-static if(!usingContexts) enum arbUniformBufferObject = arbUniformBufferObjectDecls ~ arbUniformBufferObjectFuncs.makeGShared() ~ arbUniformBufferObjectLoader;
-
-enum corearb31 = arbCopyBuffer ~ arbUniformBufferObject;
-enum corearb31Decls = arbCopyBufferDecls ~ arbUniformBufferObjectDecls;
-enum corearb31Funcs = arbCopyBufferFuncs ~ arbUniformBufferObjectFuncs;
-enum corearb31Loader = arbCopyBufferLoaderImpl ~ arbUniformBufferObjectLoaderImpl;
+enum corearb31Decls = arbCopyBufferDecls
+                    ~ arbUniformBufferObjectDecls;
+enum corearb31Funcs = arbCopyBufferFuncs
+                    ~ arbUniformBufferObjectFuncs;
+enum corearb31Loader = arbCopyBufferLoaderImpl
+                     ~ arbUniformBufferObjectLoaderImpl;

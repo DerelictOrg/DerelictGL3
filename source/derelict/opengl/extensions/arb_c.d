@@ -210,6 +210,28 @@ enum ARB_conservative_depth = "GL_ARB_conservative_depth";
 enum arbConservativeDepthLoader = makeLoader(ARB_conservative_depth, "", "gl42");
 static if(!usingContexts) enum arbConservativeDepth = arbConservativeDepthLoader;
 
+// ARB_copy_buffer <-- Core in Gl 3.1
+enum ARB_copy_buffer = "GL_ARB_copy_buffer";
+enum arbCopyBufferDecls =
+q{
+enum : uint
+{
+    GL_COPY_READ_BUFFER               = 0x8F36,
+    GL_COPY_WRITE_BUFFER              = 0x8F37,
+}
+
+extern(System) @nogc nothrow alias da_glCopyBufferSubData = void function(GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr);
+};
+
+enum arbCopyBufferFuncs =
+q{
+    da_glCopyBufferSubData glCopyBufferSubData;
+};
+
+enum arbCopyBufferLoaderImpl = `bindGLFunc(cast(void**)&glCopyBufferSubData, "glCopyBufferSubData");`;
+enum arbCopyBufferLoader = makeLoader(ARB_copy_buffer, arbCopyBufferLoaderImpl, "gl31");
+static if(!usingContexts) enum arbCopyBuffer = arbCopyBufferDecls ~ arbCopyBufferFuncs.makeGShared() ~ arbCopyBufferLoader;
+
 // ARB_copy_image <-- Core in GL 4.3
 enum ARB_copy_image = "GL_ARB_copy_image";
 enum arbCopyImageDecls = `extern(System) @nogc nothrow alias da_glCopyImageSubData = void function(GLuint,GLenum,GLint,GLint,GLint,GLint,GLuint,GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei);`;

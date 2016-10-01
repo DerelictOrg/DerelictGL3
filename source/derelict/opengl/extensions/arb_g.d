@@ -30,7 +30,7 @@ module derelict.opengl.extensions.arb_g;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_geometry_shader4
+// ARB_geometry_shader4 <-- Core in Gl 3.2
 enum ARB_geometry_shader4 = "GL_ARB_geometry_shader4";
 enum arbGeometryShader4Decls =
 q{
@@ -55,11 +55,11 @@ enum : uint
     GL_MAX_GEOMETRY_OUTPUT_VERTICES_ARB = 0x8DE0,
     GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_ARB = 0x8DE1,
 }
-extern( System ) @nogc nothrow {
-    alias da_glProgramParameteriARB = void function( GLuint, GLenum, GLint );
-    alias da_glFramebufferTextureARB = void function( GLuint, GLenum, GLuint, GLint );
-    alias da_glFramebufferTextureLayerARB = void function( GLuint, GLenum, GLuint, GLint, GLint );
-    alias da_glFramebufferTextureFaceARB = void function( GLuint, GLenum, GLuint, GLint, GLenum );
+extern(System) @nogc nothrow {
+    alias da_glProgramParameteriARB = void function(GLuint, GLenum, GLint);
+    alias da_glFramebufferTextureARB = void function(GLuint, GLenum, GLuint, GLint);
+    alias da_glFramebufferTextureLayerARB = void function(GLuint, GLenum, GLuint, GLint, GLint);
+    alias da_glFramebufferTextureFaceARB = void function(GLuint, GLenum, GLuint, GLint, GLenum);
 }};
 
 enum arbGeometryShader4Funcs =
@@ -72,13 +72,13 @@ q{
 
 enum arbGeometryShader4LoaderImpl =
 q{
-    bindGLFunc( cast( void** )&glProgramParameteriARB, "glProgramParameteriARB" );
-    bindGLFunc( cast( void** )&glFramebufferTextureARB, "glFramebufferTextureARB" );
-    bindGLFunc( cast( void** )&glFramebufferTextureLayerARB, "glFramebufferTextureLayerARB" );
-    bindGLFunc( cast( void** )&glFramebufferTextureFaceARB, "glFramebufferTextureFaceARB" );
+    bindGLFunc(cast(void**)&glProgramParameteriARB, "glProgramParameteriARB");
+    bindGLFunc(cast(void**)&glFramebufferTextureARB, "glFramebufferTextureARB");
+    bindGLFunc(cast(void**)&glFramebufferTextureLayerARB, "glFramebufferTextureLayerARB");
+    bindGLFunc(cast(void**)&glFramebufferTextureFaceARB, "glFramebufferTextureFaceARB");
 };
 
-enum arbGeometryShader4Loader = makeExtLoader(ARB_geometry_shader4, arbGeometryShader4LoaderImpl);
+enum arbGeometryShader4Loader = makeLoader(ARB_geometry_shader4, arbGeometryShader4LoaderImpl, "gl32");
 static if(!usingContexts) enum arbGeometryShader4 = arbGeometryShader4Decls ~ arbGeometryShader4Funcs.makeGShared() ~ arbGeometryShader4Loader;
 
 // ARB_get_program_binary <-- Core in GL 4.1

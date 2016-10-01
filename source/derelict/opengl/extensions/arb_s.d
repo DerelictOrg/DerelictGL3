@@ -47,6 +47,68 @@ enum arbSampleShadingLoaderImpl = `bindGLFunc(cast(void**)&glMinSampleShadingARB
 enum arbSampleShadingLoader = makeLoader(ARB_sample_shading, arbSampleShadingLoaderImpl, "gl40");
 static if(!usingContexts) enum arbSampleShading = arbSampleShadingDecls ~ arbSampleShadingFuncs ~ arbSampleShadingLoader;
 
+// ARB_sampler_objects <-- Core in GL 3.3
+enum ARB_sampler_objects = "GL_ARB_sampler_objects";
+enum arbSamplerObjectsDecls =
+q{
+enum uint GL_SAMPLER_BINDING = 0x8919;
+extern(System) @nogc nothrow
+{
+    alias da_glGenSamplers = void function(GLsizei, GLuint*);
+    alias da_glDeleteSamplers = void function(GLsizei, const(GLuint)*);
+    alias da_glIsSampler = GLboolean function(GLuint);
+    alias da_glBindSampler = void function(GLuint, GLuint);
+    alias da_glSamplerParameteri = void function(GLuint, GLenum, GLint);
+    alias da_glSamplerParameteriv = void function(GLuint, GLenum, const(GLint)*);
+    alias da_glSamplerParameterf = void function(GLuint, GLenum, GLfloat);
+    alias da_glSamplerParameterfv = void function(GLuint, GLenum, const(GLfloat)*);
+    alias da_glSamplerParameterIiv = void function(GLuint, GLenum, const(GLint)*);
+    alias da_glSamplerParameterIuiv = void function(GLuint, GLenum, const(GLuint)*);
+    alias da_glGetSamplerParameteriv = void function(GLuint, GLenum, GLint*);
+    alias da_glGetSamplerParameterIiv = void function(GLuint, GLenum, GLint*);
+    alias da_glGetSamplerParameterfv = void function(GLuint, GLenum, GLfloat*);
+    alias da_glGetSamplerParameterIuiv = void function(GLuint, GLenum, GLuint*);
+}};
+
+enum arbSamplerObjectsFuncs =
+q{
+    da_glGenSamplers glGenSamplers;
+    da_glDeleteSamplers glDeleteSamplers;
+    da_glIsSampler glIsSampler;
+    da_glBindSampler glBindSampler;
+    da_glSamplerParameteri glSamplerParameteri;
+    da_glSamplerParameteriv glSamplerParameteriv;
+    da_glSamplerParameterf glSamplerParameterf;
+    da_glSamplerParameterfv glSamplerParameterfv;
+    da_glSamplerParameterIiv glSamplerParameterIiv;
+    da_glSamplerParameterIuiv glSamplerParameterIuiv;
+    da_glGetSamplerParameteriv glGetSamplerParameteriv;
+    da_glGetSamplerParameterIiv glGetSamplerParameterIiv;
+    da_glGetSamplerParameterfv glGetSamplerParameterfv;
+    da_glGetSamplerParameterIuiv glGetSamplerParameterIuiv;
+};
+
+enum arbSamplerObjectsLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glGenSamplers, "glGenSamplers");
+    bindGLFunc(cast(void**)&glDeleteSamplers, "glDeleteSamplers");
+    bindGLFunc(cast(void**)&glIsSampler, "glIsSampler");
+    bindGLFunc(cast(void**)&glBindSampler, "glBindSampler");
+    bindGLFunc(cast(void**)&glSamplerParameteri, "glSamplerParameteri");
+    bindGLFunc(cast(void**)&glSamplerParameteriv, "glSamplerParameteriv");
+    bindGLFunc(cast(void**)&glSamplerParameterf, "glSamplerParameterf");
+    bindGLFunc(cast(void**)&glSamplerParameterfv, "glSamplerParameterfv");
+    bindGLFunc(cast(void**)&glSamplerParameterIiv, "glSamplerParameterIiv");
+    bindGLFunc(cast(void**)&glSamplerParameterIuiv, "glSamplerParameterIuiv");
+    bindGLFunc(cast(void**)&glGetSamplerParameteriv, "glGetSamplerParameteriv");
+    bindGLFunc(cast(void**)&glGetSamplerParameterIiv, "glGetSamplerParameterIiv");
+    bindGLFunc(cast(void**)&glGetSamplerParameterfv, "glGetSamplerParameterfv");
+    bindGLFunc(cast(void**)&glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv");
+};
+
+enum arbSamplerObjectsLoader = makeLoader(ARB_sampler_objects, arbSamplerObjectsLoaderImpl, "gl33");
+static if(!usingContexts) enum arbSamplerObjects = arbSamplerObjectsDecls ~ arbSamplerObjectsFuncs.makeGShared() ~ arbSamplerObjectsLoader;
+
 // ARB_separate_shader_objects <-- Core in GL 4.1
 enum ARB_separate_shader_objects = "GL_ARB_separate_shader_objects";
 enum arbSeparateShaderObjectsDecls =
@@ -299,6 +361,11 @@ enum arbShaderAtomicCountersFuncs = `da_glGetActiveAtomicCounterBufferiv glGetAc
 enum arbShaderAtomicCountersLoaderImpl = `bindGLFunc(cast(void**)&glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv");`;
 enum arbShaderAtomicCountersLoader = makeLoader(ARB_shader_atomic_counters, arbShaderAtomicCountersLoaderImpl, "gl42");
 static if(!usingContexts) enum arbShaderAtomicCounters = arbShaderAtomicCountersDecls ~ arbShaderAtomicCountersFuncs.makeGShared() ~ arbShaderAtomicCountersLoader;
+
+// ARB_shader_bit_encoding <-- Core in GL 3.3
+enum ARB_shader_bit_encoding = "GL_ARB_shader_bit_encoding";
+enum arbShaderBitEncodingLoader = makeLoader(ARB_shader_bit_encoding, "", "gl33");
+static if(!usingContexts) enum arbShaderBitEncoding = arbShaderBitEncodingLoader;
 
 // ARB_shader_image_load_store <-- Core in GL 4.2
 enum ARB_shader_image_load_store = "GL_ARB_shader_image_load_store";

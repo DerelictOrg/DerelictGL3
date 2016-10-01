@@ -57,6 +57,37 @@ q{
 enum arbBaseInstanceLoader = makeLoader(ARB_base_instance, arbBaseInstanceLoaderImpl, "gl42");
 static if(!usingContexts) enum arbBaseInstance = arbBaseInstanceDecls ~ arbBaseInstanceFuncs.makeGShared() ~ arbBaseInstanceLoader;
 
+// ARB_blend_func_extended <-- Core in GL 3.3
+enum ARB_blend_func_extended = "GL_ARB_blend_func_extended";
+enum arbBlendFuncExtendedDecls =
+q{
+enum : uint
+{
+    GL_SRC1_COLOR                     = 0x88F9,
+    GL_ONE_MINUS_SRC1_COLOR           = 0x88FA,
+    GL_ONE_MINUS_SRC1_ALPHA           = 0x88FB,
+    GL_MAX_DUAL_SOURCE_DRAW_BUFFERS   = 0x88FC,
+}
+extern(System) @nogc nothrow {
+    alias da_glBindFragDataLocationIndexed = void function(GLuint, GLuint, GLuint, const(GLchar)*);
+    alias da_glGetFragDataIndex = GLint function(GLuint, const(GLchar)*);
+}};
+
+enum arbBlendFuncExtendedFuncs =
+q{
+    da_glBindFragDataLocationIndexed glBindFragDataLocationIndexed;
+    da_glGetFragDataIndex glGetFragDataIndex;
+};
+
+enum arbBlendFuncExtendedLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed");
+    bindGLFunc(cast(void**)&glGetFragDataIndex, "glGetFragDataIndex");
+};
+
+enum arbBlendFuncExtendedLoader = makeLoader(ARB_blend_func_extended, arbBlendFuncExtendedLoaderImpl, "gl33");
+static if(!usingContexts) enum arbBlendFuncExtended = arbBlendFuncExtendedDecls ~ arbBlendFuncExtendedFuncs.makeGShared() ~ arbBlendFuncExtendedLoader;
+
 // ARB_buffer_storage <-- Core in GL 4.4
 enum ARB_buffer_storage = "GL_ARB_buffer_storage";
 enum arbBufferStorageDecls =

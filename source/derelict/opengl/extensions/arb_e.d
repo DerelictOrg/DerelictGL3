@@ -125,9 +125,9 @@ enum arbES31CompatibilityLoaderImpl = `bindGLFunc(cast(void**)&glMemoryBarrierBy
 enum arbES31CompatibilityLoader = makeLoader(ARB_ES3_1_compatibility, arbES31CompatibilityLoaderImpl, "gl45");
 static if(!usingContexts) enum arbES31Compatibility = arbES31CompatibilityDecls ~ arbES31CompatibilityFuncs.makeGShared() ~ arbES31CompatibilityLoader;
 
-// ARB_explicit_attrib_location
+// ARB_explicit_attrib_location <-- Core in GL 3.3
 enum ARB_explicit_attrib_location = "GL_ARB_explicit_attrib_location";
-enum arbExplicitAttribLocationLoader = makeExtLoader(ARB_explicit_attrib_location);
+enum arbExplicitAttribLocationLoader = makeLoader(ARB_explicit_attrib_location, "", "gl33");
 static if(!usingContexts) enum arbExplicitAttribLocation = arbExplicitAttribLocationLoader;
 
 // ARB_explicit_uniform_location <-- Core in GL 4.3

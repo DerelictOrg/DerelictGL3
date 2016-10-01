@@ -25,26 +25,13 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.extensions.core_33;
+module derelict.opengl.extensions.arb_o;
 
-import derelict.opengl.extensions.arb_b : arbBlendFuncExtendedDecls, arbBlendFuncExtendedFuncs, arbBlendFuncExtendedLoaderImpl;
-import derelict.opengl.extensions.arb_o : arbOcclusionQuery2Decls;
-import derelict.opengl.extensions.arb_s : arbSamplerObjectsDecls, arbSamplerObjectsFuncs, arbSamplerObjectsLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTextureSwizzleDecls,
-                                          arbTimerQueryDecls, arbTimerQueryFuncs, arbTimerQueryLoaderImpl;
-import derelict.opengl.extensions.arb_v : arbVertexType2101010RevDecls, arbVertexType2101010RevFuncs, arbVertexType2101010RevLoaderImpl;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
-enum corearb33Decls = arbBlendFuncExtendedDecls
-                    ~ arbOcclusionQuery2Decls
-                    ~ arbSamplerObjectsDecls
-                    ~ arbTextureSwizzleDecls
-                    ~ arbTimerQueryDecls
-                    ~ arbVertexType2101010RevDecls;
-enum corearb33Funcs = arbBlendFuncExtendedFuncs
-                    ~ arbSamplerObjectsFuncs
-                    ~ arbTimerQueryFuncs
-                    ~ arbVertexType2101010RevFuncs;
-enum corearb33Loader = arbBlendFuncExtendedLoaderImpl
-                     ~ arbSamplerObjectsLoaderImpl
-                     ~ arbTimerQueryLoaderImpl
-                     ~ arbVertexType2101010RevLoaderImpl;
+// ARB_occlusion_query2 <-- Core in GL 3.3
+enum ARB_occlusion_query2 = "GL_ARB_occlusion_query2";
+enum arbOcclusionQuery2Decls = `enum uint GL_ANY_SAMPLES_PASSED = 0x8C2F;`;
+enum arbOcclusionQuery2Loader = makeLoader(ARB_occlusion_query2, "", "gl33");
+static if(!usingContexts) enum arbOcclusionQuery2 = arbOcclusionQuery2Decls ~ arbOcclusionQuery2Loader;

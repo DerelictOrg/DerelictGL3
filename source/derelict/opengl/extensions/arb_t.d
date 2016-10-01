@@ -196,10 +196,10 @@ enum ARB_texture_query_lod = "GL_ARB_texture_query_lod";
 enum arbTextureQueryLODLoader = makeLoader(ARB_texture_query_lod, "", "gl40");
 static if(!usingContexts) enum arbTextureQueryLOD = arbTextureQueryLODLoader;
 
-// ARB_texture_rgb10_a2ui
+// ARB_texture_rgb10_a2ui <-- Core in GL 3.3
 enum ARB_texture_rgb10_a2ui = "GL_ARB_texture_rgb10_a2ui";
 enum arbTextureRGB10A2UIDecls = `enum uint GL_RGB10_A2UI = 0x906F;`;
-enum arbTextureRGB10A2UILoader = makeExtLoader(ARB_texture_rgb10_a2ui);
+enum arbTextureRGB10A2UILoader = makeLoader(ARB_texture_rgb10_a2ui, "", "gl33");
 static if(!usingContexts) enum arbTextureRGB10A2UI = arbTextureRGB10A2UIDecls ~ arbTextureRGB10A2UILoader;
 
 // ARB_texture_stencil8 <-- Core in GL 4.4
@@ -281,7 +281,7 @@ q{
 enum arbTextureStorageMultisampleLoader = makeLoader(ARB_texture_storage_multisample, arbTextureStorageMultisampleLoaderImpl, "gl43");
 static if(!usingContexts) enum arbTextureStorageMultisample = arbTextureStorageMultisampleDecls ~ arbTextureStorageMultisampleFuncs.makeGShared() ~ arbTextureStorageMultisampleLoader;
 
-// ARB_texture_swizzle
+// ARB_texture_swizzle <-- Core in GL 3.3
 enum ARB_texture_swizzle = "GL_ARB_texture_swizzle";
 enum arbTextureSwizzleDecls =
 q{
@@ -294,7 +294,7 @@ enum : uint
     GL_TEXTURE_SWIZZLE_RGBA           = 0x8E46,
 }};
 
-enum arbTextureSwizzleLoader = makeExtLoader(ARB_texture_swizzle);
+enum arbTextureSwizzleLoader = makeLoader(ARB_texture_swizzle, "", "gl33");
 static if(!usingContexts) enum arbTextureSwizzle = arbTextureSwizzleDecls ~ arbTextureSwizzleLoader;
 
 // ARB_texture_view <-- Core in GL 4.3
@@ -316,6 +316,38 @@ enum arbTextureViewLoaderImpl = `bindGLFunc(cast(void**)&glTextureView, "glTextu
 
 enum arbTextureViewLoader = makeLoader(ARB_texture_view, arbTextureViewLoaderImpl, "gl43");
 static if(!usingContexts) enum arbTextureView = arbTextureViewDecls ~ arbTextureViewFuncs.makeGShared() ~ arbTextureViewLoader;
+
+// ARB_timer_query <-- Core in GL 3.3
+enum ARB_timer_query = "GL_ARB_timer_query";
+enum arbTimerQueryDecls =
+q{
+enum : uint {
+    GL_TIME_ELAPSED                   = 0x88BF,
+    GL_TIMESTAMP                      = 0x8E28,
+}
+extern(System) @nogc nothrow
+{
+    alias da_glQueryCounter = void function(GLuint, GLenum);
+    alias da_glGetQueryObjecti64v = void function(GLuint, GLenum, GLint64*);
+    alias da_glGetQueryObjectui64v = void function(GLuint, GLenum, GLuint64*);
+}};
+
+enum arbTimerQueryFuncs =
+q{
+    da_glQueryCounter glQueryCounter;
+    da_glGetQueryObjecti64v glGetQueryObjecti64v;
+    da_glGetQueryObjectui64v glGetQueryObjectui64v;
+};
+
+enum arbTimerQueryLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glQueryCounter, "glQueryCounter");
+    bindGLFunc(cast(void**)&glGetQueryObjecti64v, "glGetQueryObjecti64v");
+    bindGLFunc(cast(void**)&glGetQueryObjectui64v, "glGetQueryObjectui64v");
+};
+
+enum arbTimerQueryLoader = makeLoader(ARB_timer_query, arbTimerQueryLoaderImpl, "gl33");
+static if(!usingContexts) enum arbTimerQuery = arbTimerQueryDecls ~ arbTimerQueryFuncs.makeGShared() ~ arbTimerQueryLoader;
 
 // ARB_transform_feedback2 <-- Core in GL 4.0
 enum ARB_transform_feedback2 = "GL_ARB_transform_feedback2";

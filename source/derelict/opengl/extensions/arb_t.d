@@ -554,3 +554,16 @@ q{
 
 enum arbTransformFeedbackInstancedLoader = makeLoader(ARB_transform_feedback_instanced, arbTransformFeedbackInstancedLoaderImpl, "gl42");
 static if(!usingContexts) enum arbTransformFeedbackInstanced = arbTransformFeedbackInstancedDecls ~ arbTransformFeedbackInstancedFuncs.makeGShared() ~ arbTransformFeedbackInstancedLoader;
+
+// ARB_transform_feedback_overflow_query
+enum ARB_transform_feedback_overflow_query = "GL_ARB_transform_feedback_overflow_query";
+enum arbTransformFeedbackOverflowQueryDecls =
+q{
+enum : uint
+{
+    GL_TRANSFORM_FEEDBACK_OVERFLOW_ARB          = 0x82EC,
+    GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW_ARB   = 0x82ED,
+}};
+
+enum arbTransformFeedbackOverflowQueryLoader = makeExtLoader(ARB_transform_feedback_overflow_query);
+static if(!usingContexts) enum arbTransformFeedbackOverflowQuery = arbTransformFeedbackOverflowQueryDecls ~ arbTextureSwizzleLoader;

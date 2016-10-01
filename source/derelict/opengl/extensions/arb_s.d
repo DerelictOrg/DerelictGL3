@@ -30,7 +30,7 @@ module derelict.opengl.extensions.arb_s;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_sample_shading <-- Core in GL 4.0
+// ARB_sample_shading
 enum ARB_sample_shading = "GL_ARB_sample_shading";
 enum arbSampleShadingDecls =
 q{
@@ -44,7 +44,7 @@ extern(System) @nogc nothrow alias da_glMinSampleShadingARB = void function(GLcl
 
 enum arbSampleShadingFuncs = `da_glMinSampleShadingARB glMinSampleShadingARB;`;
 enum arbSampleShadingLoaderImpl = `bindGLFunc(cast(void**)&glMinSampleShadingARB, "glMinSampleShadingARB");`;
-enum arbSampleShadingLoader = makeLoader(ARB_sample_shading, arbSampleShadingLoaderImpl, "gl40");
+enum arbSampleShadingLoader = makeExtLoader(ARB_sample_shading, arbSampleShadingLoaderImpl);
 static if(!usingContexts) enum arbSampleShading = arbSampleShadingDecls ~ arbSampleShadingFuncs.makeGShared() ~ arbSampleShadingLoader;
 
 // ARB_sampler_objects <-- Core in GL 3.3
@@ -114,6 +114,12 @@ enum ARB_seamless_cube_map = "GL_ARB_seamless_cube_map";
 enum arbSeamlessCubeMapDecls = `enum uint GL_TEXTURE_CUBE_MAP_SEAMLESS = 0x884F;`;
 enum arbSeamlessCubeMapLoader = makeLoader(ARB_seamless_cube_map, "", "gl32");
 static if(!usingContexts) enum arbSeamlessCubeMap = arbSeamlessCubeMapDecls ~ arbSeamlessCubeMapLoader;
+
+// ARB_seamless_cubemap_per_texture
+enum ARB_seamless_cubemap_per_texture = "GL_ARB_seamless_cubemap_per_texture";
+enum arbSeamlessCubemapPerTextureDecls = `enum uint GL_TEXTURE_CUBE_MAP_SEAMLESS_ARB = 0x884F;`;
+enum arbSeamlessCubemapPerTextureLoader = makeExtLoader(ARB_seamless_cubemap_per_texture);
+static if(!usingContexts) enum arbSeamlessCubemapPerTexture = arbSeamlessCubemapPerTextureDecls ~ arbSeamlessCubemapPerTextureLoader;
 
 // ARB_separate_shader_objects <-- Core in GL 4.1
 enum ARB_separate_shader_objects = "GL_ARB_separate_shader_objects";
@@ -373,6 +379,16 @@ enum ARB_shader_bit_encoding = "GL_ARB_shader_bit_encoding";
 enum arbShaderBitEncodingLoader = makeLoader(ARB_shader_bit_encoding, "", "gl33");
 static if(!usingContexts) enum arbShaderBitEncoding = arbShaderBitEncodingLoader;
 
+// ARB_shader_draw_parameters
+enum ARB_shader_draw_parameters = "GL_ARB_shader_draw_parameters";
+enum arbShaderDrawParametersLoader = makeExtLoader(ARB_shader_draw_parameters);
+static if(!usingContexts) enum arbShaderDrawParameters = arbShaderDrawParametersLoader;
+
+// ARB_shader_group_vote
+enum ARB_shader_group_vote = "GL_ARB_shader_group_vote";
+enum arbShaderGroupVoteLoader = makeExtLoader(ARB_shader_group_vote);
+static if(!usingContexts) enum arbShaderGroupVote = arbShaderGroupVoteLoader;
+
 // ARB_shader_image_load_store <-- Core in GL 4.2
 enum ARB_shader_image_load_store = "GL_ARB_shader_image_load_store";
 enum arbShaderImageLoadStoreDecls =
@@ -620,6 +636,73 @@ static if(!usingContexts) enum arbShadingLanguageInclude = arbShadingLanguageInc
 enum ARB_shading_language_packing = "GL_ARB_shading_language_packing";
 enum arbShadingLanguagePackingLoader = makeExtLoader(ARB_shading_language_packing);
 static if(!usingContexts) enum arbShadingLanguagePacking = arbShadingLanguagePackingLoader;
+
+// ARB_sparse_buffer
+enum ARB_sparse_buffer = "GL_ARB_sparse_buffer";
+enum arbSparseBufferDecls =
+q{
+enum : uint
+{
+    GL_SPARSE_STORAGE_BIT_ARB             = 0x0400,
+    GL_SPARSE_BUFFER_PAGE_SIZE_ARB        = 0x82F8,
+}
+extern(System) @nogc nothrow {
+    alias da_glBufferPageCommitmentARB = void function(GLenum,GLintptr,GLsizeiptr,GLboolean);
+    alias da_glNamedBufferPageCommitmentEXT = void function(GLuint,GLintptr,GLsizeiptr,GLboolean);
+    alias da_glNamedBufferPageCommitmentARB = void function(GLuint,GLintptr,GLsizeiptr,GLboolean);
+}};
+
+enum arbSparseBufferFuncs =
+q{
+    da_glBufferPageCommitmentARB glBufferPageCommitmentARB;
+    da_glNamedBufferPageCommitmentEXT glNamedBufferPageCommitmentEXT;
+    da_glNamedBufferPageCommitmentARB glNamedBufferPageCommitmentARB;
+};
+
+enum arbSparseBufferLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glBufferPageCommitmentARB, "glBufferPageCommitmentARB");
+    bindGLFunc(cast(void**)&glNamedBufferPageCommitmentEXT, "glNamedBufferPageCommitmentEXT");
+    bindGLFunc(cast(void**)&glNamedBufferPageCommitmentARB, "glNamedBufferPageCommitmentARB");
+};
+
+enum arbSparseBufferLoader = makeExtLoader(ARB_sparse_buffer, arbSparseBufferLoaderImpl);
+static if(!usingContexts) enum arbSparseBuffer = arbSparseBufferDecls ~ arbSparseBufferFuncs.makeGShared() ~ arbSparseBufferLoader;
+
+// ARB_sparse_texture
+enum ARB_sparse_texture = "GL_ARB_sparse_texture";
+enum arbSparseTextureDecls =
+q{
+enum : uint
+{
+    GL_TEXTURE_SPARSE_ARB             = 0x91A6,
+    GL_VIRTUAL_PAGE_SIZE_INDEX_ARB    = 0x91A7,
+    GL_NUM_SPARSE_LEVELS_ARB          = 0x91AA,
+    GL_NUM_VIRTUAL_PAGE_SIZES_ARB     = 0x91A8,
+    GL_VIRTUAL_PAGE_SIZE_X_ARB        = 0x9195,
+    GL_VIRTUAL_PAGE_SIZE_Y_ARB        = 0x9196,
+    GL_VIRTUAL_PAGE_SIZE_Z_ARB        = 0x9197,
+    GL_MAX_SPARSE_TEXTURE_SIZE_ARB    = 0x9198,
+    GL_MAX_SPARSE_3D_TEXTURE_SIZE_ARB = 0x9199,
+    GL_MAX_SPARSE_ARRAY_TEXTURE_LAYERS_ARB = 0x919A,
+    GL_SPARSE_TEXTURE_FULL_ARRAY_CUBE_MIPMAPS_ARB = 0x91A9,
+}
+extern(System) @nogc nothrow {
+    alias da_glTexPageCommitmentARB = void function(GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLboolean);
+}};
+
+enum arbSparseTextureFuncs =
+q{
+    da_glTexPageCommitmentARB glTexPageCommitmentARB;
+};
+
+enum arbSparseTextureLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glTexPageCommitmentARB, "glTexPageCommitmentARB");
+};
+
+enum arbSparseTextureLoader = makeExtLoader(ARB_sparse_texture, arbSparseTextureLoaderImpl);
+static if(!usingContexts) enum arbSparseTexture = arbSparseTextureDecls ~ arbSparseTextureFuncs.makeGShared() ~ arbSparseTextureLoader;
 
 // ARB_stencil_texturing <-- Core in GL 4.3
 enum ARB_stencil_texturing = "GL_ARB_stencil_texturing";

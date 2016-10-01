@@ -40,12 +40,6 @@ enum ARB_fragment_layer_viewport = "GL_ARB_fragment_layer_viewport";
 enum arbFragmentLayerViewportLoader = makeLoader(ARB_fragment_layer_viewport, "", "gl43");
 static if(!usingContexts) enum arbFragmentLayerViewport = arbFragmentLayerViewportLoader;
 
-// ARB_framebuffer_sRGB
-enum ARB_framebuffer_sRGB = "GL_ARB_framebuffer_sRGB";
-enum arbFramebufferSRGBDecls = `enum uint GL_FRAMEBUFFER_SRGB = 0x8DB9;`;
-enum arbFramebufferSRGBLoader = makeExtLoader(ARB_framebuffer_sRGB);
-static if(!usingContexts) enum arbFramebufferSRGB = arbFramebufferSRGBDecls ~ arbFramebufferSRGBLoader;
-
 // ARB_framebuffer_no_attachments <-- Core in GL 4.3
 enum ARB_framebuffer_no_attachments = "GL_ARB_framebuffer_no_attachments";
 enum arbFramebufferNoAttachmentsDecls =
@@ -250,3 +244,9 @@ q{
 
 enum arbFramebufferObjectLoader = makeLoader(ARB_framebuffer_object, arbFramebufferObjectLoaderImpl, "gl30");
 static if(!usingContexts) enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs.makeGShared() ~ arbFramebufferObjectLoader;
+
+// ARB_framebuffer_sRGB
+enum ARB_framebuffer_sRGB = "GL_ARB_framebuffer_sRGB";
+enum arbFramebufferSRGBDecls = `enum uint GL_FRAMEBUFFER_SRGB = 0x8DB9;`;
+enum arbFramebufferSRGBLoader = makeExtLoader(ARB_framebuffer_sRGB);
+static if(!usingContexts) enum arbFramebufferSRGB = arbFramebufferSRGBDecls ~ arbFramebufferSRGBLoader;

@@ -27,6 +27,7 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.types;
 
+// Types defined by the core versions
 alias GLenum = uint;
 alias GLvoid = void;
 alias GLboolean = ubyte;
@@ -46,24 +47,19 @@ alias GLdouble = double;
 alias GLclampd = double;
 alias GLintptr = ptrdiff_t;
 alias GLsizeiptr = ptrdiff_t;
+alias GLint64 = long;
+alias GLuint64 = ulong;
+alias GLhandle = uint;
 
-    // ARB_vertex_buffer_object
-alias GLintptrARB = ptrdiff_t;
-alias GLsizeiptrARB = ptrdiff_t;
-
-    // ARB_shader_objects
-alias GLcharARB = byte;
-alias GLhandleARB = uint;
-
-    // ARB_half_float_pixel
-alias GLhalfARB = ushort;
-
-    // NV_half_float
-alias GLhalfNV = ushort;
-
-    // EXT_timer_query
-alias GLint64EXT = long;
-alias GLuint64EXT = ulong;
+// Types defined in various extensions (declared here to avoid repetition)
+alias GLint64EXT = GLint64;
+alias GLuint64EXT = GLuint64;
+alias GLintptrARB = GLintptr;
+alias GLsizeiptrARB = GLsizeiptr;
+alias GLcharARB = GLchar;
+alias GLhandleARB = GLhandle;
+alias GLhalfARB = GLhalf;
+alias GLhalfNV = GLhalf;
 
 // The following are Derelict types, not from OpenGL
 enum GLVersion {

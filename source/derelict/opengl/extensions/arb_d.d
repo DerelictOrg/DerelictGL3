@@ -89,7 +89,7 @@ q{
 enum arbDebugOutputLoader = makeLoader(ARB_debug_output, arbDebugOutputLoaderImpl, "gl43");
 static if(!usingContexts) enum arbDebugOutput = arbDebugOutputDecls ~ arbDebugOutputFuncs.makeGShared() ~ arbDebugOutputLoader;
 
-// ARB_depth_buffer_float
+// ARB_depth_buffer_float <-- Core in GL 3.0
 enum ARB_depth_buffer_float = "GL_ARB_depth_buffer_float";
 enum arbDepthBufferFloatDecls =
 q{
@@ -100,7 +100,7 @@ enum : uint
     GL_FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD,
 }};
 
-enum arbDepthBufferFloatLoader = makeExtLoader(ARB_depth_buffer_float);
+enum arbDepthBufferFloatLoader = makeLoader(ARB_depth_buffer_float, "", "gl30");
 static if(!usingContexts) enum arbDepthBufferFloat = arbDepthBufferFloatDecls ~ arbDepthBufferFloatLoader;
 
 // ARB_depth_clamp <-- Core in GL 3.2

@@ -190,6 +190,25 @@ q{
 enum arbComputeShaderLoader = makeLoader(ARB_compute_shader, arbComputeShaderLoaderImpl, "gl43");
 static if(!usingContexts) enum arbComputeShader = arbComputeShaderDecls ~ arbComputeShaderFuncs.makeGShared() ~ arbComputeShaderLoader;
 
+// ARB_compute_variable_group_size
+enum ARB_compute_variable_group_size = "GL_ARB_compute_variable_group_size";
+enum arbComputeVariableGroupSizeDecls =
+q{
+enum : uint
+{
+    GL_MAX_COMPUTE_VARIABLE_GROUP_INVOCATIONS_ARB   = 0x9344,
+    GL_MAX_COMPUTE_FIXED_GROUP_INVOCATIONS_ARB      = 0x90EB,
+    GL_MAX_COMPUTE_VARIABLE_GROUP_SIZE_ARB          = 0x9345,
+    GL_MAX_COMPUTE_FIXED_GROUP_SIZE_ARB             = 0x91BF,
+}
+extern(System) @nogc nothrow alias da_glDispatchComputeGroupSizeARB = void function(GLuint,GLuint,GLuint,GLuint,GLuint,GLuint);
+};
+
+enum arbComputeVariableGroupSizeFuncs = `da_glDispatchComputeGroupSizeARB glDispatchComputeGroupSizeARB;`;
+enum arbComputeVariableGroupSizeLoaderImpl = `bindGLFunc(cast(void**)&glDispatchComputeGroupSizeARB, "glDispatchComputeGroupSizeARB");`;
+enum arbComputeVariableGroupSizeLoader = makeLoader(ARB_compute_variable_group_size, arbComputeVariableGroupSizeLoaderImpl, "gl45");
+static if(!usingContexts) enum arbComputeVariableGroupSize = arbComputeVariableGroupSizeDecls ~ arbComputeVariableGroupSizeFuncs.makeGShared() ~ arbComputeVariableGroupSizeLoader;
+
 // ARB_conditional_render_inverted <-- Core in GL 4.5
 enum ARB_conditional_render_inverted = "GL_ARB_conditional_render_inverted";
 enum arbConditionalRenderInvertedDecls =

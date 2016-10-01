@@ -133,6 +133,12 @@ q{
 enum khrDebugLoader = makeLoader(KHR_debug, khrDebugLoaderImpl, "gl43");
 static if(!usingContexts) enum khrDebug = khrDebugDecls ~ khrDebugFuncs.makeGShared() ~ khrDebugLoader;
 
+// KHR_no_error
+enum KHR_no_error = "GL_KHR_no_error";
+enum khrNoErrorDecls = `enum uint GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR = 0x00000008;`;
+enum khrNoErrorLoader = makeExtLoader(KHR_no_error);
+static if(!usingContexts) enum khrNoError = khrNoErrorDecls ~ khrNoErrorLoader;
+
 // KHR_robustness <-- Core in GL 4.5
 enum KHR_robustness = "GL_KHR_robustness";
 enum khrRobustnessDecls =
@@ -177,3 +183,52 @@ q{
 
 enum khrRobustnessLoader = makeLoader(KHR_robustness, khrRobustnessLoaderImpl, "gl45");
 static if(!usingContexts) enum khrRobustness = khrRobustnessDecls ~ khrRobustnessFuncs.makeGShared() ~ khrRobustnessLoader;
+
+// KHR_texture_compression_astc_hdr
+enum KHR_texture_compression_astc_hdr = "GL_KHR_texture_compression_astc_hdr";
+enum khrTextureCompressionASTCHDRDecls =
+q{
+enum : uint
+{
+    GL_COMPRESSED_RGBA_ASTC_4x4_KHR   = 0x93B0,
+    GL_COMPRESSED_RGBA_ASTC_5x4_KHR   = 0x93B1,
+    GL_COMPRESSED_RGBA_ASTC_5x5_KHR   = 0x93B2,
+    GL_COMPRESSED_RGBA_ASTC_6x5_KHR   = 0x93B3,
+    GL_COMPRESSED_RGBA_ASTC_6x6_KHR   = 0x93B4,
+    GL_COMPRESSED_RGBA_ASTC_8x5_KHR   = 0x93B5,
+    GL_COMPRESSED_RGBA_ASTC_8x6_KHR   = 0x93B6,
+    GL_COMPRESSED_RGBA_ASTC_8x8_KHR   = 0x93B7,
+    GL_COMPRESSED_RGBA_ASTC_10x5_KHR  = 0x93B8,
+    GL_COMPRESSED_RGBA_ASTC_10x6_KHR  = 0x93B9,
+    GL_COMPRESSED_RGBA_ASTC_10x8_KHR  = 0x93BA,
+    GL_COMPRESSED_RGBA_ASTC_10x10_KHR = 0x93BB,
+    GL_COMPRESSED_RGBA_ASTC_12x10_KHR = 0x93BC,
+    GL_COMPRESSED_RGBA_ASTC_12x12_KHR = 0x93BD,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_4x4_KHR = 0x93D0,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_5x4_KHR = 0x93D1,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_5x5_KHR = 0x93D2,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_6x5_KHR = 0x93D3,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_6x6_KHR = 0x93D4,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_8x5_KHR = 0x93D5,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_8x6_KHR = 0x93D6,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR = 0x93D7,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x5_KHR = 0x93D8,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x6_KHR = 0x93D9,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x8_KHR = 0x93DA,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR = 0x93DB,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR = 0x93DC,
+    GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR = 0x93DD,
+}};
+
+enum khrTextureCompressionASTCHDRLoader = makeExtLoader(KHR_texture_compression_astc_hdr);
+static if(!usingContexts) enum khrTextureCompressionASTCHDR = khrTextureCompressionASTCHDRDecls ~ khrTextureCompressionASTCHDRLoader;
+
+// KHR_texture_compression_astc_ldr
+enum KHR_texture_compression_astc_ldr = "GL_KHR_texture_compression_astc_ldr";
+enum khrTextureCompressionASTCLDRLoader = makeExtLoader(KHR_texture_compression_astc_ldr);
+static if(!usingContexts) enum khrTextureCompressionASTCLDR = khrTextureCompressionASTCLDRLoader;
+
+// KHR_texture_compression_astc_sliced_3d
+enum KHR_texture_compression_astc_sliced_3d = "GL_KHR_texture_compression_astc_sliced_3d";
+enum khrTextureCompressionASTCSliced3DLoader = makeExtLoader(KHR_texture_compression_astc_sliced_3d);
+static if(!usingContexts) enum khrTextureCompressionASTCSliced3D = khrTextureCompressionASTCSliced3DLoader;

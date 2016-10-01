@@ -30,6 +30,11 @@ module derelict.opengl.extensions.arb_r;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_robust_buffer_access_behavior <-- Core in GL 4.3
+enum ARB_robust_buffer_access_behavior = "GL_ARB_robust_buffer_access_behavior";
+enum arbRobustBufferAccessBehaviorLoader = makeLoader(ARB_robust_buffer_access_behavior, "", "gl43");
+static if(!usingContexts) enum arbRobustBufferAccessBehavior = arbRobustBufferAccessBehaviorLoader;
+
 // ARB_robustness
 enum ARB_robustness = "GL_ARB_robustness";
 enum arbRobustnessDecls =
@@ -119,7 +124,7 @@ q{
 enum arbRobustnessLoader = makeExtLoader(ARB_robustness, arbRobustnessLoaderImpl);
 static if(!usingContexts) enum arbRobustness = arbRobustnessDecls ~ arbRobustnessFuncs.makeGShared() ~ arbRobustnessLoader;
 
-// ARB_robust_buffer_access_behavior <-- Core in GL 4.3
-enum ARB_robust_buffer_access_behavior = "GL_ARB_robust_buffer_access_behavior";
-enum arbRobustBufferAccessBehaviorLoader = makeLoader(ARB_robust_buffer_access_behavior, "", "gl43");
-static if(!usingContexts) enum arbRobustBufferAccessBehavior = arbRobustBufferAccessBehaviorLoader;
+// ARB_robustness_isolation
+enum ARB_robustness_isolation = "GL_ARB_robustness_isolation";
+enum arbRobustnessIsolationLoader = makeExtLoader(ARB_robustness_isolation);
+static if(!usingContexts) enum arbRobustnessIsolation = arbRobustnessIsolationLoader;

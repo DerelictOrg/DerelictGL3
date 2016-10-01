@@ -57,6 +57,73 @@ q{
 enum arbBaseInstanceLoader = makeLoader(ARB_base_instance, arbBaseInstanceLoaderImpl, "gl42");
 static if(!usingContexts) enum arbBaseInstance = arbBaseInstanceDecls ~ arbBaseInstanceFuncs.makeGShared() ~ arbBaseInstanceLoader;
 
+// ARB_bindless_texture
+enum ARB_bindless_texture = "GL_ARB_bindless_texture";
+enum arbBindlessTextureDecls =
+q{
+enum uint GL_UNSIGNED_INT64_ARB = 0x140F;
+extern(System) @nogc nothrow {
+    alias da_glGetTextureHandleARB = GLuint64 function(GLuint);
+    alias da_glGetTextureSamplerHandleARB = GLuint64 function(GLuint,GLuint);
+    alias da_glMakeTextureHandleResidentARB = void function(GLuint64);
+    alias da_glMakeTextureHandleNonResidentARB = void function(GLuint64);
+    alias da_glGetImageHandleARB = GLuint64 function(GLuint,GLint,GLboolean,GLint,GLenum);
+    alias da_glMakeImageHandleResidentARB = void function(GLuint64,GLenum);
+    alias da_glMakeImageHandleNonResidentARB = void function(GLuint64);
+    alias da_glUniformHandleui64ARB = void function(GLint,GLuint64);
+    alias da_glUniformHandleui64vARB = void function(GLint,GLsizei,const(GLuint64)*);
+    alias da_glProgramUniformHandleui64ARB = void function(GLuint,GLint,GLuint64);
+    alias da_glProgramUniformHandleui64vARB = void function(GLuint,GLint,GLsizei,const(GLuint64)*);
+    alias da_glIsTextureHandleResidentARB = GLboolean function(GLuint64);
+    alias da_glIsImageHandleResidentARB = GLboolean function(GLuint64);
+    alias da_glVertexAttribL1ui64ARB = void function(GLuint,GLuint64);
+    alias da_glVertexAttribL1ui64vARB = void function(GLuint,const(GLuint64)*);
+    alias da_glGetVertexAttribLui64vARB = void function(GLuint,GLenum,GLuint64*);
+}};
+
+enum arbBindlessTextureFuncs =
+q{
+    da_glGetTextureHandleARB glGetTextureHandleARB;
+    da_glGetTextureSamplerHandleARB glGetTextureSamplerHandleARB;
+    da_glMakeTextureHandleResidentARB glMakeTextureHandleResidentARB;
+    da_glMakeTextureHandleNonResidentARB glMakeTextureHandleNonResidentARB;
+    da_glGetImageHandleARB glGetImageHandleARB;
+    da_glMakeImageHandleResidentARB glMakeImageHandleResidentARB;
+    da_glMakeImageHandleNonResidentARB glMakeImageHandleNonResidentARB;
+    da_glUniformHandleui64ARB glUniformHandleui64ARB;
+    da_glUniformHandleui64vARB glUniformHandleui64vARB;
+    da_glProgramUniformHandleui64ARB glProgramUniformHandleui64ARB;
+    da_glProgramUniformHandleui64vARB glProgramUniformHandleui64vARB;
+    da_glIsTextureHandleResidentARB glIsTextureHandleResidentARB;
+    da_glIsImageHandleResidentARB glIsImageHandleResidentARB;
+    da_glVertexAttribL1ui64ARB glVertexAttribL1ui64ARB;
+    da_glVertexAttribL1ui64vARB glVertexAttribL1ui64vARB;
+    da_glGetVertexAttribLui64vARB glGetVertexAttribLui64vARB;
+};
+
+enum arbBindlessTextureLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glGetTextureHandleARB, "glGetTextureHandleARB");
+    bindGLFunc(cast(void**)&glGetTextureSamplerHandleARB, "glGetTextureSamplerHandleARB");
+    bindGLFunc(cast(void**)&glMakeTextureHandleResidentARB, "glMakeTextureHandleResidentARB");
+    bindGLFunc(cast(void**)&glMakeTextureHandleNonResidentARB, "glMakeTextureHandleNonResidentARB");
+    bindGLFunc(cast(void**)&glGetImageHandleARB, "glGetImageHandleARB");
+    bindGLFunc(cast(void**)&glMakeImageHandleResidentARB, "glMakeImageHandleResidentARB");
+    bindGLFunc(cast(void**)&glMakeImageHandleNonResidentARB, "glMakeImageHandleNonResidentARB");
+    bindGLFunc(cast(void**)&glUniformHandleui64ARB, "glUniformHandleui64ARB");
+    bindGLFunc(cast(void**)&glUniformHandleui64vARB, "glUniformHandleui64vARB");
+    bindGLFunc(cast(void**)&glProgramUniformHandleui64ARB, "glProgramUniformHandleui64ARB");
+    bindGLFunc(cast(void**)&glProgramUniformHandleui64vARB, "glProgramUniformHandleui64vARB");
+    bindGLFunc(cast(void**)&glIsTextureHandleResidentARB, "glIsTextureHandleResidentARB");
+    bindGLFunc(cast(void**)&glIsImageHandleResidentARB, "glIsImageHandleResidentARB");
+    bindGLFunc(cast(void**)&glVertexAttribL1ui64ARB, "glVertexAttribL1ui64ARB");
+    bindGLFunc(cast(void**)&glVertexAttribL1ui64vARB, "glVertexAttribL1ui64vARB");
+    bindGLFunc(cast(void**)&glGetVertexAttribLui64vARB, "glGetVertexAttribLui64vARB");
+};
+
+enum arbBindlessTextureLoader = makeExtLoader(ARB_bindless_texture, arbBindlessTextureLoaderImpl);
+static if(!usingContexts) enum arbBindlessTexture = arbBindlessTextureDecls ~ arbBindlessTextureFuncs.makeGShared() ~ arbBindlessTextureLoader;
+
 // ARB_blend_func_extended <-- Core in GL 3.3
 enum ARB_blend_func_extended = "GL_ARB_blend_func_extended";
 enum arbBlendFuncExtendedDecls =

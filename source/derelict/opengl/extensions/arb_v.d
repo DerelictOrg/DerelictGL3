@@ -183,6 +183,11 @@ q{
 enum arbVertexAttribBindingLoader = makeLoader(ARB_vertex_attrib_binding, arbVertexAttribBindingLoaderImpl, "gl43");
 static if(!usingContexts) enum arbVertexAttribBinding = arbVertexAttribBindingDecls ~ arbVertexAttribBindingFuncs.makeGShared() ~ arbVertexAttribBindingLoader;
 
+// ARB_vertex_type_10f_11f_11f_rev <-- Core in GL 4.4
+enum ARB_vertex_type_10f_11f_11f_rev = "GL_ARB_vertex_type_10f_11f_11f_rev";
+enum arbVertexType10f11f11fRevLoader = makeLoader(ARB_vertex_type_10f_11f_11f_rev, "", "gl44");
+static if(!usingContexts) enum arbVertexType10f11f11fRev = arbVertexType10f11f11fRevLoader;
+
 // ARB_vertex_type_2_10_10_10_rev <-- Core in GL 3.3
 enum ARB_vertex_type_2_10_10_10_rev = "GL_ARB_vertex_type_2_10_10_10_rev";
 enum arbVertexType2101010RevDecls =
@@ -319,11 +324,6 @@ q{
 
 enum arbVertexType2101010RevLoader = makeLoader(ARB_vertex_type_2_10_10_10_rev, arbVertexType2101010RevLoaderImpl, "gl33");
 static if(!usingContexts) enum arbVertexType2101010Rev = arbVertexType2101010RevDecls ~ arbVertexType2101010RevFuncs.makeGShared() ~ arbVertexType2101010RevLoader;
-
-// ARB_vertex_type_10f_11f_11f_rev <-- Core in GL 4.4
-enum ARB_vertex_type_10f_11f_11f_rev = "GL_ARB_vertex_type_10f_11f_11f_rev";
-enum arbVertexType10f11f11fRevLoader = makeLoader(ARB_vertex_type_10f_11f_11f_rev, "", "gl44");
-static if(!usingContexts) enum arbVertexType10f11f11fRev = arbVertexType10f11f11fRevLoader;
 
 // ARB_viewport_array <-- Core in GL 4.1
 enum ARB_viewport_array = "GL_ARB_viewport_array";

@@ -103,10 +103,10 @@ enum : uint
 enum arbDepthBufferFloatLoader = makeExtLoader(ARB_depth_buffer_float);
 static if(!usingContexts) enum arbDepthBufferFloat = arbDepthBufferFloatDecls ~ arbDepthBufferFloatLoader;
 
-// ARB_depth_clamp
+// ARB_depth_clamp <-- Core in GL 3.2
 enum ARB_depth_clamp = "GL_ARB_depth_clamp";
 enum arbDepthClampDecls = `enum uint GL_DEPTH_CLAMP = 0x864F;`;
-enum arbDepthClampLoader = makeExtLoader(ARB_depth_clamp);
+enum arbDepthClampLoader = makeLoader(ARB_depth_clamp, "", "gl32");
 static if(!usingContexts) enum arbDepthClamp = arbDepthClampDecls ~ arbDepthClampLoader;
 
 // ARB_derivative_control <-- Core in GL 4.5
@@ -458,6 +458,37 @@ q{
 
 enum arbDrawBuffersBlendLoader = makeLoader(ARB_draw_buffers_blend, arbDrawBuffersBlendLoaderImpl, "gl40");
 static if(!usingContexts) enum arbDrawBuffersBlend = arbDrawBuffersBlendDecls ~ arbDrawBuffersBlendFuncs.makeGShared() ~ arbDrawBuffersBlendLoader;
+
+// ARB_draw_elements_base_vertex <-- Core in GL 3.2
+enum ARB_draw_elements_base_vertex = "GL_ARB_draw_elements_base_vertex";
+enum arbDrawElementsBaseVertexDecls =
+q{
+
+extern(System) @nogc nothrow {
+    alias da_glDrawElementsBaseVertex = void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLint);
+    alias da_glDrawRangeElementsBaseVertex = void function(GLenum, GLuint, GLuint, GLsizei, GLenum, const(GLvoid)*, GLint);
+    alias da_glDrawElementsInstancedBaseVertex = void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLsizei, GLint);
+    alias da_glMultiDrawElementsBaseVertex = void function(GLenum, const(GLsizei)*, GLenum, const(GLvoid*)*, GLsizei, const(GLint)*);
+}};
+
+enum arbDrawElementsBaseVertexFuncs =
+q{
+    da_glDrawElementsBaseVertex glDrawElementsBaseVertex;
+    da_glDrawRangeElementsBaseVertex glDrawRangeElementsBaseVertex;
+    da_glDrawElementsInstancedBaseVertex glDrawElementsInstancedBaseVertex;
+    da_glMultiDrawElementsBaseVertex glMultiDrawElementsBaseVertex;
+};
+
+enum arbDrawElementsBaseVertexLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glDrawElementsBaseVertex, "glDrawElementsBaseVertex");
+    bindGLFunc(cast(void**)&glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex");
+    bindGLFunc(cast(void**)&glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex");
+    bindGLFunc(cast(void**)&glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex");
+};
+
+enum arbDrawElementsBaseVertexLoader = makeLoader(ARB_draw_elements_base_vertex, arbDrawElementsBaseVertexLoaderImpl, "gl32");
+static if(!usingContexts) enum arbDrawElementsBaseVertex = arbDrawElementsBaseVertexDecls ~ arbDrawElementsBaseVertexFuncs.makeGShared() ~ arbDrawElementsBaseVertexLoader;
 
 // ARB_draw_indirect <-- Core in GL 4.0
 enum ARB_draw_indirect = "GL_ARB_draw_indirect";

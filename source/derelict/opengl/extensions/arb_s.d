@@ -109,6 +109,12 @@ q{
 enum arbSamplerObjectsLoader = makeLoader(ARB_sampler_objects, arbSamplerObjectsLoaderImpl, "gl33");
 static if(!usingContexts) enum arbSamplerObjects = arbSamplerObjectsDecls ~ arbSamplerObjectsFuncs.makeGShared() ~ arbSamplerObjectsLoader;
 
+// ARB_seamless_cube_map <-- Core in Gl 3.1
+enum ARB_seamless_cube_map = "GL_ARB_seamless_cube_map";
+enum arbSeamlessCubeMapDecls = `enum uint GL_TEXTURE_CUBE_MAP_SEAMLESS = 0x884F;`;
+enum arbSeamlessCubeMapLoader = makeLoader(ARB_seamless_cube_map, "", "gl32");
+static if(!usingContexts) enum arbSeamlessCubeMap = arbSeamlessCubeMapDecls ~ arbSeamlessCubeMapLoader;
+
 // ARB_separate_shader_objects <-- Core in GL 4.1
 enum ARB_separate_shader_objects = "GL_ARB_separate_shader_objects";
 enum arbSeparateShaderObjectsDecls =
@@ -620,3 +626,65 @@ enum ARB_stencil_texturing = "GL_ARB_stencil_texturing";
 enum arbStencilTexturingDecls = `enum uint GL_DEPTH_STENCIL_TEXTURE_MODE = 0x90EA;`;
 enum arbStencilTexturingLoader = makeLoader(ARB_stencil_texturing, "", "gl43");
 static if(!usingContexts) enum arbStencilTexturing = arbStencilTexturingDecls ~ arbStencilTexturingLoader;
+
+// ARB_sync <-- Core in GL 3.2
+enum ARB_sync = "GL_ARB_sync";
+enum arbSyncDecls =
+q{
+enum ulong GL_TIMEOUT_IGNORED  = 0xFFFFFFFFFFFFFFFF;
+alias GLint64 = long;
+alias GLuint64 = ulong;
+struct __GLsync;
+alias __GLsync* GLsync;
+enum : uint
+{
+    GL_MAX_SERVER_WAIT_TIMEOUT        = 0x9111,
+    GL_OBJECT_TYPE                    = 0x9112,
+    GL_SYNC_CONDITION                 = 0x9113,
+    GL_SYNC_STATUS                    = 0x9114,
+    GL_SYNC_FLAGS                     = 0x9115,
+    GL_SYNC_FENCE                     = 0x9116,
+    GL_SYNC_GPU_COMMANDS_COMPLETE     = 0x9117,
+    GL_UNSIGNALED                     = 0x9118,
+    GL_SIGNALED                       = 0x9119,
+    GL_ALREADY_SIGNALED               = 0x911A,
+    GL_TIMEOUT_EXPIRED                = 0x911B,
+    GL_CONDITION_SATISFIED            = 0x911C,
+    GL_WAIT_FAILED                    = 0x911D,
+    GL_SYNC_FLUSH_COMMANDS_BIT        = 0x00000001,
+}
+
+extern(System) @nogc nothrow {
+    alias da_glFenceSync = GLsync function(GLenum, GLbitfield);
+    alias da_glIsSync = GLboolean function(GLsync);
+    alias da_glDeleteSync = void function(GLsync);
+    alias da_glClientWaitSync = GLenum function(GLsync, GLbitfield, GLuint64);
+    alias da_glWaitSync = void function(GLsync, GLbitfield, GLuint64);
+    alias da_glGetInteger64v = void function(GLsync, GLint64*);
+    alias da_glGetSynciv = void function(GLsync, GLenum, GLsizei, GLsizei*, GLint*);
+}};
+
+enum arbSyncFuncs =
+q{
+    da_glFenceSync glFenceSync;
+    da_glIsSync glIsSync;
+    da_glDeleteSync glDeleteSync;
+    da_glClientWaitSync glClientWaitSync;
+    da_glWaitSync glWaitSync;
+    da_glGetInteger64v glGetInteger64v;
+    da_glGetSynciv glGetSynciv;
+};
+
+enum arbSyncLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glFenceSync, "glFenceSync");
+    bindGLFunc(cast(void**)&glIsSync, "glIsSync");
+    bindGLFunc(cast(void**)&glDeleteSync, "glDeleteSync");
+    bindGLFunc(cast(void**)&glClientWaitSync, "glClientWaitSync");
+    bindGLFunc(cast(void**)&glWaitSync, "glWaitSync");
+    bindGLFunc(cast(void**)&glGetInteger64v, "glGetInteger64v");
+    bindGLFunc(cast(void**)&glGetSynciv, "glGetSynciv");
+};
+
+enum arbSyncLoader = makeLoader(ARB_sync, arbSyncLoaderImpl, "gl32");
+static if(!usingContexts) enum arbSync = arbSyncDecls ~ arbSyncFuncs.makeGShared() ~ arbSyncLoader;

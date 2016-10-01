@@ -30,6 +30,11 @@ module derelict.opengl.extensions.arb_v;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_vertex_array_bgra <-- Core in GL 3.2
+enum ARB_vertex_array_bgra = "GL_ARB_vertex_array_bgra";
+enum arbVertexArrayBGRALoader = makeLoader(ARB_vertex_array_bgra, "", "gl32");
+static if(!usingContexts) enum arbVertexArrayBGRA = arbVertexArrayBGRALoader;
+
 // ARB_vertex_attrib_64bit <-- Core in 4.1
 enum ARB_vertex_attrib_64bit = "GL_ARB_vertex_attrib_64bit";
 enum arbVertexAttrib64BitDecls =

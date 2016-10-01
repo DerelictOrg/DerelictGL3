@@ -186,6 +186,61 @@ enum arbTextureMirrorClampToEdgeDecls = `enum uint GL_MIRROR_CLAMP_TO_EDGE = 0x8
 enum arbTextureMirrorClampToEdgeLoader = makeLoader(ARB_texture_mirror_clamp_to_edge, "", "gl44");
 static if(!usingContexts) enum arbTextureMirrorClampToEdge = arbTextureMirrorClampToEdgeDecls ~ arbTextureMirrorClampToEdgeLoader;
 
+// ARB_texture_multisample <-- Core in GL 3.2
+enum ARB_texture_multisample = "GL_ARB_texture_multisample";
+enum arbTextureMultiSampleDecls =
+q{
+enum : uint
+{
+    GL_SAMPLE_POSITION                = 0x8E50,
+    GL_SAMPLE_MASK                    = 0x8E51,
+    GL_SAMPLE_MASK_VALUE              = 0x8E52,
+    GL_MAX_SAMPLE_MASK_WORDS          = 0x8E59,
+    GL_TEXTURE_2D_MULTISAMPLE         = 0x9100,
+    GL_PROXY_TEXTURE_2D_MULTISAMPLE   = 0x9101,
+    GL_TEXTURE_2D_MULTISAMPLE_ARRAY   = 0x9102,
+    GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9103,
+    GL_TEXTURE_BINDING_2D_MULTISAMPLE = 0x9104,
+    GL_TEXTURE_BINDING_2D_MULTISAMPLE_ARRAY = 0x9105,
+    GL_TEXTURE_SAMPLES                = 0x9106,
+    GL_TEXTURE_FIXED_SAMPLE_LOCATIONS = 0x9107,
+    GL_SAMPLER_2D_MULTISAMPLE         = 0x9108,
+    GL_INT_SAMPLER_2D_MULTISAMPLE     = 0x9109,
+    GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE = 0x910A,
+    GL_SAMPLER_2D_MULTISAMPLE_ARRAY   = 0x910B,
+    GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910C,
+    GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910D,
+    GL_MAX_COLOR_TEXTURE_SAMPLES      = 0x910E,
+    GL_MAX_DEPTH_TEXTURE_SAMPLES      = 0x910F,
+    GL_MAX_INTEGER_SAMPLES            = 0x9110,
+}
+
+extern(System) @nogc nothrow {
+    alias da_glTexImage2DMultisample = void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean);
+    alias da_glTexImage3DMultisample = void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean);
+    alias da_glGetMultisamplefv = void function(GLenum, GLuint, GLfloat*);
+    alias da_glSampleMaski = void function(GLuint, GLbitfield);
+}};
+
+enum arbTextureMultiSampleFuncs =
+q{
+    da_glTexImage2DMultisample glTexImage2DMultisample;
+    da_glTexImage3DMultisample glTexImage3DMultisample;
+    da_glGetMultisamplefv glGetMultisamplefv;
+    da_glSampleMaski glSampleMaski;
+};
+
+enum arbTextureMultiSampleLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glTexImage2DMultisample, "glTexImage2DMultisample");
+    bindGLFunc(cast(void**)&glTexImage3DMultisample, "glTexImage3DMultisample");
+    bindGLFunc(cast(void**)&glGetMultisamplefv, "glGetMultisamplefv");
+    bindGLFunc(cast(void**)&glSampleMaski, "glSampleMaski");
+};
+
+enum arbTextureMultiSampleLoader = makeLoader(ARB_texture_multisample, arbTextureMultiSampleLoaderImpl, "gl32");
+static if(!usingContexts) enum arbTextureMultiSample = arbTextureMultiSampleDecls ~ arbTextureMultiSampleFuncs.makeGShared() ~ arbTextureMultiSampleLoader;
+
 // ARB_texture_query_levels <-- Core in GL 4.3
 enum ARB_texture_query_levels = "GL_ARB_texture_query_levels";
 enum arbTextureQueryLevelsLoader = makeLoader(ARB_texture_query_levels, "", "gl43");

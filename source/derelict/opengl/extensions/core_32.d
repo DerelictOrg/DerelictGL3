@@ -30,193 +30,28 @@ module derelict.opengl.extensions.core_32;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_draw_elements_base_vertex
-enum ARB_draw_elements_base_vertex = "GL_ARB_draw_elements_base_vertex";
-enum arbDrawElementsBaseVertexDecls =
-q{
+import derelict.opengl.extensions.arb_d : arbDepthClampDecls,
+                                          arbDrawElementsBaseVertexDecls, arbDrawElementsBaseVertexFuncs, arbDrawElementsBaseVertexLoaderImpl;
+import derelict.opengl.extensions.arb_g : arbGeometryShader4Decls, arbGeometryShader4Funcs, arbGeometryShader4LoaderImpl;
+import derelict.opengl.extensions.arb_p : arbProvokingVertexDecls, arbProvokingVertexFuncs, arbProvokingVertexLoaderImpl;
+import derelict.opengl.extensions.arb_s : arbSeamlessCubeMapDecls,
+                                          arbSyncDecls, arbSyncFuncs, arbSyncLoaderImpl;
+import derelict.opengl.extensions.arb_t : arbTextureMultiSampleDecls, arbTextureMultiSampleFuncs, arbTextureMultiSampleLoaderImpl;
 
-extern(System) @nogc nothrow {
-    alias da_glDrawElementsBaseVertex = void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLint);
-    alias da_glDrawRangeElementsBaseVertex = void function(GLenum, GLuint, GLuint, GLsizei, GLenum, const(GLvoid)*, GLint);
-    alias da_glDrawElementsInstancedBaseVertex = void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLsizei, GLint);
-    alias da_glMultiDrawElementsBaseVertex = void function(GLenum, const(GLsizei)*, GLenum, const(GLvoid*)*, GLsizei, const(GLint)*);
-}};
-
-enum arbDrawElementsBaseVertexFuncs =
-q{
-    da_glDrawElementsBaseVertex glDrawElementsBaseVertex;
-    da_glDrawRangeElementsBaseVertex glDrawRangeElementsBaseVertex;
-    da_glDrawElementsInstancedBaseVertex glDrawElementsInstancedBaseVertex;
-    da_glMultiDrawElementsBaseVertex glMultiDrawElementsBaseVertex;
-};
-
-enum arbDrawElementsBaseVertexLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glDrawElementsBaseVertex, "glDrawElementsBaseVertex");
-    bindGLFunc(cast(void**)&glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex");
-    bindGLFunc(cast(void**)&glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex");
-    bindGLFunc(cast(void**)&glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex");
-};
-
-enum arbDrawElementsBaseVertexLoader = makeLoader(ARB_draw_elements_base_vertex, arbDrawElementsBaseVertexLoaderImpl, "gl32");
-static if(!usingContexts) enum arbDrawElementsBaseVertex = arbDrawElementsBaseVertexDecls ~ arbDrawElementsBaseVertexFuncs.makeGShared() ~ arbDrawElementsBaseVertexLoader;
-
-// ARB_fragment_coord_conventions
-enum ARB_fragment_coord_conventions = "GL_ARB_fragment_coord_conventions";
-enum arbFragmentCoordConventionsLoader = makeLoader(ARB_fragment_coord_conventions, "", "gl32");
-static if(!usingContexts) enum arbFragmentCoordConventions = arbFragmentCoordConventionsLoader;
-
-// ARB_provoking_vertex
-enum ARB_provoking_vertex = "GL_ARB_provoking_vertex";
-enum arbProvokingVertexDecls =
-q{
-enum : uint
-{
-    GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = 0x8E4C,
-    GL_FIRST_VERTEX_CONVENTION        = 0x8E4D,
-    GL_LAST_VERTEX_CONVENTION         = 0x8E4E,
-    GL_PROVOKING_VERTEX               = 0x8E4F,
-}
-
-extern(System) @nogc nothrow alias da_glProvokingVertex = void function(GLenum);
-};
-
-enum arbProvokingVertexFuncs = `da_glProvokingVertex glProvokingVertex;`;
-enum arbProvokingVertexLoaderImpl = `bindGLFunc(cast(void**)&glProvokingVertex, "glProvokingVertex");`;
-enum arbProvokingVertexLoader = makeLoader(ARB_provoking_vertex, arbProvokingVertexLoaderImpl, "gl32");
-static if(!usingContexts) enum arbProvokingVertex = arbProvokingVertexDecls ~ arbProvokingVertexFuncs.makeGShared() ~ arbProvokingVertexLoader;
-
-// ARB_seamless_cube_map
-enum ARB_seamless_cube_map = "GL_ARB_seamless_cube_map";
-enum arbSeamlessCubeMapDecls = `enum uint GL_TEXTURE_CUBE_MAP_SEAMLESS = 0x884F;`;
-enum arbSeamlessCubeMapLoader = makeLoader(ARB_seamless_cube_map, "", "gl32");
-static if(!usingContexts) enum arbSeamlessCubeMap = arbSeamlessCubeMapDecls ~ arbSeamlessCubeMapLoader;
-
-// ARB_sync
-enum ARB_sync = "GL_ARB_sync";
-enum arbSyncDecls =
-q{
-enum ulong GL_TIMEOUT_IGNORED  = 0xFFFFFFFFFFFFFFFF;
-alias GLint64 = long;
-alias GLuint64 = ulong;
-struct __GLsync;
-alias __GLsync* GLsync;
-enum : uint
-{
-    GL_MAX_SERVER_WAIT_TIMEOUT        = 0x9111,
-    GL_OBJECT_TYPE                    = 0x9112,
-    GL_SYNC_CONDITION                 = 0x9113,
-    GL_SYNC_STATUS                    = 0x9114,
-    GL_SYNC_FLAGS                     = 0x9115,
-    GL_SYNC_FENCE                     = 0x9116,
-    GL_SYNC_GPU_COMMANDS_COMPLETE     = 0x9117,
-    GL_UNSIGNALED                     = 0x9118,
-    GL_SIGNALED                       = 0x9119,
-    GL_ALREADY_SIGNALED               = 0x911A,
-    GL_TIMEOUT_EXPIRED                = 0x911B,
-    GL_CONDITION_SATISFIED            = 0x911C,
-    GL_WAIT_FAILED                    = 0x911D,
-    GL_SYNC_FLUSH_COMMANDS_BIT        = 0x00000001,
-}
-
-extern(System) @nogc nothrow {
-    alias da_glFenceSync = GLsync function(GLenum, GLbitfield);
-    alias da_glIsSync = GLboolean function(GLsync);
-    alias da_glDeleteSync = void function(GLsync);
-    alias da_glClientWaitSync = GLenum function(GLsync, GLbitfield, GLuint64);
-    alias da_glWaitSync = void function(GLsync, GLbitfield, GLuint64);
-    alias da_glGetInteger64v = void function(GLsync, GLint64*);
-    alias da_glGetSynciv = void function(GLsync, GLenum, GLsizei, GLsizei*, GLint*);
-}};
-
-enum arbSyncFuncs =
-q{
-    da_glFenceSync glFenceSync;
-    da_glIsSync glIsSync;
-    da_glDeleteSync glDeleteSync;
-    da_glClientWaitSync glClientWaitSync;
-    da_glWaitSync glWaitSync;
-    da_glGetInteger64v glGetInteger64v;
-    da_glGetSynciv glGetSynciv;
-};
-
-enum arbSyncLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glFenceSync, "glFenceSync");
-    bindGLFunc(cast(void**)&glIsSync, "glIsSync");
-    bindGLFunc(cast(void**)&glDeleteSync, "glDeleteSync");
-    bindGLFunc(cast(void**)&glClientWaitSync, "glClientWaitSync");
-    bindGLFunc(cast(void**)&glWaitSync, "glWaitSync");
-    bindGLFunc(cast(void**)&glGetInteger64v, "glGetInteger64v");
-    bindGLFunc(cast(void**)&glGetSynciv, "glGetSynciv");
-};
-
-enum arbSyncLoader = makeLoader(ARB_sync, arbSyncLoaderImpl, "gl32");
-static if(!usingContexts) enum arbSync = arbSyncDecls ~ arbSyncFuncs.makeGShared() ~ arbSyncLoader;
-
-enum ARB_texture_multisample = "GL_ARB_texture_multisample";
-enum arbTextureMultiSampleDecls =
-q{
-enum : uint
-{
-    GL_SAMPLE_POSITION                = 0x8E50,
-    GL_SAMPLE_MASK                    = 0x8E51,
-    GL_SAMPLE_MASK_VALUE              = 0x8E52,
-    GL_MAX_SAMPLE_MASK_WORDS          = 0x8E59,
-    GL_TEXTURE_2D_MULTISAMPLE         = 0x9100,
-    GL_PROXY_TEXTURE_2D_MULTISAMPLE   = 0x9101,
-    GL_TEXTURE_2D_MULTISAMPLE_ARRAY   = 0x9102,
-    GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9103,
-    GL_TEXTURE_BINDING_2D_MULTISAMPLE = 0x9104,
-    GL_TEXTURE_BINDING_2D_MULTISAMPLE_ARRAY = 0x9105,
-    GL_TEXTURE_SAMPLES                = 0x9106,
-    GL_TEXTURE_FIXED_SAMPLE_LOCATIONS = 0x9107,
-    GL_SAMPLER_2D_MULTISAMPLE         = 0x9108,
-    GL_INT_SAMPLER_2D_MULTISAMPLE     = 0x9109,
-    GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE = 0x910A,
-    GL_SAMPLER_2D_MULTISAMPLE_ARRAY   = 0x910B,
-    GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910C,
-    GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910D,
-    GL_MAX_COLOR_TEXTURE_SAMPLES      = 0x910E,
-    GL_MAX_DEPTH_TEXTURE_SAMPLES      = 0x910F,
-    GL_MAX_INTEGER_SAMPLES            = 0x9110,
-}
-
-extern(System) @nogc nothrow {
-    alias da_glTexImage2DMultisample = void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean);
-    alias da_glTexImage3DMultisample = void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean);
-    alias da_glGetMultisamplefv = void function(GLenum, GLuint, GLfloat*);
-    alias da_glSampleMaski = void function(GLuint, GLbitfield);
-}};
-
-enum arbTextureMultiSampleFuncs =
-q{
-    da_glTexImage2DMultisample glTexImage2DMultisample;
-    da_glTexImage3DMultisample glTexImage3DMultisample;
-    da_glGetMultisamplefv glGetMultisamplefv;
-    da_glSampleMaski glSampleMaski;
-};
-
-enum arbTextureMultiSampleLoaderImpl =
-q{
-    bindGLFunc(cast(void**)&glTexImage2DMultisample, "glTexImage2DMultisample");
-    bindGLFunc(cast(void**)&glTexImage3DMultisample, "glTexImage3DMultisample");
-    bindGLFunc(cast(void**)&glGetMultisamplefv, "glGetMultisamplefv");
-    bindGLFunc(cast(void**)&glSampleMaski, "glSampleMaski");
-};
-
-enum arbTextureMultiSampleLoader = makeLoader(ARB_texture_multisample, arbTextureMultiSampleLoaderImpl, "gl32");
-static if(!usingContexts) enum arbTextureMultiSample = arbTextureMultiSampleDecls ~ arbTextureMultiSampleFuncs.makeGShared() ~ arbTextureMultiSampleLoader;
-
-
-// ARB_vertex_array_bgra
-enum ARB_vertex_array_bgra = "GL_ARB_vertex_array_bgra";
-enum arbVertexArrayBGRALoader = makeLoader(ARB_vertex_array_bgra, "", "gl32");
-static if(!usingContexts) enum arbVertexArrayBGRA = arbVertexArrayBGRALoader;
-
-
-static if(!usingContexts) enum corearb32 = arbDrawElementsBaseVertex ~ arbProvokingVertex ~ arbSync ~ arbTextureMultiSample;
-enum corearb32Decls = arbDrawElementsBaseVertexDecls ~ arbProvokingVertexDecls ~ arbSeamlessCubeMapDecls ~ arbSyncDecls ~ arbTextureMultiSampleDecls;
-enum corearb32Funcs = arbDrawElementsBaseVertexFuncs ~ arbProvokingVertexFuncs ~ arbSyncFuncs ~ arbTextureMultiSampleFuncs;
-enum corearb32Loader = arbDrawElementsBaseVertexLoaderImpl ~ arbProvokingVertexLoaderImpl ~
-        arbSyncLoaderImpl ~ arbTextureMultiSampleLoaderImpl;
+enum corearb32Decls = arbDepthClampDecls
+                    ~ arbDrawElementsBaseVertexDecls
+                    ~ arbGeometryShader4Decls
+                    ~ arbProvokingVertexDecls
+                    ~ arbSeamlessCubeMapDecls
+                    ~ arbSyncDecls
+                    ~ arbTextureMultiSampleDecls;
+enum corearb32Funcs = arbDrawElementsBaseVertexFuncs
+                    ~ arbGeometryShader4Funcs
+                    ~ arbProvokingVertexFuncs
+                    ~ arbSyncFuncs
+                    ~ arbTextureMultiSampleFuncs;
+enum corearb32Loader = arbDrawElementsBaseVertexLoaderImpl
+                     ~ arbGeometryShader4LoaderImpl
+                     ~ arbProvokingVertexLoaderImpl
+                     ~ arbSyncLoaderImpl
+                     ~ arbTextureMultiSampleLoaderImpl;

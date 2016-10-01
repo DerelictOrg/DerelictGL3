@@ -30,6 +30,11 @@ module derelict.opengl.extensions.arb_f;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
+// ARB_fragment_coord_conventions <-- Core in GL 3.2
+enum ARB_fragment_coord_conventions = "GL_ARB_fragment_coord_conventions";
+enum arbFragmentCoordConventionsLoader = makeLoader(ARB_fragment_coord_conventions, "", "gl32");
+static if(!usingContexts) enum arbFragmentCoordConventions = arbFragmentCoordConventionsLoader;
+
 // ARB_fragment_layer_viewport <-- Core in GL 4.3
 enum ARB_fragment_layer_viewport = "GL_ARB_fragment_layer_viewport";
 enum arbFragmentLayerViewportLoader = makeLoader(ARB_fragment_layer_viewport, "", "gl43");

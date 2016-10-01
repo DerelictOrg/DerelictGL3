@@ -116,3 +116,23 @@ q{
 
 enum arbProgramInterfaceQueryLoader = makeLoader(ARB_program_interface_query, arbProgramInterfaceQueryLoaderImpl, "gl43");
 static if(!usingContexts) enum arbProgramInterfaceQuery = arbProgramInterfaceQueryDecls ~ arbProgramInterfaceQueryFuncs.makeGShared() ~ arbProgramInterfaceQueryLoader;
+
+// ARB_provoking_vertex <-- Core in GL 3.2
+enum ARB_provoking_vertex = "GL_ARB_provoking_vertex";
+enum arbProvokingVertexDecls =
+q{
+enum : uint
+{
+    GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = 0x8E4C,
+    GL_FIRST_VERTEX_CONVENTION        = 0x8E4D,
+    GL_LAST_VERTEX_CONVENTION         = 0x8E4E,
+    GL_PROVOKING_VERTEX               = 0x8E4F,
+}
+
+extern(System) @nogc nothrow alias da_glProvokingVertex = void function(GLenum);
+};
+
+enum arbProvokingVertexFuncs = `da_glProvokingVertex glProvokingVertex;`;
+enum arbProvokingVertexLoaderImpl = `bindGLFunc(cast(void**)&glProvokingVertex, "glProvokingVertex");`;
+enum arbProvokingVertexLoader = makeLoader(ARB_provoking_vertex, arbProvokingVertexLoaderImpl, "gl32");
+static if(!usingContexts) enum arbProvokingVertex = arbProvokingVertexDecls ~ arbProvokingVertexFuncs.makeGShared() ~ arbProvokingVertexLoader;

@@ -27,9 +27,6 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_32;
 
-import derelict.opengl.types : usingContexts;
-import derelict.opengl.extensions.internal;
-
 import derelict.opengl.extensions.arb_d : arbDepthClampDecls,
                                           arbDrawElementsBaseVertexDecls, arbDrawElementsBaseVertexFuncs, arbDrawElementsBaseVertexLoaderImpl;
 import derelict.opengl.extensions.arb_g : arbGeometryShader4Decls, arbGeometryShader4Funcs, arbGeometryShader4LoaderImpl;

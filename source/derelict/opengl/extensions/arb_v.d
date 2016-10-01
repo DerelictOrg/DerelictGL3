@@ -35,6 +35,38 @@ enum ARB_vertex_array_bgra = "GL_ARB_vertex_array_bgra";
 enum arbVertexArrayBGRALoader = makeLoader(ARB_vertex_array_bgra, "", "gl32");
 static if(!usingContexts) enum arbVertexArrayBGRA = arbVertexArrayBGRALoader;
 
+// ARB_vertex_array_object <-- Core in GL 3.0
+enum ARB_vertex_array_object = "GL_ARB_vertex_array_object";
+enum arbVertexArrayObjectDecls =
+q{
+enum uint GL_VERTEX_ARRAY_BINDING = 0x85B5;
+
+extern(System) @nogc nothrow {
+    alias da_glBindVertexArray = void function(GLuint);
+    alias da_glDeleteVertexArrays = void function(GLsizei, const(GLuint)*);
+    alias da_glGenVertexArrays = void function(GLsizei, GLuint*);
+    alias da_glIsVertexArray = GLboolean function(GLuint);
+}};
+
+enum arbVertexArrayObjectFuncs =
+q{
+    da_glBindVertexArray glBindVertexArray;
+    da_glDeleteVertexArrays glDeleteVertexArrays;
+    da_glGenVertexArrays glGenVertexArrays;
+    da_glIsVertexArray glIsVertexArray;
+};
+
+enum arbVertexArrayObjectLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glBindVertexArray, "glBindVertexArray");
+    bindGLFunc(cast(void**)&glDeleteVertexArrays, "glDeleteVertexArrays");
+    bindGLFunc(cast(void**)&glGenVertexArrays, "glGenVertexArrays");
+    bindGLFunc(cast(void**)&glIsVertexArray, "glIsVertexArray");
+};
+
+enum arbVertexArrayObjectLoader = makeLoader(ARB_vertex_array_object, arbVertexArrayObjectLoaderImpl, "gl30");
+static if(!usingContexts) enum arbVertexArrayObject = arbVertexArrayObjectDecls ~ arbVertexArrayObjectFuncs.makeGShared() ~ arbVertexArrayObjectLoader;
+
 // ARB_vertex_attrib_64bit <-- Core in 4.1
 enum ARB_vertex_attrib_64bit = "GL_ARB_vertex_attrib_64bit";
 enum arbVertexAttrib64BitDecls =

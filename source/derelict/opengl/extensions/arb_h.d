@@ -25,23 +25,13 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
-module derelict.opengl.extensions.core_30;
+module derelict.opengl.extensions.arb_h;
 
-import derelict.opengl.extensions.arb_f : arbFramebufferObjectFuncs, arbFramebufferObjectDecls, arbFramebufferObjectLoaderImpl;
-import derelict.opengl.extensions.arb_h : arbHalfFloatVertexDecls;
-import derelict.opengl.extensions.arb_m : arbMapBufferRangeDecls, arbMapBufferRangeFuncs, arbMapBufferRangeLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTextureCompressionRGTCDecls, arbTextureRGDecls;
-import derelict.opengl.extensions.arb_v : arbVertexArrayObjectDecls, arbVertexArrayObjectFuncs, arbVertexArrayObjectLoaderImpl;
+import derelict.opengl.types : usingContexts;
+import derelict.opengl.extensions.internal;
 
-enum corearb30Decls = arbFramebufferObjectDecls
-                    ~ arbHalfFloatVertexDecls
-                    ~ arbMapBufferRangeDecls
-                    ~ arbTextureCompressionRGTCDecls
-                    ~ arbTextureRGDecls
-                    ~ arbVertexArrayObjectDecls;
-enum corearb30Funcs = arbFramebufferObjectFuncs
-                    ~ arbMapBufferRangeFuncs
-                    ~ arbVertexArrayObjectFuncs;
-enum corearb30Loader = arbFramebufferObjectLoaderImpl
-                     ~ arbMapBufferRangeLoaderImpl
-                     ~ arbVertexArrayObjectLoaderImpl;
+// ARB_half_float_vertex <-- Core in GL 3.0
+enum ARB_half_float_vertex = "GL_ARB_half_float_vertex";
+enum arbHalfFloatVertexDecls = "enum uint GL_HALF_FLOAT = 0x140B;";
+enum arbHalfFloatVertexLoader = makeLoader(ARB_half_float_vertex, "", "gl30");
+static if(!usingContexts) enum arbHalfFloatVertex = arbHalfFloatVertexDecls;

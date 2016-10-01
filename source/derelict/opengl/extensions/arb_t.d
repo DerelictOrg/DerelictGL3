@@ -148,6 +148,21 @@ enum : uint
 enum arbTextureCompressionBPTCLoader = makeExtLoader(ARB_texture_compression_bptc);
 static if(!usingContexts) enum arbTextureCompressionBPTC = arbTextureCompressionBPTCDecls ~ arbTextureCompressionBPTCLoader;
 
+// ARB_texture_compression_rgtc <-- Core in GL 3.0
+enum ARB_texture_compression_rgtc = "GL_ARB_texture_compression_rgtc";
+enum arbTextureCompressionRGTCDecls =
+q{
+enum : uint
+{
+    GL_COMPRESSED_RED_RGTC1           = 0x8DBB,
+    GL_COMPRESSED_SIGNED_RED_RGTC1    = 0x8DBC,
+    GL_COMPRESSED_RG_RGTC2            = 0x8DBD,
+    GL_COMPRESSED_SIGNED_RG_RGTC2     = 0x8DBE,
+}};
+
+enum arbTextureCompressionRGTCLoader = makeLoader(ARB_texture_compression_rgtc, "", "gl30");
+static if(!usingContexts) enum arbTextureCompressionRGTC = arbTextureCompressionRGTCDecls ~ arbTextureCompressionRGTCLoader;
+
 // ARB_texture_cube_map_array
 enum ARB_texture_cube_map_array = "GL_ARB_texture_cube_map_array";
 enum arbTextureCubeMapArrayDecls =
@@ -249,6 +264,39 @@ static if(!usingContexts) enum arbTextureQueryLevels = arbTextureQueryLevelsLoad
 enum ARB_texture_query_lod = "GL_ARB_texture_query_lod";
 enum arbTextureQueryLODLoader = makeLoader(ARB_texture_query_lod, "", "gl40");
 static if(!usingContexts) enum arbTextureQueryLOD = arbTextureQueryLODLoader;
+
+// ARB_texture_rg <-- Core in GL 3.0
+enum ARB_texture_rg = "GL_ARB_texture_rg";
+enum arbTextureRGDecls =
+q{
+enum : uint
+{
+    GL_RG                             = 0x8227,
+    GL_RG_INTEGER                     = 0x8228,
+    GL_R8                             = 0x8229,
+    GL_R16                            = 0x822A,
+    GL_RG8                            = 0x822B,
+    GL_RG16                           = 0x822C,
+    GL_R16F                           = 0x822D,
+    GL_R32F                           = 0x822E,
+    GL_RG16F                          = 0x822F,
+    GL_RG32F                          = 0x8230,
+    GL_R8I                            = 0x8231,
+    GL_R8UI                           = 0x8232,
+    GL_R16I                           = 0x8233,
+    GL_R16UI                          = 0x8234,
+    GL_R32I                           = 0x8235,
+    GL_R32UI                          = 0x8236,
+    GL_RG8I                           = 0x8237,
+    GL_RG8UI                          = 0x8238,
+    GL_RG16I                          = 0x8239,
+    GL_RG16UI                         = 0x823A,
+    GL_RG32I                          = 0x823B,
+    GL_RG32UI                         = 0x823C,
+}};
+
+enum arbTextureRGLoader = makeLoader(ARB_texture_rg, "", "gl30");
+static if(!usingContexts) enum arbTextureRG = arbTextureRGDecls ~ arbTextureCompressionRGTCLoader;
 
 // ARB_texture_rgb10_a2ui <-- Core in GL 3.3
 enum ARB_texture_rgb10_a2ui = "GL_ARB_texture_rgb10_a2ui";

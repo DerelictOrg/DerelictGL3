@@ -27,9 +27,6 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_31;
 
-import derelict.opengl.types : usingContexts;
-import derelict.opengl.extensions.internal;
-
 import derelict.opengl.extensions.arb_c : arbCopyBufferDecls, arbCopyBufferFuncs, arbCopyBufferLoaderImpl;
 import derelict.opengl.extensions.arb_u : arbUniformBufferObjectDecls, arbUniformBufferObjectFuncs, arbUniformBufferObjectLoaderImpl;
 

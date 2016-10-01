@@ -36,6 +36,40 @@ enum arbMapBufferAlignmentDecls = `enum uint GL_MIN_MAP_BUFFER_ALIGNMENT = 0x90B
 enum arbMapBufferAlignmentLoader = makeLoader(ARB_map_buffer_alignment, "", "gl42");
 static if(!usingContexts) enum arbMapBufferAlignment = arbMapBufferAlignmentDecls ~ arbMapBufferAlignmentLoader;
 
+// ARB_map_buffer_range <-- Core in GL 3.0
+enum ARB_map_buffer_range = "GL_ARB_map_buffer_range";
+enum arbMapBufferRangeDecls =
+q{
+enum : uint
+{
+    GL_MAP_READ_BIT                   = 0x0001,
+    GL_MAP_WRITE_BIT                  = 0x0002,
+    GL_MAP_INVALIDATE_RANGE_BIT       = 0x0004,
+    GL_MAP_INVALIDATE_BUFFER_BIT      = 0x0008,
+    GL_MAP_FLUSH_EXPLICIT_BIT         = 0x0010,
+    GL_MAP_UNSYNCHRONIZED_BIT         = 0x0020,
+}
+
+extern(System) @nogc nothrow {
+    alias da_glMapBufferRange = GLvoid* function(GLenum, GLintptr, GLsizeiptr, GLbitfield);
+    alias da_glFlushMappedBufferRange = void function(GLenum, GLintptr, GLsizeiptr);
+}};
+
+enum arbMapBufferRangeFuncs =
+q{
+    da_glMapBufferRange glMapBufferRange;
+    da_glFlushMappedBufferRange glFlushMappedBufferRange;
+};
+
+enum arbMapBufferRangeLoaderImpl =
+q{
+    bindGLFunc(cast(void**)&glMapBufferRange, "glMapBufferRange");
+    bindGLFunc(cast(void**)&glFlushMappedBufferRange, "glFlushMappedBufferRange");
+};
+
+enum arbMapBufferRangeLoader = makeLoader(ARB_map_buffer_range, arbMapBufferRangeLoaderImpl, "gl30");
+static if(!usingContexts) enum arbMapBufferRange = arbMapBufferRangeDecls ~ arbMapBufferRangeFuncs.makeGShared() ~ arbMapBufferRangeLoader;
+
 // ARB_multi_bind <-- Core in GL 4.4
 enum ARB_multi_bind = "GL_ARB_multi_bind";
 enum arbMultBindDecls =

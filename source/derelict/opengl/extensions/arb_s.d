@@ -45,7 +45,7 @@ extern(System) @nogc nothrow alias da_glMinSampleShadingARB = void function(GLcl
 enum arbSampleShadingFuncs = `da_glMinSampleShadingARB glMinSampleShadingARB;`;
 enum arbSampleShadingLoaderImpl = `bindGLFunc(cast(void**)&glMinSampleShadingARB, "glMinSampleShadingARB");`;
 enum arbSampleShadingLoader = makeLoader(ARB_sample_shading, arbSampleShadingLoaderImpl, "gl40");
-static if(!usingContexts) enum arbSampleShading = arbSampleShadingDecls ~ arbSampleShadingFuncs ~ arbSampleShadingLoader;
+static if(!usingContexts) enum arbSampleShading = arbSampleShadingDecls ~ arbSampleShadingFuncs.makeGShared() ~ arbSampleShadingLoader;
 
 // ARB_sampler_objects <-- Core in GL 3.3
 enum ARB_sampler_objects = "GL_ARB_sampler_objects";
@@ -109,7 +109,7 @@ q{
 enum arbSamplerObjectsLoader = makeLoader(ARB_sampler_objects, arbSamplerObjectsLoaderImpl, "gl33");
 static if(!usingContexts) enum arbSamplerObjects = arbSamplerObjectsDecls ~ arbSamplerObjectsFuncs.makeGShared() ~ arbSamplerObjectsLoader;
 
-// ARB_seamless_cube_map <-- Core in Gl 3.1
+// ARB_seamless_cube_map <-- Core in Gl 3.2
 enum ARB_seamless_cube_map = "GL_ARB_seamless_cube_map";
 enum arbSeamlessCubeMapDecls = `enum uint GL_TEXTURE_CUBE_MAP_SEAMLESS = 0x884F;`;
 enum arbSeamlessCubeMapLoader = makeLoader(ARB_seamless_cube_map, "", "gl32");

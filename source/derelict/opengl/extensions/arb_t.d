@@ -338,7 +338,6 @@ q{
     bindGLFunc(cast(void**)&glTexStorage1D, "glTexStorage1D");
     bindGLFunc(cast(void**)&glTexStorage2D, "glTexStorage2D");
     bindGLFunc(cast(void**)&glTexStorage3D, "glTexStorage3D");
-    // The following are present if EXT_direct_state_access is supported.
     try {
         bindGLFunc(cast(void**)&glTextureStorage1DEXT, "glTextureStorage1DEXT");
         bindGLFunc(cast(void**)&glTextureStorage2DEXT, "glTextureStorage2DEXT");

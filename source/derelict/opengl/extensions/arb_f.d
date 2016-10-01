@@ -249,4 +249,4 @@ q{
 };
 
 enum arbFramebufferObjectLoader = makeLoader(ARB_framebuffer_object, arbFramebufferObjectLoaderImpl, "gl30");
-static if(!usingContexts) enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs ~ arbFramebufferObjectLoader;
+static if(!usingContexts) enum arbFramebufferObject = arbFramebufferObjectDecls ~ arbFramebufferObjectFuncs.makeGShared() ~ arbFramebufferObjectLoader;

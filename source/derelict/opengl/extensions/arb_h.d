@@ -34,4 +34,4 @@ import derelict.opengl.extensions.internal;
 enum ARB_half_float_vertex = "GL_ARB_half_float_vertex";
 enum arbHalfFloatVertexDecls = "enum uint GL_HALF_FLOAT = 0x140B;";
 enum arbHalfFloatVertexLoader = makeLoader(ARB_half_float_vertex, "", "gl30");
-static if(!usingContexts) enum arbHalfFloatVertex = arbHalfFloatVertexDecls;
+static if(!usingContexts) enum arbHalfFloatVertex = arbHalfFloatVertexDecls ~ arbHalfFloatVertexLoader;

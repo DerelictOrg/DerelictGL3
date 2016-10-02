@@ -163,10 +163,6 @@ mixin template glLoaders(GLVersion core)
             static if(core >= GLVersion.gl43) mixin(gl43Loader);
             static if(core >= GLVersion.gl44) mixin(gl44Loader);
             static if(core >= GLVersion.gl45) mixin(gl45Loader);
-
-
-            import std.file : write;
-            write("loader30.txt", gl30Loader);
         }
 
         static if(is(typeof(loadExtensions()))) loadExtensions();

@@ -27,13 +27,12 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_45;
 
-import derelict.opengl.extensions.arb_c : arbClipControlDecls, arbClipControlFuncs, arbClipControlLoaderImpl,
-                                          arbConditionalRenderInvertedDecls, arbCullDistanceDecls;
-import derelict.opengl.extensions.arb_d : arbDirectStateAccessDecls, arbDirectStateAccessFuncs, arbDirectStateAccessLoaderImpl;
-import derelict.opengl.extensions.arb_e : arbES31CompatibilityDecls, arbES31CompatibilityFuncs, arbES31CompatibilityLoaderImpl;
-import derelict.opengl.extensions.arb_g : arbGetTextureSubImageDecls, arbGetTextureSubImageFuncs, arbGetTextureSubImageLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTextureBarrierDecls, arbTextureBarrierFuncs, arbTextureBarrierLoaderImpl;
-import derelict.opengl.extensions.khr : khrContextFlushControlDecls, khrRobustnessDecls, khrRobustnessFuncs, khrRobustnessLoaderImpl;
+import derelict.opengl.extensions.arb_c,
+       derelict.opengl.extensions.arb_d,
+       derelict.opengl.extensions.arb_e,
+       derelict.opengl.extensions.arb_g,
+       derelict.opengl.extensions.arb_t,
+       derelict.opengl.extensions.khr;
 
 enum corearb45Decls = arbClipControlDecls
                     ~ arbCullDistanceDecls
@@ -50,9 +49,17 @@ enum corearb45Funcs = arbClipControlFuncs
                     ~ arbGetTextureSubImageFuncs
                     ~ arbTextureBarrierFuncs
                     ~ khrRobustnessFuncs;
+version(DerelictGL3_Contexts)
 enum corearb45Loader = arbClipControlLoaderImpl
                      ~ arbDirectStateAccessLoaderImpl
                      ~ arbES31CompatibilityLoaderImpl
                      ~ arbGetTextureSubImageLoaderImpl
                      ~ arbTextureBarrierLoaderImpl
                      ~ khrRobustnessLoaderImpl;
+else
+enum corearb45Loader = arbClipControlLoader
+                     ~ arbDirectStateAccessLoader
+                     ~ arbES31CompatibilityLoader
+                     ~ arbGetTextureSubImageLoader
+                     ~ arbTextureBarrierLoader
+                     ~ khrRobustnessLoader;

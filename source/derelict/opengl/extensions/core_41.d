@@ -27,11 +27,10 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_41;
 
-import derelict.opengl.extensions.arb_e : arbES2CompatibilityDecls, arbES2CompatibilityFuncs, arbES2CompatibilityLoaderImpl;
-import derelict.opengl.extensions.arb_g : arbGetProgramBinaryDecls, arbGetProgramBinaryFuncs, arbGetProgramBinaryLoaderImpl;
-import derelict.opengl.extensions.arb_s : arbSeparateShaderObjectsDecls, arbSeparateShaderObjectsFuncs, arbSeparateShaderObjectsLoaderImpl;
-import derelict.opengl.extensions.arb_v : arbVertexAttrib64BitDecls, arbVertexAttrib64BitFuncs, arbVertexAttrib64BitLoaderImpl,
-                                          arbViewportArrayDecls, arbViewportArrayFuncs, arbViewportArrayLoaderImpl;
+import derelict.opengl.extensions.arb_e,
+       derelict.opengl.extensions.arb_g,
+       derelict.opengl.extensions.arb_s,
+       derelict.opengl.extensions.arb_v;
 
 enum corearb41Decls = arbES2CompatibilityDecls
                     ~ arbGetProgramBinaryDecls
@@ -43,8 +42,15 @@ enum corearb41Funcs = arbES2CompatibilityFuncs
                     ~ arbSeparateShaderObjectsFuncs
                     ~ arbVertexAttrib64BitFuncs
                     ~ arbViewportArrayFuncs;
+version(DerelictGL3_Contexts)
 enum corearb41Loader = arbES2CompatibilityLoaderImpl
                      ~ arbGetProgramBinaryLoaderImpl
                      ~ arbSeparateShaderObjectsLoaderImpl
                      ~ arbVertexAttrib64BitLoaderImpl
                      ~ arbViewportArrayLoaderImpl;
+else
+enum corearb41Loader = arbES2CompatibilityLoader
+                     ~ arbGetProgramBinaryLoader
+                     ~ arbSeparateShaderObjectsLoader
+                     ~ arbVertexAttrib64BitLoader
+                     ~ arbViewportArrayLoader;

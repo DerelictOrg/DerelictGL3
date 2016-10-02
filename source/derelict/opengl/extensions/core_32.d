@@ -27,13 +27,11 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_32;
 
-import derelict.opengl.extensions.arb_d : arbDepthClampDecls,
-                                          arbDrawElementsBaseVertexDecls, arbDrawElementsBaseVertexFuncs, arbDrawElementsBaseVertexLoaderImpl;
-import derelict.opengl.extensions.arb_g : arbGeometryShader4Decls, arbGeometryShader4Funcs, arbGeometryShader4LoaderImpl;
-import derelict.opengl.extensions.arb_p : arbProvokingVertexDecls, arbProvokingVertexFuncs, arbProvokingVertexLoaderImpl;
-import derelict.opengl.extensions.arb_s : arbSeamlessCubeMapDecls,
-                                          arbSyncDecls, arbSyncFuncs, arbSyncLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTextureMultiSampleDecls, arbTextureMultiSampleFuncs, arbTextureMultiSampleLoaderImpl;
+import derelict.opengl.extensions.arb_d,
+       derelict.opengl.extensions.arb_g,
+       derelict.opengl.extensions.arb_p,
+       derelict.opengl.extensions.arb_s,
+       derelict.opengl.extensions.arb_t;
 
 enum corearb32Decls = arbDepthClampDecls
                     ~ arbDrawElementsBaseVertexDecls
@@ -47,8 +45,15 @@ enum corearb32Funcs = arbDrawElementsBaseVertexFuncs
                     ~ arbProvokingVertexFuncs
                     ~ arbSyncFuncs
                     ~ arbTextureMultiSampleFuncs;
+version(DerelictGL3_Contexts)
 enum corearb32Loader = arbDrawElementsBaseVertexLoaderImpl
                      ~ arbGeometryShader4LoaderImpl
                      ~ arbProvokingVertexLoaderImpl
                      ~ arbSyncLoaderImpl
                      ~ arbTextureMultiSampleLoaderImpl;
+else
+enum corearb32Loader = arbDrawElementsBaseVertexLoader
+                     ~ arbGeometryShader4Loader
+                     ~ arbProvokingVertexLoader
+                     ~ arbSyncLoader
+                     ~ arbTextureMultiSampleLoader;

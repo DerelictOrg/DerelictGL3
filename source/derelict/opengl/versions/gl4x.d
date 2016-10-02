@@ -27,8 +27,9 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.versions.gl4x;
 
-import derelict.opengl.types,
-       derelict.opengl.extensions.core_40,
+import derelict.opengl.types;
+public
+import derelict.opengl.extensions.core_40,
        derelict.opengl.extensions.core_41,
        derelict.opengl.extensions.core_42,
        derelict.opengl.extensions.core_43,

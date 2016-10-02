@@ -27,12 +27,16 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_31;
 
-import derelict.opengl.extensions.arb_c : arbCopyBufferDecls, arbCopyBufferFuncs, arbCopyBufferLoaderImpl;
-import derelict.opengl.extensions.arb_u : arbUniformBufferObjectDecls, arbUniformBufferObjectFuncs, arbUniformBufferObjectLoaderImpl;
+import derelict.opengl.extensions.arb_c,
+       derelict.opengl.extensions.arb_u;
 
 enum corearb31Decls = arbCopyBufferDecls
                     ~ arbUniformBufferObjectDecls;
 enum corearb31Funcs = arbCopyBufferFuncs
                     ~ arbUniformBufferObjectFuncs;
+version(DerelictGL3_Contexts)
 enum corearb31Loader = arbCopyBufferLoaderImpl
                      ~ arbUniformBufferObjectLoaderImpl;
+else
+enum corearb31Loader = arbCopyBufferLoader
+                     ~ arbUniformBufferObjectLoader;

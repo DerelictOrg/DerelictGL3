@@ -27,12 +27,11 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_33;
 
-import derelict.opengl.extensions.arb_b : arbBlendFuncExtendedDecls, arbBlendFuncExtendedFuncs, arbBlendFuncExtendedLoaderImpl;
-import derelict.opengl.extensions.arb_o : arbOcclusionQuery2Decls;
-import derelict.opengl.extensions.arb_s : arbSamplerObjectsDecls, arbSamplerObjectsFuncs, arbSamplerObjectsLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTextureSwizzleDecls,
-                                          arbTimerQueryDecls, arbTimerQueryFuncs, arbTimerQueryLoaderImpl;
-import derelict.opengl.extensions.arb_v : arbVertexType2101010RevDecls, arbVertexType2101010RevFuncs, arbVertexType2101010RevLoaderImpl;
+import derelict.opengl.extensions.arb_b,
+       derelict.opengl.extensions.arb_o,
+       derelict.opengl.extensions.arb_s,
+       derelict.opengl.extensions.arb_t,
+       derelict.opengl.extensions.arb_v;
 
 enum corearb33Decls = arbBlendFuncExtendedDecls
                     ~ arbOcclusionQuery2Decls
@@ -44,7 +43,13 @@ enum corearb33Funcs = arbBlendFuncExtendedFuncs
                     ~ arbSamplerObjectsFuncs
                     ~ arbTimerQueryFuncs
                     ~ arbVertexType2101010RevFuncs;
+version(DerelictGL3_Contexts)
 enum corearb33Loader = arbBlendFuncExtendedLoaderImpl
                      ~ arbSamplerObjectsLoaderImpl
                      ~ arbTimerQueryLoaderImpl
                      ~ arbVertexType2101010RevLoaderImpl;
+else
+enum corearb33Loader = arbBlendFuncExtendedLoader
+                     ~ arbSamplerObjectsLoader
+                     ~ arbTimerQueryLoader
+                     ~ arbVertexType2101010RevLoader;

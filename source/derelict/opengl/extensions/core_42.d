@@ -27,14 +27,12 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_42;
 
-import derelict.opengl.extensions.arb_b : arbBaseInstanceDecls, arbBaseInstanceFuncs, arbBaseInstanceLoaderImpl;
-import derelict.opengl.extensions.arb_c : arbCompressedTexturePixelStorageDecls;
-import derelict.opengl.extensions.arb_i : arbInternalFormatQueryDecls, arbInternalFormatQueryFuncs, arbInternalFormatQueryLoaderImpl;
-import derelict.opengl.extensions.arb_m : arbMapBufferAlignmentDecls;
-import derelict.opengl.extensions.arb_s : arbShaderAtomicCountersDecls, arbShaderAtomicCountersFuncs, arbShaderAtomicCountersLoaderImpl,
-                                          arbShaderImageLoadStoreDecls, arbShaderImageLoadStoreFuncs, arbShaderImageLoadStoreLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTextureStorageDecls, arbTextureStorageFuncs, arbTextureStorageLoaderImpl,
-                                          arbTransformFeedbackInstancedDecls, arbTransformFeedbackInstancedFuncs, arbTransformFeedbackInstancedLoaderImpl;
+import derelict.opengl.extensions.arb_b,
+       derelict.opengl.extensions.arb_c,
+       derelict.opengl.extensions.arb_i,
+       derelict.opengl.extensions.arb_m,
+       derelict.opengl.extensions.arb_s,
+       derelict.opengl.extensions.arb_t;
 
 enum corearb42Decls = arbBaseInstanceDecls
                     ~ arbCompressedTexturePixelStorageDecls
@@ -50,9 +48,17 @@ enum corearb42Funcs = arbBaseInstanceFuncs
                     ~ arbShaderImageLoadStoreFuncs
                     ~ arbTextureStorageFuncs
                     ~ arbTransformFeedbackInstancedFuncs;
+version(DerelictGL3_Contexts)
 enum corearb42Loader = arbBaseInstanceLoaderImpl
                      ~ arbInternalFormatQueryLoaderImpl
                      ~ arbShaderAtomicCountersLoaderImpl
                      ~ arbShaderImageLoadStoreLoaderImpl
                      ~ arbTextureStorageLoaderImpl
                      ~ arbTransformFeedbackInstancedLoaderImpl;
+else
+enum corearb42Loader = arbBaseInstanceLoader
+                     ~ arbInternalFormatQueryLoader
+                     ~ arbShaderAtomicCountersLoader
+                     ~ arbShaderImageLoadStoreLoader
+                     ~ arbTextureStorageLoader
+                     ~ arbTransformFeedbackInstancedLoader;

@@ -27,12 +27,12 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_30;
 
-import derelict.opengl.extensions.arb_d : arbDepthBufferFloatDecls;
-import derelict.opengl.extensions.arb_f : arbFramebufferObjectFuncs, arbFramebufferObjectDecls, arbFramebufferObjectLoaderImpl;
-import derelict.opengl.extensions.arb_h : arbHalfFloatVertexDecls;
-import derelict.opengl.extensions.arb_m : arbMapBufferRangeDecls, arbMapBufferRangeFuncs, arbMapBufferRangeLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTextureCompressionRGTCDecls, arbTextureRGDecls;
-import derelict.opengl.extensions.arb_v : arbVertexArrayObjectDecls, arbVertexArrayObjectFuncs, arbVertexArrayObjectLoaderImpl;
+import derelict.opengl.extensions.arb_d,
+       derelict.opengl.extensions.arb_f,
+       derelict.opengl.extensions.arb_h,
+       derelict.opengl.extensions.arb_m,
+       derelict.opengl.extensions.arb_t,
+       derelict.opengl.extensions.arb_v;
 
 enum corearb30Decls = arbDepthBufferFloatDecls
                     ~ arbFramebufferObjectDecls
@@ -44,6 +44,11 @@ enum corearb30Decls = arbDepthBufferFloatDecls
 enum corearb30Funcs = arbFramebufferObjectFuncs
                     ~ arbMapBufferRangeFuncs
                     ~ arbVertexArrayObjectFuncs;
+version(DerelictGL3_Contexts)
 enum corearb30Loader = arbFramebufferObjectLoaderImpl
                      ~ arbMapBufferRangeLoaderImpl
                      ~ arbVertexArrayObjectLoaderImpl;
+else
+enum corearb30Loader = arbFramebufferObjectLoader
+                     ~ arbMapBufferRangeLoader
+                     ~ arbVertexArrayObjectLoader;

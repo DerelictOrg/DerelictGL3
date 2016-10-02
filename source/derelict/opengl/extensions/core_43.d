@@ -27,23 +27,17 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_43;
 
-import derelict.opengl.extensions.arb_c : arbClearBufferObjectDecls, arbClearBufferObjectFuncs, arbClearBufferObjectLoaderImpl,
-                                          arbComputeShaderDecls, arbComputeShaderFuncs, arbComputeShaderLoaderImpl,
-                                          arbCopyImageDecls, arbCopyImageFuncs, arbCopyImageLoaderImpl;
-import derelict.opengl.extensions.arb_d : arbDebugOutputDecls, arbDebugOutputFuncs, arbDebugOutputLoaderImpl;
-import derelict.opengl.extensions.arb_e : arbES3CompatibilityDecls, arbExplicitUniformLocationDecls;
-import derelict.opengl.extensions.arb_f : arbFramebufferNoAttachmentsDecls, arbFramebufferNoAttachmentsFuncs, arbFramebufferNoAttachmentsLoaderImpl;
-import derelict.opengl.extensions.arb_i : arbInternalFormatQuery2Decls, arbInternalFormatQuery2Funcs, arbInternalFormatQuery2LoaderImpl,
-                                          arbInvalidateSubdataDecls, arbInvalidateSubdataFuncs, arbInvalidateSubdataLoaderImpl;
-import derelict.opengl.extensions.arb_m : arbMultiDrawIndirectDecls, arbMultiDrawIndirectFuncs, arbMultiDrawIndirectLoaderImpl;
-import derelict.opengl.extensions.arb_p : arbProgramInterfaceQueryDecls, arbProgramInterfaceQueryFuncs, arbProgramInterfaceQueryLoaderImpl;
-import derelict.opengl.extensions.arb_s : arbShaderStorageBufferObjectDecls, arbShaderStorageBufferObjectFuncs, arbShaderStorageBufferObjectLoaderImpl,
-                                          arbStencilTexturingDecls;
-import derelict.opengl.extensions.arb_t : arbTextureBufferRangeDecls, arbTextureBufferRangeFuncs, arbTextureBufferRangeLoaderImpl,
-                                          arbTextureStorageMultisampleDecls, arbTextureStorageMultisampleFuncs, arbTextureStorageMultisampleLoaderImpl,
-                                          arbTextureViewDecls, arbTextureViewFuncs, arbTextureViewLoaderImpl;
-import derelict.opengl.extensions.arb_v : arbVertexAttribBindingDecls, arbVertexAttribBindingFuncs, arbVertexAttribBindingLoaderImpl;
-import derelict.opengl.extensions.khr : khrDebugDecls, khrDebugFuncs, khrDebugLoaderImpl;
+import derelict.opengl.extensions.arb_c,
+       derelict.opengl.extensions.arb_d,
+       derelict.opengl.extensions.arb_e,
+       derelict.opengl.extensions.arb_f,
+       derelict.opengl.extensions.arb_i,
+       derelict.opengl.extensions.arb_m,
+       derelict.opengl.extensions.arb_p,
+       derelict.opengl.extensions.arb_s,
+       derelict.opengl.extensions.arb_t,
+       derelict.opengl.extensions.arb_v,
+       derelict.opengl.extensions.khr;
 
 enum corearb43Decls = arbClearBufferObjectDecls
                     ~ arbComputeShaderDecls
@@ -63,7 +57,6 @@ enum corearb43Decls = arbClearBufferObjectDecls
                     ~ arbTextureViewDecls
                     ~ arbVertexAttribBindingDecls
                     ~ khrDebugDecls;
-
 enum corearb43Funcs = arbClearBufferObjectFuncs
                     ~ arbComputeShaderFuncs
                     ~ arbCopyImageFuncs
@@ -79,7 +72,7 @@ enum corearb43Funcs = arbClearBufferObjectFuncs
                     ~ arbTextureViewFuncs
                     ~ arbVertexAttribBindingFuncs
                     ~ khrDebugFuncs;
-
+version(DerelictGL3_Contexts)
 enum corearb43Loader = arbClearBufferObjectLoaderImpl
                      ~ arbComputeShaderLoaderImpl
                      ~ arbCopyImageLoaderImpl
@@ -95,3 +88,19 @@ enum corearb43Loader = arbClearBufferObjectLoaderImpl
                      ~ arbTextureViewLoaderImpl
                      ~ arbVertexAttribBindingLoaderImpl
                      ~ khrDebugLoaderImpl;
+else
+enum corearb43Loader = arbClearBufferObjectLoader
+                     ~ arbComputeShaderLoader
+                     ~ arbCopyImageLoader
+                     ~ arbDebugOutputLoader
+                     ~ arbFramebufferNoAttachmentsLoader
+                     ~ arbInternalFormatQuery2Loader
+                     ~ arbInvalidateSubdataLoader
+                     ~ arbMultiDrawIndirectLoader
+                     ~ arbProgramInterfaceQueryLoader
+                     ~ arbShaderStorageBufferObjectLoader
+                     ~ arbTextureBufferRangeLoader
+                     ~ arbTextureStorageMultisampleLoader
+                     ~ arbTextureViewLoader
+                     ~ arbVertexAttribBindingLoader
+                     ~ khrDebugLoader;

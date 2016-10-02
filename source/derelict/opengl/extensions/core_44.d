@@ -27,12 +27,12 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_44;
 
-import derelict.opengl.extensions.arb_b : arbBufferStorageDecls, arbBufferStorageFuncs, arbBufferStorageLoaderImpl;
-import derelict.opengl.extensions.arb_c : arbClearTextureDecls, arbClearTextureFuncs, arbClearTextureLoaderImpl;
-import derelict.opengl.extensions.arb_e : arbEnhancedLayoutsDecls;
-import derelict.opengl.extensions.arb_m : arbMultBindDecls, arbMultBindFuncs, arbMultBindLoaderImpl;
-import derelict.opengl.extensions.arb_q : arbQueryBufferObjectDecls;
-import derelict.opengl.extensions.arb_t : arbTextureMirrorClampToEdgeDecls;
+import derelict.opengl.extensions.arb_b,
+       derelict.opengl.extensions.arb_c,
+       derelict.opengl.extensions.arb_e,
+       derelict.opengl.extensions.arb_m,
+       derelict.opengl.extensions.arb_q,
+       derelict.opengl.extensions.arb_t;
 
 enum corearb44Decls = arbBufferStorageDecls
                     ~ arbClearTextureDecls
@@ -43,6 +43,11 @@ enum corearb44Decls = arbBufferStorageDecls
 enum corearb44Funcs = arbBufferStorageFuncs
                     ~ arbClearTextureFuncs
                     ~ arbMultBindFuncs;
+version(DerelictGL3_Contexts)
 enum corearb44Loader = arbBufferStorageLoaderImpl
                      ~ arbClearTextureLoaderImpl
                      ~ arbMultBindLoaderImpl;
+else
+enum corearb44Loader = arbBufferStorageLoader
+                     ~ arbClearTextureLoader
+                     ~ arbMultBindLoader;

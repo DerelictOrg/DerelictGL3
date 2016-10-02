@@ -127,6 +127,17 @@ mixin template glLoaders(GLVersion core)
                 DerelictGL3.glLoader = GLLoader(baseDg, extraDg);
             }
         }
+
+        static if(core >= GLVersion.gl30) mixin(corearb30Loader);
+        static if(core >= GLVersion.gl31) mixin(corearb31Loader);
+        static if(core >= GLVersion.gl32) mixin(corearb32Loader);
+        static if(core >= GLVersion.gl33) mixin(corearb33Loader);
+        static if(core >= GLVersion.gl40) mixin(corearb40Loader);
+        static if(core >= GLVersion.gl41) mixin(corearb41Loader);
+        static if(core >= GLVersion.gl42) mixin(corearb42Loader);
+        static if(core >= GLVersion.gl43) mixin(corearb43Loader);
+        static if(core >= GLVersion.gl44) mixin(corearb44Loader);
+        static if(core >= GLVersion.gl45) mixin(corearb45Loader);
     }
 
     private GLVersion loadBaseGL()
@@ -152,6 +163,10 @@ mixin template glLoaders(GLVersion core)
             static if(core >= GLVersion.gl43) mixin(gl43Loader);
             static if(core >= GLVersion.gl44) mixin(gl44Loader);
             static if(core >= GLVersion.gl45) mixin(gl45Loader);
+
+
+            import std.file : write;
+            write("loader30.txt", gl30Loader);
         }
 
         static if(is(typeof(loadExtensions()))) loadExtensions();

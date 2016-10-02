@@ -27,18 +27,10 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl.extensions.core_40;
 
-import derelict.opengl.types : usingContexts;
-import derelict.opengl.extensions.internal;
-
-import derelict.opengl.extensions.arb_d : arbDrawBuffersBlendDecls, arbDrawBuffersBlendFuncs, arbDrawBuffersBlendLoaderImpl,
-                                          arbDrawIndirectDecls, arbDrawIndirectFuncs, arbDrawIndirectLoaderImpl;
-import derelict.opengl.extensions.arb_g : arbGPUShader5Decls,
-                                          arbGPUShaderFP64Decls, arbGPUShaderFP64Funcs, arbGPUShaderFP64LoaderImpl;
-import derelict.opengl.extensions.arb_s : arbSampleShadingDecls, arbSampleShadingFuncs, arbSampleShadingLoaderImpl,
-                                          arbShaderSubroutineDecls, arbShaderSubroutineFuncs, arbShaderSubroutineLoaderImpl;
-import derelict.opengl.extensions.arb_t : arbTesselationShaderDecls, arbTesselationShaderFuncs, arbTesselationShaderLoaderImpl,
-                                          arbTransformFeedback2Decls, arbTransformFeedback2Funcs, arbTransformFeedback2LoaderImpl,
-                                          arbTransformFeedback3Decls, arbTransformFeedback3Funcs, arbTransformFeedback3LoaderImpl;
+import derelict.opengl.extensions.arb_d,
+       derelict.opengl.extensions.arb_g,
+       derelict.opengl.extensions.arb_s,
+       derelict.opengl.extensions.arb_t;
 
 enum corearb40Decls = arbDrawBuffersBlendDecls
                     ~ arbDrawIndirectDecls
@@ -57,6 +49,7 @@ enum corearb40Funcs = arbDrawBuffersBlendFuncs
                     ~ arbTesselationShaderFuncs
                     ~ arbTransformFeedback2Funcs
                     ~ arbTransformFeedback3Funcs;
+version(DerelictGL3_Contexts)
 enum corearb40Loader = arbDrawBuffersBlendLoaderImpl
                      ~ arbDrawIndirectLoaderImpl
                      ~ arbGPUShaderFP64LoaderImpl
@@ -65,3 +58,12 @@ enum corearb40Loader = arbDrawBuffersBlendLoaderImpl
                      ~ arbTesselationShaderLoaderImpl
                      ~ arbTransformFeedback2LoaderImpl
                      ~ arbTransformFeedback3LoaderImpl;
+else
+enum corearb40Loader = arbDrawBuffersBlendLoader
+                     ~ arbDrawIndirectLoader
+                     ~ arbGPUShaderFP64Loader
+                     ~ arbSampleShadingLoader
+                     ~ arbShaderSubroutineLoader
+                     ~ arbTesselationShaderLoader
+                     ~ arbTransformFeedback2Loader
+                     ~ arbTransformFeedback3Loader;

@@ -271,9 +271,6 @@ private:
         int count;
         getIntegerv(glNumExtensions, &count);
 
-        import std.stdio, std.conv;
-        writeln("Num extensions: ", count);
-
         _extCache.shrinkTo(0);
         _extCache.reserve(count);
 

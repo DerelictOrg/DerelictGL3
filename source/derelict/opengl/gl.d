@@ -32,16 +32,13 @@ import derelict.util.loader,
        derelict.util.system;
 
 import derelict.opengl.glloader,
-       derelict.opengl.types : GLVersion;
-
-version(DerelictGL3_Contexts) {}
-else version = DerelictGL3_NoContexts;
+       derelict.opengl.types : GLVersion, usingContexts;
 
 final class DerelictGL3Loader : SharedLibLoader
 {
     this() { super(libNames); }
 
-    version(DerelictGL3_NoContexts) {
+    static if(!usingContexts) {
         GLLoader glLoader;
         alias glLoader this;
 
@@ -51,13 +48,14 @@ final class DerelictGL3Loader : SharedLibLoader
 protected:
     override void loadSymbols()
     {
-        version(DerelictGL3_NoContexts) glLoader.loadBase();
+        static if(!usingContexts) glLoader.loadBase();
     }
 }
 
 __gshared DerelictGL3Loader DerelictGL3;
 
-shared static this() {
+shared static this()
+{
     DerelictGL3 = new DerelictGL3Loader;
 }
 

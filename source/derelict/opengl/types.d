@@ -84,7 +84,7 @@ enum GLVersion {
     highestSupported = gl45,
 }
 
-version(DerelictGl3_Contexts)
+version(DerelictGL3_Contexts)
     enum usingContexts = true;
 else
     enum usingContexts = false;

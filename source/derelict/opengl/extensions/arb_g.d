@@ -78,7 +78,7 @@ q{
     bindGLFunc(cast(void**)&glFramebufferTextureFaceARB,"glFramebufferTextureFaceARB");
 };
 
-enum arbGeometryShader4Loader = makeEXTLoader(ARB_geometry_shader4, arbGeometryShader4LoaderImpl);
+enum arbGeometryShader4Loader = makeExtLoader(ARB_geometry_shader4, arbGeometryShader4LoaderImpl);
 static if(!usingContexts) enum arbGeometryShader4 = arbGeometryShader4Decls ~ arbGeometryShader4Funcs.makeGShared() ~ arbGeometryShader4Loader;
 
 // ARB_get_program_binary <-- Core in GL 4.1

@@ -188,51 +188,51 @@ enum ARB_vertex_type_10f_11f_11f_rev = "GL_ARB_vertex_type_10f_11f_11f_rev";
 enum arbVertexType10f11f11fRevLoader = makeLoader(ARB_vertex_type_10f_11f_11f_rev, "", "gl44");
 static if(!usingContexts) enum arbVertexType10f11f11fRev = arbVertexType10f11f11fRevLoader;
 
-// ARB_vertex_type_2_10_10_10_rev <-- Core in GL 3.3
+// ARB_vertex_type_2_10_10_10_rev <-- Core in GL 3.3 (but only a few functions)
 enum ARB_vertex_type_2_10_10_10_rev = "GL_ARB_vertex_type_2_10_10_10_rev";
 enum arbVertexType2101010RevDecls =
 q{
 enum uint GL_INT_2_10_10_10_REV = 0x8D9F;
 extern(System) @nogc nothrow
 {
-    alias da_glVertexP2ui = void function( GLenum, GLuint );
-    alias da_glVertexP2uiv = void function( GLenum, const( GLuint )* );
-    alias da_glVertexP3ui = void function( GLenum, GLuint );
-    alias da_glVertexP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glVertexP4ui = void function( GLenum, GLuint );
-    alias da_glVertexP4uiv = void function( GLenum, const( GLuint )* );
-    alias da_glTexCoordP1ui = void function( GLenum, GLuint );
-    alias da_glTexCoordP1uiv = void function( GLenum, const( GLuint )* );
-    alias da_glTexCoordP2ui = void function( GLenum, GLuint );
-    alias da_glTexCoordP2uiv = void function( GLenum, const( GLuint )* );
-    alias da_glTexCoordP3ui = void function( GLenum, GLuint );
-    alias da_glTexCoordP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glTexCoordP4ui = void function( GLenum, GLuint );
-    alias da_glTexCoordP4uiv = void function( GLenum, const( GLuint )* );
-    alias da_glMultiTexCoordP1ui = void function( GLenum, GLenum, GLuint );
-    alias da_glMultiTexCoordP1uiv = void function( GLenum, GLenum, const( GLuint )* );
-    alias da_glMultiTexCoordP2ui = void function( GLenum, GLenum, GLuint );
-    alias da_glMultiTexCoordP2uiv = void function( GLenum, GLenum, const( GLuint )* );
-    alias da_glMultiTexCoordP3ui = void function( GLenum, GLenum, GLuint );
-    alias da_glMultiTexCoordP3uiv = void function( GLenum, GLenum, const( GLuint )* );
-    alias da_glMultiTexCoordP4ui = void function( GLenum, GLenum, GLuint );
-    alias da_glMultiTexCoordP4uiv = void function( GLenum, GLenum, const( GLuint )* );
-    alias da_glNormalP3ui = void function( GLenum, GLuint );
-    alias da_glNormalP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glColorP3ui = void function( GLenum, GLuint );
-    alias da_glColorP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glColorP4ui = void function( GLenum, GLuint );
-    alias da_glColorP4uiv = void function( GLenum, const( GLuint )* );
-    alias da_glSecondaryColorP3ui = void function( GLenum, GLuint );
-    alias da_glSecondaryColorP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glVertexAttribP1ui = void function( GLuint, GLenum, GLboolean, GLuint );
-    alias da_glVertexAttribP1uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
-    alias da_glVertexAttribP2ui = void function( GLuint, GLenum, GLboolean, GLuint );
-    alias da_glVertexAttribP2uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
-    alias da_glVertexAttribP3ui = void function( GLuint, GLenum, GLboolean, GLuint );
-    alias da_glVertexAttribP3uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
-    alias da_glVertexAttribP4ui = void function( GLuint, GLenum, GLboolean, GLuint );
-    alias da_glVertexAttribP4uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
+    alias da_glVertexP2ui = void function(GLenum, GLuint);
+    alias da_glVertexP2uiv = void function(GLenum, const(GLuint)*);
+    alias da_glVertexP3ui = void function(GLenum, GLuint);
+    alias da_glVertexP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glVertexP4ui = void function(GLenum, GLuint);
+    alias da_glVertexP4uiv = void function(GLenum, const(GLuint)*);
+    alias da_glTexCoordP1ui = void function(GLenum, GLuint);
+    alias da_glTexCoordP1uiv = void function(GLenum, const(GLuint)*);
+    alias da_glTexCoordP2ui = void function(GLenum, GLuint);
+    alias da_glTexCoordP2uiv = void function(GLenum, const(GLuint)*);
+    alias da_glTexCoordP3ui = void function(GLenum, GLuint);
+    alias da_glTexCoordP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glTexCoordP4ui = void function(GLenum, GLuint);
+    alias da_glTexCoordP4uiv = void function(GLenum, const(GLuint)*);
+    alias da_glMultiTexCoordP1ui = void function(GLenum, GLenum, GLuint);
+    alias da_glMultiTexCoordP1uiv = void function(GLenum, GLenum, const(GLuint)*);
+    alias da_glMultiTexCoordP2ui = void function(GLenum, GLenum, GLuint);
+    alias da_glMultiTexCoordP2uiv = void function(GLenum, GLenum, const(GLuint)*);
+    alias da_glMultiTexCoordP3ui = void function(GLenum, GLenum, GLuint);
+    alias da_glMultiTexCoordP3uiv = void function(GLenum, GLenum, const(GLuint)*);
+    alias da_glMultiTexCoordP4ui = void function(GLenum, GLenum, GLuint);
+    alias da_glMultiTexCoordP4uiv = void function(GLenum, GLenum, const(GLuint)*);
+    alias da_glNormalP3ui = void function(GLenum, GLuint);
+    alias da_glNormalP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glColorP3ui = void function(GLenum, GLuint);
+    alias da_glColorP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glColorP4ui = void function(GLenum, GLuint);
+    alias da_glColorP4uiv = void function(GLenum, const(GLuint)*);
+    alias da_glSecondaryColorP3ui = void function(GLenum, GLuint);
+    alias da_glSecondaryColorP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glVertexAttribP1ui = void function(GLuint, GLenum, GLboolean, GLuint);
+    alias da_glVertexAttribP1uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
+    alias da_glVertexAttribP2ui = void function(GLuint, GLenum, GLboolean, GLuint);
+    alias da_glVertexAttribP2uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
+    alias da_glVertexAttribP3ui = void function(GLuint, GLenum, GLboolean, GLuint);
+    alias da_glVertexAttribP3uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
+    alias da_glVertexAttribP4ui = void function(GLuint, GLenum, GLboolean, GLuint);
+    alias da_glVertexAttribP4uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
 }};
 
 enum arbVertexType2101010RevFuncs =
@@ -280,46 +280,50 @@ q{
 enum arbVertexType2101010RevLoaderImpl =
 q{
     // Don't recall why this conditional is here...
-    //static if( !Derelict_OS_Mac ) {
-        bindGLFunc( cast( void** )&glVertexP2ui, "glVertexP2ui" );
-        bindGLFunc( cast( void** )&glVertexP2uiv, "glVertexP2uiv" );
-        bindGLFunc( cast( void** )&glVertexP3ui, "glVertexP3ui" );
-        bindGLFunc( cast( void** )&glVertexP3uiv, "glVertexP3uiv" );
-        bindGLFunc( cast( void** )&glVertexP4ui, "glVertexP4ui" );
-        bindGLFunc( cast( void** )&glVertexP4uiv, "glVertexP4uiv" );
-        bindGLFunc( cast( void** )&glTexCoordP1ui, "glTexCoordP1ui" );
-        bindGLFunc( cast( void** )&glTexCoordP1uiv, "glTexCoordP1uiv" );
-        bindGLFunc( cast( void** )&glTexCoordP2ui, "glTexCoordP2ui" );
-        bindGLFunc( cast( void** )&glTexCoordP2uiv, "glTexCoordP2uiv" );
-        bindGLFunc( cast( void** )&glTexCoordP3ui, "glTexCoordP3ui" );
-        bindGLFunc( cast( void** )&glTexCoordP3uiv, "glTexCoordP3uiv" );
-        bindGLFunc( cast( void** )&glTexCoordP4ui, "glTexCoordP4ui" );
-        bindGLFunc( cast( void** )&glTexCoordP4uiv, "glTexCoordP4uiv" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP1ui, "glMultiTexCoordP1ui" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP2ui, "glMultiTexCoordP2ui" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP3ui, "glMultiTexCoordP3ui" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP4ui, "glMultiTexCoordP4ui" );
-        bindGLFunc( cast( void** )&glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv" );
-        bindGLFunc( cast( void** )&glNormalP3ui, "glNormalP3ui" );
-        bindGLFunc( cast( void** )&glNormalP3uiv, "glNormalP3uiv" );
-        bindGLFunc( cast( void** )&glColorP3ui, "glColorP3ui" );
-        bindGLFunc( cast( void** )&glColorP3uiv, "glColorP3uiv" );
-        bindGLFunc( cast( void** )&glColorP4ui, "glColorP4ui" );
-        bindGLFunc( cast( void** )&glColorP4uiv, "glColorP4uiv" );
-        bindGLFunc( cast( void** )&glSecondaryColorP3ui, "glSecondaryColorP3ui" );
-        bindGLFunc( cast( void** )&glSecondaryColorP3uiv, "glSecondaryColorP3uiv" );
-    //}
-    bindGLFunc( cast( void** )&glVertexAttribP1ui, "glVertexAttribP1ui" );
-    bindGLFunc( cast( void** )&glVertexAttribP1uiv, "glVertexAttribP1uiv" );
-    bindGLFunc( cast( void** )&glVertexAttribP2ui, "glVertexAttribP2ui" );
-    bindGLFunc( cast( void** )&glVertexAttribP2uiv, "glVertexAttribP2uiv" );
-    bindGLFunc( cast( void** )&glVertexAttribP3ui, "glVertexAttribP3ui" );
-    bindGLFunc( cast( void** )&glVertexAttribP3uiv, "glVertexAttribP3uiv" );
-    bindGLFunc( cast( void** )&glVertexAttribP4ui, "glVertexAttribP4ui" );
-    bindGLFunc( cast( void** )&glVertexAttribP4uiv, "glVertexAttribP4uiv" );
+    // Now I do! These are not actually part of the core. Only
+    // the VertexAttribP stuff is. Need to figure out how to
+    // load these separately as an extension in the new architecture...
+    import derelict.util.system;
+    static if(!Derelict_OS_Mac) {
+        bindGLFunc(cast(void**)&glVertexP2ui, "glVertexP2ui");
+        bindGLFunc(cast(void**)&glVertexP2uiv, "glVertexP2uiv");
+        bindGLFunc(cast(void**)&glVertexP3ui, "glVertexP3ui");
+        bindGLFunc(cast(void**)&glVertexP3uiv, "glVertexP3uiv");
+        bindGLFunc(cast(void**)&glVertexP4ui, "glVertexP4ui");
+        bindGLFunc(cast(void**)&glVertexP4uiv, "glVertexP4uiv");
+        bindGLFunc(cast(void**)&glTexCoordP1ui, "glTexCoordP1ui");
+        bindGLFunc(cast(void**)&glTexCoordP1uiv, "glTexCoordP1uiv");
+        bindGLFunc(cast(void**)&glTexCoordP2ui, "glTexCoordP2ui");
+        bindGLFunc(cast(void**)&glTexCoordP2uiv, "glTexCoordP2uiv");
+        bindGLFunc(cast(void**)&glTexCoordP3ui, "glTexCoordP3ui");
+        bindGLFunc(cast(void**)&glTexCoordP3uiv, "glTexCoordP3uiv");
+        bindGLFunc(cast(void**)&glTexCoordP4ui, "glTexCoordP4ui");
+        bindGLFunc(cast(void**)&glTexCoordP4uiv, "glTexCoordP4uiv");
+        bindGLFunc(cast(void**)&glMultiTexCoordP1ui, "glMultiTexCoordP1ui");
+        bindGLFunc(cast(void**)&glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv");
+        bindGLFunc(cast(void**)&glMultiTexCoordP2ui, "glMultiTexCoordP2ui");
+        bindGLFunc(cast(void**)&glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv");
+        bindGLFunc(cast(void**)&glMultiTexCoordP3ui, "glMultiTexCoordP3ui");
+        bindGLFunc(cast(void**)&glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv");
+        bindGLFunc(cast(void**)&glMultiTexCoordP4ui, "glMultiTexCoordP4ui");
+        bindGLFunc(cast(void**)&glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv");
+        bindGLFunc(cast(void**)&glNormalP3ui, "glNormalP3ui");
+        bindGLFunc(cast(void**)&glNormalP3uiv, "glNormalP3uiv");
+        bindGLFunc(cast(void**)&glColorP3ui, "glColorP3ui");
+        bindGLFunc(cast(void**)&glColorP3uiv, "glColorP3uiv");
+        bindGLFunc(cast(void**)&glColorP4ui, "glColorP4ui");
+        bindGLFunc(cast(void**)&glColorP4uiv, "glColorP4uiv");
+        bindGLFunc(cast(void**)&glSecondaryColorP3ui, "glSecondaryColorP3ui");
+        bindGLFunc(cast(void**)&glSecondaryColorP3uiv, "glSecondaryColorP3uiv");
+    }
+    bindGLFunc(cast(void**)&glVertexAttribP1ui, "glVertexAttribP1ui");
+    bindGLFunc(cast(void**)&glVertexAttribP1uiv, "glVertexAttribP1uiv");
+    bindGLFunc(cast(void**)&glVertexAttribP2ui, "glVertexAttribP2ui");
+    bindGLFunc(cast(void**)&glVertexAttribP2uiv, "glVertexAttribP2uiv");
+    bindGLFunc(cast(void**)&glVertexAttribP3ui, "glVertexAttribP3ui");
+    bindGLFunc(cast(void**)&glVertexAttribP3uiv, "glVertexAttribP3uiv");
+    bindGLFunc(cast(void**)&glVertexAttribP4ui, "glVertexAttribP4ui");
+    bindGLFunc(cast(void**)&glVertexAttribP4uiv, "glVertexAttribP4uiv");
 };
 
 enum arbVertexType2101010RevLoader = makeLoader(ARB_vertex_type_2_10_10_10_rev, arbVertexType2101010RevLoaderImpl, "gl33");

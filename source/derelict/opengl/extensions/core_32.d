@@ -41,19 +41,16 @@ enum corearb32Decls = arbDepthClampDecls
                     ~ arbSyncDecls
                     ~ arbTextureMultiSampleDecls;
 enum corearb32Funcs = arbDrawElementsBaseVertexFuncs
-                    ~ arbGeometryShader4Funcs
                     ~ arbProvokingVertexFuncs
                     ~ arbSyncFuncs
                     ~ arbTextureMultiSampleFuncs;
 version(DerelictGL3_Contexts)
 enum corearb32Loader = arbDrawElementsBaseVertexLoaderImpl
-                     ~ arbGeometryShader4LoaderImpl
                      ~ arbProvokingVertexLoaderImpl
                      ~ arbSyncLoaderImpl
                      ~ arbTextureMultiSampleLoaderImpl;
 else
 enum corearb32Loader = arbDrawElementsBaseVertexLoader
-                     ~ arbGeometryShader4Loader
                      ~ arbProvokingVertexLoader
                      ~ arbSyncLoader
                      ~ arbTextureMultiSampleLoader;

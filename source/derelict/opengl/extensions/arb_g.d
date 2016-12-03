@@ -30,7 +30,7 @@ module derelict.opengl.extensions.arb_g;
 import derelict.opengl.types : usingContexts;
 import derelict.opengl.extensions.internal;
 
-// ARB_geometry_shader4 <-- Core in Gl 3.2
+// ARB_geometry_shader4
 enum ARB_geometry_shader4 = "GL_ARB_geometry_shader4";
 enum arbGeometryShader4Decls =
 q{
@@ -78,7 +78,7 @@ q{
     bindGLFunc(cast(void**)&glFramebufferTextureFaceARB,"glFramebufferTextureFaceARB");
 };
 
-enum arbGeometryShader4Loader = makeLoader(ARB_geometry_shader4,arbGeometryShader4LoaderImpl,"gl32");
+enum arbGeometryShader4Loader = makeEXTLoader(ARB_geometry_shader4, arbGeometryShader4LoaderImpl);
 static if(!usingContexts) enum arbGeometryShader4 = arbGeometryShader4Decls ~ arbGeometryShader4Funcs.makeGShared() ~ arbGeometryShader4Loader;
 
 // ARB_get_program_binary <-- Core in GL 4.1

@@ -96,7 +96,7 @@ extern(System) @nogc nothrow {
     alias da_glGetDebugMessageLog = GLuint function(GLuint,GLsizei,GLenum*,GLenum*,GLuint*,GLenum*,GLsizei*,GLchar*);
     alias da_glPushDebugGroup = void function(GLenum,GLuint,GLsizei,const(GLchar)*);
     alias da_glPopDebugGroup = void function();
-    alias da_glObjectLabel = void function(GLenum,GLuint,GLsizei,GLsizei,const(GLchar)*);
+    alias da_glObjectLabel = void function(GLenum,GLuint,GLsizei,const(GLchar)*);
     alias da_glGetObjectLabel = void function(GLenum,GLuint,GLsizei,GLsizei*,GLchar*);
     alias da_glObjectPtrLabel = void function(const(void)*,GLsizei,const(GLchar)*);
     alias da_glGetObjectPtrLabel = void function(const(void)*,GLsizei,GLsizei*,GLchar*);

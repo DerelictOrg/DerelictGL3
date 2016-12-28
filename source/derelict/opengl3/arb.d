@@ -963,11 +963,11 @@ private __gshared bool _ARB_framebuffer_sRGB;
 @nogc bool ARB_framebuffer_sRGB() nothrow @property { return _ARB_framebuffer_sRGB; }
 
 // ARB_geometry_shader4
-extern( System ) @nogc nothrow {
-    alias da_glProgramParameteriARB = void function( GLuint, GLenum, GLint );
-    alias da_glFramebufferTextureARB = void function( GLuint, GLenum, GLuint, GLint );
-    alias da_glFramebufferTextureLayerARB = void function( GLuint, GLenum, GLuint, GLint, GLint );
-    alias da_glFramebufferTextureFaceARB = void function( GLuint, GLenum, GLuint, GLint, GLenum );
+extern(System) @nogc nothrow {
+    alias da_glProgramParameteriARB = void function(GLuint, GLenum, GLint);
+    alias da_glFramebufferTextureARB = void function(GLuint, GLenum, GLuint, GLint);
+    alias da_glFramebufferTextureLayerARB = void function(GLuint, GLenum, GLuint, GLint, GLint);
+    alias da_glFramebufferTextureFaceARB = void function(GLuint, GLenum, GLuint, GLint, GLenum);
 }
 
 __gshared
@@ -980,16 +980,16 @@ __gshared
 
 private __gshared bool _ARB_geometry_shader4;
 @nogc bool ARB_geometry_shader4() nothrow @property { return _ARB_geometry_shader4; }
-package void load_ARB_geometry_shader4( bool doThrow = false ) {
+package void load_ARB_geometry_shader4(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glProgramParameteriARB, "glProgramParameteriARB" );
-        bindGLFunc( cast( void** )&glFramebufferTextureARB, "glFramebufferTextureARB" );
-        bindGLFunc( cast( void** )&glFramebufferTextureLayerARB, "glFramebufferTextureLayerARB" );
-        bindGLFunc( cast( void** )&glFramebufferTextureFaceARB, "glFramebufferTextureFaceARB" );
+        bindGLFunc(cast(void**)&glProgramParameteriARB, "glProgramParameteriARB");
+        bindGLFunc(cast(void**)&glFramebufferTextureARB, "glFramebufferTextureARB");
+        bindGLFunc(cast(void**)&glFramebufferTextureLayerARB, "glFramebufferTextureLayerARB");
+        bindGLFunc(cast(void**)&glFramebufferTextureFaceARB, "glFramebufferTextureFaceARB");
         _ARB_geometry_shader4 = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_geometry_shader4 = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -1072,27 +1072,27 @@ private __gshared bool _ARB_shading_language_packing;
 @nogc bool ARB_shading_language_packing() nothrow @property { return _ARB_shading_language_packing; }
 
 // ARB_framebuffer_object
-extern( System ) @nogc nothrow {
-    alias da_glIsRenderbuffer = GLboolean function( GLuint );
-    alias da_glBindRenderbuffer = void function( GLenum, GLuint );
-    alias da_glDeleteRenderbuffers = void function( GLsizei, const( GLuint )* );
-    alias da_glGenRenderbuffers = void function( GLsizei, GLuint* );
-    alias da_glRenderbufferStorage = void function( GLenum, GLenum, GLsizei, GLsizei );
-    alias da_glGetRenderbufferParameteriv = void function( GLenum, GLenum, GLint* );
-    alias da_glIsFramebuffer = GLboolean function( GLuint );
-    alias da_glBindFramebuffer = void function( GLenum, GLuint );
-    alias da_glDeleteFramebuffers = void function( GLsizei, const( GLuint )* );
-    alias da_glGenFramebuffers = void function( GLsizei, GLuint* );
-    alias da_glCheckFramebufferStatus = GLenum function( GLenum );
-    alias da_glFramebufferTexture1D = void function( GLenum, GLenum, GLenum, GLuint, GLint );
-    alias da_glFramebufferTexture2D = void function( GLenum, GLenum, GLenum, GLuint, GLint );
-    alias da_glFramebufferTexture3D = void function( GLenum, GLenum, GLenum, GLuint, GLint, GLint );
-    alias da_glFramebufferRenderbuffer = void function( GLenum, GLenum, GLenum, GLuint );
-    alias da_glGetFramebufferAttachmentParameteriv = void function( GLenum, GLenum, GLenum, GLint* );
-    alias da_glGenerateMipmap = void function( GLenum );
-    alias da_glBlitFramebuffer = void function( GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum );
-    alias da_glRenderbufferStorageMultisample = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei );
-    alias da_glFramebufferTextureLayer = void function( GLenum, GLenum, GLuint, GLint, GLint );
+extern(System) @nogc nothrow {
+    alias da_glIsRenderbuffer = GLboolean function(GLuint);
+    alias da_glBindRenderbuffer = void function(GLenum, GLuint);
+    alias da_glDeleteRenderbuffers = void function(GLsizei, const(GLuint)*);
+    alias da_glGenRenderbuffers = void function(GLsizei, GLuint*);
+    alias da_glRenderbufferStorage = void function(GLenum, GLenum, GLsizei, GLsizei);
+    alias da_glGetRenderbufferParameteriv = void function(GLenum, GLenum, GLint*);
+    alias da_glIsFramebuffer = GLboolean function(GLuint);
+    alias da_glBindFramebuffer = void function(GLenum, GLuint);
+    alias da_glDeleteFramebuffers = void function(GLsizei, const(GLuint)*);
+    alias da_glGenFramebuffers = void function(GLsizei, GLuint*);
+    alias da_glCheckFramebufferStatus = GLenum function(GLenum);
+    alias da_glFramebufferTexture1D = void function(GLenum, GLenum, GLenum, GLuint, GLint);
+    alias da_glFramebufferTexture2D = void function(GLenum, GLenum, GLenum, GLuint, GLint);
+    alias da_glFramebufferTexture3D = void function(GLenum, GLenum, GLenum, GLuint, GLint, GLint);
+    alias da_glFramebufferRenderbuffer = void function(GLenum, GLenum, GLenum, GLuint);
+    alias da_glGetFramebufferAttachmentParameteriv = void function(GLenum, GLenum, GLenum, GLint*);
+    alias da_glGenerateMipmap = void function(GLenum);
+    alias da_glBlitFramebuffer = void function(GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum);
+    alias da_glRenderbufferStorageMultisample = void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei);
+    alias da_glFramebufferTextureLayer = void function(GLenum, GLenum, GLuint, GLint, GLint);
 }
 
 __gshared
@@ -1121,62 +1121,62 @@ __gshared
 
 private __gshared bool _ARB_framebuffer_object;
 @nogc bool ARB_framebuffer_object() nothrow @property { return _ARB_framebuffer_object; }
-package void load_ARB_framebuffer_object( bool doThrow = false ) {
+package void load_ARB_framebuffer_object(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glIsRenderbuffer, "glIsRenderbuffer" );
-        bindGLFunc( cast( void** )&glBindRenderbuffer, "glBindRenderbuffer" );
-        bindGLFunc( cast( void** )&glDeleteRenderbuffers, "glDeleteRenderbuffers" );
-        bindGLFunc( cast( void** )&glGenRenderbuffers, "glGenRenderbuffers" );
-        bindGLFunc( cast( void** )&glRenderbufferStorage, "glRenderbufferStorage" );
-        bindGLFunc( cast( void** )&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv" );
-        bindGLFunc( cast( void** )&glIsFramebuffer, "glIsFramebuffer" );
-        bindGLFunc( cast( void** )&glBindFramebuffer, "glBindFramebuffer" );
-        bindGLFunc( cast( void** )&glDeleteFramebuffers, "glDeleteFramebuffers" );
-        bindGLFunc( cast( void** )&glGenFramebuffers, "glGenFramebuffers" );
-        bindGLFunc( cast( void** )&glCheckFramebufferStatus, "glCheckFramebufferStatus" );
-        bindGLFunc( cast( void** )&glFramebufferTexture1D, "glFramebufferTexture1D" );
-        bindGLFunc( cast( void** )&glFramebufferTexture2D, "glFramebufferTexture2D" );
-        bindGLFunc( cast( void** )&glFramebufferTexture3D, "glFramebufferTexture3D" );
-        bindGLFunc( cast( void** )&glFramebufferRenderbuffer, "glFramebufferRenderbuffer" );
-        bindGLFunc( cast( void** )&glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv" );
-        bindGLFunc( cast( void** )&glGenerateMipmap, "glGenerateMipmap" );
-        bindGLFunc( cast( void** )&glBlitFramebuffer, "glBlitFramebuffer" );
-        bindGLFunc( cast( void** )&glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample" );
-        bindGLFunc( cast( void** )&glFramebufferTextureLayer, "glFramebufferTextureLayer" );
+        bindGLFunc(cast(void**)&glIsRenderbuffer, "glIsRenderbuffer");
+        bindGLFunc(cast(void**)&glBindRenderbuffer, "glBindRenderbuffer");
+        bindGLFunc(cast(void**)&glDeleteRenderbuffers, "glDeleteRenderbuffers");
+        bindGLFunc(cast(void**)&glGenRenderbuffers, "glGenRenderbuffers");
+        bindGLFunc(cast(void**)&glRenderbufferStorage, "glRenderbufferStorage");
+        bindGLFunc(cast(void**)&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv");
+        bindGLFunc(cast(void**)&glIsFramebuffer, "glIsFramebuffer");
+        bindGLFunc(cast(void**)&glBindFramebuffer, "glBindFramebuffer");
+        bindGLFunc(cast(void**)&glDeleteFramebuffers, "glDeleteFramebuffers");
+        bindGLFunc(cast(void**)&glGenFramebuffers, "glGenFramebuffers");
+        bindGLFunc(cast(void**)&glCheckFramebufferStatus, "glCheckFramebufferStatus");
+        bindGLFunc(cast(void**)&glFramebufferTexture1D, "glFramebufferTexture1D");
+        bindGLFunc(cast(void**)&glFramebufferTexture2D, "glFramebufferTexture2D");
+        bindGLFunc(cast(void**)&glFramebufferTexture3D, "glFramebufferTexture3D");
+        bindGLFunc(cast(void**)&glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
+        bindGLFunc(cast(void**)&glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv");
+        bindGLFunc(cast(void**)&glGenerateMipmap, "glGenerateMipmap");
+        bindGLFunc(cast(void**)&glBlitFramebuffer, "glBlitFramebuffer");
+        bindGLFunc(cast(void**)&glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample");
+        bindGLFunc(cast(void**)&glFramebufferTextureLayer, "glFramebufferTextureLayer");
         _ARB_framebuffer_object = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_framebuffer_object = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_map_buffer_range
-extern( System ) @nogc nothrow {
-        alias da_glMapBufferRange = GLvoid* function( GLenum, GLintptr, GLsizeiptr, GLbitfield );
-        alias da_glFlushMappedBufferRange = void function( GLenum, GLintptr, GLsizeiptr );
+extern(System) @nogc nothrow {
+        alias da_glMapBufferRange = GLvoid* function(GLenum, GLintptr, GLsizeiptr, GLbitfield);
+        alias da_glFlushMappedBufferRange = void function(GLenum, GLintptr, GLsizeiptr);
 }
 __gshared da_glMapBufferRange glMapBufferRange;
 __gshared da_glFlushMappedBufferRange glFlushMappedBufferRange;
 
 private __gshared bool _ARB_map_buffer_range;
 @nogc bool ARB_map_buffer_range() nothrow @property { return _ARB_map_buffer_range; }
-package void load_ARB_map_buffer_range( bool doThrow = false ) {
+package void load_ARB_map_buffer_range(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glMapBufferRange, "glMapBufferRange" );
-        bindGLFunc( cast( void** )&glFlushMappedBufferRange, "glFlushMappedBufferRange" );
+        bindGLFunc(cast(void**)&glMapBufferRange, "glMapBufferRange");
+        bindGLFunc(cast(void**)&glFlushMappedBufferRange, "glFlushMappedBufferRange");
         _ARB_map_buffer_range = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_map_buffer_range = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_vertex_array_object
-extern( System ) @nogc nothrow {
-    alias da_glBindVertexArray = void function( GLuint );
-    alias da_glDeleteVertexArrays = void function( GLsizei, const( GLuint )* );
-    alias da_glGenVertexArrays = void function( GLsizei, GLuint* );
-    alias da_glIsVertexArray = GLboolean function( GLuint );
+extern(System) @nogc nothrow {
+    alias da_glBindVertexArray = void function(GLuint);
+    alias da_glDeleteVertexArrays = void function(GLsizei, const(GLuint)*);
+    alias da_glGenVertexArrays = void function(GLsizei, GLuint*);
+    alias da_glIsVertexArray = GLboolean function(GLuint);
 }
 
 __gshared {
@@ -1188,28 +1188,28 @@ __gshared {
 
 private __gshared bool _ARB_vertex_array_object;
 @nogc bool ARB_vertex_array_object() nothrow @property { return _ARB_vertex_array_object; }
-package void load_ARB_vertex_array_object( bool doThrow = false ) {
+package void load_ARB_vertex_array_object(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glBindVertexArray, "glBindVertexArray" );
-        bindGLFunc( cast( void** )&glDeleteVertexArrays, "glDeleteVertexArrays" );
-        bindGLFunc( cast( void** )&glGenVertexArrays, "glGenVertexArrays" );
-        bindGLFunc( cast( void** )&glIsVertexArray, "glIsVertexArray" );
+        bindGLFunc(cast(void**)&glBindVertexArray, "glBindVertexArray");
+        bindGLFunc(cast(void**)&glDeleteVertexArrays, "glDeleteVertexArrays");
+        bindGLFunc(cast(void**)&glGenVertexArrays, "glGenVertexArrays");
+        bindGLFunc(cast(void**)&glIsVertexArray, "glIsVertexArray");
         _ARB_vertex_array_object = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_vertex_array_object = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_uniform_buffer_object
-extern( System ) @nogc nothrow {
-    alias da_glGetUniformIndices = void function( GLuint, GLsizei, const( GLchar* )*, GLuint* );
-    alias da_glGetActiveUniformsiv = void function( GLuint, GLsizei, const( GLuint )*, GLenum, GLint* );
-    alias da_glGetActiveUniformName = void function( GLuint, GLuint, GLsizei, GLsizei*, GLchar* );
-    alias da_glGetUniformBlockIndex = GLuint function( GLuint, const( GLchar )* );
-    alias da_glGetActiveUniformBlockiv = void function( GLuint, GLuint, GLenum, GLint* );
-    alias da_glGetActiveUniformBlockName = void function( GLuint, GLuint, GLsizei, GLsizei*, GLchar* );
-    alias da_glUniformBlockBinding = void function( GLuint, GLuint, GLuint );
+extern(System) @nogc nothrow {
+    alias da_glGetUniformIndices = void function(GLuint, GLsizei, const(GLchar*)*, GLuint*);
+    alias da_glGetActiveUniformsiv = void function(GLuint, GLsizei, const(GLuint)*, GLenum, GLint*);
+    alias da_glGetActiveUniformName = void function(GLuint, GLuint, GLsizei, GLsizei*, GLchar*);
+    alias da_glGetUniformBlockIndex = GLuint function(GLuint, const(GLchar)*);
+    alias da_glGetActiveUniformBlockiv = void function(GLuint, GLuint, GLenum, GLint*);
+    alias da_glGetActiveUniformBlockName = void function(GLuint, GLuint, GLsizei, GLsizei*, GLchar*);
+    alias da_glUniformBlockBinding = void function(GLuint, GLuint, GLuint);
 }
 
 __gshared {
@@ -1224,44 +1224,44 @@ __gshared {
 
 private __gshared bool _ARB_uniform_buffer_object;
 @nogc bool ARB_uniform_buffer_object() nothrow @property { return _ARB_uniform_buffer_object; }
-package void load_ARB_uniform_buffer_object( bool doThrow = false ) {
+package void load_ARB_uniform_buffer_object(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetUniformIndices, "glGetUniformIndices" );
-        bindGLFunc( cast( void** )&glGetActiveUniformsiv, "glGetActiveUniformsiv" );
-        bindGLFunc( cast( void** )&glGetActiveUniformName, "glGetActiveUniformName" );
-        bindGLFunc( cast( void** )&glGetUniformBlockIndex, "glGetUniformBlockIndex" );
-        bindGLFunc( cast( void** )&glGetActiveUniformBlockiv, "glGetActiveUniformBlockiv" );
-        bindGLFunc( cast( void** )&glGetActiveUniformBlockName, "glGetActiveUniformBlockName" );
-        bindGLFunc( cast( void** )&glUniformBlockBinding, "glUniformBlockBinding" );
+        bindGLFunc(cast(void**)&glGetUniformIndices, "glGetUniformIndices");
+        bindGLFunc(cast(void**)&glGetActiveUniformsiv, "glGetActiveUniformsiv");
+        bindGLFunc(cast(void**)&glGetActiveUniformName, "glGetActiveUniformName");
+        bindGLFunc(cast(void**)&glGetUniformBlockIndex, "glGetUniformBlockIndex");
+        bindGLFunc(cast(void**)&glGetActiveUniformBlockiv, "glGetActiveUniformBlockiv");
+        bindGLFunc(cast(void**)&glGetActiveUniformBlockName, "glGetActiveUniformBlockName");
+        bindGLFunc(cast(void**)&glUniformBlockBinding, "glUniformBlockBinding");
         _ARB_uniform_buffer_object = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_uniform_buffer_object = true;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_copy_buffer
-extern( System ) @nogc nothrow alias da_glCopyBufferSubData = void function( GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr );
+extern(System) @nogc nothrow alias da_glCopyBufferSubData = void function(GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr);
 __gshared da_glCopyBufferSubData glCopyBufferSubData;
 
 private __gshared bool _ARB_copy_buffer;
 @nogc bool ARB_copy_buffer() nothrow @property { return _ARB_copy_buffer; }
-package void load_ARB_copy_buffer( bool doThrow = false ) {
+package void load_ARB_copy_buffer(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glCopyBufferSubData, "glCopyBufferSubData" );
+        bindGLFunc(cast(void**)&glCopyBufferSubData, "glCopyBufferSubData");
         _ARB_copy_buffer = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_copy_buffer = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_draw_elements_base_vertex
-extern( System ) @nogc nothrow {
-    alias da_glDrawElementsBaseVertex = void function( GLenum, GLsizei, GLenum, const( GLvoid )*, GLint );
-    alias da_glDrawRangeElementsBaseVertex = void function( GLenum, GLuint, GLuint, GLsizei, GLenum, const( GLvoid )*, GLint );
-    alias da_glDrawElementsInstancedBaseVertex = void function( GLenum, GLsizei, GLenum, const( GLvoid )*, GLsizei, GLint );
-    alias da_glMultiDrawElementsBaseVertex = void function( GLenum, const( GLsizei )*, GLenum, const( GLvoid* )*, GLsizei, const( GLint )* );
+extern(System) @nogc nothrow {
+    alias da_glDrawElementsBaseVertex = void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLint);
+    alias da_glDrawRangeElementsBaseVertex = void function(GLenum, GLuint, GLuint, GLsizei, GLenum, const(GLvoid)*, GLint);
+    alias da_glDrawElementsInstancedBaseVertex = void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLsizei, GLint);
+    alias da_glMultiDrawElementsBaseVertex = void function(GLenum, const(GLsizei)*, GLenum, const(GLvoid*)*, GLsizei, const(GLint)*);
 }
 
 __gshared {
@@ -1273,44 +1273,44 @@ __gshared {
 
 private __gshared bool _ARB_draw_elements_base_vertex;
 @nogc bool ARB_draw_elements_base_vertex() nothrow @property { return _ARB_draw_elements_base_vertex; }
-package void load_ARB_draw_elements_base_vertex( bool doThrow = false ) {
+package void load_ARB_draw_elements_base_vertex(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glDrawElementsBaseVertex, "glDrawElementsBaseVertex" );
-        bindGLFunc( cast( void** )&glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex" );
-        bindGLFunc( cast( void** )&glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex" );
-        bindGLFunc( cast( void** )&glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex" );
+        bindGLFunc(cast(void**)&glDrawElementsBaseVertex, "glDrawElementsBaseVertex");
+        bindGLFunc(cast(void**)&glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex");
+        bindGLFunc(cast(void**)&glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex");
+        bindGLFunc(cast(void**)&glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex");
         _ARB_draw_elements_base_vertex = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_draw_elements_base_vertex = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_provoking_vertex
-extern( System ) @nogc nothrow alias da_glProvokingVertex = void function( GLenum );
+extern(System) @nogc nothrow alias da_glProvokingVertex = void function(GLenum);
 __gshared da_glProvokingVertex glProvokingVertex;
 
 private __gshared bool _ARB_provoking_vertex;
 @nogc bool ARB_provoking_vertex() nothrow @property { return _ARB_provoking_vertex; }
-package void load_ARB_provoking_vertex( bool doThrow = false ) {
+package void load_ARB_provoking_vertex(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glProvokingVertex, "glProvokingVertex" );
+        bindGLFunc(cast(void**)&glProvokingVertex, "glProvokingVertex");
         _ARB_provoking_vertex = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_provoking_vertex = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_sync
-extern( System ) @nogc nothrow {
-    alias da_glFenceSync = GLsync function( GLenum, GLbitfield );
-    alias da_glIsSync = GLboolean function( GLsync );
-    alias da_glDeleteSync = void function( GLsync );
-    alias da_glClientWaitSync = GLenum function( GLsync, GLbitfield, GLuint64 );
-    alias da_glWaitSync = void function( GLsync, GLbitfield, GLuint64 );
-    alias da_glGetInteger64v = void function( GLsync, GLint64* );
-    alias da_glGetSynciv = void function( GLsync, GLenum, GLsizei, GLsizei*, GLint* );
+extern(System) @nogc nothrow {
+    alias da_glFenceSync = GLsync function(GLenum, GLbitfield);
+    alias da_glIsSync = GLboolean function(GLsync);
+    alias da_glDeleteSync = void function(GLsync);
+    alias da_glClientWaitSync = GLenum function(GLsync, GLbitfield, GLuint64);
+    alias da_glWaitSync = void function(GLsync, GLbitfield, GLuint64);
+    alias da_glGetInteger64v = void function(GLsync, GLint64*);
+    alias da_glGetSynciv = void function(GLsync, GLenum, GLsizei, GLsizei*, GLint*);
 }
 
 __gshared {
@@ -1325,28 +1325,28 @@ __gshared {
 
 private __gshared bool _ARB_sync;
 @nogc bool ARB_sync() nothrow @property { return _ARB_sync; }
-package void load_ARB_sync( bool doThrow = false ) {
+package void load_ARB_sync(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glFenceSync, "glFenceSync" );
-        bindGLFunc( cast( void** )&glIsSync, "glIsSync" );
-        bindGLFunc( cast( void** )&glDeleteSync, "glDeleteSync" );
-        bindGLFunc( cast( void** )&glClientWaitSync, "glClientWaitSync" );
-        bindGLFunc( cast( void** )&glWaitSync, "glWaitSync" );
-        bindGLFunc( cast( void** )&glGetInteger64v, "glGetInteger64v" );
-        bindGLFunc( cast( void** )&glGetSynciv, "glGetSynciv" );
+        bindGLFunc(cast(void**)&glFenceSync, "glFenceSync");
+        bindGLFunc(cast(void**)&glIsSync, "glIsSync");
+        bindGLFunc(cast(void**)&glDeleteSync, "glDeleteSync");
+        bindGLFunc(cast(void**)&glClientWaitSync, "glClientWaitSync");
+        bindGLFunc(cast(void**)&glWaitSync, "glWaitSync");
+        bindGLFunc(cast(void**)&glGetInteger64v, "glGetInteger64v");
+        bindGLFunc(cast(void**)&glGetSynciv, "glGetSynciv");
         _ARB_sync = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_sync = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_texture_multisample
-extern( System ) @nogc nothrow {
-    alias da_glTexImage2DMultisample = void function( GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean );
-    alias da_glTexImage3DMultisample = void function( GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean );
-    alias da_glGetMultisamplefv = void function( GLenum, GLuint, GLfloat* );
-    alias da_glSampleMaski = void function( GLuint, GLbitfield );
+extern(System) @nogc nothrow {
+    alias da_glTexImage2DMultisample = void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean);
+    alias da_glTexImage3DMultisample = void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean);
+    alias da_glGetMultisamplefv = void function(GLenum, GLuint, GLfloat*);
+    alias da_glSampleMaski = void function(GLuint, GLbitfield);
 }
 
 __gshared {
@@ -1358,25 +1358,25 @@ __gshared {
 
 private __gshared bool _ARB_texture_multisample;
 @nogc bool ARB_texture_multisample() nothrow @property { return _ARB_texture_multisample; }
-package void load_ARB_texture_multisample( bool doThrow = false ) {
+package void load_ARB_texture_multisample(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glTexImage2DMultisample, "glTexImage2DMultisample" );
-        bindGLFunc( cast( void** )&glTexImage3DMultisample, "glTexImage3DMultisample" );
-        bindGLFunc( cast( void** )&glGetMultisamplefv, "glGetMultisamplefv" );
-        bindGLFunc( cast( void** )&glSampleMaski, "glSampleMaski" );
+        bindGLFunc(cast(void**)&glTexImage2DMultisample, "glTexImage2DMultisample");
+        bindGLFunc(cast(void**)&glTexImage3DMultisample, "glTexImage3DMultisample");
+        bindGLFunc(cast(void**)&glGetMultisamplefv, "glGetMultisamplefv");
+        bindGLFunc(cast(void**)&glSampleMaski, "glSampleMaski");
         _ARB_texture_multisample = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_texture_multisample = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_draw_buffers_blend
-extern( System ) @nogc nothrow {
-    alias da_glBlendEquationiARB = void function( GLuint, GLenum );
-    alias da_glBlendEquationSeparateiARB = void function( GLuint, GLenum, GLenum );
-    alias da_glBlendFunciARB = void function( GLuint, GLenum, GLenum );
-    alias da_glBlendFuncSeparateiARB = void function( GLuint, GLenum, GLenum, GLenum, GLenum );
+extern(System) @nogc nothrow {
+    alias da_glBlendEquationiARB = void function(GLuint, GLenum);
+    alias da_glBlendEquationSeparateiARB = void function(GLuint, GLenum, GLenum);
+    alias da_glBlendFunciARB = void function(GLuint, GLenum, GLenum);
+    alias da_glBlendFuncSeparateiARB = void function(GLuint, GLenum, GLenum, GLenum, GLenum);
 }
 
 __gshared {
@@ -1390,39 +1390,39 @@ private __gshared bool _ARB_draw_buffers_blend;
 @nogc bool ARB_draw_buffers_blend() nothrow @property { return _ARB_draw_buffers_blend; }
 package void load_ARB_draw_buffers_blend() {
     try {
-        bindGLFunc( cast( void** )&glBlendEquationiARB, "glBlendEquationiARB" );
-        bindGLFunc( cast( void** )&glBlendEquationSeparateiARB, "glBlendEquationSeparateiARB" );
-        bindGLFunc( cast( void** )&glBlendFunciARB, "glBlendFunciARB" );
-        bindGLFunc( cast( void** )&glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB" );
+        bindGLFunc(cast(void**)&glBlendEquationiARB, "glBlendEquationiARB");
+        bindGLFunc(cast(void**)&glBlendEquationSeparateiARB, "glBlendEquationSeparateiARB");
+        bindGLFunc(cast(void**)&glBlendFunciARB, "glBlendFunciARB");
+        bindGLFunc(cast(void**)&glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB");
         _ARB_draw_buffers_blend = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_draw_buffers_blend = false;
     }
 }
 
 // ARB_sample_shading
-extern( System ) @nogc nothrow alias da_glMinSampleShadingARB = void function( GLclampf );
+extern(System) @nogc nothrow alias da_glMinSampleShadingARB = void function(GLclampf);
 __gshared da_glMinSampleShadingARB glMinSampleShadingARB;
 
 private __gshared bool _ARB_sample_shading;
 @nogc bool ARB_sample_shading() nothrow @property { return _ARB_sample_shading; }
 package void load_ARB_sample_shading() {
     try {
-        bindGLFunc( cast( void** )&glMinSampleShadingARB, "glMinSampleShadingARB" );
+        bindGLFunc(cast(void**)&glMinSampleShadingARB, "glMinSampleShadingARB");
         _ARB_sample_shading = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_sample_shading = false;
     }
 }
 
 // ARB_shading_language_include
-extern( System ) @nogc nothrow {
-    alias da_glNamedStringARB = void function( GLenum, GLint, const( GLchar )*, GLint, const( GLchar )* );
-    alias da_glDeleteNamedStringARB = void function( GLint, const( GLchar )* );
-    alias da_glCompileShaderIncludeARB = void function( GLuint, GLsizei, const( GLchar )*, const( GLint )* );
-    alias da_glIsNamedStringARB = GLboolean function( GLint, const( GLchar )* );
-    alias da_glGetNamedStringARB = void function( GLint, const( GLchar )*, GLsizei, GLint*, GLchar* );
-    alias da_glGetNamedStringivARB = void function( GLint, const( GLchar )*, GLenum, GLint* );
+extern(System) @nogc nothrow {
+    alias da_glNamedStringARB = void function(GLenum, GLint, const(GLchar)*, GLint, const(GLchar)*);
+    alias da_glDeleteNamedStringARB = void function(GLint, const(GLchar)*);
+    alias da_glCompileShaderIncludeARB = void function(GLuint, GLsizei, const(GLchar)*, const(GLint)*);
+    alias da_glIsNamedStringARB = GLboolean function(GLint, const(GLchar)*);
+    alias da_glGetNamedStringARB = void function(GLint, const(GLchar)*, GLsizei, GLint*, GLchar*);
+    alias da_glGetNamedStringivARB = void function(GLint, const(GLchar)*, GLenum, GLint*);
 }
 
 __gshared {
@@ -1438,22 +1438,22 @@ private __gshared bool _ARB_shading_language_include;
 @nogc bool ARB_shading_language_include() nothrow @property { return _ARB_shading_language_include; }
 package void load_ARB_shading_language_include() {
     try {
-        bindGLFunc( cast( void** )&glNamedStringARB, "glNamedStringARB" );
-        bindGLFunc( cast( void** )&glDeleteNamedStringARB, "glDeleteNamedStringARB" );
-        bindGLFunc( cast( void** )&glCompileShaderIncludeARB, "glCompileShaderIncludeARB" );
-        bindGLFunc( cast( void** )&glIsNamedStringARB, "glIsNamedStringARB" );
-        bindGLFunc( cast( void** )&glGetNamedStringARB, "glGetNamedStringARB" );
-        bindGLFunc( cast( void** )&glGetNamedStringivARB, "glGetNamedStringivARB" );
+        bindGLFunc(cast(void**)&glNamedStringARB, "glNamedStringARB");
+        bindGLFunc(cast(void**)&glDeleteNamedStringARB, "glDeleteNamedStringARB");
+        bindGLFunc(cast(void**)&glCompileShaderIncludeARB, "glCompileShaderIncludeARB");
+        bindGLFunc(cast(void**)&glIsNamedStringARB, "glIsNamedStringARB");
+        bindGLFunc(cast(void**)&glGetNamedStringARB, "glGetNamedStringARB");
+        bindGLFunc(cast(void**)&glGetNamedStringivARB, "glGetNamedStringivARB");
         _ARB_shading_language_include = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_shading_language_include = false;
     }
 }
 
 // ARB_blend_func_extended
-extern( System ) @nogc nothrow {
-    alias da_glBindFragDataLocationIndexed = void function( GLuint, GLuint, GLuint, const( GLchar )* );
-    alias da_glGetFragDataIndex = GLint function( GLuint, const( GLchar )* );
+extern(System) @nogc nothrow {
+    alias da_glBindFragDataLocationIndexed = void function(GLuint, GLuint, GLuint, const(GLchar)*);
+    alias da_glGetFragDataIndex = GLint function(GLuint, const(GLchar)*);
 }
 
 __gshared da_glBindFragDataLocationIndexed glBindFragDataLocationIndexed;
@@ -1461,33 +1461,33 @@ __gshared da_glGetFragDataIndex glGetFragDataIndex;
 
 private __gshared bool _ARB_blend_func_extended;
 @nogc bool ARB_blend_func_extended() nothrow @property { return _ARB_blend_func_extended; }
-package void load_ARB_blend_func_extended( bool doThrow = false ) {
+package void load_ARB_blend_func_extended(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed" );
-        bindGLFunc( cast( void** )&glGetFragDataIndex, "glGetFragDataIndex" );
+        bindGLFunc(cast(void**)&glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed");
+        bindGLFunc(cast(void**)&glGetFragDataIndex, "glGetFragDataIndex");
         _ARB_blend_func_extended = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_blend_func_extended = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_sampler_objects
-extern( System ) @nogc nothrow {
-    alias da_glGenSamplers = void function( GLsizei, GLuint* );
-    alias da_glDeleteSamplers = void function( GLsizei, const( GLuint )* );
-    alias da_glIsSampler = GLboolean function( GLuint );
-    alias da_glBindSampler = void function( GLuint, GLuint );
-    alias da_glSamplerParameteri = void function( GLuint, GLenum, GLint );
-    alias da_glSamplerParameteriv = void function( GLuint, GLenum, const( GLint )* );
-    alias da_glSamplerParameterf = void function( GLuint, GLenum, GLfloat );
-    alias da_glSamplerParameterfv = void function( GLuint, GLenum, const( GLfloat )* );
-    alias da_glSamplerParameterIiv = void function( GLuint, GLenum, const( GLint )* );
-    alias da_glSamplerParameterIuiv = void function( GLuint, GLenum, const( GLuint )* );
-    alias da_glGetSamplerParameteriv = void function( GLuint, GLenum, GLint* );
-    alias da_glGetSamplerParameterIiv = void function( GLuint, GLenum, GLint* );
-    alias da_glGetSamplerParameterfv = void function( GLuint, GLenum, GLfloat* );
-    alias da_glGetSamplerParameterIuiv = void function( GLuint, GLenum, GLuint* );
+extern(System) @nogc nothrow {
+    alias da_glGenSamplers = void function(GLsizei, GLuint*);
+    alias da_glDeleteSamplers = void function(GLsizei, const(GLuint)*);
+    alias da_glIsSampler = GLboolean function(GLuint);
+    alias da_glBindSampler = void function(GLuint, GLuint);
+    alias da_glSamplerParameteri = void function(GLuint, GLenum, GLint);
+    alias da_glSamplerParameteriv = void function(GLuint, GLenum, const(GLint)*);
+    alias da_glSamplerParameterf = void function(GLuint, GLenum, GLfloat);
+    alias da_glSamplerParameterfv = void function(GLuint, GLenum, const(GLfloat)*);
+    alias da_glSamplerParameterIiv = void function(GLuint, GLenum, const(GLint)*);
+    alias da_glSamplerParameterIuiv = void function(GLuint, GLenum, const(GLuint)*);
+    alias da_glGetSamplerParameteriv = void function(GLuint, GLenum, GLint*);
+    alias da_glGetSamplerParameterIiv = void function(GLuint, GLenum, GLint*);
+    alias da_glGetSamplerParameterfv = void function(GLuint, GLenum, GLfloat*);
+    alias da_glGetSamplerParameterIuiv = void function(GLuint, GLenum, GLuint*);
 }
 
 __gshared {
@@ -1509,34 +1509,34 @@ __gshared {
 
 private __gshared bool _ARB_sampler_objects;
 @nogc bool ARB_sampler_objects() nothrow @property { return _ARB_sampler_objects; }
-package void load_ARB_sampler_objects( bool doThrow = false ) {
+package void load_ARB_sampler_objects(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGenSamplers, "glGenSamplers" );
-        bindGLFunc( cast( void** )&glDeleteSamplers, "glDeleteSamplers" );
-        bindGLFunc( cast( void** )&glIsSampler, "glIsSampler" );
-        bindGLFunc( cast( void** )&glBindSampler, "glBindSampler" );
-        bindGLFunc( cast( void** )&glSamplerParameteri, "glSamplerParameteri" );
-        bindGLFunc( cast( void** )&glSamplerParameteriv, "glSamplerParameteriv" );
-        bindGLFunc( cast( void** )&glSamplerParameterf, "glSamplerParameterf" );
-        bindGLFunc( cast( void** )&glSamplerParameterfv, "glSamplerParameterfv" );
-        bindGLFunc( cast( void** )&glSamplerParameterIiv, "glSamplerParameterIiv" );
-        bindGLFunc( cast( void** )&glSamplerParameterIuiv, "glSamplerParameterIuiv" );
-        bindGLFunc( cast( void** )&glGetSamplerParameteriv, "glGetSamplerParameteriv" );
-        bindGLFunc( cast( void** )&glGetSamplerParameterIiv, "glGetSamplerParameterIiv" );
-        bindGLFunc( cast( void** )&glGetSamplerParameterfv, "glGetSamplerParameterfv" );
-        bindGLFunc( cast( void** )&glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv" );
+        bindGLFunc(cast(void**)&glGenSamplers, "glGenSamplers");
+        bindGLFunc(cast(void**)&glDeleteSamplers, "glDeleteSamplers");
+        bindGLFunc(cast(void**)&glIsSampler, "glIsSampler");
+        bindGLFunc(cast(void**)&glBindSampler, "glBindSampler");
+        bindGLFunc(cast(void**)&glSamplerParameteri, "glSamplerParameteri");
+        bindGLFunc(cast(void**)&glSamplerParameteriv, "glSamplerParameteriv");
+        bindGLFunc(cast(void**)&glSamplerParameterf, "glSamplerParameterf");
+        bindGLFunc(cast(void**)&glSamplerParameterfv, "glSamplerParameterfv");
+        bindGLFunc(cast(void**)&glSamplerParameterIiv, "glSamplerParameterIiv");
+        bindGLFunc(cast(void**)&glSamplerParameterIuiv, "glSamplerParameterIuiv");
+        bindGLFunc(cast(void**)&glGetSamplerParameteriv, "glGetSamplerParameteriv");
+        bindGLFunc(cast(void**)&glGetSamplerParameterIiv, "glGetSamplerParameterIiv");
+        bindGLFunc(cast(void**)&glGetSamplerParameterfv, "glGetSamplerParameterfv");
+        bindGLFunc(cast(void**)&glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv");
         _ARB_sampler_objects = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_sampler_objects = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_timer_query
-extern( System ) @nogc nothrow {
-    alias da_glQueryCounter = void function( GLuint, GLenum );
-    alias da_glGetQueryObjecti64v = void function( GLuint, GLenum, GLint64* );
-    alias da_glGetQueryObjectui64v = void function( GLuint, GLenum, GLuint64* );
+extern(System) @nogc nothrow {
+    alias da_glQueryCounter = void function(GLuint, GLenum);
+    alias da_glGetQueryObjecti64v = void function(GLuint, GLenum, GLint64*);
+    alias da_glGetQueryObjectui64v = void function(GLuint, GLenum, GLuint64*);
 }
 
 __gshared {
@@ -1547,58 +1547,58 @@ __gshared {
 
 private __gshared bool _ARB_timer_query;
 @nogc bool ARB_timer_query() nothrow @property { return _ARB_timer_query; }
-void load_ARB_timer_query( bool doThrow = false ) {
+void load_ARB_timer_query(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glQueryCounter, "glQueryCounter" );
-        bindGLFunc( cast( void** )&glGetQueryObjecti64v, "glGetQueryObjecti64v" );
-        bindGLFunc( cast( void** )&glGetQueryObjectui64v, "glGetQueryObjectui64v" );
+        bindGLFunc(cast(void**)&glQueryCounter, "glQueryCounter");
+        bindGLFunc(cast(void**)&glGetQueryObjecti64v, "glGetQueryObjecti64v");
+        bindGLFunc(cast(void**)&glGetQueryObjectui64v, "glGetQueryObjectui64v");
         _ARB_timer_query = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_timer_query = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_vertex_type_2_10_10_10_rev
-extern( System ) @nogc nothrow {
-    alias da_glVertexP2ui = void function( GLenum, GLuint );
-    alias da_glVertexP2uiv = void function( GLenum, const( GLuint )* );
-    alias da_glVertexP3ui = void function( GLenum, GLuint );
-    alias da_glVertexP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glVertexP4ui = void function( GLenum, GLuint );
-    alias da_glVertexP4uiv = void function( GLenum, const( GLuint )* );
-    alias da_glTexCoordP1ui = void function( GLenum, GLuint );
-    alias da_glTexCoordP1uiv = void function( GLenum, const( GLuint )* );
-    alias da_glTexCoordP2ui = void function( GLenum, GLuint );
-    alias da_glTexCoordP2uiv = void function( GLenum, const( GLuint )* );
-    alias da_glTexCoordP3ui = void function( GLenum, GLuint );
-    alias da_glTexCoordP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glTexCoordP4ui = void function( GLenum, GLuint );
-    alias da_glTexCoordP4uiv = void function( GLenum, const( GLuint )* );
-    alias da_glMultiTexCoordP1ui = void function( GLenum, GLenum, GLuint );
-    alias da_glMultiTexCoordP1uiv = void function( GLenum, GLenum, const( GLuint )* );
-    alias da_glMultiTexCoordP2ui = void function( GLenum, GLenum, GLuint );
-    alias da_glMultiTexCoordP2uiv = void function( GLenum, GLenum, const( GLuint )* );
-    alias da_glMultiTexCoordP3ui = void function( GLenum, GLenum, GLuint );
-    alias da_glMultiTexCoordP3uiv = void function( GLenum, GLenum, const( GLuint )* );
-    alias da_glMultiTexCoordP4ui = void function( GLenum, GLenum, GLuint );
-    alias da_glMultiTexCoordP4uiv = void function( GLenum, GLenum, const( GLuint )* );
-    alias da_glNormalP3ui = void function( GLenum, GLuint );
-    alias da_glNormalP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glColorP3ui = void function( GLenum, GLuint );
-    alias da_glColorP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glColorP4ui = void function( GLenum, GLuint );
-    alias da_glColorP4uiv = void function( GLenum, const( GLuint )* );
-    alias da_glSecondaryColorP3ui = void function( GLenum, GLuint );
-    alias da_glSecondaryColorP3uiv = void function( GLenum, const( GLuint )* );
-    alias da_glVertexAttribP1ui = void function( GLuint, GLenum, GLboolean, GLuint );
-    alias da_glVertexAttribP1uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
-    alias da_glVertexAttribP2ui = void function( GLuint, GLenum, GLboolean, GLuint );
-    alias da_glVertexAttribP2uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
-    alias da_glVertexAttribP3ui = void function( GLuint, GLenum, GLboolean, GLuint );
-    alias da_glVertexAttribP3uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
-    alias da_glVertexAttribP4ui = void function( GLuint, GLenum, GLboolean, GLuint );
-    alias da_glVertexAttribP4uiv = void function( GLuint, GLenum, GLboolean, const( GLuint )* );
+extern(System) @nogc nothrow {
+    alias da_glVertexP2ui = void function(GLenum, GLuint);
+    alias da_glVertexP2uiv = void function(GLenum, const(GLuint)*);
+    alias da_glVertexP3ui = void function(GLenum, GLuint);
+    alias da_glVertexP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glVertexP4ui = void function(GLenum, GLuint);
+    alias da_glVertexP4uiv = void function(GLenum, const(GLuint)*);
+    alias da_glTexCoordP1ui = void function(GLenum, GLuint);
+    alias da_glTexCoordP1uiv = void function(GLenum, const(GLuint)*);
+    alias da_glTexCoordP2ui = void function(GLenum, GLuint);
+    alias da_glTexCoordP2uiv = void function(GLenum, const(GLuint)*);
+    alias da_glTexCoordP3ui = void function(GLenum, GLuint);
+    alias da_glTexCoordP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glTexCoordP4ui = void function(GLenum, GLuint);
+    alias da_glTexCoordP4uiv = void function(GLenum, const(GLuint)*);
+    alias da_glMultiTexCoordP1ui = void function(GLenum, GLenum, GLuint);
+    alias da_glMultiTexCoordP1uiv = void function(GLenum, GLenum, const(GLuint)*);
+    alias da_glMultiTexCoordP2ui = void function(GLenum, GLenum, GLuint);
+    alias da_glMultiTexCoordP2uiv = void function(GLenum, GLenum, const(GLuint)*);
+    alias da_glMultiTexCoordP3ui = void function(GLenum, GLenum, GLuint);
+    alias da_glMultiTexCoordP3uiv = void function(GLenum, GLenum, const(GLuint)*);
+    alias da_glMultiTexCoordP4ui = void function(GLenum, GLenum, GLuint);
+    alias da_glMultiTexCoordP4uiv = void function(GLenum, GLenum, const(GLuint)*);
+    alias da_glNormalP3ui = void function(GLenum, GLuint);
+    alias da_glNormalP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glColorP3ui = void function(GLenum, GLuint);
+    alias da_glColorP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glColorP4ui = void function(GLenum, GLuint);
+    alias da_glColorP4uiv = void function(GLenum, const(GLuint)*);
+    alias da_glSecondaryColorP3ui = void function(GLenum, GLuint);
+    alias da_glSecondaryColorP3uiv = void function(GLenum, const(GLuint)*);
+    alias da_glVertexAttribP1ui = void function(GLuint, GLenum, GLboolean, GLuint);
+    alias da_glVertexAttribP1uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
+    alias da_glVertexAttribP2ui = void function(GLuint, GLenum, GLboolean, GLuint);
+    alias da_glVertexAttribP2uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
+    alias da_glVertexAttribP3ui = void function(GLuint, GLenum, GLboolean, GLuint);
+    alias da_glVertexAttribP3uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
+    alias da_glVertexAttribP4ui = void function(GLuint, GLenum, GLboolean, GLuint);
+    alias da_glVertexAttribP4uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
 }
 
 __gshared {
@@ -1644,59 +1644,59 @@ __gshared {
 
 private __gshared bool _ARB_vertex_type_2_10_10_10_rev;
 @nogc bool ARB_vertex_type_2_10_10_10_rev() nothrow @property { return _ARB_vertex_type_2_10_10_10_rev; }
-package void load_ARB_vertex_type_2_10_10_10_rev( bool doThrow = false ) {
+package void load_ARB_vertex_type_2_10_10_10_rev(bool doThrow = false) {
     try {
-        static if( !Derelict_OS_Mac ) {
-            bindGLFunc( cast( void** )&glVertexP2ui, "glVertexP2ui" );
-            bindGLFunc( cast( void** )&glVertexP2uiv, "glVertexP2uiv" );
-            bindGLFunc( cast( void** )&glVertexP3ui, "glVertexP3ui" );
-            bindGLFunc( cast( void** )&glVertexP3uiv, "glVertexP3uiv" );
-            bindGLFunc( cast( void** )&glVertexP4ui, "glVertexP4ui" );
-            bindGLFunc( cast( void** )&glVertexP4uiv, "glVertexP4uiv" );
-            bindGLFunc( cast( void** )&glTexCoordP1ui, "glTexCoordP1ui" );
-            bindGLFunc( cast( void** )&glTexCoordP1uiv, "glTexCoordP1uiv" );
-            bindGLFunc( cast( void** )&glTexCoordP2ui, "glTexCoordP2ui" );
-            bindGLFunc( cast( void** )&glTexCoordP2uiv, "glTexCoordP2uiv" );
-            bindGLFunc( cast( void** )&glTexCoordP3ui, "glTexCoordP3ui" );
-            bindGLFunc( cast( void** )&glTexCoordP3uiv, "glTexCoordP3uiv" );
-            bindGLFunc( cast( void** )&glTexCoordP4ui, "glTexCoordP4ui" );
-            bindGLFunc( cast( void** )&glTexCoordP4uiv, "glTexCoordP4uiv" );
-            bindGLFunc( cast( void** )&glMultiTexCoordP1ui, "glMultiTexCoordP1ui" );
-            bindGLFunc( cast( void** )&glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv" );
-            bindGLFunc( cast( void** )&glMultiTexCoordP2ui, "glMultiTexCoordP2ui" );
-            bindGLFunc( cast( void** )&glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv" );
-            bindGLFunc( cast( void** )&glMultiTexCoordP3ui, "glMultiTexCoordP3ui" );
-            bindGLFunc( cast( void** )&glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv" );
-            bindGLFunc( cast( void** )&glMultiTexCoordP4ui, "glMultiTexCoordP4ui" );
-            bindGLFunc( cast( void** )&glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv" );
-            bindGLFunc( cast( void** )&glNormalP3ui, "glNormalP3ui" );
-            bindGLFunc( cast( void** )&glNormalP3uiv, "glNormalP3uiv" );
-            bindGLFunc( cast( void** )&glColorP3ui, "glColorP3ui" );
-            bindGLFunc( cast( void** )&glColorP3uiv, "glColorP3uiv" );
-            bindGLFunc( cast( void** )&glColorP4ui, "glColorP4ui" );
-            bindGLFunc( cast( void** )&glColorP4uiv, "glColorP4uiv" );
-            bindGLFunc( cast( void** )&glSecondaryColorP3ui, "glSecondaryColorP3ui" );
-            bindGLFunc( cast( void** )&glSecondaryColorP3uiv, "glSecondaryColorP3uiv" );
+        static if(!Derelict_OS_Mac) {
+            bindGLFunc(cast(void**)&glVertexP2ui, "glVertexP2ui");
+            bindGLFunc(cast(void**)&glVertexP2uiv, "glVertexP2uiv");
+            bindGLFunc(cast(void**)&glVertexP3ui, "glVertexP3ui");
+            bindGLFunc(cast(void**)&glVertexP3uiv, "glVertexP3uiv");
+            bindGLFunc(cast(void**)&glVertexP4ui, "glVertexP4ui");
+            bindGLFunc(cast(void**)&glVertexP4uiv, "glVertexP4uiv");
+            bindGLFunc(cast(void**)&glTexCoordP1ui, "glTexCoordP1ui");
+            bindGLFunc(cast(void**)&glTexCoordP1uiv, "glTexCoordP1uiv");
+            bindGLFunc(cast(void**)&glTexCoordP2ui, "glTexCoordP2ui");
+            bindGLFunc(cast(void**)&glTexCoordP2uiv, "glTexCoordP2uiv");
+            bindGLFunc(cast(void**)&glTexCoordP3ui, "glTexCoordP3ui");
+            bindGLFunc(cast(void**)&glTexCoordP3uiv, "glTexCoordP3uiv");
+            bindGLFunc(cast(void**)&glTexCoordP4ui, "glTexCoordP4ui");
+            bindGLFunc(cast(void**)&glTexCoordP4uiv, "glTexCoordP4uiv");
+            bindGLFunc(cast(void**)&glMultiTexCoordP1ui, "glMultiTexCoordP1ui");
+            bindGLFunc(cast(void**)&glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv");
+            bindGLFunc(cast(void**)&glMultiTexCoordP2ui, "glMultiTexCoordP2ui");
+            bindGLFunc(cast(void**)&glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv");
+            bindGLFunc(cast(void**)&glMultiTexCoordP3ui, "glMultiTexCoordP3ui");
+            bindGLFunc(cast(void**)&glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv");
+            bindGLFunc(cast(void**)&glMultiTexCoordP4ui, "glMultiTexCoordP4ui");
+            bindGLFunc(cast(void**)&glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv");
+            bindGLFunc(cast(void**)&glNormalP3ui, "glNormalP3ui");
+            bindGLFunc(cast(void**)&glNormalP3uiv, "glNormalP3uiv");
+            bindGLFunc(cast(void**)&glColorP3ui, "glColorP3ui");
+            bindGLFunc(cast(void**)&glColorP3uiv, "glColorP3uiv");
+            bindGLFunc(cast(void**)&glColorP4ui, "glColorP4ui");
+            bindGLFunc(cast(void**)&glColorP4uiv, "glColorP4uiv");
+            bindGLFunc(cast(void**)&glSecondaryColorP3ui, "glSecondaryColorP3ui");
+            bindGLFunc(cast(void**)&glSecondaryColorP3uiv, "glSecondaryColorP3uiv");
         }
-        bindGLFunc( cast( void** )&glVertexAttribP1ui, "glVertexAttribP1ui" );
-        bindGLFunc( cast( void** )&glVertexAttribP1uiv, "glVertexAttribP1uiv" );
-        bindGLFunc( cast( void** )&glVertexAttribP2ui, "glVertexAttribP2ui" );
-        bindGLFunc( cast( void** )&glVertexAttribP2uiv, "glVertexAttribP2uiv" );
-        bindGLFunc( cast( void** )&glVertexAttribP3ui, "glVertexAttribP3ui" );
-        bindGLFunc( cast( void** )&glVertexAttribP3uiv, "glVertexAttribP3uiv" );
-        bindGLFunc( cast( void** )&glVertexAttribP4ui, "glVertexAttribP4ui" );
-        bindGLFunc( cast( void** )&glVertexAttribP4uiv, "glVertexAttribP4uiv" );
+        bindGLFunc(cast(void**)&glVertexAttribP1ui, "glVertexAttribP1ui");
+        bindGLFunc(cast(void**)&glVertexAttribP1uiv, "glVertexAttribP1uiv");
+        bindGLFunc(cast(void**)&glVertexAttribP2ui, "glVertexAttribP2ui");
+        bindGLFunc(cast(void**)&glVertexAttribP2uiv, "glVertexAttribP2uiv");
+        bindGLFunc(cast(void**)&glVertexAttribP3ui, "glVertexAttribP3ui");
+        bindGLFunc(cast(void**)&glVertexAttribP3uiv, "glVertexAttribP3uiv");
+        bindGLFunc(cast(void**)&glVertexAttribP4ui, "glVertexAttribP4ui");
+        bindGLFunc(cast(void**)&glVertexAttribP4uiv, "glVertexAttribP4uiv");
         _ARB_vertex_type_2_10_10_10_rev = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_vertex_type_2_10_10_10_rev = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_draw_indirect
-extern( System ) @nogc nothrow {
-    alias da_glDrawArraysIndirect = void function( GLenum, const( GLvoid )* );
-    alias da_glDrawElementsIndirect = void function( GLenum, GLenum, const( GLvoid )* );
+extern(System) @nogc nothrow {
+    alias da_glDrawArraysIndirect = void function(GLenum, const(GLvoid)*);
+    alias da_glDrawElementsIndirect = void function(GLenum, GLenum, const(GLvoid)*);
 }
 
 __gshared {
@@ -1706,37 +1706,37 @@ __gshared {
 
 private __gshared bool _ARB_draw_indirect;
 @nogc bool ARB_draw_indirect() nothrow @property { return _ARB_draw_indirect; }
-package void load_ARB_draw_indirect( bool doThrow = false ) {
+package void load_ARB_draw_indirect(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glDrawArraysIndirect, "glDrawArraysIndirect" );
-        bindGLFunc( cast( void** )&glDrawElementsIndirect, "glDrawElementsIndirect" );
+        bindGLFunc(cast(void**)&glDrawArraysIndirect, "glDrawArraysIndirect");
+        bindGLFunc(cast(void**)&glDrawElementsIndirect, "glDrawElementsIndirect");
         _ARB_draw_indirect = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_draw_indirect = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_gpu_shader_fp64
-extern( System ) @nogc nothrow {
-    alias da_glUniform1d = void function( GLint, GLdouble );
-    alias da_glUniform2d = void function( GLint, GLdouble, GLdouble );
-    alias da_glUniform3d = void function( GLint, GLdouble, GLdouble, GLdouble );
-    alias da_glUniform4d = void function( GLint, GLdouble, GLdouble, GLdouble, GLdouble );
-    alias da_glUniform1dv = void function( GLint, GLsizei, const( GLdouble )* );
-    alias da_glUniform2dv = void function( GLint, GLsizei, const( GLdouble )* );
-    alias da_glUniform3dv = void function( GLint, GLsizei, const( GLdouble )* );
-    alias da_glUniform4dv = void function( GLint, GLsizei, const( GLdouble )* );
-    alias da_glUniformMatrix2dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glUniformMatrix3dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glUniformMatrix4dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glUniformMatrix2x3dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glUniformMatrix2x4dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glUniformMatrix3x2dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glUniformMatrix3x4dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glUniformMatrix4x2dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glUniformMatrix4x3dv = void function( GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glGetUniformdv = void function( GLuint, GLint, GLdouble* );
+extern(System) @nogc nothrow {
+    alias da_glUniform1d = void function(GLint, GLdouble);
+    alias da_glUniform2d = void function(GLint, GLdouble, GLdouble);
+    alias da_glUniform3d = void function(GLint, GLdouble, GLdouble, GLdouble);
+    alias da_glUniform4d = void function(GLint, GLdouble, GLdouble, GLdouble, GLdouble);
+    alias da_glUniform1dv = void function(GLint, GLsizei, const(GLdouble)*);
+    alias da_glUniform2dv = void function(GLint, GLsizei, const(GLdouble)*);
+    alias da_glUniform3dv = void function(GLint, GLsizei, const(GLdouble)*);
+    alias da_glUniform4dv = void function(GLint, GLsizei, const(GLdouble)*);
+    alias da_glUniformMatrix2dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix3dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix4dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix2x3dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix2x4dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix3x2dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix3x4dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix4x2dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glUniformMatrix4x3dv = void function(GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glGetUniformdv = void function(GLuint, GLint, GLdouble*);
 }
 
 __gshared {
@@ -1762,43 +1762,43 @@ __gshared {
 
 private __gshared bool _ARB_gpu_shader_fp64;
 @nogc bool ARB_gpu_shader_fp64() nothrow @property { return _ARB_gpu_shader_fp64; }
-package void load_ARB_gpu_shader_fp64( bool doThrow = false ) {
+package void load_ARB_gpu_shader_fp64(bool doThrow = false) {
     try
     {
-        bindGLFunc( cast( void** )&glUniform1d, "glUniform1d" );
-        bindGLFunc( cast( void** )&glUniform2d, "glUniform2d" );
-        bindGLFunc( cast( void** )&glUniform3d, "glUniform3d" );
-        bindGLFunc( cast( void** )&glUniform4d, "glUniform4d" );
-        bindGLFunc( cast( void** )&glUniform1dv, "glUniform1dv" );
-        bindGLFunc( cast( void** )&glUniform2dv, "glUniform2dv" );
-        bindGLFunc( cast( void** )&glUniform3dv, "glUniform3dv" );
-        bindGLFunc( cast( void** )&glUniform4dv, "glUniform4dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix2dv, "glUniformMatrix2dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix3dv, "glUniformMatrix3dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix4dv, "glUniformMatrix4dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix2x3dv, "glUniformMatrix2x3dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix2x4dv, "glUniformMatrix2x4dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix3x2dv, "glUniformMatrix3x2dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix3x4dv, "glUniformMatrix3x4dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix4x2dv, "glUniformMatrix4x2dv" );
-        bindGLFunc( cast( void** )&glUniformMatrix4x3dv, "glUniformMatrix4x3dv" );
+        bindGLFunc(cast(void**)&glUniform1d, "glUniform1d");
+        bindGLFunc(cast(void**)&glUniform2d, "glUniform2d");
+        bindGLFunc(cast(void**)&glUniform3d, "glUniform3d");
+        bindGLFunc(cast(void**)&glUniform4d, "glUniform4d");
+        bindGLFunc(cast(void**)&glUniform1dv, "glUniform1dv");
+        bindGLFunc(cast(void**)&glUniform2dv, "glUniform2dv");
+        bindGLFunc(cast(void**)&glUniform3dv, "glUniform3dv");
+        bindGLFunc(cast(void**)&glUniform4dv, "glUniform4dv");
+        bindGLFunc(cast(void**)&glUniformMatrix2dv, "glUniformMatrix2dv");
+        bindGLFunc(cast(void**)&glUniformMatrix3dv, "glUniformMatrix3dv");
+        bindGLFunc(cast(void**)&glUniformMatrix4dv, "glUniformMatrix4dv");
+        bindGLFunc(cast(void**)&glUniformMatrix2x3dv, "glUniformMatrix2x3dv");
+        bindGLFunc(cast(void**)&glUniformMatrix2x4dv, "glUniformMatrix2x4dv");
+        bindGLFunc(cast(void**)&glUniformMatrix3x2dv, "glUniformMatrix3x2dv");
+        bindGLFunc(cast(void**)&glUniformMatrix3x4dv, "glUniformMatrix3x4dv");
+        bindGLFunc(cast(void**)&glUniformMatrix4x2dv, "glUniformMatrix4x2dv");
+        bindGLFunc(cast(void**)&glUniformMatrix4x3dv, "glUniformMatrix4x3dv");
         _ARB_gpu_shader_fp64 = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_gpu_shader_fp64 = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_shader_subroutine
-extern( System ) @nogc nothrow {
-    alias da_glGetSubroutineUniformLocation = GLint function( GLuint, GLenum, const( GLchar )* );
-    alias da_glGetSubroutineIndex = GLuint function( GLuint, GLenum, const( GLchar )* );
-    alias da_glGetActiveSubroutineUniformiv = void function( GLuint, GLenum, GLuint, GLenum, GLint* );
-    alias da_glGetActiveSubroutineUniformName = void function( GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar* );
-    alias da_glGetActiveSubroutineName = void function( GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar* );
-    alias da_glUniformSubroutinesuiv = void function( GLenum, GLsizei, const( GLuint )* );
-    alias da_glGetUniformSubroutineuiv = void function( GLenum, GLint, GLuint* );
-    alias da_glGetProgramStageiv = void function( GLuint, GLenum, GLenum, GLint* );
+extern(System) @nogc nothrow {
+    alias da_glGetSubroutineUniformLocation = GLint function(GLuint, GLenum, const(GLchar)*);
+    alias da_glGetSubroutineIndex = GLuint function(GLuint, GLenum, const(GLchar)*);
+    alias da_glGetActiveSubroutineUniformiv = void function(GLuint, GLenum, GLuint, GLenum, GLint*);
+    alias da_glGetActiveSubroutineUniformName = void function(GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar*);
+    alias da_glGetActiveSubroutineName = void function(GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar*);
+    alias da_glUniformSubroutinesuiv = void function(GLenum, GLsizei, const(GLuint)*);
+    alias da_glGetUniformSubroutineuiv = void function(GLenum, GLint, GLuint*);
+    alias da_glGetProgramStageiv = void function(GLuint, GLenum, GLenum, GLint*);
 }
 
 __gshared {
@@ -1814,53 +1814,53 @@ __gshared {
 
 private __gshared bool _ARB_shader_subroutine;
 @nogc bool ARB_shader_subroutine() nothrow @property { return _ARB_shader_subroutine; }
-package void load_ARB_shader_subroutine( bool doThrow = false ) {
+package void load_ARB_shader_subroutine(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetSubroutineUniformLocation, "glGetSubroutineUniformLocation" );
-        bindGLFunc( cast( void** )&glGetSubroutineIndex, "glGetSubroutineIndex" );
-        bindGLFunc( cast( void** )&glGetActiveSubroutineUniformiv, "glGetActiveSubroutineUniformiv" );
-        bindGLFunc( cast( void** )&glGetActiveSubroutineUniformName, "glGetActiveSubroutineUniformName" );
-        bindGLFunc( cast( void** )&glGetActiveSubroutineName, "glGetActiveSubroutineName" );
-        bindGLFunc( cast( void** )&glUniformSubroutinesuiv, "glUniformSubroutinesuiv" );
-        bindGLFunc( cast( void** )&glGetUniformSubroutineuiv, "glGetUniformSubroutineuiv" );
-        bindGLFunc( cast( void** )&glGetProgramStageiv, "glGetProgramStageiv" );
+        bindGLFunc(cast(void**)&glGetSubroutineUniformLocation, "glGetSubroutineUniformLocation");
+        bindGLFunc(cast(void**)&glGetSubroutineIndex, "glGetSubroutineIndex");
+        bindGLFunc(cast(void**)&glGetActiveSubroutineUniformiv, "glGetActiveSubroutineUniformiv");
+        bindGLFunc(cast(void**)&glGetActiveSubroutineUniformName, "glGetActiveSubroutineUniformName");
+        bindGLFunc(cast(void**)&glGetActiveSubroutineName, "glGetActiveSubroutineName");
+        bindGLFunc(cast(void**)&glUniformSubroutinesuiv, "glUniformSubroutinesuiv");
+        bindGLFunc(cast(void**)&glGetUniformSubroutineuiv, "glGetUniformSubroutineuiv");
+        bindGLFunc(cast(void**)&glGetProgramStageiv, "glGetProgramStageiv");
         _ARB_shader_subroutine = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_shader_subroutine = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_tessellation_shader
-extern( System ) @nogc nothrow {
-    alias da_glPatchParameteri = void function( GLenum, GLint );
-    alias da_glPatchParameterfv = void function( GLenum, const( GLfloat )* );
+extern(System) @nogc nothrow {
+    alias da_glPatchParameteri = void function(GLenum, GLint);
+    alias da_glPatchParameterfv = void function(GLenum, const(GLfloat)*);
 }
 __gshared da_glPatchParameteri glPatchParameteri;
 __gshared da_glPatchParameterfv glPatchParameterfv;
 
 private __gshared bool _ARB_tessellation_shader;
 @nogc bool ARB_tessellation_shader() nothrow @property { return _ARB_tessellation_shader; }
-package void load_ARB_tessellation_shader( bool doThrow = false ) {
+package void load_ARB_tessellation_shader(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glPatchParameteri, "glPatchParameteri" );
-        bindGLFunc( cast( void** )&glPatchParameterfv, "glPatchParameterfv" );
+        bindGLFunc(cast(void**)&glPatchParameteri, "glPatchParameteri");
+        bindGLFunc(cast(void**)&glPatchParameterfv, "glPatchParameterfv");
         _ARB_tessellation_shader = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_tessellation_shader = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_transform_feedback2
-extern( System ) @nogc nothrow {
-    alias da_glBindTransformFeedback = void function( GLenum, GLuint );
-    alias da_glDeleteTransformFeedbacks = void function( GLsizei, const( GLuint )* );
-    alias da_glGenTransformFeedbacks = void function( GLsizei, GLuint* );
-    alias da_glIsTransformFeedback = GLboolean function( GLuint );
+extern(System) @nogc nothrow {
+    alias da_glBindTransformFeedback = void function(GLenum, GLuint);
+    alias da_glDeleteTransformFeedbacks = void function(GLsizei, const(GLuint)*);
+    alias da_glGenTransformFeedbacks = void function(GLsizei, GLuint*);
+    alias da_glIsTransformFeedback = GLboolean function(GLuint);
     alias da_glPauseTransformFeedback = void function();
     alias da_glResumeTransformFeedback = void function();
-    alias da_glDrawTransformFeedback = void function( GLenum, GLuint );
+    alias da_glDrawTransformFeedback = void function(GLenum, GLuint);
 }
 
 __gshared {
@@ -1875,28 +1875,28 @@ __gshared {
 
 private __gshared bool _ARB_transform_feedback2;
 @nogc bool ARB_transform_feedback2() { return _ARB_transform_feedback2; }
-void load_ARB_transform_feedback2( bool doThrow = false ) {
+void load_ARB_transform_feedback2(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glBindTransformFeedback, "glBindTransformFeedback" );
-        bindGLFunc( cast( void** )&glDeleteTransformFeedbacks, "glDeleteTransformFeedbacks" );
-        bindGLFunc( cast( void** )&glGenTransformFeedbacks, "glGenTransformFeedbacks" );
-        bindGLFunc( cast( void** )&glIsTransformFeedback, "glIsTransformFeedback" );
-        bindGLFunc( cast( void** )&glPauseTransformFeedback, "glPauseTransformFeedback" );
-        bindGLFunc( cast( void** )&glResumeTransformFeedback, "glResumeTransformFeedback" );
-        bindGLFunc( cast( void** )&glDrawTransformFeedback, "glDrawTransformFeedback" );
+        bindGLFunc(cast(void**)&glBindTransformFeedback, "glBindTransformFeedback");
+        bindGLFunc(cast(void**)&glDeleteTransformFeedbacks, "glDeleteTransformFeedbacks");
+        bindGLFunc(cast(void**)&glGenTransformFeedbacks, "glGenTransformFeedbacks");
+        bindGLFunc(cast(void**)&glIsTransformFeedback, "glIsTransformFeedback");
+        bindGLFunc(cast(void**)&glPauseTransformFeedback, "glPauseTransformFeedback");
+        bindGLFunc(cast(void**)&glResumeTransformFeedback, "glResumeTransformFeedback");
+        bindGLFunc(cast(void**)&glDrawTransformFeedback, "glDrawTransformFeedback");
         _ARB_transform_feedback2 = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_transform_feedback2 = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_transform_feedback3
-extern( System ) @nogc nothrow {
-    alias da_glDrawTransformFeedbackStream = void function( GLenum, GLuint, GLuint );
-    alias da_glBeginQueryIndexed = void function( GLenum, GLuint, GLuint );
-    alias da_glEndQueryIndexed = void function( GLenum, GLuint );
-    alias da_glGetQueryIndexediv = void function( GLenum, GLuint, GLenum, GLint* );
+extern(System) @nogc nothrow {
+    alias da_glDrawTransformFeedbackStream = void function(GLenum, GLuint, GLuint);
+    alias da_glBeginQueryIndexed = void function(GLenum, GLuint, GLuint);
+    alias da_glEndQueryIndexed = void function(GLenum, GLuint);
+    alias da_glGetQueryIndexediv = void function(GLenum, GLuint, GLenum, GLint*);
 }
 
 __gshared {
@@ -1908,26 +1908,26 @@ __gshared {
 
 private __gshared bool _ARB_transform_feedback3;
 @nogc bool ARB_transform_feedback3() { return _ARB_transform_feedback3; }
-package void load_ARB_transform_feedback3( bool doThrow = false ) {
+package void load_ARB_transform_feedback3(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glDrawTransformFeedbackStream, "glDrawTransformFeedbackStream" );
-        bindGLFunc( cast( void** )&glBeginQueryIndexed, "glBeginQueryIndexed" );
-        bindGLFunc( cast( void** )&glEndQueryIndexed, "glEndQueryIndexed" );
-        bindGLFunc( cast( void** )&glGetQueryIndexediv, "glGetQueryIndexediv" );
+        bindGLFunc(cast(void**)&glDrawTransformFeedbackStream, "glDrawTransformFeedbackStream");
+        bindGLFunc(cast(void**)&glBeginQueryIndexed, "glBeginQueryIndexed");
+        bindGLFunc(cast(void**)&glEndQueryIndexed, "glEndQueryIndexed");
+        bindGLFunc(cast(void**)&glGetQueryIndexediv, "glGetQueryIndexediv");
         _ARB_transform_feedback3 = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_transform_feedback3 = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_ES2_compatibility
-extern( System ) @nogc nothrow {
+extern(System) @nogc nothrow {
     alias da_glReleaseShaderCompiler = void function();
-    alias da_glShaderBinary = void function( GLsizei, const( GLuint )*, GLenum, const( GLvoid )*, GLsizei );
-    alias da_glGetShaderPrecisionFormat = void function( GLenum, GLenum, GLint*, GLint* );
-    alias da_glDepthRangef = void function( GLclampf, GLclampf );
-    alias da_glClearDepthf = void function( GLclampf );
+    alias da_glShaderBinary = void function(GLsizei, const(GLuint)*, GLenum, const(GLvoid)*, GLsizei);
+    alias da_glGetShaderPrecisionFormat = void function(GLenum, GLenum, GLint*, GLint*);
+    alias da_glDepthRangef = void function(GLclampf, GLclampf);
+    alias da_glClearDepthf = void function(GLclampf);
 }
 
 __gshared {
@@ -1940,25 +1940,25 @@ __gshared {
 
 private __gshared bool _ARB_ES2_compatibility;
 @nogc bool ARB_ES2_compatibility() nothrow @property { return _ARB_ES2_compatibility; }
-package void load_ARB_ES2_compatibility( bool doThrow = false ) {
+package void load_ARB_ES2_compatibility(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glReleaseShaderCompiler, "glReleaseShaderCompiler" );
-        bindGLFunc( cast( void** )&glShaderBinary, "glShaderBinary" );
-        bindGLFunc( cast( void** )&glGetShaderPrecisionFormat, "glGetShaderPrecisionFormat" );
-        bindGLFunc( cast( void** )&glDepthRangef, "glDepthRangef" );
-        bindGLFunc( cast( void** )&glClearDepthf, "glClearDepthf" );
+        bindGLFunc(cast(void**)&glReleaseShaderCompiler, "glReleaseShaderCompiler");
+        bindGLFunc(cast(void**)&glShaderBinary, "glShaderBinary");
+        bindGLFunc(cast(void**)&glGetShaderPrecisionFormat, "glGetShaderPrecisionFormat");
+        bindGLFunc(cast(void**)&glDepthRangef, "glDepthRangef");
+        bindGLFunc(cast(void**)&glClearDepthf, "glClearDepthf");
         _ARB_ES2_compatibility = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_ES2_compatibility = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_get_program_binary
-extern( System ) @nogc nothrow {
-    alias da_glGetProgramBinary = void function( GLuint, GLsizei, GLsizei*, GLenum*, GLvoid* );
-    alias da_glProgramBinary = void function( GLuint, GLenum, const( GLvoid )*, GLsizei );
-    alias da_glProgramParameteri = void function( GLuint, GLenum, GLint );
+extern(System) @nogc nothrow {
+    alias da_glGetProgramBinary = void function(GLuint, GLsizei, GLsizei*, GLenum*, GLvoid*);
+    alias da_glProgramBinary = void function(GLuint, GLenum, const(GLvoid)*, GLsizei);
+    alias da_glProgramParameteri = void function(GLuint, GLenum, GLint);
 }
 
 __gshared {
@@ -1969,80 +1969,80 @@ __gshared {
 
 private __gshared bool _ARB_get_program_binary;
 @nogc bool ARB_get_program_binary() nothrow @property { return _ARB_get_program_binary; }
-package void load_ARB_get_program_binary( bool doThrow = false ) {
+package void load_ARB_get_program_binary(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetProgramBinary, "glGetProgramBinary" );
-        bindGLFunc( cast( void** )&glProgramBinary, "glProgramBinary" );
-        bindGLFunc( cast( void** )&glProgramParameteri, "glProgramParameteri" );
+        bindGLFunc(cast(void**)&glGetProgramBinary, "glGetProgramBinary");
+        bindGLFunc(cast(void**)&glProgramBinary, "glProgramBinary");
+        bindGLFunc(cast(void**)&glProgramParameteri, "glProgramParameteri");
         _ARB_get_program_binary = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_get_program_binary = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_separate_shader_objects
-extern( System ) @nogc nothrow {
-    alias da_glUseProgramStages = void function( GLuint, GLbitfield, GLuint );
-    alias da_glActiveShaderProgram = void function( GLuint, GLuint );
-    alias da_glCreateShaderProgramv = GLuint function( GLenum, GLsizei, const( GLchar* )* );
-    alias da_glBindProgramPipeline = void function( GLuint );
-    alias da_glDeleteProgramPipelines = void function( GLsizei, const( GLuint )* );
-    alias da_glGenProgramPipelines = void function( GLsizei, GLuint* );
-    alias da_glIsProgramPipeline = GLboolean function( GLuint );
-    alias da_glGetProgramPipelineiv = void function( GLuint, GLenum, GLint* );
-    alias da_glProgramUniform1i = void function( GLuint, GLint, GLint );
-    alias da_glProgramUniform1iv = void function( GLuint, GLint, GLsizei, const( GLint )* );
-    alias da_glProgramUniform1f = void function( GLuint, GLint, GLfloat );
-    alias da_glProgramUniform1fv = void function( GLuint, GLint, GLsizei, const( GLfloat )* );
-    alias da_glProgramUniform1d = void function( GLuint, GLint, GLdouble );
-    alias da_glProgramUniform1dv = void function( GLuint, GLint, GLsizei, const( GLdouble )* );
-    alias da_glProgramUniform1ui = void function( GLuint, GLint, GLuint );
-    alias da_glProgramUniform1uiv = void function( GLuint, GLint, GLsizei, const( GLuint )* );
-    alias da_glProgramUniform2i = void function( GLuint, GLint, GLint, GLint );
-    alias da_glProgramUniform2iv = void function( GLuint, GLint, GLsizei, const( GLint )* );
-    alias da_glProgramUniform2f = void function( GLuint, GLint, GLfloat, GLfloat );
-    alias da_glProgramUniform2fv = void function( GLuint, GLint, GLsizei, const( GLfloat )* );
-    alias da_glProgramUniform2d = void function( GLuint, GLint, GLdouble, GLdouble );
-    alias da_glProgramUniform2dv = void function( GLuint, GLint, GLsizei, const( GLdouble )* );
-    alias da_glProgramUniform2ui = void function( GLuint, GLint, GLuint, GLuint );
-    alias da_glProgramUniform2uiv = void function( GLuint, GLint, GLsizei, const( GLuint )* );
-    alias da_glProgramUniform3i = void function( GLuint, GLint, GLint, GLint, GLint );
-    alias da_glProgramUniform3iv = void function( GLuint, GLint, GLsizei, const( GLint )* );
-    alias da_glProgramUniform3f = void function( GLuint, GLint, GLfloat, GLfloat, GLfloat );
-    alias da_glProgramUniform3fv = void function( GLuint, GLint, GLsizei, const( GLfloat )* );
-    alias da_glProgramUniform3d = void function( GLuint, GLint, GLdouble, GLdouble, GLdouble );
-    alias da_glProgramUniform3dv = void function( GLuint, GLint, GLsizei, const( GLdouble )* );
-    alias da_glProgramUniform3ui = void function( GLuint, GLint, GLuint, GLuint, GLuint );
-    alias da_glProgramUniform3uiv = void function( GLuint, GLint, GLsizei, const( GLuint )* );
-    alias da_glProgramUniform4i = void function( GLuint, GLint, GLint, GLint, GLint, GLint );
-    alias da_glProgramUniform4iv = void function( GLuint, GLint, GLsizei, const( GLint )* );
-    alias da_glProgramUniform4f = void function( GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat );
-    alias da_glProgramUniform4fv = void function( GLuint, GLint, GLsizei, const( GLfloat )* );
-    alias da_glProgramUniform4d = void function( GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble );
-    alias da_glProgramUniform4dv = void function( GLuint, GLint, GLsizei, const( GLdouble )* );
-    alias da_glProgramUniform4ui = void function( GLuint, GLint, GLuint, GLuint, GLuint, GLuint );
-    alias da_glProgramUniform4uiv = void function( GLuint, GLint, GLsizei, const( GLuint )* );
-    alias da_glProgramUniformMatrix2fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix3fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix4fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix2dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glProgramUniformMatrix3dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glProgramUniformMatrix4dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glProgramUniformMatrix2x3fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix3x2fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix2x4fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix4x2fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix3x4fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix4x3fv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLfloat )* );
-    alias da_glProgramUniformMatrix2x3dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glProgramUniformMatrix3x2dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glProgramUniformMatrix2x4dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glProgramUniformMatrix4x2dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glProgramUniformMatrix3x4dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glProgramUniformMatrix4x3dv = void function( GLuint, GLint, GLsizei, GLboolean, const( GLdouble )* );
-    alias da_glValidateProgramPipeline = void function( GLuint );
-    alias da_glGetProgramPipelineInfoLog = void function( GLuint, GLsizei, GLsizei*, GLchar* );
+extern(System) @nogc nothrow {
+    alias da_glUseProgramStages = void function(GLuint, GLbitfield, GLuint);
+    alias da_glActiveShaderProgram = void function(GLuint, GLuint);
+    alias da_glCreateShaderProgramv = GLuint function(GLenum, GLsizei, const(GLchar*)*);
+    alias da_glBindProgramPipeline = void function(GLuint);
+    alias da_glDeleteProgramPipelines = void function(GLsizei, const(GLuint)*);
+    alias da_glGenProgramPipelines = void function(GLsizei, GLuint*);
+    alias da_glIsProgramPipeline = GLboolean function(GLuint);
+    alias da_glGetProgramPipelineiv = void function(GLuint, GLenum, GLint*);
+    alias da_glProgramUniform1i = void function(GLuint, GLint, GLint);
+    alias da_glProgramUniform1iv = void function(GLuint, GLint, GLsizei, const(GLint)*);
+    alias da_glProgramUniform1f = void function(GLuint, GLint, GLfloat);
+    alias da_glProgramUniform1fv = void function(GLuint, GLint, GLsizei, const(GLfloat)*);
+    alias da_glProgramUniform1d = void function(GLuint, GLint, GLdouble);
+    alias da_glProgramUniform1dv = void function(GLuint, GLint, GLsizei, const(GLdouble)*);
+    alias da_glProgramUniform1ui = void function(GLuint, GLint, GLuint);
+    alias da_glProgramUniform1uiv = void function(GLuint, GLint, GLsizei, const(GLuint)*);
+    alias da_glProgramUniform2i = void function(GLuint, GLint, GLint, GLint);
+    alias da_glProgramUniform2iv = void function(GLuint, GLint, GLsizei, const(GLint)*);
+    alias da_glProgramUniform2f = void function(GLuint, GLint, GLfloat, GLfloat);
+    alias da_glProgramUniform2fv = void function(GLuint, GLint, GLsizei, const(GLfloat)*);
+    alias da_glProgramUniform2d = void function(GLuint, GLint, GLdouble, GLdouble);
+    alias da_glProgramUniform2dv = void function(GLuint, GLint, GLsizei, const(GLdouble)*);
+    alias da_glProgramUniform2ui = void function(GLuint, GLint, GLuint, GLuint);
+    alias da_glProgramUniform2uiv = void function(GLuint, GLint, GLsizei, const(GLuint)*);
+    alias da_glProgramUniform3i = void function(GLuint, GLint, GLint, GLint, GLint);
+    alias da_glProgramUniform3iv = void function(GLuint, GLint, GLsizei, const(GLint)*);
+    alias da_glProgramUniform3f = void function(GLuint, GLint, GLfloat, GLfloat, GLfloat);
+    alias da_glProgramUniform3fv = void function(GLuint, GLint, GLsizei, const(GLfloat)*);
+    alias da_glProgramUniform3d = void function(GLuint, GLint, GLdouble, GLdouble, GLdouble);
+    alias da_glProgramUniform3dv = void function(GLuint, GLint, GLsizei, const(GLdouble)*);
+    alias da_glProgramUniform3ui = void function(GLuint, GLint, GLuint, GLuint, GLuint);
+    alias da_glProgramUniform3uiv = void function(GLuint, GLint, GLsizei, const(GLuint)*);
+    alias da_glProgramUniform4i = void function(GLuint, GLint, GLint, GLint, GLint, GLint);
+    alias da_glProgramUniform4iv = void function(GLuint, GLint, GLsizei, const(GLint)*);
+    alias da_glProgramUniform4f = void function(GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat);
+    alias da_glProgramUniform4fv = void function(GLuint, GLint, GLsizei, const(GLfloat)*);
+    alias da_glProgramUniform4d = void function(GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble);
+    alias da_glProgramUniform4dv = void function(GLuint, GLint, GLsizei, const(GLdouble)*);
+    alias da_glProgramUniform4ui = void function(GLuint, GLint, GLuint, GLuint, GLuint, GLuint);
+    alias da_glProgramUniform4uiv = void function(GLuint, GLint, GLsizei, const(GLuint)*);
+    alias da_glProgramUniformMatrix2fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix3fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix4fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix2dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix3dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix4dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix2x3fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix3x2fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix2x4fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix4x2fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix3x4fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix4x3fv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*);
+    alias da_glProgramUniformMatrix2x3dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix3x2dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix2x4dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix4x2dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix3x4dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glProgramUniformMatrix4x3dv = void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*);
+    alias da_glValidateProgramPipeline = void function(GLuint);
+    alias da_glGetProgramPipelineInfoLog = void function(GLuint, GLsizei, GLsizei*, GLchar*);
 }
 
 __gshared {
@@ -2110,87 +2110,87 @@ __gshared {
 
 private __gshared bool _ARB_separate_shader_objects;
 @nogc bool ARB_separate_shader_objects() nothrow @property { return _ARB_separate_shader_objects; }
-package void load_ARB_separate_shader_objects( bool doThrow = false ) {
+package void load_ARB_separate_shader_objects(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glUseProgramStages, "glUseProgramStages" );
-        bindGLFunc( cast( void** )&glActiveShaderProgram, "glActiveShaderProgram" );
-        bindGLFunc( cast( void** )&glCreateShaderProgramv, "glCreateShaderProgramv" );
-        bindGLFunc( cast( void** )&glBindProgramPipeline, "glBindProgramPipeline" );
-        bindGLFunc( cast( void** )&glDeleteProgramPipelines, "glDeleteProgramPipelines" );
-        bindGLFunc( cast( void** )&glGenProgramPipelines, "glGenProgramPipelines" );
-        bindGLFunc( cast( void** )&glIsProgramPipeline, "glIsProgramPipeline" );
-        bindGLFunc( cast( void** )&glGetProgramPipelineiv, "glGetProgramPipelineiv" );
-        bindGLFunc( cast( void** )&glProgramUniform1i, "glProgramUniform1i" );
-        bindGLFunc( cast( void** )&glProgramUniform1iv, "glProgramUniform1iv" );
-        bindGLFunc( cast( void** )&glProgramUniform1f, "glProgramUniform1f" );
-        bindGLFunc( cast( void** )&glProgramUniform1fv, "glProgramUniform1fv" );
-        bindGLFunc( cast( void** )&glProgramUniform1d, "glProgramUniform1d" );
-        bindGLFunc( cast( void** )&glProgramUniform1dv, "glProgramUniform1dv" );
-        bindGLFunc( cast( void** )&glProgramUniform1ui, "glProgramUniform1ui" );
-        bindGLFunc( cast( void** )&glProgramUniform1uiv, "glProgramUniform1uiv" );
-        bindGLFunc( cast( void** )&glProgramUniform2i, "glProgramUniform2i" );
-        bindGLFunc( cast( void** )&glProgramUniform2iv, "glProgramUniform2iv" );
-        bindGLFunc( cast( void** )&glProgramUniform2f, "glProgramUniform2f" );
-        bindGLFunc( cast( void** )&glProgramUniform2fv, "glProgramUniform2fv" );
-        bindGLFunc( cast( void** )&glProgramUniform2d, "glProgramUniform2d" );
-        bindGLFunc( cast( void** )&glProgramUniform2dv, "glProgramUniform2dv" );
-        bindGLFunc( cast( void** )&glProgramUniform2ui, "glProgramUniform2ui" );
-        bindGLFunc( cast( void** )&glProgramUniform2uiv, "glProgramUniform2uiv" );
-        bindGLFunc( cast( void** )&glProgramUniform3i, "glProgramUniform3i" );
-        bindGLFunc( cast( void** )&glProgramUniform3iv, "glProgramUniform3iv" );
-        bindGLFunc( cast( void** )&glProgramUniform3f, "glProgramUniform3f" );
-        bindGLFunc( cast( void** )&glProgramUniform3fv, "glProgramUniform3fv" );
-        bindGLFunc( cast( void** )&glProgramUniform3d, "glProgramUniform3d" );
-        bindGLFunc( cast( void** )&glProgramUniform3dv, "glProgramUniform3dv" );
-        bindGLFunc( cast( void** )&glProgramUniform3ui, "glProgramUniform3ui" );
-        bindGLFunc( cast( void** )&glProgramUniform3uiv, "glProgramUniform3uiv" );
-        bindGLFunc( cast( void** )&glProgramUniform4i, "glProgramUniform4i" );
-        bindGLFunc( cast( void** )&glProgramUniform4iv, "glProgramUniform4iv" );
-        bindGLFunc( cast( void** )&glProgramUniform4f, "glProgramUniform4f" );
-        bindGLFunc( cast( void** )&glProgramUniform4fv, "glProgramUniform4fv" );
-        bindGLFunc( cast( void** )&glProgramUniform4d, "glProgramUniform4d" );
-        bindGLFunc( cast( void** )&glProgramUniform4dv, "glProgramUniform4dv" );
-        bindGLFunc( cast( void** )&glProgramUniform4ui, "glProgramUniform4ui" );
-        bindGLFunc( cast( void** )&glProgramUniform4uiv, "glProgramUniform4uiv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix2fv, "glProgramUniformMatrix2fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix3fv, "glProgramUniformMatrix3fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix4fv, "glProgramUniformMatrix4fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix2dv, "glProgramUniformMatrix2dv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix3dv, "glProgramUniformMatrix3dv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix4dv, "glProgramUniformMatrix4dv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix2x3fv, "glProgramUniformMatrix2x3fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix3x2fv, "glProgramUniformMatrix3x2fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix2x4fv, "glProgramUniformMatrix2x4fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix4x2fv, "glProgramUniformMatrix4x2fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix3x4fv, "glProgramUniformMatrix3x4fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix4x3fv, "glProgramUniformMatrix4x3fv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix2x3dv, "glProgramUniformMatrix2x3dv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix3x2dv, "glProgramUniformMatrix3x2dv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix2x4dv, "glProgramUniformMatrix2x4dv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix4x2dv, "glProgramUniformMatrix4x2dv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix3x4dv, "glProgramUniformMatrix3x4dv" );
-        bindGLFunc( cast( void** )&glProgramUniformMatrix4x3dv, "glProgramUniformMatrix4x3dv" );
-        bindGLFunc( cast( void** )&glValidateProgramPipeline, "glValidateProgramPipeline" );
-        bindGLFunc( cast( void** )&glGetProgramPipelineInfoLog, "glGetProgramPipelineInfoLog" );
+        bindGLFunc(cast(void**)&glUseProgramStages, "glUseProgramStages");
+        bindGLFunc(cast(void**)&glActiveShaderProgram, "glActiveShaderProgram");
+        bindGLFunc(cast(void**)&glCreateShaderProgramv, "glCreateShaderProgramv");
+        bindGLFunc(cast(void**)&glBindProgramPipeline, "glBindProgramPipeline");
+        bindGLFunc(cast(void**)&glDeleteProgramPipelines, "glDeleteProgramPipelines");
+        bindGLFunc(cast(void**)&glGenProgramPipelines, "glGenProgramPipelines");
+        bindGLFunc(cast(void**)&glIsProgramPipeline, "glIsProgramPipeline");
+        bindGLFunc(cast(void**)&glGetProgramPipelineiv, "glGetProgramPipelineiv");
+        bindGLFunc(cast(void**)&glProgramUniform1i, "glProgramUniform1i");
+        bindGLFunc(cast(void**)&glProgramUniform1iv, "glProgramUniform1iv");
+        bindGLFunc(cast(void**)&glProgramUniform1f, "glProgramUniform1f");
+        bindGLFunc(cast(void**)&glProgramUniform1fv, "glProgramUniform1fv");
+        bindGLFunc(cast(void**)&glProgramUniform1d, "glProgramUniform1d");
+        bindGLFunc(cast(void**)&glProgramUniform1dv, "glProgramUniform1dv");
+        bindGLFunc(cast(void**)&glProgramUniform1ui, "glProgramUniform1ui");
+        bindGLFunc(cast(void**)&glProgramUniform1uiv, "glProgramUniform1uiv");
+        bindGLFunc(cast(void**)&glProgramUniform2i, "glProgramUniform2i");
+        bindGLFunc(cast(void**)&glProgramUniform2iv, "glProgramUniform2iv");
+        bindGLFunc(cast(void**)&glProgramUniform2f, "glProgramUniform2f");
+        bindGLFunc(cast(void**)&glProgramUniform2fv, "glProgramUniform2fv");
+        bindGLFunc(cast(void**)&glProgramUniform2d, "glProgramUniform2d");
+        bindGLFunc(cast(void**)&glProgramUniform2dv, "glProgramUniform2dv");
+        bindGLFunc(cast(void**)&glProgramUniform2ui, "glProgramUniform2ui");
+        bindGLFunc(cast(void**)&glProgramUniform2uiv, "glProgramUniform2uiv");
+        bindGLFunc(cast(void**)&glProgramUniform3i, "glProgramUniform3i");
+        bindGLFunc(cast(void**)&glProgramUniform3iv, "glProgramUniform3iv");
+        bindGLFunc(cast(void**)&glProgramUniform3f, "glProgramUniform3f");
+        bindGLFunc(cast(void**)&glProgramUniform3fv, "glProgramUniform3fv");
+        bindGLFunc(cast(void**)&glProgramUniform3d, "glProgramUniform3d");
+        bindGLFunc(cast(void**)&glProgramUniform3dv, "glProgramUniform3dv");
+        bindGLFunc(cast(void**)&glProgramUniform3ui, "glProgramUniform3ui");
+        bindGLFunc(cast(void**)&glProgramUniform3uiv, "glProgramUniform3uiv");
+        bindGLFunc(cast(void**)&glProgramUniform4i, "glProgramUniform4i");
+        bindGLFunc(cast(void**)&glProgramUniform4iv, "glProgramUniform4iv");
+        bindGLFunc(cast(void**)&glProgramUniform4f, "glProgramUniform4f");
+        bindGLFunc(cast(void**)&glProgramUniform4fv, "glProgramUniform4fv");
+        bindGLFunc(cast(void**)&glProgramUniform4d, "glProgramUniform4d");
+        bindGLFunc(cast(void**)&glProgramUniform4dv, "glProgramUniform4dv");
+        bindGLFunc(cast(void**)&glProgramUniform4ui, "glProgramUniform4ui");
+        bindGLFunc(cast(void**)&glProgramUniform4uiv, "glProgramUniform4uiv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix2fv, "glProgramUniformMatrix2fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix3fv, "glProgramUniformMatrix3fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix4fv, "glProgramUniformMatrix4fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix2dv, "glProgramUniformMatrix2dv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix3dv, "glProgramUniformMatrix3dv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix4dv, "glProgramUniformMatrix4dv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix2x3fv, "glProgramUniformMatrix2x3fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix3x2fv, "glProgramUniformMatrix3x2fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix2x4fv, "glProgramUniformMatrix2x4fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix4x2fv, "glProgramUniformMatrix4x2fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix3x4fv, "glProgramUniformMatrix3x4fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix4x3fv, "glProgramUniformMatrix4x3fv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix2x3dv, "glProgramUniformMatrix2x3dv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix3x2dv, "glProgramUniformMatrix3x2dv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix2x4dv, "glProgramUniformMatrix2x4dv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix4x2dv, "glProgramUniformMatrix4x2dv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix3x4dv, "glProgramUniformMatrix3x4dv");
+        bindGLFunc(cast(void**)&glProgramUniformMatrix4x3dv, "glProgramUniformMatrix4x3dv");
+        bindGLFunc(cast(void**)&glValidateProgramPipeline, "glValidateProgramPipeline");
+        bindGLFunc(cast(void**)&glGetProgramPipelineInfoLog, "glGetProgramPipelineInfoLog");
         _ARB_separate_shader_objects = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_separate_shader_objects = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_vertex_attrib_64bit
-extern( System ) @nogc nothrow {
-    alias da_glVertexAttribL1d = void function( GLuint, GLdouble );
-    alias da_glVertexAttribL2d = void function( GLuint, GLdouble, GLdouble );
-    alias da_glVertexAttribL3d = void function( GLuint, GLdouble, GLdouble, GLdouble );
-    alias da_glVertexAttribL4d = void function( GLuint, GLdouble, GLdouble, GLdouble, GLdouble );
-    alias da_glVertexAttribL1dv = void function( GLuint, const( GLdouble )* );
-    alias da_glVertexAttribL2dv = void function( GLuint, const( GLdouble )* );
-    alias da_glVertexAttribL3dv = void function( GLuint, const( GLdouble )* );
-    alias da_glVertexAttribL4dv = void function( GLuint, const( GLdouble )* );
-    alias da_glVertexAttribLPointer = void function( GLuint, GLint, GLenum, GLsizei, const( GLvoid )* );
-    alias da_glGetVertexAttribLdv = void function( GLuint, GLenum, GLdouble* );
+extern(System) @nogc nothrow {
+    alias da_glVertexAttribL1d = void function(GLuint, GLdouble);
+    alias da_glVertexAttribL2d = void function(GLuint, GLdouble, GLdouble);
+    alias da_glVertexAttribL3d = void function(GLuint, GLdouble, GLdouble, GLdouble);
+    alias da_glVertexAttribL4d = void function(GLuint, GLdouble, GLdouble, GLdouble, GLdouble);
+    alias da_glVertexAttribL1dv = void function(GLuint, const(GLdouble)*);
+    alias da_glVertexAttribL2dv = void function(GLuint, const(GLdouble)*);
+    alias da_glVertexAttribL3dv = void function(GLuint, const(GLdouble)*);
+    alias da_glVertexAttribL4dv = void function(GLuint, const(GLdouble)*);
+    alias da_glVertexAttribLPointer = void function(GLuint, GLint, GLenum, GLsizei, const(GLvoid)*);
+    alias da_glGetVertexAttribLdv = void function(GLuint, GLenum, GLdouble*);
 }
 
 __gshared {
@@ -2208,37 +2208,37 @@ __gshared {
 
 private __gshared bool _ARB_vertex_attrib_64bit;
 @nogc bool ARB_vertex_attrib_64bit() nothrow @property { return _ARB_vertex_attrib_64bit; }
-package void load_ARB_vertex_attrib_64bit( bool doThrow = false ) {
+package void load_ARB_vertex_attrib_64bit(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glVertexAttribL1d, "glVertexAttribL1d" );
-        bindGLFunc( cast( void** )&glVertexAttribL2d, "glVertexAttribL2d" );
-        bindGLFunc( cast( void** )&glVertexAttribL3d, "glVertexAttribL3d" );
-        bindGLFunc( cast( void** )&glVertexAttribL4d, "glVertexAttribL4d" );
-        bindGLFunc( cast( void** )&glVertexAttribL1dv, "glVertexAttribL1dv" );
-        bindGLFunc( cast( void** )&glVertexAttribL2dv, "glVertexAttribL2dv" );
-        bindGLFunc( cast( void** )&glVertexAttribL3dv, "glVertexAttribL3dv" );
-        bindGLFunc( cast( void** )&glVertexAttribL4dv, "glVertexAttribL4dv" );
-        bindGLFunc( cast( void** )&glVertexAttribLPointer, "glVertexAttribLPointer" );
-        bindGLFunc( cast( void** )&glGetVertexAttribLdv, "glGetVertexAttribLdv" );
+        bindGLFunc(cast(void**)&glVertexAttribL1d, "glVertexAttribL1d");
+        bindGLFunc(cast(void**)&glVertexAttribL2d, "glVertexAttribL2d");
+        bindGLFunc(cast(void**)&glVertexAttribL3d, "glVertexAttribL3d");
+        bindGLFunc(cast(void**)&glVertexAttribL4d, "glVertexAttribL4d");
+        bindGLFunc(cast(void**)&glVertexAttribL1dv, "glVertexAttribL1dv");
+        bindGLFunc(cast(void**)&glVertexAttribL2dv, "glVertexAttribL2dv");
+        bindGLFunc(cast(void**)&glVertexAttribL3dv, "glVertexAttribL3dv");
+        bindGLFunc(cast(void**)&glVertexAttribL4dv, "glVertexAttribL4dv");
+        bindGLFunc(cast(void**)&glVertexAttribLPointer, "glVertexAttribLPointer");
+        bindGLFunc(cast(void**)&glGetVertexAttribLdv, "glGetVertexAttribLdv");
         _ARB_vertex_attrib_64bit = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_vertex_attrib_64bit = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_viewport_array
-extern( System ) @nogc nothrow {
-    alias da_glViewportArrayv = void function( GLuint, GLsizei, const( GLfloat )* );
-    alias da_glViewportIndexedf = void function( GLuint, GLfloat, GLfloat, GLfloat, GLfloat );
-    alias da_glViewportIndexedfv = void function( GLuint, const( GLfloat )* );
-    alias da_glScissorArrayv = void function( GLuint, GLsizei, const( GLint )* );
-    alias da_glScissorIndexed = void function( GLuint, GLint, GLint, GLsizei, GLsizei );
-    alias da_glScissorIndexedv = void function( GLuint, const( GLint )* );
-    alias da_glDepthRangeArrayv = void function( GLuint, GLsizei, const( GLclampd )* );
-    alias da_glDepthRangeIndexed = void function( GLuint, GLclampd, GLclampd );
-    alias da_glGetFloati_v = void function( GLenum, GLuint, GLfloat* );
-    alias da_glGetDoublei_v = void function( GLenum, GLuint, GLdouble* );
+extern(System) @nogc nothrow {
+    alias da_glViewportArrayv = void function(GLuint, GLsizei, const(GLfloat)*);
+    alias da_glViewportIndexedf = void function(GLuint, GLfloat, GLfloat, GLfloat, GLfloat);
+    alias da_glViewportIndexedfv = void function(GLuint, const(GLfloat)*);
+    alias da_glScissorArrayv = void function(GLuint, GLsizei, const(GLint)*);
+    alias da_glScissorIndexed = void function(GLuint, GLint, GLint, GLsizei, GLsizei);
+    alias da_glScissorIndexedv = void function(GLuint, const(GLint)*);
+    alias da_glDepthRangeArrayv = void function(GLuint, GLsizei, const(GLclampd)*);
+    alias da_glDepthRangeIndexed = void function(GLuint, GLclampd, GLclampd);
+    alias da_glGetFloati_v = void function(GLenum, GLuint, GLfloat*);
+    alias da_glGetDoublei_v = void function(GLenum, GLuint, GLdouble*);
 }
 
 __gshared {
@@ -2256,46 +2256,46 @@ __gshared {
 
 private __gshared bool _ARB_viewport_array;
 @nogc bool ARB_viewport_array() nothrow @property { return _ARB_viewport_array; }
-package void load_ARB_viewport_array( bool doThrow = false ) {
+package void load_ARB_viewport_array(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glViewportArrayv, "glViewportArrayv" );
-        bindGLFunc( cast( void** )&glViewportIndexedf, "glViewportIndexedf" );
-        bindGLFunc( cast( void** )&glViewportIndexedfv, "glViewportIndexedfv" );
-        bindGLFunc( cast( void** )&glScissorArrayv, "glScissorArrayv" );
-        bindGLFunc( cast( void** )&glScissorIndexed, "glScissorIndexed" );
-        bindGLFunc( cast( void** )&glScissorIndexedv, "glScissorIndexedv" );
-        bindGLFunc( cast( void** )&glDepthRangeArrayv, "glDepthRangeArrayv" );
-        bindGLFunc( cast( void** )&glDepthRangeIndexed, "glDepthRangeIndexed" );
-        bindGLFunc( cast( void** )&glGetFloati_v, "glGetFloati_v" );
-        bindGLFunc( cast( void** )&glGetDoublei_v, "glGetDoublei_v" );
+        bindGLFunc(cast(void**)&glViewportArrayv, "glViewportArrayv");
+        bindGLFunc(cast(void**)&glViewportIndexedf, "glViewportIndexedf");
+        bindGLFunc(cast(void**)&glViewportIndexedfv, "glViewportIndexedfv");
+        bindGLFunc(cast(void**)&glScissorArrayv, "glScissorArrayv");
+        bindGLFunc(cast(void**)&glScissorIndexed, "glScissorIndexed");
+        bindGLFunc(cast(void**)&glScissorIndexedv, "glScissorIndexedv");
+        bindGLFunc(cast(void**)&glDepthRangeArrayv, "glDepthRangeArrayv");
+        bindGLFunc(cast(void**)&glDepthRangeIndexed, "glDepthRangeIndexed");
+        bindGLFunc(cast(void**)&glGetFloati_v, "glGetFloati_v");
+        bindGLFunc(cast(void**)&glGetDoublei_v, "glGetDoublei_v");
         _ARB_viewport_array = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_viewport_array = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_cl_event
-extern( System ) @nogc nothrow alias  da_glCreateSyncFromCLeventARB = GLsync function( _cl_context*, _cl_event*, GLbitfield );
+extern(System) @nogc nothrow alias  da_glCreateSyncFromCLeventARB = GLsync function(_cl_context*, _cl_event*, GLbitfield);
 __gshared da_glCreateSyncFromCLeventARB glCreateSyncFromCLeventARB;
 
 private __gshared bool _ARB_cl_event;
 @nogc bool ARB_cl_event() nothrow @property { return _ARB_cl_event; }
 package void load_ARB_cl_event() {
     try {
-        bindGLFunc( cast( void** )&glCreateSyncFromCLeventARB, "glCreateSyncFromCLeventARB" );
+        bindGLFunc(cast(void**)&glCreateSyncFromCLeventARB, "glCreateSyncFromCLeventARB");
         _ARB_cl_event = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_cl_event = false;
     }
 }
 
 // ARB_debug_output
-extern( System ) @nogc nothrow {
-    alias da_glDebugMessageControlARB = void function( GLenum, GLenum, GLenum, GLsizei, const( GLuint )*, GLboolean );
-    alias da_glDebugMessageInsertARB = void function( GLenum, GLenum, GLuint, GLenum, GLsizei, const( GLchar )* );
-    alias da_glGetDebugMessageLogARB = void function( GLuint, GLsizei, GLenum*, GLenum*, GLuint*, GLenum*, GLsizei*, GLchar* );
-    alias da_glDebugMessageCallbackARB = void function( GLDEBUGPROCARB, const( GLvoid )* );
+extern(System) @nogc nothrow {
+    alias da_glDebugMessageControlARB = void function(GLenum, GLenum, GLenum, GLsizei, const(GLuint)*, GLboolean);
+    alias da_glDebugMessageInsertARB = void function(GLenum, GLenum, GLuint, GLenum, GLsizei, const(GLchar)*);
+    alias da_glGetDebugMessageLogARB = void function(GLuint, GLsizei, GLenum*, GLenum*, GLuint*, GLenum*, GLsizei*, GLchar*);
+    alias da_glDebugMessageCallbackARB = void function(GLDEBUGPROCARB, const(GLvoid)*);
 }
 
 __gshared {
@@ -2309,38 +2309,38 @@ private __gshared bool _ARB_debug_output;
 @nogc bool ARB_debug_output() nothrow @property { return _ARB_debug_output; }
 package void load_ARB_debug_output() {
     try {
-        bindGLFunc( cast( void** )&glDebugMessageControlARB, "glDebugMessageControlARB" );
-        bindGLFunc( cast( void** )&glDebugMessageInsertARB, "glDebugMessageInsertARB" );
-        bindGLFunc( cast( void** )&glDebugMessageCallbackARB, "glDebugMessageCallbackARB" );
-        bindGLFunc( cast( void** )&glGetDebugMessageLogARB, "glGetDebugMessageLogARB" );
+        bindGLFunc(cast(void**)&glDebugMessageControlARB, "glDebugMessageControlARB");
+        bindGLFunc(cast(void**)&glDebugMessageInsertARB, "glDebugMessageInsertARB");
+        bindGLFunc(cast(void**)&glDebugMessageCallbackARB, "glDebugMessageCallbackARB");
+        bindGLFunc(cast(void**)&glGetDebugMessageLogARB, "glGetDebugMessageLogARB");
         _ARB_debug_output = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_debug_output = false;
     }
 }
 
 // ARB_robustness
-extern( System ) @nogc nothrow {
+extern(System) @nogc nothrow {
     alias da_glGetGraphicsResetStatusARB = GLenum function();
-    alias da_glGetnMapdvARB = void function( GLenum, GLenum, GLsizei, GLdouble* );
-    alias da_glGetnMapfvARB = void function( GLenum, GLenum, GLsizei, GLfloat* );
-    alias da_glGetnMapivARB = void function( GLenum, GLenum, GLsizei, GLint* );
-    alias da_glGetnPixelMapfvARB = void function( GLenum, GLsizei, GLfloat* );
-    alias da_glGetnPixelMapuivARB = void function( GLenum, GLsizei, GLuint* );
-    alias da_glGetnPixelMapusvARB = void function( GLenum, GLsizei, GLushort* );
-    alias da_glGetnPolygonStippleARB = void function( GLsizei, GLubyte* );
-    alias da_glGetnColorTableARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnConvolutionFilterARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnSeparableFilterARB = void function( GLenum, GLenum, GLenum, GLsizei, GLvoid*, GLsizei, GLvoid*, GLvoid* );
-    alias da_glGetnHistogramARB = void function( GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnMinmaxARB = void function( GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnTexImageARB = void function( GLenum, GLint, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glReadnPixelsARB = void function( GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, GLvoid* );
-    alias da_glGetnCompressedTexImageARB = void function( GLenum, GLint, GLsizei, GLvoid* );
-    alias da_glGetnUniformfvARB = void function( GLuint, GLint, GLsizei, GLfloat* );
-    alias da_glGetnUniformivARB = void function( GLuint, GLint, GLsizei, GLint* );
-    alias da_glGetnUniformuivARB = void function( GLuint, GLint, GLsizei, GLuint* );
-    alias da_glGetnUniformdvARB = void function( GLuint, GLint, GLsizei, GLdouble* );
+    alias da_glGetnMapdvARB = void function(GLenum, GLenum, GLsizei, GLdouble*);
+    alias da_glGetnMapfvARB = void function(GLenum, GLenum, GLsizei, GLfloat*);
+    alias da_glGetnMapivARB = void function(GLenum, GLenum, GLsizei, GLint*);
+    alias da_glGetnPixelMapfvARB = void function(GLenum, GLsizei, GLfloat*);
+    alias da_glGetnPixelMapuivARB = void function(GLenum, GLsizei, GLuint*);
+    alias da_glGetnPixelMapusvARB = void function(GLenum, GLsizei, GLushort*);
+    alias da_glGetnPolygonStippleARB = void function(GLsizei, GLubyte*);
+    alias da_glGetnColorTableARB = void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*);
+    alias da_glGetnConvolutionFilterARB = void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*);
+    alias da_glGetnSeparableFilterARB = void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*, GLsizei, GLvoid*, GLvoid*);
+    alias da_glGetnHistogramARB = void function(GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid*);
+    alias da_glGetnMinmaxARB = void function(GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid*);
+    alias da_glGetnTexImageARB = void function(GLenum, GLint, GLenum, GLenum, GLsizei, GLvoid*);
+    alias da_glReadnPixelsARB = void function(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, GLvoid*);
+    alias da_glGetnCompressedTexImageARB = void function(GLenum, GLint, GLsizei, GLvoid*);
+    alias da_glGetnUniformfvARB = void function(GLuint, GLint, GLsizei, GLfloat*);
+    alias da_glGetnUniformivARB = void function(GLuint, GLint, GLsizei, GLint*);
+    alias da_glGetnUniformuivARB = void function(GLuint, GLint, GLsizei, GLuint*);
+    alias da_glGetnUniformdvARB = void function(GLuint, GLint, GLsizei, GLdouble*);
 }
 
 __gshared {
@@ -2370,38 +2370,38 @@ private __gshared bool _ARB_robustness;
 @nogc bool ARB_robustness() nothrow @property { return _ARB_robustness; }
 package void load_ARB_robustness() {
     try {
-        bindGLFunc( cast( void** )&glGetGraphicsResetStatusARB, "glGetGraphicsResetStatusARB" );
-        bindGLFunc( cast( void** )&glGetnMapdvARB, "glGetnMapdvARB" );
-        bindGLFunc( cast( void** )&glGetnMapfvARB, "glGetnMapfvARB" );
-        bindGLFunc( cast( void** )&glGetnMapivARB, "glGetnMapivARB" );
-        bindGLFunc( cast( void** )&glGetnPixelMapfvARB, "glGetnPixelMapfvARB" );
-        bindGLFunc( cast( void** )&glGetnPixelMapuivARB, "glGetnPixelMapuivARB" );
-        bindGLFunc( cast( void** )&glGetnPixelMapusvARB, "glGetnPixelMapusvARB" );
-        bindGLFunc( cast( void** )&glGetnPolygonStippleARB, "glGetnPolygonStippleARB" );
-        bindGLFunc( cast( void** )&glGetnColorTableARB, "glGetnColorTableARB" );
-        bindGLFunc( cast( void** )&glGetnConvolutionFilterARB, "glGetnConvolutionFilterARB" );
-        bindGLFunc( cast( void** )&glGetnSeparableFilterARB, "glGetnSeparableFilterARB" );
-        bindGLFunc( cast( void** )&glGetnHistogramARB, "glGetnHistogramARB" );
-        bindGLFunc( cast( void** )&glGetnMinmaxARB, "glGetnMinmaxARB" );
-        bindGLFunc( cast( void** )&glGetnTexImageARB, "glGetnTexImageARB" );
-        bindGLFunc( cast( void** )&glReadnPixelsARB, "glReadnPixelsARB" );
-        bindGLFunc( cast( void** )&glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB" );
-        bindGLFunc( cast( void** )&glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB" );
-        bindGLFunc( cast( void** )&glGetnUniformfvARB, "glGetnUniformfvARB" );
-        bindGLFunc( cast( void** )&glGetnUniformivARB, "glGetnUniformivARB" );
-        bindGLFunc( cast( void** )&glGetnUniformuivARB, "glGetnUniformuivARB" );
-        bindGLFunc( cast( void** )&glGetnUniformdvARB, "glGetnUniformdvARB" );
+        bindGLFunc(cast(void**)&glGetGraphicsResetStatusARB, "glGetGraphicsResetStatusARB");
+        bindGLFunc(cast(void**)&glGetnMapdvARB, "glGetnMapdvARB");
+        bindGLFunc(cast(void**)&glGetnMapfvARB, "glGetnMapfvARB");
+        bindGLFunc(cast(void**)&glGetnMapivARB, "glGetnMapivARB");
+        bindGLFunc(cast(void**)&glGetnPixelMapfvARB, "glGetnPixelMapfvARB");
+        bindGLFunc(cast(void**)&glGetnPixelMapuivARB, "glGetnPixelMapuivARB");
+        bindGLFunc(cast(void**)&glGetnPixelMapusvARB, "glGetnPixelMapusvARB");
+        bindGLFunc(cast(void**)&glGetnPolygonStippleARB, "glGetnPolygonStippleARB");
+        bindGLFunc(cast(void**)&glGetnColorTableARB, "glGetnColorTableARB");
+        bindGLFunc(cast(void**)&glGetnConvolutionFilterARB, "glGetnConvolutionFilterARB");
+        bindGLFunc(cast(void**)&glGetnSeparableFilterARB, "glGetnSeparableFilterARB");
+        bindGLFunc(cast(void**)&glGetnHistogramARB, "glGetnHistogramARB");
+        bindGLFunc(cast(void**)&glGetnMinmaxARB, "glGetnMinmaxARB");
+        bindGLFunc(cast(void**)&glGetnTexImageARB, "glGetnTexImageARB");
+        bindGLFunc(cast(void**)&glReadnPixelsARB, "glReadnPixelsARB");
+        bindGLFunc(cast(void**)&glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB");
+        bindGLFunc(cast(void**)&glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB");
+        bindGLFunc(cast(void**)&glGetnUniformfvARB, "glGetnUniformfvARB");
+        bindGLFunc(cast(void**)&glGetnUniformivARB, "glGetnUniformivARB");
+        bindGLFunc(cast(void**)&glGetnUniformuivARB, "glGetnUniformuivARB");
+        bindGLFunc(cast(void**)&glGetnUniformdvARB, "glGetnUniformdvARB");
         _ARB_robustness = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_robustness = false;
     }
 }
 
 // ARB_base_instance
-extern( System ) @nogc nothrow {
-    alias da_glDrawArraysInstancedBaseInstance = void function( GLenum, GLint, GLsizei, GLsizei, GLuint );
-    alias da_glDrawElementsInstancedBaseInstance = void function( GLenum, GLsizei, GLenum, const( void )*, GLsizei, GLuint );
-    alias da_glDrawElementsInstancedBaseVertexBaseInstance = void function( GLenum, GLsizei, GLenum, const( void )*, GLsizei, GLint, GLuint );
+extern(System) @nogc nothrow {
+    alias da_glDrawArraysInstancedBaseInstance = void function(GLenum, GLint, GLsizei, GLsizei, GLuint);
+    alias da_glDrawElementsInstancedBaseInstance = void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLuint);
+    alias da_glDrawElementsInstancedBaseVertexBaseInstance = void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLint, GLuint);
 }
 
 __gshared {
@@ -2412,100 +2412,100 @@ __gshared {
 
 private __gshared bool _ARB_base_instance;
 @nogc bool ARB_base_instance() nothrow @property { return _ARB_base_instance; }
-package void load_ARB_base_instance( bool doThrow = false ) {
+package void load_ARB_base_instance(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance" );
-        bindGLFunc( cast( void** )&glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance" );
-        bindGLFunc( cast( void** )&glDrawElementsInstancedBaseVertexBaseInstance, "glDrawElementsInstancedBaseVertexBaseInstance" );
+        bindGLFunc(cast(void**)&glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance");
+        bindGLFunc(cast(void**)&glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance");
+        bindGLFunc(cast(void**)&glDrawElementsInstancedBaseVertexBaseInstance, "glDrawElementsInstancedBaseVertexBaseInstance");
         _ARB_base_instance = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_base_instance = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_transform_feedback_instanced
-extern( System ) @nogc nothrow {
-    alias da_glDrawTransformFeedbackInstanced = void function( GLenum, GLuint, GLsizei );
-    alias da_glDrawTransformFeedbackStreamInstanced = void function( GLenum, GLuint, GLuint, GLsizei );
+extern(System) @nogc nothrow {
+    alias da_glDrawTransformFeedbackInstanced = void function(GLenum, GLuint, GLsizei);
+    alias da_glDrawTransformFeedbackStreamInstanced = void function(GLenum, GLuint, GLuint, GLsizei);
 }
 __gshared da_glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
 __gshared da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
 
 private __gshared bool _ARB_transform_feedback_instanced;
 @nogc bool ARB_transform_feedback_instanced() nothrow @property { return _ARB_transform_feedback_instanced; }
-package void load_ARB_transform_feedback_instanced( bool doThrow = false ) {
+package void load_ARB_transform_feedback_instanced(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced" );
-        bindGLFunc( cast( void** )&glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced" );
+        bindGLFunc(cast(void**)&glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced");
+        bindGLFunc(cast(void**)&glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced");
         _ARB_transform_feedback_instanced = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_transform_feedback_instanced = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_internalformat_query
-extern( System ) @nogc nothrow alias da_glGetInternalformativ = void function( GLenum, GLenum, GLenum, GLsizei, GLint* );
+extern(System) @nogc nothrow alias da_glGetInternalformativ = void function(GLenum, GLenum, GLenum, GLsizei, GLint*);
 __gshared da_glGetInternalformativ glGetInternalformativ;
 
 private __gshared bool _ARB_internalformat_query;
 @nogc bool ARB_internalformat_query() nothrow @property { return _ARB_internalformat_query; }
-package void load_ARB_internalformat_query( bool doThrow = false ) {
+package void load_ARB_internalformat_query(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetInternalformativ, "glGetInternalformativ" );
+        bindGLFunc(cast(void**)&glGetInternalformativ, "glGetInternalformativ");
         _ARB_internalformat_query = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_internalformat_query = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_shader_atomic_counters
-extern( System ) @nogc nothrow alias da_glGetActiveAtomicCounterBufferiv = void function( GLuint, GLuint, GLenum, GLint* );
+extern(System) @nogc nothrow alias da_glGetActiveAtomicCounterBufferiv = void function(GLuint, GLuint, GLenum, GLint*);
 __gshared da_glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;
 
 private __gshared bool _ARB_shader_atomic_counters;
 @nogc bool ARB_shader_atomic_counters() nothrow @property { return _ARB_shader_atomic_counters; }
-package void load_ARB_shader_atomic_counters( bool doThrow = false ) {
+package void load_ARB_shader_atomic_counters(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv" );
+        bindGLFunc(cast(void**)&glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv");
         _ARB_shader_atomic_counters = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_shader_atomic_counters = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_shader_image_load_store
-extern( System ) @nogc nothrow {
-    alias da_glBindImageTexture = void function( GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum );
-    alias da_glMemoryBarrier = void function( GLbitfield );
+extern(System) @nogc nothrow {
+    alias da_glBindImageTexture = void function(GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum);
+    alias da_glMemoryBarrier = void function(GLbitfield);
 }
 __gshared da_glBindImageTexture glBindImageTexture;
 __gshared da_glMemoryBarrier glMemoryBarrier;
 
 private __gshared bool _ARB_shader_image_load_store;
 @nogc bool ARB_shader_image_load_store() nothrow @property { return _ARB_shader_image_load_store; }
-package void load_ARB_shader_image_load_store( bool doThrow = false ) {
+package void load_ARB_shader_image_load_store(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glBindImageTexture, "glBindImageTexture" );
-        bindGLFunc( cast( void** )&glMemoryBarrier, "glMemoryBarrier" );
+        bindGLFunc(cast(void**)&glBindImageTexture, "glBindImageTexture");
+        bindGLFunc(cast(void**)&glMemoryBarrier, "glMemoryBarrier");
         _ARB_shader_image_load_store = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_shader_image_load_store = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_texture_storage
-extern( System ) @nogc nothrow {
-    alias da_glTexStorage1D = void function( GLenum, GLsizei, GLenum, GLsizei );
-    alias da_glTexStorage2D = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei );
-    alias da_glTexStorage3D = void function( GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei );
-    alias da_glTextureStorage1DEXT = void function( GLuint, GLenum, GLsizei, GLenum, GLsizei );
-    alias da_glTextureStorage2DEXT = void function( GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei );
-    alias da_glTextureStorage3DEXT = void function( GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei );
+extern(System) @nogc nothrow {
+    alias da_glTexStorage1D = void function(GLenum, GLsizei, GLenum, GLsizei);
+    alias da_glTexStorage2D = void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei);
+    alias da_glTexStorage3D = void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei);
+    alias da_glTextureStorage1DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei);
+    alias da_glTextureStorage2DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei);
+    alias da_glTextureStorage3DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei);
 }
 
 __gshared {
@@ -2519,22 +2519,22 @@ __gshared {
 
 private __gshared bool _ARB_texture_storage;
 @nogc bool ARB_texture_storage() nothrow @property { return _ARB_texture_storage; }
-package void load_ARB_texture_storage( GLVersion glversion, bool doThrow = false ) {
+package void load_ARB_texture_storage(GLVersion glversion, bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glTexStorage1D, "glTexStorage1D" );
-        bindGLFunc( cast( void** )&glTexStorage2D, "glTexStorage2D" );
-        bindGLFunc( cast( void** )&glTexStorage3D, "glTexStorage3D" );
+        bindGLFunc(cast(void**)&glTexStorage1D, "glTexStorage1D");
+        bindGLFunc(cast(void**)&glTexStorage2D, "glTexStorage2D");
+        bindGLFunc(cast(void**)&glTexStorage3D, "glTexStorage3D");
 
         _ARB_texture_storage = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_texture_storage = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
     // The next three depend on the presence of EXT_direct_state_access.
-    if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
-        bindGLFunc( cast( void** )&glTextureStorage1DEXT, "glTextureStorage1DEXT" );
-        bindGLFunc( cast( void** )&glTextureStorage2DEXT, "glTextureStorage2DEXT" );
-        bindGLFunc( cast( void** )&glTextureStorage3DEXT, "glTextureStorage3DEXT" );
+    if(isExtSupported(glversion, "GL_EXT_direct_state_access")) {
+        bindGLFunc(cast(void**)&glTextureStorage1DEXT, "glTextureStorage1DEXT");
+        bindGLFunc(cast(void**)&glTextureStorage2DEXT, "glTextureStorage2DEXT");
+        bindGLFunc(cast(void**)&glTextureStorage3DEXT, "glTextureStorage3DEXT");
     }
 }
 
@@ -2555,11 +2555,11 @@ private __gshared bool _ARB_ES3_compatibility;
 @nogc bool ARB_ES3_compatibility() nothrow @property { return _ARB_ES3_compatibility; }
 
 // ARB_clear_buffer_object
-extern( System ) @nogc nothrow {
-    alias da_glClearBufferData = void function( GLenum,GLenum,GLenum,GLenum,const( void )* );
-    alias da_glClearBufferSubData = void function( GLenum,GLenum,GLintptr,GLsizeiptr,GLenum,GLenum,const( void )* );
-    alias da_glClearNamedBufferDataEXT = void function( GLuint,GLenum,GLenum,GLenum,const( void )* );
-    alias da_glClearNamedBufferSubDataEXT = void function( GLuint,GLenum,GLenum,GLenum,GLsizeiptr,GLsizeiptr,const( void )* );
+extern(System) @nogc nothrow {
+    alias da_glClearBufferData = void function(GLenum,GLenum,GLenum,GLenum,const(void)*);
+    alias da_glClearBufferSubData = void function(GLenum,GLenum,GLintptr,GLsizeiptr,GLenum,GLenum,const(void)*);
+    alias da_glClearNamedBufferDataEXT = void function(GLuint,GLenum,GLenum,GLenum,const(void)*);
+    alias da_glClearNamedBufferSubDataEXT = void function(GLuint,GLenum,GLenum,GLenum,GLsizeiptr,GLsizeiptr,const(void)*);
 }
 
 __gshared {
@@ -2570,23 +2570,23 @@ __gshared {
 }
 private __gshared bool _ARB_clear_buffer_object;
 @nogc bool ARB_clear_buffer_object() nothrow @property { return _ARB_clear_buffer_object; }
-package void load_ARB_clear_buffer_object( bool doThrow = false ) {
+package void load_ARB_clear_buffer_object(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glClearBufferData, "glClearBufferData" );
-        bindGLFunc( cast( void** )&glClearBufferSubData, "glClearBufferSubData" );
-        bindGLFunc( cast( void** )&glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT" );
-        bindGLFunc( cast( void** )&glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT" );
+        bindGLFunc(cast(void**)&glClearBufferData, "glClearBufferData");
+        bindGLFunc(cast(void**)&glClearBufferSubData, "glClearBufferSubData");
+        bindGLFunc(cast(void**)&glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT");
+        bindGLFunc(cast(void**)&glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT");
         _ARB_clear_buffer_object = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_clear_buffer_object = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_compute_shader
-extern( System ) @nogc nothrow {
-    alias da_glDispatchCompute = void function( GLuint,GLuint,GLuint );
-    alias da_glDispatchComputeIndirect = void function( GLintptr );
+extern(System) @nogc nothrow {
+    alias da_glDispatchCompute = void function(GLuint,GLuint,GLuint);
+    alias da_glDispatchComputeIndirect = void function(GLintptr);
 }
 
 __gshared {
@@ -2595,46 +2595,46 @@ __gshared {
 }
 private __gshared bool _ARB_compute_shader;
 @nogc bool ARB_compute_shader() nothrow @property { return _ARB_compute_shader; }
-package void load_ARB_compute_shader( bool doThrow = false ) {
+package void load_ARB_compute_shader(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glDispatchCompute, "glDispatchCompute" );
-        bindGLFunc( cast( void** )&glDispatchComputeIndirect, "glDispatchComputeIndirect" );
+        bindGLFunc(cast(void**)&glDispatchCompute, "glDispatchCompute");
+        bindGLFunc(cast(void**)&glDispatchComputeIndirect, "glDispatchComputeIndirect");
         _ARB_compute_shader = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_compute_shader = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_copy_image
-extern( System ) @nogc nothrow
-    alias da_glCopyImageSubData = void function( GLuint,GLenum,GLint,GLint,GLint,GLint,GLuint,GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei);
+extern(System) @nogc nothrow
+    alias da_glCopyImageSubData = void function(GLuint,GLenum,GLint,GLint,GLint,GLint,GLuint,GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei);
 __gshared da_glCopyImageSubData glCopyImageSubData;
 
 private __gshared bool _ARB_copy_image;
 @nogc bool ARB_copy_image() nothrow @property { return _ARB_copy_image; }
-package void load_ARB_copy_image( bool doThrow = false ) {
+package void load_ARB_copy_image(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glCopyImageSubData, "glCopyImageSubData" );
+        bindGLFunc(cast(void**)&glCopyImageSubData, "glCopyImageSubData");
         _KHR_debug = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _KHR_debug = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // KHR_debug
-extern( System ) @nogc nothrow {
-    alias da_glDebugMessageControl = void function( GLenum,GLenum,GLenum,GLsizei,const( GLuint* ),GLboolean );
-    alias da_glDebugMessageInsert = void function( GLenum,GLenum,GLuint,GLenum,GLsizei,const( GLchar )* );
-    alias da_glDebugMessageCallback = void function( GLDEBUGPROC,const( void )* );
-    alias da_glGetDebugMessageLog = GLuint function( GLuint,GLsizei,GLenum*,GLenum*,GLuint*,GLenum*,GLsizei*,GLchar* );
-    alias da_glPushDebugGroup = void function( GLenum,GLuint,GLsizei,const( GLchar )* );
+extern(System) @nogc nothrow {
+    alias da_glDebugMessageControl = void function(GLenum,GLenum,GLenum,GLsizei,const(GLuint*),GLboolean);
+    alias da_glDebugMessageInsert = void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*);
+    alias da_glDebugMessageCallback = void function(GLDEBUGPROC,const(void)*);
+    alias da_glGetDebugMessageLog = GLuint function(GLuint,GLsizei,GLenum*,GLenum*,GLuint*,GLenum*,GLsizei*,GLchar*);
+    alias da_glPushDebugGroup = void function(GLenum,GLuint,GLsizei,const(GLchar)*);
     alias da_glPopDebugGroup = void function();
-    alias da_glObjectLabel = void function( GLenum,GLuint,GLsizei,GLsizei,const( GLchar )* );
-    alias da_glGetObjectLabel = void function( GLenum,GLuint,GLsizei,GLsizei*,GLchar* );
-    alias da_glObjectPtrLabel = void function( const( void )*,GLsizei,const( GLchar )* );
-    alias da_glGetObjectPtrLabel = void function( const( void )*,GLsizei,GLsizei*,GLchar* );
+    alias da_glObjectLabel = void function(GLenum,GLuint,GLsizei,const(GLchar)*);
+    alias da_glGetObjectLabel = void function(GLenum,GLuint,GLsizei,GLsizei*,GLchar*);
+    alias da_glObjectPtrLabel = void function(const(void)*,GLsizei,const(GLchar)*);
+    alias da_glGetObjectPtrLabel = void function(const(void)*,GLsizei,GLsizei*,GLchar*);
 
 }
 __gshared {
@@ -2651,22 +2651,22 @@ __gshared {
 }
 private __gshared bool _KHR_debug;
 @nogc bool KHR_debug() nothrow @property { return _KHR_debug; }
-package void load_KHR_debug( bool doThrow = false ) {
+package void load_KHR_debug(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glDebugMessageControl, "glDebugMessageControl" );
-        bindGLFunc( cast( void** )&glDebugMessageInsert, "glDebugMessageInsert" );
-        bindGLFunc( cast( void** )&glDebugMessageCallback, "glDebugMessageCallback" );
-        bindGLFunc( cast( void** )&glGetDebugMessageLog, "glGetDebugMessageLog" );
-        bindGLFunc( cast( void** )&glPushDebugGroup, "glPushDebugGroup" );
-        bindGLFunc( cast( void** )&glPopDebugGroup, "glPopDebugGroup" );
-        bindGLFunc( cast( void** )&glObjectLabel, "glObjectLabel" );
-        bindGLFunc( cast( void** )&glGetObjectLabel, "glGetObjectLabel" );
-        bindGLFunc( cast( void** )&glObjectPtrLabel, "glObjectPtrLabel" );
-        bindGLFunc( cast( void** )&glGetObjectPtrLabel, "glGetObjectPtrLabel" );
+        bindGLFunc(cast(void**)&glDebugMessageControl, "glDebugMessageControl");
+        bindGLFunc(cast(void**)&glDebugMessageInsert, "glDebugMessageInsert");
+        bindGLFunc(cast(void**)&glDebugMessageCallback, "glDebugMessageCallback");
+        bindGLFunc(cast(void**)&glGetDebugMessageLog, "glGetDebugMessageLog");
+        bindGLFunc(cast(void**)&glPushDebugGroup, "glPushDebugGroup");
+        bindGLFunc(cast(void**)&glPopDebugGroup, "glPopDebugGroup");
+        bindGLFunc(cast(void**)&glObjectLabel, "glObjectLabel");
+        bindGLFunc(cast(void**)&glGetObjectLabel, "glGetObjectLabel");
+        bindGLFunc(cast(void**)&glObjectPtrLabel, "glObjectPtrLabel");
+        bindGLFunc(cast(void**)&glGetObjectPtrLabel, "glGetObjectPtrLabel");
         _KHR_debug = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _KHR_debug = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -2675,11 +2675,11 @@ private __gshared bool _ARB_explicit_uniform_location;
 @nogc bool ARB_explicit_uniform_location() nothrow @property { return _ARB_explicit_uniform_location; }
 
 // ARB_framebuffer_no_attachments
-extern( System ) @nogc nothrow {
-    alias da_glFramebufferParameteri = void function( GLenum,GLenum,GLint );
-    alias da_glGetFramebufferParameteriv = void function( GLenum,GLenum,GLint* );
-    alias da_glNamedFramebufferParameteriEXT = void function( GLuint,GLenum,GLint );
-    alias da_glGetNamedFramebufferParameterivEXT = void function( GLuint,GLenum,GLint* );
+extern(System) @nogc nothrow {
+    alias da_glFramebufferParameteri = void function(GLenum,GLenum,GLint);
+    alias da_glGetFramebufferParameteriv = void function(GLenum,GLenum,GLint*);
+    alias da_glNamedFramebufferParameteriEXT = void function(GLuint,GLenum,GLint);
+    alias da_glGetNamedFramebufferParameterivEXT = void function(GLuint,GLenum,GLint*);
 }
 
 __gshared {
@@ -2690,42 +2690,42 @@ __gshared {
 }
 private __gshared bool _ARB_framebuffer_no_attachments;
 @nogc bool ARB_framebuffer_no_attachments() nothrow @property { return _ARB_framebuffer_no_attachments; }
-package void load_ARB_framebuffer_no_attachments( bool doThrow = false ) {
+package void load_ARB_framebuffer_no_attachments(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glFramebufferParameteri, "glFramebufferParameteri" );
-        bindGLFunc( cast( void** )&glGetFramebufferParameteriv, "glGetFramebufferParameteriv" );
-        bindGLFunc( cast( void** )&glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT" );
-        bindGLFunc( cast( void** )&glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT" );
+        bindGLFunc(cast(void**)&glFramebufferParameteri, "glFramebufferParameteri");
+        bindGLFunc(cast(void**)&glGetFramebufferParameteriv, "glGetFramebufferParameteriv");
+        bindGLFunc(cast(void**)&glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT");
+        bindGLFunc(cast(void**)&glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT");
         _ARB_framebuffer_no_attachments = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_framebuffer_no_attachments = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_internalformat_query2
-extern( System ) @nogc nothrow alias da_glGetInternalformati64v = void function( GLenum,GLenum,GLenum,GLsizei,GLint64* );
+extern(System) @nogc nothrow alias da_glGetInternalformati64v = void function(GLenum,GLenum,GLenum,GLsizei,GLint64*);
 __gshared da_glGetInternalformati64v glGetInternalformati64v;
 private __gshared bool _ARB_internalformat_query2;
 @nogc bool ARB_internalformat_query2() nothrow @property { return _ARB_internalformat_query2; }
-package void load_ARB_internalformat_query2( bool doThrow = false ) {
+package void load_ARB_internalformat_query2(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetInternalformati64v, "glGetInternalformati64v" );
+        bindGLFunc(cast(void**)&glGetInternalformati64v, "glGetInternalformati64v");
         _ARB_internalformat_query2 = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_internalformat_query2 = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_invalidate_subdata
-extern( System ) @nogc nothrow {
-    alias da_glInvalidateTexSubImage = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei );
-    alias da_glInvalidateTexImage = void function( GLuint,GLint );
-    alias da_glInvalidateBufferSubData = void function( GLuint,GLintptr,GLsizeiptr );
-    alias da_glInvalidateBufferData = void function( GLuint );
-    alias da_glInvalidateFramebuffer = void function( GLenum,GLsizei,const( GLenum )* );
-    alias da_glInvalidateSubFramebuffer = void function( GLenum,GLsizei,const( GLenum )*,GLint,GLint,GLsizei,GLsizei );
+extern(System) @nogc nothrow {
+    alias da_glInvalidateTexSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei);
+    alias da_glInvalidateTexImage = void function(GLuint,GLint);
+    alias da_glInvalidateBufferSubData = void function(GLuint,GLintptr,GLsizeiptr);
+    alias da_glInvalidateBufferData = void function(GLuint);
+    alias da_glInvalidateFramebuffer = void function(GLenum,GLsizei,const(GLenum)*);
+    alias da_glInvalidateSubFramebuffer = void function(GLenum,GLsizei,const(GLenum)*,GLint,GLint,GLsizei,GLsizei);
 }
 
 __gshared {
@@ -2738,50 +2738,50 @@ __gshared {
 }
 private __gshared bool _ARB_invalidate_subdata;
 @nogc bool ARB_invalidate_subdata() nothrow @property { return _ARB_invalidate_subdata; }
-package void load_ARB_invalidate_subdata( bool doThrow = false ) {
+package void load_ARB_invalidate_subdata(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glInvalidateTexSubImage, "glInvalidateTexSubImage" );
-        bindGLFunc( cast( void** )&glInvalidateTexImage, "glInvalidateTexImage" );
-        bindGLFunc( cast( void** )&glInvalidateBufferSubData, "glInvalidateBufferSubData" );
-        bindGLFunc( cast( void** )&glInvalidateBufferData, "glInvalidateBufferData" );
-        bindGLFunc( cast( void** )&glInvalidateFramebuffer, "glInvalidateFramebuffer" );
-        bindGLFunc( cast( void** )&glInvalidateSubFramebuffer, "glInvalidateSubFramebuffer" );
+        bindGLFunc(cast(void**)&glInvalidateTexSubImage, "glInvalidateTexSubImage");
+        bindGLFunc(cast(void**)&glInvalidateTexImage, "glInvalidateTexImage");
+        bindGLFunc(cast(void**)&glInvalidateBufferSubData, "glInvalidateBufferSubData");
+        bindGLFunc(cast(void**)&glInvalidateBufferData, "glInvalidateBufferData");
+        bindGLFunc(cast(void**)&glInvalidateFramebuffer, "glInvalidateFramebuffer");
+        bindGLFunc(cast(void**)&glInvalidateSubFramebuffer, "glInvalidateSubFramebuffer");
         _ARB_invalidate_subdata = true;
     }
-    catch( Exception e ) {
+    catch(Exception e) {
         _ARB_invalidate_subdata = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_multi_draw_indirect
-extern( System ) @nogc nothrow {
-    alias da_glMultiDrawArraysIndirect = void function( GLenum,const( void )*,GLsizei,GLsizei );
-    alias da_glMultiDrawElementsIndirect = void function( GLenum,GLenum,const( void )*,GLsizei,GLsizei );
+extern(System) @nogc nothrow {
+    alias da_glMultiDrawArraysIndirect = void function(GLenum,const(void)*,GLsizei,GLsizei);
+    alias da_glMultiDrawElementsIndirect = void function(GLenum,GLenum,const(void)*,GLsizei,GLsizei);
 }
 __gshared da_glMultiDrawArraysIndirect glMultiDrawArraysIndirect;
 __gshared da_glMultiDrawElementsIndirect glMultiDrawElementsIndirect;
 private __gshared bool _ARB_multi_draw_indirect;
 @nogc bool ARB_multi_draw_indirect() nothrow @property { return _ARB_multi_draw_indirect; }
-package void load_ARB_multi_draw_indirect( bool doThrow = false ) {
+package void load_ARB_multi_draw_indirect(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect" );
-        bindGLFunc( cast( void** )&glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect" );
+        bindGLFunc(cast(void**)&glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect");
+        bindGLFunc(cast(void**)&glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect");
         _ARB_multi_draw_indirect = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_multi_draw_indirect = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_program_interface_query
-extern( System ) @nogc nothrow {
-    alias da_glGetProgramInterfaceiv = void function( GLuint,GLenum,GLenum,GLint* );
-    alias da_glGetProgramResourceIndex = GLuint function( GLuint,GLenum,const( GLchar )* );
-    alias da_glGetProgramResourceName = void function( GLuint,GLenum,GLuint,GLsizei,GLsizei*,GLchar* );
-    alias da_glGetProgramResourceiv = void function( GLuint,GLenum,GLuint,GLsizei,const( GLenum )*,GLsizei,GLsizei*,GLint* );
-    alias da_glGetProgramResourceLocation = GLint function( GLuint,GLenum,const( GLchar )* );
-    alias da_glGetProgramResourceLocationIndex = GLint function( GLuint,GLenum,const( GLchar )* );
+extern(System) @nogc nothrow {
+    alias da_glGetProgramInterfaceiv = void function(GLuint,GLenum,GLenum,GLint*);
+    alias da_glGetProgramResourceIndex = GLuint function(GLuint,GLenum,const(GLchar)*);
+    alias da_glGetProgramResourceName = void function(GLuint,GLenum,GLuint,GLsizei,GLsizei*,GLchar*);
+    alias da_glGetProgramResourceiv = void function(GLuint,GLenum,GLuint,GLsizei,const(GLenum)*,GLsizei,GLsizei*,GLint*);
+    alias da_glGetProgramResourceLocation = GLint function(GLuint,GLenum,const(GLchar)*);
+    alias da_glGetProgramResourceLocationIndex = GLint function(GLuint,GLenum,const(GLchar)*);
 }
 
 __gshared {
@@ -2795,18 +2795,18 @@ __gshared {
 
 private __gshared bool _ARB_program_interface_query;
 @nogc bool ARB_program_interface_query() nothrow @property { return _ARB_program_interface_query; }
-package void load_ARB_program_interface_query( bool doThrow = false ) {
+package void load_ARB_program_interface_query(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetProgramInterfaceiv, "glGetProgramInterfaceiv" );
-        bindGLFunc( cast( void** )&glGetProgramResourceIndex, "glGetProgramResourceIndex" );
-        bindGLFunc( cast( void** )&glGetProgramResourceName, "glGetProgramResourceName" );
-        bindGLFunc( cast( void** )&glGetProgramResourceiv, "glGetProgramResourceiv" );
-        bindGLFunc( cast( void** )&glGetProgramResourceLocation, "glGetProgramResourceLocation" );
-        bindGLFunc( cast( void** )&glGetProgramResourceLocationIndex, "glGetProgramResourceLocationIndex" );
+        bindGLFunc(cast(void**)&glGetProgramInterfaceiv, "glGetProgramInterfaceiv");
+        bindGLFunc(cast(void**)&glGetProgramResourceIndex, "glGetProgramResourceIndex");
+        bindGLFunc(cast(void**)&glGetProgramResourceName, "glGetProgramResourceName");
+        bindGLFunc(cast(void**)&glGetProgramResourceiv, "glGetProgramResourceiv");
+        bindGLFunc(cast(void**)&glGetProgramResourceLocation, "glGetProgramResourceLocation");
+        bindGLFunc(cast(void**)&glGetProgramResourceLocationIndex, "glGetProgramResourceLocationIndex");
         _ARB_program_interface_query = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_program_interface_query = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -2815,17 +2815,17 @@ private __gshared bool _ARB_robust_buffer_access_behavior;
 @nogc bool ARB_robust_buffer_access_behavior() nothrow @property { return _ARB_robust_buffer_access_behavior; }
 
 // ARB_shader_storage_buffer_object
-extern( System ) alias da_glShaderStorageBlockBinding = void function( GLuint,GLuint,GLuint );
+extern(System) alias da_glShaderStorageBlockBinding = void function(GLuint,GLuint,GLuint);
 __gshared da_glShaderStorageBlockBinding glShaderStorageBlockBinding;
 private __gshared bool _ARB_shader_storage_buffer_object;
 @nogc bool ARB_shader_storage_buffer_object() nothrow @property { return _ARB_shader_storage_buffer_object; }
-package void load_ARB_shader_storage_buffer_object( bool doThrow = false ) {
+package void load_ARB_shader_storage_buffer_object(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glShaderStorageBlockBinding, "glShaderStorageBlockBinding" );
+        bindGLFunc(cast(void**)&glShaderStorageBlockBinding, "glShaderStorageBlockBinding");
         _ARB_shader_storage_buffer_object = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_shader_storage_buffer_object = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -2834,22 +2834,22 @@ private __gshared bool _ARB_stencil_texturing;
 @nogc bool ARB_stencil_texturing() nothrow @property { return _ARB_stencil_texturing; }
 
 // ARB_texture_buffer_range
-extern( System ) @nogc nothrow {
-    alias da_glTexBufferRange = void function( GLenum,GLenum,GLuint,GLintptr,GLsizeiptr );
-    alias da_glTextureBufferRangeEXT = void function( GLuint,GLenum,GLenum,GLuint,GLintptr,GLsizeiptr );
+extern(System) @nogc nothrow {
+    alias da_glTexBufferRange = void function(GLenum,GLenum,GLuint,GLintptr,GLsizeiptr);
+    alias da_glTextureBufferRangeEXT = void function(GLuint,GLenum,GLenum,GLuint,GLintptr,GLsizeiptr);
 }
 __gshared da_glTexBufferRange glTexBufferRange;
 __gshared da_glTextureBufferRangeEXT glTextureBufferRangeEXT;
 private __gshared bool _ARB_texture_buffer_range;
 @nogc bool ARB_texture_buffer_range() nothrow @property { return _ARB_texture_buffer_range; }
-package void load_ARB_texture_buffer_range( bool doThrow = false ) {
+package void load_ARB_texture_buffer_range(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glTexBufferRange, "glTexBufferRange" );
-        bindGLFunc( cast( void** )&glTextureBufferRangeEXT, "glTextureBufferRangeEXT" );
+        bindGLFunc(cast(void**)&glTexBufferRange, "glTexBufferRange");
+        bindGLFunc(cast(void**)&glTextureBufferRangeEXT, "glTextureBufferRangeEXT");
         _ARB_texture_buffer_range = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_texture_buffer_range = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -2858,11 +2858,11 @@ private __gshared bool _ARB_texture_query_levels;
 @nogc bool ARB_texture_query_levels() nothrow @property { return _ARB_texture_query_levels; }
 
 // ARB_texture_storage_multisample
-extern( System ) @nogc nothrow {
-    alias da_glTexStorage2DMultisample = void function( GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean );
-    alias da_glTexStorage3DMultisample = void function( GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean );
-    alias da_glTextureStorage2DMultisampleEXT = void function( GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean );
-    alias da_glTextureStorage3DMultisampleEXT = void function( GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean );
+extern(System) @nogc nothrow {
+    alias da_glTexStorage2DMultisample = void function(GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean);
+    alias da_glTexStorage3DMultisample = void function(GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean);
+    alias da_glTextureStorage2DMultisampleEXT = void function(GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean);
+    alias da_glTextureStorage3DMultisampleEXT = void function(GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean);
 }
 
 __gshared {
@@ -2874,48 +2874,48 @@ __gshared {
 
 private __gshared bool _ARB_texture_storage_multisample;
 @nogc bool ARB_texture_storage_multisample() nothrow @property { return _ARB_texture_storage_multisample; }
-package void load_ARB_texture_storage_multisample( bool doThrow = false ) {
+package void load_ARB_texture_storage_multisample(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glTexStorage2DMultisample, "glTexStorage2DMultisample" );
-        bindGLFunc( cast( void** )&glTexStorage3DMultisample, "glTexStorage3DMultisample" );
-        bindGLFunc( cast( void** )&glTextureStorage2DMultisampleEXT, "glTextureStorage2DMultisampleEXT" );
-        bindGLFunc( cast( void** )&glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT" );
+        bindGLFunc(cast(void**)&glTexStorage2DMultisample, "glTexStorage2DMultisample");
+        bindGLFunc(cast(void**)&glTexStorage3DMultisample, "glTexStorage3DMultisample");
+        bindGLFunc(cast(void**)&glTextureStorage2DMultisampleEXT, "glTextureStorage2DMultisampleEXT");
+        bindGLFunc(cast(void**)&glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT");
         _ARB_texture_storage_multisample = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_texture_storage_multisample = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_texture_view
-extern( System ) @nogc nothrow alias da_glTextureView = void function( GLuint,GLenum,GLuint,GLenum,GLuint,GLuint,GLuint,GLuint );
+extern(System) @nogc nothrow alias da_glTextureView = void function(GLuint,GLenum,GLuint,GLenum,GLuint,GLuint,GLuint,GLuint);
 __gshared da_glTextureView glTextureView;
 private __gshared bool _ARB_texture_view;
 @nogc bool ARB_texture_view() nothrow @property { return _ARB_texture_view; }
-package void load_ARB_texture_view( bool doThrow = false ) {
+package void load_ARB_texture_view(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glTextureView, "glTextureView" );
+        bindGLFunc(cast(void**)&glTextureView, "glTextureView");
         _ARB_texture_view = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_texture_view = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_vertex_attrib_binding
-extern( System ) @nogc nothrow {
-    alias da_glBindVertexBuffer = void function( GLuint,GLuint,GLintptr,GLsizei );
-    alias da_glVertexAttribFormat = void function( GLuint,GLint,GLenum,GLboolean,GLuint );
-    alias da_glVertexAttribIFormat = void function( GLuint,GLint,GLenum,GLuint );
-    alias da_glVertexAttribLFormat = void function( GLuint,GLint,GLenum,GLuint );
-    alias da_glVertexAttribBinding = void function( GLuint,GLuint );
-    alias da_glVertexBindingDivisor = void function( GLuint,GLuint );
-    alias da_glVertexArrayBindVertexBufferEXT = void function( GLuint,GLuint,GLuint,GLintptr,GLsizei );
-    alias da_glVertexArrayVertexAttribFormatEXT = void function( GLuint,GLuint,GLint,GLenum,GLboolean,GLuint );
-    alias da_glVertexArrayVertexAttribIFormatEXT = void function( GLuint,GLuint,GLint,GLenum,GLuint );
-    alias da_glVertexArrayVertexAttribLFormatEXT = void function( GLuint,GLuint,GLint,GLenum,GLuint );
-    alias da_glVertexArrayVertexAttribBindingEXT = void function( GLuint,GLuint,GLuint );
-    alias da_glVertexArrayVertexBindingDivisorEXT = void function( GLuint,GLuint,GLuint );
+extern(System) @nogc nothrow {
+    alias da_glBindVertexBuffer = void function(GLuint,GLuint,GLintptr,GLsizei);
+    alias da_glVertexAttribFormat = void function(GLuint,GLint,GLenum,GLboolean,GLuint);
+    alias da_glVertexAttribIFormat = void function(GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexAttribLFormat = void function(GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexAttribBinding = void function(GLuint,GLuint);
+    alias da_glVertexBindingDivisor = void function(GLuint,GLuint);
+    alias da_glVertexArrayBindVertexBufferEXT = void function(GLuint,GLuint,GLuint,GLintptr,GLsizei);
+    alias da_glVertexArrayVertexAttribFormatEXT = void function(GLuint,GLuint,GLint,GLenum,GLboolean,GLuint);
+    alias da_glVertexArrayVertexAttribIFormatEXT = void function(GLuint,GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexArrayVertexAttribLFormatEXT = void function(GLuint,GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexArrayVertexAttribBindingEXT = void function(GLuint,GLuint,GLuint);
+    alias da_glVertexArrayVertexBindingDivisorEXT = void function(GLuint,GLuint,GLuint);
 }
 
 __gshared {
@@ -2935,31 +2935,31 @@ __gshared {
 
 private __gshared bool _ARB_vertex_attrib_binding;
 @nogc bool ARB_vertex_attrib_binding() nothrow @property { return _ARB_vertex_attrib_binding; }
-package void load_ARB_vertex_attrib_binding( bool doThrow = false ) {
+package void load_ARB_vertex_attrib_binding(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glBindVertexBuffer, "glBindVertexBuffer" );
-        bindGLFunc( cast( void** )&glVertexAttribFormat, "glVertexAttribFormat" );
-        bindGLFunc( cast( void** )&glVertexAttribIFormat, "glVertexAttribIFormat" );
-        bindGLFunc( cast( void** )&glVertexAttribLFormat, "glVertexAttribLFormat" );
-        bindGLFunc( cast( void** )&glVertexAttribBinding, "glVertexAttribBinding" );
-        bindGLFunc( cast( void** )&glVertexBindingDivisor, "glVertexBindingDivisor" );
-        bindGLFunc( cast( void** )&glVertexArrayBindVertexBufferEXT, "glVertexArrayBindVertexBufferEXT" );
-        bindGLFunc( cast( void** )&glVertexArrayVertexAttribFormatEXT, "glVertexArrayVertexAttribFormatEXT" );
-        bindGLFunc( cast( void** )&glVertexArrayVertexAttribIFormatEXT, "glVertexArrayVertexAttribIFormatEXT" );
-        bindGLFunc( cast( void** )&glVertexArrayVertexAttribLFormatEXT, "glVertexArrayVertexAttribLFormatEXT" );
-        bindGLFunc( cast( void** )&glVertexArrayVertexAttribBindingEXT, "glVertexArrayVertexAttribBindingEXT" );
-        bindGLFunc( cast( void** )&glVertexArrayVertexBindingDivisorEXT, "glVertexArrayVertexBindingDivisorEXT" );
+        bindGLFunc(cast(void**)&glBindVertexBuffer, "glBindVertexBuffer");
+        bindGLFunc(cast(void**)&glVertexAttribFormat, "glVertexAttribFormat");
+        bindGLFunc(cast(void**)&glVertexAttribIFormat, "glVertexAttribIFormat");
+        bindGLFunc(cast(void**)&glVertexAttribLFormat, "glVertexAttribLFormat");
+        bindGLFunc(cast(void**)&glVertexAttribBinding, "glVertexAttribBinding");
+        bindGLFunc(cast(void**)&glVertexBindingDivisor, "glVertexBindingDivisor");
+        bindGLFunc(cast(void**)&glVertexArrayBindVertexBufferEXT, "glVertexArrayBindVertexBufferEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribFormatEXT, "glVertexArrayVertexAttribFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribIFormatEXT, "glVertexArrayVertexAttribIFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribLFormatEXT, "glVertexArrayVertexAttribLFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribBindingEXT, "glVertexArrayVertexAttribBindingEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexBindingDivisorEXT, "glVertexArrayVertexBindingDivisorEXT");
         _ARB_vertex_attrib_binding = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_vertex_attrib_binding = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_buffer_storage
-extern( System ) @nogc nothrow {
-    alias da_glBufferStorage = void function( GLenum,GLsizeiptr,const( void )*,GLbitfield );
-    alias da_glNamedBufferStorageEXT = void function( GLuint,GLsizeiptr,const( void )*,GLbitfield );
+extern(System) @nogc nothrow {
+    alias da_glBufferStorage = void function(GLenum,GLsizeiptr,const(void)*,GLbitfield);
+    alias da_glNamedBufferStorageEXT = void function(GLuint,GLsizeiptr,const(void)*,GLbitfield);
 }
 
 __gshared {
@@ -2969,25 +2969,25 @@ __gshared {
 
 private __gshared bool _ARB_buffer_storage;
 @nogc bool ARB_buffer_storage() nothrow @property { return _ARB_buffer_storage; }
-package void load_ARB_buffer_storage( GLVersion glversion, bool doThrow = false ) {
+package void load_ARB_buffer_storage(GLVersion glversion, bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glBufferStorage, "glBufferStorage" );
+        bindGLFunc(cast(void**)&glBufferStorage, "glBufferStorage");
 
         // This one depends on GL_EXT_direct_state_access
-        if( isExtSupported( glversion, "GL_EXT_direct_state_access" )) {
-            bindGLFunc( cast( void** )&glNamedBufferStorageEXT, "glNamedBufferStorageEXT" );
+        if(isExtSupported(glversion, "GL_EXT_direct_state_access")) {
+            bindGLFunc(cast(void**)&glNamedBufferStorageEXT, "glNamedBufferStorageEXT");
         }
         _ARB_buffer_storage = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_buffer_storage = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_clear_texture
-extern( System ) @nogc nothrow {
-    alias da_glClearTexImage = void function( GLuint,GLint,GLenum,GLenum,const( void )* );
-    alias da_glClearTexSubImage = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const( void )* );
+extern(System) @nogc nothrow {
+    alias da_glClearTexImage = void function(GLuint,GLint,GLenum,GLenum,const(void)*);
+    alias da_glClearTexSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const(void)*);
 }
 
 __gshared {
@@ -2997,14 +2997,14 @@ __gshared {
 
 private __gshared bool _ARB_clear_texture;
 @nogc bool ARB_clear_texture() nothrow @property { return _ARB_clear_texture; }
-package void load_ARB_clear_texture( bool doThrow = false ) {
+package void load_ARB_clear_texture(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glClearTexImage, "glClearTexImage" );
-        bindGLFunc( cast( void** )&glClearTexSubImage, "glClearTexSubImage" );
+        bindGLFunc(cast(void**)&glClearTexImage, "glClearTexImage");
+        bindGLFunc(cast(void**)&glClearTexSubImage, "glClearTexSubImage");
         _ARB_clear_texture = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_clear_texture = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -3013,13 +3013,13 @@ private __gshared bool _ARB_enhanced_layouts;
 @nogc bool ARB_enhanced_layouts() nothrow @property { return _ARB_enhanced_layouts; }
 
 // ARB_multi_bind
-extern( System ) @nogc nothrow {
-    alias da_glBindBuffersBase = void function( GLenum,GLuint,GLsizei,const( GLuint )* );
-    alias da_glBindBuffersRange = void function( GLenum,GLuint,GLsizei,const( GLuint )*,const( GLintptr )*,const( GLsizeiptr )* );
-    alias da_glBindTextures = void function( GLuint,GLsizei,const( GLuint )* );
-    alias da_glBindSamplers = void function( GLuint,GLsizei,const( GLuint )* );
-    alias da_glBindImageTextures = void function( GLuint,GLsizei,const( GLuint )* );
-    alias da_glBindVertexBuffers = void function( GLuint,GLsizei,const( GLuint )*,const( GLintptr )*,const( GLsizei )* );
+extern(System) @nogc nothrow {
+    alias da_glBindBuffersBase = void function(GLenum,GLuint,GLsizei,const(GLuint)*);
+    alias da_glBindBuffersRange = void function(GLenum,GLuint,GLsizei,const(GLuint)*,const(GLintptr)*,const(GLsizeiptr)*);
+    alias da_glBindTextures = void function(GLuint,GLsizei,const(GLuint)*);
+    alias da_glBindSamplers = void function(GLuint,GLsizei,const(GLuint)*);
+    alias da_glBindImageTextures = void function(GLuint,GLsizei,const(GLuint)*);
+    alias da_glBindVertexBuffers = void function(GLuint,GLsizei,const(GLuint)*,const(GLintptr)*,const(GLsizei)*);
 }
 
 __gshared {
@@ -3033,18 +3033,18 @@ __gshared {
 
 private __gshared bool _ARB_multi_bind;
 @nogc bool ARB_multi_bind() nothrow @property { return _ARB_multi_bind; }
-package void load_ARB_multi_bind( bool doThrow = false ) {
+package void load_ARB_multi_bind(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glBindBuffersBase, "glBindBuffersBase" );
-        bindGLFunc( cast( void** )&glBindBuffersRange, "glBindBuffersRange" );
-        bindGLFunc( cast( void** )&glBindTextures, "glBindTextures" );
-        bindGLFunc( cast( void** )&glBindSamplers, "glBindSamplers" );
-        bindGLFunc( cast( void** )&glBindImageTextures, "glBindImageTextures" );
-        bindGLFunc( cast( void** )&glBindVertexBuffers, "glBindVertexBuffers" );
+        bindGLFunc(cast(void**)&glBindBuffersBase, "glBindBuffersBase");
+        bindGLFunc(cast(void**)&glBindBuffersRange, "glBindBuffersRange");
+        bindGLFunc(cast(void**)&glBindTextures, "glBindTextures");
+        bindGLFunc(cast(void**)&glBindSamplers, "glBindSamplers");
+        bindGLFunc(cast(void**)&glBindImageTextures, "glBindImageTextures");
+        bindGLFunc(cast(void**)&glBindVertexBuffers, "glBindVertexBuffers");
         _ARB_multi_bind = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_multi_bind = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -3065,17 +3065,17 @@ private __gshared bool _ARB_vertex_type_10f_11f_11f_rev;
 @nogc bool ARB_vertex_type_10f_11f_11f_rev() nothrow @property { return _ARB_vertex_type_10f_11f_11f_rev; }
 
 // ARB_clip_control
-extern( System ) @nogc nothrow alias da_glClipControl = void function( GLenum,GLenum );
+extern(System) @nogc nothrow alias da_glClipControl = void function(GLenum,GLenum);
 __gshared da_glClipControl glClipControl;
 private __gshared bool _ARB_clip_control;
 @nogc bool ARB_clip_control() nothrow @property { return _ARB_clip_control; }
-package void load_ARB_clip_control( bool doThrow = false ) {
+package void load_ARB_clip_control(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glClipControl, "glClipControl" );
+        bindGLFunc(cast(void**)&glClipControl, "glClipControl");
         _ARB_clip_control = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_clip_control = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -3084,17 +3084,17 @@ private __gshared bool _ARB_cull_distance;
 @nogc bool ARB_cull_distance() nothrow @property { return _ARB_cull_distance; }
 
 // ARB_ES3_1_compatibility
-extern( System ) @nogc nothrow alias da_glMemoryBarrierByRegion = void function( GLbitfield );
+extern(System) @nogc nothrow alias da_glMemoryBarrierByRegion = void function(GLbitfield);
 __gshared da_glMemoryBarrierByRegion glMemoryBarrierByRegion;
 private __gshared bool _ARB_ES3_1_compatibility;
 @nogc bool ARB_ES3_1_compatibility() nothrow @property { return _ARB_ES3_1_compatibility; }
-package void load_ARB_ES3_1_compatibility( bool doThrow = false ) {
+package void load_ARB_ES3_1_compatibility(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glMemoryBarrierByRegion, "glMemoryBarrierByRegion" );
+        bindGLFunc(cast(void**)&glMemoryBarrierByRegion, "glMemoryBarrierByRegion");
         _ARB_ES3_1_compatibility = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_ES3_1_compatibility = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -3111,104 +3111,104 @@ private __gshared bool _ARB_derivative_control;
 @nogc bool ARB_derivative_control() nothrow @property { return _ARB_derivative_control; }
 
 // ARB_direct_state_access
-extern( System ) @nogc nothrow {
-    alias da_glCreateTransformFeedbacks = void function( GLsizei,GLuint* );
-    alias da_glTransformFeedbackBufferBase = void function( GLsizei,GLuint,GLuint );
-    alias da_glTransformFeedbackBufferRange = void function( GLuint,GLuint,GLuint,GLintptr,GLsizei );
-    alias da_glGetTransformFeedbackiv = void function( GLuint,GLenum,GLint* );
-    alias da_glGetTransformFeedbacki_v = void function( GLuint,GLenum,GLuint,GLint* );
-    alias da_glGetTransformFeedbacki64_v = void function( GLuint,GLenum,GLuint,GLint64* );
-    alias da_glCreateBuffers = void function( GLsizei,GLuint* );
-    alias da_glNamedBufferStorage = void function( GLuint,GLsizeiptr,const( void )*,GLbitfield );
-    alias da_glNamedBufferData = void function( GLuint,GLsizeiptr,const( void )*,GLenum );
-    alias da_glNamedBufferSubData = void function( GLuint,GLintptr,GLsizeiptr,const( void )* );
-    alias da_glCopyNamedBufferSubData = void function( GLuint,GLuint,GLintptr,GLintptr,GLsizeiptr );
-    alias da_glClearNamedBufferData = void function( GLuint,GLenum,GLenum,GLenum,const( void )* );
-    alias da_glClearNamedBufferSubData = void function( GLuint,GLenum,GLintptr,GLsizeiptr,GLenum,GLenum,const( void )* );
-    alias da_glMapNamedBuffer = void* function( GLuint,GLenum );
-    alias da_glMapNamedBufferRange = void* function( GLuint,GLintptr,GLsizeiptr,GLbitfield );
-    alias da_glUnmapNamedBuffer = GLboolean function( GLuint );
-    alias da_glFlushMappedNamedBufferRange = void function( GLuint,GLintptr,GLsizeiptr );
-    alias da_glGetNamedBufferParameteriv = void function( GLuint,GLenum,GLint* );
-    alias da_glGetNamedBufferParameteri64v = void function( GLuint,GLenum,GLint64* );
-    alias da_glGetNamedBufferPointerv = void function( GLuint,GLenum,void** );
-    alias da_glGetNamedBufferSubData = void function( GLuint,GLintptr,GLsizeiptr,void* );
-    alias da_glCreateFramebuffers = void function( GLsizei,GLuint* );
-    alias da_glNamedFramebufferRenderbuffer = void function( GLuint,GLenum,GLenum,GLuint );
-    alias da_glNamedFramebufferParameteri = void function( GLuint,GLenum,GLint );
-    alias da_glNamedFramebufferTexture = void function( GLuint,GLenum,GLuint,GLint );
-    alias da_glNamedFramebufferTextureLayer = void function( GLuint,GLenum,GLuint,GLint,GLint );
-    alias da_glNamedFramebufferDrawBuffer = void function( GLuint,GLenum );
-    alias da_glNamedFramebufferDrawBuffers = void function( GLuint,GLsizei,const( GLenum )* );
-    alias da_glNamedFramebufferReadBuffer = void function( GLuint,GLenum );
-    alias da_glInvalidateNamedFramebufferData = void function( GLuint,GLsizei,const( GLenum )* );
-    alias da_glInvalidateNamedFramebufferSubData = void function( GLuint,GLsizei,const( GLenum )*,GLint,GLint,GLsizei,GLsizei );
-    alias da_glClearNamedFramebufferiv = void function( GLuint,GLenum,GLint,const( GLint )* );
-    alias da_glClearNamedFramebufferuiv = void function( GLuint,GLenum,GLint,const( GLuint )* );
-    alias da_glClearNamedFramebufferfv = void function( GLuint,GLenum,GLint,const( GLfloat )* );
-    alias da_glClearNamedFramebufferfi = void function( GLuint,GLenum,GLfloat,GLint );
-    alias da_glBlitNamedFramebuffer = void function( GLuint,GLuint,GLint,GLint,GLint,GLint,GLint,GLint,GLint,GLint,GLbitfield,GLenum );
-    alias da_glCheckNamedFramebufferStatus = GLenum function( GLuint,GLenum );
-    alias da_glGetNamedFramebufferParameteriv = void function( GLuint,GLenum,GLint* );
-    alias da_glGetNamedFramebufferAttachmentParameteriv = void function( GLuint,GLenum,GLenum,GLint* );
-    alias da_glCreateRenderbuffers = void function( GLsizei,GLuint* );
-    alias da_glNamedRenderbufferStorage = void function( GLuint,GLenum,GLsizei,GLsizei );
-    alias da_glNamedRenderbufferStorageMultisample = void function( GLuint,GLsizei,GLenum,GLsizei,GLsizei );
-    alias da_glGetNamedRenderbufferParameteriv = void function( GLuint,GLenum,GLint* );
-    alias da_glCreateTextures = void function( GLenum,GLsizei,GLuint* );
-    alias da_glTextureBuffer = void function( GLuint,GLenum,GLuint );
-    alias da_glTextureBufferRange = void function( GLuint,GLenum,GLuint,GLintptr,GLsizeiptr );
-    alias da_glTextureStorage1D = void function( GLuint,GLsizei,GLenum,GLsizei );
-    alias da_glTextureStorage2D = void function( GLuint,GLsizei,GLenum,GLsizei,GLsizei );
-    alias da_glTextureStorage3D = void function( GLuint,GLsizei,GLenum,GLsizei,GLsizei,GLsizei );
-    alias da_glTextureStorage2DMultisample = void function( GLuint,GLsizei,GLenum,GLsizei,GLsizei,GLboolean );
-    alias da_glTextureStorage3DMultisample = void function( GLuint,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean );
-    alias da_glTextureSubImage1D = void function( GLuint,GLint,GLint,GLsizei,GLenum,GLenum,const( void )* );
-    alias da_glTextureSubImage2D = void function( GLuint,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLenum,const( void )* );
-    alias da_glTextureSubImage3D = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const( void )* );
-    alias da_glCompressedTextureSubImage1D = void function( GLuint,GLint,GLint,GLsizei,GLenum,GLsizei,const( void )* );
-    alias da_glCompressedTextureSubImage2D = void function( GLuint,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLsizei,const( void )* );
-    alias da_glCompressedTextureSubImage3D = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLsizei,const( void )* );
-    alias da_glCopyTextureSubImage1D = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei );
-    alias da_glCopyTextureSubImage2D = void function( GLuint,GLint,GLint,GLint,GLint,GLint,GLsizei,GLsizei );
-    alias da_glCopyTextureSubImage3D = void function( GLuint,GLint,GLint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei );
-    alias da_glTextureParameterf = void function( GLuint,GLenum,GLfloat );
-    alias da_glTextureParameterfv = void function( GLuint,GLenum,const( GLfloat )* );
-    alias da_glTextureParameteri = void function( GLuint,GLenum,GLint );
-    alias da_glTextureParameterIiv = void function( GLuint,GLenum,const( GLint )* );
-    alias da_glTextureParameterIuiv = void function( GLuint,GLenum,const( GLuint )* );
-    alias da_glTextureParameteriv = void function( GLuint,GLenum,const( GLint )* );
-    alias da_glGenerateTextureMipmap = void function( GLuint );
-    alias da_glBindTextureUnit = void function( GLuint,GLuint );
-    alias da_glGetTextureImage = void function( GLuint,GLint,GLenum,GLenum,GLsizei,void* );
-    alias da_glGetCompressedTextureImage = void function( GLuint,GLint,GLsizei,void* );
-    alias da_glGetTextureLevelParameterfv = void function( GLuint,GLint,GLenum,GLfloat* );
-    alias da_glGetTextureLevelParameteriv = void function( GLuint,GLint,GLenum,GLint* );
-    alias da_glGetTextureParameterfv = void function( GLuint,GLenum,GLfloat* );
-    alias da_glGetTextureParameterIiv = void function( GLuint,GLenum,GLint* );
-    alias da_glGetTextureParameterIuiv = void function( GLuint,GLenum,GLuint* );
-    alias da_glGetTextureParameteriv = void function( GLuint,GLenum,GLint* );
-    alias da_glCreateVertexArrays = void function( GLsizei,GLuint* );
-    alias da_glDisableVertexArrayAttrib = void function( GLuint,GLuint );
-    alias da_glEnableVertexArrayAttrib = void function( GLuint,GLuint );
-    alias da_glVertexArrayElementBuffer = void function( GLuint,GLuint );
-    alias da_glVertexArrayVertexBuffer = void function( GLuint,GLuint,GLuint,GLintptr,GLsizei );
-    alias da_glVertexArrayVertexBuffers = void function( GLuint,GLuint,GLsizei,const( GLuint )*,const( GLintptr )*,const( GLsizei )* );
-    alias da_glVertexArrayAttribFormat = void function( GLuint,GLuint,GLint,GLenum,GLboolean,GLuint );
-    alias da_glVertexArrayAttribIFormat = void function( GLuint,GLuint,GLint,GLenum,GLuint );
-    alias da_glVertexArrayAttribLFormat = void function( GLuint,GLuint,GLint,GLenum,GLuint );
-    alias da_glVertexArrayAttribBinding = void function( GLuint,GLuint,GLuint );
-    alias da_glVertexArrayBindingDivisor = void function( GLuint,GLuint,GLuint );
-    alias da_glGetVertexArrayiv = void function( GLuint,GLenum,GLint* );
-    alias da_glGetVertexArrayIndexediv = void function( GLuint,GLuint,GLenum,GLint* );
-    alias da_glGetVertexArrayIndexed64iv = void function( GLuint,GLuint,GLenum,GLint64* );
-    alias da_glCreateSamplers = void function( GLsizei,GLuint* );
-    alias da_glCreateProgramPipelines = void function( GLsizei,GLuint* );
-    alias da_glCreateQueries = void function( GLenum,GLsizei,GLuint* );
-    alias da_glGetQueryBufferObjectiv = void function( GLuint,GLuint,GLenum,GLintptr );
-    alias da_glGetQueryBufferObjectuiv = void function( GLuint,GLuint,GLenum,GLintptr );
-    alias da_glGetQueryBufferObjecti64v = void function( GLuint,GLuint,GLenum,GLintptr );
-    alias da_glGetQueryBufferObjectui64v = void function( GLuint,GLuint,GLenum,GLintptr );
+extern(System) @nogc nothrow {
+    alias da_glCreateTransformFeedbacks = void function(GLsizei,GLuint*);
+    alias da_glTransformFeedbackBufferBase = void function(GLsizei,GLuint,GLuint);
+    alias da_glTransformFeedbackBufferRange = void function(GLuint,GLuint,GLuint,GLintptr,GLsizei);
+    alias da_glGetTransformFeedbackiv = void function(GLuint,GLenum,GLint*);
+    alias da_glGetTransformFeedbacki_v = void function(GLuint,GLenum,GLuint,GLint*);
+    alias da_glGetTransformFeedbacki64_v = void function(GLuint,GLenum,GLuint,GLint64*);
+    alias da_glCreateBuffers = void function(GLsizei,GLuint*);
+    alias da_glNamedBufferStorage = void function(GLuint,GLsizeiptr,const(void)*,GLbitfield);
+    alias da_glNamedBufferData = void function(GLuint,GLsizeiptr,const(void)*,GLenum);
+    alias da_glNamedBufferSubData = void function(GLuint,GLintptr,GLsizeiptr,const(void)*);
+    alias da_glCopyNamedBufferSubData = void function(GLuint,GLuint,GLintptr,GLintptr,GLsizeiptr);
+    alias da_glClearNamedBufferData = void function(GLuint,GLenum,GLenum,GLenum,const(void)*);
+    alias da_glClearNamedBufferSubData = void function(GLuint,GLenum,GLintptr,GLsizeiptr,GLenum,GLenum,const(void)*);
+    alias da_glMapNamedBuffer = void* function(GLuint,GLenum);
+    alias da_glMapNamedBufferRange = void* function(GLuint,GLintptr,GLsizeiptr,GLbitfield);
+    alias da_glUnmapNamedBuffer = GLboolean function(GLuint);
+    alias da_glFlushMappedNamedBufferRange = void function(GLuint,GLintptr,GLsizeiptr);
+    alias da_glGetNamedBufferParameteriv = void function(GLuint,GLenum,GLint*);
+    alias da_glGetNamedBufferParameteri64v = void function(GLuint,GLenum,GLint64*);
+    alias da_glGetNamedBufferPointerv = void function(GLuint,GLenum,void**);
+    alias da_glGetNamedBufferSubData = void function(GLuint,GLintptr,GLsizeiptr,void*);
+    alias da_glCreateFramebuffers = void function(GLsizei,GLuint*);
+    alias da_glNamedFramebufferRenderbuffer = void function(GLuint,GLenum,GLenum,GLuint);
+    alias da_glNamedFramebufferParameteri = void function(GLuint,GLenum,GLint);
+    alias da_glNamedFramebufferTexture = void function(GLuint,GLenum,GLuint,GLint);
+    alias da_glNamedFramebufferTextureLayer = void function(GLuint,GLenum,GLuint,GLint,GLint);
+    alias da_glNamedFramebufferDrawBuffer = void function(GLuint,GLenum);
+    alias da_glNamedFramebufferDrawBuffers = void function(GLuint,GLsizei,const(GLenum)*);
+    alias da_glNamedFramebufferReadBuffer = void function(GLuint,GLenum);
+    alias da_glInvalidateNamedFramebufferData = void function(GLuint,GLsizei,const(GLenum)*);
+    alias da_glInvalidateNamedFramebufferSubData = void function(GLuint,GLsizei,const(GLenum)*,GLint,GLint,GLsizei,GLsizei);
+    alias da_glClearNamedFramebufferiv = void function(GLuint,GLenum,GLint,const(GLint)*);
+    alias da_glClearNamedFramebufferuiv = void function(GLuint,GLenum,GLint,const(GLuint)*);
+    alias da_glClearNamedFramebufferfv = void function(GLuint,GLenum,GLint,const(GLfloat)*);
+    alias da_glClearNamedFramebufferfi = void function(GLuint,GLenum,GLfloat,GLint);
+    alias da_glBlitNamedFramebuffer = void function(GLuint,GLuint,GLint,GLint,GLint,GLint,GLint,GLint,GLint,GLint,GLbitfield,GLenum);
+    alias da_glCheckNamedFramebufferStatus = GLenum function(GLuint,GLenum);
+    alias da_glGetNamedFramebufferParameteriv = void function(GLuint,GLenum,GLint*);
+    alias da_glGetNamedFramebufferAttachmentParameteriv = void function(GLuint,GLenum,GLenum,GLint*);
+    alias da_glCreateRenderbuffers = void function(GLsizei,GLuint*);
+    alias da_glNamedRenderbufferStorage = void function(GLuint,GLenum,GLsizei,GLsizei);
+    alias da_glNamedRenderbufferStorageMultisample = void function(GLuint,GLsizei,GLenum,GLsizei,GLsizei);
+    alias da_glGetNamedRenderbufferParameteriv = void function(GLuint,GLenum,GLint*);
+    alias da_glCreateTextures = void function(GLenum,GLsizei,GLuint*);
+    alias da_glTextureBuffer = void function(GLuint,GLenum,GLuint);
+    alias da_glTextureBufferRange = void function(GLuint,GLenum,GLuint,GLintptr,GLsizeiptr);
+    alias da_glTextureStorage1D = void function(GLuint,GLsizei,GLenum,GLsizei);
+    alias da_glTextureStorage2D = void function(GLuint,GLsizei,GLenum,GLsizei,GLsizei);
+    alias da_glTextureStorage3D = void function(GLuint,GLsizei,GLenum,GLsizei,GLsizei,GLsizei);
+    alias da_glTextureStorage2DMultisample = void function(GLuint,GLsizei,GLenum,GLsizei,GLsizei,GLboolean);
+    alias da_glTextureStorage3DMultisample = void function(GLuint,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean);
+    alias da_glTextureSubImage1D = void function(GLuint,GLint,GLint,GLsizei,GLenum,GLenum,const(void)*);
+    alias da_glTextureSubImage2D = void function(GLuint,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLenum,const(void)*);
+    alias da_glTextureSubImage3D = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const(void)*);
+    alias da_glCompressedTextureSubImage1D = void function(GLuint,GLint,GLint,GLsizei,GLenum,GLsizei,const(void)*);
+    alias da_glCompressedTextureSubImage2D = void function(GLuint,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLsizei,const(void)*);
+    alias da_glCompressedTextureSubImage3D = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLsizei,const(void)*);
+    alias da_glCopyTextureSubImage1D = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei);
+    alias da_glCopyTextureSubImage2D = void function(GLuint,GLint,GLint,GLint,GLint,GLint,GLsizei,GLsizei);
+    alias da_glCopyTextureSubImage3D = void function(GLuint,GLint,GLint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei);
+    alias da_glTextureParameterf = void function(GLuint,GLenum,GLfloat);
+    alias da_glTextureParameterfv = void function(GLuint,GLenum,const(GLfloat)*);
+    alias da_glTextureParameteri = void function(GLuint,GLenum,GLint);
+    alias da_glTextureParameterIiv = void function(GLuint,GLenum,const(GLint)*);
+    alias da_glTextureParameterIuiv = void function(GLuint,GLenum,const(GLuint)*);
+    alias da_glTextureParameteriv = void function(GLuint,GLenum,const(GLint)*);
+    alias da_glGenerateTextureMipmap = void function(GLuint);
+    alias da_glBindTextureUnit = void function(GLuint,GLuint);
+    alias da_glGetTextureImage = void function(GLuint,GLint,GLenum,GLenum,GLsizei,void*);
+    alias da_glGetCompressedTextureImage = void function(GLuint,GLint,GLsizei,void*);
+    alias da_glGetTextureLevelParameterfv = void function(GLuint,GLint,GLenum,GLfloat*);
+    alias da_glGetTextureLevelParameteriv = void function(GLuint,GLint,GLenum,GLint*);
+    alias da_glGetTextureParameterfv = void function(GLuint,GLenum,GLfloat*);
+    alias da_glGetTextureParameterIiv = void function(GLuint,GLenum,GLint*);
+    alias da_glGetTextureParameterIuiv = void function(GLuint,GLenum,GLuint*);
+    alias da_glGetTextureParameteriv = void function(GLuint,GLenum,GLint*);
+    alias da_glCreateVertexArrays = void function(GLsizei,GLuint*);
+    alias da_glDisableVertexArrayAttrib = void function(GLuint,GLuint);
+    alias da_glEnableVertexArrayAttrib = void function(GLuint,GLuint);
+    alias da_glVertexArrayElementBuffer = void function(GLuint,GLuint);
+    alias da_glVertexArrayVertexBuffer = void function(GLuint,GLuint,GLuint,GLintptr,GLsizei);
+    alias da_glVertexArrayVertexBuffers = void function(GLuint,GLuint,GLsizei,const(GLuint)*,const(GLintptr)*,const(GLsizei)*);
+    alias da_glVertexArrayAttribFormat = void function(GLuint,GLuint,GLint,GLenum,GLboolean,GLuint);
+    alias da_glVertexArrayAttribIFormat = void function(GLuint,GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexArrayAttribLFormat = void function(GLuint,GLuint,GLint,GLenum,GLuint);
+    alias da_glVertexArrayAttribBinding = void function(GLuint,GLuint,GLuint);
+    alias da_glVertexArrayBindingDivisor = void function(GLuint,GLuint,GLuint);
+    alias da_glGetVertexArrayiv = void function(GLuint,GLenum,GLint*);
+    alias da_glGetVertexArrayIndexediv = void function(GLuint,GLuint,GLenum,GLint*);
+    alias da_glGetVertexArrayIndexed64iv = void function(GLuint,GLuint,GLenum,GLint64*);
+    alias da_glCreateSamplers = void function(GLsizei,GLuint*);
+    alias da_glCreateProgramPipelines = void function(GLsizei,GLuint*);
+    alias da_glCreateQueries = void function(GLenum,GLsizei,GLuint*);
+    alias da_glGetQueryBufferObjectiv = void function(GLuint,GLuint,GLenum,GLintptr);
+    alias da_glGetQueryBufferObjectuiv = void function(GLuint,GLuint,GLenum,GLintptr);
+    alias da_glGetQueryBufferObjecti64v = void function(GLuint,GLuint,GLenum,GLintptr);
+    alias da_glGetQueryBufferObjectui64v = void function(GLuint,GLuint,GLenum,GLintptr);
 }
 
 __gshared {
@@ -3313,116 +3313,116 @@ __gshared {
 
 private __gshared bool _ARB_direct_state_access;
 @nogc bool ARB_direct_state_access() nothrow @property { return _ARB_direct_state_access; }
-package void load_ARB_direct_state_access( bool doThrow = false ) {
+package void load_ARB_direct_state_access(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glCreateTransformFeedbacks, "glCreateTransformFeedbacks" );
-        bindGLFunc( cast( void** )&glTransformFeedbackBufferBase, "glTransformFeedbackBufferBase" );
-        bindGLFunc( cast( void** )&glTransformFeedbackBufferRange, "glTransformFeedbackBufferRange" );
-        bindGLFunc( cast( void** )&glGetTransformFeedbackiv, "glGetTransformFeedbackiv" );
-        bindGLFunc( cast( void** )&glGetTransformFeedbacki_v, "glGetTransformFeedbacki_v" );
-        bindGLFunc( cast( void** )&glGetTransformFeedbacki64_v, "glGetTransformFeedbacki64_v" );
-        bindGLFunc( cast( void** )&glCreateBuffers, "glCreateBuffers" );
-        bindGLFunc( cast( void** )&glNamedBufferStorage, "glNamedBufferStorage" );
-        bindGLFunc( cast( void** )&glNamedBufferData, "glNamedBufferData" );
-        bindGLFunc( cast( void** )&glNamedBufferSubData, "glNamedBufferSubData" );
-        bindGLFunc( cast( void** )&glCopyNamedBufferSubData, "glCopyNamedBufferSubData" );
-        bindGLFunc( cast( void** )&glClearNamedBufferData, "glClearNamedBufferData" );
-        bindGLFunc( cast( void** )&glClearNamedBufferSubData, "glClearNamedBufferSubData" );
-        bindGLFunc( cast( void** )&glMapNamedBuffer, "glMapNamedBuffer" );
-        bindGLFunc( cast( void** )&glMapNamedBufferRange, "glMapNamedBufferRange" );
-        bindGLFunc( cast( void** )&glUnmapNamedBuffer, "glUnmapNamedBuffer" );
-        bindGLFunc( cast( void** )&glFlushMappedNamedBufferRange, "glFlushMappedNamedBufferRange" );
-        bindGLFunc( cast( void** )&glGetNamedBufferParameteriv, "glGetNamedBufferParameteriv" );
-        bindGLFunc( cast( void** )&glGetNamedBufferParameteri64v, "glGetNamedBufferParameteri64v" );
-        bindGLFunc( cast( void** )&glGetNamedBufferPointerv, "glGetNamedBufferPointerv" );
-        bindGLFunc( cast( void** )&glGetNamedBufferSubData, "glGetNamedBufferSubData" );
-        bindGLFunc( cast( void** )&glCreateFramebuffers, "glCreateFramebuffers" );
-        bindGLFunc( cast( void** )&glNamedFramebufferRenderbuffer, "glNamedFramebufferRenderbuffer" );
-        bindGLFunc( cast( void** )&glNamedFramebufferParameteri, "glNamedFramebufferParameteri" );
-        bindGLFunc( cast( void** )&glNamedFramebufferTexture, "glNamedFramebufferTexture" );
-        bindGLFunc( cast( void** )&glNamedFramebufferTextureLayer, "glNamedFramebufferTextureLayer" );
-        bindGLFunc( cast( void** )&glNamedFramebufferDrawBuffer, "glNamedFramebufferDrawBuffer" );
-        bindGLFunc( cast( void** )&glNamedFramebufferDrawBuffers, "glNamedFramebufferDrawBuffers" );
-        bindGLFunc( cast( void** )&glNamedFramebufferReadBuffer, "glNamedFramebufferReadBuffer" );
-        bindGLFunc( cast( void** )&glInvalidateNamedFramebufferData, "glInvalidateNamedFramebufferData" );
-        bindGLFunc( cast( void** )&glInvalidateNamedFramebufferSubData, "glInvalidateNamedFramebufferSubData" );
-        bindGLFunc( cast( void** )&glClearNamedFramebufferiv, "glClearNamedFramebufferiv" );
-        bindGLFunc( cast( void** )&glClearNamedFramebufferuiv, "glClearNamedFramebufferuiv" );
-        bindGLFunc( cast( void** )&glClearNamedFramebufferfv, "glClearNamedFramebufferfv" );
-        bindGLFunc( cast( void** )&glClearNamedFramebufferfi, "glClearNamedFramebufferfi" );
-        bindGLFunc( cast( void** )&glBlitNamedFramebuffer, "glBlitNamedFramebuffer" );
-        bindGLFunc( cast( void** )&glCheckNamedFramebufferStatus, "glCheckNamedFramebufferStatus" );
-        bindGLFunc( cast( void** )&glGetNamedFramebufferParameteriv, "glGetNamedFramebufferParameteriv" );
-        bindGLFunc( cast( void** )&glGetNamedFramebufferAttachmentParameteriv, "glGetNamedFramebufferAttachmentParameteriv" );
-        bindGLFunc( cast( void** )&glCreateRenderbuffers, "glCreateRenderbuffers" );
-        bindGLFunc( cast( void** )&glNamedRenderbufferStorage, "glNamedRenderbufferStorage" );
-        bindGLFunc( cast( void** )&glNamedRenderbufferStorageMultisample, "glNamedRenderbufferStorageMultisample" );
-        bindGLFunc( cast( void** )&glGetNamedRenderbufferParameteriv, "glGetNamedRenderbufferParameteriv" );
-        bindGLFunc( cast( void** )&glCreateTextures, "glCreateTextures" );
-        bindGLFunc( cast( void** )&glTextureBuffer, "glTextureBuffer" );
-        bindGLFunc( cast( void** )&glTextureBufferRange, "glTextureBufferRange" );
-        bindGLFunc( cast( void** )&glTextureStorage1D, "glTextureStorage1D" );
-        bindGLFunc( cast( void** )&glTextureStorage2D, "glTextureStorage2D" );
-        bindGLFunc( cast( void** )&glTextureStorage3D, "glTextureStorage3D" );
-        bindGLFunc( cast( void** )&glTextureStorage2DMultisample, "glTextureStorage2DMultisample" );
-        bindGLFunc( cast( void** )&glTextureStorage3DMultisample, "glTextureStorage3DMultisample" );
-        bindGLFunc( cast( void** )&glTextureSubImage1D, "glTextureSubImage1D" );
-        bindGLFunc( cast( void** )&glTextureSubImage2D, "glTextureSubImage2D" );
-        bindGLFunc( cast( void** )&glTextureSubImage3D, "glTextureSubImage3D" );
-        bindGLFunc( cast( void** )&glCompressedTextureSubImage1D, "glCompressedTextureSubImage1D" );
-        bindGLFunc( cast( void** )&glCompressedTextureSubImage2D, "glCompressedTextureSubImage2D" );
-        bindGLFunc( cast( void** )&glCompressedTextureSubImage3D, "glCompressedTextureSubImage3D" );
-        bindGLFunc( cast( void** )&glCopyTextureSubImage1D, "glCopyTextureSubImage1D" );
-        bindGLFunc( cast( void** )&glCopyTextureSubImage2D, "glCopyTextureSubImage2D" );
-        bindGLFunc( cast( void** )&glCopyTextureSubImage3D, "glCopyTextureSubImage3D" );
-        bindGLFunc( cast( void** )&glTextureParameterf, "glTextureParameterf" );
-        bindGLFunc( cast( void** )&glTextureParameterfv, "glTextureParameterfv" );
-        bindGLFunc( cast( void** )&glTextureParameteri, "glTextureParameteri" );
-        bindGLFunc( cast( void** )&glTextureParameterIiv, "glTextureParameterIiv" );
-        bindGLFunc( cast( void** )&glTextureParameterIuiv, "glTextureParameterIuiv" );
-        bindGLFunc( cast( void** )&glTextureParameteriv, "glTextureParameteriv" );
-        bindGLFunc( cast( void** )&glGenerateTextureMipmap, "glGenerateTextureMipmap" );
-        bindGLFunc( cast( void** )&glBindTextureUnit, "glBindTextureUnit" );
-        bindGLFunc( cast( void** )&glGetTextureImage, "glGetTextureImage" );
-        bindGLFunc( cast( void** )&glGetCompressedTextureImage, "glGetCompressedTextureImage" );
-        bindGLFunc( cast( void** )&glGetTextureLevelParameterfv, "glGetTextureLevelParameterfv" );
-        bindGLFunc( cast( void** )&glGetTextureLevelParameteriv, "glGetTextureLevelParameteriv" );
-        bindGLFunc( cast( void** )&glGetTextureParameterfv, "glGetTextureParameterfv" );
-        bindGLFunc( cast( void** )&glGetTextureParameterIiv, "glGetTextureParameterIiv" );
-        bindGLFunc( cast( void** )&glGetTextureParameterIuiv, "glGetTextureParameterIuiv" );
-        bindGLFunc( cast( void** )&glGetTextureParameteriv, "glGetTextureParameteriv" );
-        bindGLFunc( cast( void** )&glCreateVertexArrays, "glCreateVertexArrays" );
-        bindGLFunc( cast( void** )&glDisableVertexArrayAttrib, "glDisableVertexArrayAttrib" );
-        bindGLFunc( cast( void** )&glEnableVertexArrayAttrib, "glEnableVertexArrayAttrib" );
-        bindGLFunc( cast( void** )&glVertexArrayElementBuffer, "glVertexArrayElementBuffer" );
-        bindGLFunc( cast( void** )&glVertexArrayVertexBuffer, "glVertexArrayVertexBuffer" );
-        bindGLFunc( cast( void** )&glVertexArrayVertexBuffers, "glVertexArrayVertexBuffers" );
-        bindGLFunc( cast( void** )&glVertexArrayAttribBinding, "glVertexArrayAttribBinding" );
-        bindGLFunc( cast( void** )&glVertexArrayAttribFormat, "glVertexArrayAttribFormat" );
-        bindGLFunc( cast( void** )&glVertexArrayAttribIFormat, "glVertexArrayAttribIFormat" );
-        bindGLFunc( cast( void** )&glVertexArrayAttribLFormat, "glVertexArrayAttribLFormat" );
-        bindGLFunc( cast( void** )&glVertexArrayBindingDivisor, "glVertexArrayBindingDivisor" );
-        bindGLFunc( cast( void** )&glGetVertexArrayiv, "glGetVertexArrayiv" );
-        bindGLFunc( cast( void** )&glGetVertexArrayIndexediv, "glGetVertexArrayIndexediv" );
-        bindGLFunc( cast( void** )&glGetVertexArrayIndexed64iv, "glGetVertexArrayIndexed64iv" );
-        bindGLFunc( cast( void** )&glCreateSamplers, "glCreateSamplers" );
-        bindGLFunc( cast( void** )&glCreateProgramPipelines, "glCreateProgramPipelines" );
-        bindGLFunc( cast( void** )&glCreateQueries, "glCreateQueries" );
-        bindGLFunc( cast( void** )&glGetQueryBufferObjecti64v, "glGetQueryBufferObjecti64v" );
-        bindGLFunc( cast( void** )&glGetQueryBufferObjectiv, "glGetQueryBufferObjectiv" );
-        bindGLFunc( cast( void** )&glGetQueryBufferObjectui64v, "glGetQueryBufferObjectui64v" );
-        bindGLFunc( cast( void** )&glGetQueryBufferObjectuiv, "glGetQueryBufferObjectuiv" );
+        bindGLFunc(cast(void**)&glCreateTransformFeedbacks, "glCreateTransformFeedbacks");
+        bindGLFunc(cast(void**)&glTransformFeedbackBufferBase, "glTransformFeedbackBufferBase");
+        bindGLFunc(cast(void**)&glTransformFeedbackBufferRange, "glTransformFeedbackBufferRange");
+        bindGLFunc(cast(void**)&glGetTransformFeedbackiv, "glGetTransformFeedbackiv");
+        bindGLFunc(cast(void**)&glGetTransformFeedbacki_v, "glGetTransformFeedbacki_v");
+        bindGLFunc(cast(void**)&glGetTransformFeedbacki64_v, "glGetTransformFeedbacki64_v");
+        bindGLFunc(cast(void**)&glCreateBuffers, "glCreateBuffers");
+        bindGLFunc(cast(void**)&glNamedBufferStorage, "glNamedBufferStorage");
+        bindGLFunc(cast(void**)&glNamedBufferData, "glNamedBufferData");
+        bindGLFunc(cast(void**)&glNamedBufferSubData, "glNamedBufferSubData");
+        bindGLFunc(cast(void**)&glCopyNamedBufferSubData, "glCopyNamedBufferSubData");
+        bindGLFunc(cast(void**)&glClearNamedBufferData, "glClearNamedBufferData");
+        bindGLFunc(cast(void**)&glClearNamedBufferSubData, "glClearNamedBufferSubData");
+        bindGLFunc(cast(void**)&glMapNamedBuffer, "glMapNamedBuffer");
+        bindGLFunc(cast(void**)&glMapNamedBufferRange, "glMapNamedBufferRange");
+        bindGLFunc(cast(void**)&glUnmapNamedBuffer, "glUnmapNamedBuffer");
+        bindGLFunc(cast(void**)&glFlushMappedNamedBufferRange, "glFlushMappedNamedBufferRange");
+        bindGLFunc(cast(void**)&glGetNamedBufferParameteriv, "glGetNamedBufferParameteriv");
+        bindGLFunc(cast(void**)&glGetNamedBufferParameteri64v, "glGetNamedBufferParameteri64v");
+        bindGLFunc(cast(void**)&glGetNamedBufferPointerv, "glGetNamedBufferPointerv");
+        bindGLFunc(cast(void**)&glGetNamedBufferSubData, "glGetNamedBufferSubData");
+        bindGLFunc(cast(void**)&glCreateFramebuffers, "glCreateFramebuffers");
+        bindGLFunc(cast(void**)&glNamedFramebufferRenderbuffer, "glNamedFramebufferRenderbuffer");
+        bindGLFunc(cast(void**)&glNamedFramebufferParameteri, "glNamedFramebufferParameteri");
+        bindGLFunc(cast(void**)&glNamedFramebufferTexture, "glNamedFramebufferTexture");
+        bindGLFunc(cast(void**)&glNamedFramebufferTextureLayer, "glNamedFramebufferTextureLayer");
+        bindGLFunc(cast(void**)&glNamedFramebufferDrawBuffer, "glNamedFramebufferDrawBuffer");
+        bindGLFunc(cast(void**)&glNamedFramebufferDrawBuffers, "glNamedFramebufferDrawBuffers");
+        bindGLFunc(cast(void**)&glNamedFramebufferReadBuffer, "glNamedFramebufferReadBuffer");
+        bindGLFunc(cast(void**)&glInvalidateNamedFramebufferData, "glInvalidateNamedFramebufferData");
+        bindGLFunc(cast(void**)&glInvalidateNamedFramebufferSubData, "glInvalidateNamedFramebufferSubData");
+        bindGLFunc(cast(void**)&glClearNamedFramebufferiv, "glClearNamedFramebufferiv");
+        bindGLFunc(cast(void**)&glClearNamedFramebufferuiv, "glClearNamedFramebufferuiv");
+        bindGLFunc(cast(void**)&glClearNamedFramebufferfv, "glClearNamedFramebufferfv");
+        bindGLFunc(cast(void**)&glClearNamedFramebufferfi, "glClearNamedFramebufferfi");
+        bindGLFunc(cast(void**)&glBlitNamedFramebuffer, "glBlitNamedFramebuffer");
+        bindGLFunc(cast(void**)&glCheckNamedFramebufferStatus, "glCheckNamedFramebufferStatus");
+        bindGLFunc(cast(void**)&glGetNamedFramebufferParameteriv, "glGetNamedFramebufferParameteriv");
+        bindGLFunc(cast(void**)&glGetNamedFramebufferAttachmentParameteriv, "glGetNamedFramebufferAttachmentParameteriv");
+        bindGLFunc(cast(void**)&glCreateRenderbuffers, "glCreateRenderbuffers");
+        bindGLFunc(cast(void**)&glNamedRenderbufferStorage, "glNamedRenderbufferStorage");
+        bindGLFunc(cast(void**)&glNamedRenderbufferStorageMultisample, "glNamedRenderbufferStorageMultisample");
+        bindGLFunc(cast(void**)&glGetNamedRenderbufferParameteriv, "glGetNamedRenderbufferParameteriv");
+        bindGLFunc(cast(void**)&glCreateTextures, "glCreateTextures");
+        bindGLFunc(cast(void**)&glTextureBuffer, "glTextureBuffer");
+        bindGLFunc(cast(void**)&glTextureBufferRange, "glTextureBufferRange");
+        bindGLFunc(cast(void**)&glTextureStorage1D, "glTextureStorage1D");
+        bindGLFunc(cast(void**)&glTextureStorage2D, "glTextureStorage2D");
+        bindGLFunc(cast(void**)&glTextureStorage3D, "glTextureStorage3D");
+        bindGLFunc(cast(void**)&glTextureStorage2DMultisample, "glTextureStorage2DMultisample");
+        bindGLFunc(cast(void**)&glTextureStorage3DMultisample, "glTextureStorage3DMultisample");
+        bindGLFunc(cast(void**)&glTextureSubImage1D, "glTextureSubImage1D");
+        bindGLFunc(cast(void**)&glTextureSubImage2D, "glTextureSubImage2D");
+        bindGLFunc(cast(void**)&glTextureSubImage3D, "glTextureSubImage3D");
+        bindGLFunc(cast(void**)&glCompressedTextureSubImage1D, "glCompressedTextureSubImage1D");
+        bindGLFunc(cast(void**)&glCompressedTextureSubImage2D, "glCompressedTextureSubImage2D");
+        bindGLFunc(cast(void**)&glCompressedTextureSubImage3D, "glCompressedTextureSubImage3D");
+        bindGLFunc(cast(void**)&glCopyTextureSubImage1D, "glCopyTextureSubImage1D");
+        bindGLFunc(cast(void**)&glCopyTextureSubImage2D, "glCopyTextureSubImage2D");
+        bindGLFunc(cast(void**)&glCopyTextureSubImage3D, "glCopyTextureSubImage3D");
+        bindGLFunc(cast(void**)&glTextureParameterf, "glTextureParameterf");
+        bindGLFunc(cast(void**)&glTextureParameterfv, "glTextureParameterfv");
+        bindGLFunc(cast(void**)&glTextureParameteri, "glTextureParameteri");
+        bindGLFunc(cast(void**)&glTextureParameterIiv, "glTextureParameterIiv");
+        bindGLFunc(cast(void**)&glTextureParameterIuiv, "glTextureParameterIuiv");
+        bindGLFunc(cast(void**)&glTextureParameteriv, "glTextureParameteriv");
+        bindGLFunc(cast(void**)&glGenerateTextureMipmap, "glGenerateTextureMipmap");
+        bindGLFunc(cast(void**)&glBindTextureUnit, "glBindTextureUnit");
+        bindGLFunc(cast(void**)&glGetTextureImage, "glGetTextureImage");
+        bindGLFunc(cast(void**)&glGetCompressedTextureImage, "glGetCompressedTextureImage");
+        bindGLFunc(cast(void**)&glGetTextureLevelParameterfv, "glGetTextureLevelParameterfv");
+        bindGLFunc(cast(void**)&glGetTextureLevelParameteriv, "glGetTextureLevelParameteriv");
+        bindGLFunc(cast(void**)&glGetTextureParameterfv, "glGetTextureParameterfv");
+        bindGLFunc(cast(void**)&glGetTextureParameterIiv, "glGetTextureParameterIiv");
+        bindGLFunc(cast(void**)&glGetTextureParameterIuiv, "glGetTextureParameterIuiv");
+        bindGLFunc(cast(void**)&glGetTextureParameteriv, "glGetTextureParameteriv");
+        bindGLFunc(cast(void**)&glCreateVertexArrays, "glCreateVertexArrays");
+        bindGLFunc(cast(void**)&glDisableVertexArrayAttrib, "glDisableVertexArrayAttrib");
+        bindGLFunc(cast(void**)&glEnableVertexArrayAttrib, "glEnableVertexArrayAttrib");
+        bindGLFunc(cast(void**)&glVertexArrayElementBuffer, "glVertexArrayElementBuffer");
+        bindGLFunc(cast(void**)&glVertexArrayVertexBuffer, "glVertexArrayVertexBuffer");
+        bindGLFunc(cast(void**)&glVertexArrayVertexBuffers, "glVertexArrayVertexBuffers");
+        bindGLFunc(cast(void**)&glVertexArrayAttribBinding, "glVertexArrayAttribBinding");
+        bindGLFunc(cast(void**)&glVertexArrayAttribFormat, "glVertexArrayAttribFormat");
+        bindGLFunc(cast(void**)&glVertexArrayAttribIFormat, "glVertexArrayAttribIFormat");
+        bindGLFunc(cast(void**)&glVertexArrayAttribLFormat, "glVertexArrayAttribLFormat");
+        bindGLFunc(cast(void**)&glVertexArrayBindingDivisor, "glVertexArrayBindingDivisor");
+        bindGLFunc(cast(void**)&glGetVertexArrayiv, "glGetVertexArrayiv");
+        bindGLFunc(cast(void**)&glGetVertexArrayIndexediv, "glGetVertexArrayIndexediv");
+        bindGLFunc(cast(void**)&glGetVertexArrayIndexed64iv, "glGetVertexArrayIndexed64iv");
+        bindGLFunc(cast(void**)&glCreateSamplers, "glCreateSamplers");
+        bindGLFunc(cast(void**)&glCreateProgramPipelines, "glCreateProgramPipelines");
+        bindGLFunc(cast(void**)&glCreateQueries, "glCreateQueries");
+        bindGLFunc(cast(void**)&glGetQueryBufferObjecti64v, "glGetQueryBufferObjecti64v");
+        bindGLFunc(cast(void**)&glGetQueryBufferObjectiv, "glGetQueryBufferObjectiv");
+        bindGLFunc(cast(void**)&glGetQueryBufferObjectui64v, "glGetQueryBufferObjectui64v");
+        bindGLFunc(cast(void**)&glGetQueryBufferObjectuiv, "glGetQueryBufferObjectuiv");
         _ARB_direct_state_access = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_direct_state_access = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // ARB_get_texture_sub_image
-extern( System ) @nogc nothrow {
-    alias da_glGetTextureSubImage = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,GLsizei,void* );
-    alias da_glGetCompressedTextureSubImage = void function( GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLsizei,void* );
+extern(System) @nogc nothrow {
+    alias da_glGetTextureSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,GLsizei,void*);
+    alias da_glGetCompressedTextureSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLsizei,void*);
 }
 
 __gshared {
@@ -3432,24 +3432,24 @@ __gshared {
 
 private __gshared bool _ARB_get_texture_sub_image;
 @nogc bool ARB_get_texture_sub_image() nothrow @property { return _ARB_get_texture_sub_image; }
-package void load_ARB_get_texture_sub_image( bool doThrow = false ) {
+package void load_ARB_get_texture_sub_image(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetTextureSubImage, "glGetTextureSubImage" );
-        bindGLFunc( cast( void** )&glGetCompressedTextureSubImage, "glGetCompressedTextureSubImage" );
+        bindGLFunc(cast(void**)&glGetTextureSubImage, "glGetTextureSubImage");
+        bindGLFunc(cast(void**)&glGetCompressedTextureSubImage, "glGetCompressedTextureSubImage");
         _ARB_get_texture_sub_image = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_get_texture_sub_image = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
 // KHR_robustness
-extern( System ) @nogc nothrow {
+extern(System) @nogc nothrow {
     alias da_glGetGraphicsResetStatus = GLenum function();
-    alias da_glReadnPixels = void function( GLint,GLint,GLsizei,GLsizei,GLenum,GLenum,GLsizei,void* );
-    alias da_glGetnUniformfv = void function( GLuint,GLint,GLsizei,GLfloat* );
-    alias da_glGetnUniformiv = void function( GLuint,GLint,GLsizei,GLint* );
-    alias da_glGetnUniformuiv = void function( GLuint,GLint,GLsizei,GLuint* );
+    alias da_glReadnPixels = void function(GLint,GLint,GLsizei,GLsizei,GLenum,GLenum,GLsizei,void*);
+    alias da_glGetnUniformfv = void function(GLuint,GLint,GLsizei,GLfloat*);
+    alias da_glGetnUniformiv = void function(GLuint,GLint,GLsizei,GLint*);
+    alias da_glGetnUniformuiv = void function(GLuint,GLint,GLsizei,GLuint*);
 }
 
 __gshared {
@@ -3462,17 +3462,17 @@ __gshared {
 
 private __gshared bool _KHR_robustness;
 @nogc bool KHR_robustness() nothrow @property { return _KHR_robustness; }
-package void load_KHR_robustness( bool doThrow = false ) {
+package void load_KHR_robustness(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glGetGraphicsResetStatus, "glGetGraphicsResetStatus" );
-        bindGLFunc( cast( void** )&glReadnPixels, "glReadnPixels" );
-        bindGLFunc( cast( void** )&glGetnUniformfv, "glGetnUniformfv" );
-        bindGLFunc( cast( void** )&glGetnUniformiv, "glGetnUniformiv" );
-        bindGLFunc( cast( void** )&glGetnUniformuiv, "glGetnUniformuiv" );
+        bindGLFunc(cast(void**)&glGetGraphicsResetStatus, "glGetGraphicsResetStatus");
+        bindGLFunc(cast(void**)&glReadnPixels, "glReadnPixels");
+        bindGLFunc(cast(void**)&glGetnUniformfv, "glGetnUniformfv");
+        bindGLFunc(cast(void**)&glGetnUniformiv, "glGetnUniformiv");
+        bindGLFunc(cast(void**)&glGetnUniformuiv, "glGetnUniformuiv");
         _KHR_robustness = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _KHR_robustness = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
@@ -3481,153 +3481,153 @@ private __gshared bool _ARB_shader_texture_image_samples;
 @nogc bool ARB_shader_texture_image_samples() nothrow @property { return _ARB_shader_texture_image_samples; }
 
 // ARB_texture_barrier
-extern( System ) @nogc nothrow alias da_glTextureBarrier = void function();
+extern(System) @nogc nothrow alias da_glTextureBarrier = void function();
 __gshared da_glTextureBarrier glTextureBarrier;
 private __gshared bool _ARB_texture_barrier;
 @nogc bool ARB_texture_barrier() nothrow @property { return _ARB_texture_barrier; }
-package void load_ARB_texture_barrier( bool doThrow = false ) {
+package void load_ARB_texture_barrier(bool doThrow = false) {
     try {
-        bindGLFunc( cast( void** )&glTextureBarrier, "glTextureBarrier" );
+        bindGLFunc(cast(void**)&glTextureBarrier, "glTextureBarrier");
         _ARB_texture_barrier = true;
-    } catch( Exception e ) {
+    } catch(Exception e) {
         _ARB_texture_barrier = false;
-        if( doThrow ) throw e;
+        if(doThrow) throw e;
     }
 }
 
-package void loadARB( GLVersion glversion )
+package void loadARB(GLVersion glversion)
 {
-    if( glversion  < GLVersion.GL30 ) {
-        if( isExtSupported( glversion, "GL_ARB_framebuffer_object" )) load_ARB_framebuffer_object();
-        if( isExtSupported( glversion, "GL_ARB_map_buffer_range" )) load_ARB_map_buffer_range();
-        if( isExtSupported( glversion, "GL_ARB_vertex_array_object" )) load_ARB_vertex_array_object();
+    if(glversion  < GLVersion.GL30) {
+        if(isExtSupported(glversion, "GL_ARB_framebuffer_object")) load_ARB_framebuffer_object();
+        if(isExtSupported(glversion, "GL_ARB_map_buffer_range")) load_ARB_map_buffer_range();
+        if(isExtSupported(glversion, "GL_ARB_vertex_array_object")) load_ARB_vertex_array_object();
     }
 
-    if( glversion < GLVersion.GL31 ) {
-        if( isExtSupported( glversion, "GL_ARB_copy_buffer" )) load_ARB_copy_buffer();
-        if( isExtSupported( glversion, "GL_ARB_uniform_buffer_object" )) load_ARB_uniform_buffer_object();
+    if(glversion < GLVersion.GL31) {
+        if(isExtSupported(glversion, "GL_ARB_copy_buffer")) load_ARB_copy_buffer();
+        if(isExtSupported(glversion, "GL_ARB_uniform_buffer_object")) load_ARB_uniform_buffer_object();
     }
 
-    if( glversion < GLVersion.GL32 ) {
-        if( isExtSupported( glversion, "GL_ARB_draw_elements_base_vertex" )) load_ARB_draw_elements_base_vertex();
-        if( isExtSupported( glversion, "GL_ARB_provoking_vertex" )) load_ARB_provoking_vertex();
-        if( isExtSupported( glversion, "GL_ARB_sync" )) load_ARB_sync();
-        if( isExtSupported( glversion, "GL_ARB_texture_multisample" )) load_ARB_texture_multisample();
+    if(glversion < GLVersion.GL32) {
+        if(isExtSupported(glversion, "GL_ARB_draw_elements_base_vertex")) load_ARB_draw_elements_base_vertex();
+        if(isExtSupported(glversion, "GL_ARB_provoking_vertex")) load_ARB_provoking_vertex();
+        if(isExtSupported(glversion, "GL_ARB_sync")) load_ARB_sync();
+        if(isExtSupported(glversion, "GL_ARB_texture_multisample")) load_ARB_texture_multisample();
     }
 
-    if( glversion < GLVersion.GL33 ) {
-        if( isExtSupported( glversion, "GL_ARB_blend_func_extended" )) load_ARB_blend_func_extended();
-        if( isExtSupported( glversion, "GL_ARB_sampler_objects" )) load_ARB_sampler_objects();
-        if( isExtSupported( glversion, "GL_ARB_timer_query" )) load_ARB_timer_query();
-        if( isExtSupported( glversion, "GL_ARB_vertex_type_2_10_10_10_rev" )) load_ARB_vertex_type_2_10_10_10_rev();
+    if(glversion < GLVersion.GL33) {
+        if(isExtSupported(glversion, "GL_ARB_blend_func_extended")) load_ARB_blend_func_extended();
+        if(isExtSupported(glversion, "GL_ARB_sampler_objects")) load_ARB_sampler_objects();
+        if(isExtSupported(glversion, "GL_ARB_timer_query")) load_ARB_timer_query();
+        if(isExtSupported(glversion, "GL_ARB_vertex_type_2_10_10_10_rev")) load_ARB_vertex_type_2_10_10_10_rev();
     }
 
-    if( glversion < GLVersion.GL40 ) {
-        if( isExtSupported( glversion, "GL_ARB_draw_buffers_blend" )) load_ARB_draw_buffers_blend();
-        if( isExtSupported( glversion, "GL_ARB_draw_indirect" )) load_ARB_draw_indirect();
-        if( isExtSupported( glversion, "GL_ARB_gpu_shader_fp64" )) load_ARB_gpu_shader_fp64();
-        if( isExtSupported( glversion, "GL_ARB_sample_shading")) load_ARB_sample_shading();
-        if( isExtSupported( glversion, "GL_ARB_shader_subroutine" )) load_ARB_shader_subroutine();
-        if( isExtSupported( glversion, "GL_ARB_tessellation_shader" )) load_ARB_tessellation_shader();
-        if( isExtSupported( glversion, "GL_ARB_transform_feedback2" )) load_ARB_transform_feedback2();
-        if( isExtSupported( glversion, "GL_ARB_transform_feedback3" )) load_ARB_transform_feedback3();
+    if(glversion < GLVersion.GL40) {
+        if(isExtSupported(glversion, "GL_ARB_draw_buffers_blend")) load_ARB_draw_buffers_blend();
+        if(isExtSupported(glversion, "GL_ARB_draw_indirect")) load_ARB_draw_indirect();
+        if(isExtSupported(glversion, "GL_ARB_gpu_shader_fp64")) load_ARB_gpu_shader_fp64();
+        if(isExtSupported(glversion, "GL_ARB_sample_shading")) load_ARB_sample_shading();
+        if(isExtSupported(glversion, "GL_ARB_shader_subroutine")) load_ARB_shader_subroutine();
+        if(isExtSupported(glversion, "GL_ARB_tessellation_shader")) load_ARB_tessellation_shader();
+        if(isExtSupported(glversion, "GL_ARB_transform_feedback2")) load_ARB_transform_feedback2();
+        if(isExtSupported(glversion, "GL_ARB_transform_feedback3")) load_ARB_transform_feedback3();
     }
 
-    if( glversion < GLVersion.GL41 ) {
-        if( isExtSupported( glversion, "GL_ARB_ES2_compatibility" )) load_ARB_ES2_compatibility();
-        if( isExtSupported( glversion, "GL_ARB_get_program_binary" )) load_ARB_get_program_binary();
-        if( isExtSupported( glversion, "GL_ARB_separate_shader_objects" )) load_ARB_separate_shader_objects();
-        if( isExtSupported( glversion, "GL_ARB_vertex_attrib_64bit" )) load_ARB_vertex_attrib_64bit();
-        if( isExtSupported( glversion, "GL_ARB_viewport_array" )) load_ARB_viewport_array();
+    if(glversion < GLVersion.GL41) {
+        if(isExtSupported(glversion, "GL_ARB_ES2_compatibility")) load_ARB_ES2_compatibility();
+        if(isExtSupported(glversion, "GL_ARB_get_program_binary")) load_ARB_get_program_binary();
+        if(isExtSupported(glversion, "GL_ARB_separate_shader_objects")) load_ARB_separate_shader_objects();
+        if(isExtSupported(glversion, "GL_ARB_vertex_attrib_64bit")) load_ARB_vertex_attrib_64bit();
+        if(isExtSupported(glversion, "GL_ARB_viewport_array")) load_ARB_viewport_array();
     }
 
-    if( glversion < GLVersion.GL42 ) {
-        if( isExtSupported( glversion, "GL_ARB_base_instance" )) load_ARB_base_instance();
-        if( isExtSupported( glversion, "GL_ARB_transform_feedback_instanced" )) load_ARB_transform_feedback_instanced();
-        if( isExtSupported( glversion, "GL_ARB_internalformat_query" )) load_ARB_internalformat_query();
-        if( isExtSupported( glversion, "GL_ARB_shader_atomic_counters" )) load_ARB_shader_atomic_counters();
-        if( isExtSupported( glversion, "GL_ARB_shader_image_load_store" )) load_ARB_shader_image_load_store();
-        if( isExtSupported( glversion, "GL_ARB_texture_storage" )) load_ARB_texture_storage( glversion );
+    if(glversion < GLVersion.GL42) {
+        if(isExtSupported(glversion, "GL_ARB_base_instance")) load_ARB_base_instance();
+        if(isExtSupported(glversion, "GL_ARB_transform_feedback_instanced")) load_ARB_transform_feedback_instanced();
+        if(isExtSupported(glversion, "GL_ARB_internalformat_query")) load_ARB_internalformat_query();
+        if(isExtSupported(glversion, "GL_ARB_shader_atomic_counters")) load_ARB_shader_atomic_counters();
+        if(isExtSupported(glversion, "GL_ARB_shader_image_load_store")) load_ARB_shader_image_load_store();
+        if(isExtSupported(glversion, "GL_ARB_texture_storage")) load_ARB_texture_storage(glversion);
     }
 
-    if( glversion < GLVersion.GL43 ) {
-        if( isExtSupported( glversion, "GL_ARB_clear_buffer_object" )) load_ARB_clear_buffer_object();
-        if( isExtSupported( glversion, "GL_ARB_copy_image" )) load_ARB_copy_image();
-        if( isExtSupported( glversion, "GL_ARB_compute_shader" )) load_ARB_compute_shader();
-        if( isExtSupported( glversion, "GL_KHR_debug" )) load_KHR_debug();
-        if( isExtSupported( glversion, "GL_ARB_framebuffer_no_attachments" )) load_ARB_framebuffer_no_attachments();
-        if( isExtSupported( glversion, "GL_ARB_internalformat_query2" )) load_ARB_internalformat_query2();
-        if( isExtSupported( glversion,"GL_ARB_invalidate_subdata" )) load_ARB_invalidate_subdata();
-        if( isExtSupported( glversion,"GL_ARB_multi_draw_indirect" )) load_ARB_multi_draw_indirect();
-        if( isExtSupported( glversion, "GL_ARB_program_interface_query" )) load_ARB_program_interface_query();
-        if( isExtSupported( glversion, "GL_ARB_shader_storage_buffer_object" )) load_ARB_shader_storage_buffer_object();
-        if( isExtSupported( glversion, "GL_ARB_texture_buffer_range" )) load_ARB_texture_buffer_range();
-        if( isExtSupported( glversion, "GL_ARB_texture_storage_multisample" )) load_ARB_texture_storage_multisample();
-        if( isExtSupported( glversion,"GL_ARB_texture_view" )) load_ARB_texture_view();
-        if( isExtSupported( glversion, "GL_ARB_vertex_attrib_binding" )) load_ARB_vertex_attrib_binding();
+    if(glversion < GLVersion.GL43) {
+        if(isExtSupported(glversion, "GL_ARB_clear_buffer_object")) load_ARB_clear_buffer_object();
+        if(isExtSupported(glversion, "GL_ARB_copy_image")) load_ARB_copy_image();
+        if(isExtSupported(glversion, "GL_ARB_compute_shader")) load_ARB_compute_shader();
+        if(isExtSupported(glversion, "GL_KHR_debug")) load_KHR_debug();
+        if(isExtSupported(glversion, "GL_ARB_framebuffer_no_attachments")) load_ARB_framebuffer_no_attachments();
+        if(isExtSupported(glversion, "GL_ARB_internalformat_query2")) load_ARB_internalformat_query2();
+        if(isExtSupported(glversion,"GL_ARB_invalidate_subdata")) load_ARB_invalidate_subdata();
+        if(isExtSupported(glversion,"GL_ARB_multi_draw_indirect")) load_ARB_multi_draw_indirect();
+        if(isExtSupported(glversion, "GL_ARB_program_interface_query")) load_ARB_program_interface_query();
+        if(isExtSupported(glversion, "GL_ARB_shader_storage_buffer_object")) load_ARB_shader_storage_buffer_object();
+        if(isExtSupported(glversion, "GL_ARB_texture_buffer_range")) load_ARB_texture_buffer_range();
+        if(isExtSupported(glversion, "GL_ARB_texture_storage_multisample")) load_ARB_texture_storage_multisample();
+        if(isExtSupported(glversion,"GL_ARB_texture_view")) load_ARB_texture_view();
+        if(isExtSupported(glversion, "GL_ARB_vertex_attrib_binding")) load_ARB_vertex_attrib_binding();
     }
 
-    if( glversion < GLVersion.GL44 ) {
-        if( isExtSupported( glversion, "GL_ARB_buffer_storage" )) load_ARB_buffer_storage( glversion );
-        if( isExtSupported( glversion, "GL_ARB_clear_texture" )) load_ARB_clear_texture();
-        if( isExtSupported( glversion, "GL_ARB_multi_bind" )) load_ARB_multi_bind();
+    if(glversion < GLVersion.GL44) {
+        if(isExtSupported(glversion, "GL_ARB_buffer_storage")) load_ARB_buffer_storage(glversion);
+        if(isExtSupported(glversion, "GL_ARB_clear_texture")) load_ARB_clear_texture();
+        if(isExtSupported(glversion, "GL_ARB_multi_bind")) load_ARB_multi_bind();
     }
 
-    if( glversion < GLVersion.GL45 ) {
-        if( isExtSupported( glversion, "GL_ARB_clip_control" )) load_ARB_clip_control();
-        if( isExtSupported( glversion, "GL_ARB_ES3_1_compatibility" )) load_ARB_ES3_1_compatibility();
-        if( isExtSupported( glversion, "GL_ARB_direct_state_access")) load_ARB_direct_state_access();
-        if( isExtSupported( glversion, "GL_ARB_get_texture_sub_image")) load_ARB_get_texture_sub_image();
-        if( isExtSupported( glversion, "GL_KHR_robustness" )) load_KHR_robustness();
-        if( isExtSupported( glversion, "GL_ARB_texture_barrier" )) load_ARB_texture_barrier();
+    if(glversion < GLVersion.GL45) {
+        if(isExtSupported(glversion, "GL_ARB_clip_control")) load_ARB_clip_control();
+        if(isExtSupported(glversion, "GL_ARB_ES3_1_compatibility")) load_ARB_ES3_1_compatibility();
+        if(isExtSupported(glversion, "GL_ARB_direct_state_access")) load_ARB_direct_state_access();
+        if(isExtSupported(glversion, "GL_ARB_get_texture_sub_image")) load_ARB_get_texture_sub_image();
+        if(isExtSupported(glversion, "GL_KHR_robustness")) load_KHR_robustness();
+        if(isExtSupported(glversion, "GL_ARB_texture_barrier")) load_ARB_texture_barrier();
     }
 
-    if( isExtSupported( glversion, "GL_ARB_geometry_shader4")) load_ARB_geometry_shader4();
-    if( isExtSupported( glversion, "GL_ARB_debug_output" )) load_ARB_debug_output();
-    _ARB_vertex_array_bgra = isExtSupported( glversion, "GL_ARB_vertex_array_bgra" );
-    _ARB_fragment_coord_conventions = isExtSupported( glversion, "GL_ARB_fragment_coord_conventions" );
-    _ARB_seamless_cube_map = isExtSupported( glversion, "GL_ARB_seamless_cube_map" );
-    _ARB_depth_buffer_float = isExtSupported( glversion, "GL_ARB_depth_buffer_float" );
-    _ARB_framebuffer_sRGB = isExtSupported( glversion, "GL_ARB_framebuffer_sRGB" );
-    _ARB_half_float_vertex = isExtSupported( glversion, "GL_ARB_half_float_vertex" );
-    _ARB_imaging = isExtSupported( glversion, "GL_ARB_imaging" );
-    _ARB_texture_compression_rgtc = isExtSupported( glversion, "GL_ARB_texture_compression_rgtc" );
-    _ARB_texture_rg = isExtSupported( glversion, "GL_ARB_texture_rg" );
-    _ARB_depth_clamp = isExtSupported( glversion, "GL_ARB_depth_clamp" );
-    _ARB_explicit_attrib_location = isExtSupported( glversion, "GL_ARB_explicit_attrib_location" );
-    _ARB_occlusion_query2 = isExtSupported( glversion, "GL_ARB_occlusion_query2" );
-    _ARB_shader_bit_encoding = isExtSupported( glversion, "GL_ARB_shader_bit_encoding" );
-    _ARB_texture_rgb10_a2ui = isExtSupported( glversion, "GL_ARB_texture_rgb10_a2ui" );
-    _ARB_texture_swizzle = isExtSupported( glversion, "GL_ARB_texture_swizzle" );
-    _ARB_texture_query_lod = isExtSupported( glversion, "GL_ARB_texture_query_lod" );
-    _ARB_gpu_shader5 = isExtSupported( glversion, "GL_ARB_gpu_shader5" );
-    _ARB_texture_buffer_object_rgb32 = isExtSupported( glversion, "GL_ARB_texture_buffer_object_rgb32" );
-    _ARB_texture_cube_map_array = isExtSupported( glversion, "GL_ARB_texture_cube_map_array" );
-    _ARB_texture_gather = isExtSupported( glversion, "GL_ARB_texture_gather" );
-    _ARB_shader_precision = isExtSupported( glversion, "GL_ARB_shader_precision" );
-    _ARB_texture_compression_bptc = isExtSupported( glversion, "GL__ARB_texture_compression_bptc" );
-    _ARB_shading_language_420pack = isExtSupported( glversion, "GL_ARB_shading_language_420pack" );
-    _ARB_compressed_texture_pixel_storage = isExtSupported( glversion, "GL_ARB_compressed_texture_pixel_storage" );
-    _ARB_conservative_depth = isExtSupported( glversion, "GL_ARB_conservative_depth" );
-    _ARB_map_buffer_alignment = isExtSupported( glversion, "GL_ARB_map_buffer_alignment" );
-    _ARB_shading_language_packing = isExtSupported( glversion, "GL_ARB_shading_language_packing" );
-    _ARB_array_of_arrays = isExtSupported( glversion, "GL_ARB_array_of_arrays" );
-    _ARB_fragment_layer_viewport = isExtSupported( glversion, "GL_ARB_fragment_layer_viewport" );
-    _ARB_shader_image_size = isExtSupported( glversion, "GL_ARB_shader_image_size" );
-    _ARB_ES3_compatibility = isExtSupported( glversion, "GL_ARB_ES3_compatibility" );
-    _ARB_copy_image = isExtSupported( glversion, "GL_ARB_copy_image" );
-    _ARB_explicit_uniform_location = isExtSupported( glversion, "GL_ARB_explicit_uniform_location" );
-    _ARB_robust_buffer_access_behavior = isExtSupported( glversion, "GL_ARB_robust_buffer_access_behavior" );
-    _ARB_stencil_texturing = isExtSupported( glversion, "GL_ARB_stencil_texturing" );
-    _ARB_texture_query_levels = isExtSupported( glversion, "GL_ARB_texture_query_levels" );
-    _ARB_enhanced_layouts = isExtSupported( glversion, "GL_ARB_enhanced_layouts" );
-    _ARB_query_buffer_object = isExtSupported( glversion, "GL_ARB_query_buffer_object" );
-    _ARB_texture_mirror_clamp_to_edge = isExtSupported( glversion, "GL_ARB_texture_mirror_clamp_to_edge" );
-    _ARB_texture_stencil8 = isExtSupported( glversion, "GL_ARB_texture_stencil8" );
-    _ARB_vertex_type_10f_11f_11f_rev = isExtSupported( glversion, "GL_ARB_vertex_type_10f_11f_11f_rev" );
-    _ARB_cull_distance = isExtSupported( glversion, "GL_ARB_cull_distance" );
-    _ARB_conditional_render_inverted = isExtSupported(glversion, "GL_ARB_conditional_render_inverted" );
-    _KHR_context_flush_control = isExtSupported( glversion, "GL_KHR_context_flush_control" );
-    _ARB_derivative_control = isExtSupported( glversion, "GL_ARB_derivative_control" );
-    _ARB_shader_texture_image_samples = isExtSupported( glversion, "GL_ARB_shader_texture_image_samples" );
+    if(isExtSupported(glversion, "GL_ARB_geometry_shader4")) load_ARB_geometry_shader4();
+    if(isExtSupported(glversion, "GL_ARB_debug_output")) load_ARB_debug_output();
+    _ARB_vertex_array_bgra = isExtSupported(glversion, "GL_ARB_vertex_array_bgra");
+    _ARB_fragment_coord_conventions = isExtSupported(glversion, "GL_ARB_fragment_coord_conventions");
+    _ARB_seamless_cube_map = isExtSupported(glversion, "GL_ARB_seamless_cube_map");
+    _ARB_depth_buffer_float = isExtSupported(glversion, "GL_ARB_depth_buffer_float");
+    _ARB_framebuffer_sRGB = isExtSupported(glversion, "GL_ARB_framebuffer_sRGB");
+    _ARB_half_float_vertex = isExtSupported(glversion, "GL_ARB_half_float_vertex");
+    _ARB_imaging = isExtSupported(glversion, "GL_ARB_imaging");
+    _ARB_texture_compression_rgtc = isExtSupported(glversion, "GL_ARB_texture_compression_rgtc");
+    _ARB_texture_rg = isExtSupported(glversion, "GL_ARB_texture_rg");
+    _ARB_depth_clamp = isExtSupported(glversion, "GL_ARB_depth_clamp");
+    _ARB_explicit_attrib_location = isExtSupported(glversion, "GL_ARB_explicit_attrib_location");
+    _ARB_occlusion_query2 = isExtSupported(glversion, "GL_ARB_occlusion_query2");
+    _ARB_shader_bit_encoding = isExtSupported(glversion, "GL_ARB_shader_bit_encoding");
+    _ARB_texture_rgb10_a2ui = isExtSupported(glversion, "GL_ARB_texture_rgb10_a2ui");
+    _ARB_texture_swizzle = isExtSupported(glversion, "GL_ARB_texture_swizzle");
+    _ARB_texture_query_lod = isExtSupported(glversion, "GL_ARB_texture_query_lod");
+    _ARB_gpu_shader5 = isExtSupported(glversion, "GL_ARB_gpu_shader5");
+    _ARB_texture_buffer_object_rgb32 = isExtSupported(glversion, "GL_ARB_texture_buffer_object_rgb32");
+    _ARB_texture_cube_map_array = isExtSupported(glversion, "GL_ARB_texture_cube_map_array");
+    _ARB_texture_gather = isExtSupported(glversion, "GL_ARB_texture_gather");
+    _ARB_shader_precision = isExtSupported(glversion, "GL_ARB_shader_precision");
+    _ARB_texture_compression_bptc = isExtSupported(glversion, "GL__ARB_texture_compression_bptc");
+    _ARB_shading_language_420pack = isExtSupported(glversion, "GL_ARB_shading_language_420pack");
+    _ARB_compressed_texture_pixel_storage = isExtSupported(glversion, "GL_ARB_compressed_texture_pixel_storage");
+    _ARB_conservative_depth = isExtSupported(glversion, "GL_ARB_conservative_depth");
+    _ARB_map_buffer_alignment = isExtSupported(glversion, "GL_ARB_map_buffer_alignment");
+    _ARB_shading_language_packing = isExtSupported(glversion, "GL_ARB_shading_language_packing");
+    _ARB_array_of_arrays = isExtSupported(glversion, "GL_ARB_array_of_arrays");
+    _ARB_fragment_layer_viewport = isExtSupported(glversion, "GL_ARB_fragment_layer_viewport");
+    _ARB_shader_image_size = isExtSupported(glversion, "GL_ARB_shader_image_size");
+    _ARB_ES3_compatibility = isExtSupported(glversion, "GL_ARB_ES3_compatibility");
+    _ARB_copy_image = isExtSupported(glversion, "GL_ARB_copy_image");
+    _ARB_explicit_uniform_location = isExtSupported(glversion, "GL_ARB_explicit_uniform_location");
+    _ARB_robust_buffer_access_behavior = isExtSupported(glversion, "GL_ARB_robust_buffer_access_behavior");
+    _ARB_stencil_texturing = isExtSupported(glversion, "GL_ARB_stencil_texturing");
+    _ARB_texture_query_levels = isExtSupported(glversion, "GL_ARB_texture_query_levels");
+    _ARB_enhanced_layouts = isExtSupported(glversion, "GL_ARB_enhanced_layouts");
+    _ARB_query_buffer_object = isExtSupported(glversion, "GL_ARB_query_buffer_object");
+    _ARB_texture_mirror_clamp_to_edge = isExtSupported(glversion, "GL_ARB_texture_mirror_clamp_to_edge");
+    _ARB_texture_stencil8 = isExtSupported(glversion, "GL_ARB_texture_stencil8");
+    _ARB_vertex_type_10f_11f_11f_rev = isExtSupported(glversion, "GL_ARB_vertex_type_10f_11f_11f_rev");
+    _ARB_cull_distance = isExtSupported(glversion, "GL_ARB_cull_distance");
+    _ARB_conditional_render_inverted = isExtSupported(glversion, "GL_ARB_conditional_render_inverted");
+    _KHR_context_flush_control = isExtSupported(glversion, "GL_KHR_context_flush_control");
+    _ARB_derivative_control = isExtSupported(glversion, "GL_ARB_derivative_control");
+    _ARB_shader_texture_image_samples = isExtSupported(glversion, "GL_ARB_shader_texture_image_samples");
 }

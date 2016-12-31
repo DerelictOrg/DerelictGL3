@@ -192,53 +192,53 @@ enum : uint
 
 extern(System) @nogc nothrow {
     // OpenGL 1.2
-    alias da_glDrawRangeElements = void function( GLenum,GLuint,GLuint,GLsizei,GLenum,const( GLvoid )* );
-    alias da_glTexImage3D = void function( GLenum,GLint,GLint,GLsizei,GLsizei,GLsizei,GLint,GLenum,GLenum,const( GLvoid )* );
-    alias da_glTexSubImage3D = void function( GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const( GLvoid )* );
-    alias da_glCopyTexSubImage3D = void function( GLenum,GLint,GLint,GLint,GLint,GLint,GLint,GLsizei,GLsizei );
+    alias da_glDrawRangeElements = void function(GLenum,GLuint,GLuint,GLsizei,GLenum,const(GLvoid)*);
+    alias da_glTexImage3D = void function(GLenum,GLint,GLint,GLsizei,GLsizei,GLsizei,GLint,GLenum,GLenum,const(GLvoid)*);
+    alias da_glTexSubImage3D = void function(GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const(GLvoid)*);
+    alias da_glCopyTexSubImage3D = void function(GLenum,GLint,GLint,GLint,GLint,GLint,GLint,GLsizei,GLsizei);
 
     // OpenGL 1.3
-    alias da_glActiveTexture = void function( GLenum );
-    alias da_glSampleCoverage = void function( GLclampf,GLboolean );
-    alias da_glCompressedTexImage3D = void function( GLenum,GLint,GLenum,GLsizei,GLsizei,GLsizei,GLint,GLsizei,const( GLvoid )* );
-    alias da_glCompressedTexImage2D = void function( GLenum,GLint,GLenum,GLsizei,GLsizei,GLint,GLsizei,const( GLvoid )* );
-    alias da_glCompressedTexImage1D = void function( GLenum,GLint,GLenum,GLsizei,GLint,GLsizei,const( GLvoid )* );
-    alias da_glCompressedTexSubImage3D = void function( GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLsizei,const( GLvoid )* );
-    alias da_glCompressedTexSubImage2D = void function( GLenum,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLsizei,const( GLvoid )* );
-    alias da_glCompressedTexSubImage1D = void function( GLenum,GLint,GLint,GLsizei,GLenum,GLsizei,const( GLvoid )* );
-    alias da_glGetCompressedTexImage = void function( GLenum,GLint,GLvoid* );
+    alias da_glActiveTexture = void function(GLenum);
+    alias da_glSampleCoverage = void function(GLclampf,GLboolean);
+    alias da_glCompressedTexImage3D = void function(GLenum,GLint,GLenum,GLsizei,GLsizei,GLsizei,GLint,GLsizei,const(GLvoid)*);
+    alias da_glCompressedTexImage2D = void function(GLenum,GLint,GLenum,GLsizei,GLsizei,GLint,GLsizei,const(GLvoid)*);
+    alias da_glCompressedTexImage1D = void function(GLenum,GLint,GLenum,GLsizei,GLint,GLsizei,const(GLvoid)*);
+    alias da_glCompressedTexSubImage3D = void function(GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLsizei,const(GLvoid)*);
+    alias da_glCompressedTexSubImage2D = void function(GLenum,GLint,GLint,GLint,GLsizei,GLsizei,GLenum,GLsizei,const(GLvoid)*);
+    alias da_glCompressedTexSubImage1D = void function(GLenum,GLint,GLint,GLsizei,GLenum,GLsizei,const(GLvoid)*);
+    alias da_glGetCompressedTexImage = void function(GLenum,GLint,GLvoid*);
 
     // OpenGL 1.4
-    alias da_glBlendFuncSeparate = void function( GLenum,GLenum,GLenum,GLenum );
-    alias da_glMultiDrawArrays = void function( GLenum,const( GLint )*,const( GLsizei )*,GLsizei );
-    alias da_glMultiDrawElements = void function( GLenum,const( GLsizei )*,GLenum,const( GLvoid )*,GLsizei );
-    alias da_glPointParameterf = void function( GLenum,GLfloat );
-    alias da_glPointParameterfv = void function( GLenum,const( GLfloat )* );
-    alias da_glPointParameteri = void function( GLenum,GLint );
-    alias da_glPointParameteriv = void function( GLenum,const( GLint )* );
-    alias da_glBlendColor = void function( GLclampf,GLclampf,GLclampf,GLclampf );
-    alias da_glBlendEquation = void function( GLenum );
+    alias da_glBlendFuncSeparate = void function(GLenum,GLenum,GLenum,GLenum);
+    alias da_glMultiDrawArrays = void function(GLenum,const(GLint)*,const(GLsizei)*,GLsizei);
+    alias da_glMultiDrawElements = void function(GLenum,const(GLsizei)*,GLenum,const(GLvoid)*,GLsizei);
+    alias da_glPointParameterf = void function(GLenum,GLfloat);
+    alias da_glPointParameterfv = void function(GLenum,const(GLfloat)*);
+    alias da_glPointParameteri = void function(GLenum,GLint);
+    alias da_glPointParameteriv = void function(GLenum,const(GLint)*);
+    alias da_glBlendColor = void function(GLclampf,GLclampf,GLclampf,GLclampf);
+    alias da_glBlendEquation = void function(GLenum);
 
     // OpenGL 1.5
-    alias da_glGenQueries = void function( GLsizei,GLuint* );
-    alias da_glDeleteQueries = void function( GLsizei,const( GLuint )* );
-    alias da_glIsQuery = GLboolean function( GLuint );
-    alias da_glBeginQuery = void function( GLenum,GLuint );
-    alias da_glEndQuery = void function( GLenum );
-    alias da_glGetQueryiv = void function( GLenum,GLenum,GLint* );
-    alias da_glGetQueryObjectiv = void function( GLuint,GLenum,GLint* );
-    alias da_glGetQueryObjectuiv = void function( GLuint,GLenum,GLuint* );
-    alias da_glBindBuffer = void function( GLenum,GLuint );
-    alias da_glDeleteBuffers = void function( GLsizei,const( GLuint )* );
-    alias da_glGenBuffers = void function( GLsizei,GLuint* );
-    alias da_glIsBuffer = GLboolean function( GLuint );
-    alias da_glBufferData = void function( GLenum,GLsizeiptr,const( GLvoid )*,GLenum );
-    alias da_glBufferSubData = void function( GLenum,GLintptr,GLsizeiptr,const( GLvoid )* );
-    alias da_glGetBufferSubData = void function( GLenum,GLintptr,GLsizeiptr,GLvoid* );
-    alias da_glMapBuffer = GLvoid* function( GLenum,GLenum );
-    alias da_glUnmapBuffer = GLboolean function( GLenum );
-    alias da_glGetBufferParameteriv = void function( GLenum,GLenum,GLint* );
-    alias da_glGetBufferPointerv = void function( GLenum,GLenum,GLvoid* );
+    alias da_glGenQueries = void function(GLsizei,GLuint*);
+    alias da_glDeleteQueries = void function(GLsizei,const(GLuint)*);
+    alias da_glIsQuery = GLboolean function(GLuint);
+    alias da_glBeginQuery = void function(GLenum,GLuint);
+    alias da_glEndQuery = void function(GLenum);
+    alias da_glGetQueryiv = void function(GLenum,GLenum,GLint*);
+    alias da_glGetQueryObjectiv = void function(GLuint,GLenum,GLint*);
+    alias da_glGetQueryObjectuiv = void function(GLuint,GLenum,GLuint*);
+    alias da_glBindBuffer = void function(GLenum,GLuint);
+    alias da_glDeleteBuffers = void function(GLsizei,const(GLuint)*);
+    alias da_glGenBuffers = void function(GLsizei,GLuint*);
+    alias da_glIsBuffer = GLboolean function(GLuint);
+    alias da_glBufferData = void function(GLenum,GLsizeiptr,const(GLvoid)*,GLenum);
+    alias da_glBufferSubData = void function(GLenum,GLintptr,GLsizeiptr,const(GLvoid)*);
+    alias da_glGetBufferSubData = void function(GLenum,GLintptr,GLsizeiptr,GLvoid*);
+    alias da_glMapBuffer = GLvoid* function(GLenum,GLenum);
+    alias da_glUnmapBuffer = GLboolean function(GLenum);
+    alias da_glGetBufferParameteriv = void function(GLenum,GLenum,GLint*);
+    alias da_glGetBufferPointerv = void function(GLenum,GLenum,GLvoid*);
 }};
 
 enum _gl1Funcs =
@@ -293,7 +293,7 @@ q{
     da_glGetBufferPointerv glGetBufferPointerv;
 };
 
-enum gl1Loader =
+enum _gl12Loader =
 q{
     if(maxVer >= GLVersion.gl12) {
         bindGLFunc(cast(void**)&glDrawRangeElements, "glDrawRangeElements");
@@ -302,7 +302,10 @@ q{
         bindGLFunc(cast(void**)&glCopyTexSubImage3D, "glCopyTexSubImage3D");
         glVer = GLVersion.gl12;
     }
+};
 
+enum _gl13Loader =
+q{
     if(maxVer >= GLVersion.gl13) {
         bindGLFunc(cast(void**)&glActiveTexture, "glActiveTexture");
         bindGLFunc(cast(void**)&glSampleCoverage, "glSampleCoverage");
@@ -315,7 +318,10 @@ q{
         bindGLFunc(cast(void**)&glGetCompressedTexImage, "glGetCompressedTexImage");
         glVer = GLVersion.gl13;
     }
+};
 
+enum _gl14Loader =
+q{
     if(maxVer >= GLVersion.gl14) {
         bindGLFunc(cast(void**)&glBlendFuncSeparate, "glBlendFuncSeparate");
         bindGLFunc(cast(void**)&glMultiDrawArrays, "glMultiDrawArrays");
@@ -328,7 +334,10 @@ q{
         bindGLFunc(cast(void**)&glBlendEquation, "glBlendEquation");
         glVer = GLVersion.gl14;
     }
+};
 
+enum _gl15Loader =
+q{
     if(maxVer >= GLVersion.gl15) {
         bindGLFunc(cast(void**)&glGenQueries, "glGenQueries");
         bindGLFunc(cast(void**)&glDeleteQueries, "glDeleteQueries");
@@ -355,3 +364,4 @@ q{
 
 enum gl1Decls = baseDecls ~ _gl1Decls;
 enum gl1Funcs = baseFuncs ~ _gl1Funcs;
+enum gl1Loader = _gl12Loader ~ _gl13Loader ~ _gl14Loader ~ _gl15Loader;

@@ -30,24 +30,28 @@ module derelict.opengl.impl;
 import derelict.opengl.types;
 
 version(DerelictGL3_Contexts) {
-    mixin template glContext(GLVersion core = GLVersion.highestSupported)
+    mixin template glContext(GLVersion core = GLVersion.highestSupported, bool loadDep = false)
     {
-        mixin(glImports);
-        mixin glDecls!core;
+        static if(!loadDep) mixin(glImports);
+        else mixin(gl_depImports);
+
+        mixin glDecls!(core, loadDep);
         struct GLContext
         {
-            mixin glFuncs!core;
-            mixin glLoaders!core;
+            mixin glFuncs!(core, loadDep);
+            mixin glLoaders!(core, loadDep);
         }
     }
 }
 else {
-    mixin template glFreeFuncs(GLVersion core = GLVersion.highestSupported)
+    mixin template glFreeFuncs(GLVersion core = GLVersion.highestSupported, bool loadDep = false)
     {
-        mixin(glImports);
-        mixin glDecls!core;
-        mixin glFuncs!core;
-        mixin glLoaders!core;
+        static if(!loadDep) mixin(glImports);
+        else mixin(gl_depImports);
+
+        mixin glDecls!(core, loadDep);
+        mixin glFuncs!(core, loadDep);
+        mixin glLoaders!(core, loadDep);
     }
 
     version(DerelictGL3_CustomFreeFuncs) {}
@@ -64,10 +68,23 @@ q{
            derelict.opengl.versions.gl4x;
 };
 
-mixin template glDecls(GLVersion core)
+enum gl_depImports =
+q{
+    import derelict.opengl.gl,
+           derelict.opengl.glloader,
+           derelict.opengl.versions.base_dep,
+           derelict.opengl.versions.gl2x_dep,
+           derelict.opengl.versions.gl3x_dep,
+           derelict.opengl.versions.gl4x;
+};
+
+mixin template glDecls(GLVersion core, bool declDep = false)
 {
-    mixin(gl2Decls);
-    static if(core >= GLVersion.gl30) mixin(gl30Decls);
+    static if(!declDep) mixin(gl2Decls);
+    else mixin(gl2_depDecls);
+
+    static if(core >= GLVersion.gl30 && !declDep) mixin(gl30Decls);
+    else static if(core >= GLVersion.gl30) mixin(gl30_depDecls);
     static if(core >= GLVersion.gl31) mixin(gl31Decls);
     static if(core >= GLVersion.gl32) mixin(gl32Decls);
     static if(core >= GLVersion.gl33) mixin(gl33Decls);
@@ -79,9 +96,10 @@ mixin template glDecls(GLVersion core)
     static if(core >= GLVersion.gl45) mixin(gl45Decls);
 }
 
-mixin template glFuncs(GLVersion core)
+mixin template glFuncs(GLVersion core, bool loadDep = false)
 {
-    mixin(gl2Funcs);
+    static if(!loadDep) mixin(gl2Funcs);
+    else mixin(gl2_depFuncs);
     static if(core >= GLVersion.gl30) mixin(gl30Funcs);
     static if(core >= GLVersion.gl31) mixin(gl31Funcs);
     static if(core >= GLVersion.gl32) mixin(gl32Funcs);
@@ -102,7 +120,7 @@ q{
     GLVersion maxVer = theLoader.contextVersion;
 };
 
-mixin template glLoaders(GLVersion core)
+mixin template glLoaders(GLVersion core, bool loadDep = false)
 {
     version(DerelictGL3_Contexts) {
         private GLLoader _loader;
@@ -143,7 +161,8 @@ mixin template glLoaders(GLVersion core)
     private GLVersion loadBaseGL()
     {
         with(DerelictGL3) {
-            mixin(baseLoader);
+            static if(!loadDep) mixin(baseLoader);
+            else mixin(base_depLoader);
         }
         return GLVersion.gl11;
     }
@@ -152,7 +171,9 @@ mixin template glLoaders(GLVersion core)
     {
         mixin(glLoaderDecls);
         with(theLoader) {
-            mixin(gl2Loader);
+            static if(!loadDep) mixin(gl2Loader);
+            else mixin(gl2_depLoader);
+
             static if(core >= GLVersion.gl30) mixin(gl30Loader);
             static if(core >= GLVersion.gl31) mixin(gl31Loader);
             static if(core >= GLVersion.gl32) mixin(gl32Loader);

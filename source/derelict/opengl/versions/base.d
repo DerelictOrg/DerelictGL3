@@ -234,6 +234,7 @@ enum : uint {
     GL_RGB10_A2                       = 0x8059,
     GL_RGBA12                         = 0x805A,
     GL_RGBA16                         = 0x805B,
+    GL_VERTEX_ARRAY                   = 0x8074,
 }
 
 extern(System) @nogc nothrow {

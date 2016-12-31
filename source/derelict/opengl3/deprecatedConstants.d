@@ -37,7 +37,6 @@ enum : GLenum {
     GL_QUADS                                = 0x0007,
     GL_QUAD_STRIP                           = 0x0008,
     GL_POLYGON                              = 0x0009,
-    GL_VERTEX_ARRAY                         = 0x8074,
     GL_NORMAL_ARRAY                         = 0x8075,
     GL_COLOR_ARRAY                          = 0x8076,
     GL_INDEX_ARRAY                          = 0x8077,

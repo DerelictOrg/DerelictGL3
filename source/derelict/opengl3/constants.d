@@ -232,6 +232,7 @@ enum : uint
     GL_RGB10_A2                       = 0x8059,
     GL_RGBA12                         = 0x805A,
     GL_RGBA16                         = 0x805B,
+    GL_VERTEX_ARRAY                   = 0x8074,
 
     // OpenGL 1.2
     GL_UNSIGNED_BYTE_3_3_2            = 0x8032,
@@ -269,7 +270,7 @@ enum : uint
     GL_SMOOTH_POINT_SIZE_GRANULARITY  = 0x0B13,
     GL_SMOOTH_LINE_WIDTH_RANGE        = 0x0B22,
     GL_SMOOTH_LINE_WIDTH_GRANULARITY  = 0x0B23,
-    GL_ALIASED_LINE_WIDTH_RANGE       = 0x846E,    
+    GL_ALIASED_LINE_WIDTH_RANGE       = 0x846E,
 
     // OpenGL 1.3
     GL_TEXTURE0                       = 0x84C0,
@@ -355,7 +356,7 @@ enum : uint
     GL_ONE_MINUS_CONSTANT_ALPHA       = 0x8004,
     GL_FUNC_ADD                       = 0x8006,
     GL_MIN                            = 0x8007,
-    GL_MAX                            = 0x8008,    
+    GL_MAX                            = 0x8008,
     GL_FUNC_SUBTRACT                  = 0x800A,
     GL_FUNC_REVERSE_SUBTRACT          = 0x800B,
 

@@ -1,7 +1,7 @@
 DerelictGL3
 ===========
 
-_Note that the information here is applies to version 1.0 of DerelictGL3 and is not accurate for the 2.0 branch. It will be updated with the correct information when the documentation is complete._
+_Note that the information here applies to version 1.0 of DerelictGL3 and is not accurate for the 2.0 branch. It will be updated with the correct information when the documentation is complete._
 
 A dynamic binding to OpenGL for the D Programming Language.
 

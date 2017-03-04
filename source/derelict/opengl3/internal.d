@@ -31,6 +31,7 @@ private {
     import std.array;
 
     import derelict.util.system;
+	 import derelict.util.exception;
     import derelict.opengl3.types;
     import derelict.opengl3.constants;
     import derelict.opengl3.functions;
@@ -45,11 +46,14 @@ private {
 
 package {
         void bindGLFunc( void** ptr, string symName ) {
-            import derelict.util.exception : SymbolLoadException;
-
             auto sym = loadGLFunc( symName );
-            if( !sym )
-                throw new SymbolLoadException( "Failed to load OpenGL symbol [" ~ symName ~ "]" );
+            if( !sym ) {
+					 auto result = ShouldThrow.Yes;
+					 if( _onMissingSym !is null )
+						  result = _onMissingSym( symName );
+					 if( result == ShouldThrow.Yes )
+                    throw new SymbolLoadException( "Failed to load OpenGL symbol [" ~ symName ~ "]" );
+				}
             *ptr = sym;
         }
 
@@ -111,4 +115,19 @@ package {
 
             return false;
         }
+
+
+        // forward from lib loader
+		  void missingGLReloadCallback( MissingSymbolCallbackDg callback ) {
+			  _onMissingSym = callback;
+		  }
+
+        // forward from lib loader
+		  MissingSymbolCallback missingGLReloadCallback() {
+			  return _onMissingSym;
+		  }
+
+
+		  import derelict.util.exception;
+		  private MissingSymbolCallback _onMissingSym = null;
 }

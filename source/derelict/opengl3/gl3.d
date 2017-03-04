@@ -80,6 +80,9 @@ class DerelictGL3Loader : SharedLibLoader
         GLVersion reload( GLVersion minVersion = GLVersion.None, GLVersion maxVersion = GLVersion.HighestSupported) {
             import std.string : format;
 
+			   // Setup missingSymbolCallback for reload GL modern context functions 
+			   missingGLReloadCallback( missingSymbolCallback());
+
             // Make sure a context is active, otherwise this could be meaningless.
             if( !hasValidContext() )
                 throw new DerelictException( "DerelictGL3.reload failure: An OpenGL context is not currently active." );

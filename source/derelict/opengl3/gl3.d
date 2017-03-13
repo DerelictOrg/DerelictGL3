@@ -95,6 +95,7 @@ class DerelictGL3Loader : SharedLibLoader
             if(maxVer > maxVersion)
                 maxVer = maxVersion;
 
+            initExtensionCache(glVer, missingSymbolCallback);
 
             if(maxVer >= GLVersion.GL12) {
                 bindGLFunc(cast(void**)&glDrawRangeElements, "glDrawRangeElements");
@@ -442,7 +443,6 @@ class DerelictGL3Loader : SharedLibLoader
             // the findMaxAvailable method
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            initExtensionCache(glVer);
             loadARB(glVer);
             loadEXT(glVer);
             loadPlatformEXT( glVer );

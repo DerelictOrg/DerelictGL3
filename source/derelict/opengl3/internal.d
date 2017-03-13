@@ -30,10 +30,11 @@ module derelict.opengl3.internal;
 private {
     import std.array;
 
-    import derelict.util.system;
-    import derelict.opengl3.types;
-    import derelict.opengl3.constants;
-    import derelict.opengl3.functions;
+    import derelict.util.exception,
+           derelict.util.system;
+    import derelict.opengl3.constants,
+           derelict.opengl3.functions,
+           derelict.opengl3.types;
     static if(Derelict_OS_Windows) import derelict.opengl3.wgl;
     else static if(Derelict_OS_Mac) import derelict.opengl3.cgl;
     else static if(Derelict_OS_Posix) import derelict.opengl3.glx;
@@ -41,6 +42,7 @@ private {
 
 private {
     Appender!(const(char)*[]) _extCache;
+    MissingSymbolCallback symCallback;
 }
 
 package {
@@ -48,8 +50,11 @@ package {
             import derelict.util.exception : SymbolLoadException;
 
             auto sym = loadGLFunc(symName);
-            if(!sym)
-                throw new SymbolLoadException("Failed to load OpenGL symbol [" ~ symName ~ "]");
+            if(!sym) {
+                if(symCallback == null || symCallback(symName) == ShouldThrow.Yes)
+                    throw new SymbolLoadException("Failed to load OpenGL symbol [" ~ symName ~ "]");
+                else return;
+            }
             *ptr = sym;
         }
 
@@ -57,7 +62,7 @@ package {
         This is called from DerelictGL3.reload to reset the extension name cache,
         since supported extensions can potentially vary from context to context.
         */
-        void initExtensionCache(GLVersion glversion) {
+        void initExtensionCache(GLVersion glversion, MissingSymbolCallback callback) {
             // There's no need to cache extension names using the pre-3.0 glString
             // technique, but the modern style of using glStringi results in a high
             // number of calls when testing for every extension Derelict supports.
@@ -74,6 +79,8 @@ package {
                     _extCache.put(glGetStringi(GL_EXTENSIONS, i));
                 }
             }
+
+            symCallback = callback;
         }
 
         // Assumes that name is null-terminated, i.e. a string literal

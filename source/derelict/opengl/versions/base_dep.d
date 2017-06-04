@@ -180,7 +180,6 @@ enum : uint {
     GL_LOGIC_OP                             = 0x0BF1,
     GL_INDEX_LOGIC_OP                       = 0x0BF1,
     GL_STENCIL_BITS                         = 0x0D57,
-    GL_NONE                                 = 0x0,
     GL_AUX0                                 = 0x0409,
     GL_AUX1                                 = 0x040A,
     GL_AUX2                                 = 0x040B,

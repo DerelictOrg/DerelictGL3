@@ -32,13 +32,8 @@ module derelict.opengl.versions.base_dep;
 import derelict.opengl.types;
 import derelict.opengl.versions.base;
 
-enum base_depDecls =
+enum _base_depDecls =
 q{
-enum : ubyte {
-    GL_FALSE                          = 0,
-    GL_TRUE                           = 1,
-}
-
 enum : uint {
     GL_2_BYTES                              = 0x1407,
     GL_3_BYTES                              = 0x1408,
@@ -635,7 +630,7 @@ extern(System) @nogc nothrow {
     alias da_glPopClientAttrib = void function();
 }};
 
-enum base_depFuncs =
+enum _base_depFuncs =
 q{
     da_glIsList glIsList;
     da_glDeleteLists glDeleteLists;
@@ -1189,4 +1184,6 @@ q{
     bindFunc(cast(void**)&glPopClientAttrib, "glPopClientAttrib");
 };
 
+enum base_depDecls = _base_depDecls ~ baseDecls;
+enum base_depFuncs = _base_depFuncs ~ baseFuncs;
 enum base_depLoader = _base_depLoader ~ baseLoader;

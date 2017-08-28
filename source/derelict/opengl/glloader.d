@@ -181,7 +181,7 @@ struct GLLoader
         }
         else {
             import derelict.util.exception : SymbolLoadException;
-
+            
             auto sym = getProcAddress(symName.ptr);
             if(!sym)
                 throw new SymbolLoadException("Failed to load OpenGL symbol [" ~ symName ~ "]");
@@ -297,7 +297,7 @@ private:
     }
 
     static if(!Derelict_OS_Mac) {
-        extern(C) @nogc nothrow alias da_getProcAddress = void* function(const(char)*);
+        extern(System) @nogc nothrow alias da_getProcAddress = void* function(const(char)*);
         __gshared da_getProcAddress getProcAddress;
     }
 

@@ -32,13 +32,11 @@ import derelict.util.system;
 import derelict.opengl.gl,
        derelict.opengl.types : GLVersion, usingContexts;
 
-static if(!usingContexts) {
-    private alias ExtLoaderFunc = bool function(ref GLLoader loader, bool doThrow);
-    private struct ExtLoader
-    {
-        string name;
-        ExtLoaderFunc load;
-    }
+private alias ExtLoaderFunc = bool function(ref GLLoader loader, bool doThrow);
+private struct ExtLoader
+{
+    string name;
+    ExtLoaderFunc load;
 }
 
 struct GLLoader

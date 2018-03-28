@@ -197,6 +197,7 @@ class DerelictGL3Loader : SharedLibLoader
                 bindGLFunc(cast(void**)&glUniform4f, "glUniform4f");
                 bindGLFunc(cast(void**)&glUniform1i, "glUniform1i");
                 bindGLFunc(cast(void**)&glUniform2i, "glUniform2i");
+                bindGLFunc(cast(void**)&glUniform3i, "glUniform3i");
                 bindGLFunc(cast(void**)&glUniform4i, "glUniform4i");
                 bindGLFunc(cast(void**)&glUniform1fv, "glUniform1fv");
                 bindGLFunc(cast(void**)&glUniform2fv, "glUniform2fv");

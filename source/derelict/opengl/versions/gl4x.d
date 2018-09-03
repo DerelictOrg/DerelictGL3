@@ -143,29 +143,45 @@ else
     enum _gl40LoaderAdd = `loadExtensionSet(GLVersion.gl40, true);`;
 enum gl40Loader = `if(maxVer >= GLVersion.gl40) {` ~ _gl40LoaderAdd ~ _gl40Loader ~ `}`;
 
+enum _gl41Loader =
+q{
+    glVer = GLVersion.gl41;
+};
 version(DerelictGL3_Contexts)
     enum _gl41LoaderAdd = corearb41Loader;
 else
     enum _gl41LoaderAdd = `loadExtensionSet(GLVersion.gl41, true);`;
-enum gl41Loader = `if(maxVer >= GLVersion.gl41) {` ~ _gl41LoaderAdd ~ `}`;
+enum gl41Loader = `if(maxVer >= GLVersion.gl41) {` ~ _gl41LoaderAdd ~ _gl41Loader ~ `}`;
 
+enum _gl42Loader =
+q{
+    glVer = GLVersion.gl42;
+};
 version(DerelictGL3_Contexts)
     enum _gl42LoaderAdd = corearb42Loader;
 else
     enum _gl42LoaderAdd = `loadExtensionSet(GLVersion.gl42, true);`;
-enum gl42Loader = `if(maxVer >= GLVersion.gl42) {` ~ _gl42LoaderAdd ~ `}`;
+enum gl42Loader = `if(maxVer >= GLVersion.gl42) {` ~ _gl42LoaderAdd ~ _gl42Loader ~ `}`;
 
+enum _gl43Loader =
+q{
+    glVer = GLVersion.gl43;
+};
 version(DerelictGL3_Contexts)
     enum _gl43LoaderAdd = corearb43Loader;
 else
     enum _gl43LoaderAdd = `loadExtensionSet(GLVersion.gl43, true);`;
-enum gl43Loader = `if(maxVer >= GLVersion.gl43) {` ~ _gl43LoaderAdd ~ `}`;
+enum gl43Loader = `if(maxVer >= GLVersion.gl43) {` ~ _gl43LoaderAdd ~ _gl43Loader ~ `}`;
 
+enum _gl44Loader =
+q{
+    glVer = GLVersion.gl44;
+};
 version(DerelictGL3_Contexts)
     enum _gl44LoaderAdd = corearb44Loader;
 else
     enum _gl44LoaderAdd = `loadExtensionSet(GLVersion.gl44, true);`;
-enum gl44Loader = `if(maxVer >= GLVersion.gl44) {` ~ _gl44LoaderAdd ~ `}`;
+enum gl44Loader = `if(maxVer >= GLVersion.gl44) {` ~ _gl44LoaderAdd ~ _gl44Loader ~ `}`;
 
 enum _gl45Loader =
 q{

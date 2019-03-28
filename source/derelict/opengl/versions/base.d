@@ -90,6 +90,7 @@ enum : uint {
     GL_LINE_WIDTH                     = 0x0B21,
     GL_LINE_WIDTH_RANGE               = 0x0B22,
     GL_LINE_WIDTH_GRANULARITY         = 0x0B23,
+    GL_POLYGON_MODE                   = 0x0B40,
     GL_POLYGON_SMOOTH                 = 0x0B41,
     GL_CULL_FACE                      = 0x0B44,
     GL_CULL_FACE_MODE                 = 0x0B45,

@@ -87,7 +87,6 @@ enum : uint {
     GL_LINE_STIPPLE                         = 0x0B24,
     GL_LINE_STIPPLE_PATTERN                 = 0x0B25,
     GL_LINE_STIPPLE_REPEAT                  = 0x0B26,
-    GL_POLYGON_MODE                         = 0x0B40,
     GL_POLYGON_STIPPLE                      = 0x0B42,
     GL_EDGE_FLAG                            = 0x0B43,
     GL_COMPILE                              = 0x1300,

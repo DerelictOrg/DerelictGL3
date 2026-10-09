@@ -60,8 +60,8 @@ enum : uint
     GL_DEBUG_SEVERITY_LOW_ARB         = 0x9148,
 }
 extern(System) nothrow {
-    alias GLDEBUGPROCARB = void function(GLenum, GLenum, GLuint, GLenum, GLsizei, in GLchar*, GLvoid*);
-    alias GLDEBUGPROCAMD = void function(GLuint, GLenum, GLenum, GLsizei, in GLchar*, GLvoid*);
+    alias GLDEBUGPROCARB = void function(GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar*, GLvoid*);
+    alias GLDEBUGPROCAMD = void function(GLuint, GLenum, GLenum, GLsizei, const GLchar*, GLvoid*);
 }
 extern(System) @nogc nothrow {
     alias da_glDebugMessageControlARB = void function(GLenum, GLenum, GLenum, GLsizei, const(GLuint)*, GLboolean);
